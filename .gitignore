@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Rust & Solana Build
+target/
+.anchor/
+
+# Sensitive Private Keys & Wallet Secrets - DO NOT COMMIT
+*keypair*.json
+*deployer*.json
+*.env
+*.env.*
+!.env.example
+
+# Large raw media files exceeding GitHub 100MB limit
+assets/haichain video web.mp4
+assets/1031(1).mp4
+assets/trailer haichain.mp4
+assets/trailer-haichain.mp4
+assets/haichain-video-web-old.mp4
+
+# Temporary & Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db

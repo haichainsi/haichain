@@ -1,0 +1,21 @@
+[package]
+name = "haichain-core"
+version = "6.2.0"
+description = "HAICHAIN: Mass-Consumer & Frontier AI Financial Operating System for Solana"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "haichain_core"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.30.1"
+anchor-spl = "0.30.1"
+solana-program = "1.18.26"

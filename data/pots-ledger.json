@@ -1,0 +1,72 @@
+{
+  "pots": [
+    [
+      "agent_claude_desktop_01",
+      {
+        "id": "agent_claude_desktop_01",
+        "name": "Claude Desktop MCP",
+        "balanceUsdt": 9.99766,
+        "maxLimitUsdt": 50,
+        "isPanic": false,
+        "totalSettledUsdt": 0.00654,
+        "totalRequests": 5
+      }
+    ],
+    [
+      "agent_cursor_ide_02",
+      {
+        "id": "agent_cursor_ide_02",
+        "name": "Cursor Composer Agent",
+        "balanceUsdt": 8.498296,
+        "maxLimitUsdt": 50,
+        "isPanic": false,
+        "totalSettledUsdt": 0.009704,
+        "totalRequests": 7
+      }
+    ],
+    [
+      "agent_serp_crawler_03",
+      {
+        "id": "agent_serp_crawler_03",
+        "name": "Web SERP Scraper Swarm",
+        "balanceUsdt": 5,
+        "maxLimitUsdt": 20,
+        "isPanic": false,
+        "totalSettledUsdt": 0.004,
+        "totalRequests": 2
+      }
+    ],
+    [
+      "edge_robot_sensor_04",
+      {
+        "id": "edge_robot_sensor_04",
+        "name": "Tesla Optimus #12 Kinematics",
+        "balanceUsdt": 12,
+        "maxLimitUsdt": 50,
+        "isPanic": false,
+        "totalSettledUsdt": 0.0125,
+        "totalRequests": 8
+      }
+    ],
+    [
+      "default",
+      {
+        "id": "default",
+        "name": "Master Vault Default Pot",
+        "balanceUsdt": 35,
+        "maxLimitUsdt": 100,
+        "isPanic": false,
+        "totalSettledUsdt": 0,
+        "totalRequests": 0
+      }
+    ]
+  ],
+  "treasury": {
+    "address": "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW",
+    "takeRatePercentage": 20,
+    "totalMarginEarnedUsdt": 0.025174,
+    "totalTransactionsSettled": 22,
+    "totalTokensProcessed": 42854
+  },
+  "savedAt": "2026-10-31T16:57:15.690Z"
+}

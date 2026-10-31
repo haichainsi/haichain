@@ -1,0 +1,25 @@
+{
+  "network": "devnet",
+  "timestamp": "2026-10-31T08:11:30.523Z",
+  "deployerPublicKey": "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW",
+  "programId": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+  "masterVaultPda": "FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F",
+  "subAgentSigner": "Gz7aLrpYgCGQLDxabEmztqWVnUr9RgptHDRh979BLXSw",
+  "providerRecipient": "DJ5DPqQZW8pJzR93FyVe1SzPK745NvE6KD9prsc5aUk8",
+  "capabilityTicket": {
+    "nonce": 1,
+    "maxSpendMicroUsdt": 50000,
+    "spendAmountMicroUsdt": 2000,
+    "expirySlot": 517071323,
+    "nullifierPda": "CyfEH4kT1TDK9wR2GhgMxWA9mhz8BPQqATLaDQVpNUz6",
+    "merkleLeafHash": "f83cf51e2950de9b279ee54e510d6539606fc92b165b68a687d445a17ca9741e"
+  },
+  "performanceMetrics": {
+    "rpcLatencyMs": 1275,
+    "proofByteSize": 771,
+    "mtuMarginBytes": 461,
+    "reclaimedRentLamports": 890880
+  },
+  "transactionSignature": "4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA",
+  "solanaExplorerUrl": "https://explorer.solana.com/tx/4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA?cluster=devnet"
+}

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "haichain": {
+      "command": "node",
+      "args": [
+        "c:/Users/Surface/Documents/8. HAICHAIN/mcp-server/dist/index.js"
+      ],
+      "env": {
+        "SOLANA_RPC_URL": "https://api.devnet.solana.com"
+      }
+    }
+  }
+}

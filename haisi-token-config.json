@@ -1,0 +1,23 @@
+{
+  "tokenName": "Haichain Network",
+  "symbol": "HAISI",
+  "meaning": "HAI Super Intelligence",
+  "mintAddress": "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu",
+  "decimals": 9,
+  "genesisSupply": "1,000,000,000",
+  "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+  "transferHookProgram": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+  "treasuryAta": "FLaWJX8uKMGSw2ruVDU61Shu59mui4gqfRHW9evLszcx",
+  "deployer": "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW",
+  "deployedAt": "2026-10-31T16:52:21.500Z",
+  "metadataUrl": "https://haichain.com/assets/haisi-metadata.json",
+  "iconUrl": "https://haichain.com/assets/haisi-icon.png",
+  "iconSource": "assets/branding/haichain icon (2).png",
+  "explorerLinks": {
+    "mint": "https://explorer.solana.com/address/3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu?cluster=devnet",
+    "treasuryAta": "https://explorer.solana.com/address/FLaWJX8uKMGSw2ruVDU61Shu59mui4gqfRHW9evLszcx?cluster=devnet",
+    "initTx": "https://explorer.solana.com/tx/8nAdLBLe9vsVxju6jDo6hwQpvDxUqqN9tYGBFZNDxjVUWxjo2Zs17wmzN99NvRjHp2zmhgoSq3hxp5swMZiQ3aU?cluster=devnet",
+    "metadataTx": "https://explorer.solana.com/tx/5s8Gv9i3gCmjs6eAWTAb1zMmSJdwCrcd8zPCG6jakgme4Y7YVoHkP3Z66RXGR5TeLTgY93vvk1R43tS9zuyRiwTg?cluster=devnet",
+    "mintToTx": "https://explorer.solana.com/tx/4MqTEpY6WCBE71PZ4jmH4dZWZQ5dmvQtK7i1A7ma3hMJknrkD6w297g8bTV6KKGRERmAwyrpQkh14eHMjHHWB2oU?cluster=devnet"
+  }
+}

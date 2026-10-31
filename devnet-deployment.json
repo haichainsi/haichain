@@ -1,0 +1,15 @@
+{
+  "network": "devnet",
+  "rpcUrl": "https://api.devnet.solana.com",
+  "deployerPublicKey": "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW",
+  "programId": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+  "masterVaultPda": "FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F",
+  "vaultBump": 255,
+  "sampleNullifierPda": "CyfEH4kT1TDK9wR2GhgMxWA9mhz8BPQqATLaDQVpNUz6",
+  "timestamp": "2026-10-31T08:08:30.446Z",
+  "explorerLinks": {
+    "deployer": "https://explorer.solana.com/address/HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW?cluster=devnet",
+    "program": "https://explorer.solana.com/address/DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk?cluster=devnet",
+    "vault": "https://explorer.solana.com/address/FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F?cluster=devnet"
+  }
+}
