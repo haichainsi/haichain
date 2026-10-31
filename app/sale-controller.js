@@ -530,7 +530,7 @@
 
     PHASES: {
       PRE_SEED_PRIVATE: {
-        isPublic: false,
+        isPublic: true,
         tokenPrice: 0.007,
         publicPrice: 0.010,
         targetFDV: '$7,000,000 USD',
@@ -1033,6 +1033,13 @@
     if (container) {
       renderTerminalContent(container, isAuthorized);
     }
+
+    window.renderPreseedSalePage = function() {
+      let c = document.getElementById('tab-preseed');
+      if (c) {
+        renderTerminalContent(c, true);
+      }
+    };
   }
 
   // 9. INITIALIZATION
@@ -1054,6 +1061,13 @@
     if (container) {
       renderTerminalContent(container, isAuthorized);
     }
+
+    window.renderPreseedSalePage = function() {
+      let c = document.getElementById('tab-preseed');
+      if (c) {
+        renderTerminalContent(c, true);
+      }
+    };
 
     // Listen to Language Change Event from HAICHAIN Multi-Language Engine
     window.addEventListener('haichain:languageChanged', (e) => {

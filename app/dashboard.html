@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAICHAIN Dashboard — Autonomous Machine Financial Operating System</title>
-  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <link rel="icon" type="image/png" href="/assets/icon.png">
   <!-- Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
   <script src="/app/dialog.js?v=v3_modal"></script>
   <script src="/app/i18n.js?v=i18n_10langs_v4"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v3_clean_preseed"></script>
+  <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -68,7 +68,7 @@
     <div class="p-6">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 pb-6 border-b border-brand-lightBorder dark:border-brand-border group">
-        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="w-auto object-contain filter invert-0 dark:invert transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px; display: block;">
+        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="w-auto object-contain filter invert-0 dark:invert transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}">
       </a>
 
       <!-- Navigation Menu -->
@@ -99,6 +99,13 @@
         <button class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left" data-tab="tab-mcp">
           <i data-lucide="code-2" class="w-4 h-4"></i>
           <span data-i18n="nav.mcp">MCP & Dev Center</span>
+        </button>
+        <button class="nav-tab-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left group" data-tab="tab-preseed" id="nav-btn-sale">
+          <div class="flex items-center space-x-3 min-w-0">
+            <i data-lucide="shield-check" class="w-4 h-4 text-black dark:text-white shrink-0 group-hover:scale-110 transition-transform"></i>
+            <span class="font-medium text-xs whitespace-nowrap truncate text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white" id="nav-sale-title">Private Round</span>
+          </div>
+          <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider bg-neutral-200/90 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700/80 shrink-0 whitespace-nowrap leading-none" id="nav-sale-badge">VIP</span>
         </button>
       </nav>
     </div>
@@ -133,7 +140,7 @@
       <div class="flex items-center space-x-2 shrink-0 min-w-0">
         <!-- Mobile Official Brand Logo -->
         <a href="/" class="md:hidden shrink-0 flex items-center group py-0.5" title="HAICHAIN Home">
-          <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="object-contain filter invert-0 dark:invert transition-transform group-hover:scale-[1.02] shrink-0" style="height: 26px; width: auto; max-height: 28px; max-width: 160px; display: block;">
+          <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="object-contain filter invert-0 dark:invert transition-transform group-hover:scale-[1.02] shrink-0" style="height: 26px; width: auto; max-height: 28px; max-width: 160px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}">
         </a>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
@@ -751,6 +758,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         </div>
       </section>
 
+      <!-- ================= TAB 7: PRIVATE ROUND / SAFT ALLOCATION ================= -->
+      <section id="tab-preseed" class="tab-content hidden space-y-6">
+        <!-- Dynamically populated by renderPreseedSalePage() -->
+      </section>
+
     </main>
 
     <!-- MOBILE BOTTOM NAVIGATION (NATIVE APP FEEL, ZERO OVERFLOW, APPLE-TIER DOCK) -->
@@ -800,13 +812,22 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <span class="mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]" data-i18n="nav.mobile.ledger">Ledger</span>
       </button>
 
-      <!-- Tab 5: MCP -->
+      <!-- Tab 6: MCP -->
       <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-mcp">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="code-2" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
         </div>
         <span class="mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]" data-i18n="nav.mobile.mcp">MCP</span>
+      </button>
+
+      <!-- Tab 7: Private (Mobile) -->
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-preseed" id="mobile-btn-sale">
+        <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
+          <i data-lucide="lock" class="w-4 h-4"></i>
+          <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
+        </div>
+        <span class="mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]" id="mobile-sale-title">Private</span>
       </button>
     </nav>
 
@@ -1305,6 +1326,29 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
 
       <!-- Provider Selection List -->
       <div class="my-5 space-y-2.5">
+        <!-- 0. BIOMETRIC PASSKEY (FaceID / TouchID / Windows Hello) - 1-TAP INVISIBLE WEB3 -->
+        <button class="wallet-provider-btn w-full p-4 rounded-2xl border-2 border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900 flex items-center justify-between transition-all bg-white dark:bg-black text-left group shadow-sm cursor-pointer" data-provider="biometric">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-10 h-10 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
+              <i data-lucide="fingerprint" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-sm text-black dark:text-white" data-i18n="modal.walletBiometric">FaceID / TouchID / Windows Hello</span>
+                <span class="text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold tracking-wider">Passkey FIDO2</span>
+              </div>
+              <div class="text-[11px] text-neutral-600 dark:text-neutral-400 mt-0.5" data-i18n="modal.walletBiometricDesc">Xác thực sinh trắc học phần cứng FIDO2 (Không cần mật khẩu hay ví Web3)</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-black dark:text-white font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="relative py-1 flex items-center justify-center">
+          <div class="border-t border-neutral-200 dark:border-neutral-800 w-full"></div>
+          <span class="bg-white dark:bg-brand-card px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletOrWeb3">HOẶC DÙNG VÍ ON-CHAIN SOLANA</span>
+        </div>
+
         <!-- 1. Phantom -->
         <button class="wallet-provider-btn w-full p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white flex items-center justify-between transition-all bg-neutral-50/50 dark:bg-neutral-900/40 text-left" data-provider="phantom">
           <div class="flex items-center space-x-3.5">
@@ -1418,8 +1462,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
 
         <div class="grid grid-cols-2 gap-2 text-center">
           <div class="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-            <span class="text-[10px] text-neutral-400 block uppercase" data-i18n="modal.accountCluster">Network Cluster</span>
-            <span class="text-black dark:text-white font-bold">Devnet</span>
+            <span class="text-[10px] text-neutral-400 block uppercase" data-i18n="modal.accountCluster">Auth / Cluster</span>
+            <span class="text-black dark:text-white font-bold truncate block" id="account-provider-name">Devnet</span>
           </div>
           <div class="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
             <span class="text-[10px] text-neutral-400 block uppercase" data-i18n="modal.accountBalance">On-Chain Balance</span>
@@ -1515,16 +1559,11 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     };
 
     function switchTab(targetTab) {
-      // GHOST MODE: Block unauthorized access to pre-seed tab
-      if (targetTab === 'tab-preseed') {
-        const isVip = window.haichainIsVIP ? window.haichainIsVIP() : false;
-        if (!isVip) {
-          targetTab = 'tab-overview';
-        }
-      }
-
       if (targetTab === 'tab-vesting' && typeof renderVestingVaultPage === 'function') {
         renderVestingVaultPage();
+      }
+      if (targetTab === 'tab-preseed' && typeof window.renderPreseedSalePage === 'function') {
+        window.renderPreseedSalePage();
       }
 
       const allNavTabs = document.querySelectorAll('.nav-tab-btn');
@@ -1600,6 +1639,15 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     mobileTabBtns.forEach(btn => {
       btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
     });
+
+    // Auto switch to tab from URL param or hash (e.g. ?tab=tab-preseed)
+    try {
+      const initUrlParams = new URLSearchParams(window.location.search);
+      const urlTab = initUrlParams.get('tab') || window.location.hash.replace('#', '');
+      if (urlTab && tabTitles[urlTab]) {
+        switchTab(urlTab);
+      }
+    } catch (_) {}
 
     // 2.1 Live Solana Devnet Connection & Polling
     let solanaConnection = null;
@@ -1695,7 +1743,11 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           const wBtnText = document.getElementById('wallet-btn-text');
           if (wBtnText) {
             wBtnText.removeAttribute('data-i18n');
-            wBtnText.innerHTML = `<span class="font-mono">${short}</span><span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${parsed.solBalance || '0.00'} SOL)</span>`;
+            if (parsed.provider && (parsed.provider.includes('Passkey') || parsed.provider.includes('FaceID') || parsed.biometric)) {
+              wBtnText.innerHTML = `<span class="flex items-center space-x-1"><i data-lucide="fingerprint" class="w-3.5 h-3.5"></i><span class="font-mono text-xs">Passkey: ${short}</span></span>`;
+            } else {
+              wBtnText.innerHTML = `<span class="font-mono">${short}</span><span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${parsed.solBalance || '0.00'} SOL)</span>`;
+            }
           }
         }
       }
@@ -1723,6 +1775,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         // Already connected -> Open details modal
         document.getElementById('account-full-address').textContent = userWallet.address;
         document.getElementById('account-sol-balance').textContent = `${userWallet.solBalance} SOL`;
+        const provEl = document.getElementById('account-provider-name');
+        if (provEl) provEl.textContent = userWallet.provider || 'Devnet';
         document.getElementById('account-explorer-link').href = `https://explorer.solana.com/address/${userWallet.address}?cluster=devnet`;
         walletAccountModal.classList.remove('hidden');
       } else {
@@ -1771,6 +1825,137 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       walletConnectModal.classList.add('hidden');
     });
 
+    // ================= FIDO2 WEBAUTHN / BIOMETRIC PASSKEY ENGINE =================
+    async function authenticateWithBiometricPasskey() {
+      if (!window.PublicKeyCredential) {
+        throw new Error(window.haichainI18n?.currentLang === 'vi' 
+          ? "Trình duyệt không hỗ trợ WebAuthn FIDO2. Vui lòng dùng Chrome, Safari hoặc Edge."
+          : "Your browser does not support WebAuthn FIDO2. Please use modern Chrome, Safari, or Edge.");
+      }
+
+      // Cryptographic Challenge Buffer
+      const challengeBuffer = new Uint8Array(32);
+      window.crypto.getRandomValues(challengeBuffer);
+
+      // Random User ID
+      const userIdBuffer = new Uint8Array(16);
+      window.crypto.getRandomValues(userIdBuffer);
+
+      // Safe Relying Party Identification
+      const rpConfig = { name: "HAICHAIN Sovereign Network" };
+      const hostname = window.location.hostname;
+      if (hostname === 'localhost' || (hostname && hostname.indexOf('.') !== -1 && !/^\d+\.\d+\.\d+\.\d+$/.test(hostname))) {
+        rpConfig.id = hostname;
+      }
+
+      const existingCredIdB64 = localStorage.getItem('haichain_passkey_cred_id');
+      let cred = null;
+
+      // Try get() with existing credential
+      if (existingCredIdB64) {
+        try {
+          const rawIdBytes = Uint8Array.from(atob(existingCredIdB64), c => c.charCodeAt(0));
+          cred = await navigator.credentials.get({
+            publicKey: {
+              challenge: challengeBuffer,
+              rpId: rpConfig.id,
+              allowCredentials: [{
+                id: rawIdBytes,
+                type: 'public-key',
+                transports: ['internal']
+              }],
+              userVerification: 'preferred',
+              timeout: 60000
+            }
+          });
+        } catch (getErr) {
+          console.warn("Existing Passkey get() bypassed, triggering create():", getErr);
+          cred = null;
+        }
+      }
+
+      // If no credential yet or get() failed, invoke create()
+      if (!cred) {
+        cred = await navigator.credentials.create({
+          publicKey: {
+            challenge: challengeBuffer,
+            rp: rpConfig,
+            user: {
+              id: userIdBuffer,
+              name: "operator@" + (rpConfig.id || "haichain.io"),
+              displayName: "HAICHAIN Sovereign Operator"
+            },
+            pubKeyCredParams: [
+              { type: "public-key", alg: -7 },   // ES256 (NIST P-256 standard)
+              { type: "public-key", alg: -257 }  // RS256
+            ],
+            authenticatorSelection: {
+              authenticatorAttachment: "platform", // Enforces native FaceID/TouchID/Windows Hello
+              userVerification: "preferred"
+            },
+            timeout: 60000,
+            attestation: "none"
+          }
+        });
+
+        if (cred && cred.rawId) {
+          const credB64 = btoa(String.fromCharCode(...new Uint8Array(cred.rawId)));
+          localStorage.setItem('haichain_passkey_cred_id', credB64);
+        }
+      }
+
+      if (!cred || !cred.rawId) {
+        throw new Error(window.haichainI18n?.currentLang === 'vi'
+          ? "Không thể hoàn tất xác thực sinh trắc học trên thiết bị."
+          : "Could not complete biometric authentication on device.");
+      }
+
+      // Deterministically derive Sovereign Solana Address from hardware credential
+      const rawBytes = new Uint8Array(cred.rawId);
+      const hashBuffer = await window.crypto.subtle.digest('SHA-256', rawBytes);
+      const seed32 = new Uint8Array(hashBuffer);
+
+      // Base58 Encode for Solana
+      const bs58Chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+      function toBase58(buffer) {
+        let digits = [0];
+        for (let i = 0; i < buffer.length; i++) {
+          for (let j = 0; j < digits.length; j++) digits[j] <<= 8;
+          digits[0] += buffer[i];
+          let carry = 0;
+          for (let j = 0; j < digits.length; ++j) {
+            digits[j] += carry;
+            carry = (digits[j] / 58) | 0;
+            digits[j] %= 58;
+          }
+          while (carry) {
+            digits.push(carry % 58);
+            carry = (carry / 58) | 0;
+          }
+        }
+        for (let i = 0; i < buffer.length && buffer[i] === 0; i++) digits.push(0);
+        return digits.reverse().map(d => bs58Chars[d]).join('');
+      }
+
+      let derivedSolanaPubkey;
+      if (window.solanaWeb3 && window.solanaWeb3.Keypair) {
+        try {
+          const kp = solanaWeb3.Keypair.fromSeed(seed32);
+          derivedSolanaPubkey = kp.publicKey.toBase58();
+        } catch (_) {
+          derivedSolanaPubkey = toBase58(seed32);
+        }
+      } else {
+        derivedSolanaPubkey = toBase58(seed32);
+      }
+
+      return {
+        credential: cred,
+        derivedAddress: derivedSolanaPubkey,
+        credId: cred.id
+      };
+    }
+
     // Set Connected Wallet State Helper
     async function setConnectedWallet(pubkeyStr, providerName) {
       let solBalStr = "0.000";
@@ -1787,12 +1972,18 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       userWallet = {
         address: pubkeyStr,
         provider: providerName,
-        solBalance: solBalStr
+        solBalance: solBalStr,
+        biometric: providerName.toLowerCase().includes('passkey') || providerName.toLowerCase().includes('faceid')
       };
 
       const short = `${pubkeyStr.slice(0, 4)}...${pubkeyStr.slice(-4)}`;
       walletBtnText.removeAttribute('data-i18n');
-      walletBtnText.innerHTML = `<span class="font-mono">${short}</span><span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${solBalStr} SOL)</span>`;
+      if (userWallet.biometric) {
+        walletBtnText.innerHTML = `<span class="flex items-center space-x-1.5"><i data-lucide="fingerprint" class="w-3.5 h-3.5 shrink-0"></i><span class="font-mono text-xs">Passkey: ${short}</span></span>`;
+      } else {
+        walletBtnText.innerHTML = `<span class="font-mono">${short}</span><span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${solBalStr} SOL)</span>`;
+      }
+      safeCreateIcons();
       localStorage.setItem('haichain-connected-wallet', JSON.stringify(userWallet));
       if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
     }
@@ -1803,7 +1994,34 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         const provider = btn.getAttribute('data-provider');
         walletNoticeBox.classList.add('hidden');
 
-        if (provider === 'phantom') {
+        if (provider === 'biometric') {
+          try {
+            walletNoticeBox.classList.add('hidden');
+            walletBtnText.textContent = "Scanning Biometric...";
+            const result = await authenticateWithBiometricPasskey();
+            await setConnectedWallet(result.derivedAddress, 'FaceID / Windows Hello Passkey');
+            walletConnectModal.classList.add('hidden');
+            const isVi = window.haichainI18n?.currentLang === 'vi';
+            alert(isVi 
+              ? `Xác thực sinh trắc học thành công!\n\nĐã liên kết phần cứng bảo mật FIDO2 (FaceID / TouchID / Windows Hello).\nĐịa chỉ Sovereign Keypair: ${result.derivedAddress}`
+              : `Biometric authentication successful!\n\nFIDO2 Hardware Bound (FaceID / TouchID / Windows Hello).\nSovereign Keypair: ${result.derivedAddress}`);
+          } catch (bioErr) {
+            console.error("Biometric passkey error:", bioErr);
+            if (userWallet) {
+              const short = `${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`;
+              walletBtnText.innerHTML = userWallet.biometric
+                ? `<span class="flex items-center space-x-1.5"><i data-lucide="fingerprint" class="w-3.5 h-3.5 shrink-0"></i><span class="font-mono text-xs">Passkey: ${short}</span></span>`
+                : `<span class="font-mono">${short}</span>`;
+            } else {
+              walletBtnText.setAttribute('data-i18n', 'btn.connectWallet');
+              walletBtnText.textContent = window.haichainI18n ? window.haichainI18n.t('btn.connectWallet') : "Connect";
+            }
+            walletNoticeText.innerHTML = `<strong>${window.haichainI18n?.currentLang === 'vi' ? 'Lỗi xác thực sinh trắc học' : 'Biometric Error'}:</strong> ${bioErr.message || bioErr}`;
+            walletNoticeBox.classList.remove('hidden');
+            walletInstallLink.parentElement.classList.add('hidden');
+            safeCreateIcons();
+          }
+        } else if (provider === 'phantom') {
           const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
           if (phantom) {
             try {
@@ -2020,7 +2238,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               <div>
                 <div class="flex items-center space-x-3">
                   <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-                    <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover">
+                    <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                   </div>
                   <div>
                     <div class="flex items-center space-x-2">
@@ -2086,7 +2304,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               <div>
                 <div class="flex items-center space-x-3">
                   <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-                    <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover">
+                    <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                   </div>
                   <div>
                     <div class="flex items-center space-x-2">
@@ -2159,7 +2377,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900 gap-4">
             <div class="flex items-center space-x-3.5 min-w-0">
               <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-black border border-neutral-800 flex items-center justify-center shadow-sm shrink-0 overflow-hidden">
-                <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover">
+                <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
               </div>
               <div class="min-w-0 space-y-1">
                 <div class="flex flex-wrap items-center gap-2">
@@ -2182,7 +2400,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
             <div class="flex items-center space-x-2 shrink-0">
               <button onclick="window.addHaiTokenToPhantom()" class="px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-mono font-semibold text-black dark:text-white transition-all flex items-center space-x-2.5 shadow-sm">
                 <div class="w-5 h-5 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden">
-                  <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover">
+                  <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                 </div>
                 <span>${isVi ? 'Thêm $HAISI vào Phantom' : 'Add $HAISI to Phantom'}</span>
               </button>
@@ -2198,7 +2416,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Tổng $HAISI Đã Phân Bổ' : 'Total $HAISI Balance'}</span>
               <div class="flex items-center space-x-2.5">
                 <div class="w-7 h-7 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-xs">
-                  <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover">
+                  <img src="/assets/haisi-icon.png" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                 </div>
                 <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${haiTotal.toLocaleString()} <span class="text-xs font-bold text-neutral-400">HAISI</span></div>
               </div>

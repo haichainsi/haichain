@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAICHAIN — Autonomous Machine Financial Operating System</title>
-  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <link rel="icon" type="image/png" href="/assets/icon.png">
   <!-- Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,12 +122,17 @@
       
       <!-- Brand Logo: Pure Official Logo (Harmonious Mobile & Desktop) -->
       <a href="/" class="flex items-center group py-1">
-        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="h-7 sm:h-8 md:h-8.5 w-auto object-contain filter invert-0 dark:invert transition-transform duration-200 group-hover:scale-[1.02]" style="max-height: 32px; display: block;">
+        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="h-7 sm:h-8 md:h-8.5 w-auto object-contain filter invert-0 dark:invert transition-transform duration-200 group-hover:scale-[1.02]" style="max-height: 32px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}">
       </a>
 
-      <!-- Center Navigation Links (Clean & Distilled: 3 Essential Links) -->
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+      <!-- Center Navigation Links -->
+      <nav class="hidden xl:flex items-center space-x-6 text-xs lg:text-sm font-medium text-neutral-600 dark:text-neutral-400">
+        <a href="#ai2-philosophy" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
+        <a href="#market-evidence" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.market">Market Data</a>
         <a href="#spending-pot" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.architecture">Architecture</a>
+        <a href="#comparison" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.comparison">Comparison</a>
+        <a href="#target-audience" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.audiences">Audiences</a>
+        <a href="#technical-status" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.status">Status</a>
         <a href="#endgame" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.sovereignL1">Sovereign L1</a>
         <a href="/whitepaper" target="_blank" class="hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1">
           <span data-i18n="nav.whitepaper">Whitepaper</span>
@@ -170,9 +175,13 @@
     </div>
 
     <!-- Mobile Slide-Down Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-brand-lightBorder dark:border-brand-border bg-white/95 dark:bg-black/95 backdrop-blur-2xl px-6 py-5 space-y-4 text-sm font-medium">
-      <a href="#spending-pot" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.architecture">Architecture & Spending Pot</a>
-      <a href="#live-playground" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.playground">AI Playground</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-brand-lightBorder dark:border-brand-border bg-white/95 dark:bg-black/95 backdrop-blur-2xl px-6 py-5 space-y-3 text-sm font-medium">
+      <a href="#ai2-philosophy" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.philosophy">AI² Philosophy</a>
+      <a href="#market-evidence" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.market">Market Data</a>
+      <a href="#spending-pot" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.architecture">Architecture & Pot</a>
+      <a href="#comparison" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.comparison">Comparison</a>
+      <a href="#target-audience" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.audiences">Audiences</a>
+      <a href="#technical-status" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.status">Status</a>
       <a href="#endgame" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-i18n="nav.sovereignL1">Sovereign L1 Roadmap</a>
       <a href="/whitepaper" target="_blank" class="block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white flex items-center justify-between">
         <span data-i18n="nav.whitepaper">Whitepaper v1.0 (EN)</span>
@@ -196,6 +205,8 @@
     <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
       <video id="hero-bg-video" autoplay loop muted playsinline preload="auto" class="hero-bg-video w-full h-full object-cover object-left sm:object-center opacity-100 transition-opacity duration-300">
         <source src="/assets/trailer-hai-web.mp4" type="video/mp4">
+        <source src="/app/assets/trailer-hai-web.mp4" type="video/mp4">
+        <source src="assets/trailer-hai-web.mp4" type="video/mp4">
         <source src="/assets/haichain-video-web.mp4" type="video/mp4">
         <source src="/assets/trailer hai.mp4" type="video/mp4">
       </video>
@@ -260,6 +271,120 @@
   </section>
 
   <!-- MAIN OPERATIONAL DASHBOARD (TWO-COLUMN INTERFACE) -->
+  
+  <!-- ======================== SECTION: AI² PHILOSOPHY & SYMBIOSIS ======================== -->
+  <section id="ai2-philosophy" class="py-16 sm:py-20 border-b border-brand-lightBorder dark:border-brand-border bg-neutral-50/70 dark:bg-neutral-950/70 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span data-i18n="ai2.badge">CORE PARADIGM &bull; HUMAN + AI SYMBIOSIS</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="ai2.title">
+          The AI² Paradigm: Humans as Sovereign, AI as Execution
+        </h2>
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="ai2.subtitle">
+          Hai = Human + AI. AI² = Actual Intelligence (Human purpose, ethics & risk judgment) × Artificial Intelligence (Infinite computation & sub-cent velocity).
+        </p>
+      </div>
+
+      <!-- 3 Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Pillar 1 -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm hover:border-black dark:hover:border-white transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white mb-6 group-hover:scale-105 transition-transform">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white tracking-tight" data-i18n="ai2.card1Title">
+            Actual Intelligence: Human Sovereign Command
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="ai2.card1Desc">
+            Humans maintain absolute control via Biometric Passkeys (FaceID/TouchID), set mathematically bounded spending allowances via Merkle trees, and hold a sub-second Panic Kill-Switch (<400ms).
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm hover:border-black dark:hover:border-white transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white mb-6 group-hover:scale-105 transition-transform">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white tracking-tight" data-i18n="ai2.card2Title">
+            Artificial Intelligence: High-Velocity Execution
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="ai2.card2Desc">
+            Autonomous AI agents execute sub-cent micro-payments ($0.0001 - $0.001) in under 400 milliseconds per API or GPU call without stalling LLM reasoning loops.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm hover:border-black dark:hover:border-white transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white mb-6 group-hover:scale-105 transition-transform">
+            <i data-lucide="repeat" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-black dark:text-white tracking-tight" data-i18n="ai2.card3Title">
+            Two-Way Economic Symbiosis
+          </h3>
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="ai2.card3Desc">
+            AI streams continuous passive royalties in USDT to human knowledge creators, while autonomously hiring humans for real-world verification (Reverse Micro-Tasking via HTTP x402).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SECTION: MARKET PROOF & DATA ======================== -->
+  <section id="market-evidence" class="py-16 sm:py-20 border-b border-brand-lightBorder dark:border-brand-border bg-white dark:bg-black relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span data-i18n="market.badge">PROVEN EVIDENCE &bull; MARKET VALIDATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="market.title">
+          The $1.3 Trillion Machine Economy & Legacy Payment Deadlock
+        </h2>
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="market.subtitle">
+          Empirical data verified by Gartner, Ark Invest Big Ideas 2025, and leading technological market research.
+        </p>
+      </div>
+
+      <!-- 4 Stats Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-black dark:text-white tracking-tight" data-i18n="market.stat1Val">$1.3T - $1.8 Trillion</div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mt-2 font-mono" data-i18n="market.stat1Lbl">Machine Economy TAM by 2030</div>
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="market.stat1Desc">
+            Gartner & Ark Invest: Billions of autonomous AI agents and physical robotics (Optimus, AVs) require autonomous financial settlement without credit cards.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-black dark:text-white tracking-tight" data-i18n="market.stat2Val">$48 Billion USD</div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mt-2 font-mono" data-i18n="market.stat2Lbl">API & Inference Micro-Settlements</div>
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="market.stat2Desc">
+            Booming market for instant agent-to-agent data scraping, inference compute, and tool execution processing millions of calls per minute.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-black dark:text-white tracking-tight" data-i18n="market.stat3Val">&gt; 2.8 Million</div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mt-2 font-mono" data-i18n="market.stat3Lbl">Autonomous Agent Workflows Daily</div>
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="market.stat3Desc">
+            Verified by GitHub, LangChain, Cursor, and CrewAI: A seismic paradigm shift from static conversational chatbots to 24/7 autonomous agent swarms.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-black dark:text-white tracking-tight" data-i18n="market.stat4Val">95% Waste</div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mt-2 font-mono" data-i18n="market.stat4Lbl">Elimination of SaaS Overkill</div>
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="market.stat4Desc">
+            Users spend $150 - $450/month on idle subscriptions while utilizing only 7%-15% of capacity. HAICHAIN pay-per-query saves up to 97.7% in costs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
@@ -519,6 +644,272 @@
     </div>
   </main>
 
+  
+  <!-- ======================== SECTION: BENCHMARK COMPARISON MATRIX ======================== -->
+  <section id="comparison" class="py-16 sm:py-20 border-t border-brand-lightBorder dark:border-brand-border bg-neutral-50/50 dark:bg-neutral-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span data-i18n="comp.badge">BENCHMARK ANALYSIS &bull; TECHNICAL FOUNDATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="comp.title">
+          How HAICHAIN Outperforms the AI Blockchain Landscape
+        </h2>
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="comp.subtitle">
+          Not all 'AI Crypto' projects solve autonomous financial rails or protect user wallets from catastrophic prompt injections.
+        </p>
+      </div>
+
+      <!-- Comparison Table Card with Horizontal Scroll -->
+      <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-sans border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/80">
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[20%]" data-i18n="comp.colFeature">Benchmark Feature</th>
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-black dark:text-white font-mono bg-neutral-200/60 dark:bg-neutral-800/80 w-[24%]" data-i18n="comp.colHai">HAICHAIN (HAI²)</th>
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[18%]" data-i18n="comp.colTao">Bittensor ($TAO)</th>
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[18%]" data-i18n="comp.colRender">Render / io.net</th>
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[20%]" data-i18n="comp.colEliza">ElizaOS / Virtuals</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-900 leading-relaxed">
+              <!-- Row 1 -->
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row1Name">Core Strategic Focus</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row1Hai">Sub-cent micro-payment OS & military-hardened agent wallet bounds</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Tao">Decentralized AI model ranking & subnet evaluation network</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Render">Distributed raw GPU compute and rendering power marketplace</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Eliza">Social agent meme tokenization & virtual character speculation</td>
+              </tr>
+              <!-- Row 2 -->
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row2Name">Settlement Latency</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row2Hai">< 400 milliseconds (Sub-slot speed matching LLM reasoning ticks)</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row2Tao">12 - 60 seconds (Infeasible for real-time per-query API payments)</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row2Render">Minutes to hours (Batch settlement per render job)</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row2Eliza">12 - 15 seconds (Constrained by underlying EVM/Base block times)</td>
+              </tr>
+              <!-- Row 3 -->
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row3Name">Transaction Cost & Granularity</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row3Hai">Nano-cents (< $0.0002). Viable down to $0.0001 per API call</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row3Tao">Prohibitive subnet costs ($10k - $100k+), no sub-cent payments</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row3Render">Tens of dollars per job. Not designed for micro-transactions</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row3Eliza">$0.02 - $0.15 EVM gas fees (economically unfeasible for $0.001 calls)</td>
+              </tr>
+              <!-- Row 4 -->
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row4Name">Prompt Injection / Wallet Drain Defense</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row4Hai">100% Cryptographic Immunity: Merkle PDA bounds + Panic Kill-Switch</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row4Tao">No financial capability boundary enforcement for autonomous agents</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row4Render">Not applicable (Bare compute resource renting only)</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row4Eliza">Severe risk: Agent wallets can be drained by prompt injection or infinite loops</td>
+              </tr>
+              <!-- Row 5 -->
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row5Name">User Experience (UX)</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row5Hai">Invisible Web3: Biometric FaceID/Passkey, Apple Pay & instant fiat QR</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row5Tao">Extremely complex, strictly for AI researchers and GPU miners</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row5Render">Technical portal for infrastructure providers and 3D artists</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row5Eliza">Requires Web3 wallet (Metamask), managing 12-word seed phrases</td>
+              </tr>
+              <!-- Row 6 -->
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row6Name">Value Accrual & Cash Flow Model</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row6Hai">Real Yield: 40% protocol fees paid in pure USDT + 60% Buyback & Burn</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Tao">Inflationary block reward emissions distributed to subnet validators</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Render">Utility token burns/payments for compute cycles</td>
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Eliza">Speculative token trading on individual agent bonding curves</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SECTION: TARGET AUDIENCE & DUAL HORIZONS ======================== -->
+  <section id="target-audience" class="py-16 sm:py-20 border-t border-brand-lightBorder dark:border-brand-border bg-white dark:bg-black relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span data-i18n="aud.badge">TARGET AUDIENCE &bull; DUAL-HORIZON VALUE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="aud.title">
+          Who Does HAICHAIN Serve? Present & Future Value
+        </h2>
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="aud.subtitle">
+          Three core stakeholder pillars designed for immediate utility and exponential institutional scale.
+        </p>
+      </div>
+
+      <!-- 3 Audience Columns -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white uppercase tracking-wider" data-i18n="aud.userTag">End-Users & AI Builders</span>
+            <h3 class="text-lg font-bold text-black dark:text-white mt-4" data-i18n="aud.userTitle">1. End-Users & AI Builders</h3>
+            
+            <div class="mt-5 space-y-4 text-xs">
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.userNowLabel">Immediate Present Value:</span>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.userNowDesc">Save 95% on expenses by replacing predatory $150-$450/mo SaaS subscriptions with sub-cent utility; frictionless FaceID/Passkey onboarding; complete financial safety.</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.userFutureLabel">Future Horizon:</span>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.userFutureDesc">Stream passive royalties in USDT from proprietary knowledge/prompt assets; earn on-chain bounties from AI via Reverse Micro-Tasking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white uppercase tracking-wider" data-i18n="aud.bizTag">API & Tool Providers</span>
+            <h3 class="text-lg font-bold text-black dark:text-white mt-4" data-i18n="aud.bizTitle">2. AI Enterprises & API Providers</h3>
+            
+            <div class="mt-5 space-y-4 text-xs">
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.bizNowLabel">Immediate Present Value:</span>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.bizNowDesc">Unlock real-time pay-per-call monetization across millions of autonomous agents globally with zero chargeback risk; 60-second integration via MCP.</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.bizFutureLabel">Future Horizon:</span>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.bizFutureDesc">Fully autonomous B2B commerce: AI agents discover, negotiate, and settle service usage 24/7 without human sales teams; continuous streaming USDT liquidity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white uppercase tracking-wider" data-i18n="aud.investorTag">Investors & Stakers</span>
+            <h3 class="text-lg font-bold text-black dark:text-white mt-4" data-i18n="aud.investorTitle">3. Strategic Investors & $HAI Stakers</h3>
+            
+            <div class="mt-5 space-y-4 text-xs">
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.investorNowLabel">Immediate Present Value:</span>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.investorNowDesc">Pre-Seed entry at $0.007 (30% discount to TGE $0.010); receive pure Real Yield in USDT (40% of all machine fees) plus 60% continuous Buyback & Burn.</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.investorFutureLabel">Future Horizon:</span>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.investorFutureDesc">Target 50x - 140x appreciation as $HAI transitions 1:1 into Native Gas Coin of the independent Sovereign AI L1 ($1B - $5B+ FDV).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SECTION: TECHNICAL STATUS (PROVEN VS IN-PROGRESS) ======================== -->
+  <section id="technical-status" class="py-16 sm:py-20 border-t border-brand-lightBorder dark:border-brand-border bg-neutral-50/50 dark:bg-neutral-950/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span data-i18n="tech.badge">PROVEN DELIVERY &bull; ZERO VAPORWARE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="tech.title">
+          Technical Status: 100% Deployed vs Future Milestones
+        </h2>
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="tech.subtitle">
+          Every claim is empirically verified on open source code and the live Solana blockchain.
+        </p>
+      </div>
+
+      <!-- 2 Large Delivery Panels -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Panel 1: Complete 100% -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-brand-card shadow-md relative overflow-hidden">
+          <div class="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-900">
+            <div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 uppercase" data-i18n="tech.doneTag">Ready For Production Use</span>
+              <h3 class="text-base sm:text-lg font-bold text-black dark:text-white mt-3" data-i18n="tech.doneTitle">100% COMPLETED (LIVE & VERIFIED ON DEVNET)</h3>
+            </div>
+            <div class="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white font-bold">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <ul class="mt-6 space-y-4 text-xs text-neutral-700 dark:text-neutral-300">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.done1">Solana Rust Anchor v6.9.3 Kernel (Program ID: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk) enforcing 6 mathematical invariants.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.done2">Passed 15/15 automated forensic security tests (defending against historic $800M+ Wormhole, Nomad, Euler, Mango exploits).</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+              <div>
+                <span data-i18n="tech.done3">Verified on-chain genesis micro-escrow transaction on Solana Explorer (Tx: 4946birjjYz3DHxjNuq1D9gv...).</span>
+                <a href="https://explorer.solana.com/tx/4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA?cluster=devnet" target="_blank" class="inline-block underline ml-1 font-mono text-[11px] text-neutral-500 hover:text-black dark:hover:text-white">View Tx</a>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.done4">Developer suite published: @haichain/sdk (TypeScript), Bare-Metal C-SDK (<200KB RAM) & MCP Server for Claude Desktop & Cursor.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.done5">Luxury terminal web interface supporting Biometric Passkeys, 1-click fiat deposits, and real-time execution telemetry.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Panel 2: Roadmap -->
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm relative overflow-hidden">
+          <div class="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-900">
+            <div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 uppercase" data-i18n="tech.progTag">Upcoming Milestones</span>
+              <h3 class="text-base sm:text-lg font-bold text-black dark:text-white mt-3" data-i18n="tech.progTitle">IN-PROGRESS ON THE ROADMAP</h3>
+            </div>
+            <div class="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-600 dark:text-neutral-400">
+              <i data-lucide="clock" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <ul class="mt-6 space-y-4 text-xs text-neutral-600 dark:text-neutral-400">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.prog1">Stage 1 (Mo. 0-18): Secondary formal audit with OtterSec/Neodyme and deployment to Solana Mainnet-Beta.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.prog2">Stage 1 (Mo. 0-18): Public Community Token Generation Event (TGE) on Meteora Alpha Vault & DLMM, Tier-2 CEX listings.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.prog3">Stage 2 (Mo. 18-36): Dedicated SVM App-Rollup (L2) scaling throughput to 50,000+ machine TPS at $0.000001 per tick.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+              <span data-i18n="tech.prog4">Stage 3 (Mo. 36+): Sovereign Machine L1 Mainnet launch featuring native OP_402_PAY CPU opcodes (>100,000 TPS) & PoAI consensus.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- SOVEREIGN L1 ENDGAME ROADMAP SECTION -->
   <section id="endgame" class="py-16 border-t border-brand-lightBorder dark:border-brand-border bg-neutral-50/50 dark:bg-neutral-950/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -728,7 +1119,7 @@
   <footer class="border-t border-brand-lightBorder dark:border-brand-border py-12 text-xs text-neutral-500 font-mono">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
       <div class="flex items-center space-x-3">
-        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="h-5 sm:h-[22px] w-auto object-contain filter invert-0 dark:invert opacity-95" style="max-height: 22px; display: block;">
+        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="h-5 sm:h-[22px] w-auto object-contain filter invert-0 dark:invert opacity-95" style="max-height: 22px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}">
         <span class="text-neutral-400 font-mono text-xs hidden sm:inline">&bull;</span>
         <span class="text-neutral-400 font-mono text-xs">v6.9.3 PRODUCTION CERTIFIED</span>
       </div>
