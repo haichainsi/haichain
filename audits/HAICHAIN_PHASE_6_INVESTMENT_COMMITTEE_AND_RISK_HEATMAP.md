@@ -148,7 +148,7 @@ Hội đồng Thẩm định đã chạy mô phỏng tài chính cho 3 kịch b�
 │  - Mở Private Testnet cho 50 đối tượng lập trình viên và agency AI đối tác.           │
 │  - Ký kết hợp đồng Market Maker với Wintermute / Keyrock theo mô hình Pure Retainer     │
 │    (Cố định phí quản lý, cấm tuyệt đối điều khoản cho vay token Call Option).         │
-│  - Tích hợp cổng thanh toán VietQR / MoMo (VN) và Apple Pay qua MoonPay API.          │
+│  - Tích hợp cổng thanh toán Apple Pay / Thẻ quốc tế (VN) và Apple Pay qua MoonPay API.          │
 │  - Xuất bản gói npm chính thức: `@haichain/mcp-server` và `@haichain/sdk`.             │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
 │ THÁNG 3 (NGÀY 61 - 90): SỰ KIỆN TGE, MỞ MAINNET L1 & CHIẾM LĨNH CỘNG ĐỒNG DEV          │

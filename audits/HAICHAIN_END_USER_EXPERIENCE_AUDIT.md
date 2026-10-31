@@ -51,7 +51,7 @@ Nếu nhìn lại các phiên bản từ v1.0 đến v6.0, HAICHAIN là một **
   * Bước 4: Chuyển SOL sang ví để làm phí gas, chuyển USDC để làm tiền tiêu.  
 * **Phản ứng của người dùng Web2:** **95% người dùng sẽ bỏ cuộc ở Bước 2!**
 * **Yêu cầu đối với HAICHAIN:** Áp dụng mô hình **"Vô hình hóa Blockchain" (Invisible Web3)**:
-  * Nạp tiền thẳng bằng **Apple Pay / Google Pay / Thẻ Visa Master** hoặc quét mã **VietQR/MoMo**.
+  * Nạp tiền thẳng bằng **Apple Pay / Google Pay / Thẻ Visa Master** hoặc quét mã **Apple Pay / Thẻ quốc tế**.
   * Dưới nền, hệ thống tự động quy đổi ra USDC và tạo Smart Vault nén trạng thái mà người dùng **hoàn toàn không nhìn thấy bất kỳ khái niệm blockchain nào**.
 
 ---
@@ -100,7 +100,7 @@ sequenceDiagram
 | Tiêu chuẩn Trải nghiệm | Bản Thiết kế Kỹ thuật Thuần túy | Bản Thiết kế Tối ưu Trải nghiệm (User-Centric v6.1) |
 | :--- | :--- | :--- |
 | **Cách Khởi tạo Ví** | Lưu 24 ký tự Seed Phrase, tự nạp SOL trả Rent | **Đăng nhập Google / FaceID (WebAuthn Passkeys)** |
-| **Cách Nạp Tiền** | Mua USDC trên sàn rồi chuyển on-chain | **Quẹt Apple Pay / Thẻ tín dụng / VietQR trong 10 giây** |
+| **Cách Nạp Tiền** | Mua USDC trên sàn rồi chuyển on-chain | **Quẹt Apple Pay / Thẻ tín dụng / Instant QR trong 10 giây** |
 | **Theo dõi Chi tiêu** | Tra cứu chuỗi ký tự trên Solana Explorer | **Giao diện Dashboard đồ họa trực quan như Apple Card** |
 | **Xử lý Khiếu nại** | Tranh chấp mật mã đa chữ ký phức tạp | **Tự động phát hiện lỗi và hoàn tiền tức thì (Micro-Refund)** |
 | **Bảo vệ Khẩn cấp** | Phải biết dùng dòng lệnh CLI gọi hàm | **Nút bấm 1-Chạm "Đóng Băng & Rút Tiền" trên Điện thoại** |

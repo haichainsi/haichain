@@ -148,7 +148,7 @@ require_keys_eq!(
 Tại các thị trường mới nổi (Việt Nam, Brazil, Nigeria, Ấn Độ), người dùng thường gặp rào cản khi mua USDT trên các sàn quốc tế:
 
 ### Giải Pháp Cổng Nạp/Rút Tự Động Bản Địa Hóa (Hyper-Local Relayers):
-1. **Việt Nam:** Tích hợp Relayer thanh toán qua **VietQR / MoMo**. Người dùng quét mã QR ngân hàng 50,000 VNĐ, Relayer đối tác tự động chuyển đổi thành $1.96 USDT và nạp thẳng vào Agent Vault trên Solana thông qua hàm `deposit_agent_vault` trong vòng **5 giây**.
+1. **Việt Nam:** Tích hợp Relayer thanh toán qua **Apple Pay / Thẻ quốc tế**. Người dùng quét mã QR ngân hàng 50,000 VNĐ, Relayer đối tác tự động chuyển đổi thành $1.96 USDT và nạp thẳng vào Agent Vault trên Solana thông qua hàm `deposit_agent_vault` trong vòng **5 giây**.
 2. **Brazil & Mỹ Latinh:** Tích hợp giao thức **Pix**. Chuyển đổi Real Brazil sang USDT trong thời gian thực.
 3. **Châu Âu & Bắc Mỹ:** Tích hợp **Apple Pay, Google Pay và SEPA Instant** thông qua các cổng thanh toán crypto được cấp phép (như MoonPay / Stripe Crypto Ramp). Người dùng không cần biết chữ "Blockchain" viết như thế nào vẫn có thể kích hoạt hũ tiền cho bot!
 

@@ -30,7 +30,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE} \times \
 *Where **Artificial Intelligence** represents the infinite nano-second computational throughput of machines, and **Actual Intelligence** represents human moral intuition, risk judgment, and ultimate sovereign agency.*
 
 Originating as a military-hardened, zero-griefing settlement kernel on Solana L1 (v6.9.3) before expanding into a sovereign, high-throughput machine-consensus blockchain (HAICHAIN L1), the protocol establishes:
-1. **Invisible Web3 Mass-Consumer UX:** Biometric WebAuthn Passkeys (FaceID/TouchID) combined with 1-click fiat on-ramps (Apple Pay, VietQR, SEPA, Stripe) abstracting 100% of blockchain terminology.
+1. **Invisible Web3 Mass-Consumer UX:** Biometric WebAuthn Passkeys (FaceID/TouchID) combined with 1-click fiat on-ramps (Apple Pay, Instant QR, SEPA, Stripe) abstracting 100% of blockchain terminology.
 2. **Elastic Reasoning Compute Escrow:** Cryptographic commitment mechanisms resolving non-deterministic token consumption for frontier reasoning models (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Multilateral Symmetric Netting:** An off-chain clearing matrix compressing 99.999% of micro-ticks into single 771-byte on-chain state updates fitting within the standard IPv6 MTU (1,232 bytes).
 4. **Sub-Second Emergency Panic Kill-Switch:** Hardware-enforced balance retraction returning 100% of unspent user funds to cold custody within < 400ms.
@@ -101,7 +101,7 @@ HAICHAIN mandates **The Mom Test Axiom**: Mainstream non-technical consumers mus
   |                                                                                 |
   |   [ 1. BIOMETRIC PASSKEY ] ───► [ 2. UNIVERSAL ON-RAMP ] ───► [ 3. SAFE POT ]   |
   |   - Apple FaceID / TouchID      - Apple Pay / Google Pay      - Isolated $10.00 |
-  |   - WebAuthn Secure Enclave     - VietQR / SEPA / Card        - Anti-Drain PDA  |
+  |   - WebAuthn Secure Enclave     - Instant QR / SEPA / Card        - Anti-Drain PDA  |
   |   - Zero Seed Phrases           - Zero Crypto Exchange KYC    - Circuit Breaker |
   |                                                                                 |
   +---------------------------------------------------------------------------------+
@@ -110,7 +110,7 @@ HAICHAIN mandates **The Mom Test Axiom**: Mainstream non-technical consumers mus
 ### 3.1. Universal Fiat Abstraction Layer
 Users fund agent budgets via local payment methods:
 * **Global:** Apple Pay, Google Pay, Visa, Mastercard (via licensed EMI/PSP infrastructure).
-* **Southeast Asia (Vietnam/Thailand/Indonesia):** Direct dynamic QR payment (VietQR) settling instantly into Tether USDT via regulated liquidity relays.
+* **Southeast Asia (Vietnam/Thailand/Indonesia):** Direct dynamic QR payment (Instant QR) settling instantly into Tether USDT via regulated liquidity relays.
 * **Gasless Paymaster:** Protocol relayers sponsor underlying Solana transaction fees. Depositing \$10.00 yields exactly \$10.00 in spendable compute capital.
 
 ### 3.2. Sub-Second Emergency Panic Kill-Switch

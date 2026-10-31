@@ -2449,7 +2449,7 @@
     "comp.row4Eliza": "Nguy cơ rất cao: Ví bot dễ bị rút cạn tiền nếu bot bị lừa prompt",
     "comp.row4Stripe": "Phải khóa thẻ ngân hàng, khiếu nại đối soát mất 30-60 ngày",
     "comp.row5Name": "Trải nghiệm người dùng (UX)",
-    "comp.row5Hai": "Invisible Web3: Đăng nhập FaceID/Passkey, nạp Apple Pay / VietQR",
+    "comp.row5Hai": "Invisible Web3: Đăng nhập FaceID/Passkey, nạp Apple Pay / Google Pay",
     "comp.row5Tao": "Rất phức tạp, chỉ dành cho kỹ sư AI chuyên sâu và thợ đào",
     "comp.row5Render": "Giao diện kỹ thuật viên cho thuê tài nguyên máy tính",
     "comp.row5Eliza": "Phải dùng ví Web3 phức tạp (Metamask), quản lý 12 từ khóa",
@@ -2466,7 +2466,7 @@
     "aud.userTitle": "1. Người Dùng Cá Nhân & Lập Trình Viên AI",
     "aud.userTag": "End-Users & AI Builders",
     "aud.userNowLabel": "Lợi ích Hiện tại:",
-    "aud.userNowDesc": "Tiết kiệm 95% chi phí bằng cách khai tử các gói thuê bao chết $150-$450/tháng; nạp tiền 1 chạm cực dễ qua FaceID / VietQR; ví luôn được bảo vệ tuyệt đối.",
+    "aud.userNowDesc": "Tiết kiệm 95% chi phí bằng cách khai tử các gói thuê bao chết $150-$450/tháng; nạp tiền 1 chạm cực dễ qua FaceID / Apple Pay; ví luôn được bảo vệ tuyệt đối.",
     "aud.userFutureLabel": "Lợi ích Tương lai:",
     "aud.userFutureDesc": "Nhận tiền bản quyền thụ động (Streaming Royalties) khi cho bot khác thuê tri thức/prompt của mình; nhận việc thù lao từ AI (Reverse Micro-Tasking).",
     "aud.bizTitle": "2. Doanh Nghiệp & Nhà Cung Cấp Dịch Vụ AI",
@@ -2490,7 +2490,7 @@
     "tech.done2": "Vượt qua 15/15 bài kiểm tra bảo mật an ninh chuyên sâu cấp quân sự (chống hack Wormhole, Nomad, Euler, Mango).",
     "tech.done3": "Giao dịch vi ký quỹ thực tế on-chain đã xác thực trên Solana Explorer (Tx: 4946birjjYz3DHxjNuq1D9gv...).",
     "tech.done4": "Đã phát hành bộ công cụ SDK: @haichain/sdk (TypeScript), Bare-Metal C-SDK (<200KB RAM) và MCP Server cho Claude Desktop & Cursor.",
-    "tech.done5": "Giao diện Web Terminal trực quan hỗ trợ Passkey FaceID, cổng nạp VietQR/Apple Pay và theo dõi giao dịch thời gian thực.",
+    "tech.done5": "Giao diện Web Terminal trực quan hỗ trợ Passkey FaceID, cổng nạp Apple Pay / Google Pay và theo dõi giao dịch thời gian thực.",
     "tech.progTitle": "ĐANG PHÁT TRIỂN THEO LỘ TRÌNH",
     "tech.progTag": "Lộ Trình Tương Lai",
     "tech.prog1": "Giai đoạn 1 (Tháng 0-18): Kiểm toán độc lập lần 2 với OtterSec/Neodyme và triển khai chính thức lên Solana Mainnet-Beta.",
@@ -3590,37 +3590,40 @@
     const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
     return `
       <div class="relative inline-block text-left" id="haichain-lang-dropdown">
-        <!-- Borderless & Textless Minimalist Language Trigger (Flag Only) -->
-        <button id="lang-switch-btn" type="button" class="group flex items-center justify-center p-1.5 sm:p-2 rounded-full hover:bg-neutral-200/60 dark:hover:bg-neutral-800/80 transition-all duration-200 cursor-pointer shrink-0 active:scale-90 focus:outline-none" title="Select Language / ${current.native}" aria-label="Select Language">
-          <span class="w-5 h-3.5 sm:w-6 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 ring-1 ring-black/10 dark:ring-white/15 shadow-xs bg-neutral-100 dark:bg-neutral-800 transition-transform duration-200 group-hover:scale-110">
+        <!-- Minimalist Language Trigger Button -->
+        <button id="lang-switch-btn" type="button" class="group flex items-center space-x-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-white/90 dark:bg-neutral-900/90 text-neutral-800 dark:text-neutral-200 transition-all duration-200 cursor-pointer shrink-0 shadow-xs active:scale-95 focus:outline-none" title="Current Language: ${current.native}" aria-label="Select Language">
+          <span class="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 ring-1 ring-black/10 dark:ring-white/15 shadow-2xs">
             ${current.flagSvg}
           </span>
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider hidden sm:inline">${current.code}</span>
+          <svg class="w-3 h-3 text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
         </button>
 
-        <!-- Desktop Floating Popover (Luxury glass, invisible bridge, hover reveal) -->
-        <div id="lang-dropdown-menu" class="hidden opacity-0 scale-95 pointer-events-none absolute right-0 top-full pt-1.5 w-64 z-50 transform origin-top-right transition-all duration-200 ease-out font-sans text-xs">
-          <div class="rounded-2xl border border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl shadow-2xl p-1.5">
-            <div class="px-3 py-1.5 flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500 border-b border-neutral-100 dark:border-neutral-900/80 mb-1">
-              <span>Language</span>
-              <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 font-mono">10 Regions</span>
+        <!-- Desktop Floating Popover -->
+        <div id="lang-dropdown-menu" class="hidden absolute right-0 top-full pt-2 w-64 z-[9999] font-sans text-xs">
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] backdrop-blur-2xl shadow-2xl p-2">
+            <div class="px-3 py-1.5 flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500 border-b border-neutral-100 dark:border-neutral-900 mb-1">
+              <span>Select Language / 语言 / Ngôn ngữ</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 font-mono">10</span>
             </div>
-            <div class="space-y-0.5 max-h-[70vh] overflow-y-auto no-scrollbar">
+            <div class="space-y-1 max-h-[70vh] overflow-y-auto no-scrollbar">
               ${LANGUAGES.map(l => `
-                <button type="button" class="lang-option-btn w-full px-3 py-2 rounded-xl text-left flex items-center justify-between transition-all duration-150 group cursor-pointer ${l.code === currentLang ? 'bg-neutral-100 dark:bg-neutral-800/80 text-black dark:text-white font-semibold' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-900/60 hover:text-black dark:hover:text-white'}" data-lang="${l.code}">
+                <button type="button" onclick="window.haichainI18n.setLanguage('${l.code}')" class="lang-option-btn w-full px-3 py-2 rounded-xl text-left flex items-center justify-between transition-all duration-150 group cursor-pointer ${l.code === currentLang ? 'bg-black text-white dark:bg-white dark:text-black font-bold shadow-xs' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white font-medium'}" data-lang="${l.code}">
                   <div class="flex items-center space-x-2.5 min-w-0">
-                    <span class="w-5.5 h-4 rounded-[2.5px] overflow-hidden shrink-0 ring-1 ring-black/15 dark:ring-white/20 inline-flex items-center justify-center shadow-xs bg-neutral-100 dark:bg-neutral-800">
+                    <span class="w-5.5 h-4 rounded-[2.5px] overflow-hidden shrink-0 ring-1 ring-black/15 dark:ring-white/20 inline-flex items-center justify-center shadow-xs">
                       ${l.flagSvg}
                     </span>
                     <div class="truncate">
-                      <div class="text-xs leading-tight font-medium ${l.code === currentLang ? 'text-black dark:text-white font-bold' : 'text-neutral-800 dark:text-neutral-200'}">${l.native}</div>
-                      <div class="text-[10px] text-neutral-400 dark:text-neutral-500 leading-tight">${l.name}</div>
+                      <div class="text-xs leading-tight font-medium">${l.native}</div>
+                      <div class="text-[10px] opacity-70 leading-tight font-mono">${l.name} (${l.code.toUpperCase()})</div>
                     </div>
                   </div>
                   ${l.code === currentLang ? `
-                    <div class="flex items-center space-x-1.5 shrink-0 pl-2">
-                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                      <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    <div class="flex items-center space-x-1 shrink-0 pl-2">
+                      <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
                       </svg>
                     </div>
                   ` : ''}
@@ -3635,7 +3638,7 @@
 
   function renderMobileDrawerHTML() {
     return `
-      <div id="haichain-mobile-lang-drawer" class="fixed inset-0 z-[250] pointer-events-none transition-all duration-300">
+      <div id="haichain-mobile-lang-drawer" class="fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
         <!-- Backdrop Overlay -->
         <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
         
@@ -3647,8 +3650,8 @@
           <!-- Sheet Header -->
           <div class="flex items-center justify-between pb-3.5 mb-3 border-b border-neutral-100 dark:border-neutral-800">
             <div>
-              <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100">Select Language / Тіл таңдау</h3>
-              <p class="text-[11px] text-neutral-400 dark:text-neutral-500">HAICHAIN AI Settlement Protocol</p>
+              <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100">Select Language / Ngôn ngữ</h3>
+              <p class="text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">10 Global Languages Supported</p>
             </div>
             <button id="mobile-lang-close-btn" type="button" class="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-black dark:hover:text-white transition-colors" aria-label="Close">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3660,20 +3663,20 @@
           <!-- Mobile Options List -->
           <div class="space-y-1.5 pb-4">
             ${LANGUAGES.map(l => `
-              <button type="button" class="mobile-lang-option-btn w-full px-4 py-3 rounded-2xl flex items-center justify-between transition-colors cursor-pointer ${l.code === currentLang ? 'bg-neutral-100 dark:bg-neutral-800/80 font-semibold text-black dark:text-white' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-900'}" data-lang="${l.code}">
+              <button type="button" onclick="window.haichainI18n.setLanguage('${l.code}')" class="mobile-lang-option-btn w-full px-4 py-3 rounded-2xl flex items-center justify-between transition-colors cursor-pointer ${l.code === currentLang ? 'bg-black text-white dark:bg-white dark:text-black font-bold' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 font-medium'}" data-lang="${l.code}">
                 <div class="flex items-center space-x-3.5 min-w-0">
-                  <span class="w-7 h-5 rounded-[3.5px] overflow-hidden shrink-0 ring-1 ring-black/15 dark:ring-white/20 inline-flex items-center justify-center shadow-xs bg-neutral-100 dark:bg-neutral-800">
+                  <span class="w-7 h-5 rounded-[3.5px] overflow-hidden shrink-0 ring-1 ring-black/15 dark:ring-white/20 inline-flex items-center justify-center shadow-xs">
                     ${l.flagSvg}
                   </span>
                   <div class="text-left truncate">
-                    <div class="text-sm font-medium leading-tight ${l.code === currentLang ? 'text-black dark:text-white font-bold' : ''}">${l.native}</div>
-                    <div class="text-[11px] text-neutral-400 dark:text-neutral-500 leading-tight">${l.name}</div>
+                    <div class="text-sm font-medium leading-tight">${l.native}</div>
+                    <div class="text-[11px] opacity-70 leading-tight font-mono">${l.name} (${l.code.toUpperCase()})</div>
                   </div>
                 </div>
                 ${l.code === currentLang ? `
                   <div class="flex items-center space-x-2 shrink-0">
-                    <span class="text-[11px] font-mono text-emerald-500 font-bold uppercase">Active</span>
-                    <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span class="text-[11px] font-mono font-bold uppercase">Active</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
@@ -3733,10 +3736,6 @@
     if (!menu) return;
     clearTimeout(hoverTimeout);
     menu.classList.remove('hidden');
-    requestAnimationFrame(() => {
-      menu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-      menu.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
-    });
   }
 
   function hideMenu(immediate) {
@@ -3744,33 +3743,32 @@
     if (!menu) return;
     clearTimeout(hoverTimeout);
     if (immediate) {
-      menu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-      menu.classList.add('opacity-0', 'scale-95', 'pointer-events-none', 'hidden');
+      menu.classList.add('hidden');
     } else {
       hoverTimeout = setTimeout(() => {
-        menu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-        menu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-        setTimeout(() => {
-          if (menu && menu.classList.contains('opacity-0')) {
-            menu.classList.add('hidden');
-          }
-        }, 200);
-      }, 180);
+        if (menu) menu.classList.add('hidden');
+      }, 350);
     }
   }
 
-  // Universal Infallible Click Delegation
+  function toggleMenu() {
+    const menu = document.getElementById('lang-dropdown-menu');
+    if (!menu) return;
+    if (menu.classList.contains('hidden')) {
+      showMenu();
+    } else {
+      hideMenu(true);
+    }
+  }
+
+  // Delegated Click Handling
   document.addEventListener('click', (e) => {
     // 1. Language Option Clicked
     const optBtn = e.target.closest('.lang-option-btn, .mobile-lang-option-btn');
     if (optBtn) {
-      e.preventDefault();
-      e.stopPropagation();
       const code = optBtn.getAttribute('data-lang');
       if (code) {
         setLanguage(code);
-        hideMenu(true);
-        closeMobileDrawer();
       }
       return;
     }
@@ -3781,15 +3779,9 @@
       e.preventDefault();
       e.stopPropagation();
       if (window.innerWidth < 640) {
-        hideMenu(true);
         openMobileDrawer();
       } else {
-        const menu = document.getElementById('lang-dropdown-menu');
-        if (menu && (menu.classList.contains('hidden') || menu.classList.contains('opacity-0'))) {
-          showMenu();
-        } else {
-          hideMenu(true);
-        }
+        toggleMenu();
       }
       return;
     }
@@ -3851,7 +3843,6 @@
     document.documentElement.setAttribute('dir', currentLang === 'he' ? 'rtl' : 'ltr');
     updateSwitcherUI();
     applyTranslations();
-    // Dispatch initial language event so dynamic page components align immediately
     window.dispatchEvent(new CustomEvent('haichain:languageChanged', { detail: { lang: currentLang } }));
   }
 
@@ -3861,7 +3852,8 @@
     init();
   }
 
-  // Expose to window
+  // Expose globally
+  window.setLanguage = setLanguage;
   window.haichainI18n = {
     languages: LANGUAGES,
     current: () => currentLang,

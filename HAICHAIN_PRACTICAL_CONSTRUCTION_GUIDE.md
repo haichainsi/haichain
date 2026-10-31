@@ -133,7 +133,7 @@ Ngay lập tức, bạn có thể chat với Claude: *"Hãy dùng ví HAICHAIN t
    ```
 4. **Xây dựng Giao diện Web (Front-end Dashboard):**
    - Sử dụng Next.js / Tailwind CSS kết hợp với mã trình bày có sẵn trong [`WEBSITE_SHOWCASE_PITCH.md`](file:///c:/Users/Surface/Documents/8.%20HAICHAIN/WEBSITE_SHOWCASE_PITCH.md).
-   - Tích hợp nút nạp tiền mô phỏng (Apple Pay / VietQR) và nút bấm dừng khẩn cấp màu đỏ (Panic Kill-Switch 400ms).
+   - Tích hợp nút nạp tiền mô phỏng (Apple Pay / Google Pay) và nút bấm dừng khẩn cấp màu đỏ (Panic Kill-Switch 400ms).
 
 ---
 

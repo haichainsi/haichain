@@ -30,7 +30,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE} \times \
 *Trong đó, **Trí tuệ Nhân tạo (Artificial Intelligence)** đại diện cho tốc độ tính toán vi mô vô hạn của máy móc, và **Trí tuệ Thật sự của Con người (Actual Intelligence)** đại diện cho trực giác đạo đức, phán đoán rủi ro và quyền làm chủ tối cao.* 
 
 Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền tảng Solana L1 (phiên bản v6.9.3 Zero-Griefing Hardened) trước khi tiến hóa thành một mạng lưới Blockchain L1 độc lập chuyên dụng cho máy móc (HAICHAIN Sovereign L1), giao thức thiết lập 5 chuẩn mực mang tính cách mạng:
-1. **Trải nghiệm Người dùng Vô hình (Invisible Web3):** Xác thực sinh trắc học Passkey (FaceID/TouchID) kết hợp các cổng nạp tiền một chạm (Apple Pay, VietQR, thẻ ngân hàng), xóa bỏ 100% thuật ngữ tiền mã hóa đối với người dùng phổ thông.
+1. **Trải nghiệm Người dùng Vô hình (Invisible Web3):** Xác thực sinh trắc học Passkey (FaceID/TouchID) kết hợp các cổng nạp tiền một chạm (Apple Pay, Instant QR, thẻ ngân hàng), xóa bỏ 100% thuật ngữ tiền mã hóa đối với người dùng phổ thông.
 2. **Ký Quỹ Co Giãn Cho Mô Hình Suy Luận Sâu (Elastic Reasoning Escrow):** Cơ chế cam kết mật mã giải quyết bài toán token suy luận biến thiên bất định của các mô hình hàng đầu (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Bù Trừ Đa Phương Nén 99.999%:** Cỗ máy bù trừ ngoại chuỗi nén hàng triệu vi thanh toán thành một giao dịch on-chain duy nhất có kích thước **771 bytes**, vừa khít trong 1 gói tin mạng **IPv6 MTU (1.232 bytes)**.
 4. **Nút Dừng Khẩn Cấp Dưới 1 Giây (Sub-Second Panic Kill-Switch):** Cầu chì cưỡng bức cấp độ phần cứng cho phép thu hồi 100% tiền thừa về tài khoản ngân hàng/ví chính trong **< 400ms**.
@@ -101,7 +101,7 @@ HAICHAIN áp dụng triết lý thiết kế **"The Mom Test"**: Bất kỳ ngư
   |                                                                                 |
   |   [ 1. PASSKEY SINH TRẮC ] ───► [ 2. NẠP TIỀN 1 CHẠM ] ───► [ 3. HŨ TIỀN AN TOÀN ] |
   |   - Apple FaceID / TouchID      - Apple Pay / Google Pay    - Hạn mức $10.00 cô lập |
-  |   - WebAuthn Secure Enclave     - Chuyển khoản VietQR / Card- Chống cháy ví tuyệt đối |
+  |   - WebAuthn Secure Enclave     - Chuyển khoản Instant QR / Card- Chống cháy ví tuyệt đối |
   |   - Không cần giữ 12 từ khóa    - Không cần KYC sàn Crypto  - Cầu chì ngắt mạch tự động |
   |                                                                                 |
   +---------------------------------------------------------------------------------+
@@ -110,7 +110,7 @@ HAICHAIN áp dụng triết lý thiết kế **"The Mom Test"**: Bất kỳ ngư
 ### 3.1. Cổng Nạp Tiền Đa Kênh Toàn Cầu (Universal Fiat Abstraction)
 Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phương thức thanh toán quen thuộc:
 * **Toàn cầu:** Apple Pay, Google Pay, thẻ Visa/Mastercard (thông qua hạ tầng đối tác cổng thanh toán được cấp phép).
-* **Việt Nam & Đông Nam Á:** Quét mã QR động (VietQR), tiền tự động quy đổi tức thì sang USDT thông qua các kênh đối tác thanh khoản hợp pháp.
+* **Việt Nam & Đông Nam Á:** Quét mã QR động (Instant QR), tiền tự động quy đổi tức thì sang USDT thông qua các kênh đối tác thanh khoản hợp pháp.
 * **Bao cấp phí gas (Gasless Paymaster):** Máy chủ chuyển tiếp của giao thức tự động thanh toán toàn bộ phí mạng Solana. Người dùng nạp \$10.00 thì tài khoản có đúng chuẩn xác \$10.00 để sử dụng.
 
 ### 3.2. Nút Bấm Dừng Khẩn Cấp Dưới 1 Giây (One-Click Panic Kill-Switch)
@@ -286,7 +286,7 @@ HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai 
 * **Phân tầng quyền lực Master Owner (Actual Intelligence) vs Sub-Agent Signer (Artificial Intelligence):** Con người nắm quyền chủ quyền tối cao qua Passkey sinh trắc học; AI là cánh tay thực thi các giao dịch vi mô nano-cents thần tốc.
 * **Dây cương mật mã (Merkle Capability Leaf):** Đóng gói ý chí và ranh giới quản trị rủi ro của con người vào Merkle Root, ngăn chặn triệt để Prompt Injection.
 * **Cầu chì bảo vệ bản năng (Panic Kill-Switch < 400ms):** Cưỡng bức thu hồi 100% dòng tiền về ví an toàn của con người khi AI gặp lỗi ảo giác hay hành vi bất thường.
-* **Invisible Web3:** Ứng dụng Apple Pay, Google Pay, VietQR để công nghệ máy móc phục vụ trải nghiệm tự nhiên nhất của con người.
+* **Invisible Web3:** Ứng dụng Apple Pay, Google Pay, Instant QR để công nghệ máy móc phục vụ trải nghiệm tự nhiên nhất của con người.
 
 ### 9.2. Giai Đoạn 2: SVM Rollup Chuyên Dụng & Kinh Tế Tri Thức Đồng Sinh (Tháng 18 &ndash; 36)
 Khi khối lượng giao dịch vi mô của hàng triệu bot làm đầy block của Solana, HAICHAIN chuyển dịch sang Layer 2 Rollup sử dụng máy ảo SVM kết hợp Celestia/EigenDA làm lớp dữ liệu, đồng thời kích hoạt 2 trụ cột kinh tế cộng sinh:

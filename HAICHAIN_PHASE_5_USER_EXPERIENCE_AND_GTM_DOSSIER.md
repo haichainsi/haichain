@@ -53,7 +53,7 @@ flowchart TD
     subgraph HaiChainMomTest["TRẢI NGHIỆM HAICHAIN 10 GIÂY (THE MOM TEST - 100% MƯỢT MÀ)"]
         U2["Chị Lan (Chủ Shop / Văn Phòng)"] --> Step1["Bấm 'Kích Hoạt Hũ Tiền $5'"]
         Step1 --> Step2["Chạm Ngón Tay FaceID / TouchID\n(Tự Tạo Khóa Trong Máy Qua WebAuthn)"]
-        Step2 --> Step3["Quét VietQR / Apple Pay (50.000đ)"]
+        Step2 --> Step3["Quét Apple Pay / Google Pay (50.000đ)"]
         Step3 --> Success["✅ Xong trong 10 Giây! Tiền Nạp Thành Công.\nBot Chạy Ngay Lập Tức, Tiết Kiệm 95% Tiền SaaS!"]
     end
 ```
@@ -64,7 +64,7 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Tạo Ví** | Bắt chép 12 từ khóa bí mật, quên là mất sạch tiền. | **Không cần từ khóa**: Sử dụng Passkey / FaceID phần cứng của điện thoại. |
 | **Phí Gas Mạng Lưới** | Bắt mua SOL để trả phí gas; không có SOL thì tiền kẹt cứng. | **Gasless 100%**: Relayer của HAICHAIN trả phí gas Solana thay cho người dùng. |
-| **Nạp Tiền** | Phải có thẻ visa quốc tế hoặc tài khoản sàn crypto. | **Quét VietQR / MoMo (VN) hoặc Apple Pay / Google Pay (Mỹ/Âu)** trong 5 giây. |
+| **Nạp Tiền** | Phải có thẻ visa quốc tế hoặc tài khoản sàn crypto. | **Quét Apple Pay / Thẻ quốc tế (VN) hoặc Apple Pay / Google Pay (Mỹ/Âu)** trong 5 giây. |
 | **Định Giá Dịch Vụ** | Hiển thị 0.000045 SOL hoặc 0.002 TAO (gây bối rối). | **Hiển thị tiền thật**: "$0.002 (50 đồng) mỗi lần cào web". |
 | **Rút Tiền Khẩn Cấp** | Phức tạp, phải hiểu cách swap trên DEX. | **Nút Panic 1 chạm**: Bấm 1 cái, toàn bộ tiền thừa rút về tài khoản sau 1 giây. |
 
@@ -195,7 +195,7 @@ Nhà phát triển (Developers) là đối tượng sử dụng nhiều công c�
 
 # TỔNG KẾT THẨM ĐỊNH GIAI ĐOẠN 5
 
-1. **Vượt Qua "The Mom Test" 100%:** Người dùng phổ thông chỉ mất **10 đến 14 giây** để kích hoạt hũ tiền và sử dụng bot qua Apple Pay / VietQR, không cần biết chữ "crypto" hay "seed phrase".
+1. **Vượt Qua "The Mom Test" 100%:** Người dùng phổ thông chỉ mất **10 đến 14 giây** để kích hoạt hũ tiền và sử dụng bot qua Apple Pay / Google Pay, không cần biết chữ "crypto" hay "seed phrase".
 2. **Tích Hợp Lập Trình Viên Siêu Tốc:** Cắm trực tiếp vào Cursor IDE và Claude Desktop trong vòng **3 phút**.
 3. **Kinh Tế Học Đơn Vị Tối Ưu:** Chỉ số **LTV/CAC đạt 3.2x** và thời gian hoàn vốn đầu tư chỉ **3.75 tháng**, bảo đảm khả năng mở rộng quy mô thương mại có lãi ngay từ đầu.
 4. **Miễn Nhiễm Rào Cản Phân Phối:** Hoạt động độc lập ở tầng network client, không thể bị các tập đoàn Big Tech kiểm duyệt hay bóp nghẹt.

@@ -43,7 +43,7 @@
 ### 5. HIỆN TRẠNG KỸ THUẬT: ĐÃ HOÀN THIỆN 100%, KHÔNG PHẢI "BÁNH VẼ"
 * **Smart Contract Solana:** Hoàn thành 100% trên Solana Anchor v6.9.3, vượt qua **15/15 bài test bảo mật cấp quân sự** (chống hack Wormhole, Nomad, Euler, Mango). Đã deploy trực tiếp trên **Solana Devnet**.
 * **Công cụ tích hợp:** Đã có sẵn SDK TypeScript, Bare-Metal C-SDK (<200KB RAM) cho robot, và MCP Server cho Claude/Cursor.
-* **Web Terminal:** Đang chạy trực tiếp với giao diện nạp tiền Apple Pay/VietQR và quản trị bot thời gian thực.
+* **Web Terminal:** Đang chạy trực tiếp với giao diện nạp tiền Apple Pay / Google Pay và quản trị bot thời gian thực.
 
 ---
 ---

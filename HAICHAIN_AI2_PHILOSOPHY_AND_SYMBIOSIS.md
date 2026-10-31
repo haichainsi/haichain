@@ -55,7 +55,7 @@ Kiểm chứng trực tiếp trên nhân hợp đồng thông minh Solana (`prog
 3. **Cầu chì bảo vệ bản năng: Panic Kill-Switch (< 400ms):**
    * Nếu AI gặp ảo giác (hallucination) hoặc bị tấn công logic, con người kích hoạt Panic Kill-Switch: 100% dòng tiền thừa lập tức cưỡng bức rút về tài khoản an toàn của con người (`user_safe_destination_ata.owner == master_owner`) trong chưa đầy 400 mili-giây.
 4. **Invisible Web3 - Công nghệ phục vụ nhân bản:**
-   * Mọi sự phức tạp mật mã, chữ ký hex, và phí gas được ẩn đi hoàn toàn bằng Apple Pay, Google Pay, VietQR và Passkey, đem lại trải nghiệm tự nhiên, trực quan nhất cho con người.
+   * Mọi sự phức tạp mật mã, chữ ký hex, và phí gas được ẩn đi hoàn toàn bằng Apple Pay, Google Pay, Instant QR và Passkey, đem lại trải nghiệm tự nhiên, trực quan nhất cho con người.
 
 ---
 

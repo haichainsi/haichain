@@ -17,7 +17,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=i18n_10langs_v4"></script>
+  <script src="/app/i18n.js?v=v6_instant"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -121,18 +121,19 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo: Pure Official Logo (Harmonious Mobile & Desktop) -->
-      <a href="/" class="flex items-center group py-1">
-        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="h-7 sm:h-8 md:h-8.5 w-auto object-contain filter invert-0 dark:invert transition-transform duration-200 group-hover:scale-[1.02]" style="max-height: 32px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}">
+      <!-- Brand Logo: Emblem + Official Wordmark (100% Visible in Both Light & Dark Modes) -->
+      <a href="/" class="flex items-center space-x-2.5 sm:space-x-3 group py-1">
+        <img src="/assets/haisi-icon.png" alt="HAICHAIN Emblem" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg object-contain shrink-0 shadow-sm transition-transform duration-200 group-hover:scale-105" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+        <!-- Light Mode: Dark Logo -->
+        <img src="/assets/haichain-official-logo.png?v=geom2026_v5" alt="HAICHAIN" class="dark:hidden h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.01]" style="max-height: 30px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v5';}">
+        <!-- Dark Mode: Pure White Logo -->
+        <img src="/assets/haichain-official-logo-white.png?v=geom2026_v5" alt="HAICHAIN" class="hidden dark:block h-6 sm:h-7 md:h-7.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.01]" style="max-height: 30px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=geom2026_v5';}">
       </a>
 
-      <!-- Center Navigation Links -->
-      <nav class="hidden xl:flex items-center space-x-6 text-xs lg:text-sm font-medium text-neutral-600 dark:text-neutral-400">
-        <a href="#ai2-philosophy" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
-        <a href="#market-evidence" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.market">Market Data</a>
+      <!-- Center Navigation Links (Streamlined: Essential Links Only) -->
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-neutral-600 dark:text-neutral-400">
         <a href="#spending-pot" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.architecture">Architecture</a>
-        <a href="#comparison" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.comparison">Comparison</a>
-        <a href="#target-audience" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.audiences">Audiences</a>
-        <a href="#technical-status" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.status">Status</a>
+        <a href="#ai2-philosophy" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
         <a href="#endgame" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.sovereignL1">Sovereign L1</a>
         <a href="/whitepaper" target="_blank" class="hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1">
           <span data-i18n="nav.whitepaper">Whitepaper</span>
@@ -1119,7 +1120,9 @@
   <footer class="border-t border-brand-lightBorder dark:border-brand-border py-12 text-xs text-neutral-500 font-mono">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
       <div class="flex items-center space-x-3">
-        <img src="/assets/haichain-official-logo.png?v=geom2026_v4" alt="HAICHAIN" class="h-5 sm:h-[22px] w-auto object-contain filter invert-0 dark:invert opacity-95" style="max-height: 22px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v4';}">
+        <img src="/assets/haisi-icon.png" alt="HAICHAIN Emblem" class="w-5 h-5 rounded object-contain shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+        <img src="/assets/haichain-official-logo.png?v=geom2026_v5" alt="HAICHAIN" class="dark:hidden h-4 sm:h-[18px] w-auto object-contain opacity-95" style="max-height: 18px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=geom2026_v5';}">
+        <img src="/assets/haichain-official-logo-white.png?v=geom2026_v5" alt="HAICHAIN" class="hidden dark:block h-4 sm:h-[18px] w-auto object-contain opacity-95" style="max-height: 18px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=geom2026_v5';}">
         <span class="text-neutral-400 font-mono text-xs hidden sm:inline">&bull;</span>
         <span class="text-neutral-400 font-mono text-xs">v6.9.3 PRODUCTION CERTIFIED</span>
       </div>

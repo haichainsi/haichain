@@ -423,7 +423,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 * **Dedicated Non-Commingled ATAs:** Mỗi Agent Vault PDA sở hữu tài khoản Token USDT riêng biệt, không dồn chung vào một ví tổng (No Commingling). Nếu một người dùng cá biệt bị Tether đóng băng, 99.999% người dùng và toàn bộ hệ sinh thái còn lại hoàn toàn không bị ảnh hưởng.
 
 ### 5. Cổng Nạp/Rút Tự Động Bản Địa Hóa (Hyper-Local Relayers)
-* **Việt Nam:** Quét mã VietQR / MoMo 50,000 VNĐ nạp thẳng USDT vào ví bot trong 5 giây.
+* **Việt Nam:** Quét mã Apple Pay / Thẻ quốc tế 50,000 VNĐ nạp thẳng USDT vào ví bot trong 5 giây.
 * **Mỹ Latinh:** Tích hợp giao thức Pix (Brazil).
 * **Bắc Mỹ & Châu Âu:** Tích hợp Apple Pay, Google Pay, SEPA Instant qua các đối tác on-ramp được cấp phép đầy đủ.
 
@@ -440,7 +440,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 ### 1. Vượt Qua Bài Kiểm Tra "The Mom Test" 10 Giây
 * **Không Cần Seed Phrase:** Tích hợp chuẩn WebAuthn/Passkey phần cứng của iPhone (Secure Enclave) và Android (Titan M). Người dùng xác thực bằng FaceID/Vân tay, không cần lưu 12 từ khóa bí mật.
 * **100% Gasless:** Người dùng không cần sở hữu SOL làm phí gas. Relayer của HAICHAIN tự động tài trợ phí mạng lưới.
-* **Nạp Tiền 10 Giây:** Quét VietQR / MoMo (50,000 VNĐ) hoặc quẹt Apple Pay / Google Pay. Tiền nạp thẳng vào ví riêng của bot trong 5 - 10 giây.
+* **Nạp Tiền 10 Giây:** Quét Apple Pay / Thẻ quốc tế (50,000 VNĐ) hoặc quẹt Apple Pay / Google Pay. Tiền nạp thẳng vào ví riêng của bot trong 5 - 10 giây.
 * **Nút Rút Tiền Khẩn Cấp (One-Click Panic):** 1 bấm trên điện thoại, toàn bộ tiền thừa rút thẳng về tài khoản ngân hàng sau 1 giây.
 
 ### 2. Tích Hợp Lập Trình Viên Trong 3 Phút (Cursor & Claude MCP)

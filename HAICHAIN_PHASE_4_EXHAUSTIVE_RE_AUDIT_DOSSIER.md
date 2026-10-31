@@ -114,14 +114,14 @@ Một sai lầm của nhiều dự án Web3 là tự đứng ra nhận tiền ch
 
 ### Cơ Chế Ủy Quyền 100% (Third-Party Licensed On-Ramp):
 ```
-Người Dùng ──(Quẹt Thẻ/VietQR)──► Cổng Đối Tác Được Cấp Phép ──(Chuyển USDT)──► Dedicated ATA Của Bot
+Người Dùng ──(Quẹt Thẻ/Instant QR)──► Cổng Đối Tác Được Cấp Phép ──(Chuyển USDT)──► Dedicated ATA Của Bot
                                  (MoonPay / Stripe / MoMo)
                                  - Thực hiện KYC / AML
                                  - Chịu 100% rủi ro Chargeback
                                  - Nắm giấy phép EMI / MSB
 ```
 * HAICHAIN **hoàn toàn không chạm vào tiền pháp định (Fiat Currency)**.
-* Khi người dùng nạp tiền qua Apple Pay, Stripe, hay VietQR, giao dịch được thực hiện trực tiếp bởi đối tác đã có đầy đủ giấy phép (như MoonPay, Stripe Crypto Ramp, hoặc đơn vị trung gian thanh toán nội địa).
+* Khi người dùng nạp tiền qua Apple Pay, Stripe, hay Instant QR, giao dịch được thực hiện trực tiếp bởi đối tác đã có đầy đủ giấy phép (như MoonPay, Stripe Crypto Ramp, hoặc đơn vị trung gian thanh toán nội địa).
 * Đối tác đối soát danh tính KYC, chịu trách nhiệm chống rửa tiền AML, và tự động gọi hàm smart contract `deposit_agent_vault` để chuyển USDT vào đúng ví riêng của người dùng. HAICHAIN hoàn toàn sạch bóng rủi ro tiếp nhận tiền bẩn.
 
 ---

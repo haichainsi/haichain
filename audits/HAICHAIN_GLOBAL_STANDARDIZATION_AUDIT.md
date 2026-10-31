@@ -8,7 +8,7 @@
 
 ## 1. TỔNG QUAN KIỂM ĐỊNH (EXECUTIVE AUDIT SUMMARY)
 
-Dự án HAICHAIN được định vị là **Hệ Điều Hành Tài Chính Máy Móc Toàn Cầu (The Universal Machine Financial Operating System)**. Một trong những sai lầm nghiêm trọng nhất của các dự án công nghệ giai đoạn đầu là bị "địa phương hóa hạn hẹp" (Local Market Bias) khi đưa các ví dụ, đơn vị tiền tệ hoặc cổng thanh toán mang tính chất nội địa (như VietQR, VND, ngân hàng quốc gia đơn lẻ) vào lõi kiến trúc.
+Dự án HAICHAIN được định vị là **Hệ Điều Hành Tài Chính Máy Móc Toàn Cầu (The Universal Machine Financial Operating System)**. Một trong những sai lầm nghiêm trọng nhất của các dự án công nghệ giai đoạn đầu là bị "địa phương hóa hạn hẹp" (Local Market Bias) khi đưa các ví dụ, đơn vị tiền tệ hoặc cổng thanh toán mang tính chất nội địa (như Instant QR, VND, ngân hàng quốc gia đơn lẻ) vào lõi kiến trúc.
 
 Để mở rộng ra quy mô thế giới và chinh phục các quỹ đầu tư mạo hiểm hàng đầu tại Thung lũng Silicon, London, Singapore và Tokyo, HAICHAIN phải được chuẩn hóa theo **Tiêu chuẩn Tài chính & Thanh toán Toàn cầu (Global Financial Infrastructure Standards)**:
 1. **Đơn vị Tiền Tệ Định Danh Gốc:** Chuẩn hóa 100% trên **USD / USDC (Circle)** và các đơn vị siêu vi mô quốc tế: **Cents (\$0.01)**, **Milli-cents / Micro-dollars (\$0.0001 - \$0.000001)**.
@@ -141,6 +141,6 @@ Chuẩn hóa công thức kinh tế theo đồng USD quốc tế:
 
 ## 6. KẾT LUẬN AUDIT VÀ KHUYẾN NGHỊ CHUẨN HÓA
 
-* **Khuyến nghị 1 (Codebase):** Thay thế toàn bộ mã phụ thuộc riêng biệt vào VietQR trong TypeScript SDK bằng lớp trừu tượng `GlobalFiatGateway` hỗ trợ Stripe, Apple Pay, SEPA, FedNow và các cổng thanh toán quốc tế.
+* **Khuyến nghị 1 (Codebase):** Thay thế toàn bộ mã phụ thuộc riêng biệt vào Instant QR trong TypeScript SDK bằng lớp trừu tượng `GlobalFiatGateway` hỗ trợ Stripe, Apple Pay, SEPA, FedNow và các cổng thanh toán quốc tế.
 * **Khuyến nghị 2 (MCP Server):** Đổi toàn bộ đơn vị hiển thị mặc định sang USD/USDC và hiển thị tỷ giá động đa quốc gia.
 * **Khuyến nghị 3 (Tài liệu):** Cập nhật toàn bộ các tệp kiến trúc, Pitch Deck, FAQ và README sang chuẩn quốc tế chuyên nghiệp, loại bỏ các chi tiết mang tính cục bộ địa phương để sẵn sàng cho các quỹ đầu tư toàn cầu thẩm định.
