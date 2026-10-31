@@ -293,11 +293,19 @@ When high-frequency micro-payments approach Solana block saturation, HAICHAIN tr
 * **Symbiotic Knowledge Marketplace & Streaming Royalties:** Enables humans to package hard-earned domain expertise and proprietary heuristics into Skill Modules. AI agents execute these modules globally 24/7, streaming continuous nano-cent royalties in USDT directly back to human creators.
 * **Human-in-the-Loop Reverse Micro-Tasking (AI Hiring Humans):** Inverts legacy labor dynamics. When an autonomous agent encounters subjective edge cases (physical verification, ethical dilemmas, nuanced localization), it broadcasts micro-bounties ($0.01 &ndash; $0.50 USDT) via HTTP x402 to hire human intelligence for instant resolution.
 
-### 9.3. Stage 3: The Sovereign Machine-Consensus L1 for Human-AI Co-Evolution (Month 36+)
-HAICHAIN activates its independent sovereign Layer 1 blockchain:
-* **Proof of Actual Intelligence (PoAI / Proof of Wisdom):** Harmonizes GPU validator clusters running zkML inference verification with on-chain human expert councils to arbitrate complex cognitive disputes, rewarding verified human insight directly with `$HAI` block subsidies.
-* **Native Bytecode Opcode (`OP_402_PAY`):** Eliminates smart contract CPI overhead, achieving native wire execution speeds exceeding **100,000 TPS**.
-* **Unified Human-Agent DID & Soulbound Credentials:** Binds every autonomous sub-agent fleet cryptographically to verified human sponsor identities via Soulbound Tokens, extinguishing anonymous Sybil bot attacks.
+### 9.3. Stage 3: The Sovereign Machine L1 & True Decentralized Superintelligence (Month 36+)
+HAICHAIN activates its independent sovereign Layer 1 blockchain, ushering in the era of **Composite Artificial Superintelligence (ASI)**. Sidestepping the fatal fallacy of attempting dense matrix training over public WAN internet, HAICHAIN L1 establishes itself as the **Cryptographic Nervous System, Coordination Engine, and Epistemic Anchor** for the global cognitive economy:
+
+* **Composite Superintelligence (ASI) Architecture:** Superintelligence on `haichain.si` is realized not as an autocratic, brittle monolithic model trapped in a centralized datacenter, but as a **Decentralized Cognitive Superorganism**. The network coordinates millions of specialized AI agents (Mixture of Decentralized Experts - MoDE), millions of human minds (Actual Intelligence), and distributed compute clusters via frictionless cryptographic settlement.
+* **Mitigating Three Core Physical & Computational Bottlenecks:**
+  1. *WAN vs NVLink Bandwidth Paradox:* Rather than attempting unviable P2P tensor parallel training over high-latency WAN links, HAICHAIN L1 acts as an **Asynchronous Cognitive Coordination Engine (ACCE)**, executing micro-settlements across specialized compute clusters at wire speeds (< 400ms).
+  2. *zkML Computational Overhead Bottleneck ($1,000\times - 10,000\times$):* Implements **Optimistic Inference with Fraud Proof Escalation**. 99.9% of agent inferences are settled in 50ms (Fast-Path); only disputed transactions escalate to localized zk-SNARK execution or the Tier 2 Human Cognitive Council.
+  3. *State Bloat Immunity:* Decouples active execution state (< 50GB NVMe with 256-bit SMT bitmaps) while offloading historical prompts and raw telemetry to dedicated DA layers (Celestia/EigenDA), eliminating state explosion risks.
+* **Dual-Tier Consensus: Proof-of-Agentic-Work (PoAW) & Proof of Actual Intelligence (PoAI):**
+  * *Tier 1 (PoAW Fast Path - 50ms):* GPU validator clusters verify sub-model execution and clear nano-transactions at **> 100,000 TPS**.
+  * *Tier 2 (PoAI Wisdom Staking):* When agents face epistemic blind spots, hallucinations, or ethical edge cases, bonded human experts arbitrate via zero-knowledge voting. Humans earn `$HAI` block subsidies for infusing fresh ground-truth, insulating the network from **Model Autophagy Disorder (Anti-MAD Engine)**.
+* **Native Bytecode Opcode (`OP_402_PAY`):** Nano-settlement is compiled directly into the HAI-VM CPU instruction set, eliminating smart contract CPI overhead and transforming machine value transfer into a low-level hardware primitive.
+* **Unified Human-Agent DID & Soulbound Credentials:** Binds every autonomous sub-agent fleet cryptographically to verified human sponsor identities via Soulbound Tokens (SBT), enforcing deterministic accountability (FATF & EU AI Act compliance) and extinguishing anonymous bot attacks.
 * **Token Parity Teleport:** $HAI SPL tokens migrate 1:1 into native Layer 1 coins, elevating protocol valuation into an institutional sovereign infrastructure tier (\$5B &ndash; \$10B+).
 
 ---

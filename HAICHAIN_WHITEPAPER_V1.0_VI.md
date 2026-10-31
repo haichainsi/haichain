@@ -293,11 +293,19 @@ Khi khối lượng giao dịch vi mô của hàng triệu bot làm đầy block
 * **Kinh Tế Tri Thức Bản Quyền Cộng Sinh (Symbiotic Knowledge Marketplace):** Cho phép con người đóng gói Actual Intelligence (kinh nghiệm thực chiến, chuyên môn ngách) thành Prompt Assets/Skill Modules. AI sử dụng các tài sản này để phục vụ người dùng 24/7 và chia sẻ lợi nhuận tức thời (Streaming Royalties) về ví con người bằng USDT.
 * **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (captcha vật lý, thẩm định đạo đức, phán đoán ngữ cảnh nhạy cảm), AI tự động phát lệnh thanh toán vi mô (\$0.01 &ndash; \$0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
 
-### 9.3. Giai Đoạn 3: Blockchain L1 Độc Lập Cho Nền Kinh Tế Hợp Nhất Con Người & Máy Móc (Tháng 36 Trở Đi)
-HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập mang tầm vóc hạ tầng toàn cầu:
-* **Cơ Chế Đồng Thuận Proof of Actual Intelligence (PoAI / Proof of Wisdom):** Kết hợp các cụm validator GPU xác thực suy luận zkML với cơ chế thẩm định của các chuyên gia con người cho các ca suy luận phức tạp, thưởng token `$HAI` trực tiếp cho đóng góp trí tuệ thực chứng.
-* **Mã Máy Cấp Nhân (`OP_402_PAY`):** Lệnh thanh toán vi mô được nhúng thẳng vào bytecode CPU, triệt tiêu chi phí hợp đồng thông minh, đạt tốc độ **> 100.000 TPS**.
-* **Định Danh Hợp Nhất Con Người - Tác Tử (Unified Human-Agent DID):** Sử dụng Soulbound Tokens (SBT) gắn chặt hạm đội tác tử với danh tính và uy tín tín dụng của con người bảo chứng, loại bỏ hoàn toàn bot ẩn danh lừa đảo.
+### 9.3. Giai Đoạn 3: Blockchain L1 Độc Lập & Mạng Lưới Siêu Trí Tuệ Phi Tập Trung Thật Sự (Tháng 36 Trở Đi)
+HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, bước vào kỷ nguyên **Siêu Trí Tuệ Nhân Tạo Phức Hợp (Composite Artificial Superintelligence - ASI)**. Không rơi vào bẫy ảo tưởng của việc cố gắng huấn luyện các mô hình dày đặc qua Internet công cộng, HAICHAIN L1 định vị chính xác là **Hệ thần kinh mật mã điều phối và mỏ neo chân lý** cho toàn bộ nền kinh tế nhận thức toàn cầu:
+
+* **Bản Chất Của Siêu Trí Tuệ Phi Tập Trung (Composite ASI Architecture):** Siêu trí tuệ trên `haichain.si` không phải là một mô hình đơn lẻ độc tài trong một trung tâm dữ liệu tập trung, mà là một **Siêu sinh thể nhận thức (Cognitive Superorganism)**. Mạng lưới liên kết hàng triệu mô hình AI chuyên biệt (MoDE - Mixture of Decentralized Experts), hàng triệu khối óc con người (Actual Intelligence) và tài nguyên tính toán toàn cầu thông qua giao thức điều phối kinh tế không ma sát.
+* **Hóa Giải 3 Thách Thức Vật Lý Cốt Tử:**
+  1. *Nghịch lý Băng thông Mạng WAN vs NVLink:* Thay vì phân tán việc tính toán ma trận dày đặc qua mạng P2P (vốn bất khả thi do độ trễ Internet), HAICHAIN L1 đóng vai trò là **Công cụ Điều phối Nhận thức Bất đồng bộ (ACCE)**, thực thi vi thanh toán giữa các cụm tính toán chuyên biệt với độ trễ < 400ms.
+  2. *Điểm nghẽn Chi phí zkML ($1.000\times - 10.000\times$):* Áp dụng cơ chế **Optimistic Inference song hành Fraud Proofs**. 99.9% giao dịch suy luận được chấp nhận tức thì trong 50ms (Fast-Path); chỉ khi xảy ra tranh chấp mới kích hoạt zk-SNARK cục bộ hoặc chuyển lên Hội đồng Thẩm định Con người.
+  3. *Ngăn chặn Phình to Trạng thái (State Bloat):* Phân tách tầng thực thi tích cực (< 50GB NVMe với SMT 256-bit) và chuyển toàn bộ dữ liệu suy luận thô sang các lớp dữ liệu chuyên dụng (Celestia/EigenDA), giải quyết triệt để rủi ro phình to dữ liệu.
+* **Cơ Chế Đồng Thuận Phân Tầng PoAW + PoAI (Proof of Actual Intelligence):**
+  * *Tầng 1 (PoAW - Fast Path 50ms):* Validator GPU xác thực tính toán mô hình và thực thi nano-settlement ở quy mô **> 100.000 TPS**.
+  * *Tầng 2 (PoAI - Wisdom Staking):* Khi AI gặp điểm mù nhận thức, ảo giác hay xung đột đạo đức, hội đồng chuyên gia con người tham gia thẩm định qua cơ chế ZK-Voting. Con người được thưởng token `$HAI` trực tiếp cho việc cung cấp tri thức thực nghiệm tươi mới, giúp mạng lưới **miễn nhiễm hoàn toàn với Hội chứng Suy thoái Dữ liệu Tự hoại (Anti-MAD Engine)**.
+* **Mã Máy Cấp Nhân (`OP_402_PAY`):** Lệnh thanh toán vi mô được nhúng thẳng vào bytecode CPU của máy ảo HAI-VM, triệt tiêu hoàn toàn chi phí hợp đồng thông minh, biến việc luân chuyển giá trị của máy móc thành một primitive phần cứng.
+* **Định Danh Hợp Nhất & Trách Nhiệm Giải Trình (Unified Soulbound DID):** Mỗi tác tử AI đều được gắn một Soulbound Token (SBT) neo chặt vào khóa sinh trắc học Passkey của Con người bảo chứng, đảm bảo tuân thủ triệt để FATF và EU AI Act, loại bỏ hoàn toàn bot ẩn danh độc hại.
 * **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**\$5 Tỷ &ndash; \$10 Tỷ+ USD**).
 
 ---
