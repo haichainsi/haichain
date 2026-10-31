@@ -36,7 +36,7 @@
 
   <script src="/app/dialog.js?v=v3_modal"></script>
 
-  <script src="/app/i18n.js?v=v7_korean_fixed"></script>
+  <script src="/app/i18n.js?v=v6_fixed_20261101"></script>
 
   <script>
 
@@ -248,7 +248,7 @@
 
       <!-- Brand Logo: Official HAICHAIN Monochromatic Luxury Logo (Mobile & Desktop) -->
       <a href="/" class="flex items-center group py-1 shrink-0">
-        <img src="/assets/haichain-official-logo-white.png?v=white_v1" alt="HAICHAIN" class="h-7 sm:h-8 md:h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" style="max-height: 32px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v1';}">
+        <img src="/assets/haichain-official-logo-white.png?v=white_v2" alt="HAICHAIN" class="h-7 sm:h-8 md:h-8.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" style="max-height: 32px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v2';}">
       </a>
 
 
@@ -788,19 +788,1499 @@
           <div class="flex items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900">
 
             <div class="flex items-center space-x-3">
-        <img src="/assets/haichain-official-logo-white.png?v=white_v1" alt="HAICHAIN" class="h-5 sm:h-6 w-auto object-contain opacity-95" style="max-height: 22px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v1';}">
-        <span class="text-neutral-400 font-mono text-xs hidden sm:inline">&bull;</span>
-        <span class="text-neutral-400 font-mono text-xs" data-i18n="footer.certified">v6.9.3 PRODUCTION CERTIFIED</span>
+
+              <div class="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-800 dark:text-neutral-200">
+
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+
+              </div>
+
+              <div>
+
+                <h2 class="font-semibold text-sm tracking-tight text-black dark:text-white" data-i18n="home.potTitle">Active Spending Pot</h2>
+
+                <span class="text-xs text-neutral-500 font-mono" id="pot-address">0x7f4a...8e21</span>
+
+              </div>
+
+            </div>
+
+            <span id="pot-status-badge" class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 flex items-center space-x-1.5">
+
+              <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-ping"></span>
+
+              <span data-i18n="pot.statusActive">Active</span>
+
+            </span>
+
+          </div>
+
+
+
+          <!-- Balance Display (Tabular Monospace) -->
+
+          <div class="py-8 text-center">
+
+            <span class="text-xs uppercase tracking-widest text-neutral-400 font-mono block mb-2" data-i18n="home.potBalanceLabel">Available Balance (USDT)</span>
+
+            <div class="text-5xl sm:text-6xl font-extrabold tracking-tight font-mono text-black dark:text-white tabular-nums flex items-baseline justify-center">
+
+              <span>$</span>
+
+              <span id="balance-display">8.4500</span>
+
+            </div>
+
+            <p class="text-xs text-neutral-500 mt-2 font-mono" id="credits-display">&asymp; 8,450 Action Credits</p>
+
+          </div>
+
+
+
+          <!-- Spending Velocity Gauge -->
+
+          <div class="bg-neutral-50 dark:bg-neutral-900/60 rounded-2xl p-4 border border-neutral-100 dark:border-neutral-800/80 mb-6">
+
+            <div class="flex justify-between items-center text-xs mb-2">
+
+              <span class="text-neutral-500" data-i18n="home.potVelocityLabel">Autonomous Velocity Cap</span>
+
+              <span class="font-mono font-medium text-black dark:text-white">$1.55 / $10.00 Limit</span>
+
+            </div>
+
+            <div class="w-full bg-neutral-200 dark:bg-neutral-800 h-2 rounded-full overflow-hidden">
+
+              <div id="velocity-bar" class="bg-black dark:bg-white h-full rounded-full transition-all duration-500" style="width: 15.5%;"></div>
+
+            </div>
+
+            <div class="flex justify-between items-center text-[11px] text-neutral-400 mt-2 font-mono">
+
+              <span data-i18n="pot.spendRate">Spend Rate: ~$0.0018/min</span>
+
+              <span data-i18n="pot.circuitBreaker">Circuit Breaker: 60 ticks/min</span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Action Buttons: Top Up vs Panic Kill-Switch -->
+
+          <div class="grid grid-cols-2 gap-3">
+
+            <button id="deposit-modal-btn" class="w-full py-3 px-4 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-medium text-sm transition-all shadow-sm flex items-center justify-center space-x-2">
+
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+
+              <span data-i18n="home.potAddFunds">Add Funds</span>
+
+            </button>
+
+            <button id="panic-kill-btn" class="w-full py-3 px-4 rounded-2xl bg-neutral-100 hover:bg-black hover:text-white dark:bg-neutral-900 dark:hover:bg-white dark:hover:text-black border border-neutral-300 dark:border-neutral-700 text-black dark:text-white font-medium text-sm transition-all flex items-center justify-center space-x-2">
+
+              <i data-lucide="alert-octagon" class="w-4 h-4"></i>
+
+              <span data-i18n="home.potEmergencyStop">Emergency Stop</span>
+
+            </button>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <!-- HIERARCHICAL CAPABILITY SUB-AGENTS (SWARM CARDS) -->
+
+        <div class="rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-brand-lightCard dark:bg-brand-card p-6 shadow-sm">
+
+          <div class="flex justify-between items-center mb-4">
+
+            <h3 class="text-sm font-semibold tracking-tight text-black dark:text-white" data-i18n="home.swarmTitle">Active Sub-Agent Swarm</h3>
+
+            <span class="text-xs text-neutral-500 font-mono" data-i18n="home.swarmTree">BIP-32 HCT Tree</span>
+
+          </div>
+
+
+
+          <div class="space-y-3">
+
+            <!-- Sub-Agent 1 -->
+
+            <div class="p-3.5 rounded-2xl border border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/40 flex items-center justify-between">
+
+              <div class="flex items-center space-x-3">
+
+                <div class="w-8 h-8 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xs font-mono">
+
+                  S1
+
+                </div>
+
+                <div>
+
+                  <div class="text-xs font-medium text-black dark:text-white" data-i18n="pot.agentWebBot">Web Researcher Bot</div>
+
+                  <div class="text-[11px] text-neutral-500 font-mono" data-i18n="pot.agentWebLimit">Limit: $0.05 &bull; Scope: BROWSER_ONLY</div>
+
+                </div>
+
+              </div>
+
+              <span class="text-xs font-mono text-neutral-600 dark:text-neutral-400" data-i18n="pot.statusIdle">Idle</span>
+
+            </div>
+
+
+
+            <!-- Sub-Agent 2 -->
+
+            <div class="p-3.5 rounded-2xl border border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-900/40 flex items-center justify-between">
+
+              <div class="flex items-center space-x-3">
+
+                <div class="w-8 h-8 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xs font-mono">
+
+                  S2
+
+                </div>
+
+                <div>
+
+                  <div class="text-xs font-medium text-black dark:text-white" data-i18n="pot.agentDeepSeek">DeepSeek Reasoning Agent</div>
+
+                  <div class="text-[11px] text-neutral-500 font-mono" data-i18n="pot.agentDeepSeekLimit">Limit: $0.10 &bull; Elastic Buffer +20%</div>
+
+                </div>
+
+              </div>
+
+              <span class="text-xs font-mono text-neutral-400 animate-pulse" data-i18n="pot.statusComputing">Computing</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
       </div>
 
-      <div class="text-center sm:text-right">
 
-        <span data-i18n="footer.compliance">Non-Custodial FinCEN Exempt • EU MiCA Compliant • 100% Exploit Immune</span>
+
+      <!-- RIGHT COLUMN: LIVE MACHINE TELEMETRY & TRANSACTION STREAM (7 COLS) -->
+
+      <div class="lg:col-span-7 space-y-6" id="live-stream">
+
+        
+
+        <!-- NEW: LIVE AI AGENT & DEVNET PLAYGROUND CARD -->
+
+        <div class="rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-brand-lightCard dark:bg-brand-card p-6 sm:p-8 shadow-sm relative overflow-hidden" id="live-playground">
+
+          <div class="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-900">
+
+            <div class="flex items-center space-x-3">
+
+              <div class="w-10 h-10 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-sm shadow-sm">
+
+                AI
+
+              </div>
+
+              <div>
+
+                <h3 class="font-semibold text-sm tracking-tight text-black dark:text-white flex items-center space-x-2">
+
+                  <span data-i18n="home.playgroundTitle">Live AI Agent Escrow Playground</span>
+
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700" data-i18n="home.playgroundBadge">Devnet Live</span>
+
+                </h3>
+
+                <p class="text-xs text-neutral-500" data-i18n="home.playgroundSubtitle">Test autonomous sub-cent micro-payments on Solana with zero credit card fees.</p>
+
+              </div>
+
+            </div>
+
+            <span class="text-xs font-mono text-neutral-400 hidden sm:inline" data-i18n="home.playgroundSvmFee">SVM &bull; 0.05% Fee</span>
+
+          </div>
+
+
+
+          <!-- Prompt & Model Selector -->
+
+          <div class="mt-5 space-y-3">
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+
+              <button class="model-select-btn p-2.5 rounded-xl border border-black dark:border-white bg-neutral-100 dark:bg-neutral-800 text-black dark:text-white font-semibold transition-all text-left" data-model="Claude 3.5 Sonnet" data-cost="0.0020">
+
+                <div class="text-[11px] font-bold">Claude 3.5</div>
+
+                <div class="text-[10px] text-neutral-500">$0.0020/call</div>
+
+              </button>
+
+              <button class="model-select-btn p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-black dark:hover:border-white transition-all text-left" data-model="DeepSeek R1" data-cost="0.0008">
+
+                <div class="text-[11px] font-bold">DeepSeek R1</div>
+
+                <div class="text-[10px] text-neutral-500">$0.0008/call</div>
+
+              </button>
+
+              <button class="model-select-btn p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-black dark:hover:border-white transition-all text-left" data-model="Perplexity Pro" data-cost="0.0015">
+
+                <div class="text-[11px] font-bold">Perplexity</div>
+
+                <div class="text-[10px] text-neutral-500">$0.0015/call</div>
+
+              </button>
+
+              <button class="model-select-btn p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-black dark:hover:border-white transition-all text-left" data-model="Optimus Robot" data-cost="0.0035">
+
+                <div class="text-[11px] font-bold">Optimus Edge</div>
+
+                <div class="text-[10px] text-neutral-500">$0.0035/call</div>
+
+              </button>
+
+            </div>
+
+
+
+            <!-- Query Input -->
+
+            <div class="flex gap-2">
+
+              <input type="text" id="ai-task-input" value="Summarize HAICHAIN tokenomics & sub-cent settlement speed" placeholder="Enter task for autonomous AI agent..." class="flex-1 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white text-xs font-mono focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
+
+              <button id="run-ai-task-btn" class="px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all flex items-center space-x-2 shrink-0 shadow-sm">
+
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+
+                <span data-i18n="home.playgroundExecute">Execute & Settle</span>
+
+              </button>
+
+            </div>
+
+
+
+            <!-- Terminal Output Window -->
+
+            <div id="ai-terminal-box" class="p-4 rounded-2xl bg-neutral-950 text-neutral-300 font-mono text-[11px] leading-relaxed border border-neutral-800 min-h-[90px] max-h-[140px] overflow-y-auto no-scrollbar space-y-1">
+
+              <div class="text-neutral-500" data-i18n="pot.streamEngineReady">HAICHAIN Autonomous Sub-Cent Engine • Ready on Solana Devnet</div>
+
+              <div class="text-neutral-200 dark:text-neutral-100 font-semibold"><span data-i18n="pot.streamPromptReady">[Ready] Select an AI service above and click "Execute & Settle" to trigger real micro-escrow deduction.</span></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- REAL-TIME TELEMETRY STREAM CARD -->
+
+        <div class="rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-brand-lightCard dark:bg-brand-card p-6 sm:p-8 shadow-sm">
+
+          
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900 gap-4">
+
+            <div>
+
+              <div class="flex items-center space-x-2">
+
+                <h3 class="font-semibold text-base text-black dark:text-white" data-i18n="home.streamTitle">Live Micro-Settlement Stream</h3>
+
+                <span class="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse"></span>
+
+              </div>
+
+              <p class="text-xs text-neutral-500 mt-1" data-i18n="home.streamSubtitle">Autonomous Agent-to-Service settlements verified on-chain via MTU 771-byte ticks.</p>
+
+            </div>
+
+            
+
+            <!-- Controls -->
+
+            <div class="flex items-center space-x-2">
+
+              <button id="simulate-tick-btn" class="text-xs font-medium px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors flex items-center space-x-1.5">
+
+                <i data-lucide="play" class="w-3.5 h-3.5"></i>
+
+                <span data-i18n="pot.simulateCall">Simulate Call</span>
+
+              </button>
+
+              <button id="clear-stream-btn" class="text-xs text-neutral-400 hover:text-black dark:hover:text-white p-1.5 rounded-xl transition-colors" title="Clear Stream">
+
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Transaction Feed Table / List -->
+
+          <div class="mt-6 overflow-hidden">
+
+            <div class="space-y-3 font-mono text-xs max-h-[460px] overflow-y-auto no-scrollbar pr-1" id="tx-stream-container">
+
+              
+
+              <!-- Transaction Item 1 -->
+
+              <div class="p-3.5 rounded-2xl border border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/70 dark:bg-neutral-900/30 flex items-center justify-between">
+
+                <div class="flex items-center space-x-3">
+
+                  <div class="w-7 h-7 rounded-lg bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-[10px]">
+
+                    API
+
+                  </div>
+
+                  <div>
+
+                    <div class="text-neutral-800 dark:text-neutral-200 font-medium">Brave Search API &bull; Web Scraper</div>
+
+                    <div class="text-[10px] text-neutral-400 font-mono">Nonce: #91823 &bull; Proof: 8-leaf Merkle verified</div>
+
+                  </div>
+
+                </div>
+
+                <div class="text-right">
+
+                  <div class="text-black dark:text-white font-semibold">-$0.0024 USDT</div>
+
+                  <div class="text-[10px] text-neutral-500 font-mono" data-i18n="pot.txSettled">0.14ms &bull; Settled</div>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- Transaction Item 2 -->
+
+              <div class="p-3.5 rounded-2xl border border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/70 dark:bg-neutral-900/30 flex items-center justify-between">
+
+                <div class="flex items-center space-x-3">
+
+                  <div class="w-7 h-7 rounded-lg bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-[10px]">
+
+                    LLM
+
+                  </div>
+
+                  <div>
+
+                    <div class="text-neutral-800 dark:text-neutral-200 font-medium">Claude 3.5 Sonnet &bull; Fast Synthesis</div>
+
+                    <div class="text-[10px] text-neutral-400 font-mono">Nonce: #91824 &bull; Token Count: 1,420 tokens</div>
+
+                  </div>
+
+                </div>
+
+                <div class="text-right">
+
+                  <div class="text-black dark:text-white font-semibold">-$0.0042 USDT</div>
+
+                  <div class="text-[10px] text-neutral-500 font-mono" data-i18n="pot.txSettled">0.18ms &bull; Settled</div>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- Transaction Item 3 -->
+
+              <div class="p-3.5 rounded-2xl border border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/70 dark:bg-neutral-900/30 flex items-center justify-between">
+
+                <div class="flex items-center space-x-3">
+
+                  <div class="w-7 h-7 rounded-lg bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-[10px]">
+
+                    2PC
+
+                  </div>
+
+                  <div>
+
+                    <div class="text-neutral-800 dark:text-neutral-200 font-medium">OpenAI o3 &bull; Elastic Buffer Refund</div>
+
+                    <div class="text-[10px] text-neutral-400 font-mono">Nonce: #91825 &bull; Excess tokens released</div>
+
+                  </div>
+
+                </div>
+
+                <div class="text-right">
+
+                  <div class="text-black dark:text-white font-semibold">+$0.0012 USDT</div>
+
+                  <div class="text-[10px] text-neutral-400 font-mono" data-i18n="pot.txRefunded">Refunded • Zero Fee</div>
+
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Bottom Summary Bar -->
+
+          <div class="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-900 flex justify-between items-center text-xs text-neutral-500 font-mono">
+
+            <span><span data-i18n="pot.metricNetting">Symmetric Netting Efficiency:</span> <strong>99.999%</strong></span>
+
+            <span><span data-i18n="pot.metricTicks">Total Ticks Compressed:</span> <strong id="total-ticks-count">1,420,891</strong></span>
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+  </main>
+
+
+
+  
+
+  <!-- ======================== SECTION: BENCHMARK COMPARISON MATRIX ======================== -->
+
+  <section id="comparison" class="py-16 sm:py-20 border-t border-brand-lightBorder dark:border-brand-border bg-neutral-50/50 dark:bg-neutral-950/60 relative">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+
+          <span data-i18n="comp.badge">BENCHMARK ANALYSIS &bull; TECHNICAL FOUNDATION</span>
+
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="comp.title">
+
+          How HAICHAIN Outperforms the AI Blockchain Landscape
+
+        </h2>
+
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="comp.subtitle">
+
+          Not all 'AI Crypto' projects solve autonomous financial rails or protect user wallets from catastrophic prompt injections.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- Comparison Table Card with Horizontal Scroll -->
+
+      <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm overflow-hidden">
+
+        <div class="overflow-x-auto">
+
+          <table class="w-full text-left text-xs font-sans border-collapse min-w-[760px]">
+
+            <thead>
+
+              <tr class="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/80">
+
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[20%]" data-i18n="comp.colFeature">Benchmark Feature</th>
+
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-black dark:text-white font-mono bg-neutral-200/60 dark:bg-neutral-800/80 w-[24%]" data-i18n="comp.colHai">HAICHAIN (HAI²)</th>
+
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[18%]" data-i18n="comp.colTao">Bittensor ($TAO)</th>
+
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[18%]" data-i18n="comp.colRender">Render / io.net</th>
+
+                <th class="py-4 px-5 font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 font-mono w-[20%]" data-i18n="comp.colEliza">ElizaOS / Virtuals</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-900 leading-relaxed">
+
+              <!-- Row 1 -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row1Name">Core Strategic Focus</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row1Hai">Sub-cent micro-payment OS & military-hardened agent wallet bounds</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Tao">Decentralized AI model ranking & subnet evaluation network</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Render">Distributed raw GPU compute and rendering power marketplace</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Eliza">Social agent meme tokenization & virtual character speculation</td>
+
+              </tr>
+
+              <!-- Row 2 -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row2Name">Settlement Latency</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row2Hai">< 400 milliseconds (Sub-slot speed matching LLM reasoning ticks)</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row2Tao">12 - 60 seconds (Infeasible for real-time per-query API payments)</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row2Render">Minutes to hours (Batch settlement per render job)</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row2Eliza">12 - 15 seconds (Constrained by underlying EVM/Base block times)</td>
+
+              </tr>
+
+              <!-- Row 3 -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row3Name">Transaction Cost & Granularity</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row3Hai">Nano-cents (< $0.0002). Viable down to $0.0001 per API call</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row3Tao">Prohibitive subnet costs ($10k - $100k+), no sub-cent payments</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row3Render">Tens of dollars per job. Not designed for micro-transactions</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row3Eliza">$0.02 - $0.15 EVM gas fees (economically unfeasible for $0.001 calls)</td>
+
+              </tr>
+
+              <!-- Row 4 -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row4Name">Prompt Injection / Wallet Drain Defense</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row4Hai">100% Cryptographic Immunity: Merkle PDA bounds + Panic Kill-Switch</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row4Tao">No financial capability boundary enforcement for autonomous agents</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row4Render">Not applicable (Bare compute resource renting only)</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row4Eliza">Severe risk: Agent wallets can be drained by prompt injection or infinite loops</td>
+
+              </tr>
+
+              <!-- Row 5 -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row5Name">User Experience (UX)</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row5Hai">Invisible Web3: Biometric FaceID/Passkey, Apple Pay & instant fiat QR</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row5Tao">Extremely complex, strictly for AI researchers and GPU miners</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row5Render">Technical portal for infrastructure providers and 3D artists</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row5Eliza">Requires Web3 wallet (Metamask), managing 12-word seed phrases</td>
+
+              </tr>
+
+              <!-- Row 6 -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row6Name">Value Accrual & Cash Flow Model</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row6Hai">Real Yield: 40% protocol fees paid in pure USDT + 60% Buyback & Burn</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Tao">Inflationary block reward emissions distributed to subnet validators</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Render">Utility token burns/payments for compute cycles</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Eliza">Speculative token trading on individual agent bonding curves</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
 
       </div>
 
     </div>
 
+  </section>
+
+
+
+  <!-- ======================== SECTION: TARGET AUDIENCE & DUAL HORIZONS ======================== -->
+
+  <section id="target-audience" class="py-16 sm:py-20 border-t border-brand-lightBorder dark:border-brand-border bg-white dark:bg-black relative">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+
+          <span data-i18n="aud.badge">TARGET AUDIENCE &bull; DUAL-HORIZON VALUE</span>
+
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="aud.title">
+
+          Who Does HAICHAIN Serve? Present & Future Value
+
+        </h2>
+
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="aud.subtitle">
+
+          Three core stakeholder pillars designed for immediate utility and exponential institutional scale.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- 3 Audience Columns -->
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        
+
+        <!-- Pillar 1 -->
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm flex flex-col justify-between">
+
+          <div>
+
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white uppercase tracking-wider" data-i18n="aud.userTag">End-Users & AI Builders</span>
+
+            <h3 class="text-lg font-bold text-black dark:text-white mt-4" data-i18n="aud.userTitle">1. End-Users & AI Builders</h3>
+
+            
+
+            <div class="mt-5 space-y-4 text-xs">
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.userNowLabel">Immediate Present Value:</span>
+
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.userNowDesc">Save 95% on expenses by replacing predatory $150-$450/mo SaaS subscriptions with sub-cent utility; frictionless FaceID/Passkey onboarding; complete financial safety.</p>
+
+              </div>
+
+
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.userFutureLabel">Future Horizon:</span>
+
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.userFutureDesc">Stream passive royalties in USDT from proprietary knowledge/prompt assets; earn on-chain bounties from AI via Reverse Micro-Tasking.</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Pillar 2 -->
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm flex flex-col justify-between">
+
+          <div>
+
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white uppercase tracking-wider" data-i18n="aud.bizTag">API & Tool Providers</span>
+
+            <h3 class="text-lg font-bold text-black dark:text-white mt-4" data-i18n="aud.bizTitle">2. AI Enterprises & API Providers</h3>
+
+            
+
+            <div class="mt-5 space-y-4 text-xs">
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.bizNowLabel">Immediate Present Value:</span>
+
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.bizNowDesc">Unlock real-time pay-per-call monetization across millions of autonomous agents globally with zero chargeback risk; 60-second integration via MCP.</p>
+
+              </div>
+
+
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.bizFutureLabel">Future Horizon:</span>
+
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.bizFutureDesc">Fully autonomous B2B commerce: AI agents discover, negotiate, and settle service usage 24/7 without human sales teams; continuous streaming USDT liquidity.</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Pillar 3 -->
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-brand-card shadow-sm flex flex-col justify-between">
+
+          <div>
+
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white uppercase tracking-wider" data-i18n="aud.investorTag">Investors & Stakers</span>
+
+            <h3 class="text-lg font-bold text-black dark:text-white mt-4" data-i18n="aud.investorTitle">3. Strategic Investors & $HAI Stakers</h3>
+
+            
+
+            <div class="mt-5 space-y-4 text-xs">
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.investorNowLabel">Immediate Present Value:</span>
+
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.investorNowDesc">Pre-Seed entry at $0.007 (30% discount to TGE $0.010); receive pure Real Yield in USDT (40% of all machine fees) plus 60% continuous Buyback & Burn.</p>
+
+              </div>
+
+
+
+              <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
+
+                <span class="font-bold text-black dark:text-white block mb-1" data-i18n="aud.investorFutureLabel">Future Horizon:</span>
+
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed" data-i18n="aud.investorFutureDesc">Target 50x - 140x appreciation as $HAI transitions 1:1 into Native Gas Coin of the independent Sovereign AI L1 ($1B - $5B+ FDV).</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ======================== SECTION: TECHNICAL STATUS (PROVEN VS IN-PROGRESS) ======================== -->
+
+  <section id="technical-status" class="py-16 sm:py-20 border-t border-brand-lightBorder dark:border-brand-border bg-neutral-50/50 dark:bg-neutral-950/60 relative">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
+
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 mb-4 shadow-xs">
+
+          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+
+          <span data-i18n="tech.badge">PROVEN DELIVERY &bull; ZERO VAPORWARE</span>
+
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white" data-i18n="tech.title">
+
+          Technical Status: 100% Deployed vs Future Milestones
+
+        </h2>
+
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="tech.subtitle">
+
+          Every claim is empirically verified on open source code and the live Solana blockchain.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- 2 Large Delivery Panels -->
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        
+
+        <!-- Panel 1: Complete 100% -->
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-brand-card shadow-md relative overflow-hidden">
+
+          <div class="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-900">
+
+            <div>
+
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 uppercase" data-i18n="tech.doneTag">Ready For Production Use</span>
+
+              <h3 class="text-base sm:text-lg font-bold text-black dark:text-white mt-3" data-i18n="tech.doneTitle">100% COMPLETED (LIVE & VERIFIED ON DEVNET)</h3>
+
+            </div>
+
+            <div class="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white font-bold">
+
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+
+            </div>
+
+          </div>
+
+
+
+          <ul class="mt-6 space-y-4 text-xs text-neutral-700 dark:text-neutral-300">
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.done1">Solana Rust Anchor v6.9.3 Kernel (Program ID: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk) enforcing 6 mathematical invariants.</span>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.done2">Passed 15/15 automated forensic security tests (defending against historic $800M+ Wormhole, Nomad, Euler, Mango exploits).</span>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <div>
+
+                <span data-i18n="tech.done3">Verified on-chain genesis micro-escrow transaction on Solana Explorer (Tx: 4946birjjYz3DHxjNuq1D9gv...).</span>
+
+                <a href="https://explorer.solana.com/tx/4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA?cluster=devnet" target="_blank" class="inline-block underline ml-1 font-mono text-[11px] text-neutral-500 hover:text-black dark:hover:text-white"><span data-i18n="pot.viewTx">View Tx</span></a>
+
+              </div>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.done4">Developer suite published: @haichain/sdk (TypeScript), Bare-Metal C-SDK (<200KB RAM) & MCP Server for Claude Desktop & Cursor.</span>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.done5">Luxury terminal web interface supporting Biometric Passkeys, 1-click fiat deposits, and real-time execution telemetry.</span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Panel 2: Roadmap -->
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm relative overflow-hidden">
+
+          <div class="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-900">
+
+            <div>
+
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 uppercase" data-i18n="tech.progTag">Upcoming Milestones</span>
+
+              <h3 class="text-base sm:text-lg font-bold text-black dark:text-white mt-3" data-i18n="tech.progTitle">IN-PROGRESS ON THE ROADMAP</h3>
+
+            </div>
+
+            <div class="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-600 dark:text-neutral-400">
+
+              <i data-lucide="clock" class="w-5 h-5"></i>
+
+            </div>
+
+          </div>
+
+
+
+          <ul class="mt-6 space-y-4 text-xs text-neutral-600 dark:text-neutral-400">
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.prog1">Stage 1 (Mo. 0-18): Secondary formal audit with OtterSec/Neodyme and deployment to Solana Mainnet-Beta.</span>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.prog2">Stage 1 (Mo. 0-18): Public Community Token Generation Event (TGE) on Meteora Alpha Vault & DLMM, Tier-2 CEX listings.</span>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.prog3">Stage 2 (Mo. 18-36): Dedicated SVM App-Rollup (L2) scaling throughput to 50,000+ machine TPS at $0.000001 per tick.</span>
+
+            </li>
+
+            <li class="flex items-start space-x-3">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="tech.prog4">Stage 3 (Mo. 36+): Sovereign Machine L1 Mainnet launch featuring native OP_402_PAY CPU opcodes (>100,000 TPS) & PoAI consensus.</span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- SOVEREIGN L1 ENDGAME ROADMAP SECTION -->
+
+  <section id="endgame" class="py-16 border-t border-brand-lightBorder dark:border-brand-border bg-neutral-50/50 dark:bg-neutral-950/50">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      
+
+      <div class="text-center max-w-3xl mx-auto mb-16">
+
+        <span class="text-xs uppercase font-mono tracking-widest text-neutral-500" data-i18n="roadmap.badge">THE MASTER ROADMAP</span>
+
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white mt-2" data-i18n="home.roadmapTitle">
+
+          From Solana Protocol to Sovereign AI L1.
+
+        </h2>
+
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="home.roadmapSubtitle">
+
+          Why "HAICHAIN" is the definitive name for the future: We start where liquidity and speed exist today, 
+
+          and evolve into the sovereign, high-throughput machine-consensus blockchain of tomorrow.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- 3-Phase Interactive Evolutionary Journey -->
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        
+
+        <!-- Phase 1 -->
+
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm relative">
+
+          <div class="text-xs font-mono font-bold text-black dark:text-white uppercase tracking-wider mb-2" data-i18n="roadmap.stage1Badge">Stage 1 • Active Now</div>
+
+          <h3 class="text-lg font-bold text-black dark:text-white" data-i18n="home.roadmapPhase1Title">Solana L1 Protocol</h3>
+
+          <p class="text-xs text-neutral-500 mt-2 font-mono" data-i18n="roadmap.stage1Timeline">Months 0 – 18 • Traction & Scale</p>
+
+          <ul class="mt-4 space-y-2 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage1Item1">Anchor v6.9.3 Zero-Griefing Kernel</span>
+
+            </li>
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage1Item2">Leverage Solana's $30B+ security & 400ms finality</span>
+
+            </li>
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="check" class="w-4 h-4 text-black dark:text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage1Item3">Target: 100,000+ Active Agents & $15.9M ARR</span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Phase 2 -->
+
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm relative">
+
+          <div class="text-xs font-mono font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2" data-i18n="roadmap.stage2Badge">Stage 2 • Expansion</div>
+
+          <h3 class="text-lg font-bold text-black dark:text-white" data-i18n="home.roadmapPhase2Title">Dedicated SVM Rollup</h3>
+
+          <p class="text-xs text-neutral-500 mt-2 font-mono" data-i18n="roadmap.stage2Timeline">Months 18 – 36 • Ephemeral Layer 2</p>
+
+          <ul class="mt-4 space-y-2 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage2Item1">Custom SVM execution + Celestia/EigenDA</span>
+
+            </li>
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage2Item2">Throughput: 50,000+ machine TPS with $0.000001 fees</span>
+
+            </li>
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="arrow-right" class="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage2Item3">$HAI token activates as L2 Sequencer Gas fee</span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <!-- Phase 3 -->
+
+        <div class="p-6 rounded-3xl border border-neutral-300 dark:border-neutral-700 bg-neutral-900 text-white dark:bg-neutral-900 shadow-lg relative overflow-hidden">
+
+          <div class="absolute -right-12 -top-12 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+
+          <div class="text-xs font-mono font-medium text-neutral-400 uppercase tracking-wider mb-2" data-i18n="roadmap.stage3Badge">Stage 3 • Endgame</div>
+
+          <h3 class="text-lg font-bold text-white" data-i18n="home.roadmapPhase3Title">Sovereign Machine L1</h3>
+
+          <p class="text-xs text-neutral-400 mt-2 font-mono" data-i18n="roadmap.stage3Timeline">Month 36+ • Autonomous Machine State</p>
+
+          <ul class="mt-4 space-y-2 text-xs text-neutral-300 leading-relaxed">
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="cpu" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage3Item1">Native OP_402_PAY bytecode in CPU runtime</span>
+
+            </li>
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="shield" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage3Item2">Proof-of-Agentic-Work & zkML inference consensus</span>
+
+            </li>
+
+            <li class="flex items-start space-x-2">
+
+              <i data-lucide="coins" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+
+              <span data-i18n="roadmap.stage3Item3">$HAI transitions to Native Base Gas & Staking Asset</span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- DEPOSIT MODAL (SIMULATED ON-RAMP FOR DEMO) -->
+
+  <div id="deposit-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden flex items-center justify-center p-4">
+
+    <div class="w-full max-w-md rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative">
+
+      
+
+      <div class="flex justify-between items-center pb-4 border-b border-neutral-100 dark:border-neutral-900">
+
+        <h3 class="font-semibold text-sm text-black dark:text-white" data-i18n="home.depositTitle">Top Up Spending Pot</h3>
+
+        <button id="close-modal-btn" class="p-1 rounded-full text-neutral-400 hover:text-black dark:hover:text-white">
+
+          <i data-lucide="x" class="w-5 h-5"></i>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Payment Tabs -->
+
+      <div class="flex space-x-2 my-4 p-1 rounded-2xl bg-neutral-100 dark:bg-neutral-900 text-xs font-medium">
+
+        <button id="index-pay-apple" type="button" class="flex-1 py-2 rounded-xl bg-white dark:bg-black text-black dark:text-white shadow-xs font-semibold flex items-center justify-center space-x-1.5 transition-all">
+
+          <svg class="w-3.5 h-3.5" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.7-7.93-12-14.58-6.19-9.5-11.08-20.08-14.67-31.75-3.59-11.66-5.38-22.92-5.38-33.77 0-14.38 3.73-26.35 11.19-35.9 7.46-9.56 16.73-14.43 27.81-14.63 5.43 0 11.39 1.49 17.88 4.47 6.5 2.97 10.45 4.54 11.87 4.72 2.07-.36 6.38-2.03 12.92-5 6.54-2.98 12.44-4.36 17.71-4.14 9.87.5 18.23 4.12 25.07 10.87 6.84 6.75 11.21 14.88 13.12 24.39-8.7 5.25-13.08 12.73-13.13 22.45-.06 7.6 2.76 14.28 8.46 20.04 5.7 5.76 12.63 9.07 20.8 9.94-1.96 6.13-4.59 12.45-7.89 18.96zM119.22 33.15c0-6.93 2.53-13.62 7.6-20.08 5.07-6.45 11.53-10.84 19.38-13.17.65 6.74-1.57 13.43-6.66 20.06-5.09 6.63-11.87 11.03-20.32 13.19z"/></svg>
+
+          <span data-i18n="modal.depositApplePay">Apple Pay</span>
+
+        </button>
+
+        <button id="index-pay-card" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white font-semibold flex items-center justify-center space-x-1.5 transition-all">
+
+          <i data-lucide="credit-card" class="w-3.5 h-3.5"></i>
+
+          <span data-i18n="modal.depositCard">Card</span>
+
+        </button>
+
+        <button id="index-pay-web3" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white font-semibold flex items-center justify-center space-x-1.5 transition-all">
+
+          <span class="w-2 h-2 rounded-full bg-black dark:bg-white"></span>
+
+          <span data-i18n="modal.depositWeb3">Web3 Wallet</span>
+
+        </button>
+
+      </div>
+
+
+
+      <!-- Quick Preset Amounts -->
+
+      <div class="grid grid-cols-3 gap-2 mb-4 font-mono text-xs">
+
+        <button class="preset-btn py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white font-semibold text-black dark:text-white" data-amount="5.00">+$5.00</button>
+
+        <button class="preset-btn py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white font-semibold text-black dark:text-white" data-amount="10.00">+$10.00</button>
+
+        <button class="preset-btn py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white font-semibold text-black dark:text-white" data-amount="25.00">+$25.00</button>
+
+      </div>
+
+
+
+      <!-- Custom Input -->
+
+      <div class="relative mb-6">
+
+        <span class="absolute left-4 top-3 text-neutral-400 font-mono text-sm">$</span>
+
+        <input type="number" id="custom-amount-input" placeholder="Custom amount" value="10.00" step="1.00" class="w-full pl-8 pr-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white font-mono text-sm focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
+
+      </div>
+
+
+
+      <!-- Confirm Deposit Button -->
+
+      <button id="confirm-deposit-btn" class="w-full py-3.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-sm transition-all shadow-md flex items-center justify-center space-x-2">
+
+        <i data-lucide="credit-card" class="w-4 h-4"></i>
+
+        <span data-i18n="home.depositConfirmBtn">Confirm Deposit (0% Gas Fee)</span>
+
+      </button>
+
+
+
+      <p class="text-[11px] text-neutral-400 text-center mt-3 font-mono" data-i18n="deposit.backedNotice">1:1 Backed by Tether USDT on Solana L1 segregated PDA.</p>
+
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- INVESTOR & DEVELOPER DATA ROOM MODAL -->
+
+  <div id="investor-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden flex items-center justify-center p-4">
+
+    <div class="w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 sm:p-8 shadow-2xl relative">
+
+      <div class="flex justify-between items-center pb-4 border-b border-neutral-100 dark:border-neutral-900">
+
+        <div>
+
+          <h3 class="font-bold text-base text-black dark:text-white" data-i18n="home.investorTitle">Investor & Developer Fast-Pack</h3>
+
+          <p class="text-xs text-neutral-500 font-mono mt-0.5" data-i18n="investor.seedNotice">Official Seed Round ($1.2M at $15M FDV) & Developer Tooling</p>
+
+        </div>
+
+        <button id="close-investor-modal-btn" class="p-1 rounded-full text-neutral-400 hover:text-black dark:hover:text-white">
+
+          <i data-lucide="x" class="w-5 h-5"></i>
+
+        </button>
+
+      </div>
+
+
+
+      <div class="mt-6 space-y-4 text-xs font-mono">
+
+        <!-- Pitch Deck Link -->
+
+        <a href="../HAICHAIN_INVESTOR_PITCH_DECK_V1.0.md" target="_blank" class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between group transition-all">
+
+          <div class="flex items-center space-x-3">
+
+            <div class="w-8 h-8 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-xs">
+
+              10p
+
+            </div>
+
+            <div>
+
+              <div class="font-semibold text-black dark:text-white group-hover:underline" data-i18n="investor.deckTitle">Institutional Pitch Deck v1.0</div>
+
+              <div class="text-[11px] text-neutral-500" data-i18n="investor.deckDesc">10-Slide Memo: Machine Economy, Moat & Unit Economics</div>
+
+            </div>
+
+          </div>
+
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400 group-hover:text-black dark:group-hover:text-white"></i>
+
+        </a>
+
+
+
+        <!-- Financial Model Link -->
+
+        <a href="../HAICHAIN_FINANCIAL_MODEL_3YR_PL.md" target="_blank" class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between group transition-all">
+
+          <div class="flex items-center space-x-3">
+
+            <div class="w-8 h-8 rounded-xl bg-neutral-200 text-black dark:bg-neutral-800 dark:text-white flex items-center justify-center font-bold text-xs">
+
+              P&L
+
+            </div>
+
+            <div>
+
+              <div class="font-semibold text-black dark:text-white group-hover:underline" data-i18n="investor.modelTitle">3-Year Financial Model & P&L</div>
+
+              <div class="text-[11px] text-neutral-500" data-i18n="investor.modelDesc">Month-20 Breakeven, $4.73M Gross Revenue, 45.9% EBITDA</div>
+
+            </div>
+
+          </div>
+
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400 group-hover:text-black dark:group-hover:text-white"></i>
+
+        </a>
+
+
+
+        <!-- Copy MCP Config Button -->
+
+        <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+
+          <div class="flex justify-between items-center mb-2">
+
+            <span class="font-semibold text-black dark:text-white">Claude Desktop & Cursor MCP Config:</span>
+
+            <button id="copy-mcp-btn" class="px-2.5 py-1 rounded-lg bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[10px] font-bold" data-i18n="investor.copyJson">Copy JSON</button>
+
+          </div>
+
+          <pre class="text-[10px] text-neutral-600 dark:text-neutral-400 overflow-x-auto no-scrollbar font-mono bg-white dark:bg-black p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800"><code>{
+
+  "mcpServers": {
+
+    "haichain": {
+
+      "command": "node",
+
+      "args": ["@haichain/mcp-server/dist/index.js"]
+
+    }
+
+  }
+
+}</code></pre>
+
+        </div>
+
+
+
+        <!-- Solana Explorer Verification Links -->
+
+        <div class="pt-2 text-center text-[11px] text-neutral-500">
+
+          <span>Devnet Program ID: </span>
+
+          <a href="https://explorer.solana.com/address/DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">DK4Q...w4xk</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+    <!-- FOOTER: LUXURY APPLE/WEB3 MINIMALIST (OPTIMIZED FOR DESKTOP & MOBILE) -->
+  <footer class="w-full border-t border-brand-lightBorder dark:border-brand-border bg-white/95 dark:bg-black/95 backdrop-blur-xl py-12 sm:py-16 text-xs text-neutral-500 font-mono relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <!-- Top Row: Brand & Fast Nav -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-neutral-200/60 dark:border-neutral-900">
+        
+        <!-- Brand Identity & Tagline -->
+        <div class="space-y-3 max-w-md">
+          <a href="/" class="inline-flex items-center group py-0.5">
+            <img src="/assets/haichain-official-logo-white.png?v=white_v2" alt="HAICHAIN" class="h-6 sm:h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" style="max-height: 28px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v2';}">
+          </a>
+          <p class="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed">
+            The Autonomous Machine Financial Operating System. Non-custodial micro-escrows and instant AI capability settlements on Solana.
+          </p>
+        </div>
+
+        <!-- Ecosystem Fast Navigation -->
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-sans text-neutral-600 dark:text-neutral-400">
+          <a href="#overview" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.overview">Overview</a>
+          <a href="#spending-pot" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.architecture">Architecture</a>
+          <a href="#ai2-philosophy" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
+          <a href="#endgame" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.sovereignL1">Sovereign L1</a>
+          <a href="/whitepaper" target="_blank" class="hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1">
+            <span data-i18n="nav.whitepaper">Whitepaper</span>
+            <i data-lucide="external-link" class="w-3 h-3"></i>
+          </a>
+          <a href="/dashboard" class="px-3 py-1.5 rounded-lg bg-black text-white dark:bg-white dark:text-black font-semibold text-xs transition-opacity hover:opacity-90 inline-flex items-center space-x-1" data-i18n="hero.launchDashboard">
+            <span>Launch App</span>
+            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row: Compliance, Production Cert & Status -->
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[11px] text-neutral-500 dark:text-neutral-500">
+        
+        <!-- Compliance & Legal Shield -->
+        <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span class="inline-flex items-center space-x-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-mono text-[10px] font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span data-i18n="footer.certified">v6.9.3 PRODUCTION CERTIFIED</span>
+          </span>
+          <span class="hidden sm:inline text-neutral-400 dark:text-neutral-700">&bull;</span>
+          <span data-i18n="footer.compliance">Non-Custodial FinCEN Exempt &bull; EU MiCA Compliant &bull; 100% Exploit Immune</span>
+        </div>
+
+        <!-- Copyright & Devnet Node -->
+        <div class="text-left sm:text-right shrink-0">
+          <span>&copy; 2026 HAICHAIN Network &bull; All Rights Reserved</span>
+        </div>
+
+      </div>
+
+    </div>
   </footer>
 
 
