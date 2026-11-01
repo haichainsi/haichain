@@ -539,8 +539,8 @@
         hardCapUSD: 175000,
         minDeposit: 500,
         maxDeposit: 15000,
-        saftUrl: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_VI_EN.md',
-        memoUrl: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_VI_EN.md'
+        saftUrl: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf',
+        memoUrl: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_EN.pdf'
       },
       PUBLIC_TGE: {
         isPublic: true,
@@ -1020,9 +1020,9 @@
       btnSaft.addEventListener('click', (e) => {
         e.preventDefault();
         const title = getActiveLang() === 'vi' 
-          ? 'Hợp Đồng SAFT Pre-Seed HAICHAIN (Song Ngữ VI & EN)' 
-          : 'HAICHAIN Pre-Seed SAFT Agreement (Bilingual VI & EN)';
-        window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_VI_EN.pdf', title);
+          ? 'Hợp Đồng SAFT Pre-Seed HAICHAIN (Standard English Edition)' 
+          : 'HAICHAIN Pre-Seed SAFT Agreement (Standard English Edition)';
+        window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', title);
       });
     }
 
@@ -1033,7 +1033,7 @@
         const title = getActiveLang() === 'vi' 
           ? 'Bản Tóm Tắt Chiến Lược 1 Trang - Vòng Pre-Seed' 
           : 'HAICHAIN Pre-Seed 1-Pager Investment Teaser Memo';
-        window.openPdfViewerModal('/HAICHAIN_PRESEED_ONE_PAGER_MEMO_VI_EN.pdf', title);
+        window.openPdfViewerModal('/HAICHAIN_PRESEED_ONE_PAGER_MEMO_EN.pdf', title);
       });
     }
 
