@@ -2510,7 +2510,7 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
     });
 
     // ================= 5.5 EARLY BACKER ALLOCATIONS & TOKEN-2022 VESTING VAULT =================
-    const TOKEN_2022_MINT = "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu"; // Official Haichain Network ($HAISI) Token-2022 Mint
+    const TOKEN_2022_MINT = "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu"; // Official Haichain SI ($HAISI) Token-2022 Mint
     const TRANSFER_HOOK_PROGRAM = "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk";
 
     function getStoredAllocations() {
@@ -2553,8 +2553,8 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
       try {
         await navigator.clipboard.writeText(TOKEN_2022_MINT);
         alert(isVi 
-          ? `ĐÃ SAO CHÉP ĐỊA CHỈ MINT TOKEN-2022 ($HAISI):\n\n${TOKEN_2022_MINT}\n\nCách thêm vào ví Phantom:\n1. Mở ví Phantom -> Bấm nút 'Manage token list' (Quản lý danh sách token).\n2. Dán địa chỉ Mint trên vào ô tìm kiếm.\n3. Bật hiển thị token $HAISI (Haichain Network) để xem số dư và biểu tượng của bạn.`
-          : `TOKEN-2022 MINT COPIED ($HAISI):\n\n${TOKEN_2022_MINT}\n\nTo view in Phantom:\n1. Open Phantom -> Click 'Manage token list'.\n2. Paste the Mint Address into search.\n3. Toggle ON to view your official $HAISI (Haichain Network) balance and Transfer-Hook status.`);
+          ? `ĐÃ SAO CHÉP ĐỊA CHỈ MINT TOKEN-2022 ($HAISI):\n\n${TOKEN_2022_MINT}\n\nCách thêm vào ví Phantom:\n1. Mở ví Phantom -> Bấm nút 'Manage token list' (Quản lý danh sách token).\n2. Dán địa chỉ Mint trên vào ô tìm kiếm.\n3. Bật hiển thị token $HAISI (Haichain SI) để xem số dư và biểu tượng của bạn.`
+          : `TOKEN-2022 MINT COPIED ($HAISI):\n\n${TOKEN_2022_MINT}\n\nTo view in Phantom:\n1. Open Phantom -> Click 'Manage token list'.\n2. Paste the Mint Address into search.\n3. Toggle ON to view your official $HAISI (Haichain SI) balance and Transfer-Hook status.`);
       } catch (err) {
         alert(`Token-2022 Mint ($HAISI):\n${TOKEN_2022_MINT}`);
       }
@@ -2662,8 +2662,8 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
                 </div>
                 <p class="text-xs text-neutral-500 mt-1">
                   ${isVi 
-                    ? 'Sổ cái phân bổ token $HAISI (Haichain Network) và hợp đồng Vesting on-chain được bảo vệ bằng Transfer-Hook mật mã.' 
-                    : 'On-chain $HAISI (Haichain Network) allocation ledger and cryptographic Transfer-Hook vesting smart contracts.'}
+                    ? 'Sổ cái phân bổ token $HAISI (Haichain SI) và hợp đồng Vesting on-chain được bảo vệ bằng Transfer-Hook mật mã.' 
+                    : 'On-chain $HAISI (Haichain SI) allocation ledger and cryptographic Transfer-Hook vesting smart contracts.'}
                 </p>
               </div>
               <div class="flex items-center space-x-2 shrink-0">
@@ -2860,8 +2860,8 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
 
             <p class="leading-relaxed text-neutral-400 font-sans text-xs">
               ${isVi
-                ? `<strong>Trải nghiệm hiển thị trên Ví Phantom của bạn:</strong> Bạn nhận được đúng token <strong>$HAISI</strong> (Haichain Network) vào ví Phantom với đầy đủ logo nhận diện và số dư <strong>${haiTotal.toLocaleString()} HAISI</strong>. Thuộc tính <em>Transfer-Hook (Chương trình ${TRANSFER_HOOK_PROGRAM.slice(0, 8)}...${TRANSFER_HOOK_PROGRAM.slice(-6)})</em> trên Solana L1 sẽ tự động kiểm soát và ngăn chặn các giao dịch chuyển khoản hoặc xả token trên sàn DEX trước ngày TGE. Đến đúng khối slot niêm yết TGE, Transfer-Hook sẽ tự động mở khóa theo lịch trình toán học bên dưới.`
-                : `<strong>Phantom Wallet Experience:</strong> You hold the genuine <strong>$HAISI</strong> (Haichain Network) token in your Phantom wallet with the official visual metadata and exact balance of <strong>${haiTotal.toLocaleString()} HAISI</strong>. The <em>Token-2022 Transfer-Hook (Program ${TRANSFER_HOOK_PROGRAM.slice(0, 8)}...${TRANSFER_HOOK_PROGRAM.slice(-6)})</em> cryptographically blocks unauthorized secondary transfers and DEX pool dumping prior to the official Public TGE slot. On TGE date, the hook dynamically unlocks transfers per the mathematical schedule below.`
+                ? `<strong>Trải nghiệm hiển thị trên Ví Phantom của bạn:</strong> Bạn nhận được đúng token <strong>$HAISI</strong> (Haichain SI) vào ví Phantom với đầy đủ logo nhận diện và số dư <strong>${haiTotal.toLocaleString()} HAISI</strong>. Thuộc tính <em>Transfer-Hook (Chương trình ${TRANSFER_HOOK_PROGRAM.slice(0, 8)}...${TRANSFER_HOOK_PROGRAM.slice(-6)})</em> trên Solana L1 sẽ tự động kiểm soát và ngăn chặn các giao dịch chuyển khoản hoặc xả token trên sàn DEX trước ngày TGE. Đến đúng khối slot niêm yết TGE, Transfer-Hook sẽ tự động mở khóa theo lịch trình toán học bên dưới.`
+                : `<strong>Phantom Wallet Experience:</strong> You hold the genuine <strong>$HAISI</strong> (Haichain SI) token in your Phantom wallet with the official visual metadata and exact balance of <strong>${haiTotal.toLocaleString()} HAISI</strong>. The <em>Token-2022 Transfer-Hook (Program ${TRANSFER_HOOK_PROGRAM.slice(0, 8)}...${TRANSFER_HOOK_PROGRAM.slice(-6)})</em> cryptographically blocks unauthorized secondary transfers and DEX pool dumping prior to the official Public TGE slot. On TGE date, the hook dynamically unlocks transfers per the mathematical schedule below.`
               }
             </p>
 

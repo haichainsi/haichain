@@ -1,9 +1,9 @@
 /**
- * HAICHAIN Network ($HAISI) - Official Token-2022 Deployment Script
+ * Haichain SI ($HAISI) - Official Token-2022 Deployment Script
  * Architecture: Solana SPL Token-2022
  * Extensions:
  *   1. TransferHook (bound to HAICHAIN L1 Kernel Program: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk)
- *   2. MetadataPointer (Self-referential on-chain token metadata: Name: "Haichain Network", Symbol: "HAISI")
+ *   2. MetadataPointer (Self-referential on-chain token metadata: Name: "Haichain SI", Symbol: "HAISI")
  */
 
 const {
@@ -33,7 +33,7 @@ const path = require('path');
 async function main() {
   console.log('========================================================');
   console.log('🚀 DEPLOYING OFFICIAL $HAISI TOKEN ON SOLANA DEVNET');
-  console.log('Token Name: Haichain Network');
+  console.log('Token Name: Haichain SI');
   console.log('Token Symbol: HAISI (Super Intelligence)');
   console.log('========================================================');
 
@@ -104,14 +104,14 @@ async function main() {
   console.log(`    ✓ Mint Initialized! Tx: ${initSig}`);
 
   // 5. Initialize On-Chain Metadata (Token-2022 native metadata)
-  console.log('[5] Initializing On-Chain Metadata for "Haichain Network" ($HAISI)...');
+  console.log('[5] Initializing On-Chain Metadata for "Haichain SI" ($HAISI)...');
   const metadataSig = await tokenMetadataInitializeWithRentTransfer(
     connection,
     payer,
     mint,
     payer.publicKey,
     payer.publicKey,
-    'Haichain Network',
+    'Haichain SI',
     'HAISI',
     'https://haichain.com/assets/haisi-metadata.json',
     [],
@@ -151,7 +151,7 @@ async function main() {
 
   // 7. Save deployment artifact
   const tokenConfig = {
-    tokenName: 'Haichain Network',
+    tokenName: 'Haichain SI',
     symbol: 'HAISI',
     meaning: 'HAI Super Intelligence',
     mintAddress: mint.toBase58(),
