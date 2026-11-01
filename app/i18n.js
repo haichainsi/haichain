@@ -4352,8 +4352,8 @@
     function renderMobileLanguageSwitcherHTML() {
     const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
     return `
-      <button type="button" class="lang-switch-btn group flex items-center justify-center w-7 h-7 p-0 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
-        <span class="w-5 h-3.5 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-200 group-hover:scale-105">
+      <button type="button" class="lang-switch-btn group flex items-center justify-center h-[23px] w-7 p-0 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none leading-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
+        <span class="w-[18px] h-[13px] rounded-[2.5px] overflow-hidden flex items-center justify-center shrink-0 ring-1 ring-black/15 dark:ring-white/20 shadow-xs transition-transform duration-200 group-hover:scale-105 translate-y-[1px]">
           ${current.flagSvg}
         </span>
       </button>

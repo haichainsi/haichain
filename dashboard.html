@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v21_lang_near_logo"></script>
+  <script src="/app/i18n.js?v=v22_perfect_flag_level"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
@@ -155,16 +155,18 @@
     <!-- TOP HEADER BAR (OPTIMIZED FOR MOBILE & DESKTOP) -->
     <header class="h-16 min-h-[64px] border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl px-2 sm:px-6 flex items-center justify-between shrink-0 z-20">
       <!-- Brand Logo on Mobile & Desktop Breadcrumb -->
-      <div class="flex items-center space-x-1 sm:space-x-2 shrink-0 min-w-0 pr-1 sm:pr-3">
-        <!-- Mobile Official Brand Logo (Dedicated Dashboard Mobile Design - Crisp & Balanced) -->
-        <a href="/" class="md:hidden shrink-0 flex items-center group py-0.5" title="HAICHAIN Home">
-          <!-- Light Mode: Dark Logo -->
-          <img src="/assets/haichain-dashboard-mobile-logo.png?v=v21_lang_near_logo" alt="HAICHAIN" class="logo-light dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v21_lang_near_logo';}">
-          <!-- Dark Mode: Pure White Logo -->
-          <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v21_lang_near_logo" alt="HAICHAIN" class="logo-dark dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v21_lang_near_logo';}">
-        </a>
-        <!-- Mobile Language Switcher Mount (Directly adjacent to HAICHAIN Logo) -->
-        <div id="mobile-lang-mount" class="md:hidden shrink-0 flex items-center"></div>
+      <div class="flex items-center shrink-0 min-w-0 pr-1 sm:pr-3">
+        <!-- Mobile Official Brand Logo & Language Switcher (Dead-Center Optical Alignment) -->
+        <div class="md:hidden flex items-center shrink-0 space-x-1.5 self-center">
+          <a href="/" class="shrink-0 flex items-center group" title="HAICHAIN Home">
+            <!-- Light Mode: Dark Logo -->
+            <img src="/assets/haichain-dashboard-mobile-logo.png?v=v22_perfect_flag_level" alt="HAICHAIN" class="logo-light dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0 block" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v22_perfect_flag_level';}">
+            <!-- Dark Mode: Pure White Logo -->
+            <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v22_perfect_flag_level" alt="HAICHAIN" class="logo-dark dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0 block" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v22_perfect_flag_level';}">
+          </a>
+          <!-- Mobile Language Switcher Mount (Optically Aligned with HAICHAIN logotype) -->
+          <div id="mobile-lang-mount" class="shrink-0 flex items-center"></div>
+        </div>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
       </div>
