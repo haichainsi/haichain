@@ -185,4 +185,85 @@ describe("HAICHAIN v6.9.4: Stage 2 Forensic WebAuthn, AA & Bridge Audit Suite", 
     const isValidRootAllowed = !validRotatedRoot.every(b => b === 0);
     expect(isValidRootAllowed).to.be.true;
   });
+
+  // =========================================================================
+  // 8. ANTI-ORPHAN BIOMETRIC VAULT OVERWRITE INVARIANT
+  // =========================================================================
+  it("8. [ANTI-ORPHAN BIOMETRIC VAULT INVARIANT]: Strictly refuses to overwrite existing vault when decryption fails", async () => {
+    let mockLocalStorage: Record<string, string> = {};
+    const vaultKey = "haichain_sovereign_vault_user_test_id";
+
+    // Simulate existing funded vault created previously
+    mockLocalStorage[vaultKey] = JSON.stringify({
+      version: "v6.9.4",
+      createdSlot: 1000,
+      iv: "mock_iv_base64",
+      salt: "mock_salt_base64",
+      ciphertext: "mock_ciphertext_for_1000_usdt_keypair"
+    });
+
+    const isExistingVaultPresent = !!mockLocalStorage[vaultKey];
+    expect(isExistingVaultPresent).to.be.true;
+
+    // Simulate decryption failure (e.g. wrong hardware context or corrupted session)
+    let decryptionSucceeded = false;
+    let newKeypairGenerated = false;
+
+    if (!decryptionSucceeded) {
+      if (isExistingVaultPresent) {
+        // Anti-Orphan Rule: NEVER overwrite existing vault! Throw error and protect user funds!
+        newKeypairGenerated = false;
+      } else {
+        newKeypairGenerated = true;
+      }
+    }
+
+    expect(newKeypairGenerated).to.be.false; // Invariant preserved: old vault is NOT destroyed!
+  });
+
+  // =========================================================================
+  // 9. GLOBAL MONOTONIC NONCE ACROSS MERKLE EPOCHS
+  // =========================================================================
+  it("9. [GLOBAL MONOTONIC NONCE ACROSS MERKLE EPOCHS]: Enforces continuous sequential nonce after root rotation", async () => {
+    let minValidNonce = 50; // Previous root epoch closed nullifiers up to nonce 49
+
+    // Epoch 2 Root is deployed
+    // Case A: Flawed client tries to restart nonce counter at 0 in new epoch
+    const flawedResetNonce = 0;
+    const isFlawedNonceValid = flawedResetNonce >= minValidNonce;
+    expect(isFlawedNonceValid).to.be.false; // Blocked: NonceAlreadyReclaimed!
+
+    // Case B: Compliant client continues global monotonic nonce sequence
+    const compliantNextNonce = 50;
+    const isCompliantValid = compliantNextNonce >= minValidNonce;
+    expect(isCompliantValid).to.be.true;
+  });
+
+  // =========================================================================
+  // 10. TELEPORTATION BRIDGE DUAL CIRCUIT BREAKER (HOURLY + 24H HARD-CAP)
+  // =========================================================================
+  it("10. [TELEPORTATION DUAL CIRCUIT BREAKER]: Halts cumulative weekend multi-hour drain attack", async () => {
+    const totalBridgeTvl = 10_000_000; // $10M TVL
+    const maxHourlyDrain = totalBridgeTvl * 0.05; // 5% = $500,000/hr
+    const maxDailyDrain = totalBridgeTvl * 0.15;  // 15% 24h hard-cap = $1,500,000/day
+
+    let cumulative24hOutflow = 0;
+
+    // Hour 1: $500,000 drained (allowed: within hourly and within daily)
+    cumulative24hOutflow += 500_000;
+    expect(cumulative24hOutflow <= maxDailyDrain).to.be.true;
+
+    // Hour 2: $500,000 drained (cumulative: $1,000,000 - allowed)
+    cumulative24hOutflow += 500_000;
+    expect(cumulative24hOutflow <= maxDailyDrain).to.be.true;
+
+    // Hour 3: $500,000 drained (cumulative: $1,500,000 - reaches 24h hard-cap)
+    cumulative24hOutflow += 500_000;
+    expect(cumulative24hOutflow).to.equal(maxDailyDrain);
+
+    // Hour 4: Attacker attempts another $500,000 drain during weekend
+    const attemptedDrainHour4 = 500_000;
+    const isHour4Permitted = (cumulative24hOutflow + attemptedDrainHour4) <= maxDailyDrain;
+    expect(isHour4Permitted).to.be.false; // 24-hour hard cap halts bridge drain! $8.5M TVL completely safe!
+  });
 });

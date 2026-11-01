@@ -2106,10 +2106,86 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         throw new Error("Không thể khởi tạo hoặc xác thực phần cứng Passkey.");
       }
 
-      // 4. Derive Deterministic Ed25519 Solana Address from Raw Hardware Credential ID
-      const rawIdBuffer = new Uint8Array(cred.rawId);
-      const hashBuffer = await window.crypto.subtle.digest('SHA-256', rawIdBuffer);
-      const seed32 = new Uint8Array(hashBuffer);
+      // =========================================================================
+      // 4. HARDENED SOVEREIGN BIOMETRIC KEYPAIR VAULT (PARADIGM SECURITY STANDARD)
+      // Never derive Ed25519 private seed directly from public cred.rawId!
+      // True 256-bit CSPRNG entropy protected by AES-256-GCM + Anti-Overwrite Invariant.
+      // =========================================================================
+      const vaultKey = 'haichain_sovereign_vault_' + cred.id;
+      let seed32 = null;
+
+      async function deriveVaultKey(rawCredBytes, saltBytes) {
+        const material = await window.crypto.subtle.importKey(
+          'raw',
+          rawCredBytes,
+          'PBKDF2',
+          false,
+          ['deriveKey']
+        );
+        return await window.crypto.subtle.deriveKey(
+          {
+            name: 'PBKDF2',
+            salt: saltBytes,
+            iterations: 100000,
+            hash: 'SHA-256'
+          },
+          material,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['encrypt', 'decrypt']
+        );
+      }
+
+      const existingVaultJson = localStorage.getItem(vaultKey);
+      if (existingVaultJson) {
+        try {
+          const vault = JSON.parse(existingVaultJson);
+          const iv = Uint8Array.from(atob(vault.iv), c => c.charCodeAt(0));
+          const salt = Uint8Array.from(atob(vault.salt), c => c.charCodeAt(0));
+          const ciphertext = Uint8Array.from(atob(vault.ciphertext), c => c.charCodeAt(0));
+
+          const aesKey = await deriveVaultKey(new Uint8Array(cred.rawId), salt);
+          const decryptedBuffer = await window.crypto.subtle.decrypt(
+            { name: 'AES-GCM', iv: iv },
+            aesKey,
+            ciphertext
+          );
+          seed32 = new Uint8Array(decryptedBuffer);
+        } catch (decryptErr) {
+          console.error("Critical: Decryption of existing biometric vault failed:", decryptErr);
+          // ANTI-ORPHAN INVARIANT: Never silently overwrite an existing vault with funds!
+          throw new Error(window.haichainI18n?.currentLang === 'vi'
+            ? "Không thể giải mã Vault sinh trắc học hiện tại. Hệ thống từ chối tạo khóa mới để bảo vệ an toàn số dư đang có trong Vault của bạn. Vui lòng quét lại FaceID trên đúng thiết bị ban đầu."
+            : "Could not decrypt existing biometric vault. The system refused to overwrite your key to protect existing vault funds. Please re-authenticate on the original device.");
+        }
+      }
+
+      // First-time setup: Generate authentic 256-bit CSPRNG cryptographic entropy
+      if (!seed32 && !existingVaultJson) {
+        seed32 = new Uint8Array(32);
+        window.crypto.getRandomValues(seed32);
+
+        const iv = new Uint8Array(12);
+        window.crypto.getRandomValues(iv);
+        const salt = new Uint8Array(16);
+        window.crypto.getRandomValues(salt);
+
+        const aesKey = await deriveVaultKey(new Uint8Array(cred.rawId), salt);
+        const ciphertextBuffer = await window.crypto.subtle.encrypt(
+          { name: 'AES-GCM', iv: iv },
+          aesKey,
+          seed32
+        );
+
+        const vaultRecord = {
+          version: "v6.9.4",
+          createdSlot: Date.now(),
+          iv: btoa(String.fromCharCode(...iv)),
+          salt: btoa(String.fromCharCode(...salt)),
+          ciphertext: btoa(String.fromCharCode(...new Uint8Array(ciphertextBuffer)))
+        };
+        localStorage.setItem(vaultKey, JSON.stringify(vaultRecord));
+      }
 
       // Base58 encoder helper
       const ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
