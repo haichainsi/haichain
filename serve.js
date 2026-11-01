@@ -1424,8 +1424,8 @@ const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
   if (reqPath === '/' || reqPath === '') reqPath = '/app/index.html';
   if (reqPath === '/dashboard' || reqPath === '/app') reqPath = '/app/dashboard.html';
-  if (reqPath === '/whitepaper') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_EN.md';
-  if (reqPath === '/whitepaper-vi') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_VI.md';
+  if (reqPath === '/whitepaper' || reqPath === '/whitepaper.pdf' || reqPath === '/whitepaper-en.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_EN.pdf';
+  if (reqPath === '/whitepaper-vi' || reqPath === '/whitepaper-vi.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf';
   
   let filePath = path.join(__dirname, reqPath);
   let ext = path.extname(filePath).toLowerCase();
