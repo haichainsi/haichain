@@ -4268,7 +4268,7 @@
 
   function renderMobileDrawerHTML() {
     return `
-      <div id="haichain-mobile-lang-drawer" class="hidden fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
+      <div id="haichain-mobile-lang-drawer" class="hidden sm:hidden fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
         <!-- Backdrop Overlay -->
         <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
         
