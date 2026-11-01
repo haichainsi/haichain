@@ -4184,15 +4184,11 @@
     const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
     return `
       <div class="relative inline-block text-left" id="haichain-lang-dropdown">
-        <!-- Minimalist Language Trigger Button -->
-        <button id="lang-switch-btn" type="button" class="group flex items-center space-x-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-full border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-white/90 dark:bg-neutral-900/90 text-neutral-800 dark:text-neutral-200 transition-all duration-200 cursor-pointer shrink-0 shadow-xs active:scale-95 focus:outline-none" title="Current Language: ${current.native}" aria-label="Select Language">
-          <span class="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 ring-1 ring-black/10 dark:ring-white/15 shadow-2xs">
+        <!-- Minimalist Flag-Only Trigger Button (Harmonious Twin of Theme Toggle) -->
+        <button id="lang-switch-btn" type="button" class="group p-1.5 sm:p-2 rounded-full border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900 bg-white/80 dark:bg-black/80 text-neutral-800 dark:text-neutral-200 transition-all duration-200 cursor-pointer shrink-0 shadow-xs active:scale-95 focus:outline-none flex items-center justify-center" title="Select Language (Current: ${current.native} / ${current.name})" aria-label="Select Language">
+          <span class="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 ring-1 ring-black/15 dark:ring-white/20 shadow-2xs transition-transform duration-200 group-hover:scale-105">
             ${current.flagSvg}
           </span>
-          <span class="text-xs font-mono font-semibold uppercase tracking-wider hidden sm:inline">${current.code}</span>
-          <svg class="w-3 h-3 text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
         </button>
 
         <!-- Desktop Floating Popover -->

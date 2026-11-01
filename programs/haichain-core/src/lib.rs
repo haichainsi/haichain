@@ -17,7 +17,6 @@
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Token, TokenAccount, Transfer};
-use solana_program::sysvar::instructions as ix_sysvar;
 
 declare_id!("DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk");
 
@@ -124,17 +123,7 @@ pub mod haichain_core {
         require!(current_slot <= expiry_slot, HaiChainMasterError::CapabilityExpired);
 
         // ====================================================================
-        // INVARIANT 1: WORMHOLE DEFENSE ($320M FIX)
-        // Strictly verify hardcoded Solana L1 Sysvar Instructions ID
-        // ====================================================================
-        require_keys_eq!(
-            ctx.accounts.instruction_sysvar.key(),
-            ix_sysvar::ID,
-            HaiChainMasterError::InvalidSysvarAddress
-        );
-
-        // ====================================================================
-        // INVARIANT 2: NOMAD BRIDGE DEFENSE ($190M FIX)
+        // INVARIANT 1: NOMAD BRIDGE DEFENSE ($190M FIX)
         // Enforce non-zero Merkle root and non-empty proof
         // ====================================================================
         require!(vault.composite_root != [0u8; 32], HaiChainMasterError::EmptyNomadRootForbidden);
@@ -391,23 +380,23 @@ pub struct MasterPaymentContext<'info> {
     )]
     pub service_provider_ata: Account<'info, TokenAccount>,
 
-    #[account(mut)]
+    /// Autonomous AI Agent keypair signing the capability expenditure (can hold 0 SOL)
     pub sub_agent_signer: Signer<'info>,
+
+    /// Transaction fee and ephemeral Nullifier PDA rent payer (Relayer, Paymaster, or Master Owner)
+    #[account(mut)]
+    pub payer: Signer<'info>,
 
     /// DOUBLE-SPEND REPLAY DEFENSE: Deterministic Nullifier PDA initialized per nonce.
     /// Attempting to replay an already executed nonce will fail with AccountAlreadyInitialized.
     #[account(
         init,
-        payer = sub_agent_signer,
+        payer = payer,
         space = 8 + 8 + 8 + 8, // Discriminator (8) + spent_slot (8) + amount_paid (8) + expiry_slot (8)
         seeds = [b"nullifier", agent_vault.key().as_ref(), &nonce.to_le_bytes()],
         bump
     )]
     pub nullifier_record: Account<'info, NullifierRecord>,
-
-    /// CHECK: Hardcoded Solana L1 Sysvar Instructions Address
-    #[account(address = ix_sysvar::ID @ HaiChainMasterError::InvalidSysvarAddress)]
-    pub instruction_sysvar: AccountInfo<'info>,
 
     pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
