@@ -24,6 +24,8 @@ pub const FLASH_LOAN_QUARANTINE_SLOTS: u64 = 2;
 pub const MIN_QUARANTINE_TRIGGER_DEPOSIT: u64 = 1_000_000; // 1.00 USDT minimum deposit to reset quarantine barrier (Anti-Griefing DoS)
 pub const ROOT_ROTATION_GRACE_SLOTS: u64 = 150; // ~60 seconds sliding window for in-flight capability tickets
 pub const MAX_SAFE_MICRO_TICK_PAYMENT: u64 = 50_000_000; // 50.00 USDT max per single micro-tick (6 decimals)
+pub const MIN_PROVIDER_BOND_AMOUNT: u64 = 20_000_000; // 20.00 USDT minimum bond stake (Pillar 1)
+pub const MAX_SLASH_PER_INCIDENT: u64 = 10_000_000; // 10.00 USDT max slash penalty per incident (Pillar 1)
 
 /// Official Solana Mainnet Tether USD SPL Token Mint
 pub const USDT_SPL_MINT: Pubkey = pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
@@ -440,7 +442,7 @@ pub mod haichain_core {
              spot_price, load_factor_bps);
         Ok(())
     }
-}}
+}
 
 // ============================================================================
 // CONTEXT ACCOUNTS SPECIFICATIONS
@@ -722,7 +724,7 @@ pub struct ProviderBondAccount {
     pub min_sla_quality_score: u8,
     pub is_active: bool,
     pub bump: u8,
-
+}
 
 // ============================================================================
 // ERROR CODES SPECIFICATION
@@ -776,7 +778,6 @@ pub enum HaiChainMasterError {
     NonceAlreadyReclaimed,
     #[msg("Nonce: New minimum nonce must be strictly greater than current min_valid_nonce.")]
     InvalidNonceSequence,
-,
     #[msg("SLA: Provider bond deposit below minimum required amount (20 USDT).")]
     InsufficientBondStake,
     #[msg("SLA: Provider is currently inactive or slashed below required reserve.")]
