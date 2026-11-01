@@ -985,9 +985,9 @@
           <!-- Terminal Header -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-neutral-100 dark:border-neutral-900 gap-3">
             <div>
-              <div class="flex items-center space-x-2">
-                <h2 class="font-bold text-base sm:text-lg text-black dark:text-white" data-i18n="playground.title">Live AI Agent Micro-Escrow Terminal</h2>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800">
+              <div class="flex items-start justify-between gap-2">
+                <h2 class="font-bold text-base sm:text-lg text-black dark:text-white leading-tight" data-i18n="playground.title">Live AI Agent Micro-Escrow Terminal</h2>
+                <span class="shrink-0 whitespace-nowrap px-2 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-mono font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 mt-0.5">
                   v6.9.3 L1 Core
                 </span>
               </div>
@@ -1049,21 +1049,30 @@
               </button>
             </div>
 
-            <!-- Production Task Templates -->
-            <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono">
-              <span class="text-neutral-400 dark:text-neutral-500 text-[10px] uppercase tracking-wider font-sans font-semibold">Quick Demos:</span>
-              <button type="button" class="preset-prompt-btn px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all" data-prompt="Explain how HAICHAIN protects AI agents from prompt injection wallet drain" data-model="Claude 3.5 Sonnet">
-                🛡️ Anti-Drain Defense
-              </button>
-              <button type="button" class="preset-prompt-btn px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all" data-prompt="Calculate sub-second micro-escrow netting for autonomous agent swarm on Solana L1" data-model="DeepSeek R1">
-                ⚡ Micro-Escrow Math
-              </button>
-              <button type="button" class="preset-prompt-btn px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all" data-prompt="Compute joint torques and collision envelope for Optimus kinematic actuator tick" data-model="Optimus Kinematics">
-                🤖 Optimus Kinematics
-              </button>
-              <button type="button" class="preset-prompt-btn px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all" data-prompt="Generate Solana Anchor instruction for non-custodial capability nullifier" data-model="Claude 3.5 Sonnet">
-                📜 Smart Contract Anchor
-              </button>
+            <!-- Production Task Templates (Optimized 2-Col Grid on Mobile, Flex on Desktop) -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex items-center justify-between text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider font-sans font-semibold">
+                <span>Quick Demos:</span>
+                <span class="text-[9px] text-neutral-500 font-mono">1-Tap Prompt</span>
+              </div>
+              <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 text-[11px] font-mono">
+                <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Explain how HAICHAIN protects AI agents from prompt injection wallet drain" data-model="Claude 3.5 Sonnet">
+                  <span class="shrink-0">🛡️</span>
+                  <span class="truncate">Anti-Drain</span>
+                </button>
+                <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Calculate sub-second micro-escrow netting for autonomous agent swarm on Solana L1" data-model="DeepSeek R1">
+                  <span class="shrink-0">⚡</span>
+                  <span class="truncate">Micro-Escrow</span>
+                </button>
+                <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Compute joint torques and collision envelope for Optimus kinematic actuator tick" data-model="Optimus Kinematics">
+                  <span class="shrink-0">🤖</span>
+                  <span class="truncate">Optimus AI</span>
+                </button>
+                <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Anchor Core Program Instruction: haichain_micro_escrow_settle CPI dispatch" data-model="Perplexity Search">
+                  <span class="shrink-0">📜</span>
+                  <span class="truncate">Anchor CPI</span>
+                </button>
+              </div>
             </div>
 
             <!-- Terminal Output Window -->
@@ -1534,12 +1543,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
         <!-- Remote MCP URL Box -->
         <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-950 border border-neutral-800 space-y-2">
-          <div class="flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="flex items-center space-x-1.5 font-sans">
-              <i data-lucide="link" class="w-3.5 h-3.5 text-neutral-300"></i>
-              <span>Đường dẫn Remote MCP Connector URL:</span>
+          <div class="flex items-center justify-between gap-2 text-[11px] text-neutral-400">
+            <span class="flex items-center space-x-1.5 font-sans truncate min-w-0">
+              <i data-lucide="link" class="w-3.5 h-3.5 text-neutral-300 shrink-0"></i>
+              <span class="truncate">Remote MCP Connector URL:</span>
             </span>
-            <span class="text-[10px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-400 font-mono">SSE / HTTPS</span>
+            <span class="text-[9.5px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-300 font-mono shrink-0 whitespace-nowrap">SSE / HTTPS</span>
           </div>
           <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-neutral-100 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
             <code id="online-mcp-url-snippet">https://mcp.haichain.si/sse</code>
