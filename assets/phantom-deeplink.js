@@ -1,6 +1,6 @@
 /**
  * HAICHAIN Universal Mobile Wallet Bridge (Phantom & Solflare)
- * Standard E2EE X25519 Connect Handshake with Automatic Return Redirect
+ * Standard E2EE X25519 Connect Handshake with Automatic Return Redirect & Cross-Browser Handoff
  */
 (function(window) {
   'use strict';
@@ -12,6 +12,41 @@
   var HaichainMobileWallet = {
     isAvailable: function() {
       return typeof window.nacl !== 'undefined' && typeof window.bs58 !== 'undefined';
+    },
+
+    stripParamsAndCleanUrl: function(keysToRemove) {
+      try {
+        var url = new URL(window.location.href);
+        if (Array.isArray(keysToRemove)) {
+          keysToRemove.forEach(function(k) { url.searchParams.delete(k); });
+        }
+        var q = url.searchParams.toString();
+        var cleanPath = url.origin + url.pathname + (q ? '?' + q : '') + url.hash;
+        var docTitle = typeof document !== 'undefined' ? document.title : '';
+        window.history.replaceState({}, docTitle, cleanPath);
+      } catch (_) {}
+    },
+
+    isPhantomInAppBrowser: function() {
+      try {
+        var ua = (navigator.userAgent || '').toLowerCase();
+        var hasPhantomObj = !!(window.phantom?.solana || window.solana?.isPhantom);
+        var hasPhantomUa = ua.indexOf('phantom') !== -1;
+        var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        return hasPhantomUa || (hasPhantomObj && isMobile);
+      } catch (_) {
+        return false;
+      }
+    },
+
+    buildHandoffUrl: function(walletAddress, provider, targetUrl) {
+      var appOrigin = window.location.origin;
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        appOrigin = 'https://haichain.pages.dev';
+      }
+      var dest = targetUrl || (appOrigin + window.location.pathname);
+      var sep = dest.indexOf('?') === -1 ? '?' : '&';
+      return dest + sep + 'connectedWallet=' + encodeURIComponent(walletAddress) + '&provider=' + encodeURIComponent(provider || 'Phantom');
     },
 
     openInAppBrowser: function(provider, targetUrl) {
@@ -26,7 +61,7 @@
       }
       var link = provider === 'solflare'
         ? 'https://solflare.com/ul/v1/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin)
-        : 'https://phantom.com/ul/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin);
+        : 'https://phantom.app/ul/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin);
       window.location.href = link;
     },
 
@@ -57,18 +92,16 @@
           sessionStorage.setItem(STORAGE_PROVIDER_KEY, provider);
         } catch (_) {}
 
-        // Official Modern Universal Link (phantom.com, NOT phantom.app)
+        // Official Universal Link with verified native app intent
         var baseUrl = provider === 'solflare'
           ? 'https://solflare.com/ul/v1/connect'
-          : 'https://phantom.com/ul/v1/connect';
+          : 'https://phantom.app/ul/v1/connect';
 
         var connectUrl = new URL(baseUrl);
         connectUrl.searchParams.set('app_url', appOrigin);
         connectUrl.searchParams.set('dapp_encryption_public_key', pkB58);
         connectUrl.searchParams.set('redirect_link', redirectUrl);
-        // Note: Do not force cluster=devnet here! If user's Phantom app is on Mainnet,
-        // sending cluster=devnet causes Phantom mobile to silently abort without prompting.
-        // Omitting cluster allows Phantom to display the native approval prompt on all networks.
+        connectUrl.searchParams.set('cluster', 'mainnet-beta');
 
         console.log('[HaichainMobileWallet] Launching official Connect Deeplink:', connectUrl.toString());
         window.location.href = connectUrl.toString();
@@ -86,11 +119,7 @@
         var handoffWallet = urlParams.get('connectedWallet');
         var handoffProvider = urlParams.get('provider') || 'Phantom';
         if (handoffWallet && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(handoffWallet)) {
-          var cleanUrl = new URL(window.location.href);
-          cleanUrl.searchParams.delete('connectedWallet');
-          cleanUrl.searchParams.delete('provider');
-          var docTitle = typeof document !== 'undefined' ? document.title : '';
-          window.history.replaceState({}, docTitle, cleanUrl.toString());
+          this.stripParamsAndCleanUrl(['connectedWallet', 'provider']);
 
           if (typeof onSuccess === 'function') {
             onSuccess({
@@ -106,11 +135,7 @@
         var errorCode = urlParams.get('errorCode');
         var errorMessage = urlParams.get('errorMessage');
         if (errorCode || errorMessage) {
-          var cleanUrl = new URL(window.location.href);
-          cleanUrl.searchParams.delete('errorCode');
-          cleanUrl.searchParams.delete('errorMessage');
-          var docTitle = typeof document !== 'undefined' ? document.title : '';
-          window.history.replaceState({}, docTitle, cleanUrl.toString());
+          this.stripParamsAndCleanUrl(['errorCode', 'errorMessage']);
           if (typeof onError === 'function') {
             onError(errorMessage || ('Connection rejected (code ' + errorCode + ')'));
           }
@@ -123,13 +148,7 @@
         var dataB58 = urlParams.get('data');
 
         if (peerEncryptionPubKey && nonceB58 && dataB58) {
-          var cleanUrl = new URL(window.location.href);
-          cleanUrl.searchParams.delete('phantom_encryption_public_key');
-          cleanUrl.searchParams.delete('solflare_encryption_public_key');
-          cleanUrl.searchParams.delete('nonce');
-          cleanUrl.searchParams.delete('data');
-          var docTitle = typeof document !== 'undefined' ? document.title : '';
-          window.history.replaceState({}, docTitle, cleanUrl.toString());
+          this.stripParamsAndCleanUrl(['phantom_encryption_public_key', 'solflare_encryption_public_key', 'nonce', 'data']);
 
           var skB58 = null;
           var storedProvider = 'Phantom';

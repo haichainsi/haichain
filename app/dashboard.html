@@ -19,7 +19,7 @@
   <!-- TweetNaCl & BS58 Mobile E2EE Wallet Bridge -->
   <script src="/assets/tweetnacl.min.js"></script>
   <script src="/assets/bs58.min.js"></script>
-  <script src="/assets/phantom-deeplink.js?v=v1_e2ee"></script>
+  <script src="/assets/phantom-deeplink.js?v=v2_handoff"></script>
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
@@ -1752,6 +1752,14 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           <span data-i18n="modal.accountTopUp">Top Up Spending Pot (0% Gas)</span>
         </button>
 
+        <!-- Mobile Cross-Browser Sync Button (Visible on Mobile / In-App Browsers) -->
+        <div id="account-sync-browser-container" class="hidden pt-1">
+          <a id="account-sync-browser-link" href="#" target="_blank" class="w-full py-2.5 px-3 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs font-semibold flex items-center justify-center space-x-2 transition-all cursor-pointer">
+            <i data-lucide="share-2" class="w-3.5 h-3.5 text-emerald-500"></i>
+            <span id="account-sync-browser-text">Đồng bộ sang trình duyệt Chrome</span>
+          </a>
+        </div>
+
         <!-- Secondary Actions Row -->
         <div class="grid grid-cols-2 gap-2 pt-1">
           <a id="account-explorer-link" href="#" target="_blank" class="py-2.5 px-3 rounded-2xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white text-xs font-semibold text-center flex items-center justify-center space-x-1.5 transition-colors">
@@ -2279,6 +2287,22 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         expLink.href = `https://explorer.solana.com/address/${userWallet.address}?cluster=devnet`;
       }
 
+      // Show Cross-Browser Sync Option on Mobile / In-App Browsers
+      const syncContainer = document.getElementById('account-sync-browser-container');
+      const syncLink = document.getElementById('account-sync-browser-link');
+      const syncText = document.getElementById('account-sync-browser-text');
+      if (syncContainer && syncLink) {
+        if (isMobileDevice() && window.HaichainMobileWallet) {
+          syncContainer.classList.remove('hidden');
+          syncLink.href = window.HaichainMobileWallet.buildHandoffUrl(userWallet.address, userWallet.provider);
+          if (syncText) {
+            syncText.textContent = isVi ? 'Đồng bộ sang trình duyệt Chrome' : 'Sync Wallet to Chrome Browser';
+          }
+        } else {
+          syncContainer.classList.add('hidden');
+        }
+      }
+
       walletAccountModal.classList.remove('hidden');
       safeCreateIcons();
     }
@@ -2632,6 +2656,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
             }
           }, function(err) {
             console.warn('[MobileWallet] Callback notice:', err);
+            if (typeof updateWalletBtnUI === 'function') updateWalletBtnUI();
             if (typeof showToast === 'function') {
               showToast({
                 title: 'Phantom',
@@ -2692,6 +2717,40 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     })();
 
     // Set Connected Wallet State Helper
+    // Bulletproof Auto-Revert Safeguard for Mobile Wallets
+    let walletConnectRevertTimer = null;
+    function armWalletConnectRevert(timeoutMs = 4500) {
+      if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
+      walletConnectRevertTimer = setTimeout(() => {
+        if (!userWallet || !userWallet.address) {
+          updateWalletBtnUI();
+        }
+      }, timeoutMs);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        if (!userWallet || !userWallet.address) {
+          if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
+          updateWalletBtnUI();
+        }
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      if (!userWallet || !userWallet.address) {
+        if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
+        updateWalletBtnUI();
+      }
+    });
+
+    window.addEventListener('pageshow', () => {
+      if (!userWallet || !userWallet.address) {
+        if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
+        updateWalletBtnUI();
+      }
+    });
+
     async function setConnectedWallet(pubkeyStr, providerName) {
       let solBalStr = "0.000";
       if (solanaConnection && window.solanaWeb3) {
@@ -2775,18 +2834,89 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               });
             }
           } else if (isMobileDevice()) {
-            // 1-TAP INSTANT CONNECT ON MOBILE
-            walletConnectModal.classList.add('hidden');
-            walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
-            showToast({
-              title: isVi ? 'Đang mở ứng dụng Phantom...' : 'Opening Phantom App...',
-              message: isVi ? 'Xác nhận kết nối trong Phantom để hoàn tất vào Web' : 'Approve in Phantom to connect to web',
-              icon: 'arrow-right'
-            });
-            setTimeout(() => {
-              if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
-                window.HaichainMobileWallet.connect('phantom');
-              } else {
+            // SMART MOBILE PHANTOM OPTIONS (CHOOSE BETWEEN APP BROWSER & 2-WAY DEEPLINK)
+            walletNoticeText.innerHTML = `
+              <div class="space-y-2 text-left">
+                <div class="font-bold text-xs text-black dark:text-white flex items-center space-x-1.5">
+                  <i data-lucide="smartphone" class="w-4 h-4 text-emerald-500"></i>
+                  <span>${isVi ? 'Kết Nối Phantom Trên Điện Thoại' : 'Connect Phantom on Mobile'}</span>
+                </div>
+                <p class="text-[11px] text-neutral-600 dark:text-neutral-400">
+                  ${isVi ? 'Chọn cách kết nối phù hợp nhất với bạn:' : 'Choose your preferred connection method:'}
+                </p>
+                <div class="space-y-1.5 pt-1">
+                  <button type="button" id="btn-mobile-open-phantom" class="w-full py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
+                    <span class="flex items-center space-x-2">
+                      <span>🚀</span>
+                      <span>${isVi ? 'Mở trong App Phantom (Khuyên dùng)' : 'Open in Phantom App (Recommended)'}</span>
+                    </span>
+                    <span class="font-mono text-xs">&rarr;</span>
+                  </button>
+                  <button type="button" id="btn-mobile-deeplink-phantom" class="w-full py-2.5 px-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white font-medium text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
+                    <span class="flex items-center space-x-2">
+                      <span>🔄</span>
+                      <span>${isVi ? 'Kết nối 2 chiều về Chrome' : '2-Way Connect to Chrome'}</span>
+                    </span>
+                    <span class="font-mono text-xs">&rarr;</span>
+                  </button>
+                  <button type="button" id="btn-mobile-paste-phantom" class="w-full py-2 px-3 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 text-xs flex items-center justify-center space-x-1.5 transition-colors cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                    <i data-lucide="clipboard-paste" class="w-3.5 h-3.5"></i>
+                    <span>${isVi ? 'Dán nhanh địa chỉ ví từ bộ nhớ tạm' : 'Fast Paste Address from Clipboard'}</span>
+                  </button>
+                </div>
+              </div>
+            `;
+            walletInstallLink.parentElement.classList.add('hidden');
+            walletNoticeBox.classList.remove('hidden');
+            safeCreateIcons();
+
+            const btnOpen = document.getElementById('btn-mobile-open-phantom');
+            if (btnOpen) {
+              btnOpen.onclick = () => {
+                if (window.HaichainMobileWallet) {
+                  window.HaichainMobileWallet.openInAppBrowser('phantom');
+                }
+              };
+            }
+            const btnDeep = document.getElementById('btn-mobile-deeplink-phantom');
+            if (btnDeep) {
+              btnDeep.onclick = () => {
+                walletConnectModal.classList.add('hidden');
+                walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
+                armWalletConnectRevert(4500);
+                showToast({
+                  title: isVi ? 'Đang mở Phantom...' : 'Opening Phantom App...',
+                  message: isVi ? 'Cấp quyền trong Phantom để quay lại Chrome' : 'Approve in Phantom to return to Chrome',
+                  icon: 'arrow-right'
+                });
+                setTimeout(() => {
+                  if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+                    window.HaichainMobileWallet.connect('phantom');
+                  } else {
+                    window.HaichainMobileWallet.openInAppBrowser('phantom');
+                  }
+                }, 150);
+              };
+            }
+            const btnPaste = document.getElementById('btn-mobile-paste-phantom');
+            if (btnPaste) {
+              btnPaste.onclick = async () => {
+                try {
+                  const text = await navigator.clipboard.readText();
+                  if (text && text.trim().length >= 32) {
+                    manualWalletInput.value = text.trim();
+                    submitManualWalletBtn.click();
+                  } else {
+                    manualAddressPanel.classList.remove('hidden');
+                    manualWalletInput.focus();
+                  }
+                } catch (_) {
+                  manualAddressPanel.classList.remove('hidden');
+                  manualWalletInput.focus();
+                }
+              };
+            }
+          } else {
                 window.HaichainMobileWallet.openInAppBrowser('phantom');
               }
             }, 200);
@@ -2828,17 +2958,89 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               });
             }
           } else if (isMobileDevice()) {
-            walletConnectModal.classList.add('hidden');
-            walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
-            showToast({
-              title: isVi ? 'Đang mở ứng dụng Solflare...' : 'Opening Solflare App...',
-              message: isVi ? 'Xác nhận kết nối trong Solflare để hoàn tất vào Web' : 'Approve in Solflare to connect to web',
-              icon: 'arrow-right'
-            });
-            setTimeout(() => {
-              if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
-                window.HaichainMobileWallet.connect('solflare');
-              } else {
+            // SMART MOBILE SOLFLARE OPTIONS
+            walletNoticeText.innerHTML = `
+              <div class="space-y-2 text-left">
+                <div class="font-bold text-xs text-black dark:text-white flex items-center space-x-1.5">
+                  <i data-lucide="smartphone" class="w-4 h-4 text-emerald-500"></i>
+                  <span>${isVi ? 'Kết Nối Solflare Trên Điện Thoại' : 'Connect Solflare on Mobile'}</span>
+                </div>
+                <p class="text-[11px] text-neutral-600 dark:text-neutral-400">
+                  ${isVi ? 'Chọn cách kết nối phù hợp nhất với bạn:' : 'Choose your preferred connection method:'}
+                </p>
+                <div class="space-y-1.5 pt-1">
+                  <button type="button" id="btn-mobile-open-solflare" class="w-full py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
+                    <span class="flex items-center space-x-2">
+                      <span>🚀</span>
+                      <span>${isVi ? 'Mở trong App Solflare (Khuyên dùng)' : 'Open in Solflare App (Recommended)'}</span>
+                    </span>
+                    <span class="font-mono text-xs">&rarr;</span>
+                  </button>
+                  <button type="button" id="btn-mobile-deeplink-solflare" class="w-full py-2.5 px-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white font-medium text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
+                    <span class="flex items-center space-x-2">
+                      <span>🔄</span>
+                      <span>${isVi ? 'Kết nối 2 chiều về Chrome' : '2-Way Connect to Chrome'}</span>
+                    </span>
+                    <span class="font-mono text-xs">&rarr;</span>
+                  </button>
+                  <button type="button" id="btn-mobile-paste-solflare" class="w-full py-2 px-3 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 text-xs flex items-center justify-center space-x-1.5 transition-colors cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                    <i data-lucide="clipboard-paste" class="w-3.5 h-3.5"></i>
+                    <span>${isVi ? 'Dán nhanh địa chỉ ví từ bộ nhớ tạm' : 'Fast Paste Address from Clipboard'}</span>
+                  </button>
+                </div>
+              </div>
+            `;
+            walletInstallLink.parentElement.classList.add('hidden');
+            walletNoticeBox.classList.remove('hidden');
+            safeCreateIcons();
+
+            const btnOpen = document.getElementById('btn-mobile-open-solflare');
+            if (btnOpen) {
+              btnOpen.onclick = () => {
+                if (window.HaichainMobileWallet) {
+                  window.HaichainMobileWallet.openInAppBrowser('solflare');
+                }
+              };
+            }
+            const btnDeep = document.getElementById('btn-mobile-deeplink-solflare');
+            if (btnDeep) {
+              btnDeep.onclick = () => {
+                walletConnectModal.classList.add('hidden');
+                walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
+                armWalletConnectRevert(4500);
+                showToast({
+                  title: isVi ? 'Đang mở Solflare...' : 'Opening Solflare App...',
+                  message: isVi ? 'Cấp quyền trong Solflare để quay lại Chrome' : 'Approve in Solflare to return to Chrome',
+                  icon: 'arrow-right'
+                });
+                setTimeout(() => {
+                  if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+                    window.HaichainMobileWallet.connect('solflare');
+                  } else {
+                    window.HaichainMobileWallet.openInAppBrowser('solflare');
+                  }
+                }, 150);
+              };
+            }
+            const btnPaste = document.getElementById('btn-mobile-paste-solflare');
+            if (btnPaste) {
+              btnPaste.onclick = async () => {
+                try {
+                  const text = await navigator.clipboard.readText();
+                  if (text && text.trim().length >= 32) {
+                    manualWalletInput.value = text.trim();
+                    submitManualWalletBtn.click();
+                  } else {
+                    manualAddressPanel.classList.remove('hidden');
+                    manualWalletInput.focus();
+                  }
+                } catch (_) {
+                  manualAddressPanel.classList.remove('hidden');
+                  manualWalletInput.focus();
+                }
+              };
+            }
+          } else {
                 window.HaichainMobileWallet.openInAppBrowser('solflare');
               }
             }, 200);

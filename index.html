@@ -2695,6 +2695,18 @@
         }
       })();
 
+      // Index Mobile Wallet Auto-Revert Safeguard
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible" && !connectedWallet && authText && authText.textContent.includes("Opening")) {
+          authText.textContent = "Connect Phantom";
+        }
+      });
+      window.addEventListener("focus", () => {
+        if (!connectedWallet && authText && authText.textContent.includes("Opening")) {
+          authText.textContent = "Connect Phantom";
+        }
+      });
+
       authBtn.addEventListener('click', async () => {
 
         const phantom = window.phantom?.solana || (window.solana && window.solana.isPhantom ? window.solana : null);
@@ -2743,6 +2755,7 @@
             const refUrl = window.location.origin;
             const phantomDeepLink = getMobilePhantomDeepLink();
             if (authText) authText.textContent = "Opening Phantom App...";
+            setTimeout(() => { if (!connectedWallet && authText && authText.textContent.includes("Opening")) authText.textContent = "Connect Phantom"; }, 4500);
             window.location.href = phantomDeepLink;
             return;
           }
