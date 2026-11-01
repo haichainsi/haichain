@@ -2523,9 +2523,53 @@
 
     if (authBtn) {
 
+      // Helper to detect Mobile Device
+      function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+          || (window.innerWidth <= 768 && (navigator.maxTouchPoints > 0 || 'ontouchstart' in window));
+      }
+
+      // Auto-connect inside Phantom in-app browser
+      (function initMobilePhantomAutoConnect() {
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get('autoConnect') === 'phantom') {
+            const cleanUrl = new URL(window.location.href);
+            cleanUrl.searchParams.delete('autoConnect');
+            window.history.replaceState({}, document.title, cleanUrl.toString());
+
+            let attempts = 0;
+            const pollInterval = setInterval(async () => {
+              attempts++;
+              const phantom = window.phantom?.solana || (window.solana && window.solana.isPhantom ? window.solana : null);
+              if (phantom) {
+                clearInterval(pollInterval);
+                try {
+                  if (authText) authText.textContent = "Connecting...";
+                  const resp = await phantom.connect();
+                  connectedWallet = resp.publicKey.toString();
+                  const short = `${connectedWallet.slice(0, 4)}...${connectedWallet.slice(-4)}`;
+                  if (authText) authText.textContent = `Phantom: ${short}`;
+                  if (potAddress) potAddress.textContent = `${connectedWallet.slice(0, 6)}...${connectedWallet.slice(-4)}`;
+                  if (walletStatusDot) walletStatusDot.className = "w-2 h-2 rounded-full bg-black dark:bg-white animate-ping";
+                } catch (e) {
+                  console.warn("Mobile auto-connect inside Phantom dismissed:", e);
+                  if (authText) authText.textContent = "Connect Phantom";
+                }
+              } else if (attempts >= 30) {
+                clearInterval(pollInterval);
+              }
+            }, 150);
+          }
+        } catch (e) {
+          console.warn("AutoConnect error in index:", e);
+        }
+      })();
+
       authBtn.addEventListener('click', async () => {
 
-        if (window.solana && window.solana.isPhantom) {
+        const phantom = window.phantom?.solana || (window.solana && window.solana.isPhantom ? window.solana : null);
+        if (phantom) {
 
           try {
 
@@ -2562,6 +2606,17 @@
           }
 
         } else {
+
+          if (isMobileDevice()) {
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('autoConnect', 'phantom');
+            const targetUrl = currentUrl.toString();
+            const refUrl = window.location.origin;
+            const phantomDeepLink = `https://phantom.app/ul/browse/${encodeURIComponent(targetUrl)}?ref=${encodeURIComponent(refUrl)}`;
+            if (authText) authText.textContent = "Opening Phantom App...";
+            window.location.href = phantomDeepLink;
+            return;
+          }
 
           // Fallback: Connect directly to pre-funded Devnet Deployer account
 
