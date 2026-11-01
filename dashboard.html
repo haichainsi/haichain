@@ -2560,12 +2560,23 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       safeCreateIcons();
     }
 
+    function normalizeProviderName(name) {
+      if (!name) return 'Phantom';
+      const lower = String(name).toLowerCase();
+      if (lower.includes('solflare')) return 'Solflare';
+      if (lower.includes('passkey') || lower.includes('faceid')) return 'FaceID / Windows Hello Passkey';
+      if (lower.includes('custom')) return 'Custom Address';
+      if (lower.includes('phantom')) return 'Phantom';
+      return name;
+    }
+
     // Auto-restore previously connected wallet from localStorage
     try {
       const savedW = localStorage.getItem('haichain-connected-wallet');
       if (savedW) {
         const parsed = JSON.parse(savedW);
         if (parsed && parsed.address) {
+          parsed.provider = normalizeProviderName(parsed.provider);
           userWallet = parsed;
           updateWalletBtnUI();
         }
@@ -2716,7 +2727,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     if (accountAddFundsBtn) {
       accountAddFundsBtn.addEventListener('click', () => {
         walletAccountModal.classList.add('hidden');
-        const addFundsBtn = document.getElementById('add-funds-btn');
+        const addFundsBtn = document.getElementById('open-deposit-modal') || document.getElementById('add-funds-btn');
         if (addFundsBtn) addFundsBtn.click();
       });
     }
@@ -3254,6 +3265,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     window.addEventListener('pageshow', onTabWakeup);
 
     async function setConnectedWallet(pubkeyStr, providerName) {
+      providerName = normalizeProviderName(providerName);
       let solBalStr = "0.000";
       if (solanaConnection && window.solanaWeb3) {
         try {
@@ -3274,6 +3286,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
 
       localStorage.setItem('haichain-connected-wallet', JSON.stringify(userWallet));
       updateWalletBtnUI();
+      if (typeof updateDepositWalletBanner === 'function') updateDepositWalletBanner();
       if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
     }
 
@@ -3974,25 +3987,78 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     const dashDepositAmount = document.getElementById('dash-deposit-amount');
     const dashPresetBtns = document.querySelectorAll('.dash-preset-btn');
 
+    // Universal Web3 Wallet Detector: checks window-injected extension, in-app browser, and userWallet state
+    function getActiveWeb3Wallet() {
+      const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+      const solflare = window.solflare?.isSolflare ? window.solflare : null;
+
+      // 1. Direct window provider presence with active public key
+      if (phantom && phantom.publicKey) {
+        return {
+          instance: phantom,
+          provider: 'Phantom',
+          address: phantom.publicKey.toString()
+        };
+      }
+      if (solflare && solflare.publicKey) {
+        return {
+          instance: solflare,
+          provider: 'Solflare',
+          address: solflare.publicKey.toString()
+        };
+      }
+
+      // 2. User wallet state in memory / localStorage
+      if (userWallet && userWallet.address) {
+        const provLower = (userWallet.provider || '').toLowerCase();
+        if (provLower.includes('phantom')) {
+          return {
+            instance: phantom || (window.solana && window.solana.isPhantom ? window.solana : null),
+            provider: 'Phantom',
+            address: userWallet.address
+          };
+        }
+        if (provLower.includes('solflare')) {
+          return {
+            instance: solflare || null,
+            provider: 'Solflare',
+            address: userWallet.address
+          };
+        }
+      }
+      return null;
+    }
+
     function updateDepositWalletBanner() {
       const dot = document.getElementById('deposit-wallet-dot');
       const addr = document.getElementById('deposit-wallet-address');
       const btn = document.getElementById('deposit-connect-btn');
-      const isRealWeb3 = userWallet && (userWallet.provider === 'Phantom' || userWallet.provider === 'Solflare');
+      const isVi = window.haichainI18n?.currentLang === 'vi';
 
-      if (isRealWeb3) {
+      const activeWeb3 = getActiveWeb3Wallet();
+
+      if (activeWeb3) {
+        if (!userWallet || !userWallet.address) {
+          setConnectedWallet(activeWeb3.address, activeWeb3.provider);
+        }
+
+        const displayProvider = activeWeb3.provider || 'Phantom';
+        const displayAddr = activeWeb3.address;
+        const shortAddr = `${displayAddr.slice(0, 4)}...${displayAddr.slice(-4)}`;
+        const solBal = userWallet?.solBalance || '0.00';
+
         if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)] shrink-0";
         if (addr) {
           addr.className = "font-mono text-xs text-black dark:text-white font-bold truncate";
-          addr.textContent = `${userWallet.provider}: ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)} (${userWallet.solBalance || '0.00'} SOL)`;
+          addr.textContent = `${displayProvider}: ${shortAddr} (${solBal} SOL)`;
         }
         if (btn) {
           btn.className = "px-2.5 py-1 rounded-md text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 shrink-0 font-bold";
-          btn.textContent = "Connected ✓";
+          btn.textContent = isVi ? "Đã Kết Nối ✓" : "Connected ✓";
           btn.disabled = true;
         }
         if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
-          dashConfirmDepositBtn.textContent = window.haichainI18n?.currentLang === 'vi' 
+          dashConfirmDepositBtn.textContent = isVi 
             ? "Xác Nhận Nạp On-Chain (Ký Ví Phantom)" 
             : "Confirm On-Chain Deposit (Sign with Phantom)";
         }
@@ -4000,17 +4066,18 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0";
         if (addr) {
           addr.className = "font-mono text-xs text-amber-600 dark:text-amber-400 font-bold truncate";
-          addr.textContent = userWallet && userWallet.provider === 'Passkey' 
-            ? "Passkey Active • Connect Phantom/Solflare to Deposit"
+          const provLower = (userWallet?.provider || '').toLowerCase();
+          addr.textContent = userWallet && (provLower.includes('passkey') || provLower.includes('faceid'))
+            ? (isVi ? "Passkey Đang Bật • Kết Nối Phantom để Nạp On-Chain" : "Passkey Active • Connect Phantom/Solflare to Deposit")
             : (window.haichainI18n ? window.haichainI18n.t('modal.gatewayDisconnected') : "Web3 Wallet Disconnected");
         }
         if (btn) {
           btn.className = "px-3 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs shrink-0 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-xs cursor-pointer";
-          btn.textContent = "Connect Phantom";
+          btn.textContent = isVi ? "Kết Nối Phantom" : "Connect Phantom";
           btn.disabled = false;
         }
         if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
-          dashConfirmDepositBtn.textContent = window.haichainI18n?.currentLang === 'vi' 
+          dashConfirmDepositBtn.textContent = isVi 
             ? "Kết Nối Ví Phantom Để Nạp" 
             : "Connect Phantom Wallet to Deposit";
         }
@@ -4020,11 +4087,12 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     const depositConnectBtn = document.getElementById('deposit-connect-btn');
     if (depositConnectBtn) {
       depositConnectBtn.addEventListener('click', async () => {
+        const isVi = window.haichainI18n?.currentLang === 'vi';
         const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
         const solflare = window.solflare?.isSolflare ? window.solflare : null;
         if (phantom) {
           try {
-            depositConnectBtn.textContent = "Connecting...";
+            depositConnectBtn.textContent = isVi ? "Đang kết nối..." : "Connecting...";
             const resp = await phantom.connect();
             await setConnectedWallet(resp.publicKey ? resp.publicKey.toString() : phantom.publicKey.toString(), 'Phantom');
             updateDepositWalletBanner();
@@ -4034,7 +4102,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           }
         } else if (solflare) {
           try {
-            depositConnectBtn.textContent = "Connecting...";
+            depositConnectBtn.textContent = isVi ? "Đang kết nối..." : "Connecting...";
             await solflare.connect();
             await setConnectedWallet(solflare.publicKey.toString(), 'Solflare');
             updateDepositWalletBanner();
@@ -4046,9 +4114,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           if (isMobileDevice()) {
             const currentUrl = new URL(window.location.href);
             currentUrl.searchParams.set('autoConnect', 'phantom');
-            const targetUrl = currentUrl.toString();
-            const refUrl = window.location.origin;
-            window.location.href = getMobileWalletDeepLink('phantom');
+            window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
             return;
           }
           dashboardDepositModal.classList.add('hidden');
@@ -4216,9 +4282,9 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
 
       // 2. WEB3 WALLET MODE - Strictly requires real Web3 extension & confirmed on-chain transaction
       if (selectedDepositMethod === 'web3') {
-        const isRealWeb3 = userWallet && (userWallet.provider === 'Phantom' || userWallet.provider === 'Solflare');
+        const activeWeb3 = getActiveWeb3Wallet();
 
-        if (!isRealWeb3) {
+        if (!activeWeb3) {
           const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
           const solflare = window.solflare?.isSolflare ? window.solflare : null;
           const web3Available = phantom || solflare;
@@ -4240,6 +4306,12 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               return;
             }
           } else {
+            if (isMobileDevice()) {
+              const currentUrl = new URL(window.location.href);
+              currentUrl.searchParams.set('autoConnect', 'phantom');
+              window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
+              return;
+            }
             alert(isVi
               ? "Chưa phát hiện tiện ích ví Web3 (Phantom hoặc Solflare) trên trình duyệt này.\n\nĐể nạp tiền bằng ví Web3 thật, vui lòng cài đặt tiện ích Phantom tại https://phantom.app\n\nHoặc bạn có thể chuyển qua tab 'Faucet (+$10)' để nhận 10 USDT thử nghiệm Devnet miễn phí ngay lập tức!"
               : "No Solana Web3 wallet extension (Phantom or Solflare) detected in your browser.\n\nTo deposit via Web3, please install Phantom from https://phantom.app\n\nAlternatively, switch to the 'Faucet (+$10)' tab to claim free Devnet test funds immediately!");
@@ -4248,11 +4320,20 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         }
 
         // Web3 wallet IS connected: Execute REAL on-chain transfer to Treasury
-        const phantom = userWallet.provider === 'Phantom' 
-          ? (window.phantom?.solana || window.solana) 
-          : window.solflare;
+        let phantom = activeWeb3.instance;
+        if (!phantom) {
+          const directPhantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+          const directSolflare = window.solflare?.isSolflare ? window.solflare : null;
+          phantom = (activeWeb3.provider === 'Solflare' ? directSolflare : directPhantom) || directPhantom || directSolflare;
+        }
 
         if (!phantom) {
+          if (isMobileDevice()) {
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('autoConnect', 'phantom');
+            window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
+            return;
+          }
           alert(isVi ? "Ví Web3 bị ngắt kết nối. Vui lòng kết nối lại ví Phantom." : "Web3 wallet disconnected. Please reconnect Phantom.");
           updateDepositWalletBanner();
           return;

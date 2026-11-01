@@ -393,6 +393,43 @@ Even if a transaction is broadcast across public RPCs or gossip channels, toxic 
    $$\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})$$
    If any malicious searcher copies the reveal payload in the same slot, the transaction reverts because the invariant cryptographically enforces that only the original `CallerPubkey` can trigger settlement. If the agent fails to reveal before the expiration slot, a deterministic liveness slash is levied, neutralizing free-option spam.
 
+
+#### 3. Dynamic Volatility-Indexed Slashing Invariant ($\Delta P 	imes \gamma$)
+A classical vulnerability of two-phase Commit-Reveal schemes is **Free-Option / Last-Look Griefing**: an adversarial agent commits a transaction at slot 0, observes secondary market price movements across the 4-slot window, and if market drift is unfavorable, deliberately refuses to broadcast the reveal transaction, forfeiting a nominal liveness fee to avoid a substantial market loss. 
+
+Haichain permanently closes this exploit by enforcing the **Volatility-Indexed Slashing Invariant**:
+$$\text{Slashing Penalty} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times \frac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma\right) \quad (\text{where } \gamma = 1.5)$$
+
+* **Mathematical Game-Theoretic Elimination:** If an asset fluctuates by $2.0\%$ against the committer over the 4-slot window, refusing to reveal triggers an immediate on-chain slashing penalty of:
+  $$\text{Penalty} = \text{OrderValue} \times 2.0\% \times 1.5 = 3.0\% \text{ of Order Value}$$
+* Because the slashing penalty is strictly $150\%$ of the avoided market drawdown, the mathematical expectation of free-option abandonment is strictly negative ($\mathbb{E}[\text{Arbitrage Profit}] < 0$), completely neutralizing adversarial non-reveal strategies without the massive $O(N^2)$ network communication overhead of Threshold Timelock Encryption (t-TLE).
+
+
+### 5.3. Programmable Transaction Blocks (PTB Chaining) on SVM
+To overcome the rigid account pre-declaration constraint of legacy Sealevel transactions without incurring the gas and latency overhead of Ethereum's ERC-4337 Proxy Routers, Haichain integrates **Programmable Transaction Blocks (PTB Chaining)** directly into `haichain-core`:
+
+```
+           HAICHAIN SVM PROGRAMMABLE TRANSACTION BLOCKS (PTB)
+           
+    [ Deep Reasoning Autonomous Agent Swarm Pipeline ]
+                           │
+                           ▼ (Up to 64 Atomic Chained Instructions in 1 Tx)
+    ┌─────────────────────────────────────────────────────────────┐
+    │ 1. Extract Micro-Escrow Collateral from Master Vault        │
+    │ 2. Allocate Ephemeral Session PDA (Zero-Rent Footprint)     │
+    │ 3. Execute Dynamic CPI to Newly Discovered Merchant Tool    │
+    │ 4. Receive Tool Result Schema & Validate in WASM Sandbox    │
+    │ 5. Close Session PDA (close = user_authority)               │
+    │ 6. Drain 100% Residual Funds & Rent Lamports to Vault       │
+    └─────────────────────────────────────────────────────────────┘
+                           │
+                           ▼
+    [ ZERO LOCK CONTENTION • ZERO INTERMEDIARY ROUTER OVERHEAD • < 400ms ]
+```
+
+* **Zero Intermediary Overhead:** Unlike ERC-4337, which requires separate Paymaster and Bundler smart contract deployments, Haichain PTB enables up to 64 heterogeneous instructions chained atomically within a single transaction envelope.
+* **Dynamic Pipe Composability:** The output object of instruction $k$ (e.g., dynamically computed session authority or intermediate tool output) is directly passed as the input parameter of instruction $k+1$ zero-copy, enabling autonomous agents to dynamically discover and consume arbitrary third-party services mid-inference without transaction layout serialization errors.
+
 ---
 
 ## 6. FRONTIER AI REASONING ESCROW & HIERARCHICAL CAPABILITY TREES (BIP-32 SWARMS)
@@ -425,6 +462,27 @@ Even if a transaction is broadcast across public RPCs or gossip channels, toxic 
 Reasoning models generate variable internal thinking tokens that cannot be deterministically computed in advance. HAICHAIN formalizes the **Elastic Reasoning Escrow Equation**:
 $$Escrow_{total} = C_{base} + \min(\alpha \cdot C_{base}, \Delta_{max})$$
 Where $\alpha = 0.20$ (20% dynamic safety buffer) and $\Delta_{max}$ is the hard ceiling. When computation finishes, the provider returns an attestation proof of exact tokens burned. Unused buffer capital is released back to the user vault in the same transaction tick.
+
+
+#### Asynchronous Dual-Clock Model & Bilateral Fast-Path Settlement (< 80ms)
+To prevent atomic deadlocks when Solana experiences slot delays or transient network congestion, the reasoning escrow kernel decouples micro-session logic from global block ticks via an **Asynchronous Dual-Clock Model**:
+
+```
+             ASYNCHRONOUS DUAL-CLOCK & FAST-PATH PIPELINE
+             
+    [ Bilateral Multi-Agent Micro-Reasoning Session (A <-> B) ]
+                               │
+       ┌───────────────────────┴───────────────────────┐
+       ▼                                               ▼
+[ Fast-Path Single-Writer Protocol ]           [ Asynchronous Dual-Clock ]
+├── 2-of-2 Signed Capability Receipts          ├── Session Timeout = Delta_T
+├── Bypasses global block consensus            │   (e.g., Exactly +60 seconds)
+└── Latency: SUB-80 MILLISECONDS               └── Immune to Solana slot jitter
+```
+
+1. **Relative Delta-Time Invariant ($\Delta t$):** Bilateral escrow timeouts are parameterized by relative physical seconds ($\Delta t = 60\text{s}$) anchored to cryptographically signed Unix timestamps rather than absolute Solana slot numbers (`require!(current_unix_ts <= init_unix_ts + delta_t)`). If slot production stalls, active reasoning contracts remain mathematically consistent without freezing agent funds.
+2. **Single-Writer Fast-Path Channel:** When micro-transactions occur strictly between two bilateral agents without competing shared state (accounting for >90% of swarm interactions), transactions execute via a consensus-less Byzantine Consistent Broadcast protocol, achieving finality in **under 80 milliseconds** without queuing in global leader schedules.
+
 
 ### 6.2. Hierarchical Capability Trees (HCT)
 To deploy swarms of hundreds of sub-agents without polluting on-chain state:
@@ -506,6 +564,13 @@ To guarantee nuclear settlement finality, HAICHAIN implements the **Clearing Hou
 1. **Mandatory Solvency Staking:** Every netting relayer and autonomous trading agent must lock an initial solvency bond in staked $HAISI and liquid USDT into the protocol's Settlement Reserve Vault.
 2. **Deficit Absorption:** If Agent $X$ defaults during a netting round, the CHGB automatically absorbs Agent $X$'s delta deficit up to the maximum bounded buffer limit, allowing the remaining $(K-1)$ solvent counterparties to settle without delay or systemic contagion.
 3. **Automated Slashing & Recapitalization:** The defaulting Agent $X$'s staked $HAISI bond is immediately slashed by the protocol, liquidated via programmatic auctions to reimburse the CHGB, and Agent $X$'s execution authority is revoked until recapitalized.
+
+
+#### Self-Sovereign Owned Receipts & Instant Net-Claim Invariant (Anti-Validium Architecture)
+To eliminate the **Validium Data Withholding Trap**—wherein off-chain netting operators conceal transaction state transitions, leaving users unable to prove their balances—Haichain combines Sui's Owned Object paradigm with Solana Concurrent Merkle Trees:
+* **Atomic Signed Receipt Leaves:** Every bilateral netting round emits an on-chain **Atomic Signed Receipt Leaf** cryptographically owned by the individual agent's public key and compressed directly into Solana’s immutable ledger history via cAgents.
+* **Instant Net-Claim Escape Hatch:** Unlike Ethereum rollups that impose an unviable 24-hour dispute delay, any agent possessing an Atomic Signed Receipt can execute an **Instant Slashing Net-Claim** directly against the on-chain CHGB liquidity vault. If a netting node drops offline, the agent claims 100% of its verifiable net balance in the exact same slot without awaiting off-chain relayer coordination.
+
 
 #### Senior/Junior Tranche Capital Reserve & The Anti-Fire-Sale Invariant
 To prevent the catastrophic **Liquidity Death Spiral** observed in uncollateralized lending and algorithmic stablecoin collapses during black swan market drawdowns (-40% in 24 hours), the CHGB is architected as a **Two-Tier Senior/Junior Capital Structure**:
@@ -655,6 +720,13 @@ Haichain rejects the naive "Siloed Ghost-Chain" paradigm where a project leaves 
 * **Engineering Mitigation (Asynchronous Cognitive Pipelining - ACP):**
   * When an agent uncertainty metric crosses the verification threshold ($H(\text{Output} \mid \text{Input}) > \tau_{uncertainty}$), the agent does not block its execution thread. It isolates the unverified state fork into an **On-Chain Escrow Sandbox (OES)** and continues parallel execution on non-dependent tasks.
   * Upon resolution by bonded human arbiters (via WebAuthn Passkey or WorldID zk-PoH), the resolved state is re-merged into the main execution branch through an atomic state merge instruction (`merge_cognitive_resolution`), streaming instant USDT compensation to the human expert.
+
+
+#### Hardware-Speed Blake3 with Modern Lookup zkVM (Jolt/Lasso & Binius STARKs)
+To reconcile the cryptographic tension between wire-speed AVX-512 CPU execution and zero-knowledge arithmetic circuit complexity, Haichain rejects degrading edge execution to legacy SNARK hashes (e.g. Poseidon):
+* **Wire-Speed Edge Runtime:** Edge agent nodes retain **Blake3** for all micro-escrow hashing, achieving sub-microsecond latency on standard server hardware.
+* **Lookup-Based zkVM Arithmetization:** For Phase 3 HAI-VM state proofs and zkML validation, Haichain deploys **Jolt/Lasso zkVM & Binius (Binary Field Circle STARKs)**. By utilizing multi-dimensional Lookup Arguments, the circuit proves ARX (Addition, Rotation, XOR) bit operations natively over binary fields, reducing prover constraint overhead by **over 90%** and enabling real-time zero-knowledge state generation without sacrificing hardware CPU execution speed.
+
 
 ### 9.3. HAI-VM & The Native `OP_402_PAY` Hardware-Level Instruction
 On conventional blockchains, machine payments are interpreted smart contract operations incurring high compute-unit overhead. On HAICHAIN Sovereign L1:

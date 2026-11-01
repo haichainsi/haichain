@@ -79,6 +79,9 @@
         var cp = getCookie(STORAGE_PROVIDER_KEY);
         if (cp) provider = cp;
       }
+      if (provider) {
+        provider = (provider.toLowerCase().includes('solflare')) ? 'Solflare' : 'Phantom';
+      }
       return { skB58: skB58, provider: provider };
     },
 
