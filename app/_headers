@@ -14,13 +14,21 @@
   Content-Type: image/png
   Cache-Control: public, max-age=86400
 
+/apple-touch-icon-precomposed.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/favicon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=86400
+
 /assets/haisi-metadata.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=60, must-revalidate
 
 /assets/*
-  Cache-Control: public, max-age=86400
-
-/favicon.ico
-  Content-Type: image/x-icon
   Cache-Control: public, max-age=86400
