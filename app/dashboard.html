@@ -16,6 +16,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- TweetNaCl & BS58 Mobile E2EE Wallet Bridge -->
+  <script src="/assets/tweetnacl.min.js"></script>
+  <script src="/assets/bs58.min.js"></script>
+  <script src="/assets/phantom-deeplink.js?v=v1_e2ee"></script>
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
@@ -2289,19 +2293,48 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         appOrigin = 'https://haichain.pages.dev';
       }
       const appPath = window.location.pathname.includes('dashboard') ? '/dashboard.html' : '/';
-      const targetUrl = appOrigin + appPath + '?autoConnect=' + provider;
+      const targetUrl = appOrigin + appPath;
       const refUrl = appOrigin;
 
       if (provider === 'phantom') {
-        return 'https://phantom.com/ul/browse/' + encodeURIComponent(targetUrl) + '?ref=' + encodeURIComponent(refUrl);
+        return 'https://phantom.app/ul/v1/connect?app_url=' + encodeURIComponent(refUrl) + '&redirect_link=' + encodeURIComponent(targetUrl) + '&cluster=devnet';
       } else if (provider === 'solflare') {
-        return 'https://solflare.com/ul/v1/browse/' + encodeURIComponent(targetUrl) + '?ref=' + encodeURIComponent(refUrl);
+        return 'https://solflare.com/ul/v1/connect?app_url=' + encodeURIComponent(refUrl) + '&redirect_link=' + encodeURIComponent(targetUrl) + '&cluster=devnet';
       }
       return '#';
     }
 
     // Auto-connect inside Phantom / Solflare Mobile App in-app browser
-    (function initMobileAutoConnect() {
+    // Mobile Wallet Redirect Callback & In-App Auto-Connect
+    (function initMobileWalletIntegration() {
+      // 1. Check for official E2EE Redirect Callback from Phantom / Solflare (returns from native app to Safari/Chrome)
+      try {
+        if (window.HaichainMobileWallet) {
+          window.HaichainMobileWallet.handleRedirectCallback(async function(result) {
+            if (result && result.publicKey) {
+              console.log('[MobileWallet] E2EE Return Handshake Succeeded:', result.publicKey, result.provider);
+              await setConnectedWallet(result.publicKey, result.provider || 'Phantom');
+              if (typeof showToast === 'function') {
+                showToast({
+                  title: (result.provider || 'Phantom') + ' Connected',
+                  message: result.publicKey.slice(0, 4) + '...' + result.publicKey.slice(-4),
+                  icon: 'check-circle'
+                });
+              }
+              if (typeof openAccountModal === 'function' && window.innerWidth < 640) {
+                // Keep modal cleanly closed so user immediately sees dashboard
+                if (walletConnectModal) walletConnectModal.classList.add('hidden');
+              }
+            }
+          }, function(err) {
+            console.warn('[MobileWallet] Callback notice:', err);
+          });
+        }
+      } catch (cbErr) {
+        console.warn('initMobileWalletCallback error:', cbErr);
+      }
+
+      // 2. Auto-connect inside Phantom / Solflare in-app browser
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const autoProvider = urlParams.get('autoConnect');
@@ -2321,20 +2354,20 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               clearInterval(pollInterval);
               try {
                 if (typeof walletBtnText !== 'undefined' && walletBtnText) {
-                  walletBtnText.textContent = `Connecting ${autoProvider === 'phantom' ? 'Phantom' : 'Solflare'}...`;
+                  walletBtnText.textContent = 'Connecting ' + (autoProvider === 'phantom' ? 'Phantom' : 'Solflare') + '...';
                 }
                 const resp = await targetProvider.connect();
                 const pubKey = resp.publicKey ? resp.publicKey.toString() : targetProvider.publicKey.toString();
                 await setConnectedWallet(pubKey, autoProvider === 'phantom' ? 'Phantom' : 'Solflare');
                 if (typeof showToast === 'function') {
                   showToast({
-                    title: `${autoProvider === 'phantom' ? 'Phantom' : 'Solflare'} Connected`,
-                    message: `${pubKey.slice(0, 4)}...${pubKey.slice(-4)}`,
+                    title: (autoProvider === 'phantom' ? 'Phantom' : 'Solflare') + ' Connected',
+                    message: pubKey.slice(0, 4) + '...' + pubKey.slice(-4),
                     icon: 'check-circle'
                   });
                 }
               } catch (connectErr) {
-                console.warn("Mobile auto-connect dismissed:", connectErr);
+                console.warn('Mobile auto-connect dismissed:', connectErr);
                 if (typeof updateWalletBtnUI === 'function') updateWalletBtnUI();
               }
             } else if (attempts >= 30) {
@@ -2343,7 +2376,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           }, 150);
         }
       } catch (e) {
-        console.warn("initMobileAutoConnect error:", e);
+        console.warn('initMobileAutoConnect error:', e);
       }
     })();
 
@@ -2428,28 +2461,19 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           } else {
             const isVi = window.haichainI18n?.currentLang === 'vi';
             if (isMobileDevice()) {
-              // MOBILE PHANTOM UNIVERSAL LINK (Opens Phantom App directly)
-              const currentUrl = new URL(window.location.href);
-              currentUrl.searchParams.set('autoConnect', 'phantom');
-              const targetUrl = currentUrl.toString();
-              const refUrl = window.location.origin;
-              const phantomDeepLink = getMobileWalletDeepLink('phantom');
-
               walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
               walletNoticeText.innerHTML = isVi
-                ? `<strong>Đang chuyển tiếp tới Ứng Dụng Phantom trên điện thoại...</strong><br/><span class="text-[11px] text-neutral-500">Nếu thiết bị không tự mở ứng dụng Phantom trong giây lát, bấm nút bên dưới:</span>`
-                : `<strong>Opening Phantom Mobile App...</strong><br/><span class="text-[11px] text-neutral-500">If Phantom does not open automatically, tap the button below:</span>`;
-
-              walletInstallLink.href = phantomDeepLink;
-              walletInstallLink.removeAttribute('target');
-              walletInstallLink.className = "mt-2 inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs shadow-md hover:opacity-90 transition-all";
-              walletInstallLink.innerHTML = `<span>${isVi ? '🚀 Mở Ứng Dụng Phantom Ngay' : '🚀 Open Phantom Mobile App'}</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
-              walletInstallLink.parentElement.classList.remove('hidden');
+                ? "<strong>Đang chuyển tiếp tới Ứng Dụng Phantom...</strong><br/><span class='text-[11px] text-neutral-500'>Sau khi bạn bấm 'Connect' trong Phantom, ứng dụng sẽ tự động quay lại trang này với trạng thái đã kết nối!</span>"
+                : "<strong>Opening Phantom Wallet App...</strong><br/><span class='text-[11px] text-neutral-500'>After approving connection in Phantom, it will automatically return here connected!</span>";
               walletNoticeBox.classList.remove('hidden');
               safeCreateIcons();
 
-              // Trigger app transition immediately
-              window.location.href = phantomDeepLink;
+              if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+                window.HaichainMobileWallet.connect('phantom');
+              } else {
+                const phantomDeepLink = getMobileWalletDeepLink('phantom');
+                window.location.href = phantomDeepLink;
+              }
             } else {
               walletNoticeText.innerHTML = isVi
                 ? "<strong>Chưa phát hiện tiện ích mở rộng Phantom</strong> trên trình duyệt của bạn. Bạn có thể cài đặt Phantom hoặc nhập địa chỉ ví thủ công bên dưới."
@@ -2483,27 +2507,19 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           } else {
             const isVi = window.haichainI18n?.currentLang === 'vi';
             if (isMobileDevice()) {
-              // MOBILE SOLFLARE UNIVERSAL LINK (Opens Solflare App directly)
-              const currentUrl = new URL(window.location.href);
-              currentUrl.searchParams.set('autoConnect', 'solflare');
-              const targetUrl = currentUrl.toString();
-              const refUrl = window.location.origin;
-              const solflareDeepLink = getMobileWalletDeepLink('solflare');
-
               walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
               walletNoticeText.innerHTML = isVi
-                ? `<strong>Đang chuyển tiếp tới Ứng Dụng Solflare trên điện thoại...</strong><br/><span class="text-[11px] text-neutral-500">Nếu thiết bị không tự mở ứng dụng Solflare trong giây lát, bấm nút bên dưới:</span>`
-                : `<strong>Opening Solflare Mobile App...</strong><br/><span class="text-[11px] text-neutral-500">If Solflare does not open automatically, tap the button below:</span>`;
-
-              walletInstallLink.href = solflareDeepLink;
-              walletInstallLink.removeAttribute('target');
-              walletInstallLink.className = "mt-2 inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs shadow-md hover:opacity-90 transition-all";
-              walletInstallLink.innerHTML = `<span>${isVi ? '🚀 Mở Ứng Dụng Solflare Ngay' : '🚀 Open Solflare Mobile App'}</span><i data-lucide="external-link" class="w-3.5 h-3.5"></i>`;
-              walletInstallLink.parentElement.classList.remove('hidden');
+                ? "<strong>Đang chuyển tiếp tới Ứng Dụng Solflare...</strong><br/><span class='text-[11px] text-neutral-500'>Sau khi bạn bấm 'Connect' trong Solflare, ứng dụng sẽ tự động quay lại trang này với trạng thái đã kết nối!</span>"
+                : "<strong>Opening Solflare Wallet App...</strong><br/><span class='text-[11px] text-neutral-500'>After approving connection in Solflare, it will automatically return here connected!</span>";
               walletNoticeBox.classList.remove('hidden');
               safeCreateIcons();
 
-              window.location.href = solflareDeepLink;
+              if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+                window.HaichainMobileWallet.connect('solflare');
+              } else {
+                const solflareDeepLink = getMobileWalletDeepLink('solflare');
+                window.location.href = solflareDeepLink;
+              }
             } else {
               walletNoticeText.innerHTML = isVi
                 ? "<strong>Chưa phát hiện tiện ích mở rộng Solflare</strong> trên trình duyệt của bạn. Bạn có thể cài đặt Solflare hoặc nhập địa chỉ ví thủ công bên dưới."

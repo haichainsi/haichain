@@ -31,6 +31,10 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- TweetNaCl & BS58 Mobile E2EE Wallet Bridge -->
+  <script src="/assets/tweetnacl.min.js"></script>
+  <script src="/assets/bs58.min.js"></script>
+  <script src="/assets/phantom-deeplink.js?v=v1_e2ee"></script>
   <!-- Solana Web3.js for Live Devnet Transactions -->
 
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
@@ -2549,7 +2553,27 @@
       }
 
       // Auto-connect inside Phantom in-app browser
-      (function initMobilePhantomAutoConnect() {
+      // Mobile Wallet Redirect Callback & In-App Auto-Connect
+      (function initMobileWalletIntegration() {
+        // 1. Handle official E2EE Return Handshake from Phantom
+        try {
+          if (window.HaichainMobileWallet) {
+            window.HaichainMobileWallet.handleRedirectCallback(function(result) {
+              if (result && result.publicKey) {
+                console.log('[Index MobileWallet] Connected:', result.publicKey);
+                connectedWallet = result.publicKey;
+                const short = connectedWallet.slice(0, 4) + '...' + connectedWallet.slice(-4);
+                if (authText) authText.textContent = 'Phantom: ' + short;
+                if (potAddress) potAddress.textContent = connectedWallet.slice(0, 6) + '...' + connectedWallet.slice(-4);
+                if (walletStatusDot) walletStatusDot.className = "w-2 h-2 rounded-full bg-black dark:bg-white animate-ping";
+              }
+            });
+          }
+        } catch (cbErr) {
+          console.warn('Index MobileWallet callback error:', cbErr);
+        }
+
+        // 2. Auto-connect inside Phantom in-app browser
         try {
           const urlParams = new URLSearchParams(window.location.search);
           if (urlParams.get('autoConnect') === 'phantom') {
@@ -2567,9 +2591,9 @@
                   if (authText) authText.textContent = "Connecting...";
                   const resp = await phantom.connect();
                   connectedWallet = resp.publicKey.toString();
-                  const short = `${connectedWallet.slice(0, 4)}...${connectedWallet.slice(-4)}`;
-                  if (authText) authText.textContent = `Phantom: ${short}`;
-                  if (potAddress) potAddress.textContent = `${connectedWallet.slice(0, 6)}...${connectedWallet.slice(-4)}`;
+                  const short = connectedWallet.slice(0, 4) + '...' + connectedWallet.slice(-4);
+                  if (authText) authText.textContent = 'Phantom: ' + short;
+                  if (potAddress) potAddress.textContent = connectedWallet.slice(0, 6) + '...' + connectedWallet.slice(-4);
                   if (walletStatusDot) walletStatusDot.className = "w-2 h-2 rounded-full bg-black dark:bg-white animate-ping";
                 } catch (e) {
                   console.warn("Mobile auto-connect inside Phantom dismissed:", e);

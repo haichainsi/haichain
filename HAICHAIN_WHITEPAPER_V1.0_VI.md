@@ -36,6 +36,7 @@
 12. [Chương 10: Các Định Lý Toán Học Hình Thức & Kiểm Chứng Bất Biến](#chương-10-các-định-lý-toán-học-hình-thức--kiểm-chứng-bất-biến)
 13. [Chương 11: Lộ Trình Triển Khai Chiến Lược & Các Cột Mốc Cam Kết](#chương-11-lộ-trình-triển-khai-chiến-lược--các-cột-mốc-cam-kết)
 14. [Chương 12: Kết Luận & Bản Tuyên Ngôn $AI^2$](#chương-12-kết-luận--bản-tuyên-ngôn-định-vị-ai2)
+15. [Chương 13: Danh Mục Tài Liệu Tham Khảo & Nguồn Dẫn Chứng Đối Soát Thực Nghiệm](#chương-13-danh-mục-tài-liệu-tham-khảo--nguồn-dẫn-chứng-đối-soát-thực-nghiệm)
 
 ---
 
@@ -454,6 +455,47 @@ HAICHAIN xóa bỏ ranh giới ngăn cách giữa Trí tuệ Nhân tạo đỉnh
 > **Artificial Intelligence** mang lại tốc độ, tính toán vi mô và khả năng mở rộng vô hạn.  
 > **Actual Intelligence** mang lại mục đích sống, trực giác đạo đức và phán đoán giá trị của Con người.  
 > **HaiChain** (`haichain.si`) chính là sợi dây liên kết mật mã ràng buộc hai nguồn trí tuệ ấy lại làm một để cùng tạo dựng của cải và bảo vệ sự tự do của nhân loại.
+
+---
+
+## CHƯƠNG 13: DANH MỤC TÀI LIỆU THAM KHẢO & NGUỒN DẪN CHỨNG ĐỐI SOÁT THỰC NGHIỆM
+
+Mọi con số, chỉ số kỹ thuật, dữ liệu thiệt hại lịch sử, giới hạn vật lý và đạo luật pháp lý được trích dẫn trong bản Sách Trắng này đều được kiểm chứng chéo dựa trên các báo cáo pháp y bảo mật, chuẩn mực kỹ nghệ quốc tế, bài báo khoa học bình duyệt (peer-reviewed) và văn bản pháp luật chính thức:
+
+### I. Chuẩn Mực Hạ Tầng Thanh Toán, Phí Vi Mô & Gói Tin Mạng
+* `[1]` **Bảng Biểu Phí Chính Thức của Stripe Inc. (2024–2026):** Mức phí quẹt thẻ tiêu chuẩn: $2.9\% + \$0.30$ cho mỗi giao dịch thành công. Minh chứng cho sự bất khả thi về mặt toán học của vi thanh toán (một lệnh gọi API \$0.0002 chịu phí sàn gấp 150.000% giá trị dịch vụ). Nguồn: `https://stripe.com/pricing`.
+* `[2]` **Chuẩn Mạng IETF RFC 8200 (Đặc tả Giao thức IPv6):** Deering, S., & Hinden, R. *Internet Protocol, Version 6 (IPv6) Specification*, Mục 5 (Giới hạn Kích thước Gói tin): Quy định kích thước MTU tối thiểu của liên kết là 1.280 octets (bytes).
+* `[3]` **Đặc Tả Kích Thước Gói Tin Cốt Lõi Solana Foundation:** Định nghĩa kích thước gói tin mạng: `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1.280 - 40\text{ bytes IPv6 header} - 8\text{ bytes UDP header} = 1.232\text{ bytes}$). Chứng minh gói tin bù trừ 771 bytes của HAICHAIN nằm trọn vẹn trong 1 khung truyền dẫn không phân mảnh.
+
+### II. Báo Cáo Pháp Y Các Vụ Hack DeFi Lớn Được Bất Biến HAICHAIN Phòng Vệ (Tổng Thiệt Hại $821 Triệu USD)
+* `[4]` **Vụ Hack Cầu Nối Wormhole ($320.000.000 USD) — 02/02/2022:** Kẻ tấn công giả mạo tài khoản `sysvar::instructions` của Solana trong lệnh `complete_wrapped` để đúc 120.000 wETH giả mạo. HAICHAIN phòng vệ tuyệt đối bằng bất biến so khớp địa chỉ native sysvar bất biến (`Sysvar1nstruction5111111111111111111`). Nguồn: Báo cáo Pháp y Sự cố của CertiK & Neodyme.
+* `[5]` **Vụ Hack Cầu Nối Nomad ($190.000.000 USD) — 01/08/2022:** Lỗi root chưa khởi tạo gán giá trị mặc định `0x00` thành tin cậy trong hợp đồng `Replica.sol`. HAICHAIN phòng vệ bằng bất biến: `require!(composite_root != [0u8; 32], EmptyNomadRootForbidden)`. Nguồn: Báo cáo Phân tích Nguyên nhân Gốc rễ của Paradigm (samczsun).
+* `[6]` **Vụ Hack Khoản Vay Nhanh Euler Finance ($197.000.000 USD) — 13/03/2023:** Kẻ tấn công khai thác hàm `donateToReserves` để thao túng tỷ giá hối đoái nội bộ mà không bị kiểm tra chỉ số sức khỏe nợ. HAICHAIN phòng vệ bằng việc luôn nạp lại số dư thực tế từ tài khoản token ATA trước mỗi giao dịch (`EulerDriftBalanceMismatch`). Nguồn: Báo cáo Kiểm toán Sherlock & SlowMist.
+* `[7]` **Vụ Thao Túng Giá Flash Loan Mango Markets ($114.000.000 USD) — 11/10/2022:** Kẻ tấn công nạp tiền và rút cạn thế chấp trong cùng một block slot. HAICHAIN phòng vệ bằng rào cản cách ly: `FLASH_LOAN_QUARANTINE_SLOTS = 2` (ngăn chặn thao túng trong cửa sổ 800ms). Nguồn: Hồ sơ Kiện tụng US SEC Số 25625; Báo cáo Sự cố Mango Markets.
+
+### III. Giới Hạn Phần Cứng, Vật Lý Kết Nối & Trí Tuệ Sinh Học
+* `[8]` **Tài Liệu Kiến Trúc GPU NVIDIA H100 (2023):** Công nghệ NVLink thế hệ thứ 4 cung cấp băng thông 900 GB/s hai chiều với độ trễ $< 1\mu\text{s}$. Chứng minh mạng cáp quang Internet WAN công cộng ($100\text{ Mbps} - 10\text{ Gbps}$, độ trễ $50 - 150\text{ms}$) không thể huấn luyện song song tensor cho mô hình AI dày đặc. Nguồn: Tập đoàn NVIDIA.
+* `[9]` **Định Luật Amdahl:** Amdahl, G. M. (1967). *Validity of the single processor approach to achieving large scale computing capabilities*. Kỷ yếu Hội nghị AFIPS, Tập 30, tr. 483–485.
+* `[10]` **Năng Lượng Tiêu Thụ Não Bộ Con Người:** Raichle, M. E., & Gusnard, D. A. (2002). *Appraising the brain's energy budget*. Kỷ yếu Viện Hàn lâm Khoa học Quốc gia Hoa Kỳ (PNAS), 99(16), tr. 10237–10239. Xác lập định mức tiêu thụ năng lượng trao đổi chất của não người là 20 Watts.
+
+### IV. Chi Phí Tính Toán Mã Hóa Zero-Knowledge Machine Learning (zkML)
+* `[11]` **Báo Cáo Nghiên Cứu Điển Hình của Modulus Labs (2023):** *The Cost of Intelligence: Proving Machine Learning Inference in Zero Knowledge*. Chứng minh việc sinh bằng chứng zk-SNARK cho các tầng mạng nơ-ron sâu đòi hỏi lượng tính toán FLOPs lớn gấp từ $1.000\times$ đến $10.000\times$ so với suy diễn trực tiếp trên GPU.
+* `[12]` **Tổng Quan zkML:** Zhang, Y., và cộng sự (2023). *A Survey of Zero-Knowledge Machine Learning (zkML)*. arXiv:2308.06733. Khẳng định tính tất yếu của mô hình Optimistic Inference song hành Fraud Escalation thay vì zkML toàn phần.
+
+### V. Khoa Học Nhận Thức & Hiện Tượng Suy Thoái Dữ Liệu Tự Hoại
+* `[13]` **Nghiên Cứu Hội Chứng Model Autophagy Disorder (MAD) Trên Tạp Chí Nature:** Shumailov, I., Shumaylov, Z., Zhao, Y., Gal, Y., Papernot, N., & Anderson, R. (2024). *The Curse of Recursion: Training on Generated Data Makes Models Forget*. Nature 631, tr. 755–759. Chứng minh sự sụp đổ nhận thức không thể đảo ngược khi AI tự huấn luyện trên dữ liệu tổng hợp thiếu vắng dữ liệu sống của con người.
+* `[14]` **Mô Hình Tạo Sinh Tự Hoại:** Alemohammad, S., và cộng sự (2024). *Self-Consuming Generative Models Go MAD*. Hội nghị Quốc tế về Biểu diễn Học máy (ICLR 2024).
+
+### VI. Khung Pháp Lý Quốc Tế & Điều Khoản Miễn Trừ
+* `[15]` **Đạo Luật Trí Tuệ Nhân Tạo Châu Âu (EU AI Act - 2024):** *Quy định (EU) 2024/1689 của Nghị viện và Hội đồng Châu Âu*. Yêu cầu bắt buộc phải có cơ chế con người giám sát (Human-in-the-loop) và nhật ký truy vết minh bạch cho các hệ thống AI tự hành.
+* `[16]` **Mạng Lưới Chống Tội Phạm Tài Chính Hoa Kỳ (US FinCEN):** *Hướng dẫn Áp dụng Quy định đối với Mô hình Tiền tệ Ảo Chuyển đổi*, 31 CFR § 1010.100(ff)(5)(ii) (Quy chế miễn trừ nhà cung cấp phần mềm không lưu ký).
+* `[17]` **Lực Lượng Đặc Nhiệm Tài Chính (FATF):** *Khuyến nghị 16 (Quy tắc Du lịch - Travel Rule)*. Quy định ngưỡng chia sẻ thông tin giao dịch xuyên biên giới 1.000 USD/EUR.
+* `[18]` **Đạo Luật Thị Trường Tài Sản Mã Hóa Châu Âu (MiCA):** *Quy định (EU) 2023/1114*. Quy định bảo chứng thanh khoản 1:1 cho token tham chiếu tài sản và tiền điện tử.
+
+### VII. Số Liệu Thị Trường Doanh Nghiệp & Mạng Lưới
+* `[19]` **Báo Cáo Quản Trị SaaS Zylo (2024):** Thống kê 51% giấy phép phần mềm doanh nghiệp bị lãng phí hoàn toàn, và các thuê bao AI cá nhân lãng phí 70% đến 85% năng lực tính toán provisioned.
+* `[20]` **Thông Số Mạng Lưới Bittensor:** Thời gian tạo khối Substrate trung bình 12 giây/khối (`docs.bittensor.com`).
+* `[21]` **Hợp Đồng Token USDT Chính Thức Trên Solana:** Mint Address: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`. Kiểm tra trên Solscan / Solana Explorer.
 
 ---
 *Bản Sách Trắng Chính Thức v1.0 &bull; Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN &bull; Bảo lưu mọi quyền.*
