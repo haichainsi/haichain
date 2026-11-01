@@ -1,25 +1,25 @@
 {
   "network": "devnet",
-  "timestamp": "2026-10-31T08:11:30.523Z",
+  "timestamp": "2026-11-01T00:59:50.033Z",
   "deployerPublicKey": "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW",
   "programId": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
   "masterVaultPda": "FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F",
-  "subAgentSigner": "Gz7aLrpYgCGQLDxabEmztqWVnUr9RgptHDRh979BLXSw",
-  "providerRecipient": "DJ5DPqQZW8pJzR93FyVe1SzPK745NvE6KD9prsc5aUk8",
+  "subAgentSigner": "8BgTFbXGTX1W3L7LyhzQX3uf1Zp1iLpgoqnJqCjDNbx5",
+  "providerRecipient": "9hBcdPYTHVM6bQzfn3URQPnBF4h5KdY5hixsjkjqBD6w",
   "capabilityTicket": {
     "nonce": 1,
     "maxSpendMicroUsdt": 50000,
     "spendAmountMicroUsdt": 2000,
-    "expirySlot": 517071323,
+    "expirySlot": 517323552,
     "nullifierPda": "CyfEH4kT1TDK9wR2GhgMxWA9mhz8BPQqATLaDQVpNUz6",
-    "merkleLeafHash": "f83cf51e2950de9b279ee54e510d6539606fc92b165b68a687d445a17ca9741e"
+    "merkleLeafHash": "488a7be92e7d455825468131563b5f5cd55a536871b15344684eda750d5b74d0"
   },
   "performanceMetrics": {
-    "rpcLatencyMs": 1275,
+    "rpcLatencyMs": 1388,
     "proofByteSize": 771,
     "mtuMarginBytes": 461,
     "reclaimedRentLamports": 890880
   },
-  "transactionSignature": "4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA",
-  "solanaExplorerUrl": "https://explorer.solana.com/tx/4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA?cluster=devnet"
+  "transactionSignature": "2ZMtHJx3AjWKfSssikjeKfxJP4thBJWDJN4hwfz4DgTuX8iorfUKYsiCtYpNMEDMXqZPhfym1YiVUoyD4CB9p9ej",
+  "solanaExplorerUrl": "https://explorer.solana.com/tx/2ZMtHJx3AjWKfSssikjeKfxJP4thBJWDJN4hwfz4DgTuX8iorfUKYsiCtYpNMEDMXqZPhfym1YiVUoyD4CB9p9ej?cluster=devnet"
 }

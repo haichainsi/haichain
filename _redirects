@@ -1,8 +1,4 @@
-/                   /index.html 200
-/dashboard          /dashboard.html 200
-/app                /dashboard.html 200
-/app/               /dashboard.html 200
-/app/index.html     /index.html 200
-/app/dashboard.html /dashboard.html 200
+/app                /dashboard 302
+/app/               /dashboard 302
 /whitepaper         /HAICHAIN_WHITEPAPER_V1.0_EN.md 200
 /whitepaper-vi      /HAICHAIN_WHITEPAPER_V1.0_VI.md 200
