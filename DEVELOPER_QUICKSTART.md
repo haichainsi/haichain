@@ -66,7 +66,7 @@ node ./node_modules/mocha/bin/mocha.js --require ts-node/register tests/haichain
 ### Step 1: Initialize Vault & Master Session
 ```typescript
 import { Connection, Keypair } from "@solana/web3.js";
-import { HaiChainClient } from "@haichain/sdk";
+import { HaiChainClient } from "@haichainsi/sdk";
 
 // Connect to Solana Devnet or Mainnet-Beta
 const connection = new Connection("https://api.devnet.solana.com", "confirmed");
