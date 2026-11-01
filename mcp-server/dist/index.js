@@ -495,7 +495,89 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     throw new Error(`Tool not found: ${name}`);
 });
+function installToClaudeDesktop() {
+    console.log("==================================================");
+    console.log(" 🚀 HAICHAIN MCP Server - Automated Installer");
+    console.log("==================================================");
+    const home = os.homedir();
+    const targetPaths = [];
+    if (process.platform === "win32") {
+        // 1. Standard Roaming AppData
+        const roaming = process.env.APPDATA || path.join(home, "AppData", "Roaming");
+        targetPaths.push(path.join(roaming, "Claude", "claude_desktop_config.json"));
+        // 2. Windows Store / MSIX Virtualized AppData
+        const localAppData = process.env.LOCALAPPDATA || path.join(home, "AppData", "Local");
+        const packagesDir = path.join(localAppData, "Packages");
+        if (fs.existsSync(packagesDir)) {
+            try {
+                const entries = fs.readdirSync(packagesDir);
+                for (const entry of entries) {
+                    if (entry.toLowerCase().startsWith("claude_")) {
+                        targetPaths.push(path.join(packagesDir, entry, "LocalCache", "Roaming", "Claude", "claude_desktop_config.json"));
+                    }
+                }
+            }
+            catch (_) { }
+        }
+    }
+    else if (process.platform === "darwin") {
+        // macOS
+        targetPaths.push(path.join(home, "Library", "Application Support", "Claude", "claude_desktop_config.json"));
+    }
+    else {
+        // Linux
+        targetPaths.push(path.join(home, ".config", "Claude", "claude_desktop_config.json"));
+    }
+    let updatedCount = 0;
+    for (const configPath of targetPaths) {
+        try {
+            const configDir = path.dirname(configPath);
+            if (!fs.existsSync(configDir)) {
+                fs.mkdirSync(configDir, { recursive: true });
+            }
+            let config = {};
+            if (fs.existsSync(configPath)) {
+                try {
+                    config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+                }
+                catch {
+                    config = {};
+                }
+            }
+            if (!config.mcpServers) {
+                config.mcpServers = {};
+            }
+            config.mcpServers.haichain = {
+                command: "npx",
+                args: ["-y", "@haichainsi/mcp-server@latest"],
+                env: {
+                    SOLANA_RPC_URL: "https://api.devnet.solana.com",
+                    HAICHAIN_PROGRAM_ID: "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+                },
+            };
+            fs.writeFileSync(configPath, JSON.stringify(config, null, 2), "utf8");
+            console.log(`✅ Configured Claude Desktop at: ${configPath}`);
+            updatedCount++;
+        }
+        catch (err) {
+            console.error(`⚠️ Could not write to ${configPath}: ${err.message}`);
+        }
+    }
+    if (updatedCount > 0) {
+        console.log("\n🎉 Installation Complete!");
+        console.log("👉 Please restart Claude Desktop to start using HAICHAIN tools.");
+    }
+    else {
+        console.log("\n⚠️ No Claude Desktop installation paths found.");
+        console.log("Please install Claude Desktop first: https://claude.ai/download");
+    }
+}
 async function main() {
+    const args = process.argv.slice(2);
+    if (args.includes("--install") || args.includes("install")) {
+        installToClaudeDesktop();
+        process.exit(0);
+    }
     const transport = new StdioServerTransport();
     await server.connect(transport);
 }
