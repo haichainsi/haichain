@@ -16,7 +16,7 @@
       mobileNav: 'Private',
       breadcrumb: 'Private Strategic Allocation',
       heroBadge: 'CONFIDENTIAL PRE-SEED ROUND - 30% DISCOUNT',
-      heroTitle: 'Private Backer Allocation: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: 'Private Backer Allocation: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Early capital round reserved for Core Builders & Angel Partners. Provides a <strong>30% discount</strong> prior to the official <strong>$0.010 Public TGE Launchpad</strong> on Meteora DLMM (+42.8% immediate listing yield).',
       downloadSaft: 'Download SAFT Agreement',
       downloadMemo: '1-Pager Memo',
@@ -64,7 +64,7 @@
       mobileNav: 'Private',
       breadcrumb: 'Phân Bổ Chiến Lược VIP',
       heroBadge: 'VÒNG NỘI BỘ BẢO MẬT - CHIẾT KHẤU 30%',
-      heroTitle: 'Phân Bổ Early Backer Nội Bộ: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: 'Phân Bổ Early Backer Nội Bộ: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Vòng vốn hạt giống dành riêng cho Co-builders & Đối tác Thiên thần. Hưởng <strong>chiết khấu 30%</strong> trước khi mở bán chính thức <strong>$0.010 Public TGE</strong> trên Meteora DLMM (+42.8% tỷ suất lợi nhuận niêm yết).',
       downloadSaft: 'Tải Hợp Đồng SAFT',
       downloadMemo: 'Bản Tóm Tắt 1 Trang',
@@ -112,7 +112,7 @@
       mobileNav: '战略轮',
       breadcrumb: '战略投资 VIP 额度',
       heroBadge: '机密早期轮 - 享受30%优惠折扣',
-      heroTitle: '早期支持者内部份额: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: '早期支持者内部份额: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: '专为核心建设者和天使合作伙伴保留的早期资本轮次。在Meteora DLMM正式公开发行 <strong>$0.010 TGE</strong> 之前享有 <strong>30% 折扣</strong>（+42.8% 上线溢价）。',
       downloadSaft: '下载 SAFT 协议',
       downloadMemo: '1页投资备忘录',
@@ -125,7 +125,7 @@
       calcSubtitle: '计算您的代币配额、线性流式解锁计划及主链上线预期回报。',
       subscriptionAmount: '认购金额 (USDT):',
       subscriptionLimits: '最低 $500 - 最高 $15,000',
-      totalAllocationTitle: '$HAI 代币分配总量',
+      totalAllocationTitle: '$HAISI 代币分配总量',
       fixedPriceBadge: '固定价 @ $0.007',
       tgeValueTitle: 'TGE 价值 ($0.010)',
       unvestedYield: '+42.8% 未解锁账面收益',
@@ -160,7 +160,7 @@
       mobileNav: '전략 라운드',
       breadcrumb: 'VIP 비공개 전략 배정',
       heroBadge: '기밀 초기 라운드 - 30% 할인 혜택',
-      heroTitle: '엔젤 파트너 내부 할당: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: '엔젤 파트너 내부 할당: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: '코어 빌더와 초기 엔젤 파트너 전용 라운드입니다. Meteora DLMM 공식 <strong>$0.010 Public TGE</strong> 상장 전 <strong>30% 할인</strong>(+42.8% 즉시 상장 수익률)을 제공합니다.',
       downloadSaft: 'SAFT 계약서 다운로드',
       downloadMemo: '1페이지 투자 메모',
@@ -173,7 +173,7 @@
       calcSubtitle: '토큰 수량, 선형 베스팅 일정 및 주권 메인넷 예상 수익을 계산합니다.',
       subscriptionAmount: '참여 금액 (USDT):',
       subscriptionLimits: '최소 $500 - 최대 $15,000',
-      totalAllocationTitle: '총 $HAI 토큰 할당',
+      totalAllocationTitle: '총 $HAISI 토큰 할당',
       fixedPriceBadge: '@ $0.007 고정',
       tgeValueTitle: 'TGE 상장 가치 ($0.010)',
       unvestedYield: '+42.8% 미실현 장부 수익',
@@ -208,7 +208,7 @@
       mobileNav: 'Privé',
       breadcrumb: 'Allocation Stratégique Privée VIP',
       heroBadge: 'TOUR CONFIDENTIEL PRÉ-SEED - REMISE DE 30%',
-      heroTitle: 'Allocation Investisseur Privé : <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0,007 USD / $HAI</span>',
+      heroTitle: 'Allocation Investisseur Privé : <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0,007 USD / $HAISI</span>',
       heroSubtitle: 'Tour initial réservé aux bâtisseurs et investisseurs providentiels. Offre une <strong>remise de 30%</strong> avant le <strong>TGE Public à 0,010 $</strong> sur Meteora DLMM (+42,8% de rendement immédiat).',
       downloadSaft: 'Télécharger Accord SAFT',
       downloadMemo: 'Mémo en 1 Page',
@@ -221,7 +221,7 @@
       calcSubtitle: 'Calculez vos jetons, le calendrier de déblocage linéaire et le rendement L1.',
       subscriptionAmount: 'Montant de Souscription (USDT) :',
       subscriptionLimits: 'Min 500 $ - Max 15 000 $',
-      totalAllocationTitle: 'Allocation Totale $HAI',
+      totalAllocationTitle: 'Allocation Totale $HAISI',
       fixedPriceBadge: 'Fixé à 0,007 $',
       tgeValueTitle: 'Valeur TGE (0,010 $)',
       unvestedYield: '+42,8% de Gain Initial',
@@ -256,7 +256,7 @@
       mobileNav: 'Privada',
       breadcrumb: 'Asignación VIP Estratégica',
       heroBadge: 'RONDA CONFIDENCIAL PRE-SEED - 30% DE DESCUENTO',
-      heroTitle: 'Asignación Privada Early Backer: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: 'Asignación Privada Early Backer: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Ronda inicial reservada para constructores y ángeles inversores. Proporciona un <strong>descuento del 30%</strong> antes del lanzamiento público <strong>$0.010 Public TGE</strong> en Meteora DLMM (+42.8% de rentabilidad inmediata).',
       downloadSaft: 'Descargar Acuerdo SAFT',
       downloadMemo: 'Memo en 1 Página',
@@ -269,7 +269,7 @@
       calcSubtitle: 'Calcule su asignación de tokens, el calendario de vesting y las proyecciones L1.',
       subscriptionAmount: 'Monto de Suscripción (USDT):',
       subscriptionLimits: 'Mín $500 - Máx $15,000',
-      totalAllocationTitle: 'Asignación Total de $HAI',
+      totalAllocationTitle: 'Asignación Total de $HAISI',
       fixedPriceBadge: 'Fijado en $0.007',
       tgeValueTitle: 'Valor en TGE ($0.010)',
       unvestedYield: '+42.8% Ganancia Inicial',
@@ -304,7 +304,7 @@
       mobileNav: 'Приват',
       breadcrumb: 'VIP стратегическое выделение',
       heroBadge: 'ЗАКРЫТЫЙ ПРЕ-СИД РАУНД - СКИДКА 30%',
-      heroTitle: 'Закрытая Аллокация для Партнеров: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: 'Закрытая Аллокация для Партнеров: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Ранний инвестиционный раунд для создателей и бизнес-ангелов. Предоставляет <strong>скидку 30%</strong> до официального <strong>публичного TGE по $0.010</strong> на Meteora DLMM (+42.8% немедленной доходности при листинге).',
       downloadSaft: 'Скачать Договор SAFT',
       downloadMemo: 'Одностраничный Меморандум',
@@ -317,7 +317,7 @@
       calcSubtitle: 'Рассчитайте количество токенов, график вестинга и прогнозируемую прибыль L1.',
       subscriptionAmount: 'Сумма Инвестиций (USDT):',
       subscriptionLimits: 'Мин $500 - Макс $15,000',
-      totalAllocationTitle: 'Всего Токенов $HAI',
+      totalAllocationTitle: 'Всего Токенов $HAISI',
       fixedPriceBadge: 'Фиксировано @ $0.007',
       tgeValueTitle: 'Стоимость при TGE ($0.010)',
       unvestedYield: '+42.8% Первоначальная Прибыль',
@@ -352,7 +352,7 @@
       mobileNav: 'प्राइवेट',
       breadcrumb: 'VIP रणनीतिक आवंटन',
       heroBadge: 'गोपनीय प्री-सीड राउंड - 30% छूट',
-      heroTitle: 'प्रारंभिक निवेशक आवंटन: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: 'प्रारंभिक निवेशक आवंटन: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'कोर बिल्डर्स और एंजेल पार्टनर्स के लिए आरक्षित। आधिकारिक <strong>$0.010 पब्लिक TGE</strong> से पहले <strong>30% छूट</strong> (+42.8% तत्काल लिस्टिंग लाभ)।',
       downloadSaft: 'SAFT अनुबंध डाउनलोड करें',
       downloadMemo: '1-पेज मेमो',
@@ -365,7 +365,7 @@
       calcSubtitle: 'अपने टोकन आवंटन और लीनियर वेस्टिंग शेड्यूल की गणना करें।',
       subscriptionAmount: 'सदस्यता राशि (USDT):',
       subscriptionLimits: 'न्यूनतम $500 - अधिकतम $15,000',
-      totalAllocationTitle: 'कुल $HAI टोकन',
+      totalAllocationTitle: 'कुल $HAISI टोकन',
       fixedPriceBadge: '@ $0.007 निश्चित',
       tgeValueTitle: 'TGE पर मूल्य ($0.010)',
       unvestedYield: '+42.8% प्रारंभिक लाभ',
@@ -400,7 +400,7 @@
       mobileNav: 'פרטי',
       breadcrumb: 'הקצאה אסטרטגית VIP',
       heroBadge: 'סבב פרה-סיד חסוי - 30% הנחה',
-      heroTitle: 'הקצאה מוקדמת למשקיעים: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0.007 USD / $HAI</span>',
+      heroTitle: 'הקצאה מוקדמת למשקיעים: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0.007 USD / $HAISI</span>',
       heroSubtitle: 'סבב הון מוקדם המיועד לשותפים ואנג\'לים. מעניק <strong>30% הנחה</strong> לפני ה-<strong>TGE הציבורי ב-0.010$</strong> ב-Meteora DLMM.',
       downloadSaft: 'הורד הסכם SAFT',
       downloadMemo: 'תקציר בעמוד אחד',
@@ -413,7 +413,7 @@
       calcSubtitle: 'חשב את הקצאת הטוקנים, לוח זמני השחרור והתשואה החזויה.',
       subscriptionAmount: 'סכום השקעה (USDT):',
       subscriptionLimits: 'מינימום 500$ - מקסימום 15,000$',
-      totalAllocationTitle: 'סך טוקנים $HAI',
+      totalAllocationTitle: 'סך טוקנים $HAISI',
       fixedPriceBadge: 'קבוע ב-0.007$',
       tgeValueTitle: 'ערך בהשקה (0.010$)',
       unvestedYield: '+42.8% רווח ראשוני',
@@ -448,7 +448,7 @@
       mobileNav: 'Жабық',
       breadcrumb: 'VIP стратегиялық үлес',
       heroBadge: 'ҚҰПИЯ ПРЕ-СИД РАУНДЫ - 30% ЖЕҢІЛДІК',
-      heroTitle: 'Ерте Қолдаушылар Үлесі: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAI</span>',
+      heroTitle: 'Ерте Қолдаушылар Үлесі: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Құрылтайшылар мен бизнес-періштелерге арналған жабық раунд. Meteora DLMM-дегі ресми <strong>$0.010 Public TGE</strong> алдында <strong>30% жеңілдік</strong> (+42.8% кірістілік) береді.',
       downloadSaft: 'SAFT Келісімін Жүктеу',
       downloadMemo: '1 Беттік Меморандум',
@@ -461,7 +461,7 @@
       calcSubtitle: 'Токендер санын, вестинг кестесін және L1 блокчейн болжамдарын есептеңіз.',
       subscriptionAmount: 'Инвестиция Сомасы (USDT):',
       subscriptionLimits: 'Мин $500 - Макс $15,000',
-      totalAllocationTitle: 'Барлық $HAI Токені',
+      totalAllocationTitle: 'Барлық $HAISI Токені',
       fixedPriceBadge: 'Бекітілген @ $0.007',
       tgeValueTitle: 'TGE Құны ($0.010)',
       unvestedYield: '+42.8% Бастапқы Пайда',
@@ -674,15 +674,15 @@
     } catch (_) {}
 
     container.innerHTML = `
-      <!-- 1. TOP DEAL OVERVIEW & ALLOCATION PROGRESS CARD -->
-      <div class="p-4 sm:p-6 md:p-7 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-xs space-y-5">
-        <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4 sm:gap-6">
-          <div class="space-y-2 max-w-2xl">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-[10px] sm:text-xs font-mono font-semibold tracking-wide">
-              <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-ping"></span>
+      <!-- 1. TOP DEAL OVERVIEW & ALLOCATION PROGRESS CARD (COMPACT APPLE TITANIUM LUXURY) -->
+      <div class="p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-xs space-y-4">
+        <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-3 sm:gap-4">
+          <div class="space-y-1.5 max-w-2xl">
+            <div class="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-[10px] sm:text-xs font-mono font-semibold tracking-wide">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>${getI18nText('heroBadge')}</span>
             </div>
-            <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-black dark:text-white leading-tight">
+            <h1 class="text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-black dark:text-white leading-tight">
               ${getI18nText('heroTitle')}
             </h1>
             <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
@@ -690,29 +690,29 @@
             </p>
           </div>
 
-          <!-- Document Action Buttons -->
-          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 shrink-0 w-full sm:w-auto">
-            <a href="${phase.saftUrl}" download class="w-full sm:w-auto px-4 py-2.5 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all flex items-center justify-center space-x-2 hover:opacity-90 active:scale-95 shadow-sm min-h-[40px]">
-              <i data-lucide="file-check" class="w-4 h-4 shrink-0"></i>
-              <span class="truncate">${getI18nText('downloadSaft')}</span>
+          <!-- Document Action Buttons (Compact Sleek Pill Cluster) -->
+          <div class="flex items-center gap-2 shrink-0">
+            <a href="${phase.saftUrl}" download class="px-3.5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-semibold text-xs font-mono transition-all flex items-center justify-center space-x-1.5 hover:opacity-90 active:scale-95 shadow-sm">
+              <i data-lucide="file-check" class="w-3.5 h-3.5 shrink-0"></i>
+              <span>${getI18nText('downloadSaft')}</span>
             </a>
-            <a href="${phase.memoUrl}" download class="w-full sm:w-auto px-4 py-2.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-black dark:text-white font-semibold text-xs font-mono transition-all flex items-center justify-center space-x-2 active:scale-95 min-h-[40px]">
-              <i data-lucide="book-open" class="w-4 h-4 shrink-0"></i>
-              <span class="truncate">${getI18nText('downloadMemo')}</span>
+            <a href="${phase.memoUrl}" download class="px-3.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs font-mono transition-all flex items-center justify-center space-x-1.5 active:scale-95">
+              <i data-lucide="book-open" class="w-3.5 h-3.5 shrink-0"></i>
+              <span>${getI18nText('downloadMemo')}</span>
             </a>
           </div>
         </div>
 
-        <!-- Allocation Progress Track -->
-        <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900 space-y-2">
-          <div class="flex justify-between items-center text-xs font-mono">
+        <!-- Allocation Progress Track (Clean & Slim Minimalist) -->
+        <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800/80 space-y-1.5 font-mono text-xs">
+          <div class="flex justify-between items-center text-[11px] sm:text-xs">
             <span class="text-neutral-500">${getI18nText('allocationProgress')} <strong class="text-black dark:text-white font-bold">${(phase.allocatedSoFar / 1000000).toFixed(2)}M / ${(phase.totalAllocation / 1000000).toFixed(1)}M $HAISI</strong></span>
-            <span class="text-black dark:text-white font-bold">${percentClaimed}% ${getI18nText('claimedLabel')}</span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold">${percentClaimed}% ${getI18nText('claimedLabel')}</span>
           </div>
-          <div class="w-full h-2 rounded-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden relative">
+          <div class="w-full h-1.5 rounded-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden relative">
             <div class="h-full bg-black dark:bg-white rounded-full transition-all duration-1000" style="width: ${percentClaimed}%"></div>
           </div>
-          <div class="flex flex-wrap justify-between gap-y-1 text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
+          <div class="flex flex-wrap justify-between gap-y-0.5 text-[10px] sm:text-[11px] text-neutral-500 dark:text-neutral-400">
             <span>${getI18nText('floorPrice')}</span>
             <span>${getI18nText('hardCapLabel')}</span>
             <span>${getI18nText('publicPriceLabel')}</span>
@@ -720,177 +720,158 @@
         </div>
 
         ${userAllocation ? `
-        <!-- ACTIVE HOLDER TOKEN-2022 ALLOCATION BANNER (MONOCHROME TITANIUM) -->
-        <div class="p-3.5 sm:p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
-          <div class="space-y-1">
-            <div class="flex items-center space-x-2 text-black dark:text-white font-bold">
-              <img src="/assets/haisi-icon.png" alt="HAISI" class="w-5 h-5 rounded-full object-cover shrink-0 bg-black">
-              <span class="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse"></span>
-              <span>${getActiveLang() === 'vi' ? 'ĐÃ GHI NHẬN PHÂN BỔ CỦA BẠN' : 'YOUR ACTIVE PRE-SEED ALLOCATION'}</span>
-              <span class="text-[10px] text-neutral-400 font-normal">(${userAllocation.address.slice(0, 4)}...${userAllocation.address.slice(-4)})</span>
-            </div>
-            <div class="text-neutral-500">
-              <strong class="text-black dark:text-white font-bold underline">${userAllocation.haiTokens.toLocaleString()} $HAISI</strong> 
-              ($${userAllocation.amountUsdt.toLocaleString()} USDT • ${getActiveLang() === 'vi' ? 'Khối Chiến Lược' : 'Strategic Tranche'}) &bull; 
-              <span class="text-neutral-400">Token-2022 Transfer-Hook Active</span>
-            </div>
+        <!-- Sleek 1-Line Active Allocation Pill -->
+        <div class="p-2.5 sm:p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
+          <div class="flex items-center space-x-2 text-black dark:text-white">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+            <span class="text-neutral-500 font-sans">${getActiveLang() === 'vi' ? 'Đã phân bổ:' : 'Your Allocation:'}</span>
+            <strong class="font-bold underline text-black dark:text-white">${userAllocation.haiTokens.toLocaleString()} $HAISI</strong>
+            <span class="text-[11px] text-neutral-400">($${userAllocation.amountUsdt.toLocaleString()} USDT • Token-2022 Locked)</span>
           </div>
-          <button onclick="window.switchTab('tab-vesting')" class="px-4 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-semibold text-xs transition-all hover:opacity-90 shrink-0">
-            ${getActiveLang() === 'vi' ? 'Xem Két Vesting Của Tôi →' : 'View My Vesting Vault →'}
+          <button onclick="window.switchTab('tab-vesting')" class="px-3 py-1.5 rounded-xl bg-black dark:bg-white text-white dark:text-black font-semibold text-[11px] transition-all hover:opacity-90 shrink-0 self-start sm:self-auto">
+            ${getActiveLang() === 'vi' ? 'Xem Két Vesting →' : 'View Vesting Vault →'}
           </button>
         </div>
         ` : ''}
       </div>
 
       <!-- 2. TWO-COLUMN BALANCED WORKFLOW (STEP 1: CALCULATE | STEP 2: RESERVE) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
 
         <!-- STEP 1: CALCULATOR (COL 7) -->
-        <div class="lg:col-span-7 p-4 sm:p-6 md:p-7 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-5 shadow-xs flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="flex items-center space-x-2.5">
-              <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-mono font-bold shrink-0">1</span>
-              <div>
-                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono flex items-center space-x-2">
-                  <span>${getI18nText('calcTitle')}</span>
-                </h2>
-                <p class="text-[11px] text-neutral-500 font-sans mt-0.5">${getI18nText('calcSubtitle')}</p>
-              </div>
+        <div class="lg:col-span-7 p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-4 shadow-xs flex flex-col justify-between">
+          <div class="space-y-3.5">
+            <div class="flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-[11px] font-mono font-bold shrink-0">1</span>
+              <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono">
+                ${getI18nText('calcTitle')}
+              </h2>
             </div>
 
             <!-- USDT Input Container with Quick Buttons -->
-            <div class="p-3.5 sm:p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-3 font-mono">
-              <div class="flex justify-between items-center text-xs">
+            <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2 font-mono">
+              <div class="flex justify-between items-center text-[11px]">
                 <label for="calc-usdt-input" class="text-neutral-500 font-medium">${getI18nText('subscriptionAmount')}</label>
-                <span class="text-[10px] sm:text-[11px] text-neutral-400">${getI18nText('subscriptionLimits')}</span>
+                <span class="text-[10px] text-neutral-400">${getI18nText('subscriptionLimits')}</span>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-                <div class="flex items-center space-x-2 flex-1 px-3 py-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 focus-within:border-black dark:focus-within:border-white transition-colors">
-                  <span class="text-xl sm:text-2xl font-bold text-neutral-400">$</span>
-                  <input type="number" id="calc-usdt-input" value="1000" min="500" max="15000" step="100" class="w-full bg-transparent text-xl sm:text-2xl font-black text-black dark:text-white focus:outline-none tabular-nums min-w-0">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center space-x-1.5 flex-1 px-3 py-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 focus-within:border-black dark:focus-within:border-white transition-colors">
+                  <span class="text-lg sm:text-xl font-bold text-neutral-400">$</span>
+                  <input type="number" id="calc-usdt-input" value="1000" min="500" max="15000" step="100" class="w-full bg-transparent text-lg sm:text-xl font-black text-black dark:text-white focus:outline-none tabular-nums min-w-0">
                 </div>
-                <div class="grid grid-cols-4 gap-1.5 shrink-0">
-                  <button type="button" class="btn-quick-calc min-h-[40px] px-2.5 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="1000">$1k</button>
-                  <button type="button" class="btn-quick-calc min-h-[40px] px-2.5 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="2500">$2.5k</button>
-                  <button type="button" class="btn-quick-calc min-h-[40px] px-2.5 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="5000">$5k</button>
-                  <button type="button" class="btn-quick-calc min-h-[40px] px-2.5 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="10000">$10k</button>
+                <div class="flex gap-1 shrink-0">
+                  <button type="button" class="btn-quick-calc px-2.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-[11px] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="1000">$1k</button>
+                  <button type="button" class="btn-quick-calc px-2.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-[11px] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="2500">$2.5k</button>
+                  <button type="button" class="btn-quick-calc px-2.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-[11px] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="5000">$5k</button>
+                  <button type="button" class="btn-quick-calc px-2.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-[11px] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white font-bold transition-all active:scale-95" data-amount="10000">$10k</button>
                 </div>
               </div>
             </div>
 
-            <!-- Two Hero Outcome Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono">
-              <div class="p-3.5 sm:p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-1">
-                <span class="text-[10px] uppercase text-neutral-400 font-semibold block">${getI18nText('totalAllocationTitle')}</span>
-                <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-total-hai">142,857</div>
-                <span class="text-[10px] text-neutral-500 font-medium block">${getI18nText('fixedPriceBadge')}</span>
+            <!-- 3 Minimalist Outcome Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 font-mono">
+              <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-0.5">
+                <span class="text-[9px] uppercase text-neutral-400 font-semibold block">${getI18nText('totalAllocationTitle')}</span>
+                <div class="text-lg sm:text-xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-total-hai">142,857</div>
+                <span class="text-[9px] text-neutral-500 font-medium block">${getI18nText('fixedPriceBadge')}</span>
               </div>
-              <div class="p-3.5 sm:p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-1">
-                <span class="text-[10px] uppercase text-neutral-400 font-semibold block">${getI18nText('tgeValueTitle')}</span>
-                <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-tge-value">$1,428.57</div>
-                <span class="text-[10px] text-black dark:text-white font-bold block">${getI18nText('unvestedYield')}</span>
+              <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-0.5">
+                <span class="text-[9px] uppercase text-neutral-400 font-semibold block">${getI18nText('tgeValueTitle')}</span>
+                <div class="text-lg sm:text-xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-tge-value">$1,428.57</div>
+                <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-bold block">${getI18nText('unvestedYield')}</span>
               </div>
-            </div>
-
-            <!-- L1 Sovereign Horizon Banner -->
-            <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 flex justify-between items-center text-xs font-mono">
-              <span class="text-neutral-500">${getI18nText('l1ValueTitle')}:</span>
-              <div class="text-right">
-                <strong class="text-black dark:text-white font-bold" id="calc-l1-value">$142,857.00</strong>
-                <span class="text-[10px] text-neutral-400 ml-1">(${getI18nText('projectedMultiple')})</span>
+              <div class="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-0.5">
+                <span class="text-[9px] uppercase text-neutral-400 font-semibold block">${getI18nText('l1ValueTitle')}</span>
+                <div class="text-lg sm:text-xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-l1-value">$142,857</div>
+                <span class="text-[9px] text-neutral-500 font-medium block">142x Multiple</span>
               </div>
             </div>
 
-            <!-- Vesting Linear Schedule Breakdown -->
-            <div class="p-3.5 sm:p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 space-y-2 text-xs font-mono">
-              <span class="text-neutral-500 font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider block">${getI18nText('vestingScheduleTitle')}</span>
-              <div class="flex justify-between items-center py-1.5 border-b border-neutral-200 dark:border-neutral-800">
-                <span class="text-neutral-500">${getI18nText('vestingStep1')}</span>
-                <strong class="text-black dark:text-white" id="calc-tge-tokens">28,571 $HAISI ($285.71)</strong>
-              </div>
-              <div class="flex justify-between items-center py-1.5 border-b border-neutral-200 dark:border-neutral-800">
-                <span class="text-neutral-500">${getI18nText('vestingStep2')}</span>
-                <strong class="text-neutral-400 font-normal">${getI18nText('vestingStep2Desc')}</strong>
-              </div>
-              <div class="flex justify-between items-center py-1.5">
-                <span class="text-neutral-500">${getI18nText('vestingStep3')}</span>
-                <strong class="text-black dark:text-white" id="calc-stream-tokens">114,286 $HAISI (~635 $HAISI/day)</strong>
+            <!-- Compact Linear Vesting Schedule Row -->
+            <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 space-y-1.5 text-xs font-mono">
+              <span class="text-neutral-500 font-semibold text-[10px] uppercase tracking-wider block">${getI18nText('vestingScheduleTitle')}</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] pt-0.5">
+                <div class="p-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+                  <span class="text-neutral-400 text-[10px] block">1. TGE (20%)</span>
+                  <strong class="text-black dark:text-white font-bold" id="calc-tge-tokens">28,571 $HAISI</strong>
+                </div>
+                <div class="p-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+                  <span class="text-neutral-400 text-[10px] block">2. Cliff (2 Tháng)</span>
+                  <span class="text-neutral-500 font-medium">Khóa 0% (Anti-dump)</span>
+                </div>
+                <div class="p-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+                  <span class="text-neutral-400 text-[10px] block">3. Linear (6 Tháng)</span>
+                  <strong class="text-black dark:text-white font-bold" id="calc-stream-tokens">114,286 $HAISI</strong>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- STEP 2: SAFT TERMINAL & DEPOSIT (COL 5) -->
-        <div class="lg:col-span-5 p-4 sm:p-6 md:p-7 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-5 shadow-xs flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="flex items-center space-x-2.5">
-              <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-mono font-bold shrink-0">2</span>
-              <div>
-                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono flex items-center space-x-2">
-                  <span>${getI18nText('terminalTitle')}</span>
-                </h2>
-                <p class="text-[11px] text-neutral-500 font-sans mt-0.5">${getI18nText('terminalSubtitle')}</p>
-              </div>
+        <div class="lg:col-span-5 p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-4 shadow-xs flex flex-col justify-between">
+          <div class="space-y-3.5">
+            <div class="flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-[11px] font-mono font-bold shrink-0">2</span>
+              <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono">
+                ${getI18nText('terminalTitle')}
+              </h2>
             </div>
 
-            <!-- Input Fields -->
-            <div class="space-y-3 font-mono text-xs">
-              <div>
-                <label class="block text-[11px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelName')}</label>
-                <input type="text" id="preseed-name" placeholder="${getI18nText('placeholderName')}" class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
-              </div>
-              <div>
-                <label class="block text-[11px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelEmail')}</label>
-                <input type="email" id="preseed-email" placeholder="${getI18nText('placeholderEmail')}" class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
-              </div>
+            <!-- Form Fields -->
+            <div class="space-y-2.5 font-mono text-xs">
+              <!-- Wallet Field (Primary) -->
               <div>
                 <div class="flex justify-between items-center mb-1">
                   <label class="block text-[11px] text-neutral-500 font-sans font-medium">${getI18nText('labelWallet')}</label>
-                  ${connectedWalletAddr ? '<span class="text-[10px] text-neutral-400 font-mono">● Verified Active</span>' : ''}
-                </div>
-                <input type="text" id="preseed-wallet" value="${connectedWalletAddr}" placeholder="${getI18nText('placeholderWallet')}" class="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white font-mono text-[11px]">
-                <div class="flex items-center justify-between mt-1.5 text-[10px]">
-                  <button type="button" id="btn-autofill-phantom" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white underline font-sans flex items-center space-x-1 cursor-pointer">
+                  <button type="button" id="btn-autofill-phantom" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white underline font-sans text-[10px] flex items-center space-x-1 cursor-pointer">
                     <i data-lucide="zap" class="w-3 h-3 text-emerald-500"></i>
-                    <span>${getActiveLang() === 'vi' ? '⚡ Tự động lấy ví Phantom' : '⚡ Auto-fill from Phantom'}</span>
+                    <span>${getActiveLang() === 'vi' ? 'Lấy ví Phantom' : 'Auto-fill Phantom'}</span>
                   </button>
-                  <span class="text-neutral-400 font-sans">${getActiveLang() === 'vi' ? 'Nhận $HAI thật khi Mainnet' : 'Receives real $HAI on Mainnet TGE'}</span>
+                </div>
+                <input type="text" id="preseed-wallet" value="${connectedWalletAddr}" placeholder="${getI18nText('placeholderWallet')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white font-mono text-[11px]">
+              </div>
+
+              <!-- Name & Email (Compact Grid) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[10px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelName')}</label>
+                  <input type="text" id="preseed-name" placeholder="${getI18nText('placeholderName')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none text-[11px]">
+                </div>
+                <div>
+                  <label class="block text-[10px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelEmail')}</label>
+                  <input type="email" id="preseed-email" placeholder="${getI18nText('placeholderEmail')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none text-[11px]">
                 </div>
               </div>
             </div>
 
-            <!-- Multi-Sig Treasury Box & Direct Payment -->
-            <div class="p-3.5 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-2.5">
-              <span class="text-[10px] text-neutral-400 font-semibold block uppercase">${getI18nText('treasuryTitle')}</span>
-              
-              <!-- 1-Click Pay with Phantom Button -->
+            <!-- Multi-Sig Treasury & Payment Actions -->
+            <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-2">
+              <!-- Primary: 1-Click Pay with Phantom -->
               <button type="button" id="btn-pay-phantom-1click" class="w-full py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs font-mono flex items-center justify-center space-x-2 transition-all shadow-xs cursor-pointer active:scale-95">
                 <i data-lucide="wallet" class="w-3.5 h-3.5 shrink-0"></i>
-                <span>${getActiveLang() === 'vi' ? '🚀 Thanh Toán 1-Click Bằng Ví Phantom' : '🚀 Pay with Phantom Wallet (1-Click)'}</span>
+                <span>${getActiveLang() === 'vi' ? 'Thanh Toán 1-Click Ví Phantom' : 'Pay with Phantom (1-Click)'}</span>
               </button>
 
-              <div class="relative flex py-0.5 items-center">
-                <div class="flex-grow border-t border-neutral-300 dark:border-neutral-800"></div>
-                <span class="flex-shrink mx-2 text-[9px] text-neutral-400 uppercase font-sans">${getActiveLang() === 'vi' ? 'Hoặc Chuyển Kho Bạc Thủ Công' : 'Or Manual Treasury Transfer'}</span>
-                <div class="flex-grow border-t border-neutral-300 dark:border-neutral-800"></div>
+              <div class="flex items-center justify-between text-[10px] text-neutral-400 font-sans py-0.5">
+                <span class="uppercase tracking-wider font-semibold">${getActiveLang() === 'vi' ? 'Hoặc chuyển ví kho bạc:' : 'Or manual treasury transfer:'}</span>
+                <button type="button" id="btn-copy-treasury" class="text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white underline font-mono text-[10px]">${getI18nText('copyBtn')}</button>
               </div>
 
-              <div class="flex items-center justify-between text-[11px] text-black dark:text-white gap-2">
-                <span class="truncate select-all text-[10px] sm:text-[11px] font-bold" id="treasury-pubkey">${config.TREASURY_ADDRESS}</span>
-                <button type="button" id="btn-copy-treasury" class="px-2.5 py-1 rounded-md bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-[10px] shrink-0 font-medium transition-colors">${getI18nText('copyBtn')}</button>
+              <div class="p-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-1 text-[10px]">
+                <span class="truncate select-all font-mono font-bold text-black dark:text-white" id="treasury-pubkey">${config.TREASURY_ADDRESS}</span>
               </div>
-              <p class="text-[10px] text-neutral-500 pt-0.5">${getActiveLang() === 'vi' ? 'Chuyển USDT/SOL từ Binance, OKX hoặc ví cá nhân để được ghi nhận tự động.' : 'Direct USDT/SOL transfer from Binance, OKX, or personal wallet.'}</p>
             </div>
           </div>
 
           <!-- Submit CTA Button -->
-          <div class="pt-2">
-            <button id="btn-submit-saft-reservation" class="w-full py-3.5 sm:py-4 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-extrabold text-xs sm:text-sm font-mono transition-all flex items-center justify-center space-x-2 shadow-sm cursor-pointer hover:opacity-90 active:scale-[0.98] min-h-[46px]">
-              <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
+          <div class="pt-1">
+            <button id="btn-submit-saft-reservation" class="w-full py-2.5 sm:py-3 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-extrabold text-xs font-mono transition-all flex items-center justify-center space-x-2 shadow-sm cursor-pointer hover:opacity-90 active:scale-[0.98]">
+              <i data-lucide="send" class="w-3.5 h-3.5 shrink-0"></i>
               <span>${getI18nText('submitBtn')}</span>
             </button>
-            <p class="text-[10px] text-neutral-400 text-center font-mono mt-2 flex items-center justify-center space-x-1">
-              <i data-lucide="shield" class="w-3 h-3 text-neutral-400"></i>
+            <p class="text-[9px] text-neutral-400 text-center font-mono mt-1.5 flex items-center justify-center space-x-1">
+              <i data-lucide="shield" class="w-2.5 h-2.5 text-neutral-400"></i>
               <span>${getI18nText('protectedFooter')}</span>
             </p>
           </div>
