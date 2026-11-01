@@ -7,9 +7,11 @@
   <meta property="og:title" content="HAICHAIN - Autonomous Machine Financial Operating System">
   <meta property="og:description" content="HAICHAIN is the Autonomous Machine Financial Operating System on Solana. Non-custodial micro-escrows and instant AI capability settlements.">
   <title>HAICHAIN Dashboard - Autonomous Machine Financial Operating System</title>
-  <link rel="icon" type="image/png" href="/assets/icon.png?v=v3_white_pure">
-  <link rel="apple-touch-icon" href="/assets/icon.png?v=v3_white_pure">
-  <link rel="shortcut icon" href="/favicon.ico?v=v3_white_pure">
+  <!-- Web Browser Favicon (Original Black Emblem) -->
+  <link rel="icon" type="image/png" href="/assets/icon.png?v=v4_black">
+  <link rel="shortcut icon" href="/favicon.ico?v=v4_black">
+  <!-- Phantom Wallet App & Mobile DApp Icon (Pure White Emblem for Dark Dialogs) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/haichain-icon-white.png?v=v1_phantom_white">
   <!-- Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1609,110 +1611,161 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     </div>
   </div>
 
-  <!-- 4. UNIVERSAL WEB3 WALLET MODAL -->
-  <div id="wallet-connect-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden flex items-center justify-center p-4 animate-fadeIn">
-    <div class="w-full max-w-md rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative">
-      <div class="flex justify-between items-center pb-4 border-b border-neutral-100 dark:border-neutral-900">
+    <!-- 4. UNIVERSAL WEB3 WALLET MODAL (OPTIMIZED COMPACT MOBILE BOTTOM SHEET & DESKTOP DIALOG) -->
+  <div id="wallet-connect-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-300">
+    <div class="w-full sm:max-w-md rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-5 shadow-2xl relative max-h-[88vh] overflow-y-auto no-scrollbar transform transition-transform duration-300 animate-fadeIn">
+      
+      <!-- Mobile Drag Handle Bar -->
+      <div class="sm:hidden w-10 h-1 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-2.5"></div>
+
+      <!-- Modal Header -->
+      <div class="flex justify-between items-center pb-2.5 border-b border-neutral-100 dark:border-neutral-800">
         <div>
-          <h3 class="font-semibold text-base text-black dark:text-white flex items-center space-x-2">
-            <i data-lucide="wallet" class="w-4 h-4"></i>
+          <h3 class="font-bold text-sm sm:text-base text-black dark:text-white flex items-center space-x-2">
+            <i data-lucide="wallet" class="w-4 h-4 text-emerald-500"></i>
             <span data-i18n="modal.walletTitle">Connect Solana Wallet</span>
           </h3>
-          <p class="text-xs text-neutral-500 mt-0.5" data-i18n="modal.walletSubtitle">Choose your Web3 provider or connect manually</p>
+          <p class="text-[11px] text-neutral-500 mt-0.5" data-i18n="modal.walletSubtitle">Choose biometric Passkey or connect on-chain wallet</p>
         </div>
-        <button id="close-wallet-modal-btn" class="p-1 rounded-full text-neutral-400 hover:text-black dark:hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
+        <button id="close-wallet-modal-btn" class="p-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer" aria-label="Close">
+          <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <!-- Provider Selection List -->
-      <div class="my-5 space-y-2.5">
+      <!-- Compact Provider Selection List -->
+      <div class="my-2.5 sm:my-3 space-y-2">
         <!-- 0. BIOMETRIC PASSKEY (FaceID / TouchID / Windows Hello) - 1-TAP INVISIBLE WEB3 -->
-        <button class="wallet-provider-btn w-full p-4 rounded-2xl border-2 border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900 flex items-center justify-between transition-all bg-white dark:bg-black text-left group shadow-sm cursor-pointer" data-provider="biometric">
-          <div class="flex items-center space-x-3.5">
-            <div class="w-10 h-10 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
-              <i data-lucide="fingerprint" class="w-5 h-5"></i>
+        <button class="wallet-provider-btn w-full p-2.5 sm:p-3 rounded-2xl border-2 border-black dark:border-white hover:bg-neutral-100 dark:hover:bg-neutral-900 flex items-center justify-between transition-all bg-white dark:bg-black text-left group shadow-xs cursor-pointer active:opacity-75" data-provider="biometric">
+          <div class="flex items-center space-x-3 min-w-0">
+            <div class="w-8 h-8 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
+              <i data-lucide="fingerprint" class="w-4.5 h-4.5"></i>
             </div>
-            <div>
-              <div class="flex items-center space-x-2">
-                <span class="font-bold text-sm text-black dark:text-white" data-i18n="modal.walletBiometric">FaceID / TouchID / Windows Hello</span>
-                <span class="text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold tracking-wider">Passkey FIDO2</span>
+            <div class="min-w-0">
+              <div class="flex items-center space-x-1.5">
+                <span class="font-bold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletBiometric">Passkey Biometric</span>
+                <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold shrink-0">1-Tap • FIDO2</span>
               </div>
-              <div class="text-[11px] text-neutral-600 dark:text-neutral-400 mt-0.5" data-i18n="modal.walletBiometricDesc">FIDO2 Hardware-Bound Biometric Authentication (Zero seed phrase, zero password)</div>
+              <div class="text-[11px] text-neutral-500 dark:text-neutral-400 truncate mt-0.5" data-i18n="modal.walletBiometricDesc">FaceID / TouchID • Zero Key Risk</div>
             </div>
           </div>
-          <span class="text-xs font-mono text-black dark:text-white font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          <span class="text-xs font-mono text-black dark:text-white font-bold group-hover:translate-x-0.5 transition-transform pl-2 shrink-0">&rarr;</span>
         </button>
 
-        <!-- Divider -->
-        <div class="relative py-1 flex items-center justify-center">
+        <!-- Minimalist Divider -->
+        <div class="relative py-0.5 flex items-center justify-center">
           <div class="border-t border-neutral-200 dark:border-neutral-800 w-full"></div>
-          <span class="bg-white dark:bg-brand-card px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletOrWeb3">OR CONNECT WITH ON-CHAIN SOLANA WALLET</span>
+          <span class="bg-white dark:bg-[#0c0c0c] px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletOrWeb3">OR CONNECT ON-CHAIN WALLET</span>
         </div>
 
-        <!-- 1. Phantom -->
-        <button class="wallet-provider-btn w-full p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white flex items-center justify-between transition-all bg-neutral-50/50 dark:bg-neutral-900/40 text-left" data-provider="phantom">
-          <div class="flex items-center space-x-3.5">
-            <div class="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl">
-              👻
+        <!-- 1. Phantom Card with Nested Mobile Action Tray -->
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+          <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="phantom">
+            <div class="flex items-center space-x-3 min-w-0">
+              <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg shrink-0">
+                👻
+              </div>
+              <div class="min-w-0">
+                <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletPhantom">Phantom Wallet</div>
+                <div class="text-[11px] text-neutral-500 truncate" id="phantom-status-desc" data-i18n="modal.walletPhantomDesc">Popular Solana mobile app & browser extension</div>
+              </div>
             </div>
-            <div>
-              <div class="font-semibold text-sm text-black dark:text-white" data-i18n="modal.walletPhantom">Phantom Wallet</div>
-              <div class="text-[11px] text-neutral-500" id="phantom-status-desc" data-i18n="modal.walletPhantomDesc">Most popular Solana standard extension</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono text-neutral-400">&rarr;</span>
-        </button>
-
-        <!-- 2. Solflare -->
-        <button class="wallet-provider-btn w-full p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white flex items-center justify-between transition-all bg-neutral-50/50 dark:bg-neutral-900/40 text-left" data-provider="solflare">
-          <div class="flex items-center space-x-3.5">
-            <div class="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl">
-              🔥
-            </div>
-            <div>
-              <div class="font-semibold text-sm text-black dark:text-white" data-i18n="modal.walletSolflare">Solflare Wallet</div>
-              <div class="text-[11px] text-neutral-500" data-i18n="modal.walletSolflareDesc">Browser extension & mobile support</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono text-neutral-400">&rarr;</span>
-        </button>
-
-        <!-- 3. Manual Solana Address -->
-        <button class="wallet-provider-btn w-full p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white flex items-center justify-between transition-all bg-neutral-50/50 dark:bg-neutral-900/40 text-left" data-provider="manual">
-          <div class="flex items-center space-x-3.5">
-            <div class="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white">
-              <i data-lucide="key" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="font-semibold text-sm text-black dark:text-white" data-i18n="modal.walletManual">Custom Solana Public Key</div>
-              <div class="text-[11px] text-neutral-500" data-i18n="modal.walletManualDesc">Paste your personal Solana address to read real balance</div>
+            <span id="phantom-arrow" class="text-xs font-mono text-neutral-400 transition-transform duration-200 shrink-0">&rarr;</span>
+          </button>
+          
+          <!-- Inline Phantom Mobile Action Tray -->
+          <div id="phantom-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
+            <button type="button" id="btn-tray-phantom-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
+              <span class="flex items-center space-x-1.5 truncate">
+                <span>🚀</span>
+                <span>Open in Phantom App (Recommended)</span>
+              </span>
+              <span class="font-mono text-xs">&rarr;</span>
+            </button>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button type="button" id="btn-tray-phantom-deeplink" class="py-1.5 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white text-[10px] font-medium flex items-center justify-center space-x-1 transition-opacity active:opacity-75 cursor-pointer truncate">
+                <span>🔄</span>
+                <span>2-Way Chrome</span>
+              </button>
+              <button type="button" id="btn-tray-phantom-paste" class="py-1.5 px-2.5 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 text-[10px] font-medium flex items-center justify-center space-x-1 transition-opacity active:opacity-75 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-800 truncate">
+                <i data-lucide="clipboard" class="w-3 h-3"></i>
+                <span>Paste Address</span>
+              </button>
             </div>
           </div>
-          <span class="text-xs font-mono text-neutral-400">&rarr;</span>
-        </button>
-
-        
-      </div>
-
-      <!-- Manual Address Input Panel (Initially Hidden) -->
-      <div id="manual-address-panel" class="hidden p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-3">
-        <label class="block text-xs font-medium text-black dark:text-white" data-i18n="modal.walletManualPrompt">Paste your Solana Public Key:</label>
-        <input type="text" id="manual-wallet-input" placeholder="e.g. 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU" data-i18n-placeholder="modal.manualWalletPlaceholder" class="w-full px-3 py-2 text-xs font-mono rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-black text-black dark:text-white focus:outline-none">
-        <div class="flex gap-2">
-          <button type="button" id="cancel-manual-wallet-btn" class="flex-1 py-2 rounded-xl text-xs font-medium border border-neutral-300 dark:border-neutral-700" data-i18n="modal.walletManualCancel">Cancel</button>
-          <button type="button" id="submit-manual-wallet-btn" class="flex-1 py-2 rounded-xl text-xs font-semibold bg-black text-white dark:bg-white dark:text-black" data-i18n="modal.walletManualConfirm">Confirm Wallet</button>
         </div>
+
+        <!-- 2. Solflare Card with Nested Mobile Action Tray -->
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+          <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="solflare">
+            <div class="flex items-center space-x-3 min-w-0">
+              <div class="w-8 h-8 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg shrink-0">
+                🔥
+              </div>
+              <div class="min-w-0">
+                <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletSolflare">Solflare Wallet</div>
+                <div class="text-[11px] text-neutral-500 truncate" data-i18n="modal.walletSolflareDesc">Browser extension & mobile support</div>
+              </div>
+            </div>
+            <span id="solflare-arrow" class="text-xs font-mono text-neutral-400 transition-transform duration-200 shrink-0">&rarr;</span>
+          </button>
+          
+          <!-- Inline Solflare Mobile Action Tray -->
+          <div id="solflare-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
+            <button type="button" id="btn-tray-solflare-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
+              <span class="flex items-center space-x-1.5 truncate">
+                <span>🚀</span>
+                <span>Open in Solflare App</span>
+              </span>
+              <span class="font-mono text-xs">&rarr;</span>
+            </button>
+            <button type="button" id="btn-tray-solflare-deeplink" class="w-full py-1.5 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white text-[10px] font-medium flex items-center justify-center space-x-1 transition-opacity active:opacity-75 cursor-pointer truncate">
+              <span>🔄</span>
+              <span>2-Way Connect to Chrome</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Custom Solana Address with Inline Input Panel -->
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+          <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="manual">
+            <div class="flex items-center space-x-3 min-w-0">
+              <div class="w-8 h-8 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white shrink-0">
+                <i data-lucide="key" class="w-4 h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletManual">Custom Solana Public Key</div>
+                <div class="text-[11px] text-neutral-500 truncate" data-i18n="modal.walletManualDesc">Paste your personal Solana address to read real balance</div>
+              </div>
+            </div>
+            <span id="manual-arrow" class="text-xs font-mono text-neutral-400 transition-transform duration-200 shrink-0">&rarr;</span>
+          </button>
+          
+          <!-- Inline Manual Address Panel -->
+          <div id="manual-address-panel" class="hidden px-2.5 pb-2.5 pt-1.5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
+            <div class="flex items-center gap-1.5">
+              <input type="text" id="manual-wallet-input" placeholder="Paste Solana address (7xKX...)" data-i18n-placeholder="modal.manualWalletPlaceholder" class="flex-1 px-2.5 py-1.5 text-xs font-mono rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-black text-black dark:text-white focus:outline-none">
+              <button type="button" id="quick-paste-manual-btn" class="px-2 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 text-[10px] font-medium flex items-center space-x-1 shrink-0 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700" title="Paste from clipboard">
+                <i data-lucide="clipboard" class="w-3 h-3"></i>
+                <span>Paste</span>
+              </button>
+            </div>
+            <div class="flex gap-1.5">
+              <button type="button" id="cancel-manual-wallet-btn" class="flex-1 py-1.5 rounded-xl text-xs font-medium border border-neutral-300 dark:border-neutral-700 cursor-pointer" data-i18n="modal.walletManualCancel">Cancel</button>
+              <button type="button" id="submit-manual-wallet-btn" class="flex-1 py-1.5 rounded-xl text-xs font-semibold bg-black text-white dark:bg-white dark:text-black cursor-pointer" data-i18n="modal.walletManualConfirm">Confirm</button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Notice Box (For missing extensions) -->
-      <div id="wallet-notice-box" class="hidden mt-3 p-3.5 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs text-black dark:text-white">
+      <!-- Compact Notice Box (For desktop missing extension prompt or errors) -->
+      <div id="wallet-notice-box" class="hidden mt-2 p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs text-black dark:text-white">
         <div class="flex items-start space-x-2">
-          <i data-lucide="info" class="w-4 h-4 shrink-0 mt-0.5"></i>
-          <div id="wallet-notice-text" class="flex-1"></div>
+          <i data-lucide="info" class="w-3.5 h-3.5 shrink-0 mt-0.5"></i>
+          <div id="wallet-notice-text" class="flex-1 text-[11px]"></div>
         </div>
-        <div class="mt-2.5 pt-2 border-t border-neutral-200 dark:border-neutral-800 flex justify-end">
-          <a id="wallet-install-link" href="https://phantom.app/" target="_blank" class="font-semibold underline hover:text-black dark:hover:text-white flex items-center space-x-1">
+        <div class="mt-1.5 pt-1.5 border-t border-neutral-200 dark:border-neutral-800 flex justify-end">
+          <a id="wallet-install-link" href="https://phantom.app/" target="_blank" class="text-xs font-semibold underline hover:text-black dark:hover:text-white flex items-center space-x-1">
             <span data-i18n="modal.walletInstall">Install Wallet</span>
             <i data-lucide="external-link" class="w-3 h-3"></i>
           </a>
@@ -2623,7 +2676,105 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     // Manual Panel Toggle
     cancelManualWalletBtn.addEventListener('click', () => {
       manualAddressPanel.classList.add('hidden');
+      const mArrow = document.getElementById('manual-arrow');
+      if (mArrow) mArrow.classList.remove('rotate-90');
     });
+
+    // Wire Up Inline Mobile Wallet Action Trays
+    const btnTrayPhantomApp = document.getElementById('btn-tray-phantom-app');
+    if (btnTrayPhantomApp) {
+      btnTrayPhantomApp.addEventListener('click', () => {
+        if (window.HaichainMobileWallet) {
+          window.HaichainMobileWallet.openInAppBrowser('phantom');
+        }
+      });
+    }
+
+    const btnTrayPhantomDeep = document.getElementById('btn-tray-phantom-deeplink');
+    if (btnTrayPhantomDeep) {
+      btnTrayPhantomDeep.addEventListener('click', () => {
+        const isVi = window.haichainI18n?.currentLang === 'vi';
+        walletConnectModal.classList.add('hidden');
+        walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
+        armWalletConnectRevert(4500);
+        showToast({
+          title: isVi ? 'Đang mở Phantom...' : 'Opening Phantom App...',
+          message: isVi ? 'Cấp quyền trong Phantom để quay lại Chrome' : 'Approve in Phantom to return to Chrome',
+          icon: 'arrow-right'
+        });
+        setTimeout(() => {
+          if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+            window.HaichainMobileWallet.connect('phantom');
+          } else {
+            window.HaichainMobileWallet.openInAppBrowser('phantom');
+          }
+        }, 150);
+      });
+    }
+
+    const btnTrayPhantomPaste = document.getElementById('btn-tray-phantom-paste');
+    if (btnTrayPhantomPaste) {
+      btnTrayPhantomPaste.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text && text.trim().length >= 32) {
+            manualWalletInput.value = text.trim();
+            submitManualWalletBtn.click();
+          } else {
+            const mPanel = document.getElementById('manual-address-panel');
+            if (mPanel) mPanel.classList.remove('hidden');
+            manualWalletInput.focus();
+          }
+        } catch (_) {
+          const mPanel = document.getElementById('manual-address-panel');
+          if (mPanel) mPanel.classList.remove('hidden');
+          manualWalletInput.focus();
+        }
+      });
+    }
+
+    const btnTraySolflareApp = document.getElementById('btn-tray-solflare-app');
+    if (btnTraySolflareApp) {
+      btnTraySolflareApp.addEventListener('click', () => {
+        if (window.HaichainMobileWallet) {
+          window.HaichainMobileWallet.openInAppBrowser('solflare');
+        }
+      });
+    }
+
+    const btnTraySolflareDeep = document.getElementById('btn-tray-solflare-deeplink');
+    if (btnTraySolflareDeep) {
+      btnTraySolflareDeep.addEventListener('click', () => {
+        const isVi = window.haichainI18n?.currentLang === 'vi';
+        walletConnectModal.classList.add('hidden');
+        walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
+        armWalletConnectRevert(4500);
+        showToast({
+          title: isVi ? 'Đang mở Solflare...' : 'Opening Solflare App...',
+          message: isVi ? 'Cấp quyền trong Solflare để quay lại Chrome' : 'Approve in Solflare to return to Chrome',
+          icon: 'arrow-right'
+        });
+        setTimeout(() => {
+          if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+            window.HaichainMobileWallet.connect('solflare');
+          } else {
+            window.HaichainMobileWallet.openInAppBrowser('solflare');
+          }
+        }, 150);
+      });
+    }
+
+    const quickPasteManualBtn = document.getElementById('quick-paste-manual-btn');
+    if (quickPasteManualBtn) {
+      quickPasteManualBtn.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text && text.trim().length >= 32) {
+            manualWalletInput.value = text.trim();
+          }
+        } catch (_) {}
+      });
+    }
 
     submitManualWalletBtn.addEventListener('click', async () => {
       const address = manualWalletInput.value.trim();
@@ -3097,7 +3248,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           return;
         }
 
-        // 2. PHANTOM WALLET (1-Tap Direct Connection)
+                // 2. PHANTOM WALLET
         if (provider === 'phantom') {
           const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
           if (phantom) {
@@ -3123,89 +3274,30 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               });
             }
           } else if (isMobileDevice()) {
-            // SMART MOBILE PHANTOM OPTIONS (CHOOSE BETWEEN APP BROWSER & 2-WAY DEEPLINK)
-            walletNoticeText.innerHTML = `
-              <div class="space-y-2 text-left">
-                <div class="font-bold text-xs text-black dark:text-white flex items-center space-x-1.5">
-                  <i data-lucide="smartphone" class="w-4 h-4 text-emerald-500"></i>
-                  <span>${isVi ? 'Kết Nối Phantom Trên Điện Thoại' : 'Connect Phantom on Mobile'}</span>
-                </div>
-                <p class="text-[11px] text-neutral-600 dark:text-neutral-400">
-                  ${isVi ? 'Chọn cách kết nối phù hợp nhất với bạn:' : 'Choose your preferred connection method:'}
-                </p>
-                <div class="space-y-1.5 pt-1">
-                  <button type="button" id="btn-mobile-open-phantom" class="w-full py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
-                    <span class="flex items-center space-x-2">
-                      <span>🚀</span>
-                      <span>${isVi ? 'Mở trong App Phantom (Khuyên dùng)' : 'Open in Phantom App (Recommended)'}</span>
-                    </span>
-                    <span class="font-mono text-xs">&rarr;</span>
-                  </button>
-                  <button type="button" id="btn-mobile-deeplink-phantom" class="w-full py-2.5 px-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white font-medium text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
-                    <span class="flex items-center space-x-2">
-                      <span>🔄</span>
-                      <span>${isVi ? 'Kết nối 2 chiều về Chrome' : '2-Way Connect to Chrome'}</span>
-                    </span>
-                    <span class="font-mono text-xs">&rarr;</span>
-                  </button>
-                  <button type="button" id="btn-mobile-paste-phantom" class="w-full py-2 px-3 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 text-xs flex items-center justify-center space-x-1.5 transition-colors cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800">
-                    <i data-lucide="clipboard-paste" class="w-3.5 h-3.5"></i>
-                    <span>${isVi ? 'Dán nhanh địa chỉ ví từ bộ nhớ tạm' : 'Fast Paste Address from Clipboard'}</span>
-                  </button>
-                </div>
-              </div>
-            `;
-            walletInstallLink.parentElement.classList.add('hidden');
-            walletNoticeBox.classList.remove('hidden');
-            safeCreateIcons();
+            // Smoothly toggle inline Phantom mobile action tray
+            const tray = document.getElementById('phantom-mobile-tray');
+            const arrow = document.getElementById('phantom-arrow');
+            const sTray = document.getElementById('solflare-mobile-tray');
+            const sArrow = document.getElementById('solflare-arrow');
+            const mPanel = document.getElementById('manual-address-panel');
+            const mArrow = document.getElementById('manual-arrow');
 
-            const btnOpen = document.getElementById('btn-mobile-open-phantom');
-            if (btnOpen) {
-              btnOpen.onclick = () => {
-                if (window.HaichainMobileWallet) {
-                  window.HaichainMobileWallet.openInAppBrowser('phantom');
-                }
-              };
-            }
-            const btnDeep = document.getElementById('btn-mobile-deeplink-phantom');
-            if (btnDeep) {
-              btnDeep.onclick = () => {
-                walletConnectModal.classList.add('hidden');
-                walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
-                armWalletConnectRevert(4500);
-                showToast({
-                  title: isVi ? 'Đang mở Phantom...' : 'Opening Phantom App...',
-                  message: isVi ? 'Cấp quyền trong Phantom để quay lại Chrome' : 'Approve in Phantom to return to Chrome',
-                  icon: 'arrow-right'
-                });
-                setTimeout(() => {
-                  if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
-                    window.HaichainMobileWallet.connect('phantom');
-                  } else {
-                    window.HaichainMobileWallet.openInAppBrowser('phantom');
-                  }
-                }, 150);
-              };
-            }
-            const btnPaste = document.getElementById('btn-mobile-paste-phantom');
-            if (btnPaste) {
-              btnPaste.onclick = async () => {
-                try {
-                  const text = await navigator.clipboard.readText();
-                  if (text && text.trim().length >= 32) {
-                    manualWalletInput.value = text.trim();
-                    submitManualWalletBtn.click();
-                  } else {
-                    manualAddressPanel.classList.remove('hidden');
-                    manualWalletInput.focus();
-                  }
-                } catch (_) {
-                  manualAddressPanel.classList.remove('hidden');
-                  manualWalletInput.focus();
-                }
-              };
-            }
+            if (sTray) sTray.classList.add('hidden');
+            if (sArrow) sArrow.classList.remove('rotate-90');
+            if (mPanel) mPanel.classList.add('hidden');
+            if (mArrow) mArrow.classList.remove('rotate-90');
 
+            if (tray) {
+              const isHidden = tray.classList.contains('hidden');
+              if (isHidden) {
+                tray.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-90');
+                safeCreateIcons();
+              } else {
+                tray.classList.add('hidden');
+                if (arrow) arrow.classList.remove('rotate-90');
+              }
+            }
           } else {
             walletNoticeText.innerHTML = isVi
               ? "<strong>Chưa phát hiện tiện ích Phantom</strong> trên trình duyệt của bạn. Hãy cài đặt extension để kết nối ví."
@@ -3218,7 +3310,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           return;
         }
 
-        // 3. SOLFLARE WALLET (1-Tap Direct Connection)
+        // 3. SOLFLARE WALLET
         if (provider === 'solflare') {
           const solflare = window.solflare?.isSolflare ? window.solflare : null;
           if (solflare) {
@@ -3244,87 +3336,29 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               });
             }
           } else if (isMobileDevice()) {
-            // SMART MOBILE SOLFLARE OPTIONS
-            walletNoticeText.innerHTML = `
-              <div class="space-y-2 text-left">
-                <div class="font-bold text-xs text-black dark:text-white flex items-center space-x-1.5">
-                  <i data-lucide="smartphone" class="w-4 h-4 text-emerald-500"></i>
-                  <span>${isVi ? 'Kết Nối Solflare Trên Điện Thoại' : 'Connect Solflare on Mobile'}</span>
-                </div>
-                <p class="text-[11px] text-neutral-600 dark:text-neutral-400">
-                  ${isVi ? 'Chọn cách kết nối phù hợp nhất với bạn:' : 'Choose your preferred connection method:'}
-                </p>
-                <div class="space-y-1.5 pt-1">
-                  <button type="button" id="btn-mobile-open-solflare" class="w-full py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
-                    <span class="flex items-center space-x-2">
-                      <span>🚀</span>
-                      <span>${isVi ? 'Mở trong App Solflare (Khuyên dùng)' : 'Open in Solflare App (Recommended)'}</span>
-                    </span>
-                    <span class="font-mono text-xs">&rarr;</span>
-                  </button>
-                  <button type="button" id="btn-mobile-deeplink-solflare" class="w-full py-2.5 px-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white font-medium text-xs flex items-center justify-between transition-transform active:scale-[0.98] cursor-pointer">
-                    <span class="flex items-center space-x-2">
-                      <span>🔄</span>
-                      <span>${isVi ? 'Kết nối 2 chiều về Chrome' : '2-Way Connect to Chrome'}</span>
-                    </span>
-                    <span class="font-mono text-xs">&rarr;</span>
-                  </button>
-                  <button type="button" id="btn-mobile-paste-solflare" class="w-full py-2 px-3 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 text-xs flex items-center justify-center space-x-1.5 transition-colors cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800">
-                    <i data-lucide="clipboard-paste" class="w-3.5 h-3.5"></i>
-                    <span>${isVi ? 'Dán nhanh địa chỉ ví từ bộ nhớ tạm' : 'Fast Paste Address from Clipboard'}</span>
-                  </button>
-                </div>
-              </div>
-            `;
-            walletInstallLink.parentElement.classList.add('hidden');
-            walletNoticeBox.classList.remove('hidden');
-            safeCreateIcons();
+            // Smoothly toggle inline Solflare mobile action tray
+            const tray = document.getElementById('solflare-mobile-tray');
+            const arrow = document.getElementById('solflare-arrow');
+            const pTray = document.getElementById('phantom-mobile-tray');
+            const pArrow = document.getElementById('phantom-arrow');
+            const mPanel = document.getElementById('manual-address-panel');
+            const mArrow = document.getElementById('manual-arrow');
 
-            const btnOpen = document.getElementById('btn-mobile-open-solflare');
-            if (btnOpen) {
-              btnOpen.onclick = () => {
-                if (window.HaichainMobileWallet) {
-                  window.HaichainMobileWallet.openInAppBrowser('solflare');
-                }
-              };
-            }
-            const btnDeep = document.getElementById('btn-mobile-deeplink-solflare');
-            if (btnDeep) {
-              btnDeep.onclick = () => {
-                walletConnectModal.classList.add('hidden');
-                walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
-                armWalletConnectRevert(4500);
-                showToast({
-                  title: isVi ? 'Đang mở Solflare...' : 'Opening Solflare App...',
-                  message: isVi ? 'Cấp quyền trong Solflare để quay lại Chrome' : 'Approve in Solflare to return to Chrome',
-                  icon: 'arrow-right'
-                });
-                setTimeout(() => {
-                  if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
-                    window.HaichainMobileWallet.connect('solflare');
-                  } else {
-                    window.HaichainMobileWallet.openInAppBrowser('solflare');
-                  }
-                }, 150);
-              };
-            }
-            const btnPaste = document.getElementById('btn-mobile-paste-solflare');
-            if (btnPaste) {
-              btnPaste.onclick = async () => {
-                try {
-                  const text = await navigator.clipboard.readText();
-                  if (text && text.trim().length >= 32) {
-                    manualWalletInput.value = text.trim();
-                    submitManualWalletBtn.click();
-                  } else {
-                    manualAddressPanel.classList.remove('hidden');
-                    manualWalletInput.focus();
-                  }
-                } catch (_) {
-                  manualAddressPanel.classList.remove('hidden');
-                  manualWalletInput.focus();
-                }
-              };
+            if (pTray) pTray.classList.add('hidden');
+            if (pArrow) pArrow.classList.remove('rotate-90');
+            if (mPanel) mPanel.classList.add('hidden');
+            if (mArrow) mArrow.classList.remove('rotate-90');
+
+            if (tray) {
+              const isHidden = tray.classList.contains('hidden');
+              if (isHidden) {
+                tray.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-90');
+                safeCreateIcons();
+              } else {
+                tray.classList.add('hidden');
+                if (arrow) arrow.classList.remove('rotate-90');
+              }
             }
           } else {
             walletNoticeText.innerHTML = isVi
@@ -3340,9 +3374,28 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
 
         // 4. MANUAL ADDRESS (Show/Hide Input with Clipboard Paste)
         if (provider === 'manual') {
-          manualAddressPanel.classList.toggle('hidden');
-          if (!manualAddressPanel.classList.contains('hidden')) {
-            manualWalletInput.focus();
+          const mPanel = document.getElementById('manual-address-panel');
+          const mArrow = document.getElementById('manual-arrow');
+          const pTray = document.getElementById('phantom-mobile-tray');
+          const pArrow = document.getElementById('phantom-arrow');
+          const sTray = document.getElementById('solflare-mobile-tray');
+          const sArrow = document.getElementById('solflare-arrow');
+
+          if (pTray) pTray.classList.add('hidden');
+          if (pArrow) pArrow.classList.remove('rotate-90');
+          if (sTray) sTray.classList.add('hidden');
+          if (sArrow) sArrow.classList.remove('rotate-90');
+
+          if (mPanel) {
+            const isHidden = mPanel.classList.contains('hidden');
+            if (isHidden) {
+              mPanel.classList.remove('hidden');
+              if (mArrow) mArrow.classList.add('rotate-90');
+              manualWalletInput.focus();
+            } else {
+              mPanel.classList.add('hidden');
+              if (mArrow) mArrow.classList.remove('rotate-90');
+            }
           }
           return;
         }
