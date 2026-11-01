@@ -4284,15 +4284,25 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         dashConfirmDepositBtn.textContent = isVi ? "Đang gửi giao dịch Solana Devnet Faucet..." : "Broadcasting Solana Devnet Faucet Tx...";
 
         try {
-          const resp = await fetch('/api/faucet', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              amountUsdt: added,
-              walletAddress: userWallet.address
-            })
-          });
-          const data = resp.ok ? await resp.json() : {};
+          let data = null;
+          const endpoints = ['/api/faucet', 'http://localhost:3001/api/faucet'];
+          for (const ep of endpoints) {
+            try {
+              const resp = await fetch(ep, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  amountUsdt: added,
+                  walletAddress: userWallet.address
+                })
+              });
+              if (resp.ok) {
+                data = await resp.json();
+                break;
+              }
+            } catch (_) {}
+          }
+          data = data || {};
 
           balance += added;
           saveBalance();

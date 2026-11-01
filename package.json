@@ -8,7 +8,9 @@
     "test:stress": "node scripts/stress_test_i18n.js",
     "test:overflow": "node scripts/audit_mobile_overflow.js",
     "deploy:devnet": "ts-node scripts/deploy-devnet.ts",
-    "simulate:devnet": "ts-node scripts/simulate-micro-escrow-devnet.ts"
+    "simulate:devnet": "ts-node scripts/simulate-micro-escrow-devnet.ts",
+    "start:relayer": "node server/faucet-relayer.js",
+    "install:mcp": "node scripts/install-claude-mcp.js"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.30.1",

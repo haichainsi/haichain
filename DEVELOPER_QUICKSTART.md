@@ -29,19 +29,34 @@ sequenceDiagram
 
 ---
 
-## 2. Installation
+## 2. Installation & 1-Click Setup
 
-Install the official HAICHAIN TypeScript SDK and Model Context Protocol (MCP) server:
+### A. 1-Click MCP Setup for Claude Desktop & Cursor
+To instantly hook up HAICHAIN into your Claude Desktop or Cursor AI agents without manual JSON editing:
 
 ```bash
-# Using npm
-npm install @haichain/sdk @haichain/mcp-server
+# In the HAICHAIN repository root:
+npm run install:mcp
+```
+This automatically registers the compiled `@haichain/mcp-server` into `%APPDATA%/Claude/claude_desktop_config.json` (Windows) or `~/.config/Claude/` (macOS/Linux). Restart Claude Desktop and you will see all HAICHAIN tools live!
 
-# Using pnpm
-pnpm add @haichain/sdk @haichain/mcp-server
+### B. Starting the Live Solana Devnet Faucet & Gasless Relayer
+To test on-chain settlements with real Devnet SOL sponsorship:
 
-# Using bun
-bun add @haichain/sdk @haichain/mcp-server
+```bash
+npm run start:relayer
+# Server will listen on http://localhost:3001
+# Test endpoint: http://localhost:3001/api/health
+# Real Faucet API: http://localhost:3001/api/faucet
+```
+
+### C. SDK Installation from Source / NPM
+```bash
+# Build the TypeScript Client SDK:
+npm run build --prefix sdk/typescript
+
+# Run 100% Forensic Security & Enterprise SLA Tests:
+node ./node_modules/mocha/bin/mocha.js --require ts-node/register tests/haichain-security.test.ts tests/haichain-v7-sla-enterprise.test.ts
 ```
 
 ---
