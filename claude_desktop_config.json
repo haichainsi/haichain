@@ -1,12 +1,14 @@
 {
   "mcpServers": {
     "haichain": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "c:/Users/Surface/Documents/8. HAICHAIN/mcp-server/dist/index.js"
+        "-y",
+        "@haichain/mcp-server"
       ],
       "env": {
-        "SOLANA_RPC_URL": "https://api.devnet.solana.com"
+        "SOLANA_RPC_URL": "https://api.devnet.solana.com",
+        "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
       }
     }
   }

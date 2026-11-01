@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "haichain": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@haichain/mcp-server"
+      ],
+      "env": {
+        "SOLANA_RPC_URL": "https://api.devnet.solana.com",
+        "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
+      }
+    }
+  }
+}
