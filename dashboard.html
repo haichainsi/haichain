@@ -2089,14 +2089,19 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       }
 
       // 5. Theme Toggle Button
-      const themeBtn = e.target.closest('#theme-toggle');
+      const themeBtn = e.target.closest('#theme-toggle, .theme-toggle-btn');
       if (themeBtn) {
         e.preventDefault();
-        const html = document.documentElement;
-        html.classList.add('no-theme-transition');
-        html.classList.toggle('dark');
-        localStorage.setItem('haichain-theme', html.classList.contains('dark') ? 'dark' : 'light');
-        requestAnimationFrame(() => html.classList.remove('no-theme-transition'));
+        e.stopPropagation();
+        if (typeof toggleTheme === 'function') {
+          toggleTheme();
+        } else {
+          const html = document.documentElement;
+          html.classList.add('no-theme-transition');
+          const isDark = html.classList.toggle('dark');
+          localStorage.setItem('haichain-theme', isDark ? 'dark' : 'light');
+          requestAnimationFrame(() => html.classList.remove('no-theme-transition'));
+        }
         return;
       }
     });
@@ -2168,20 +2173,36 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       if (typeof renderVestingVaultPage === 'function') renderVestingVaultPage();
     });
 
-    // 1. Theme Management (Instant 0ms Switching)
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlEl = document.documentElement;
-    const savedTheme = localStorage.getItem('haichain-theme') || 'dark';
-    if (savedTheme === 'light') htmlEl.classList.remove('dark');
-    themeToggle.addEventListener('click', () => {
+    // 1. Unified Theme Management (Single-Source-of-Truth, 0ms Instant Toggle)
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
       htmlEl.classList.add('no-theme-transition');
-      htmlEl.classList.toggle('dark');
-      localStorage.setItem('haichain-theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
-      // Re-enable interactive component transitions on next animation frame
+      const isDark = htmlEl.classList.toggle('dark');
+      localStorage.setItem('haichain-theme', isDark ? 'dark' : 'light');
       requestAnimationFrame(() => {
         htmlEl.classList.remove('no-theme-transition');
       });
-    });
+    }
+    window.toggleTheme = toggleTheme;
+
+    // Load initial theme state
+    (function initTheme() {
+      const savedTheme = localStorage.getItem('haichain-theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleTheme();
+      };
+    }
 
     // 2. Tab Navigation (Desktop & Mobile)
     const navTabs = document.querySelectorAll('.nav-tab-btn');
