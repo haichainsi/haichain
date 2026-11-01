@@ -982,82 +982,88 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
   </div>
 
   <!-- UNIFIED AI INTEGRATION HUB MODAL (AI GATEWAY + CLAUDE MCP + TREASURY) -->
-  <div id="ai-hub-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xl hidden flex items-center justify-center p-3 sm:p-4 animate-fadeIn">
-    <div class="w-full max-w-xl rounded-3xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 backdrop-blur-2xl p-5 sm:p-6 shadow-2xl relative max-h-[94vh] overflow-y-auto no-scrollbar">
+  <div id="ai-hub-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xl hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-300">
+    <div class="w-full sm:max-w-xl rounded-t-[32px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn">
+      
+      <!-- Mobile Pull Bar Indicator -->
+      <div class="sm:hidden w-12 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-3.5"></div>
       
       <!-- Modal Header -->
-      <div class="flex justify-between items-center pb-3.5 border-b border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center space-x-3">
-          <div class="w-9 h-9 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-sm shrink-0">
+      <div class="flex justify-between items-center pb-3 border-b border-neutral-100 dark:border-neutral-800">
+        <div class="flex items-center space-x-3 min-w-0">
+          <div class="w-9 h-9 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
             <i data-lucide="cpu" class="w-4 h-4"></i>
           </div>
-          <div>
-            <h3 class="font-bold text-sm sm:text-base text-black dark:text-white flex items-center space-x-2">
-              <span>HAICHAIN AI Integration Hub</span>
-              <span class="px-2 py-0.5 text-[9px] font-mono rounded-full bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-300 dark:border-neutral-700">Live L1 Kernel</span>
-            </h3>
-            <p class="text-[11px] text-neutral-500">Autonomous Financial Stack &bull; AI Gateway &bull; Claude MCP</p>
+          <div class="min-w-0">
+            <div class="flex items-center space-x-2">
+              <h3 class="font-bold text-sm sm:text-base text-black dark:text-white truncate">HAICHAIN AI Hub</h3>
+              <span class="px-2 py-0.5 text-[9px] font-mono rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800 shrink-0">L1 Active</span>
+            </div>
+            <p class="text-[11px] text-neutral-500 truncate">AI Gateway &bull; MCP Server &bull; Micro-Billing</p>
           </div>
         </div>
-        <button id="close-ai-hub-modal" class="p-1.5 rounded-full text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0">
+        <button id="close-ai-hub-modal" class="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <!-- 3 Main Segment Tabs -->
-      <div class="my-4 flex p-1 bg-neutral-100 dark:bg-neutral-900 rounded-2xl text-xs font-semibold">
-        <button id="hub-tab-gateway" type="button" class="flex-1 py-2 rounded-xl bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1.5">
+      <!-- 3 Main Segment Tabs (Sleek, No-Wrap on Mobile) -->
+      <div class="my-3 flex p-1 bg-neutral-100 dark:bg-neutral-900 rounded-2xl text-xs font-semibold">
+        <button id="hub-tab-gateway" type="button" class="flex-1 py-2 rounded-xl bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold flex items-center justify-center space-x-1.5 transition-all cursor-pointer">
           <i data-lucide="network" class="w-3.5 h-3.5"></i>
-          <span>1. AI Gateway</span>
+          <span>Gateway</span>
         </button>
-        <button id="hub-tab-mcp" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1.5">
+        <button id="hub-tab-mcp" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold flex items-center justify-center space-x-1.5 transition-all cursor-pointer">
           <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-          <span>2. Claude MCP</span>
+          <span>Claude MCP</span>
         </button>
-        <button id="hub-tab-stats" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1.5">
+        <button id="hub-tab-stats" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold flex items-center justify-center space-x-1.5 transition-all cursor-pointer">
           <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
-          <span>3. Treasury (20%)</span>
+          <span>Treasury</span>
         </button>
       </div>
 
-      <!-- TAB 1 CONTENT: AI GATEWAY (Reverse Proxy for Cursor, Claude Code, Cline, Windsurf) -->
-      <div id="hub-section-gateway" class="space-y-3 font-mono text-xs">
+      <!-- TAB 1 CONTENT: AI GATEWAY (Reverse Proxy for Cursor, Claude Code, Cline) -->
+      <div id="hub-section-gateway" class="space-y-2.5 font-mono text-xs">
         <!-- Sub-client selector inside Gateway -->
         <div class="flex space-x-1.5 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[11px] font-medium">
-          <button id="gw-tab-cursor" type="button" class="flex-1 py-1 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold">Cursor / Cline</button>
-          <button id="gw-tab-claude" type="button" class="flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold">Claude Code CLI</button>
+          <button id="gw-tab-cursor" type="button" class="flex-1 py-1.5 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold transition-all">Cursor / Cline</button>
+          <button id="gw-tab-claude" type="button" class="flex-1 py-1.5 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold transition-all">Claude Code CLI</button>
         </div>
 
-        <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-1.5">
+        <!-- Compact Gateway Base URL Card -->
+        <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1.5">
           <div class="flex items-center justify-between text-[11px]">
-            <span class="text-neutral-400 uppercase font-semibold">Gateway Base URL:</span>
+            <span class="text-neutral-500 dark:text-neutral-400 font-sans font-semibold uppercase text-[10px]">Gateway Endpoint</span>
             <span id="gw-protocol-badge" class="text-[9px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-bold border border-neutral-300 dark:border-neutral-700">POST /v1/chat/completions</span>
           </div>
-          <div id="gw-url-display" class="p-2 rounded-xl bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 font-mono text-xs break-all select-all text-black dark:text-white font-bold">
-            http://localhost:3000/v1
+          <div id="gw-url-display" class="p-2.5 rounded-xl bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 font-mono text-xs break-all select-all text-black dark:text-white font-bold flex items-center justify-between group cursor-pointer hover:border-black dark:hover:border-white transition-colors" title="Bấm để sao chép URL">
+            <span>http://localhost:3000/v1</span>
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-black dark:group-hover:text-white shrink-0 ml-2"></i>
           </div>
-          <p id="gw-desc-text" class="text-[10.5px] text-neutral-500 pt-0.5 font-sans">
-            Autonomous inference deduction directly from the Spending Pot on Solana with 20% Treasury Margin. Simply update the Base URL in your IDE.
+          <p id="gw-desc-text" class="text-[10.5px] text-neutral-500 font-sans leading-relaxed">
+            Quyết toán suy luận AI trực tiếp từ Két chi tiêu Solana (Phí kho bạc 20%). Cập nhật Base URL trong IDE để dùng ngay.
           </p>
         </div>
 
-        <div id="gw-code-container" class="space-y-1">
-          <div class="flex justify-between items-center text-[10.5px] text-neutral-400">
-            <span id="gw-snippet-title">Quick Configuration:</span>
-            <span class="text-[9.5px] text-neutral-400 flex items-center space-x-1 font-semibold">
-              <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+        <!-- Quick Code Snippet Box -->
+        <div id="gw-code-container" class="space-y-1.5">
+          <div class="flex justify-between items-center text-[10.5px] font-sans">
+            <span id="gw-snippet-title" class="font-semibold text-black dark:text-white text-xs">Cấu hình IDE nhanh:</span>
+            <span class="text-[9.5px] text-emerald-600 dark:text-emerald-400 flex items-center space-x-1 font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>Devnet Active</span>
             </span>
           </div>
-          <pre id="gw-code-snippet" class="p-3 rounded-2xl bg-neutral-950 text-neutral-200 font-mono text-[10px] leading-relaxed border border-neutral-800 whitespace-pre-wrap break-all overflow-hidden select-all">// Trong Cursor Settings -> Models -> OpenAI API Key:
+          <pre id="gw-code-snippet" class="p-3 rounded-2xl bg-neutral-950 text-neutral-200 font-mono text-[11px] leading-relaxed border border-neutral-800 whitespace-pre-wrap break-all select-all">// Trong Cursor / Cline Settings:
 Base URL: http://localhost:3000/v1
-API Key: agent_cursor_ide_02 (or your Spending Pot ID)
-Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
+API Key: agent_cursor_ide_02
+Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         </div>
 
-        <button id="copy-gw-config-btn" type="button" class="w-full py-2.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-md flex items-center justify-center space-x-1.5 cursor-pointer active:scale-95">
+        <button id="copy-gw-config-btn" type="button" class="w-full py-2.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-md flex items-center justify-center space-x-2 cursor-pointer active:scale-98">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-          <span id="copy-gw-btn-text">Copy Gateway Config</span>
+          <span id="copy-gw-btn-text">Sao Chép Cấu Hình Gateway</span>
         </button>
       </div>
 
@@ -3630,13 +3636,35 @@ claude`;
     const legacyGatewayBtn = document.getElementById('ai-gateway-btn');
     if (legacyGatewayBtn) legacyGatewayBtn.addEventListener('click', () => openAiHubModal('gateway'));
 
+    // Quick 1-tap copy for Gateway URL display
+    if (gwUrlDisplay) {
+      gwUrlDisplay.addEventListener('click', async () => {
+        try {
+          const urlText = gwUrlDisplay.querySelector('span') ? gwUrlDisplay.querySelector('span').textContent.trim() : gwUrlDisplay.textContent.trim();
+          await navigator.clipboard.writeText(urlText);
+          showToast({ title: "URL Copied!", message: urlText, icon: "copy" });
+        } catch (_) {}
+      });
+    }
+
+    // Quick 1-tap copy for Gateway URL display
+    if (gwUrlDisplay) {
+      gwUrlDisplay.addEventListener('click', async () => {
+        try {
+          const urlText = gwUrlDisplay.querySelector('span') ? gwUrlDisplay.querySelector('span').textContent.trim() : gwUrlDisplay.textContent.trim();
+          await navigator.clipboard.writeText(urlText);
+          showToast({ title: "URL Copied!", message: urlText, icon: "copy" });
+        } catch (_) {}
+      });
+    }
+
     // Gateway Sub-tabs (Cursor vs Claude Code)
     if (gwTabCursor) {
       gwTabCursor.addEventListener('click', () => {
         gwTabCursor.className = "flex-1 py-1 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold";
         if (gwTabClaude) gwTabClaude.className = "flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold";
         if (gwProtocolBadge) gwProtocolBadge.textContent = "POST /v1/chat/completions";
-        if (gwUrlDisplay) gwUrlDisplay.textContent = "http://localhost:3000/v1";
+        if (gwUrlDisplay) { const s = gwUrlDisplay.querySelector("span"); if (s) s.textContent = "http://localhost:3000/v1"; else gwUrlDisplay.textContent = "http://localhost:3000/v1"; }
         if (gwDescText) gwDescText.textContent = "Autonomous inference deduction directly from the Spending Pot on Solana with 20% Treasury Margin. Simply update the Base URL in your IDE.";
         if (gwSnippetTitle) gwSnippetTitle.textContent = "Quick Cursor / Cline Configuration:";
         if (gwCodeSnippet) gwCodeSnippet.textContent = cursorGwSnippet;
@@ -3648,7 +3676,7 @@ claude`;
         gwTabClaude.className = "flex-1 py-1 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold";
         if (gwTabCursor) gwTabCursor.className = "flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold";
         if (gwProtocolBadge) gwProtocolBadge.textContent = "POST /v1/messages";
-        if (gwUrlDisplay) gwUrlDisplay.textContent = "http://localhost:3000";
+        if (gwUrlDisplay) { const s = gwUrlDisplay.querySelector("span"); if (s) s.textContent = "http://localhost:3000"; else gwUrlDisplay.textContent = "http://localhost:3000"; }
         if (gwDescText) gwDescText.textContent = "Connect Claude Code CLI with HAICHAIN. Fully compliant with Anthropic /v1/messages with hardware circuit-breaker.";
         if (gwSnippetTitle) gwSnippetTitle.textContent = "Claude Code CLI Shell Configuration:";
         if (gwCodeSnippet) gwCodeSnippet.textContent = claudeCodeGwSnippet;
