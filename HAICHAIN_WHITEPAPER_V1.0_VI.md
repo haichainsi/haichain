@@ -1,5 +1,5 @@
 # HAICHAIN: HỆ ĐIỀU HÀNH TÀI CHÍNH TOÀN CẦU CHO TÁC TỬ TRÍ TUỆ NHÂN TẠO
-## Bản Sách Trắng Chính Thức v1.0 — Kiến Trúc Hệ Thống, Các Bất Biến Mật Mã & Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập
+## Bản Sách Trắng Chính Thức v1.0 - Kiến Trúc Hệ Thống, Các Bất Biến Mật Mã & Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập
 **Đơn vị chủ trì:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN  
 **Ngày phát hành:** 31 tháng 10 năm 2026  
 **Phân loại tài liệu:** Sách Trắng Chính Thức v1.0 (Phiên bản Tiếng Việt)  
@@ -235,15 +235,15 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
 ```
 
 ### 7.1. Phân Bổ Token & Lịch Mở Khóa (Tổng Cung Cố Định: 1.000.000.000 $HAI)
-* **Khuyến khích Hệ sinh thái & Bù trừ Máy (35%):** 350.000.000 $HAI &mdash; Mở khóa tuyến tính trong 48 tháng.
+* **Khuyến khích Hệ sinh thái & Bù trừ Máy (35%):** 350.000.000 $HAI - Mở khóa tuyến tính trong 48 tháng.
 * **Cộng đồng & Mở bán Phân tầng (15%):** 150.000.000 $HAI gồm:
-  * *Vòng Bán Nội Bộ (Pre-Seed) (2,5%):* 25.000.000 $HAI &mdash; Giá **\$0.007 USD** (\$7M FDV), mở khóa 20% tại TGE, khóa cliff 2 tháng, trả dần 6 tháng on-chain.
-  * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAI &mdash; Giá **\$0.010 USD** (\$10M FDV) qua Meteora Alpha Vault / DLMM, mở khóa tuyến tính 7 ngày chống sniping.
-  * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAI &mdash; Dự trữ khuyến khích AI builder và hackathon.
-* **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAI &mdash; Khóa cứng 12 tháng, mở khóa tuyến tính 36 tháng.
-* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAI &mdash; Khóa cứng 12 tháng, trả dần 18 tháng (Định giá \$15M FDV).
-* **Quỹ Dự trữ Bảo hiểm An toàn (10%):** 100.000.000 $HAI &mdash; Khóa đa chữ ký để bảo hiểm và kiểm toán.
-* **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAI &mdash; Đốt khóa 100% token thanh khoản LP.
+  * *Vòng Bán Nội Bộ (Pre-Seed) (2,5%):* 25.000.000 $HAI - Giá **\$0.007 USD** (\$7M FDV), mở khóa 20% tại TGE, khóa cliff 2 tháng, trả dần 6 tháng on-chain.
+  * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAI - Giá **\$0.010 USD** (\$10M FDV) qua Meteora Alpha Vault / DLMM, mở khóa tuyến tính 7 ngày chống sniping.
+  * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAI - Dự trữ khuyến khích AI builder và hackathon.
+* **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAI - Khóa cứng 12 tháng, mở khóa tuyến tính 36 tháng.
+* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAI - Khóa cứng 12 tháng, trả dần 18 tháng (Định giá \$15M FDV).
+* **Quỹ Dự trữ Bảo hiểm An toàn (10%):** 100.000.000 $HAI - Khóa đa chữ ký để bảo hiểm và kiểm toán.
+* **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAI - Đốt khóa 100% token thanh khoản LP.
 
 ---
 

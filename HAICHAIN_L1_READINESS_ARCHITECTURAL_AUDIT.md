@@ -3,7 +3,7 @@
 **Đơn vị thẩm định:** Hội đồng Kiến trúc Hệ thống Phân tán & Nhóm Chuyên gia Tối ưu Máy ảo (Distributed Systems & VM Core Taskforce)  
 **Đối tượng kiểm toán:** Bản Đặc tả Kỹ thuật Toàn cầu (`HAICHAIN_TECHNICAL_ARCHITECTURE_SPECIFICATION.md` v6.9.3) & Nhân mã nguồn Anchor (`programs/haichain-core/src/lib.rs`)  
 **Ngày phát hành:** 31/10/2026  
-**Đánh giá tổng thể:** **GRADE A- (91/100) — SẴN SÀNG CAO ĐỘ CHO HẠ TẦNG L1/SVM (HIGHLY COMPATIBLE FOR L1 SCALING)**
+**Đánh giá tổng thể:** **GRADE A- (91/100) - SẴN SÀNG CAO ĐỘ CHO HẠ TẦNG L1/SVM (HIGHLY COMPATIBLE FOR L1 SCALING)**
 
 ---
 
@@ -29,7 +29,7 @@
 
 ## 1. ĐÁNH GIÁ CHI TIẾT TỪNG TRỤ CỘT KỸ THUẬT
 
-### 1.1. CÁC NGUYÊN THỦY MẬT MÃ (CRYPTOGRAPHIC PRIMITIVES) — ĐIỂM: 98/100 (HOÀN HẢO)
+### 1.1. CÁC NGUYÊN THỦY MẬT MÃ (CRYPTOGRAPHIC PRIMITIVES) - ĐIỂM: 98/100 (HOÀN HẢO)
 * **Thực trạng trong bản đặc tả v6.9.3:**
   - Định danh người dùng và tác tử: **Ed25519** (`Pubkey`).
   - Cây ủy quyền tác tử & Bù trừ: **Keccak-256** (`anchor_lang::solana_program::keccak::hashv`).
@@ -42,7 +42,7 @@
 
 ---
 
-### 1.2. MÔ HÌNH DỮ LIỆU & TRẠNG THÁI (STATE & CAPABILITY MODEL) — ĐIỂM: 94/100 (RẤT TỐT)
+### 1.2. MÔ HÌNH DỮ LIỆU & TRẠNG THÁI (STATE & CAPABILITY MODEL) - ĐIỂM: 94/100 (RẤT TỐT)
 * **Thực trạng trong bản đặc tả v6.9.3:**
   - Cấu trúc `MasterAgentVault` chỉ chiếm **160 bytes**:
     ```rust
@@ -63,7 +63,7 @@
 
 ---
 
-### 1.3. ĐỊNH DẠNG DÂY DẪN & SERIALIZATION (WIRE FORMAT & MTU) — ĐIỂM: 96/100 (XUẤT SẮC)
+### 1.3. ĐỊNH DẠNG DÂY DẪN & SERIALIZATION (WIRE FORMAT & MTU) - ĐIỂM: 96/100 (XUẤT SẮC)
 * **Thực trạng trong bản đặc tả v6.9.3:**
   - Toàn bộ giao dịch micro-payment được nén tối đa:
     $$\text{Payload} = 8\text{ (Disc)} + 8\text{ (Spend)} + 8\text{ (Max)} + 8\text{ (Expiry)} + 8\text{ (Nonce)} + 1\text{ (VecLen)} + 256\text{ (Proof 8)} + 224\text{ (Accounts)} + 64\text{ (Sig)} = \mathbf{771\text{ bytes}}$$
@@ -73,7 +73,7 @@
 
 ---
 
-### 1.4. ĐIỂM NGHẼN CẦN LƯU Ý: SỰ PHỤ THUỘC RUNTIME SOLANA (RUNTIME COUPLING) — ĐIỂM: 82/100 (CẦN TỐI ƯU)
+### 1.4. ĐIỂM NGHẼN CẦN LƯU Ý: SỰ PHỤ THUỘC RUNTIME SOLANA (RUNTIME COUPLING) - ĐIỂM: 82/100 (CẦN TỐI ƯU)
 * **Thực trạng phát hiện trong audit:**
   Mã nguồn hiện tại có 3 điểm neo chặt vào hệ điều hành Solana:
   1. `Clock::get()?.slot`: Neo vào hệ thống Clock Sysvar của Solana để tính Slot cách ly Flash Loan và Expiry.
@@ -97,7 +97,7 @@
 
 ---
 
-### 1.5. CƠ CHẾ QUẢN LÝ NULLIFIER & STATE RENT — ĐIỂM: 88/100 (CẦN NÂNG CẤP KHI LÊN L1)
+### 1.5. CƠ CHẾ QUẢN LÝ NULLIFIER & STATE RENT - ĐIỂM: 88/100 (CẦN NÂNG CẤP KHI LÊN L1)
 * **Thực trạng phát hiện trong audit:**
   - Bản v6.9.3 xử lý chống chi tiêu kép (Double-Spend Replay) bằng cách tạo một Account PDA riêng cho mỗi nonce:
     `seeds = [b"nullifier", agent_vault.key().as_ref(), &nonce.to_le_bytes()]`.
@@ -110,7 +110,7 @@
 
 ---
 
-### 1.6. KHẢ NĂNG CHỤP TRẠNG THÁI (GENESIS STATE SNAPSHOTTING) — ĐIỂM: 95/100 (RẤT DỄ DÀNG)
+### 1.6. KHẢ NĂNG CHỤP TRẠNG THÁI (GENESIS STATE SNAPSHOTTING) - ĐIỂM: 95/100 (RẤT DỄ DÀNG)
 * **Thực trạng:**
   - Giả sử vào Ngày thứ 540, HAICHAIN quyết định tách ra thành Sovereign L1. Làm thế nào để di dời số dư và tài sản của người dùng từ Solana sang chain mới mà không làm mất tiền?
 * **Đánh giá:**

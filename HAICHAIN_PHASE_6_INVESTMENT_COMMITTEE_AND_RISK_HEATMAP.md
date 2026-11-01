@@ -1,7 +1,7 @@
-# BÁO CÁO TỔNG HỢP BAN THẨM ĐỊNH ĐẦU TƯ & MA TRẬN RỦI RO MCKINSEY — GIAI ĐOẠN 6
+# BÁO CÁO TỔNG HỢP BAN THẨM ĐỊNH ĐẦU TƯ & MA TRẬN RỦI RO MCKINSEY - GIAI ĐOẠN 6
 ## HAICHAIN INVESTMENT COMMITTEE MEMO, MCKINSEY RISK HEATMAP & 90-DAY MAINNET ROADMAP
-**Cơ quan thực hiện:** Hội đồng Thẩm định Đầu tư Cấp cao & Quản trị Rủi ro Toàn cầu (Global Investment Committee — McKinsey Corporate Finance x Tier-1 Institutional Web3 Taskforce)  
-**Quyết định Thẩm định:** **PHÊ DUYỆT ĐẦU TƯ MỨC ĐỘ TIN CẬY CAO NHẤT (STRONG CONVICTION APPROVAL — LEAD SEED ROUND $1,200,000 USD TẠI FDV $15,000,000 USD)**  
+**Cơ quan thực hiện:** Hội đồng Thẩm định Đầu tư Cấp cao & Quản trị Rủi ro Toàn cầu (Global Investment Committee - McKinsey Corporate Finance x Tier-1 Institutional Web3 Taskforce)  
+**Quyết định Thẩm định:** **PHÊ DUYỆT ĐẦU TƯ MỨC ĐỘ TIN CẬY CAO NHẤT (STRONG CONVICTION APPROVAL - LEAD SEED ROUND $1,200,000 USD TẠI FDV $15,000,000 USD)**  
 **Tài liệu đối soát trong dự án:**
 - [`WEBSITE_SHOWCASE_PITCH.md`](file:///c:/Users/Surface/Documents/8.%20HAICHAIN/WEBSITE_SHOWCASE_PITCH.md)
 - [`README.md`](file:///c:/Users/Surface/Documents/8.%20HAICHAIN/README.md) (v6.9.3)

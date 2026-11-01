@@ -1,4 +1,4 @@
-# HỒ SƠ TÁI THẨM ĐỊNH PHÁP LÝ CHUYÊN SÂU & RỦI RO HÌNH SỰ QUỐC TẾ — GIAI ĐOẠN 4
+# HỒ SƠ TÁI THẨM ĐỊNH PHÁP LÝ CHUYÊN SÂU & RỦI RO HÌNH SỰ QUỐC TẾ - GIAI ĐOẠN 4
 ## HAICHAIN ADVANCED CRIMINAL DEFENSE, SAMOURAI WALLET PRECEDENT & SOVEREIGN STRUCTURING
 **Cơ quan thực hiện:** Hội đồng Cố vấn Pháp lý Cấp cao & Tranh tụng Mật mã Quốc tế (Former SEC Senior Enforcement Counsel x Global Crypto Litigation Practice)  
 **Tiêu chuẩn thẩm định:** Tiêu chuẩn Phòng thủ Tố tụng Hình sự Liên bang Hoa Kỳ (US Federal Criminal Defense & European Sovereign Immunity Standard)  

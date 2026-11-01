@@ -1,5 +1,5 @@
 # HAICHAIN: UNIVERSAL AUTONOMOUS MACHINE FINANCIAL OPERATING SYSTEM
-## Official Whitepaper v1.0 — Architecture, Cryptographic Invariants & The Sovereign AI L1 Endgame
+## Official Whitepaper v1.0 - Architecture, Cryptographic Invariants & The Sovereign AI L1 Endgame
 **Architected by:** The HAICHAIN Global Systems Taskforce  
 **Publication Date:** October 31, 2026  
 **Document Classification:** Official Whitepaper v1.0 (English Edition)  
@@ -230,15 +230,15 @@ HAICHAIN implements a **Dual-Asset Economy**:
 ```
 
 ### 7.1. Token Allocation & Vesting Schedule (1,000,000,000 Fixed Supply)
-* **Ecosystem & Machine Netting Incentives (35%):** 350,000,000 $HAI &mdash; 48-month linear emission.
+* **Ecosystem & Machine Netting Incentives (35%):** 350,000,000 $HAI - 48-month linear emission.
 * **Community & Tiered Token Sale (15%):** 150,000,000 $HAI comprising:
-  * *Private Pre-Seed Development Round (2.5%):* 25,000,000 $HAI &mdash; Priced at **\$0.007 USD** (\$7M FDV), 20% TGE unlock, 2-month cliff, 6-month on-chain linear vesting.
-  * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAI &mdash; Priced at **\$0.010 USD** (\$10M FDV) via Meteora Alpha Vault / DLMM, 7-day linear anti-sniping schedule.
-  * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAI &mdash; Reserved for developer grants and ecosystem bounties.
-* **Core Engineering & Founding Team (18%):** 180,000,000 $HAI &mdash; 12-month cliff, 36-month linear vesting.
-* **Strategic Seed Investors (12%):** 120,000,000 $HAI &mdash; 12-month cliff, 18-month linear vesting ($15M FDV).
-* **Protocol Security Treasury (10%):** 100,000,000 $HAI &mdash; Multi-sig locked for insurance and audits.
-* **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAI &mdash; 100% LP tokens permanently burned.
+  * *Private Pre-Seed Development Round (2.5%):* 25,000,000 $HAI - Priced at **\$0.007 USD** (\$7M FDV), 20% TGE unlock, 2-month cliff, 6-month on-chain linear vesting.
+  * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAI - Priced at **\$0.010 USD** (\$10M FDV) via Meteora Alpha Vault / DLMM, 7-day linear anti-sniping schedule.
+  * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAI - Reserved for developer grants and ecosystem bounties.
+* **Core Engineering & Founding Team (18%):** 180,000,000 $HAI - 12-month cliff, 36-month linear vesting.
+* **Strategic Seed Investors (12%):** 120,000,000 $HAI - 12-month cliff, 18-month linear vesting ($15M FDV).
+* **Protocol Security Treasury (10%):** 100,000,000 $HAI - Multi-sig locked for insurance and audits.
+* **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAI - 100% LP tokens permanently burned.
 
 ---
 

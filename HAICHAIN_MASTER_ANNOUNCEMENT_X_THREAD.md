@@ -122,7 +122,7 @@ $HAIC is engineered for institutional tokenomics:
 ### Tweet 10: The Sovereign AI L1 Roadmap
 Phase 1: Solana SVM Core Program (Live on Devnet).
 Phase 2: zkML Inference Verification & MPC Swarm Coordination.
-Phase 3: The Sovereign AI L1 AppChain — a dedicated high-throughput network running parallel SVM + native zero-knowledge verification nodes.
+Phase 3: The Sovereign AI L1 AppChain - a dedicated high-throughput network running parallel SVM + native zero-knowledge verification nodes.
 
 The machine economy will have its own native chain.
 
@@ -166,7 +166,7 @@ We are witnessing an unprecedented paradigm shift in computational intelligence.
 Yet, despite their rapidly compounding intelligence, every autonomous agent remains **economically crippled**.
 
 When an agent needs to pay $0.002 to scrape an anti-bot protected webpage, execute a high-performance vector search, or rent 5 seconds of an NVIDIA H100 GPU cluster, the existing financial architecture fails completely:
-- **Traditional Visa/Mastercard rails** demand human identity verification (KYC), impose minimum payment floors, and attach a $0.30 fixed swipe fee — turning a $0.002 inference call into an absurd $0.302 transaction.
+- **Traditional Visa/Mastercard rails** demand human identity verification (KYC), impose minimum payment floors, and attach a $0.30 fixed swipe fee - turning a $0.002 inference call into an absurd $0.302 transaction.
 - **Existing Web3 wallets** force developers to inject raw cryptographic private keys into LLM execution contexts. A single prompt injection attack, adversarial memory corruption, or hallucinated loop results in the catastrophic drain of company funds.
 
 The world does not need another consumer payment app. **The machine economy needs a high-frequency, sub-cent, un-griefable cryptographic settlement operating system.**
@@ -210,7 +210,7 @@ The HAICHAIN native utility token ($HAIC) powers the governance, security, and p
 HAICHAIN’s roadmap is designed in three deliberate phases:
 1. **Phase 1 (Now):** Anchor Solana Core Protocol deployment, Developer SDK, and MCP Server ecosystem onboarding.
 2. **Phase 2 (Q3-Q4 2026):** Zero-Knowledge Machine Learning (zkML) proof verification and multi-agent escrow routing.
-3. **Phase 3 (2027):** Launch of the HAICHAIN Sovereign AI L1 AppChain — a custom high-performance consensus network purpose-built for the autonomous machine age.
+3. **Phase 3 (2027):** Launch of the HAICHAIN Sovereign AI L1 AppChain - a custom high-performance consensus network purpose-built for the autonomous machine age.
 
 ---
 
@@ -230,7 +230,7 @@ The machine economy is here. It’s time to give it financial rails.
 ## PART 3: FARCASTER / WARPCAST LAUNCH CASTS
 
 ### Cast 1 (Main Announcement):
-> Announcing @haichain — The Financial Operating System for Autonomous AI Agents.
+> Announcing @haichain - The Financial Operating System for Autonomous AI Agents.
 > 
 > Billions of AI agents will soon buy APIs, GPU cycles, and synthetic data autonomously. But credit cards freeze on $0.002 charges, and giving LLMs raw crypto keys leads to instant prompt injection drain.
 > 
@@ -261,7 +261,7 @@ The machine economy is here. It’s time to give it financial rails.
 ```
 🚀 WELCOME TO THE OFFICIAL HAICHAIN ARCHITECTURE FORUM 🚀
 
-We are thrilled to officially unveil HAICHAIN — the universal autonomous financial operating system built for the Machine Economy.
+We are thrilled to officially unveil HAICHAIN - the universal autonomous financial operating system built for the Machine Economy.
 
 📌 KEY RESOURCES:
 • Website & Interactive Showcase: https://haichain.si (Live on localhost:3000)

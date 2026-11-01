@@ -1,4 +1,4 @@
-# HỒ SƠ TÁI THẨM ĐỊNH TRẢI NGHIỆM KHÁCH HÀNG & TÂM LÝ HỌC SẢN PHẨM CHUYÊN SÂU — GIAI ĐOẠN 5
+# HỒ SƠ TÁI THẨM ĐỊNH TRẢI NGHIỆM KHÁCH HÀNG & TÂM LÝ HỌC SẢN PHẨM CHUYÊN SÂU - GIAI ĐOẠN 5
 ## HAICHAIN ADVANCED MASS-CONSUMER UX, PSYCHOLOGY OF SPENDING & GTM FRICTION AUDIT
 **Cơ quan thực hiện:** Hội đồng Giám sát Trải nghiệm Sản phẩm & Tăng trưởng Quy mô Lớn (McKinsey Digital Growth Practice x HCI & Product Psychology Taskforce)  
 **Tôn chỉ thẩm định:** *"Sản phẩm tốt đến mấy mà có 1 điểm nghẽn gây ức chế tâm lý người dùng, người ta sẽ xóa app trong 3 giây. Chúng tôi soi vào từng cú click, từng thông báo rung điện thoại và từng rào cản nền tảng."*  

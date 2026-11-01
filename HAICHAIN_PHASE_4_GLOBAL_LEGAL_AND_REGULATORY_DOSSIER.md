@@ -1,4 +1,4 @@
-# HỒ SƠ THẨM ĐỊNH MA TRẬN PHÁP LÝ TOÀN CẦU, RỦI RO ĐỊA CHÍNH TRỊ & TUÂN THỦ QUY CHẾ — GIAI ĐOẠN 4
+# HỒ SƠ THẨM ĐỊNH MA TRẬN PHÁP LÝ TOÀN CẦU, RỦI RO ĐỊA CHÍNH TRỊ & TUÂN THỦ QUY CHẾ - GIAI ĐOẠN 4
 ## HAICHAIN GLOBAL LEGAL COMPLIANCE, JURISDICTIONAL RISK & MiCA/FinCEN/OFAC DOSSIER
 **Cơ quan thực hiện:** Ban Thẩm định Pháp lý & Chính sách Tiền tệ Toàn cầu (McKinsey Global Regulatory Practice x Institutional Web3 Legal Taskforce)  
 **Tiêu chuẩn thẩm định:** Thẩm định kép 2 vòng độc lập (Dual-Pass Legal Forensic Audit & Sovereign Cross-Border Stress Testing)  
@@ -72,7 +72,7 @@ Khung pháp lý **MiCA (Markets in Crypto-Assets)** có hiệu lực toàn diệ
 * **Vấn đề:** Tether (USDT) chưa đạt được giấy phép Tổ chức Tiền điện tử (EMI License) đầy đủ theo Tiêu đề III & IV của MiCA. Các sàn giao dịch lớn tại Châu Âu (Binance, OKX, Kraken EU) đã bắt đầu hạn chế hoặc hủy niêm yết các cặp giao dịch USDT cho công dân EU.
 * **Kiến trúc Modular Mint của HAICHAIN:**
   - Mặc dù chuẩn mặc định toàn cầu là **USDT (Tether SPL)** do tính phổ biến tuyệt đối (chiếm 75% thị phần thế giới), smart contract và Gateway của HAICHAIN được thiết kế theo cấu trúc **Modular Mint**.
-  - Tại thị trường Châu Âu, người dùng và bot có thể chuyển đổi mượt mà sang **USDC (Circle)** hoặc **EURC (Euro Coin của Circle)** — đây là các stablecoin đã được cấp phép EMI chính thức theo luật MiCA.
+  - Tại thị trường Châu Âu, người dùng và bot có thể chuyển đổi mượt mà sang **USDC (Circle)** hoặc **EURC (Euro Coin của Circle)** - đây là các stablecoin đã được cấp phép EMI chính thức theo luật MiCA.
   - Bot tại Berlin hay Paris có thể thanh toán bằng EURC/USDC, bot tại Tokyo hay Singapore thanh toán bằng USDT, tất cả đều được xử lý chung trên cùng một hạ tầng bù trừ ròng mà không gặp bất kỳ xung đột pháp lý nào.
 
 ### 2.2. Miễn trừ Giấy phép CASP (Crypto-Asset Service Provider):

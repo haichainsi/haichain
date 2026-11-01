@@ -1,4 +1,4 @@
-# HỒ SƠ KIỂM TOÁN CHUYÊN SÂU KỸ THUẬT LÕI SVM & MÃ NGUỒN — GIAI ĐOẠN 2 (BẢN HARDENED V6.9.1)
+# HỒ SƠ KIỂM TOÁN CHUYÊN SÂU KỸ THUẬT LÕI SVM & MÃ NGUỒN - GIAI ĐOẠN 2 (BẢN HARDENED V6.9.1)
 ## HAICHAIN FORENSIC TECHNICAL KERNEL AUDIT & DEEP SVM PROOF DOSSIER
 **Cơ quan thực hiện:** Ban Thẩm định Kỹ thuật Lõi & Mật mã học (Tier-1 Crypto Security Auditors x Solana Core Systems Specialists)  
 **Phạm vi:** Kiểm toán từng dòng mã nguồn Anchor Rust, đo kiểm giới hạn vật lý MTU, định mức Compute Unit (CU), kinh tế học phí thuê (Rent Economics) và 12 ca kiểm thử tự động  

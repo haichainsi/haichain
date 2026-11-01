@@ -1,4 +1,4 @@
-# HỒ SƠ THẨM ĐỊNH KINH TẾ DÒNG TIỀN, TOKENOMICS & TÀI CHÍNH P&L — GIAI ĐOẠN 3
+# HỒ SƠ THẨM ĐỊNH KINH TẾ DÒNG TIỀN, TOKENOMICS & TÀI CHÍNH P&L - GIAI ĐOẠN 3
 ## HAICHAIN DUAL-ASSET TOKENOMICS, CASH FLOW MODELING & 3-YEAR PRO FORMA P&L
 **Cơ quan thực hiện:** Ban Thẩm định Tài chính Doanh nghiệp & Kinh tế học Token (McKinsey Corporate Finance Practice x Institutional Blockchain Research Taskforce)  
 **Tiêu chuẩn thẩm định:** Thẩm định kép 2 vòng độc lập (Dual-Pass Forensic Self-Audit & Extreme Adverse Stress-Testing)  
@@ -66,7 +66,7 @@ flowchart TD
 
 # 2. CƠ CẤU PHÂN PHỔI TOKEN, ĐỊNH GIÁ & LỊCH VESTING
 
-* **Tổng Cung Cố Định (Fixed Total Supply):** **1,000,000,000 $HAI** (Một Tỷ Token — Không có lạm phát mint thêm).
+* **Tổng Cung Cố Định (Fixed Total Supply):** **1,000,000,000 $HAI** (Một Tỷ Token - Không có lạm phát mint thêm).
 * **Định giá Vòng Hạt Giống (Seed FDV):** **$15,000,000 USD** (Giá token: $0.015 USD).
 * **Định giá Niêm Yết Công Khai (Listing FDV):** **$60,000,000 USD** (Giá token: $0.060 USD).
 * *(So sánh thị trường: Bittensor $TAO FDV $\approx$ $4.2 Tỷ USD; Virtuals Protocol FDV $\approx$ $1.1 Tỷ USD).*
@@ -235,6 +235,6 @@ Ngay từ **Năm 1**, HAICHAIN đã đạt **Lợi nhuận Hoạt động Dươn
 
 # TỔNG KẾT THẨM ĐỊNH GIAI ĐOẠN 3
 
-1. **Về Tính Khả Thi Kinh Tế:** Mô hình Dual-Asset (USDT cho thanh toán vi mô và $HAI cho tích lũy giá trị) đã giải quyết triệt để vấn đề biến động giá — rào cản lớn nhất của các dự án crypto AI từ trước tới nay.
+1. **Về Tính Khả Thi Kinh Tế:** Mô hình Dual-Asset (USDT cho thanh toán vi mô và $HAI cho tích lũy giá trị) đã giải quyết triệt để vấn đề biến động giá - rào cản lớn nhất của các dự án crypto AI từ trước tới nay.
 2. **Về Dòng Tiền & P&L:** Dự án đạt điểm hòa vốn và có lãi hoạt động **ngay từ Năm 1** ($280,000 EBITDA), đạt **$15.9 Triệu USD EBITDA vào Năm 3** với biên lợi nhuận ròng ấn tượng **88.3%**.
 3. **Về Kết Quả Tự Audit Kép:** Cả 2 vòng tự kiểm toán vi mô và stress-test kịch bản thảm họa đều khẳng định **hệ số an toàn vốn vượt trội, runway tài chính trên 48 tháng**, hoàn toàn kháng cự trước các biến động tiêu cực nhất của thị trường tài chính toàn cầu.

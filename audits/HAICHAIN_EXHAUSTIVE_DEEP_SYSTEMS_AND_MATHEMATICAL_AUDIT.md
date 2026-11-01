@@ -1,7 +1,7 @@
 # HAICHAIN v6.9: EXHAUSTIVE DEEP TECHNICAL SYSTEMS & CRYPTOGRAPHIC AUDIT
 **Author:** Senior Cryptographic Systems Architect & Institutional Blockchain Auditor  
 **Scope:** Complete Codebase (`programs/haichain-core/src/lib.rs`), Mathematical Invariants, Solana Virtual Machine (SVM) Execution Semantics, and Network Topologies  
-**Status:** FORENSIC DEEP-DIVE COMPLETED — HARDENED TO PRODUCTION v6.9  
+**Status:** FORENSIC DEEP-DIVE COMPLETED - HARDENED TO PRODUCTION v6.9  
 
 ---
 

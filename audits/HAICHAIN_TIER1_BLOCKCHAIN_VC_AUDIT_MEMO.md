@@ -32,7 +32,7 @@ HAICHAIN là **Hệ Điều Hành Tài Chính & Bù Trừ Vi Thanh Toán Toàn C
    * *High-Throughput Web3:* Hệ thống tài chính truyền thống (Stripe, Visa) không thể xử lý giao dịch \$0.0005 vì phí quẹt thẻ tối thiểu (\$0.30 + 2.9%) cao gấp 600 lần giá trị giao dịch. Solana L1 là blockchain duy nhất có throughput và block time (< 400ms) đủ khả năng xử lý bài toán này.
 2. **Chiến Lược Pivot Sang USDT (Tether) Cực Kỳ Thực Dụng & Khôn Ngoan:**
    * Thay vì giáo điều ép người dùng dùng USDC như các dự án thuần Mỹ, HAICHAIN hỗ trợ **Solana SPL USDT (`Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**, trực tiếp thâm nhập vào thị trường thanh khoản \$125B+ và mạng lưới người dùng toàn cầu tại Châu Âu, Châu Á, Trung Đông và Mỹ Latin.
-   * Giải quyết triệt để rủi ro lớn nhất của Tether bằng kiến trúc **Ví Tách Biệt Dedicated Non-Commingled ATAs** — triệt tiêu 100% rủi ro lây nhiễm phong tỏa (Blacklist Contagion).
+   * Giải quyết triệt để rủi ro lớn nhất của Tether bằng kiến trúc **Ví Tách Biệt Dedicated Non-Commingled ATAs** - triệt tiêu 100% rủi ro lây nhiễm phong tỏa (Blacklist Contagion).
 3. **Mô Hình Kinh Tế Có Dòng Tiền Thực Tế (Real Yield & Value Accrual):**
    * Không phải là một token quản trị vô dụng (Worthless Governance Token). Token dự án được thiết kế gắn liền với phí bù trừ luồng tiền (0.05% Take-Rate), staking bảo lãnh thanh khoản cho Sequencer và giảm trừ phí giao dịch.
 
@@ -70,11 +70,11 @@ Một trong những tiêu chí khắt khe nhất của Investment Committee là:
 
 ### 2.2. Phân Bổ Token Chuẩn Thể Chế (Institutional Token Distribution & Vesting)
 * **Tổng Cung Cố Định:** 1,000,000,000 $HAI (Một Tỷ Token - Không lạm phát vô tận).
-* **Vòng Seed (Quỹ Chúng Ta Dẫn Đầu):** 10.0% (\$1.5M tại \$15M FDV) — **Khóa 1 năm (12-month cliff), sau đó trả dần tuyến tính trong 24 tháng (24-month linear vesting)**. Đây là điều khoản tiêu chuẩn bảo vệ quỹ và cam kết dài hạn của đội ngũ.
-* **Đội Ngũ Sáng Lập & Cố Vấn (Team & Advisors):** 18.0% — Khóa 12 tháng, trả dần tuyến tính trong 36 tháng.
-* **Hệ Sinh Thái & Trợ Cấp Lập Trình Viên (Ecosystem & Grants):** 35.0% — Quản lý bởi Foundation, tài trợ cho các tool API tích hợp chuẩn `@haichain/mcp-server`.
+* **Vòng Seed (Quỹ Chúng Ta Dẫn Đầu):** 10.0% (\$1.5M tại \$15M FDV) - **Khóa 1 năm (12-month cliff), sau đó trả dần tuyến tính trong 24 tháng (24-month linear vesting)**. Đây là điều khoản tiêu chuẩn bảo vệ quỹ và cam kết dài hạn của đội ngũ.
+* **Đội Ngũ Sáng Lập & Cố Vấn (Team & Advisors):** 18.0% - Khóa 12 tháng, trả dần tuyến tính trong 36 tháng.
+* **Hệ Sinh Thái & Trợ Cấp Lập Trình Viên (Ecosystem & Grants):** 35.0% - Quản lý bởi Foundation, tài trợ cho các tool API tích hợp chuẩn `@haichain/mcp-server`.
 * **Thanh Khoản Ban Đầu & Quỹ Bảo Hiểm (Liquidity & Insurance Reserve):** 15.0%.
-* **Phần Thưởng Node Khai Thác Bù Trừ (Clearing Mining & Staking Rewards):** 22.0% — Trả dần trong 8 năm theo thuật toán Halving.
+* **Phần Thưởng Node Khai Thác Bù Trừ (Clearing Mining & Staking Rewards):** 22.0% - Trả dần trong 8 năm theo thuật toán Halving.
 
 ---
 
@@ -170,4 +170,4 @@ Là một quỹ đầu tư chuyên nghiệp, chúng tôi đã rà soát 4 rủi 
 ## 7. KẾT LUẬN & QUYẾT NGHỊ CHÍNH THỨC CỦA INVESTMENT COMMITTEE
 
 * **Đánh Giá Chung:** HAICHAIN v6.6 là dự án hiếm hoi dung hòa được cả 3 yếu tố: **Công nghệ Mật mã học Quân sự**, **Thị trường Thực tế Khổng lồ (USDT & AI Swarms)**, và **Mô hình Dòng tiền Khả thi**.
-* **Khuyến Nghị Cuối Cùng:** **CHẤP THUẬN ĐẦU TƯ (UNANIMOUS APPROVAL) — DẪN ĐẦU VÒNG SEED \$1,500,000 USD.**
+* **Khuyến Nghị Cuối Cùng:** **CHẤP THUẬN ĐẦU TƯ (UNANIMOUS APPROVAL) - DẪN ĐẦU VÒNG SEED \$1,500,000 USD.**

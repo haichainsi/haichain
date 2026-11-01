@@ -1090,8 +1090,8 @@ To guarantee sub-second wire round-trips for frontier AI models operating in Ope
 
 ### 12.1. Dual Independent Security Audit Mandate
 Prior to Solana Mainnet commercial operation, the HAICHAIN codebase undergoes two simultaneous independent forensic audits:
-1. **Primary Systems Auditor: OtterSec LLC** — Focus: Anchor Rust memory safety, CPI signer constraints, Solana sBPF byte execution limits, and rent economic cycles.
-2. **Secondary Systems Auditor: Neodyme AG** — Focus: Formal mathematical verification, cryptographic Merkle tree edge bounds, flash loan multi-slot defense, and economic game theory.
+1. **Primary Systems Auditor: OtterSec LLC** - Focus: Anchor Rust memory safety, CPI signer constraints, Solana sBPF byte execution limits, and rent economic cycles.
+2. **Secondary Systems Auditor: Neodyme AG** - Focus: Formal mathematical verification, cryptographic Merkle tree edge bounds, flash loan multi-slot defense, and economic game theory.
 
 ### 12.2. Automated Red-Team Simulation Suite
 The testing harness continuously executes against 5 historic exploit reproduction harnesses:

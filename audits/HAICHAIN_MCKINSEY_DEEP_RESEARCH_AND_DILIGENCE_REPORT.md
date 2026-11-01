@@ -1,7 +1,7 @@
 # HAICHAIN: MCKINSEY & CO. x FRONTIER BLOCKCHAIN/AI RESEARCH TASKFORCE
 ## COMPREHENSIVE DUE DILIGENCE & FORENSIC AUDIT MASTER REPORT
 **Engagement Scope:** End-to-end strategic, technical, economic, regulatory, and operational forensic audit of HAICHAIN (v6.9)  
-**Lead Audit Entity:** Joint Special Practice Group — McKinsey Strategy & Corporate Finance x Tier-1 Institutional Crypto/AI Research Taskforce  
+**Lead Audit Entity:** Joint Special Practice Group - McKinsey Strategy & Corporate Finance x Tier-1 Institutional Crypto/AI Research Taskforce  
 **Target Architecture:** HAICHAIN (The Universal Autonomous Machine Financial Operating System on Solana L1)  
 **Classification:** STRICTLY CONFIDENTIAL // INVESTMENT COMMITTEE & BOARD DUE DILIGENCE  
 

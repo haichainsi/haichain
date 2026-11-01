@@ -1,6 +1,6 @@
 # HAICHAIN: SENIOR INTERNATIONAL POWER-USER AUDIT & USDT STRATEGIC PIVOT v6.6
 ### Comprehensive High-Level Audit by a Real Global AI Practitioner & Enterprise Builder
-**Auditor Persona:** Alex Vance — Principal AI Solutions Architect & Cross-Border Digital Agency Founder (Berlin / Dubai / Singapore), managing 15+ daily autonomous agents across Claude 3.5 Sonnet, OpenAI o1/o3, Cursor, and n8n swarms.  
+**Auditor Persona:** Alex Vance - Principal AI Solutions Architect & Cross-Border Digital Agency Founder (Berlin / Dubai / Singapore), managing 15+ daily autonomous agents across Claude 3.5 Sonnet, OpenAI o1/o3, Cursor, and n8n swarms.  
 **Focus:** Real-world usability, operational friction, enterprise tax deductibility, cross-chain stablecoin liquidity, and the **Strategic Transition to USDT (Tether)**.  
 **Status:** OFFICIAL SENIOR USER AUDIT & PRODUCTION RE-ALIGNMENT
 

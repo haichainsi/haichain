@@ -3,7 +3,7 @@
 **Đơn vị thực hiện:** Nhóm Kỹ sư Cốt lõi Hệ thống Cấp thấp (Solana Labs Core / Anza / Firedancer Engineering Methodology)  
 **Tiêu chuẩn kiểm toán:** Vật lý phần cứng (Hardware Physics), Chu kỳ xung nhịp CPU (CPU Clock Cycles), Băng thông bộ nhớ (Memory Bandwidth), Tranh chấp khóa Sealevel (Account Lock Contention), Ngân sách CU sBPF (Compute Units Profiling) & Kiến trúc Fork Agave/Firedancer sang Sovereign L1.  
 **Ngày phát hành:** 31/10/2026  
-**Đánh giá tổng thể:** **PRODUCTION HARDENED — OPTIMIZED FOR SUB-MILLISECOND FIREDANCER SPEED**
+**Đánh giá tổng thể:** **PRODUCTION HARDENED - OPTIMIZED FOR SUB-MILLISECOND FIREDANCER SPEED**
 
 ---
 

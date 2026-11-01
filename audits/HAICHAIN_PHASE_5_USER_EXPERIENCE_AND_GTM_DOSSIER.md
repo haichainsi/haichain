@@ -1,4 +1,4 @@
-# HỒ SƠ THẨM ĐỊNH TRẢI NGHIỆM KHÁCH HÀNG (THE MOM TEST) & CHIẾN LƯỢC GTM TOÀN CẦU — GIAI ĐOẠN 5
+# HỒ SƠ THẨM ĐỊNH TRẢI NGHIỆM KHÁCH HÀNG (THE MOM TEST) & CHIẾN LƯỢC GTM TOÀN CẦU - GIAI ĐOẠN 5
 ## HAICHAIN MASS-CONSUMER UX, THE MOM TEST, 10-SECOND ONBOARDING & GTM COMMERCIALIZATION
 **Cơ quan thực hiện:** Ban Thẩm định Trải nghiệm Sản phẩm & Tăng trưởng Thương mại (McKinsey Consumer Practice x Product Growth Taskforce)  
 **Tiêu chuẩn thẩm định:** Thẩm định kép 2 vòng độc lập (Dual-Pass UX Forensic Audit & Friction Point Stress Testing)  

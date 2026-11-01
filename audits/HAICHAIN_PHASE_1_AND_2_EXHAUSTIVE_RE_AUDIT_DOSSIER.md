@@ -24,13 +24,13 @@
 
 ---
 
-# PHẦN I: TÁI THẨM ĐỊNH GIAI ĐOẠN 1 — CHIẾN LƯỢC KINH DOANH, COLD-START & NGHỊCH LÝ PHÍ WEB2
+# PHẦN I: TÁI THẨM ĐỊNH GIAI ĐOẠN 1 - CHIẾN LƯỢC KINH DOANH, COLD-START & NGHỊCH LÝ PHÍ WEB2
 
 Ban Thẩm định tiến hành đào sâu vào 3 câu hỏi chiến lược sống còn mà một quỹ đầu tư mạo hiểm hoặc đối tác chiến lược cấp cao nhất sẽ chất vấn:
 
 ---
 
-### 1. Nghịch lý Phí Thẻ Web2 (The Web2 Interchange Paradox) — Tại sao Stripe/Visa không thể giảm phí $0.30?
+### 1. Nghịch lý Phí Thẻ Web2 (The Web2 Interchange Paradox) - Tại sao Stripe/Visa không thể giảm phí $0.30?
 
 Nhiều nhà phân tích hoài nghi: *"Liệu Stripe, Visa, hay Apple Pay có thể chỉ cần hạ phí giao dịch xuống $0.001 để bóp nghẹt HAICHAIN?"*
 
@@ -124,7 +124,7 @@ BẢNG KIỂM TRA SỨC CHỊU ĐỰNG (STRESS TEST) THEO CÁC MỨC GIÁ SOL:
 
 ---
 
-# PHẦN II: TÁI THẨM ĐỊNH GIAI ĐOẠN 2 — KỸ THUẬT LÕI SVM & BẢO MẬT MẬT MÃ
+# PHẦN II: TÁI THẨM ĐỊNH GIAI ĐOẠN 2 - KỸ THUẬT LÕI SVM & BẢO MẬT MẬT MÃ
 
 Trong lần thẩm định sâu này, Ban Thẩm định Kỹ thuật Lõi đã phát hiện và vá thành công **2 nguy cơ tiềm ẩn cấp độ vi mô** trên smart contract, đưa hệ thống lên phiên bản **HAICHAIN v6.9.2 Forensic Hardened Standard**.
 

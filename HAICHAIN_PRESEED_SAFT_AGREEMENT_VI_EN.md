@@ -1,6 +1,6 @@
 # HAICHAIN PRE-SEED SAFT AGREEMENT
-## THỎA THUẬN CHUYỂN NHƯỢNG TOKEN TƯƠNG LAI — VÒNG NỘI BỘ PRE-SEED
-### (SIMPLE AGREEMENT FOR FUTURE TOKENS — PRIVATE PRE-SEED ROUND)
+## THỎA THUẬN CHUYỂN NHƯỢNG TOKEN TƯƠNG LAI - VÒNG NỘI BỘ PRE-SEED
+### (SIMPLE AGREEMENT FOR FUTURE TOKENS - PRIVATE PRE-SEED ROUND)
 
 * **Mã hiệu hợp đồng:** `HAICHAIN-SAFT-PRESEED-2026`
 * **Cơ quan bảo chứng kỹ thuật:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN
@@ -103,7 +103,7 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 # PART 2: ENGLISH EDITION
 
 ## SIMPLE AGREEMENT FOR FUTURE TOKENS (SAFT)
-### PRIVATE PRE-SEED ROUND — HAICHAIN PROTOCOL
+### PRIVATE PRE-SEED ROUND - HAICHAIN PROTOCOL
 
 THIS SIMPLE AGREEMENT FOR FUTURE TOKENS (this "**Agreement**" or "**SAFT**") certifies that in exchange for the payment by the undersigned purchaser (the "**Purchaser**") of the purchase amount set forth below (the "**Purchase Amount**"), **HAICHAIN Decentralized Systems Architecture Taskforce** (the "**Company**" or "**HAICHAIN**") hereby issues to the Purchaser the right to certain allocations of **$HAI Tokens** (the "**Tokens**"), subject to the terms and conditions herein.
 

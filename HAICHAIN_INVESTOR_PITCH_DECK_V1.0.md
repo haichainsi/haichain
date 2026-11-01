@@ -10,14 +10,14 @@
 
 ---
 
-## Slide 1: The Problem — The Agentic Liquidity Deadlock
+## Slide 1: The Problem - The Agentic Liquidity Deadlock
 1. **The Machine Economy is Trapped:** Over 2.8 million autonomous AI agent workflows are spun up daily, but they cannot execute economic transactions autonomously.
-2. **Traditional Rail Incompatibility:** Credit cards (Visa/Mastercard) require human KYC, freeze on high-velocity micro-charges ($0.001 - $0.05), and carry a $0.30 fixed interchange fee per swipe (making a $0.002 API call cost $0.302 — a 15,000% overhead).
+2. **Traditional Rail Incompatibility:** Credit cards (Visa/Mastercard) require human KYC, freeze on high-velocity micro-charges ($0.001 - $0.05), and carry a $0.30 fixed interchange fee per swipe (making a $0.002 API call cost $0.302 - a 15,000% overhead).
 3. **Crypto Wallet Vulnerability:** Handing an LLM a private key or pre-funded crypto wallet results in catastrophic prompt injection, memory poisoning, or infinite looping drains.
 
 ---
 
-## Slide 2: The Solution — Ephemeral Autonomous Micro-Escrows
+## Slide 2: The Solution - Ephemeral Autonomous Micro-Escrows
 HAICHAIN introduces the world's first **Zero-Griefing Merkle Capability Protocol**:
 - **Bounded Spend:** Human operators allocate funds into a Master Vault and issue cryptographic Capability Tickets with hard limits (e.g., max $0.05 per call, expires in 1,000 slots).
 - **Sub-Slot Settlement:** Micro-escrow commitments settle in `<400ms` with Solana transaction fees `<$0.0002`.

@@ -1,5 +1,5 @@
 # HƯỚNG DẪN KẾT NỐI 1-CLICK HAICHAIN VỚI CLAUDE DESKTOP & CURSOR
-**HAICHAIN Protocol v6.9.3 — Universal Autonomous Agent Financial Kernel**
+**HAICHAIN Protocol v6.9.3 - Universal Autonomous Agent Financial Kernel**
 
 ---
 

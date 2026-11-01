@@ -53,7 +53,7 @@ flowchart LR
     Engine -.-> Safeguards
 ```
 
-1. **Định tuyến Lệnh Kín (Jito Private Bundle Routing):** Giao thức sử dụng giao dịch kín (Private Orderflow) qua Jito Block Engine, bỏ qua hoàn toàn Mempool công khai của Solana. Giao dịch mua lại được bảo đảm nguyên tử (Atomic Execution) — nếu bị trượt giá quá 0.5%, lệnh sẽ tự động hủy mà không mất phí.
+1. **Định tuyến Lệnh Kín (Jito Private Bundle Routing):** Giao thức sử dụng giao dịch kín (Private Orderflow) qua Jito Block Engine, bỏ qua hoàn toàn Mempool công khai của Solana. Giao dịch mua lại được bảo đảm nguyên tử (Atomic Execution) - nếu bị trượt giá quá 0.5%, lệnh sẽ tự động hủy mà không mất phí.
 2. **Khống chế Tỷ lệ Hấp thụ Thanh khoản (Dynamic Volume Cap $\le$ 2.0%):** Lượng tiền mua lại mỗi ngày bị giới hạn không vượt quá **2.0% khối lượng giao dịch tự nhiên 24 giờ ($V_{24h}$)** của thị trường. Nếu thị trường thanh khoản thấp, số USDT thặng dư được tạm thời chuyển vào **Quỹ Tín dụng Ngắn hạn (RWA T-Bills)** để hưởng lãi suất phi rủi ro 5.0%/năm, tuyệt đối không mua đuổi làm méo mó giá thị trường.
 
 ---
@@ -141,7 +141,7 @@ Chúng tôi thực hiện định giá đối chiếu theo các phương pháp t
 ```
 
 👉 **Kết luận Thẩm định Định giá:**
-* Tại mức vốn hóa niêm yết **$60M USD**, nếu dự án đạt các mục tiêu vận hành tại Năm 3 ($15.9M EBITDA), chỉ số **P/E sẽ giảm xuống chỉ còn 3.77x** — một con số rẻ đến mức không tưởng trong ngành công nghệ!
+* Tại mức vốn hóa niêm yết **$60M USD**, nếu dự án đạt các mục tiêu vận hành tại Năm 3 ($15.9M EBITDA), chỉ số **P/E sẽ giảm xuống chỉ còn 3.77x** - một con số rẻ đến mức không tưởng trong ngành công nghệ!
 * Khi thị trường định giá lại HAICHAIN theo đúng hệ số P/E trung bình của ngành hạ tầng tài chính (Fintech 25x EBITDA), **vốn hóa hợp lý của dự án tại Năm 3 sẽ đạt xấp xỉ $400 Triệu USD**, mang lại mức sinh lời **26.5 lần (ROI 2,550%)** cho các nhà đầu tư vòng hạt giống.
 
 ---

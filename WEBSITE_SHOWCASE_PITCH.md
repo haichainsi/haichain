@@ -56,7 +56,7 @@ Hiện nay, thị trường thế giới đang bị kẹt giữa hai thái cực
 ## PHẦN 3: TRÊN THẾ GIỚI ĐÃ CÓ NHU CẦU NÀY THẬT SỰ CHƯA, HAY CHỈ LÀ VIỄN CẢNH TƯƠNG LAI?
 
 > **CÂU TRẢ LỜI ĐANH THÉP:**  
-> **ĐÂY KHÔNG PHẢI LÀ VIỄN CẢNH XA VỜI — Nhu cầu này đang bùng nổ dữ dội và đau đớn NGAY HÔM NAY (2025 – 2026), nhưng thị trường đang phải dùng những "giải pháp chắp vá" cực kỳ tồi tệ.**
+> **ĐÂY KHÔNG PHẢI LÀ VIỄN CẢNH XA VỜI - Nhu cầu này đang bùng nổ dữ dội và đau đớn NGAY HÔM NAY (2025 – 2026), nhưng thị trường đang phải dùng những "giải pháp chắp vá" cực kỳ tồi tệ.**
 
 Dưới đây là **4 bằng chứng thực tế "bằng xương bằng thịt" và dòng tiền thật** đang diễn ra trên thế giới:
 
@@ -339,9 +339,9 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 
 ### 1. Phân Bổ Token 1 Tỷ $HAI & Lịch Khóa Vốn (Anti-Dump Vesting)
 * **Tổng Cung Cố Định:** 1,000,000,000 $HAI (Không lạm phát).
-* **Định Giá Vòng Seed:** $15,000,000 USD FDV ($0.015/token) — Gọi $1.2M. Khóa 12 tháng (cliff), trả dần 24 tháng.
-* **Định Giá Vòng Private:** $35,000,000 USD FDV ($0.035/token) — Gọi $4.2M. Khóa 9 tháng (cliff), trả dần 18 tháng.
-* **Public Sale / LBP:** 4.0% (40M $HAI) tại $0.060 FDV ($60M) — Gọi $2.4M. Mở 100% tại TGE.
+* **Định Giá Vòng Seed:** $15,000,000 USD FDV ($0.015/token) - Gọi $1.2M. Khóa 12 tháng (cliff), trả dần 24 tháng.
+* **Định Giá Vòng Private:** $35,000,000 USD FDV ($0.035/token) - Gọi $4.2M. Khóa 9 tháng (cliff), trả dần 18 tháng.
+* **Public Sale / LBP:** 4.0% (40M $HAI) tại $0.060 FDV ($60M) - Gọi $2.4M. Mở 100% tại TGE.
 * **Cung Lưu Hành Ban Đầu (Initial Circulating Supply):** Đúng **10.0% (100M $HAI)**. VCs và Founders bị khóa cứng 100% trong 9 - 12 tháng đầu, triệt tiêu hoàn toàn rủi ro xả hàng.
 
 ### 2. Mô Phỏng Dòng Tiền 60% Buyback & Burn vs 40% Real Yield Staking
@@ -405,15 +405,15 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 ---
 
 ## PHẦN 9: BẢN THẨM ĐỊNH PHÁP LÝ TOÀN CẦU, RỦI RO ĐỊA CHÍNH TRỊ & QUY CHUẨN MICA/FINCEN/OFAC
-*(Thực hiện bởi Ban Thẩm định Pháp lý & Chính sách Tiền tệ Toàn cầu — McKinsey Regulatory Practice)*
+*(Thực hiện bởi Ban Thẩm định Pháp lý & Chính sách Tiền tệ Toàn cầu - McKinsey Regulatory Practice)*
 
 ### 1. Phân Loại Pháp Lý Hoa Kỳ (FinCEN & SEC Howey Test)
 * **Miễn Trừ Money Transmitter (FinCEN):** Giao thức là phần mềm mã nguồn mở phi lưu ký (Non-Custodial Software). Khóa riêng tư và quyền ký được lưu giữ cục bộ trên thiết bị người dùng. Căn cứ theo **31 CFR § 1010.100(ff)(5)(ii)(A)**, HAICHAIN hoàn toàn không nắm quyền kiểm soát tài sản (no dominion and control) và được miễn trừ hoàn toàn khỏi quy định MSB/MTL.
-* **Hóa Giải Bài Kiểm Tra Howey (SEC):** Cổ tức Real Yield trả bằng USDT gắn liền trực tiếp với **công việc vận hành hạ tầng thực tế (Work-for-Protocol)** — node operator phải ký số, duy trì uptime và chịu phạt rủi ro slashing, không phải lợi tức thụ động từ nỗ lực của người khác.
+* **Hóa Giải Bài Kiểm Tra Howey (SEC):** Cổ tức Real Yield trả bằng USDT gắn liền trực tiếp với **công việc vận hành hạ tầng thực tế (Work-for-Protocol)** - node operator phải ký số, duy trì uptime và chịu phạt rủi ro slashing, không phải lợi tức thụ động từ nỗ lực của người khác.
 
 ### 2. Tuân Thủ Quy Chế Châu Âu (EU MiCA) & Cơ Chế Modular Mint
 * **Miễn Trừ CASP (MiCA Recital 22):** Hợp đồng thông minh phi tập trung hoàn toàn, không có trung gian điều hành con người.
-* **Hóa Giải Quy Định Stablecoin Châu Âu:** Với người dùng tại EU (nơi USDT chịu kiểm soát ngặt nghèo), kiến trúc Modular Mint của HAICHAIN cho phép tự động định tuyến quyết toán sang **EURC** hoặc **USDC** (Circle) — các stablecoin đã có giấy phép EMI chính thức theo luật MiCA.
+* **Hóa Giải Quy Định Stablecoin Châu Âu:** Với người dùng tại EU (nơi USDT chịu kiểm soát ngặt nghèo), kiến trúc Modular Mint của HAICHAIN cho phép tự động định tuyến quyết toán sang **EURC** hoặc **USDC** (Circle) - các stablecoin đã có giấy phép EMI chính thức theo luật MiCA.
 
 ### 3. Ngưỡng Miễn Trừ FATF Travel Rule & Bộ Lọc Cấm Vận OFAC
 * **Ngưỡng De Minimis (< $1,000):** Các vi thanh toán của bot ($0.0002 - $0.05 USDT) thấp hơn ngưỡng báo cáo danh tính của FATF Khuyến nghị 16 tới 20,000 lần, cho phép trải nghiệm không cần KYC đối với người dùng phổ thông.
@@ -435,7 +435,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 ---
 
 ## PHẦN 10: BẢN THẨM ĐỊNH TRẢI NGHIỆM KHÁCH HÀNG (THE MOM TEST) & CHIẾN LƯỢC GTM TOÀN CẦU
-*(Thực hiện bởi Ban Thẩm định Trải nghiệm Sản phẩm & Tăng trưởng Thương mại — McKinsey Consumer Practice)*
+*(Thực hiện bởi Ban Thẩm định Trải nghiệm Sản phẩm & Tăng trưởng Thương mại - McKinsey Consumer Practice)*
 
 ### 1. Vượt Qua Bài Kiểm Tra "The Mom Test" 10 Giây
 * **Không Cần Seed Phrase:** Tích hợp chuẩn WebAuthn/Passkey phần cứng của iPhone (Secure Enclave) và Android (Titan M). Người dùng xác thực bằng FaceID/Vân tay, không cần lưu 12 từ khóa bí mật.
@@ -471,7 +471,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 ---
 
 ## PHẦN 11: BÁO CÁO TỔNG HỢP BAN THẨM ĐỊNH ĐẦU TƯ (IC MEMO) & LỘ TRÌNH 90 NGÀY MAINNET
-*(Thực hiện bởi Hội đồng Thẩm định Đầu tư Cấp cao — McKinsey Corporate Finance x Tier-1 Web3 Taskforce)*
+*(Thực hiện bởi Hội đồng Thẩm định Đầu tư Cấp cao - McKinsey Corporate Finance x Tier-1 Web3 Taskforce)*
 
 ### 1. Quyết Định Đầu Tư Của Hội Đồng (Investment Verdict)
 * **Quyết Định Đầu Tư:** **PHÊ DUYỆT ĐẦU TƯ MỨC ĐỘ TIN CẬY CAO NHẤT (STRONG CONVICTION BUY)**.

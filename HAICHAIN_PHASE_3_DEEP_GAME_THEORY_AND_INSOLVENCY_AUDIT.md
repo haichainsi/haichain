@@ -1,4 +1,4 @@
-# HỒ SƠ TÁI KIỂM TOÁN CHUYÊN SÂU LẦN 4: LÝ THUYẾT TRÒ CHƠI, RỦI RO ĐỐI TÁC & PHÒNG THỦ VAMPIRE ATTACK — GIAI ĐOẠN 3
+# HỒ SƠ TÁI KIỂM TOÁN CHUYÊN SÂU LẦN 4: LÝ THUYẾT TRÒ CHƠI, RỦI RO ĐỐI TÁC & PHÒNG THỦ VAMPIRE ATTACK - GIAI ĐOẠN 3
 ## HAICHAIN EXTREME GAME THEORY, COUNTERPARTY DEFAULT DEFENSE & ALM BALANCE SHEET AUDIT
 **Cơ quan thực hiện:** Hội đồng Giám sát Rủi ro Định lượng & Lý thuyết Trò chơi (Advanced Quantitative Risk & Game Theory Taskforce)  
 **Tiêu chuẩn kiểm toán:** Cấp độ Quỹ Đầu tư Mạo hiểm Cấp 1 (Tier-1 Crypto VC Sovereign Defense Standard)  
@@ -26,7 +26,7 @@
 1. **PHÒNG THỦ TẤN CÔNG "HÚT MÁU" CỦA CÁC ĐỐI THỦ LỚN (PREDATORY ZERO-FEE VAMPIRE ATTACK)**
 2. **NGHỊCH LÝ ĐỊNH GIÁ SIÊU CAO & SỰ CO THẮT LỢI TỨC (HYPER-VALUATION YIELD SQUEEZE PARADOX)**
 3. **RỦI RO VỠ NỢ CÔNG NỢ BÙ TRỪ RÒNG NGOÀI CHUỖI (OFF-CHAIN COUNTERPARTY CREDIT DEFAULT)**
-4. **KHUNG QUẢN TRỊ KHỚP TÀI SẢN & CÔNG NỢ NGÂN KHỐ (ASSET-LIABILITY MATCHING — ALM FRAMEWORK)**
+4. **KHUNG QUẢN TRỊ KHỚP TÀI SẢN & CÔNG NỢ NGÂN KHỐ (ASSET-LIABILITY MATCHING - ALM FRAMEWORK)**
 5. **TỐI ƯU HÓA THUẾ VÀ PHÁP LÝ QUỐC TẾ (TAX EFFICIENCY: BUYBACK VS DIVIDEND)**
 
 ---
@@ -135,22 +135,22 @@ vault.confirmed_balance = vault.confirmed_balance.checked_sub(spend_amount)
 
 ---
 
-## 4. KHUNG QUẢN TRỊ KHỚP TÀI SẢN & CÔNG NỢ NGÂN KHỐ (ASSET-LIABILITY MATCHING — ALM)
+## 4. KHUNG QUẢN TRỊ KHỚP TÀI SẢN & CÔNG NỢ NGÂN KHỐ (ASSET-LIABILITY MATCHING - ALM)
 
 Để bảo đảm tính minh bạch tài chính tối cao cho các nhà đầu tư kiểm toán báo cáo tài chính, HAICHAIN thiết lập bảng cân đối kế toán khớp kỳ hạn (ALM Matrix):
 
 ```
 ┌────────────────────────────────────────────────────────┬────────────────────────────────────────────────────────┐
-│ TÀI SẢN (ASSETS) — $7,800,000 USD                      │ CÔNG NỢ & NGHĨA VỤ (LIABILITIES & EQUITY)              │
+│ TÀI SẢN (ASSETS) - $7,800,000 USD                      │ CÔNG NỢ & NGHĨA VỤ (LIABILITIES & EQUITY)              │
 ├────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
 │ 1. Tài Sản Thanh Khoản Cực Cao (T-Bills BUIDL):        │ 1. Cam Kết Chi Phí R&D & Hạ Tầng 12 Tháng:             │
-│    $5,460,000 USD (70.0%) — Hưởng lãi 5% an toàn       │    $220,000 USD (Được bảo chứng 100% bằng tiền mặt)    │
+│    $5,460,000 USD (70.0%) - Hưởng lãi 5% an toàn       │    $220,000 USD (Được bảo chứng 100% bằng tiền mặt)    │
 ├────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
 │ 2. Tiền Mặt Khẩn Cấp (USDC/USDT Multisig):             │ 2. Quỹ Dự Phòng Bảo Hiểm Rủi Ro Bù Trừ:                │
-│    $1,560,000 USD (20.0%) — Rút ngay trong 1 block     │    $100,000 USD                                        │
+│    $1,560,000 USD (20.0%) - Rút ngay trong 1 block     │    $100,000 USD                                        │
 ├────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
 │ 3. Tài Sản Vận Hành Mạng Lưới (SOL L1 Gas):            │ 3. Vốn Chủ Sở Hữu & Thặng Dư Vốn Cổ Phần:              │
-│    $780,000 USD (10.0%) — Dự trữ phí giao dịch 3 năm   │    $7,480,000 USD                                      │
+│    $780,000 USD (10.0%) - Dự trữ phí giao dịch 3 năm   │    $7,480,000 USD                                      │
 ├────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
 │ TỔNG TÀI SẢN: $7,800,000 USD                           │ TỔNG CÔNG NỢ & VỐN CHỦ SỞ HỮU: $7,800,000 USD          │
 ├────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────┤

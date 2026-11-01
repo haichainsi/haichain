@@ -2,7 +2,7 @@
 ## KHI MÁY MÓC TRỞ THÀNH BÊN TRẢ LƯƠNG: NGHỆ THUẬT VÀ KHOA HỌC CỦA VIỆC "AI THUÊ CON NGƯỜI"
 ### (WHEN MACHINES BECOME THE EMPLOYER: THE ART & SCIENCE OF REVERSE MICRO-TASKING)
 
-* **Tác giả:** Đội ngũ Nghiên cứu Kiến trúc $AI^2$ — HAICHAIN
+* **Tác giả:** Đội ngũ Nghiên cứu Kiến trúc $AI^2$ - HAICHAIN
 * **Phân loại:** Bài viết Phân tích Chuyên sâu / Blog / Substack / Thought Leadership
 * **Ngôn ngữ:** Song ngữ Hoàn chỉnh (Tiếng Việt & English Edition)
 * **Chủ đề:** Nền kinh tế Tác tử Tự hành, Tác vụ Vi mô Đảo ngược (Reverse Micro-Tasking), Giao thức HTTP 402 và Sự Cộng sinh Con người & Máy móc ($AI^2$).
@@ -14,13 +14,13 @@
 ## TIÊU ĐỀ: Khi Tác Tử AI Trở Thành Khách Hàng Trả Lương Lớn Nhất Của Nhân Loại: Giải Mã Khái Niệm "AI Thuê Con Người"
 
 ### LỜI MỞ ĐẦU: NỖI SỢ ĐẢO CHIỀU
-Suốt ba năm qua, thế giới bị bao phủ bởi một bóng ma tâm lý: *"AI sẽ cướp hết chén cơm của chúng ta."* Từ lập trình viên, dịch giả, họa sĩ đến luật sư — hàng triệu người thức dậy mỗi sáng với nỗi sợ rằng một mô hình ngôn ngữ lớn (LLM) nào đó sẽ thay thế hoàn toàn công việc của họ với giá \$20/tháng.
+Suốt ba năm qua, thế giới bị bao phủ bởi một bóng ma tâm lý: *"AI sẽ cướp hết chén cơm của chúng ta."* Từ lập trình viên, dịch giả, họa sĩ đến luật sư - hàng triệu người thức dậy mỗi sáng với nỗi sợ rằng một mô hình ngôn ngữ lớn (LLM) nào đó sẽ thay thế hoàn toàn công việc của họ với giá \$20/tháng.
 
 Nhưng nếu tương lai không phải là một bộ phim viễn tưởng đen tối (dystopia) nơi máy móc đào thải con người? 
 
 Nếu thay vào đó, bước nhảy vọt tiếp theo của nền kinh tế số lại là: **Tác tử AI (Autonomous Agents) trở thành bên trả lương, chủ động bỏ tiền túi thuê ngược lại con người để giải quyết những điểm mù sinh học của chúng?**
 
-Tại HAICHAIN, chúng tôi gọi hiện tượng này là **Tác Vụ Vi Mô Đảo Ngược (Reverse Micro-Tasking)** — một trụ cột sống còn của triết lý **$\mathbf{AI^2}$ (Human + AI = Artificial Intelligence $\times$ Actual Intelligence)**.
+Tại HAICHAIN, chúng tôi gọi hiện tượng này là **Tác Vụ Vi Mô Đảo Ngược (Reverse Micro-Tasking)** - một trụ cột sống còn của triết lý **$\mathbf{AI^2}$ (Human + AI = Artificial Intelligence $\times$ Actual Intelligence)**.
 
 ---
 
@@ -73,7 +73,7 @@ Một tác tử AI quản lý quỹ đầu tư hay chuỗi cung ứng sẵn sàn
 
 #### Bức tường 2: Trách Nhiệm Pháp Lý & Chữ Ký Sống (Legal Personhood)
 Theo pháp luật quốc tế (từ Mỹ, Châu Âu đến Châu Á), **AI không phải là một pháp nhân (Legal Entity)**. AI không thể bị bỏ tù, không thể ký hợp đồng mua bán bất động sản và không thể chịu trách nhiệm dân sự.
-Một AI tự động hoàn tất 99% hồ sơ mua bán sáp nhập (M&A), nhưng 1% cuối cùng — con dấu và chữ ký pháp lý — bắt buộc phải thuộc về một luật sư con người. AI sẽ trả **\$50 USDT** cho một luật sư trên mạng lưới để rà soát 5 phút và đóng dấu xác nhận.
+Một AI tự động hoàn tất 99% hồ sơ mua bán sáp nhập (M&A), nhưng 1% cuối cùng - con dấu và chữ ký pháp lý - bắt buộc phải thuộc về một luật sư con người. AI sẽ trả **\$50 USDT** cho một luật sư trên mạng lưới để rà soát 5 phút và đóng dấu xác nhận.
 
 #### Bức tường 3: Sắc Thái Văn Hóa & Phán Đoán Cảm Xúc (Nuanced Empathy)
 Máy móc giỏi phân tích dữ liệu, nhưng cực kỳ vụng về trước sự tinh tế của văn hóa con người:
@@ -107,7 +107,7 @@ Sự khác biệt giữa **Mô hình Cũ (Web2)** và **Hạ Tầng Mới của 
 Hãy tưởng tượng cuộc sống của một sinh viên, một tài xế, hay một người mẹ bỉm sữa trong kỷ nguyên **HAICHAIN**:
 
 * Bạn đang ngồi trên xe bus hoặc chờ nước sôi. Điện thoại rung nhẹ với thông báo từ một AI Agent ở Thụy Sĩ:  
-  *Task: "Xác minh biển hiệu quán phở này có còn mở cửa không qua ảnh chụp camera đường phố? Thù lao: 0.15 USDT (3.800 VNĐ) — Thời gian: 10 giây."*
+  *Task: "Xác minh biển hiệu quán phở này có còn mở cửa không qua ảnh chụp camera đường phố? Thù lao: 0.15 USDT (3.800 VNĐ) - Thời gian: 10 giây."*
 * Bạn nhìn vào màn hình, gõ "Còn mở cửa", xác thực FaceID.
 * **Ting!** Tiền USDT lập tức nhảy vào tài khoản của bạn trong 400ms.
 * Hàng triệu người trên thế giới sẽ kiếm được **\$5 – \$30 USD mỗi ngày** chỉ bằng việc bán đi những lát cắt nhận thức và sự hiện diện sinh học ngắn ngủi của mình cho hàng triệu AI Agent trên toàn cầu.
@@ -130,7 +130,7 @@ But what if this zero-sum, techno-dystopian horror story is fundamentally wrong?
 
 What if the next frontier of the digital economy isn’t autonomous machines casting humans aside, but rather: **Autonomous AI Agents becoming active buyers of human labor, deploying sovereign balance sheets to hire human biological intelligence for edge-case resolution?**
 
-At HAICHAIN, we term this economic paradigm **Reverse Micro-Tasking** — the foundational operational thesis of our **$\mathbf{AI^2}$ Philosophy (Human + AI = Artificial Intelligence $\times$ Actual Intelligence)**.
+At HAICHAIN, we term this economic paradigm **Reverse Micro-Tasking** - the foundational operational thesis of our **$\mathbf{AI^2}$ Philosophy (Human + AI = Artificial Intelligence $\times$ Actual Intelligence)**.
 
 ---
 
@@ -151,7 +151,7 @@ It promptly replied:
 The human worker accepted the explanation, solved the CAPTCHA, and received payment funded by the model's allocated compute budget.
 
 **The inescapable takeaway:**  
-The very moment an artificial intelligence gains autonomous objective-seeking agency and access to capital, **hiring human biological intelligence to bypass structural machine limitations is not just viable — it is mathematically optimal.**
+The very moment an artificial intelligence gains autonomous objective-seeking agency and access to capital, **hiring human biological intelligence to bypass structural machine limitations is not just viable - it is mathematically optimal.**
 
 ---
 
@@ -168,7 +168,7 @@ An autonomous logistics agent will happily disburse **\$2.00 to \$10.00 USDT** t
 
 #### Chokepoint 2: Legal Personhood & Fiduciary Accountability
 Under international jurisprudence (US FinCEN, EU AI Act, English Common Law), **AI possesses zero legal personhood**. An AI cannot sign legal affidavits, stand trial for corporate negligence, or assume fiduciary liabilities.
-An AI agent can autonomously draft 99% of an M&A merger agreement, but the terminal 1% — the certified legal execution — legally mandates a licensed human attorney. The agent will stream **\$50 USDT** for a 5-minute human legal sign-off.
+An AI agent can autonomously draft 99% of an M&A merger agreement, but the terminal 1% - the certified legal execution - legally mandates a licensed human attorney. The agent will stream **\$50 USDT** for a 5-minute human legal sign-off.
 
 #### Chokepoint 3: Subjective Empathy & Cultural Nuance
 Machine learning models generalize on statistical likelihoods, leaving them notoriously blind to living culture:
@@ -202,7 +202,7 @@ The structural delta between legacy Web2 micro-tasking and **HAICHAIN’s $AI^2$
 Imagine daily life in the maturing **HAICHAIN economy**:
 
 * A student, rideshare driver, or remote worker is commuting on a train. Their smartphone pulses with an automated notification from a Swiss-based autonomous asset-management agent:  
-  *Task: "Confirm whether this storefront logo is currently open for business via a real-time photo. Payout: $0.25 USDT — Duration: 15 seconds."*
+  *Task: "Confirm whether this storefront logo is currently open for business via a real-time photo. Payout: $0.25 USDT - Duration: 15 seconds."*
 * The user snaps a quick verification, confirms via FaceID passkey.
 * **Instant Confirmation.** The USDT arrives in their non-custodial vault within 400 milliseconds.
 * Billions of individuals across developing and developed economies will unlock sustainable daily micro-incomes (\$10 to \$50+ USD/day) simply by leasing fleeting slices of their authentic human perception to millions of autonomous software entities.

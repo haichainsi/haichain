@@ -1,4 +1,4 @@
-# HỒ SƠ XÁC MINH GÓC KHUẤT & KIỂM TOÁN TẬN CÙNG CÁC LỖ HỔNG VI MÔ — GIAI ĐOẠN 3
+# HỒ SƠ XÁC MINH GÓC KHUẤT & KIỂM TOÁN TẬN CÙNG CÁC LỖ HỔNG VI MÔ - GIAI ĐOẠN 3
 ## HAICHAIN FORENSIC BLIND-SPOT ERADICATION & ZERO-GRIEFING KERNEL VERIFICATION
 **Cơ quan thực hiện:** Ban Thẩm định Chuyên sâu An ninh Mật mã & Kiểm toán Biên độ Lỗi (Adversarial Cryptographic Security & Boundary Audit Taskforce)  
 **Tôn chỉ kiểm định:** *"Không có bất kỳ giả định nào được xem là hiển nhiên. Soi kính hiển vi vào từng phép toán số nguyên, điều kiện biên và hành vi phá hoại zero-cost của kẻ tấn công."*  

@@ -1,5 +1,5 @@
 # HAICHAIN: COMMUNITY INTELLIGENCE AUDIT & PHASED EXECUTION PLAN v6.7
-### Rà Soát Thực Nghiệm Diễn Đàn Blockchain & AI — Đối Chiếu Lỗ Hổng & Kế Hoạch 4 Giai Đoạn
+### Rà Soát Thực Nghiệm Diễn Đàn Blockchain & AI - Đối Chiếu Lỗ Hổng & Kế Hoạch 4 Giai Đoạn
 **Báo cáo bởi:** Joint Autonomous Systems & Security Research Taskforce  
 **Nguồn dữ liệu thực nghiệm:** GitHub Issues/Discussions, Hacker News, arXiv Academic Papers, Solana StackExchange, Reddit (r/LocalLLaMA, r/solana), X/Crypto Twitter  
 **Mục tiêu:** Trích xuất các bài học thực tế, phát hiện các "điểm mù" (blind spots) của bản thiết kế v6.6, và vạch ra Kế hoạch Thực thi theo giai đoạn (Phased Plan).

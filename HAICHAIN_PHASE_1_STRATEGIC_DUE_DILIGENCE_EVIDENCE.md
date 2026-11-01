@@ -1,4 +1,4 @@
-# HỒ SƠ THẨM ĐỊNH CHIẾN LƯỢC & BẰNG CHỨNG THỰC NGHIỆM — GIAI ĐOẠN 1
+# HỒ SƠ THẨM ĐỊNH CHIẾN LƯỢC & BẰNG CHỨNG THỰC NGHIỆM - GIAI ĐOẠN 1
 ## HAICHAIN STRATEGIC FIT, MARKET SIZING & EMPIRICAL EVIDENCE DOSSIER
 **Cơ quan thực hiện:** Ban Thẩm định Chiến lược & Phân tích Cấp cao (McKinsey Corporate Finance x Institutional Crypto/AI Research Taskforce)  
 **Phạm vi:** Kiểm chứng độc lập các luận điểm chiến lược, số liệu kinh tế đơn vị (Unit Economics), nhu cầu thị trường thực tế và phân tích đối thủ cạnh tranh  

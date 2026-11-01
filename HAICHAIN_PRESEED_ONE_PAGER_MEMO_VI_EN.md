@@ -1,5 +1,5 @@
 # HAICHAIN PRE-SEED INVESTMENT TEASER MEMO
-## BẢN TÓM TẮT ĐẦU TƯ 1 TRANG — VÒNG NỘI BỘ PRE-SEED ($0.007)
+## BẢN TÓM TẮT ĐẦU TƯ 1 TRANG - VÒNG NỘI BỘ PRE-SEED ($0.007)
 ### (ONE-PAGER STRATEGIC MEMO: EARLY BACKER & ANGEL ALLOCATION)
 
 * **Dự án:** HAICHAIN (The Universal Autonomous Machine Financial Operating System)

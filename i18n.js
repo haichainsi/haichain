@@ -42,8 +42,8 @@
 
   const TRANSLATIONS = {
   "kk": {
-    "meta.title": "HAICHAIN — Автономды Машиналық Қаржылық Операциялық Жүйе",
-    "meta.description": "HAICHAIN — Solana негізіндегі автономды машиналық қаржылық ОЖ. Кастодиандық емес микро-эскроу және лездік AI есеп айырысуы.",
+    "meta.title": "HAICHAIN - Автономды Машиналық Қаржылық Операциялық Жүйе",
+    "meta.description": "HAICHAIN - Solana негізіндегі автономды машиналық қаржылық ОЖ. Кастодиандық емес микро-эскроу және лездік AI есеп айырысуы.",
 
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Карта",
@@ -105,7 +105,7 @@
     "nav.audiences": "Мақсатты топтар",
     "nav.status": "Техникалық дайындық",
     "ai2.badge": "НЕГІЗГІ ПАРАДИГМА &bull; АДАМ МЕН AI СИМБИОЗЫ",
-    "ai2.title": "AI² Философиясы: Адам — Қожайын, AI — Орындаушы",
+    "ai2.title": "AI² Философиясы: Адам - Қожайын, AI - Орындаушы",
     "ai2.subtitle": "Hai = Human + AI. AI² = Actual Intelligence (Адамның этикасы мен тәуекел пайымы) × Artificial Intelligence (Машинаның шексіз есептеу жылдамдығы).",
     "ai2.card1Title": "Actual Intelligence: Адамның Жоғары Бақылауы",
     "ai2.card1Desc": "Адам биометриялық Passkey (FaceID) арқылы толық билікті сақтайды, Меркл ағашы арқылы шығыс шектерін орнатады және 400 мс-тан аз уақытта қаражатты қайтару (Panic Kill-Switch) түймесіне ие.",
@@ -419,7 +419,7 @@
     "deck.desc": "Біздің қаржылық моделімізді және толық құжаттаманы жүктеп алыңыз.",
     "deck.pitch": "Investor Pitch Deck (PDF)",
     "deck.financial": "3 жылдық қаржылық модель (P&L)",
-    "dash.title": "HAICHAIN Dashboard — Автономды AI қаржылық операциялық жүйесі",
+    "dash.title": "HAICHAIN Dashboard - Автономды AI қаржылық операциялық жүйесі",
     "dash.breadcrumb": "Шолу және Сейф",
     "vault.title": "Master Vault (Solana Devnet)",
     "vault.subtitle": "Автономды AI агенттеріне арналған басты қауіпсіз қор.",
@@ -490,7 +490,7 @@
     "home.footerLegal": "Барлық транзакциялар Solana Devnet желісінде криптографиялық түрде куәландырылған. Банк делдалдарының кешігуінсіз."
   },
   "en": {
-    "meta.title": "HAICHAIN — Autonomous Machine Financial Operating System",
+    "meta.title": "HAICHAIN - Autonomous Machine Financial Operating System",
     "meta.description": "HAICHAIN is the Autonomous Machine Financial Operating System on Solana. Non-custodial micro-escrows and instant AI capability settlements.",
 
     "modal.depositApplePay": "Apple Pay",
@@ -875,7 +875,7 @@
     "home.footerLegal": "All transactions cryptographically authorized on Solana Devnet. Zero banking intermediary delay."
   },
   "zh": {
-    "meta.title": "HAICHAIN — 自主机器金融操作系统",
+    "meta.title": "HAICHAIN - 自主机器金融操作系统",
     "meta.description": "HAICHAIN 是基于 Solana 的自主机器金融操作系统。支持非托管微托管与即时 AI 计算能力结算。",
 
     "modal.depositApplePay": "Apple Pay",
@@ -1257,7 +1257,7 @@
     "modal.depositWalletRequired": "请在存款前先连接您的 Solana 钱包，以便将链上资金准确记入 Master Vault。"
   },
   "fr": {
-    "meta.title": "HAICHAIN — Système d'Exploitation Financier pour Machines Autonomes",
+    "meta.title": "HAICHAIN - Système d'Exploitation Financier pour Machines Autonomes",
     "meta.description": "HAICHAIN est le système d'exploitation financier pour machines autonomes sur Solana. Micro-séquestres non dépositaires et règlements IA instantanés.",
 
     "modal.depositApplePay": "Apple Pay",
@@ -1639,7 +1639,7 @@
     "mcp.copied": "Copié dans le presse-papiers !"
   },
   "ko": {
-    "meta.title": "HAICHAIN — 자율 머신 금융 운영체제",
+    "meta.title": "HAICHAIN - 자율 머신 금융 운영체제",
     "meta.description": "HAICHAIN은 솔라나 기반 자율 머신 금융 운영체제입니다. 비수탁형 마이크로 에스크로 및 즉각적인 AI 컴퓨팅 결제를 지원합니다.",
 
     "modal.depositApplePay": "Apple Pay",
@@ -2021,7 +2021,7 @@
     "modal.depositWalletRequired": "마스터 볼트에 온체인 자금을 정확히 귀속시키려면 입금 전에 솔라나 지갑을 연결하세요."
   },
   "es": {
-    "meta.title": "HAICHAIN — Sistema Operativo Financiero para Máquinas Autónomas",
+    "meta.title": "HAICHAIN - Sistema Operativo Financiero para Máquinas Autónomas",
     "meta.description": "HAICHAIN es el sistema operativo financiero para máquinas autónomas en Solana. Micro-escrows no custodiales y liquidaciones instantáneas de IA.",
 
     "modal.depositApplePay": "Apple Pay",
@@ -2403,8 +2403,8 @@
     "mcp.copied": "¡Copiado al portapapeles!"
   },
   "ru": {
-    "meta.title": "HAICHAIN — Автономная Финансовая Операционная Система для Машин",
-    "meta.description": "HAICHAIN — автономная финансовая операционная система на базе Solana. Некастодиальные микро-эскроу и мгновенные расчеты для ИИ.",
+    "meta.title": "HAICHAIN - Автономная Финансовая Операционная Система для Машин",
+    "meta.description": "HAICHAIN - автономная финансовая операционная система на базе Solana. Некастодиальные микро-эскроу и мгновенные расчеты для ИИ.",
 
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Карта",
@@ -2466,7 +2466,7 @@
     "nav.audiences": "Аудитория",
     "nav.status": "Технический статус",
     "ai2.badge": "ОСНОВНАЯ ПАРАДИГМА &bull; СИМБИОЗ ЧЕЛОВЕКА И ИИ",
-    "ai2.title": "Философия AI²: Человек — Хозяин, ИИ — Исполнитель",
+    "ai2.title": "Философия AI²: Человек - Хозяин, ИИ - Исполнитель",
     "ai2.subtitle": "Hai = Human + AI. AI² = Actual Intelligence (Этика и суверенитет человека) × Artificial Intelligence (Бесконечные вычисления машин).",
     "ai2.card1Title": "Actual Intelligence: Верховный Контроль Человека",
     "ai2.card1Desc": "Человек сохраняет полный суверенитет через биометрию Passkey (FaceID), жесткие лимиты дерева Меркла и кнопку аварийного возврата средств (<400 мс).",
@@ -2785,7 +2785,7 @@
     "modal.depositWalletRequired": "Пожалуйста, подключите кошелек Solana перед внесением депозита для точного учета ончейн-средств."
   },
   "vi": {
-    "meta.title": "HAICHAIN — Hệ Điều Hành Tài Chính Máy Móc Tự Trị",
+    "meta.title": "HAICHAIN - Hệ Điều Hành Tài Chính Máy Móc Tự Trị",
     "meta.description": "HAICHAIN là Hệ điều hành tài chính máy móc tự trị trên Solana. Hỗ trợ ký quỹ vi mô phi lưu ký và thanh toán năng lực AI tức thì.",
 
     "modal.depositApplePay": "Apple Pay",
@@ -3170,7 +3170,7 @@
     "modal.depositWalletRequired": "Vui lòng kết nối ví Solana trước khi nạp để xác thực nguồn tiền on-chain vào Master Vault."
   },
   "hi": {
-    "meta.title": "HAICHAIN — स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम",
+    "meta.title": "HAICHAIN - स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम",
     "meta.description": "HAICHAIN सोलाना पर स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम है। नॉन-कस्टोडियल माइक्रो-एस्क्रो और त्वरित AI निपटान।",
 
     "modal.depositApplePay": "Apple Pay",
@@ -3547,7 +3547,7 @@
     "deck.desc": "हमारा वित्तीय मॉडल और संपूर्ण तकनीकी दस्तावेज डाउनलोड करें।",
     "deck.pitch": "Investor Pitch Deck (PDF)",
     "deck.financial": "3-वर्षीय वित्तीय मॉडल (P&L)",
-    "dash.title": "HAICHAIN Dashboard — स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम",
+    "dash.title": "HAICHAIN Dashboard - स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम",
     "dash.breadcrumb": "अवलोकन और वॉल्ट",
     "vault.title": "मास्टर वॉल्ट (Solana Devnet)",
     "vault.subtitle": "स्वायत्त AI एजेंटों के लिए मुख्य सुरक्षित फंड।",
@@ -3618,7 +3618,7 @@
     "home.footerLegal": "Solana Devnet पर सभी लेनदेन क्रिप्टोग्राफ़िक रूप से अधिकृत हैं। बिना किसी बैंकिंग देरी के।"
   },
   "he": {
-    "meta.title": "HAICHAIN — מערכת הפעלה פיננסית אוטונומית למכונות",
+    "meta.title": "HAICHAIN - מערכת הפעלה פיננסית אוטונומית למכונות",
     "meta.description": "HAICHAIN היא מערכת הפעלה פיננסית למכונות אוטונומיות על גבי סולאנה. נאמנויות מיקרו ללא משמורת והסדרים מיידיים של יכולות AI.",
 
     "modal.depositApplePay": "Apple Pay",
@@ -3995,7 +3995,7 @@
     "deck.desc": "הורד את המודל הפיננסי ואת מסמכי הארכיטקטורה המלאים.",
     "deck.pitch": "Investor Pitch Deck (PDF)",
     "deck.financial": "מודל פיננסי תלת-שנתי (רווח והפסד)",
-    "dash.title": "HAICHAIN Dashboard — מערכת הפעלה פיננסית למכונות אוטונומיות",
+    "dash.title": "HAICHAIN Dashboard - מערכת הפעלה פיננסית למכונות אוטונומיות",
     "dash.breadcrumb": "סקירה וכספת",
     "vault.title": "כספת ראשית (Solana Devnet)",
     "vault.subtitle": "הקופה המאובטחת המרכזית עבור סוכני AI אוטונומיים.",
