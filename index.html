@@ -2525,8 +2525,23 @@
 
       // Helper to detect Mobile Device
       function isMobileDevice() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-          || (window.innerWidth <= 768 && (navigator.maxTouchPoints > 0 || 'ontouchstart' in window));
+        const ua = navigator.userAgent || '';
+        const isTouch = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || ('ontouchstart' in window);
+        const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+        const isTablet = /(iPad|Tablet|(Android(?!.*Mobile))|(Silk(?!.*Mobile)))/i.test(ua);
+        const isMacTouch = /Macintosh/i.test(ua) && isTouch;
+        const isNarrow = window.innerWidth <= 1024;
+        return isMobileUA || isTablet || isMacTouch || (isTouch && isNarrow);
+      }
+
+      function getMobilePhantomDeepLink() {
+        let appOrigin = window.location.origin;
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          appOrigin = 'https://haichain.pages.dev';
+        }
+        const targetUrl = appOrigin + '/?autoConnect=phantom';
+        const refUrl = appOrigin;
+        return 'https://phantom.com/ul/browse/' + encodeURIComponent(targetUrl) + '?ref=' + encodeURIComponent(refUrl);
       }
 
       // Auto-connect inside Phantom in-app browser
@@ -2612,7 +2627,7 @@
             currentUrl.searchParams.set('autoConnect', 'phantom');
             const targetUrl = currentUrl.toString();
             const refUrl = window.location.origin;
-            const phantomDeepLink = `https://phantom.app/ul/browse/${encodeURIComponent(targetUrl)}?ref=${encodeURIComponent(refUrl)}`;
+            const phantomDeepLink = getMobilePhantomDeepLink();
             if (authText) authText.textContent = "Opening Phantom App...";
             window.location.href = phantomDeepLink;
             return;
