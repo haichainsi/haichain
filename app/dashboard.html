@@ -1867,14 +1867,14 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <span class="bg-white dark:bg-[#0c0c0c] px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletOrWeb3">OR CONNECT ON-CHAIN WALLET</span>
         </div>
 
-        <!-- 1. Phantom Card with Nested Mobile Action Tray -->
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+                <!-- 1. Phantom Card with Nested Mobile Action Tray -->
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="phantom">
-            <div class="flex items-center space-x-3 min-w-0">
+            <div class="flex items-center space-x-3 min-w-0 flex-1">
               <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg shrink-0">
                 👻
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletPhantom">Phantom Wallet</div>
                 <div class="text-[11px] text-neutral-500 truncate" id="phantom-status-desc" data-i18n="modal.walletPhantomDesc">Popular Solana mobile app & browser extension</div>
               </div>
@@ -1905,24 +1905,44 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         </div>
 
         <!-- 2. Solflare Card with Nested Mobile Action Tray -->
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="solflare">
-            <div class="flex items-center space-x-3 min-w-0">
+            <div class="flex items-center space-x-3 min-w-0 flex-1">
               <div class="w-8 h-8 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg shrink-0">
                 🔥
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletSolflare">Solflare Wallet</div>
                 <div class="text-[11px] text-neutral-500 truncate" data-i18n="modal.walletSolflareDesc">Browser extension & mobile support</div>
               </div>
+            </div>
+            <span id="solflare-arrow" class="text-xs font-mono text-neutral-400 transition-transform duration-200 shrink-0">&rarr;</span>
+          </button>
+          
+          <!-- Inline Solflare Mobile Action Tray -->
+          <div id="solflare-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
+            <button type="button" id="btn-tray-solflare-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
+              <span class="flex items-center space-x-1.5 truncate">
+                <span>🚀</span>
+                <span>Open in Solflare App</span>
+              </span>
+              <span class="font-mono text-xs">&rarr;</span>
+            </button>
+            <button type="button" id="btn-tray-solflare-deeplink" class="w-full py-1.5 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white text-[10px] font-medium flex items-center justify-center space-x-1 transition-opacity active:opacity-75 cursor-pointer truncate">
+              <span>🔄</span>
+              <span>2-Way Connect to Chrome</span>
+            </button>
+          </div>
+        </div>
+
         <!-- 3. MetaMask Card with Nested Mobile Action Tray -->
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="metamask">
-            <div class="flex items-center space-x-3 min-w-0">
+            <div class="flex items-center space-x-3 min-w-0 flex-1">
               <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg shrink-0">
                 🦊
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletMetamask">MetaMask Wallet</div>
                 <div class="text-[11px] text-neutral-500 truncate" id="metamask-status-desc" data-i18n="modal.walletMetamaskDesc">EVM Multi-Chain & Solana Snap (Ethereum, BSC, Arbitrum)</div>
               </div>
@@ -1952,34 +1972,14 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           </div>
         </div>
 
-            </div>
-            <span id="solflare-arrow" class="text-xs font-mono text-neutral-400 transition-transform duration-200 shrink-0">&rarr;</span>
-          </button>
-          
-          <!-- Inline Solflare Mobile Action Tray -->
-          <div id="solflare-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
-            <button type="button" id="btn-tray-solflare-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
-              <span class="flex items-center space-x-1.5 truncate">
-                <span>🚀</span>
-                <span>Open in Solflare App</span>
-              </span>
-              <span class="font-mono text-xs">&rarr;</span>
-            </button>
-            <button type="button" id="btn-tray-solflare-deeplink" class="w-full py-1.5 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-black dark:text-white text-[10px] font-medium flex items-center justify-center space-x-1 transition-opacity active:opacity-75 cursor-pointer truncate">
-              <span>🔄</span>
-              <span>2-Way Connect to Chrome</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- 3. Custom Solana Address with Inline Input Panel -->
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 overflow-hidden transition-all duration-200">
+        <!-- 4. Custom Solana Address with Inline Input Panel -->
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="manual">
-            <div class="flex items-center space-x-3 min-w-0">
+            <div class="flex items-center space-x-3 min-w-0 flex-1">
               <div class="w-8 h-8 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white shrink-0">
                 <i data-lucide="key" class="w-4 h-4"></i>
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletManual">Custom Solana Public Key</div>
                 <div class="text-[11px] text-neutral-500 truncate" data-i18n="modal.walletManualDesc">Paste your personal Solana address to read real balance</div>
               </div>
