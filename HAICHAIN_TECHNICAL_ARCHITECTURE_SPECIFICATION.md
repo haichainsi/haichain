@@ -70,6 +70,11 @@ HAICHAIN abstracts away 100% of blockchain terminology from the user interface:
   - **"One-Click Panic Kill-Switch"**: A universal red button on iOS, Android, and Web that freezes the bot and wires 100% of remaining funds back to the user's bank account in < 400ms.
 * **Gasless Paymaster Infrastructure:** Network transaction fees are subsidized by the protocol routing clearing layer; when an international user deposits \$10.00, they have exactly \$10.00 of spendable compute capital.
 
+> [!NOTE]
+> **TECHNICAL IMPLEMENTATION MATRIX & MILESTONE REALITY (SPEC-DEV-01):**
+> * **Biometric WebAuthn Security:** In the current Devnet environment, biometric signing is managed via the client-side Hardened Biometric Vault (AES-256-GCM + PBKDF2 salt) in `dashboard.html`. Commercial Mainnet production transitions this to an institutional MPC Enclave (Turnkey / Privy) for non-custodial Secp256r1-to-Ed25519 co-signing.
+> * **Fiat On-Ramp Rails:** The current Devnet application natively executes real Solana Web3 wallet transfers and 1-Click Devnet Faucet settlements. Apple Pay / Credit Card rails in this phase function as an Interactive UX Prototype; live licensed fiat-to-USDT settlement will be connected via Stripe Onramp / Stably API at Mainnet launch.
+
 ```
 +---------------------------------------------------------------------------------+
 |                    GLOBAL USER-FACING CONTROL DASHBOARD (US/EU/APAC)            |
@@ -873,6 +878,11 @@ While Solana L1 uses ephemeral PDA accounts with rent-recycling (`reclaim_expire
 
 ### 8.5. Canonical Dual-State Teleportation Bridge (SPEC-L1-03)
 State migration and liquidity continuity are guaranteed via an ed25519 Threshold Multi-Party Computation (MPC) Teleport Bridge. Users and AI agents can lock USDT/HAI on Solana L1 to mint native base currency on HAICHAIN L1, or burn on L1 to unlock on Solana, ensuring 1:1 parity and zero liquidity fragmentation.
+
+> [!IMPORTANT]
+> **ROADMAP CLASSIFICATION & CURRENT ON-CHAIN FOOTPRINT:**
+> * All active smart contract logic currently deployed and audited (`haichain-core`) resides natively on **Solana L1**.
+> * The Dual-State Teleportation Bridge (SPEC-L1-03) and its SP1 ZK-Light Client verifiers represent the **Phase 3 Sovereign L1 Evolution Roadmap** (targeted for Months 18–36). In the current Phase 1, transactions settle directly on Solana SVM without cross-chain bridge risk.
 
 ### 8.6. Six Invariants Guaranteeing Zero Migration Risk (SPEC-L1-04)
 1. **Bridge Drain Immunity:** Mathematically verified via SP1/Succinct ZK-Light Client and 5%/hour TVL velocity circuit breaker.

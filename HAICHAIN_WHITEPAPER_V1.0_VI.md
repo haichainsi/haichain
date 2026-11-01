@@ -113,6 +113,11 @@ Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phươn
 * **Việt Nam & Đông Nam Á:** Quét mã QR động (Instant QR), tiền tự động quy đổi tức thì sang USDT thông qua các kênh đối tác thanh khoản hợp pháp.
 * **Bao cấp phí gas (Gasless Paymaster):** Máy chủ chuyển tiếp của giao thức tự động thanh toán toàn bộ phí mạng Solana. Người dùng nạp \$10.00 thì tài khoản có đúng chuẩn xác \$10.00 để sử dụng.
 
+> [!NOTE]
+> **MINH BẠCH KỸ THUẬT & RANH GIỚI TRIỂN KHAI (TECHNICAL GROUND TRUTH):**
+> 1. **WebAuthn Biometric Security:** Trên bản thử nghiệm Devnet, giao diện ứng dụng Hardened Biometric Vault (AES-256-GCM + PBKDF2) bảo vệ sinh trắc học cục bộ. Khi phát hành Mainnet thương mại, hệ thống tích hợp trực tiếp mạng lưới MPC Enclave chuyên dụng (Turnkey / Privy) để chuyển giao chữ ký P-256 sang Ed25519 với cấp độ bảo mật ngân hàng.
+> 2. **Cổng nạp Fiat (Apple Pay / Card):** Môi trường Devnet hỗ trợ 100% nạp rút on-chain thực tế qua Solana Web3 Wallet và 1-Click Devnet Faucet. Luồng Apple Pay / Thẻ tín dụng trên bản thử nghiệm đóng vai trò Mô phỏng Trải nghiệm Người dùng (Interactive UX Prototype) và sẽ được kích hoạt kết nối API ngân hàng thực tế (Stripe Onramp / Stably) trong đợt phát hành Mainnet chính thức.
+
 ### 3.2. Nút Bấm Dừng Khẩn Cấp Dưới 1 Giây (One-Click Panic Kill-Switch)
 Khi phát hiện bot có biểu hiện bất thường hoặc bị tấn công:
 1. Người dùng chỉ cần nhấn nút đỏ **"Emergency Stop"** trên điện thoại hoặc máy tính.
@@ -287,6 +292,11 @@ HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai 
 * **Dây cương mật mã (Merkle Capability Leaf):** Đóng gói ý chí và ranh giới quản trị rủi ro của con người vào Merkle Root, ngăn chặn triệt để Prompt Injection.
 * **Cầu chì bảo vệ bản năng (Panic Kill-Switch < 400ms):** Cưỡng bức thu hồi 100% dòng tiền về ví an toàn của con người khi AI gặp lỗi ảo giác hay hành vi bất thường.
 * **Invisible Web3:** Ứng dụng Apple Pay, Google Pay, Instant QR để công nghệ máy móc phục vụ trải nghiệm tự nhiên nhất của con người.
+
+> [!IMPORTANT]
+> **RANH GIỚI TRIỂN KHAI THỰC TẾ GIỮA SOLANA L1 VÀ SOVEREIGN L1:**
+> - Toàn bộ mã nguồn hợp đồng thông minh đã kiểm toán (`haichain-core`) hoạt động trực tiếp và độc lập trên **Solana L1 Native**.
+> - Cầu nối Teleportation Bridge (SPEC-L1-03) với cơ chế Threshold MPC và ZK-Light Client là **thiết kế quy hoạch cho Giai đoạn 3 (Sovereign L1 Evolution)**, không phải là tính năng đã kích hoạt tại Phase 1. Điều này đảm bảo tính minh bạch 100% và uy tín tuyệt đối trước các tổ chức kiểm toán và quỹ đầu tư mạo hiểm quốc tế.
 
 ### 9.2. Giai Đoạn 2: SVM Rollup Chuyên Dụng & Kinh Tế Tri Thức Đồng Sinh (Tháng 18 &ndash; 36)
 Khi khối lượng giao dịch vi mô của hàng triệu bot làm đầy block của Solana, HAICHAIN chuyển dịch sang Layer 2 Rollup sử dụng máy ảo SVM kết hợp Celestia/EigenDA làm lớp dữ liệu, đồng thời kích hoạt 2 trụ cột kinh tế cộng sinh:
