@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v8_flag_clean"></script>
+  <script src="/app/i18n.js?v=v12_prod_sync"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
@@ -48,6 +48,12 @@
     }
   </script>
   <style>
+    /* BULLETPROOF DUAL LOGO DISPLAY IN LIGHT & DARK MODES ACROSS ALL DEVICES (MOBILE & DESKTOP) */
+    html.dark .logo-light { display: none !important; }
+    html.dark .logo-dark { display: block !important; }
+    html:not(.dark) .logo-light { display: block !important; }
+    html:not(.dark) .logo-dark { display: none !important; }
+
     /* Instant 0ms Theme Switching - No Global Transition Latency */
     .no-theme-transition,
     .no-theme-transition * {
@@ -72,9 +78,9 @@
       <!-- Logo -->
       <a href="/" class="flex items-center pb-6 border-b border-brand-lightBorder dark:border-brand-border group">
         <!-- Light Mode: Dark Logo -->
-        <img src="/assets/haichain-official-logo.png?v=v9_logo_sync" alt="HAICHAIN" class="dark:hidden block w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v9_logo_sync';}">
+        <img src="/assets/haichain-official-logo.png?v=v12_prod_sync" alt="HAICHAIN" class="logo-light w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v12_prod_sync';}">
         <!-- Dark Mode: Pure White Logo -->
-        <img src="/assets/haichain-official-logo-white.png?v=v9_logo_sync" alt="HAICHAIN" class="hidden dark:block w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v9_logo_sync';}">
+        <img src="/assets/haichain-official-logo-white.png?v=v12_prod_sync" alt="HAICHAIN" class="logo-dark w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v12_prod_sync';}">
       </a>
 
       <!-- Navigation Menu -->
@@ -146,7 +152,10 @@
       <div class="flex items-center space-x-2 shrink-0 min-w-0">
         <!-- Mobile Official Brand Logo -->
         <a href="/" class="md:hidden shrink-0 flex items-center group py-0.5" title="HAICHAIN Home">
-          <img src="/assets/haichain-official-logo-white.png?v=white_v2" alt="HAICHAIN" class="object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 22px; width: auto; max-height: 24px; max-width: 125px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v2';}">
+          <!-- Light Mode: Dark Logo -->
+          <img src="/assets/haichain-official-logo.png?v=v12_prod_sync" alt="HAICHAIN" class="logo-light object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 22px; width: auto; max-height: 24px; max-width: 125px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v12_prod_sync';}">
+          <!-- Dark Mode: Pure White Logo -->
+          <img src="/assets/haichain-official-logo-white.png?v=v12_prod_sync" alt="HAICHAIN" class="logo-dark object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 22px; width: auto; max-height: 24px; max-width: 125px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v12_prod_sync';}">
         </a>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
