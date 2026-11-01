@@ -14,7 +14,8 @@
     "@coral-xyz/anchor": "^0.30.1",
     "@solana/spl-token": "^0.4.9",
     "@solana/web3.js": "^1.95.8",
-    "chai": "^4.3.7"
+    "chai": "^4.3.7",
+    "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
