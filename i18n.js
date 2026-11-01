@@ -617,7 +617,7 @@
     "nav.investorPack": "Investor Pack",
     "nav.launchApp": "Launch App",
     "nav.launchAppMobile": "Launch",
-    "nav.backToHome": "Back to Landing Page",
+    "nav.backToHome": "Back to Home",
     "nav.overview": "Overview & Vault",
     "nav.agents": "AI Agent Swarm",
     "nav.playground": "AI Playground",

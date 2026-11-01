@@ -79,10 +79,10 @@
         <div class="text-[10px] text-neutral-500 truncate" id="sidebar-program-id">DK4Q...w4xk</div>
       </div>
 
-      <!-- Back to Landing Page -->
+      <!-- Back to Home -->
       <a href="/" class="flex items-center space-x-2 text-neutral-500 hover:text-black dark:hover:text-white py-1 transition-colors">
         <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-        <span data-i18n="nav.backToHome">Back to Landing Page</span>
+        <span data-i18n="nav.backToHome">Back to Home</span>
       </a>
     </div>
 
