@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v15_clean_icons"></script>
+  <script src="/app/i18n.js?v=v16_mobile_nav_fix"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
@@ -146,15 +146,15 @@
   <div class="flex-1 flex flex-col h-screen overflow-hidden">
     
     <!-- TOP HEADER BAR (OPTIMIZED FOR MOBILE & DESKTOP) -->
-    <header class="h-16 border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-20">
+    <header class="h-16 min-h-[64px] border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl px-2.5 sm:px-6 flex items-center justify-between shrink-0 z-20">
       <!-- Brand Logo on Mobile & Desktop Breadcrumb -->
       <div class="flex items-center space-x-2 shrink-0 min-w-0 pr-3">
         <!-- Mobile Official Brand Logo (Dedicated Dashboard Mobile Design - Crisp & Balanced) -->
         <a href="/" class="md:hidden shrink-0 flex items-center group py-0.5" title="HAICHAIN Home">
           <!-- Light Mode: Dark Logo -->
-          <img src="/assets/haichain-dashboard-mobile-logo.png?v=v15_clean_icons" alt="HAICHAIN" class="logo-light object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 20px; width: auto; max-height: 22px; max-width: 135px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v15_clean_icons';}">
+          <img src="/assets/haichain-dashboard-mobile-logo.png?v=v16_mobile_nav_fix" alt="HAICHAIN" class="logo-light object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 24px; width: auto; max-height: 26px; max-width: 160px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v15_clean_icons';}">
           <!-- Dark Mode: Pure White Logo -->
-          <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v15_clean_icons" alt="HAICHAIN" class="logo-dark object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 20px; width: auto; max-height: 22px; max-width: 135px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v15_clean_icons';}">
+          <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v16_mobile_nav_fix" alt="HAICHAIN" class="logo-dark object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 24px; width: auto; max-height: 26px; max-width: 160px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v15_clean_icons';}">
         </a>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
@@ -1668,7 +1668,13 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
     });
 
     mobileTabBtns.forEach(btn => {
-      btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
+      btn.addEventListener('click', (e) => {
+        switchTab(btn.getAttribute('data-tab'));
+      });
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        switchTab(btn.getAttribute('data-tab'));
+      });
     });
 
     // Auto switch to tab from URL param or hash (e.g. ?tab=tab-preseed)
@@ -2339,7 +2345,7 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
           }
         } else if (provider === 'manual') {
           manualAddressPanel.classList.toggle('hidden');
-
+        }
       });
     });
 

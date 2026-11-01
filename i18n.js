@@ -4268,7 +4268,7 @@
 
   function renderMobileDrawerHTML() {
     return `
-      <div id="haichain-mobile-lang-drawer" class="fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
+      <div id="haichain-mobile-lang-drawer" class="hidden fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
         <!-- Backdrop Overlay -->
         <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
         
@@ -4336,10 +4336,13 @@
     const backdrop = document.getElementById('mobile-lang-backdrop');
     const sheet = document.getElementById('mobile-lang-sheet');
     if (drawer && backdrop && sheet) {
-      drawer.classList.remove('pointer-events-none');
-      backdrop.classList.remove('opacity-0');
-      backdrop.classList.add('opacity-100');
-      sheet.classList.remove('translate-y-full');
+      drawer.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        drawer.classList.remove('pointer-events-none');
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        sheet.classList.remove('translate-y-full');
+      });
       document.body.style.overflow = 'hidden';
     }
   }
@@ -4354,7 +4357,10 @@
       sheet.classList.add('translate-y-full');
       document.body.style.overflow = '';
       setTimeout(() => {
-        if (drawer) drawer.classList.add('pointer-events-none');
+        if (drawer) {
+          drawer.classList.add('pointer-events-none');
+          drawer.classList.add('hidden');
+        }
       }, 300);
     }
   }
