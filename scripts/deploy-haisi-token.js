@@ -113,7 +113,7 @@ async function main() {
     payer.publicKey,
     'Haichain SI',
     'HAISI',
-    'https://haichain.com/assets/haisi-metadata.json',
+    'https://haichain.si/assets/haisi-metadata.json',
     [],
     { commitment: 'confirmed' },
     TOKEN_2022_PROGRAM_ID
