@@ -108,7 +108,7 @@ In the modern AI economy, global knowledge workers and businesses suffer from **
   - Perplexity Pro: \$20.00 / month
   - Web scraping & SERP APIs: \$50.00 / month
   - Automation platforms (Zapier / Make): \$29.00 / month
-  👉 **Total SaaS Drain: \$149.00 – \$250.00 / month**, even if utilized only a handful of times.
+  👉 **Total SaaS Drain: \$149.00 - \$250.00 / month**, even if utilized only a handful of times.
 
 **HAICHAIN's Global Pay-Per-Action Formulation:**
 $$\text{Total Cost} = \sum_{i=1}^{n} (\text{Action Call Count}_i \times \text{Micro-Unit Price}_i)$$
@@ -882,7 +882,7 @@ State migration and liquidity continuity are guaranteed via an ed25519 Threshold
 > [!IMPORTANT]
 > **ROADMAP CLASSIFICATION & CURRENT ON-CHAIN FOOTPRINT:**
 > * All active smart contract logic currently deployed and audited (`haichain-core`) resides natively on **Solana L1**.
-> * The Dual-State Teleportation Bridge (SPEC-L1-03) and its SP1 ZK-Light Client verifiers represent the **Phase 3 Sovereign L1 Evolution Roadmap** (targeted for Months 18–36). In the current Phase 1, transactions settle directly on Solana SVM without cross-chain bridge risk.
+> * The Dual-State Teleportation Bridge (SPEC-L1-03) and its SP1 ZK-Light Client verifiers represent the **Phase 3 Sovereign L1 Evolution Roadmap** (targeted for Months 18-36). In the current Phase 1, transactions settle directly on Solana SVM without cross-chain bridge risk.
 
 ### 8.6. Six Invariants Guaranteeing Zero Migration Risk (SPEC-L1-04)
 1. **Bridge Drain Immunity:** Mathematically verified via SP1/Succinct ZK-Light Client and 5%/hour TVL velocity circuit breaker.

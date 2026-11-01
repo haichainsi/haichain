@@ -69,12 +69,12 @@ HAICHAIN introduces the world's first **Zero-Griefing Merkle Capability Protocol
 ---
 
 ## Slide 8: Go-To-Market (GTM) Strategy
-1. **Phase 1: Developer Bottom-Up Adoption (Months 1–3):**
+1. **Phase 1: Developer Bottom-Up Adoption (Months 1-3):**
    - Direct integration into MCP marketplaces, Cursor agent extensions, and ElizaOS plugins.
    - $50,000 Developer Micro-Grants for agent builders deploying paid tools.
-2. **Phase 2: API Provider Integration (Months 4–8):**
+2. **Phase 2: API Provider Integration (Months 4-8):**
    - Partner with scraping APIs, compute clouds (Together AI, RunPod), and specialized vector databases.
-3. **Phase 3: Sovereign L1 Transition (Months 9–18):**
+3. **Phase 3: Sovereign L1 Transition (Months 9-18):**
    - Scale from Solana SVM anchor program into dedicated High-Performance Sovereign L1 AppChain.
 
 ---

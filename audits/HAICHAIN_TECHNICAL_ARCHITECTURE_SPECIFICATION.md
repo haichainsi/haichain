@@ -98,7 +98,7 @@ In the modern AI economy, global knowledge workers and businesses suffer from **
   - Perplexity Pro: \$20.00 / month
   - Web scraping & SERP APIs: \$50.00 / month
   - Automation platforms (Zapier / Make): \$29.00 / month
-  👉 **Total SaaS Drain: \$149.00 – \$250.00 / month**, even if utilized only a handful of times.
+  👉 **Total SaaS Drain: \$149.00 - \$250.00 / month**, even if utilized only a handful of times.
 
 **HAICHAIN's Global Pay-Per-Action Formulation:**
 $$\text{Total Cost} = \sum_{i=1}^{n} (\text{Action Call Count}_i \times \text{Micro-Unit Price}_i)$$

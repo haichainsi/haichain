@@ -48,7 +48,7 @@
   <script src="/app/dialog.js?v=v3_modal"></script>
   <script src="/app/i18n.js?v=v24_fast_mobile_wallet"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v6_compact_haisi"></script>
+  <script src="/app/sale-controller.js?v=v7_ghost_vip"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -414,7 +414,7 @@
           <i data-lucide="code-2" class="w-4 h-4"></i>
           <span data-i18n="nav.mcp">MCP & Dev Center</span>
         </button>
-        <button class="nav-tab-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left group" data-tab="tab-preseed" id="nav-btn-sale">
+        <button class="nav-tab-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left group" data-tab="tab-preseed" id="nav-btn-sale" style="display:none;">
           <div class="flex items-center space-x-3 min-w-0">
             <i data-lucide="shield-check" class="w-4 h-4 text-black dark:text-white shrink-0 group-hover:scale-110 transition-transform"></i>
             <span class="font-medium text-xs whitespace-nowrap truncate text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white" id="nav-sale-title">Private Round</span>
@@ -1157,7 +1157,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 7: Private (Mobile) -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-preseed" id="mobile-btn-sale">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-preseed" id="mobile-btn-sale" style="display:none;">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="lock" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>

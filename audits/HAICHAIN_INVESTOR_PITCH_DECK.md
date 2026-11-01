@@ -10,7 +10,7 @@
 * **Project Name:** HAICHAIN (The Universal Autonomous Machine Financial Protocol)
 * **Core Value Proposition (One-Liner):** The world’s first sub-second micro-payment and netting settlement operating system that bridges **Apple Pay-level Simplicity** for global knowledge workers with **Military-Grade Nuclear Immunity** against 9-figure blockchain exploits.
 * **4 Market-Defining Pillars (v6.5 Global Standard):**
-  1. **Kill the SaaS Tax (95% - 98% Cost Reduction):** Eliminates predatory \$150–\$300/month recurring software subscriptions, replacing them with granular, pay-per-action micro-cents (\$0.0008 per LLM call, \$0.0002 per web scrape).
+  1. **Kill the SaaS Tax (95% - 98% Cost Reduction):** Eliminates predatory \$150-\$300/month recurring software subscriptions, replacing them with granular, pay-per-action micro-cents (\$0.0008 per LLM call, \$0.0002 per web scrape).
   2. **Invisible Web3 (60-Second Global Onboarding):** Users authenticate via FaceID / TouchID biometric Passkeys and deposit funds instantly via **Apple Pay, Google Pay, Stripe Link, or SEPA Instant** in 135+ currencies. Zero seed phrases. Zero gas management.
   3. **Universal Panic Kill-Switch:** A single tap on any smartphone or browser freezes rogue autonomous agents and retracts 100% of unspent capital to the user's verified bank account in **< 400ms**.
   4. **Nuclear Exploit Immunity:** Verified immunity against the 4 largest bridge and DeFi hacks in Web3 history (\$800M+ across Wormhole, Nomad, Euler, and Mango Markets).
@@ -22,7 +22,7 @@
 
 ### SLIDE 1: THE HOOK
 > *"In 2024, Frontier AI learned how to reason.  
-> In 2025–2026, Autonomous Agents begin executing actions and spending money on our behalf.  
+> In 2025-2026, Autonomous Agents begin executing actions and spending money on our behalf.  
 > But today: **Global enterprises are terrified of financial prompt injections, while mainstream knowledge workers are repelled by crypto complexity**.  
 > **HAICHAIN v6.5 solves both: Utterly Invisible on the Surface, Cryptographically Indestructible Underneath.**"*
 
@@ -30,7 +30,7 @@
 
 ### SLIDE 2: THE GLOBAL PROBLEM (THE SAAS SUBSCRIPTION OVERKILL)
 1. **The \$200/Month Knowledge Worker SaaS Trap:**
-   - A typical professional in New York, London, or Singapore pays \$20/mo (ChatGPT) + \$20/mo (Claude) + \$30/mo (Midjourney) + \$20/mo (Perplexity) + \$50/mo (Scraper APIs) = **\$140 – \$250/month**, even if used only a few hours per week.
+   - A typical professional in New York, London, or Singapore pays \$20/mo (ChatGPT) + \$20/mo (Claude) + \$30/mo (Midjourney) + \$20/mo (Perplexity) + \$50/mo (Scraper APIs) = **\$140 - \$250/month**, even if used only a few hours per week.
 2. **The Crypto UX Barrier:**
    - 98% of international professionals abandon platforms requiring 12-word seed phrases, browser wallet extensions, or manual SOL gas token purchasing.
 3. **The Autonomous Agent Risk:**
@@ -89,8 +89,8 @@ flowchart LR
 ### SLIDE 7: BUSINESS MODEL & CASH FLOW ENGINE
 
 1. **Micro-Netting Settlement Spread (0.05% Take-Rate):** Micro-transaction processing fee levied on gross settled volume across millions of daily agent actions.
-2. **Enterprise & Prosumer Control Subscriptions:** Tiered management consoles offering GAAP/IFRS tax reporting, team capability tree permissions, and compliance monitoring (\$19 – \$499/month).
-3. **Fiat Interchange Routing Margin:** 0.3% – 0.8% margin on cross-border currency conversion and instant off-ramp banking settlements.
+2. **Enterprise & Prosumer Control Subscriptions:** Tiered management consoles offering GAAP/IFRS tax reporting, team capability tree permissions, and compliance monitoring (\$19 - \$499/month).
+3. **Fiat Interchange Routing Margin:** 0.3% - 0.8% margin on cross-border currency conversion and instant off-ramp banking settlements.
 
 ---
 
@@ -115,9 +115,9 @@ flowchart LR
 ---
 
 ### SLIDE 10: 90-DAY EXECUTION ROADMAP TO MAINNET
-* **Days 1–30 (Fortress Hardening):** Deploy Anchor v6.5 on multi-region Solana Devnet; complete penetration testing of all 4 historic exploit vectors.
-* **Days 31–60 (Global UX & Payment Rails):** Integrate WebAuthn Passkeys and the Universal Fiat Abstraction Layer (Apple Pay / Google Pay / SEPA); release iOS/Android beta apps.
-* **Days 61–90 (Institutional Audits & Mainnet):** Finalize external audits with OtterSec and Neodyme; activate live Solana Mainnet; launch worldwide commercial onboarding.
+* **Days 1-30 (Fortress Hardening):** Deploy Anchor v6.5 on multi-region Solana Devnet; complete penetration testing of all 4 historic exploit vectors.
+* **Days 31-60 (Global UX & Payment Rails):** Integrate WebAuthn Passkeys and the Universal Fiat Abstraction Layer (Apple Pay / Google Pay / SEPA); release iOS/Android beta apps.
+* **Days 61-90 (Institutional Audits & Mainnet):** Finalize external audits with OtterSec and Neodyme; activate live Solana Mainnet; launch worldwide commercial onboarding.
 
 ---
 

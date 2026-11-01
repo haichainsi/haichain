@@ -525,12 +525,12 @@
   // 3. MASTER STATE CONFIGURATION (THE FSM BRAIN)
   window.HAICHAIN_SALE_CONFIG = {
     CURRENT_PHASE: 'PRE_SEED_PRIVATE', // 'PRE_SEED_PRIVATE' | 'PUBLIC_TGE'
-    ACCESS_KEYS: ['early-backer-2026', 'hai-angel', 'haichain2026', 'vip', 'preseed'],
+    ACCESS_KEYS: ['early-backer-2026', 'hai-angel', 'haichain2026', 'vip', 'preseed', 'angel', 'investor'],
     TREASURY_ADDRESS: 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW',
 
     PHASES: {
       PRE_SEED_PRIVATE: {
-        isPublic: true,
+        isPublic: false, // STRICTLY CONFIDENTIAL GHOST MODE
         tokenPrice: 0.007,
         publicPrice: 0.010,
         targetFDV: '$7,000,000 USD',
@@ -593,9 +593,17 @@
     const phase = config.PHASES[config.CURRENT_PHASE];
     if (!phase) return;
 
+    const desktopBtn = document.getElementById('nav-btn-sale');
+    const mobileBtn = document.getElementById('mobile-btn-sale');
+
     if (!phase.isPublic && !isAuthorized) {
+      if (desktopBtn) desktopBtn.style.display = 'none';
+      if (mobileBtn) mobileBtn.style.display = 'none';
       return;
     }
+
+    if (desktopBtn) desktopBtn.style.display = 'flex';
+    if (mobileBtn) mobileBtn.style.display = 'flex';
 
     // A. Desktop Sidebar Navigation Item (Monochrome Titanium)
     const desktopNav = document.querySelector('aside nav');

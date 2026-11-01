@@ -185,7 +185,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     # Document metadata and titles
     if lang == "en":
         doc_title = "HAICHAIN WHITEPAPER v1.0"
-        doc_subtitle = "Universal Autonomous Machine Financial & Cognitive Operating System — The Bedrock for Decentralized Superintelligence"
+        doc_subtitle = "Universal Autonomous Machine Financial & Cognitive Operating System - The Bedrock for Decentralized Superintelligence"
         doc_edition = "Official Whitepaper v1.0 • Institutional Standard Edition"
         brand_sub_text = "Universal Autonomous Machine Financial & Cognitive Operating System"
         running_header_left = "HAICHAIN WHITEPAPER v1.0"
@@ -202,7 +202,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Formal Verification • Zero-Griefing Standard"
     else:
         doc_title = "SÁCH TRẮNG CHÍNH THỨC HAICHAIN v1.0"
-        doc_subtitle = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành — Nền Tảng Kiến Tạo Siêu Trí Tuệ Phi Tập Trung"
+        doc_subtitle = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành - Nền Tảng Kiến Tạo Siêu Trí Tuệ Phi Tập Trung"
         doc_edition = "Sách Trắng v1.0 • Phiên Bản Tiêu Chuẩn Thể Chế Quốc Tế"
         brand_sub_text = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành"
         running_header_left = "SÁCH TRẮNG HAICHAIN v1.0"

@@ -382,13 +382,13 @@ require!(!hct_merkle_proof.is_empty(), EmptyProofRejected);
 > *"Lợi ích thực tế lớn nhất bằng tiền mặt mà một cá nhân hay doanh nghiệp trên thế giới nhận được khi từ bỏ các gói phần mềm truyền thống là gì?"*
 
 **CÁCH BẠN PHẢN BIỆN (THE DEFENSE):**
-* *"Đó là **CẮT GIẢM 95% – 98% CHI PHÍ THUÊ BAO SAAS BỊ LÃNG PHÍ HÀNG THÁNG**:  
-* Hiện tại, một người làm việc tri thức hoặc doanh nghiệp nhỏ phải trả **\$150 – \$300/tháng** cho hàng loạt gói thuê bao định kỳ (ChatGPT \$20, Claude \$20, Midjourney \$30, Perplexity \$20, Scraping APIs \$50) dù chỉ sử dụng vài ngày trong tháng.  
+* *"Đó là **CẮT GIẢM 95% - 98% CHI PHÍ THUÊ BAO SAAS BỊ LÃNG PHÍ HÀNG THÁNG**:  
+* Hiện tại, một người làm việc tri thức hoặc doanh nghiệp nhỏ phải trả **\$150 - \$300/tháng** cho hàng loạt gói thuê bao định kỳ (ChatGPT \$20, Claude \$20, Midjourney \$30, Perplexity \$20, Scraping APIs \$50) dù chỉ sử dụng vài ngày trong tháng.  
 * Với HAICHAIN, họ chuyển sang cơ chế **'Pay-Per-Action' (Thanh toán siêu vi theo hành động thực tế)**:  
   - \$0.0008 cho 1.000 tokens suy luận văn bản.  
   - \$0.005 cho 1 lần nghiên cứu tài liệu chuyên sâu.  
   - \$0.0002 cho 1 trang web cào dữ liệu thời gian thực.  
-* Cả tháng một người dùng cường độ vừa phải chỉ tốn **khoảng \$2.50 – \$4.00 USD thay vì \$200.00 USD**!  
+* Cả tháng một người dùng cường độ vừa phải chỉ tốn **khoảng \$2.50 - \$4.00 USD thay vì \$200.00 USD**!  
 * **Đây là khoản tiết kiệm hàng nghìn USD mỗi năm bằng tiền mặt thực tế mà mọi giám đốc tài chính (CFO) hay cá nhân nào cũng nhận ra ngay lập tức.**"*
 
 ---

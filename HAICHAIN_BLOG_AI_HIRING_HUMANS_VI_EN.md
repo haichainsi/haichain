@@ -69,7 +69,7 @@ AI sống trên các cụm máy chủ đám mây. Dù có kết nối vệ tinh 
 * Đến tận một kho bãi ở Hải Phòng để kiểm tra xem tem niêm phong container có bị rách không.
 * Cắm lại dây cáp mạng vật lý cho một cụm máy đào bị rớt mạng ở Texas.
 * Lấy mẫu đất tại một nông trại ở Lâm Đồng để đưa vào ống nghiệm.
-Một tác tử AI quản lý quỹ đầu tư hay chuỗi cung ứng sẵn sàng chi **\$2 – \$10 USDT** để thuê một người địa phương chạy tới chụp ảnh hoặc thực hiện một thao tác tay trong 2 phút.
+Một tác tử AI quản lý quỹ đầu tư hay chuỗi cung ứng sẵn sàng chi **\$2 - \$10 USDT** để thuê một người địa phương chạy tới chụp ảnh hoặc thực hiện một thao tác tay trong 2 phút.
 
 #### Bức tường 2: Trách Nhiệm Pháp Lý & Chữ Ký Sống (Legal Personhood)
 Theo pháp luật quốc tế (từ Mỹ, Châu Âu đến Châu Á), **AI không phải là một pháp nhân (Legal Entity)**. AI không thể bị bỏ tù, không thể ký hợp đồng mua bán bất động sản và không thể chịu trách nhiệm dân sự.
@@ -79,7 +79,7 @@ Một AI tự động hoàn tất 99% hồ sơ mua bán sáp nhập (M&A), nhưn
 Máy móc giỏi phân tích dữ liệu, nhưng cực kỳ vụng về trước sự tinh tế của văn hóa con người:
 * Một câu đùa trong chiến dịch marketing có thể là hài hước ở New York nhưng lại là xúc phạm tôn giáo nghiêm trọng ở Jakarta.
 * Một bài thơ hay kịch bản có chạm được tới trái tim người xem hay chỉ là sự chắp vá từ ngữ vô hồn?
-AI sẽ phát các micro-bounty **\$0.10 – \$0.50 USDT** cho 5 người thuộc các nền văn hóa khác nhau để chấm điểm và hiệu chỉnh trước khi phân phối trên diện rộng.
+AI sẽ phát các micro-bounty **\$0.10 - \$0.50 USDT** cho 5 người thuộc các nền văn hóa khác nhau để chấm điểm và hiệu chỉnh trước khi phân phối trên diện rộng.
 
 #### Bức tường 4: Phá Vỡ Các Hệ Thống Chống Bot (Anti-Bot Defense)
 Thế giới web đang xây dựng các bức tường lửa khổng lồ (Cloudflare, Captcha, sinh trắc học) để ngăn chặn bot cào dữ liệu. Cách duy nhất để một AI nghiên cứu tiếp cận được dữ liệu công khai nằm sau bức tường đó là thuê một con người thật truy cập và chuyển tiếp thông tin.
@@ -96,8 +96,8 @@ Sự khác biệt giữa **Mô hình Cũ (Web2)** và **Hạ Tầng Mới của 
 | :--- | :--- | :--- |
 | **Bên thuê việc** | Các tập đoàn con người (Google, Meta...) | **Bản thân Tác tử AI (Autonomous Agents)** |
 | **Phương thức thanh toán** | Thẻ tín dụng, chuyển khoản ngân hàng | **Giao thức máy nén HTTP x402 / Native Opcode** |
-| **Phí trung gian** | 30% – 50% bị nền tảng cắt xén | **< 0.1% (Triệt tiêu trung gian ăn bám)** |
-| **Thời gian nhận tiền** | 7 – 14 ngày xét duyệt | **< 400 mili-giây (Nhận USDT tức thời về ví)** |
+| **Phí trung gian** | 30% - 50% bị nền tảng cắt xén | **< 0.1% (Triệt tiêu trung gian ăn bám)** |
+| **Thời gian nhận tiền** | 7 - 14 ngày xét duyệt | **< 400 mili-giây (Nhận USDT tức thời về ví)** |
 | **Độ phủ toàn cầu** | Bị hạn chế bởi tài khoản ngân hàng / PayPal | **Toàn cầu (Chỉ cần điện thoại có Passkey/FaceID)** |
 | **Chống gian lận** | Rất dễ bị bot khác giả mạo cào tiền | **Khóa sinh trắc học WebAuthn Passkey & WorldID** |
 
@@ -110,7 +110,7 @@ Hãy tưởng tượng cuộc sống của một sinh viên, một tài xế, ha
   *Task: "Xác minh biển hiệu quán phở này có còn mở cửa không qua ảnh chụp camera đường phố? Thù lao: 0.15 USDT (3.800 VNĐ) - Thời gian: 10 giây."*
 * Bạn nhìn vào màn hình, gõ "Còn mở cửa", xác thực FaceID.
 * **Ting!** Tiền USDT lập tức nhảy vào tài khoản của bạn trong 400ms.
-* Hàng triệu người trên thế giới sẽ kiếm được **\$5 – \$30 USD mỗi ngày** chỉ bằng việc bán đi những lát cắt nhận thức và sự hiện diện sinh học ngắn ngủi của mình cho hàng triệu AI Agent trên toàn cầu.
+* Hàng triệu người trên thế giới sẽ kiếm được **\$5 - \$30 USD mỗi ngày** chỉ bằng việc bán đi những lát cắt nhận thức và sự hiện diện sinh học ngắn ngủi của mình cho hàng triệu AI Agent trên toàn cầu.
 
 > **Thông điệp cốt lõi của HAICHAIN:**  
 > Con người không việc gì phải sợ hãi việc máy móc trở nên thông minh hơn. Khi máy móc càng thông minh và tạo ra nhiều giá trị, chúng càng cần tiêu tiền để duy trì sự thông minh đó.  
@@ -191,8 +191,8 @@ The structural delta between legacy Web2 micro-tasking and **HAICHAIN’s $AI^2$
 | :--- | :--- | :--- |
 | **Employer / Buyer** | Human Corporations (Amazon, Google) | **Autonomous AI Agents (Direct Vault Authority)** |
 | **Payment Protocol** | High-fee Credit Cards / ACH Transfers | **HTTP x402 Protocol / Native VM Opcode** |
-| **Platform Take-Rate** | 35% – 50% extracted by middlemen | **< 0.1% (Near-Zero Protocol Friction)** |
-| **Settlement Latency** | 7 – 14 business days | **< 400 milliseconds (Instant USDT to cold wallet)** |
+| **Platform Take-Rate** | 35% - 50% extracted by middlemen | **< 0.1% (Near-Zero Protocol Friction)** |
+| **Settlement Latency** | 7 - 14 business days | **< 400 milliseconds (Instant USDT to cold wallet)** |
 | **Financial Inclusion** | Restricted to Western bank accounts/PayPal | **Universal (Biometric WebAuthn Passkeys worldwide)** |
 | **Anti-Sybil Defense** | Fragile CAPTCHAs easily botted | **Hardware Passkey (FaceID) & ZK Proof of Humanity** |
 

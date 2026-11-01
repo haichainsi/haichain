@@ -160,7 +160,7 @@ def build_haichain_manual(output_path):
     h1 = doc.add_paragraph()
     h1.paragraph_format.space_before = Pt(14)
     h1.paragraph_format.space_after = Pt(4)
-    r1 = h1.add_run("PHẦN 1: BƯỚC ĐẦU LÀM QUEN — ĐĂNG NHẬP & TẠO HŨ TIỀN CHO AI")
+    r1 = h1.add_run("PHẦN 1: BƯỚC ĐẦU LÀM QUEN - ĐĂNG NHẬP & TẠO HŨ TIỀN CHO AI")
     r1.font.size = Pt(13)
     r1.font.bold = True
     r1.font.color.rgb = NAVY
