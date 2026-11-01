@@ -185,8 +185,9 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     # Document metadata and titles
     if lang == "en":
         doc_title = "HAICHAIN WHITEPAPER v1.0"
-        doc_subtitle = "Universal Autonomous Machine Financial & Cognitive Operating System"
+        doc_subtitle = "Universal Autonomous Machine Financial & Cognitive Operating System — The Bedrock for Decentralized Superintelligence"
         doc_edition = "Official Whitepaper v1.0 • Institutional Standard Edition"
+        brand_sub_text = "Universal Autonomous Machine Financial & Cognitive Operating System"
         running_header_left = "HAICHAIN WHITEPAPER v1.0"
         running_header_right = "haichain.si"
         running_footer_left = "CONFIDENTIAL & PROPRIETARY • HAICHAIN GLOBAL SYSTEMS TASKFORCE"
@@ -201,12 +202,13 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Formal Verification • Zero-Griefing Standard"
     else:
         doc_title = "SÁCH TRẮNG CHÍNH THỨC HAICHAIN v1.0"
-        doc_subtitle = "Hệ Điều Hành Tài Chính & Nhận Thức Toàn Cầu Cho Tác Tử Trí Tuệ Nhân Tạo"
+        doc_subtitle = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành — Nền Tảng Kiến Tạo Siêu Trí Tuệ Phi Tập Trung"
         doc_edition = "Sách Trắng v1.0 • Phiên Bản Tiêu Chuẩn Thể Chế Quốc Tế"
+        brand_sub_text = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành"
         running_header_left = "SÁCH TRẮNG HAICHAIN v1.0"
         running_header_right = "haichain.si"
         running_footer_left = "BẢO LƯU MỌI QUYỀN • HỘI ĐỒNG KIẾN TRÚC HỆ THỐNG PHÂN TÁN HAICHAIN"
-        tag_text = "GIAO THỨC HỆ ĐIỀU HÀNH SIÊU TRÍ TUỆ NHÂN TẠO"
+        tag_text = "HỆ ĐIỀU HÀNH SIÊU TRÍ TUỆ PHI TẬP TRUNG"
         lbl_settlement = "Tài Sản Quyết Toán Chính"
         val_settlement = "USDT (Tether USD SPL)"
         lbl_token = "Gas Chủ Quyền & Quản Trị"
@@ -705,7 +707,7 @@ blockquote p {{
 <div class="cover-page">
     <div class="cover-header">
         <img src="{logo_data_uri}" class="cover-logo-img" alt="HAICHAIN Logo" />
-        <div class="cover-brand-sub">Universal Autonomous Machine Financial & Cognitive Operating System</div>
+        <div class="cover-brand-sub">{brand_sub_text}</div>
     </div>
     
     <div class="cover-title-container">

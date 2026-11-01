@@ -1,5 +1,5 @@
-# HAICHAIN: HỆ ĐIỀU HÀNH TÀI CHÍNH TOÀN CẦU CHO TÁC TỬ TRÍ TUỆ NHÂN TẠO
-## Bản Sách Trắng Chính Thức v1.0 - Kiến Trúc Hệ Thống, Các Bất Biến Mật Mã & Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập
+# HAICHAIN: HỆ ĐIỀU HÀNH TÀI CHÍNH & NHẬN THỨC PHỔ QUÁT DÀNH CHO MÁY MÓC TỰ HÀNH — NỀN TẢNG KIẾN TẠO SIÊU TRÍ TUỆ PHI TẬP TRUNG
+## Bản Sách Trắng Chính Thức v1.0 - Kiến Trúc Hệ Thống, Các Bất Biến Mật Mã & Đích Đến Siêu Trí Tuệ Sovereign AI L1 (ASI)
 **Đơn vị chủ trì:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN  
 **Ngày phát hành:** 31 tháng 10 năm 2026  
 **Phân loại tài liệu:** Sách Trắng Chính Thức v1.0 (Phiên bản Tiếng Việt)  
