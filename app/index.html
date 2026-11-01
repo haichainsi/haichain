@@ -39,7 +39,7 @@
 
   <script src="/app/dialog.js?v=v3_modal"></script>
 
-  <script src="/app/i18n.js?v=v17_logo_harmonious"></script>
+  <script src="/app/i18n.js?v=v18_mobile_slide_light_hero"></script>
 
   <script>
 
@@ -108,6 +108,42 @@
         max-height: 32px !important;
         width: auto !important;
       }
+    }
+
+    /* Smooth Mobile Navigation Slide-Down ("Chạy Xuống") */
+    #mobile-menu {
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top;
+      will-change: max-height, opacity, transform;
+    }
+    #mobile-menu.menu-closed {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      transform: scaleY(0.96) translateY(-8px);
+      pointer-events: none !important;
+      overflow: hidden !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      border-top-width: 0 !important;
+    }
+    #mobile-menu.menu-open {
+      max-height: 85vh !important;
+      opacity: 1 !important;
+      transform: scaleY(1) translateY(0);
+      pointer-events: auto !important;
+      overflow-y: auto !important;
+    }
+
+    /* Hero Background Video: Subdued & Elegant in Light Mode, Vibrant in Dark Mode */
+    html:not(.dark) #hero-bg-video,
+    html:not(.dark) .hero-bg-video {
+      opacity: 0.28 !important;
+      filter: contrast(0.92) brightness(1.02);
+    }
+    html.dark #hero-bg-video,
+    html.dark .hero-bg-video {
+      opacity: 0.85 !important;
+      filter: contrast(1.05) brightness(0.95);
     }
 
 
@@ -272,9 +308,9 @@
       <!-- Brand Logo: Official HAICHAIN Monochromatic Luxury Logo (Mobile & Desktop) -->
       <a href="/" class="flex items-center group py-1 shrink-0" title="HAICHAIN">
         <!-- Light Mode: Dark Logo -->
-        <img src="/assets/haichain-official-logo.png?v=v17_logo_harmonious" alt="HAICHAIN" class="logo-light home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v17_logo_harmonious';}">
+        <img src="/assets/haichain-official-logo.png?v=v18_mobile_slide_light_hero" alt="HAICHAIN" class="logo-light home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v18_mobile_slide_light_hero';}">
         <!-- Dark Mode: Pure White Logo -->
-        <img src="/assets/haichain-official-logo-white.png?v=v17_logo_harmonious" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v17_logo_harmonious';}">
+        <img src="/assets/haichain-official-logo-white.png?v=v18_mobile_slide_light_hero" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v18_mobile_slide_light_hero';}">
       </a>
 
 
@@ -372,7 +408,7 @@
 
     <!-- Mobile Slide-Down Dropdown Menu -->
 
-    <div id="mobile-menu" class="hidden md:hidden border-t border-brand-lightBorder dark:border-brand-border bg-white/98 dark:bg-[#0a0a0c]/98 backdrop-blur-2xl px-6 py-6 space-y-4 text-base font-medium shadow-2xl max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+    <div id="mobile-menu" class="menu-closed md:hidden border-t border-brand-lightBorder dark:border-brand-border bg-white/98 dark:bg-[#0a0a0c]/98 backdrop-blur-2xl px-6 py-6 space-y-4 text-base font-medium shadow-2xl">
       <a href="#ai2-philosophy" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
       <a href="#market-evidence" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.market">Market Data</a>
       <a href="#spending-pot" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.architecture">Architecture & Pot</a>
@@ -421,7 +457,8 @@
 
       <!-- Crystal Clean Ambient Veil: Pure soft gradient without ANY backdrop-filter blur so the video stays 100% razor-sharp -->
 
-      <div class="absolute inset-0 bg-gradient-to-b from-white/35 via-white/10 to-white/50 dark:from-black/40 dark:via-transparent dark:to-black/65 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/95 dark:from-black/65 dark:via-black/30 dark:to-black/85 pointer-events-none transition-colors duration-300"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/40 via-transparent to-white/60 dark:from-transparent dark:to-transparent pointer-events-none"></div>
 
     </div>
 
@@ -2344,37 +2381,31 @@
 
 
 
-    // Mobile Hamburger Menu Logic (Resilient, Touch-Optimized, Safe from SVG replacements)
+    // Mobile Hamburger Menu Logic (Smooth Slide-Down "Chạy Xuống", Anti-Double-Tap Debounced)
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    let lastMenuToggle = 0;
 
-    function toggleMobileMenu(e) {
-      if (e) {
-        if (e.type === 'touchend') e.preventDefault();
-        e.stopPropagation();
-      }
+    function openMobileMenu() {
       if (!mobileMenu) return;
-      const isHidden = mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.remove('menu-closed');
+      mobileMenu.classList.add('menu-open');
       const hIcon = document.getElementById('hamburger-icon');
       const cIcon = document.getElementById('close-menu-icon');
-      if (hIcon) hIcon.classList.toggle('hidden', !isHidden);
+      if (hIcon) hIcon.classList.add('hidden');
       if (cIcon) {
-        if (isHidden) {
-          cIcon.classList.add('hidden');
-          cIcon.classList.remove('inline-flex');
-        } else {
-          cIcon.classList.remove('hidden');
-          cIcon.classList.add('inline-flex');
-        }
+        cIcon.classList.remove('hidden');
+        cIcon.classList.add('inline-flex');
       }
       if (mobileMenuBtn) {
-        mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
       }
     }
 
     function closeMobileMenu() {
       if (!mobileMenu) return;
-      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('menu-open');
+      mobileMenu.classList.add('menu-closed');
       const hIcon = document.getElementById('hamburger-icon');
       const cIcon = document.getElementById('close-menu-icon');
       if (hIcon) hIcon.classList.remove('hidden');
@@ -2387,17 +2418,38 @@
       }
     }
 
+    function toggleMobileMenu(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const now = Date.now();
+      if (now - lastMenuToggle < 350) return; // Prevent double trigger from touchend + synthetic click
+      lastMenuToggle = now;
+
+      if (!mobileMenu) return;
+      if (mobileMenu.classList.contains('menu-open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    }
+
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener('click', toggleMobileMenu);
       mobileMenuBtn.addEventListener('touchend', toggleMobileMenu);
 
       document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-        link.addEventListener('touchend', closeMobileMenu);
+        link.addEventListener('click', () => {
+          setTimeout(closeMobileMenu, 150);
+        });
+        link.addEventListener('touchend', () => {
+          setTimeout(closeMobileMenu, 150);
+        });
       });
 
       document.addEventListener('click', (e) => {
-        if (!mobileMenu.classList.contains('hidden') &&
+        if (mobileMenu.classList.contains('menu-open') &&
             !mobileMenu.contains(e.target) &&
             !mobileMenuBtn.contains(e.target)) {
           closeMobileMenu();
