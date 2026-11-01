@@ -177,7 +177,7 @@
   <script src="/app/i18n.js?v=v25_back_to_home"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
-  <script src="/app/pdf-modal.js?v=v17_inapp_modal_strict_interceptor"></script>
+  <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
 
   <script>
 
@@ -645,7 +645,7 @@
       <a href="#technical-status" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.status">Status</a>
       <a href="#endgame" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.sovereignL1">Sovereign L1 Roadmap</a>
       <a href="/dashboard?tab=mcp" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.developers">Developers</a>
-      <a href="javascript:void(0)" onclick="event.preventDefault(); if (typeof closeMobileMenu === \'function\') closeMobileMenu(); window.openPdfViewerModal && window.openPdfViewerModal(\'/HAICHAIN_WHITEPAPER_V1.0_\' + ((window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem(\'haichain_lang\') || \'en\')).toUpperCase() + \'.pdf\');" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors" id="mobile-nav-whitepaper-link" data-open-whitepaper="true" data-pdf-whitepaper="true">
+      <a href="javascript:void(0)" onclick="event.preventDefault(); if (typeof window.closeMobileMenu === \'function\') { window.closeMobileMenu(); } window.openPdfViewerModal && window.openPdfViewerModal(\'/HAICHAIN_WHITEPAPER_V1.0_\' + ((window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem(\'haichain_lang\') || \'en\')).toUpperCase() + \'.pdf\');" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors" id="mobile-nav-whitepaper-link" data-open-whitepaper="true" data-pdf-whitepaper="true">
         <span data-i18n="nav.whitepaper">Technical Whitepaper v1.0</span>
         <i data-lucide="file-text" class="w-4 h-4 text-neutral-400"></i>
       </a>
@@ -2471,7 +2471,7 @@ Universal Autonomous Machine Financial &amp; Cognitive Operating System. Non-cus
 
     function openMobileMenu() {
       if (!mobileMenu) return;
-      mobileMenu.classList.remove('menu-closed');
+      mobileMenu.classList.remove('menu-closed', 'hidden', 'opacity-0');
       mobileMenu.classList.add('menu-open');
       const hIcon = document.getElementById('hamburger-icon');
       const cIcon = document.getElementById('close-menu-icon');
@@ -2487,7 +2487,7 @@ Universal Autonomous Machine Financial &amp; Cognitive Operating System. Non-cus
 
     function closeMobileMenu() {
       if (!mobileMenu) return;
-      mobileMenu.classList.remove('menu-open');
+      mobileMenu.classList.remove('menu-open', 'hidden', 'opacity-0', 'opacity-100');
       mobileMenu.classList.add('menu-closed');
       const hIcon = document.getElementById('hamburger-icon');
       const cIcon = document.getElementById('close-menu-icon');
@@ -2513,6 +2513,11 @@ Universal Autonomous Machine Financial &amp; Cognitive Operating System. Non-cus
         openMobileMenu();
       }
     }
+
+    // Expose globally so external modals can cleanly close & sync mobile menu
+    window.openMobileMenu = openMobileMenu;
+    window.closeMobileMenu = closeMobileMenu;
+    window.toggleMobileMenu = toggleMobileMenu;
 
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener('click', toggleMobileMenu);

@@ -808,6 +808,26 @@
     }
     document.body.style.overflow = '';
 
+    // Guarantee mobile menu state is fully clean and responsive
+    if (typeof window.closeMobileMenu === 'function') {
+      try { window.closeMobileMenu(); } catch (_) {}
+    } else {
+      const mobMenu = document.getElementById('mobile-menu');
+      if (mobMenu) {
+        mobMenu.classList.remove('menu-open', 'hidden', 'opacity-0', 'opacity-100');
+        mobMenu.classList.add('menu-closed');
+      }
+      const hIcon = document.getElementById('hamburger-icon');
+      const cIcon = document.getElementById('close-menu-icon');
+      if (hIcon) hIcon.classList.remove('hidden');
+      if (cIcon) {
+        cIcon.classList.add('hidden');
+        cIcon.classList.remove('inline-flex');
+      }
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+
     // Stop observer & cancel rendering
     if (activePageObserver) {
       activePageObserver.disconnect();
@@ -832,14 +852,24 @@
       e.stopPropagation();
     }
 
-    // Close mobile nav menu if open
+    // Properly close mobile nav menu and restore hamburger icon
     if (typeof window.closeMobileMenu === 'function') {
       try { window.closeMobileMenu(); } catch (_) {}
-    }
-    const mobMenu = document.getElementById('mobile-menu');
-    if (mobMenu) {
-      mobMenu.classList.remove('menu-open', 'opacity-100');
-      mobMenu.classList.add('hidden', 'opacity-0');
+    } else {
+      const mobMenu = document.getElementById('mobile-menu');
+      if (mobMenu) {
+        mobMenu.classList.remove('menu-open', 'hidden', 'opacity-0', 'opacity-100');
+        mobMenu.classList.add('menu-closed');
+      }
+      const hIcon = document.getElementById('hamburger-icon');
+      const cIcon = document.getElementById('close-menu-icon');
+      if (hIcon) hIcon.classList.remove('hidden');
+      if (cIcon) {
+        cIcon.classList.add('hidden');
+        cIcon.classList.remove('inline-flex');
+      }
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
 
     const explicitHref = trigger ? (trigger.getAttribute('data-pdf-url') || trigger.getAttribute('href')) : '';
