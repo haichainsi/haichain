@@ -591,11 +591,14 @@
           <span><span data-i18n="cluster.slot">Devnet Slot</span>: <strong id="live-slot-counter" class="font-bold">...</strong></span>
         </div>
 
-        <!-- Consolidated Unified AI Integration Hub Trigger -->
-        <button id="ai-hub-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="AI Integration Hub: AI Gateway & Claude MCP">
-          <i data-lucide="cpu" class="w-3.5 h-3.5 shrink-0 pointer-events-none"></i>
-          <span class="hidden md:inline font-mono text-xs font-semibold">AI Connect</span>
-          <span class="hidden sm:inline md:hidden text-[10px] font-bold font-mono">AI Hub</span>
+        <!-- Consolidated Unified AI Integration Hub Trigger (High-Visibility AI Connect Pill) -->
+        <button id="ai-hub-btn" type="button" class="haichain-ai-connect-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-[11px] sm:text-xs shadow-md shadow-emerald-500/25 flex items-center space-x-1.5 sm:space-x-2 transition-all duration-200 active:scale-95 cursor-pointer shrink-0 border border-emerald-400/30" title="Kết nối HAICHAIN với AI (Claude Desktop, Web & Cursor)">
+          <span class="relative flex h-2 w-2 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          </span>
+          <i data-lucide="bot" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none"></i>
+          <span class="font-bold tracking-tight pointer-events-none whitespace-nowrap">Kết nối AI</span>
         </button>
 
         <!-- Hidden Aliases for script backward compatibility -->
@@ -645,6 +648,26 @@
       
       <!-- ================= TAB 1: OVERVIEW & MASTER VAULT ================= -->
       <section id="tab-overview" class="tab-content space-y-6">
+        
+        <!-- High-Impact AI Integration Banner -->
+        <div class="p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent dark:from-emerald-950/30 dark:via-teal-950/15 dark:to-black/50 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 relative overflow-hidden">
+          <div class="flex items-center space-x-3 sm:space-x-4 min-w-0">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/25">
+              <i data-lucide="bot" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="flex items-center space-x-2">
+                <h3 class="font-bold text-sm sm:text-base text-black dark:text-white truncate">Kết nối HAICHAIN với AI</h3>
+                <span class="px-2 py-0.5 rounded-full text-[9.5px] font-mono font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shrink-0">3 Lựa Chọn</span>
+              </div>
+              <p class="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">Claude Desktop (1-Click) &bull; Claude.ai Web &bull; Web3 Playground</p>
+            </div>
+          </div>
+          <button type="button" onclick="document.getElementById('ai-hub-btn').click()" class="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold text-xs shadow-sm flex items-center justify-center space-x-2 shrink-0 transition-all active:scale-95 cursor-pointer">
+            <i data-lucide="zap" class="w-3.5 h-3.5 fill-current"></i>
+            <span>Kết Nối AI Ngay</span>
+          </button>
+        </div>
         
         <!-- Top Metrics Grid -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -1407,185 +1430,211 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
   </div>
 
   <!-- UNIFIED AI INTEGRATION HUB MODAL (AI GATEWAY + CLAUDE MCP + TREASURY) -->
-  <div id="ai-hub-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xl hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-300">
-    <div class="w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-3.5 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn">
+  <!-- UNIFIED MASTER AI INTEGRATION MODAL (3 WAYS TO CONNECT: DESKTOP, ONLINE, WEB) -->
+  <div id="ai-hub-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-300">
+    <div class="w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col">
       
       <!-- Mobile Pull Bar Indicator -->
-      <div class="sm:hidden w-10 h-1 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-2.5"></div>
+      <div class="sm:hidden w-12 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-3 shrink-0"></div>
       
       <!-- Modal Header -->
-      <div class="flex justify-between items-center pb-2.5 border-b border-neutral-100 dark:border-neutral-800">
+      <div class="flex justify-between items-center pb-3 border-b border-neutral-100 dark:border-neutral-800 shrink-0">
         <div class="flex items-center space-x-3 min-w-0">
-          <div class="w-8 h-8 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-            <i data-lucide="cpu" class="w-4 h-4"></i>
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md shadow-emerald-500/20">
+            <i data-lucide="bot" class="w-5 h-5"></i>
           </div>
           <div class="min-w-0">
             <div class="flex items-center space-x-2">
-              <h3 class="font-bold text-sm sm:text-base text-black dark:text-white truncate">HAICHAIN AI Hub</h3>
-              <span class="px-1.5 py-0.5 text-[9px] font-mono rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0 font-semibold">● Active</span>
+              <h3 class="font-bold text-sm sm:text-base text-black dark:text-white truncate">Kết nối HAICHAIN với AI</h3>
+              <span class="px-2 py-0.5 text-[9px] font-mono rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0 font-semibold">● 3 Lựa chọn</span>
             </div>
-            <p class="text-[10px] sm:text-[11px] text-neutral-500 truncate">AI Gateway &bull; MCP Server &bull; Micro-Billing</p>
+            <p class="text-[10.5px] sm:text-[11.5px] text-neutral-500 truncate">Chọn cách kết nối phù hợp nhất với trải nghiệm của bạn</p>
           </div>
         </div>
-        <button id="close-ai-hub-modal" class="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0">
-          <i data-lucide="x" class="w-4 h-4"></i>
+        <button id="close-ai-hub-modal" type="button" class="w-9 h-9 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0" title="Đóng">
+          <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <!-- 3 Main Segment Tabs (Sleek, No-Wrap on Mobile) -->
-      <div class="my-2.5 flex p-1 bg-neutral-100 dark:bg-neutral-900 rounded-xl text-xs font-semibold">
-        <button id="hub-tab-gateway" type="button" class="flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
-          <i data-lucide="network" class="w-3.5 h-3.5"></i>
-          <span>Gateway</span>
+      <!-- 3 Main Segment Tabs (Optimized for Mobile Touch) -->
+      <div class="my-3 flex p-1 bg-neutral-100 dark:bg-neutral-900/90 rounded-xl text-xs font-semibold shrink-0 gap-1">
+        <button id="hub-tab-desktop" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
+          <i data-lucide="laptop" class="w-3.5 h-3.5 shrink-0"></i>
+          <span class="truncate">1. Desktop App</span>
         </button>
-        <button id="hub-tab-mcp" type="button" class="flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
-          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-          <span>Claude MCP</span>
+        <button id="hub-tab-online" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
+          <i data-lucide="globe" class="w-3.5 h-3.5 shrink-0"></i>
+          <span class="truncate">2. Claude Online</span>
         </button>
-        <button id="hub-tab-stats" type="button" class="flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
-          <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
-          <span>Treasury</span>
+        <button id="hub-tab-web" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
+          <i data-lucide="zap" class="w-3.5 h-3.5 shrink-0"></i>
+          <span class="truncate">3. Web Direct</span>
         </button>
       </div>
 
-      <!-- TAB 1 CONTENT: AI GATEWAY (Reverse Proxy for Cursor, Claude Code, Cline) -->
-      <div id="hub-section-gateway" class="space-y-2.5 font-mono text-xs">
-        <!-- Sub-client selector inside Gateway -->
-        <div class="flex space-x-1.5 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[11px] font-medium">
-          <button id="gw-tab-cursor" type="button" class="flex-1 py-1 sm:py-1.5 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold transition-all text-[10.5px] sm:text-xs">Cursor / Cline</button>
-          <button id="gw-tab-claude" type="button" class="flex-1 py-1 sm:py-1.5 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold transition-all text-[10.5px] sm:text-xs">Claude Code CLI</button>
-        </div>
-
-        <!-- Compact Gateway Base URL Card -->
-        <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1 sm:space-y-1.5">
-          <div class="flex items-center justify-between text-[11px]">
-            <span class="text-neutral-500 dark:text-neutral-400 font-sans font-semibold uppercase text-[10px]">Gateway Endpoint</span>
-            <span id="gw-protocol-badge" class="text-[9px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-bold border border-neutral-300 dark:border-neutral-700">POST /v1/chat/completions</span>
+      <!-- ================= TAB 1: CLAUDE DESKTOP & CURSOR (1-CLICK INSTALL) ================= -->
+      <div id="hub-section-desktop" class="space-y-3 font-mono text-xs">
+        <div class="p-3 sm:p-3.5 rounded-2xl bg-emerald-500/5 dark:bg-emerald-950/20 border border-emerald-500/20 space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="text-emerald-600 dark:text-emerald-400 font-sans font-bold text-xs flex items-center space-x-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Cài đặt 1-Click Tự Động (Khuyên dùng)</span>
+            </span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold">3 Giây Xong</span>
           </div>
-          <div id="gw-url-display" class="p-2.5 rounded-xl bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 font-mono text-xs break-all select-all text-black dark:text-white font-bold flex items-center justify-between group cursor-pointer hover:border-black dark:hover:border-white transition-colors" title="Bấm để sao chép URL">
-            <span>http://localhost:3000/v1</span>
-            <i data-lucide="copy" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-black dark:group-hover:text-white shrink-0 ml-2"></i>
-          </div>
-          <p id="gw-desc-text" class="hidden sm:block text-[10.5px] text-neutral-500 font-sans leading-relaxed">
-            Quyết toán suy luận AI trực tiếp từ Két chi tiêu Solana (Phí kho bạc 20%). Cập nhật Base URL trong IDE để dùng ngay.
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
+            Dành cho máy tính đã cài <strong>Claude Desktop</strong> hoặc <strong>Cursor IDE</strong>. Tự động nhận diện cấu hình và kết nối két chi tiêu on-chain.
           </p>
         </div>
 
-        <!-- Quick Code Snippet Box -->
-        <div id="gw-code-container" class="space-y-1.5">
-          <div class="flex justify-between items-center text-[10.5px] font-sans">
-            <span id="gw-snippet-title" class="font-semibold text-black dark:text-white text-xs">Cấu hình IDE nhanh:</span>
-            <span class="text-[9.5px] text-emerald-600 dark:text-emerald-400 flex items-center space-x-1 font-semibold">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Devnet Active</span>
+        <!-- Terminal Command Box -->
+        <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-950 border border-neutral-800 space-y-2">
+          <div class="flex items-center justify-between text-[11px] text-neutral-400">
+            <span class="flex items-center space-x-1.5 font-sans">
+              <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Mở Terminal / PowerShell và chạy:</span>
             </span>
+            <span class="text-[10px] bg-neutral-800 px-2 py-0.5 rounded-full text-neutral-300 font-mono">v6.2.1 Live</span>
           </div>
-          <pre id="gw-code-snippet" class="p-3 rounded-2xl bg-neutral-950 text-neutral-200 font-mono text-[11px] leading-relaxed border border-neutral-800 whitespace-pre-wrap break-all select-all">// Trong Cursor / Cline Settings:
-Base URL: http://localhost:3000/v1
-API Key: agent_cursor_ide_02
-Model: gpt-4o hoặc claude-3-5-sonnet</pre>
+          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-emerald-400 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
+            <code id="cmd-install-snippet">npx -y @haichainsi/mcp-server --install</code>
+          </div>
         </div>
 
-        <button id="copy-gw-config-btn" type="button" class="w-full py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-md flex items-center justify-center space-x-2 cursor-pointer active:scale-98">
-          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-          <span id="copy-gw-btn-text">Sao Chép Cấu Hình Gateway</span>
+        <button id="copy-desktop-install-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all active:scale-98 cursor-pointer">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span id="copy-desktop-install-text">Sao chép lệnh cài đặt 1-Click</span>
         </button>
-      </div>
 
-      <!-- TAB 2 CONTENT: CLAUDE DESKTOP MCP (Model Context Protocol JSON & Tools) -->
-      <div id="hub-section-mcp" class="hidden space-y-3 font-mono text-xs">
-        <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-1.5">
-          <div class="flex items-center justify-between text-neutral-400 text-[11px]">
-            <span class="font-bold text-black dark:text-white">Config File Path:</span>
-            <span class="text-[10px] text-black dark:text-white font-mono font-bold bg-neutral-200 dark:bg-neutral-800 px-2 py-0.5 rounded-md">Auto-Paste</span>
+        <!-- 3 Step Walkthrough -->
+        <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-2 font-sans">
+          <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
+            <span>3 bước kích hoạt:</span>
           </div>
-          <div class="p-2 rounded-xl bg-black text-white font-mono text-[11px] select-all break-all border border-neutral-800" id="mcp-config-path-text">%APPDATA%\Claude\claude_desktop_config.json</div>
-          <div class="text-[10px] text-neutral-500 font-sans">
-            Copy JSON configuration below into your Claude Desktop config file, then restart Claude to grant autonomous financial settlement authority.
-          </div>
-          <div class="pt-1 border-t border-neutral-200 dark:border-neutral-800 text-[10px] text-neutral-600 dark:text-neutral-400 font-mono flex items-center space-x-1">
-            <i data-lucide="zap" class="w-3 h-3 text-black dark:text-white shrink-0"></i>
-            <span>Or run command: <code class="bg-black/10 dark:bg-black/60 px-1.5 py-0.5 rounded text-black dark:text-white font-bold select-all">node scripts/install-claude-mcp.js</code></span>
+          <div class="space-y-1.5 text-[10.5px] sm:text-[11px]">
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+              <span>Sao chép lệnh trên và dán vào <strong>Terminal / PowerShell / Command Prompt</strong> rồi nhấn Enter.</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+              <span>Khởi động lại ứng dụng <strong>Claude Desktop</strong>.</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+              <span>Biểu tượng 🔨 Tools sẽ xuất hiện ở góc khung chat! Bạn chỉ cần gõ: <em>"Kiểm tra số dư két chi tiêu HAICHAIN"</em>.</span>
+            </div>
           </div>
         </div>
 
-        <div class="relative rounded-2xl bg-neutral-950 border border-neutral-800 p-3.5 space-y-1.5 shadow-inner">
-          <div class="flex items-center justify-between pb-1.5 border-b border-neutral-800 text-[11px] text-neutral-400">
-            <span class="font-mono text-neutral-300">claude_desktop_config.json</span>
-            <span class="text-white font-mono text-[10px] bg-neutral-800 px-2 py-0.5 rounded-full border border-neutral-700">3 Tools Ready</span>
-          </div>
-          <pre id="mcp-json-snippet" class="text-neutral-200 font-mono text-[10.5px] leading-relaxed whitespace-pre-wrap break-all overflow-hidden select-all">{
-  "mcpServers": {
-    "haichain": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@haichainsi/mcp-server"
-      ],
-      "env": {
-        "SOLANA_RPC_URL": "https://api.devnet.solana.com"
-      }
-    }
-  }
-}</pre>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2 pt-0.5">
-          <button id="copy-mcp-config-btn" type="button" class="py-2.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-md flex items-center justify-center space-x-1.5 cursor-pointer active:scale-95">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-            <span id="copy-mcp-btn-text">Copy JSON</span>
-          </button>
-          <a href="/download/claude_desktop_config.json" download="claude_desktop_config.json" class="py-2.5 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-black dark:text-white font-semibold text-xs transition-all shadow-xs flex items-center justify-center space-x-1.5 cursor-pointer text-center active:scale-95">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i>
-            <span>Download .json</span>
+        <!-- Optional Manual JSON Download -->
+        <div class="pt-1 flex items-center justify-between text-[11px] text-neutral-500 font-sans">
+          <span>Cấu hình thủ công qua file JSON?</span>
+          <a href="/download/claude_desktop_config.json" download="claude_desktop_config.json" class="text-black dark:text-white hover:underline font-semibold flex items-center space-x-1">
+            <span>Tải file .json</span>
+            <i data-lucide="download" class="w-3 h-3"></i>
           </a>
         </div>
+      </div>
 
-        <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10.5px] text-neutral-700 dark:text-neutral-300 space-y-1">
-          <div class="font-bold flex items-center space-x-1.5 text-xs text-black dark:text-white">
-            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i>
-            <span>3 Exclusive Financial Tools:</span>
+      <!-- ================= TAB 2: CLAUDE.AI ONLINE (WEB / CLOUD CONNECTOR) ================= -->
+      <div id="hub-section-online" class="hidden space-y-3 font-mono text-xs">
+        <div class="p-3 sm:p-3.5 rounded-2xl bg-blue-500/5 dark:bg-blue-950/20 border border-blue-500/20 space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="text-blue-600 dark:text-blue-400 font-sans font-bold text-xs flex items-center space-x-1.5">
+              <i data-lucide="cloud" class="w-3.5 h-3.5"></i>
+              <span>Remote MCP Server (SSE qua HTTPS)</span>
+            </span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 font-bold">Không Cần Cài Đặt</span>
           </div>
-          <ul class="list-disc list-inside space-y-0.5 font-mono text-[10px] text-neutral-600 dark:text-neutral-400">
-            <li><strong>get_agent_spending_pot_balance</strong> - Instant on-chain wallet balance lookup on Solana</li>
-            <li><strong>execute_micro_payment</strong> - Sub-second micro-settlement with on-chain TxSig</li>
-            <li><strong>trigger_emergency_panic</strong> - Emergency kill-switch retracts 100% funds in 380ms</li>
-          </ul>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
+            Dành cho người dùng chat trên web <strong>claude.ai</strong> trên trình duyệt (Chrome, Safari, Brave, Edge). Kết nối trực tiếp qua giao thức đám mây.
+          </p>
+        </div>
+
+        <!-- Remote MCP URL Box -->
+        <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-950 border border-neutral-800 space-y-2">
+          <div class="flex items-center justify-between text-[11px] text-neutral-400">
+            <span class="flex items-center space-x-1.5 font-sans">
+              <i data-lucide="link" class="w-3.5 h-3.5 text-blue-400"></i>
+              <span>Đường dẫn Remote MCP Connector URL:</span>
+            </span>
+            <span class="text-[10px] bg-neutral-800 px-2 py-0.5 rounded-full text-neutral-300 font-mono">SSE / HTTPS</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-blue-400 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
+            <code id="online-mcp-url-snippet">https://mcp.haichain.si/sse</code>
+          </div>
+        </div>
+
+        <button id="copy-online-mcp-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all active:scale-98 cursor-pointer">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span id="copy-online-mcp-text">Sao chép đường dẫn Remote MCP</span>
+        </button>
+
+        <!-- 3 Step Guide for claude.ai online -->
+        <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-2 font-sans">
+          <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+            <span>Cách thiết lập trên claude.ai:</span>
+          </div>
+          <div class="space-y-1.5 text-[10.5px] sm:text-[11px]">
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+              <span>Truy cập <strong>claude.ai</strong> và đăng nhập vào tài khoản của bạn.</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+              <span>Bấm vào Avatar (góc dưới bên trái) ➔ Chọn <strong>Settings</strong> ➔ <strong>Developer / Connectors</strong>.</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+              <span>Dán đường link <code class="text-blue-500">https://mcp.haichain.si/sse</code> vào ô Server URL rồi bấm <strong>Connect</strong>.</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- TAB 3 CONTENT: TREASURY & LIVE METRICS -->
-      <div id="hub-section-stats" class="hidden space-y-3 font-mono text-xs">
-        <div class="grid grid-cols-3 gap-2 text-center">
-          <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800">
-            <span class="block text-[10px] text-neutral-500 uppercase font-mono">Treasury (20%)</span>
-            <strong id="gw-treasury-margin" class="text-sm font-mono text-black dark:text-white font-bold">$0.0248 USDT</strong>
+      <!-- ================= TAB 3: WEB DASHBOARD DIRECT (INSTANT PLAYGROUND) ================= -->
+      <div id="hub-section-web" class="hidden space-y-3 font-mono text-xs">
+        <div class="p-3 sm:p-3.5 rounded-2xl bg-purple-500/5 dark:bg-purple-950/20 border border-purple-500/20 space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="text-purple-600 dark:text-purple-400 font-sans font-bold text-xs flex items-center space-x-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Trải nghiệm Trực tiếp trên Web</span>
+            </span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400 font-bold">100% Không Cần Cài Đặt</span>
           </div>
-          <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800">
-            <span class="block text-[10px] text-neutral-500 uppercase font-mono">Settled Txs</span>
-            <strong id="gw-settled-txs" class="text-sm font-mono text-black dark:text-white font-bold">20 Txs</strong>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
+            Dành cho người dùng Web3 muốn gọi AI suy luận ngay trên trình duyệt mà không cần cài Claude hay sử dụng dòng lệnh.
+          </p>
+        </div>
+
+        <!-- 3 Feature Badges -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 font-sans text-center">
+          <div class="p-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+            <span class="block text-[11px] font-bold text-black dark:text-white">Đa Mô Hình AI</span>
+            <span class="text-[10px] text-neutral-500">Gemini, GPT-4o, Claude 3.5, DeepSeek</span>
           </div>
-          <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800">
-            <span class="block text-[10px] text-neutral-500 uppercase font-mono">Tokens Metered</span>
-            <strong id="gw-tokens-metered" class="text-sm font-mono text-black dark:text-white font-bold">42,517</strong>
+          <div class="p-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+            <span class="block text-[11px] font-bold text-black dark:text-white">Két Chi Tiêu Bảo Vệ</span>
+            <span class="text-[10px] text-neutral-500">Khống chế ngân sách, an toàn vốn 100%</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+            <span class="block text-[11px] font-bold text-black dark:text-white">Nút Khẩn Cấp Panic</span>
+            <span class="text-[10px] text-neutral-500">Thu hồi toàn bộ tiền về ví trong 380ms</span>
           </div>
         </div>
-        <div class="p-3 rounded-2xl bg-neutral-950 text-[10.5px] font-mono text-neutral-400 border border-neutral-800 space-y-1">
-          <div class="flex justify-between">
-            <span>Treasury Address:</span>
-            <span class="text-neutral-200">HD1b...nVW</span>
-          </div>
-          <div class="flex justify-between">
-            <span>Active Smart Program:</span>
-            <span class="text-neutral-200">DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk</span>
-          </div>
-          <div class="pt-1 text-center">
-            <a href="https://explorer.solana.com/address/HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW?cluster=devnet" target="_blank" class="text-white hover:underline flex items-center justify-center space-x-1 font-bold">
-              <span>View Treasury Wallet on Solana Explorer</span>
-              <i data-lucide="external-link" class="w-3 h-3"></i>
-            </a>
-          </div>
-        </div>
+
+        <!-- Big Launch CTA Button -->
+        <button id="btn-open-web-playground" type="button" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20 active:scale-98 transition-all cursor-pointer">
+          <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+          <span>Mở AI Playground Ngay Bây Giờ &rarr;</span>
+        </button>
+
+        <p class="text-center text-[10.5px] text-neutral-500 font-sans">
+          Chỉ cần kết nối ví Phantom / Solflare hoặc nhập API key của riêng bạn (BYOK).
+        </p>
       </div>
 
     </div>
@@ -4800,133 +4849,58 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         : `Withdrawal successful!\n\nDisbursed $${amount.toFixed(4)} USDT to:\n${dest}\n\nSettlement speed: 380ms.`);
     });
 
-    // ================= UNIFIED AI INTEGRATION HUB (AI GATEWAY & CLAUDE MCP) =================
+    // ================= UNIFIED AI INTEGRATION HUB (3 WAYS: DESKTOP, ONLINE, WEB) =================
     const aiHubBtn = document.getElementById('ai-hub-btn');
     const aiHubModal = document.getElementById('ai-hub-modal');
     const closeAiHubModal = document.getElementById('close-ai-hub-modal');
-    const hubTabGateway = document.getElementById('hub-tab-gateway');
-    const hubTabMcp = document.getElementById('hub-tab-mcp');
-    const hubTabStats = document.getElementById('hub-tab-stats');
-    const hubSectionGateway = document.getElementById('hub-section-gateway');
-    const hubSectionMcp = document.getElementById('hub-section-mcp');
-    const hubSectionStats = document.getElementById('hub-section-stats');
+    const hubTabDesktop = document.getElementById('hub-tab-desktop');
+    const hubTabOnline = document.getElementById('hub-tab-online');
+    const hubTabWeb = document.getElementById('hub-tab-web');
+    const hubSectionDesktop = document.getElementById('hub-section-desktop');
+    const hubSectionOnline = document.getElementById('hub-section-online');
+    const hubSectionWeb = document.getElementById('hub-section-web');
 
-    // Sub-elements within AI Hub
-    const gwTabCursor = document.getElementById('gw-tab-cursor');
-    const gwTabClaude = document.getElementById('gw-tab-claude');
-    const gwProtocolBadge = document.getElementById('gw-protocol-badge');
-    const gwUrlDisplay = document.getElementById('gw-url-display');
-    const gwDescText = document.getElementById('gw-desc-text');
-    const gwSnippetTitle = document.getElementById('gw-snippet-title');
-    const gwCodeSnippet = document.getElementById('gw-code-snippet');
-    const copyGwConfigBtn = document.getElementById('copy-gw-config-btn');
-    const copyGwBtnText = document.getElementById('copy-gw-btn-text');
-    const copyMcpConfigBtn = document.getElementById('copy-mcp-config-btn');
-    const copyMcpBtnText = document.getElementById('copy-mcp-btn-text');
-    const mcpJsonSnippet = document.getElementById('mcp-json-snippet');
-    const gwTreasuryMargin = document.getElementById('gw-treasury-margin');
-    const gwSettledTxs = document.getElementById('gw-settled-txs');
-    const gwTokensMetered = document.getElementById('gw-tokens-metered');
-
-    const cursorGwSnippet = `// Trong Cursor Settings -> Models -> OpenAI API Key:
-Base URL: http://localhost:3000/v1
-API Key: agent_cursor_ide_02 (or your Spending Pot ID)
-Model Override: gpt-4o or claude-3-5-sonnet-20241022
-
-// Trong Cline / Roo Code (VS Code Extension):
-API Provider: OpenAI Compatible
-Base URL: http://localhost:3000/v1
-API Key: agent_cursor_ide_02`;
-
-    const claudeCodeGwSnippet = `# Configure Claude Code CLI to connect with HAICHAIN Settlement Gateway:
-export ANTHROPIC_BASE_URL="http://localhost:3000"
-export ANTHROPIC_API_KEY="agent_claude_desktop_01"
-
-# Launch Claude Code CLI (Zero monthly sub, pay exactly per token on Solana):
-claude`;
-
-    const claudeConfigJson = JSON.stringify({
-      "mcpServers": {
-        "haichain": {
-          "command": "npx",
-      "args": [
-        "-y",
-        "@haichainsi/mcp-server"
-      ],
-          "env": {
-            "SOLANA_RPC_URL": "https://api.devnet.solana.com",
-            "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
-          }
-        }
-      }
-    }, null, 2);
-
-    async function fetchGatewayStats() {
-      try {
-        let data = null;
-        try {
-          const res = await fetch('/api/gateway/stats');
-          if (res && res.ok) {
-            data = await res.json();
-          }
-        } catch (_) {}
-
-        if (!data || !data.success || !data.treasury) {
-          const elapsedSec = Math.floor((Date.now() - 1793540000000) / 1000);
-          const margin = 48.6250 + (elapsedSec * 0.0001);
-          const txs = 1420 + Math.floor(elapsedSec * 0.05);
-          const tokens = 8421000 + (elapsedSec * 15);
-          data = {
-            success: true,
-            treasury: {
-              totalMarginEarnedUsdt: margin,
-              totalTransactionsSettled: txs,
-              totalTokensProcessed: tokens
-            }
-          };
-        }
-
-        if (data.success && data.treasury) {
-          if (gwTreasuryMargin) gwTreasuryMargin.textContent = `$${Number(data.treasury.totalMarginEarnedUsdt).toFixed(4)} USDT`;
-          if (gwSettledTxs) gwSettledTxs.textContent = `${data.treasury.totalTransactionsSettled.toLocaleString()} Txs`;
-          if (gwTokensMetered) gwTokensMetered.textContent = Number(data.treasury.totalTokensProcessed).toLocaleString();
-        }
-      } catch (e) {
-        console.warn('Failed to fetch gateway stats:', e);
-      }
-    }
+    // 1-Click Copy Buttons
+    const copyDesktopInstallBtn = document.getElementById('copy-desktop-install-btn');
+    const copyDesktopInstallText = document.getElementById('copy-desktop-install-text');
+    const copyOnlineMcpBtn = document.getElementById('copy-online-mcp-btn');
+    const copyOnlineMcpText = document.getElementById('copy-online-mcp-text');
+    const btnOpenWebPlayground = document.getElementById('btn-open-web-playground');
 
     function switchAiHubTab(tabName) {
-      const activeTabClass = "flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 text-[11px] sm:text-xs";
-      const inactiveTabClass = "flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 text-[11px] sm:text-xs";
+      const activeTabClass = "flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 text-[11px] sm:text-xs";
+      const inactiveTabClass = "flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 text-[11px] sm:text-xs";
 
-      if (tabName === 'gateway') {
-        if (hubTabGateway) hubTabGateway.className = activeTabClass;
-        if (hubTabMcp) hubTabMcp.className = inactiveTabClass;
-        if (hubTabStats) hubTabStats.className = inactiveTabClass;
-        if (hubSectionGateway) hubSectionGateway.classList.remove('hidden');
-        if (hubSectionMcp) hubSectionMcp.classList.add('hidden');
-        if (hubSectionStats) hubSectionStats.classList.add('hidden');
-      } else if (tabName === 'mcp') {
-        if (hubTabGateway) hubTabGateway.className = inactiveTabClass;
-        if (hubTabMcp) hubTabMcp.className = activeTabClass;
-        if (hubTabStats) hubTabStats.className = inactiveTabClass;
-        if (hubSectionGateway) hubSectionGateway.classList.add('hidden');
-        if (hubSectionMcp) hubSectionMcp.classList.remove('hidden');
-        if (hubSectionStats) hubSectionStats.classList.add('hidden');
-      } else if (tabName === 'stats') {
-        if (hubTabGateway) hubTabGateway.className = inactiveTabClass;
-        if (hubTabMcp) hubTabMcp.className = inactiveTabClass;
-        if (hubTabStats) hubTabStats.className = activeTabClass;
-        if (hubSectionGateway) hubSectionGateway.classList.add('hidden');
-        if (hubSectionMcp) hubSectionMcp.classList.add('hidden');
-        if (hubSectionStats) hubSectionStats.classList.remove('hidden');
-        fetchGatewayStats();
+      // Map legacy tab names if any
+      if (tabName === 'gateway' || tabName === 'mcp') tabName = 'desktop';
+      if (tabName === 'stats') tabName = 'web';
+
+      if (tabName === 'desktop') {
+        if (hubTabDesktop) hubTabDesktop.className = activeTabClass;
+        if (hubTabOnline) hubTabOnline.className = inactiveTabClass;
+        if (hubTabWeb) hubTabWeb.className = inactiveTabClass;
+        if (hubSectionDesktop) hubSectionDesktop.classList.remove('hidden');
+        if (hubSectionOnline) hubSectionOnline.classList.add('hidden');
+        if (hubSectionWeb) hubSectionWeb.classList.add('hidden');
+      } else if (tabName === 'online') {
+        if (hubTabDesktop) hubTabDesktop.className = inactiveTabClass;
+        if (hubTabOnline) hubTabOnline.className = activeTabClass;
+        if (hubTabWeb) hubTabWeb.className = inactiveTabClass;
+        if (hubSectionDesktop) hubSectionDesktop.classList.add('hidden');
+        if (hubSectionOnline) hubSectionOnline.classList.remove('hidden');
+        if (hubSectionWeb) hubSectionWeb.classList.add('hidden');
+      } else if (tabName === 'web') {
+        if (hubTabDesktop) hubTabDesktop.className = inactiveTabClass;
+        if (hubTabOnline) hubTabOnline.className = inactiveTabClass;
+        if (hubTabWeb) hubTabWeb.className = activeTabClass;
+        if (hubSectionDesktop) hubSectionDesktop.classList.add('hidden');
+        if (hubSectionOnline) hubSectionOnline.classList.add('hidden');
+        if (hubSectionWeb) hubSectionWeb.classList.remove('hidden');
       }
       if (window.lucide) window.safeCreateIcons();
     }
 
-    function openAiHubModal(targetTab = 'gateway') {
+    function openAiHubModal(targetTab = 'desktop') {
       if (aiHubModal) {
         aiHubModal.classList.remove('hidden');
         switchAiHubTab(targetTab);
@@ -4934,7 +4908,7 @@ claude`;
       }
     }
 
-    if (aiHubBtn) aiHubBtn.addEventListener('click', () => openAiHubModal('gateway'));
+    if (aiHubBtn) aiHubBtn.addEventListener('click', () => openAiHubModal('desktop'));
     if (closeAiHubModal) closeAiHubModal.addEventListener('click', () => aiHubModal.classList.add('hidden'));
 
     if (aiHubModal) {
@@ -4943,93 +4917,75 @@ claude`;
       });
     }
 
-    if (hubTabGateway) hubTabGateway.addEventListener('click', () => switchAiHubTab('gateway'));
-    if (hubTabMcp) hubTabMcp.addEventListener('click', () => switchAiHubTab('mcp'));
-    if (hubTabStats) hubTabStats.addEventListener('click', () => switchAiHubTab('stats'));
+    if (hubTabDesktop) hubTabDesktop.addEventListener('click', () => switchAiHubTab('desktop'));
+    if (hubTabOnline) hubTabOnline.addEventListener('click', () => switchAiHubTab('online'));
+    if (hubTabWeb) hubTabWeb.addEventListener('click', () => switchAiHubTab('web'));
+
+    // Copy Desktop Command
+    if (copyDesktopInstallBtn) {
+      copyDesktopInstallBtn.addEventListener('click', async () => {
+        const cmd = "npx -y @haichainsi/mcp-server --install";
+        try {
+          await navigator.clipboard.writeText(cmd);
+          if (copyDesktopInstallText) copyDesktopInstallText.textContent = "✓ Đã sao chép lệnh!";
+          showToast({ title: "Đã sao chép!", message: "Dán vào Terminal/PowerShell để cài đặt tự động", icon: "check" });
+          setTimeout(() => {
+            if (copyDesktopInstallText) copyDesktopInstallText.textContent = "Sao chép lệnh cài đặt 1-Click";
+          }, 2500);
+        } catch (_) {
+          showToast({ title: "Lệnh cài đặt:", message: cmd, icon: "terminal" });
+        }
+      });
+    }
+
+    // Copy Online MCP SSE URL
+    if (copyOnlineMcpBtn) {
+      copyOnlineMcpBtn.addEventListener('click', async () => {
+        const url = "https://mcp.haichain.si/sse";
+        try {
+          await navigator.clipboard.writeText(url);
+          if (copyOnlineMcpText) copyOnlineMcpText.textContent = "✓ Đã sao chép link!";
+          showToast({ title: "Đã sao chép!", message: "Dán vào Settings -> Connectors trên claude.ai", icon: "check" });
+          setTimeout(() => {
+            if (copyOnlineMcpText) copyOnlineMcpText.textContent = "Sao chép đường dẫn Remote MCP";
+          }, 2500);
+        } catch (_) {
+          showToast({ title: "Remote MCP URL:", message: url, icon: "link" });
+        }
+      });
+    }
+
+    // Direct Web Playground CTA
+    if (btnOpenWebPlayground) {
+      btnOpenWebPlayground.addEventListener('click', () => {
+        if (aiHubModal) aiHubModal.classList.add('hidden');
+        // Switch to tab-playground
+        const navPlayground = document.querySelector('[data-tab="tab-playground"]');
+        if (navPlayground) {
+          navPlayground.click();
+        } else {
+          document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+          const pg = document.getElementById('tab-playground');
+          if (pg) pg.classList.remove('hidden');
+        }
+        // Smooth scroll to playground area
+        setTimeout(() => {
+          const promptInput = document.getElementById('prompt-input');
+          if (promptInput) {
+            promptInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            promptInput.focus();
+          }
+        }, 150);
+        showToast({ title: "AI Playground", message: "Trải nghiệm suy luận AI trực tiếp qua Web3", icon: "zap" });
+      });
+    }
 
     // Backward-compatible triggers for legacy buttons
     const legacyClaudeBtn = document.getElementById('claude-mcp-btn');
-    if (legacyClaudeBtn) legacyClaudeBtn.addEventListener('click', () => openAiHubModal('mcp'));
+    if (legacyClaudeBtn) legacyClaudeBtn.addEventListener('click', () => openAiHubModal('desktop'));
     const legacyGatewayBtn = document.getElementById('ai-gateway-btn');
-    if (legacyGatewayBtn) legacyGatewayBtn.addEventListener('click', () => openAiHubModal('gateway'));
+    if (legacyGatewayBtn) legacyGatewayBtn.addEventListener('click', () => openAiHubModal('desktop'));
 
-    // Quick 1-tap copy for Gateway URL display
-    if (gwUrlDisplay) {
-      gwUrlDisplay.addEventListener('click', async () => {
-        try {
-          const urlText = gwUrlDisplay.querySelector('span') ? gwUrlDisplay.querySelector('span').textContent.trim() : gwUrlDisplay.textContent.trim();
-          await navigator.clipboard.writeText(urlText);
-          showToast({ title: "URL Copied!", message: urlText, icon: "copy" });
-        } catch (_) {}
-      });
-    }
-
-    // Quick 1-tap copy for Gateway URL display
-    if (gwUrlDisplay) {
-      gwUrlDisplay.addEventListener('click', async () => {
-        try {
-          const urlText = gwUrlDisplay.querySelector('span') ? gwUrlDisplay.querySelector('span').textContent.trim() : gwUrlDisplay.textContent.trim();
-          await navigator.clipboard.writeText(urlText);
-          showToast({ title: "URL Copied!", message: urlText, icon: "copy" });
-        } catch (_) {}
-      });
-    }
-
-    // Gateway Sub-tabs (Cursor vs Claude Code)
-    if (gwTabCursor) {
-      gwTabCursor.addEventListener('click', () => {
-        gwTabCursor.className = "flex-1 py-1 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold";
-        if (gwTabClaude) gwTabClaude.className = "flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold";
-        if (gwProtocolBadge) gwProtocolBadge.textContent = "POST /v1/chat/completions";
-        if (gwUrlDisplay) { const s = gwUrlDisplay.querySelector("span"); if (s) s.textContent = "http://localhost:3000/v1"; else gwUrlDisplay.textContent = "http://localhost:3000/v1"; }
-        if (gwDescText) gwDescText.textContent = "Autonomous inference deduction directly from the Spending Pot on Solana with 20% Treasury Margin. Simply update the Base URL in your IDE.";
-        if (gwSnippetTitle) gwSnippetTitle.textContent = "Quick Cursor / Cline Configuration:";
-        if (gwCodeSnippet) gwCodeSnippet.textContent = cursorGwSnippet;
-      });
-    }
-
-    if (gwTabClaude) {
-      gwTabClaude.addEventListener('click', () => {
-        gwTabClaude.className = "flex-1 py-1 rounded-lg bg-white dark:bg-neutral-800 text-black dark:text-white shadow-xs text-center font-bold";
-        if (gwTabCursor) gwTabCursor.className = "flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold";
-        if (gwProtocolBadge) gwProtocolBadge.textContent = "POST /v1/messages";
-        if (gwUrlDisplay) { const s = gwUrlDisplay.querySelector("span"); if (s) s.textContent = "http://localhost:3000"; else gwUrlDisplay.textContent = "http://localhost:3000"; }
-        if (gwDescText) gwDescText.textContent = "Connect Claude Code CLI with HAICHAIN. Fully compliant with Anthropic /v1/messages with hardware circuit-breaker.";
-        if (gwSnippetTitle) gwSnippetTitle.textContent = "Claude Code CLI Shell Configuration:";
-        if (gwCodeSnippet) gwCodeSnippet.textContent = claudeCodeGwSnippet;
-      });
-    }
-
-    // Copy Handlers
-    if (copyGwConfigBtn) {
-      copyGwConfigBtn.addEventListener('click', async () => {
-        const textToCopy = gwCodeSnippet ? gwCodeSnippet.textContent : cursorGwSnippet;
-        try {
-          await navigator.clipboard.writeText(textToCopy);
-          if (copyGwBtnText) copyGwBtnText.textContent = "Copied! ✓";
-          setTimeout(() => {
-            if (copyGwBtnText) copyGwBtnText.textContent = "Copy Gateway Config";
-          }, 2500);
-        } catch (_) {
-          showToast({ title: "Config Copied!", message: "Saved to clipboard", icon: "copy" });
-        }
-      });
-    }
-
-    if (copyMcpConfigBtn) {
-      copyMcpConfigBtn.addEventListener('click', async () => {
-        const textToCopy = mcpJsonSnippet ? mcpJsonSnippet.textContent : claudeConfigJson;
-        try {
-          await navigator.clipboard.writeText(textToCopy);
-          if (copyMcpBtnText) copyMcpBtnText.textContent = "Copied! ✓";
-          setTimeout(() => {
-            if (copyMcpBtnText) copyMcpBtnText.textContent = "Copy JSON";
-          }, 2500);
-        } catch (_) {
-          showToast({ title: "JSON Copied!", message: "Saved to clipboard", icon: "copy" });
-        }
-      });
-    }
 
     // ================= 8. ISSUE CAPABILITY TICKET MODAL =================
     const openIssueTicketModal = document.getElementById('open-issue-ticket-modal');
