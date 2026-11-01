@@ -474,15 +474,7 @@
 
 
 
-        <!-- Investor Pack Quick Trigger -->
-
-        <button id="investor-drawer-btn" class="hidden lg:flex items-center space-x-1.5 text-xs font-medium px-3 py-2 rounded-full border border-neutral-300 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-neutral-700 dark:text-neutral-300">
-
-          <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-
-          <span data-i18n="nav.investorPack">Investor Pack</span>
-
-        </button>
+        
 
 
 
@@ -2259,141 +2251,7 @@
 
 
 
-  <!-- INVESTOR & DEVELOPER DATA ROOM MODAL -->
-
-  <div id="investor-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden flex items-center justify-center p-4">
-
-    <div class="w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 sm:p-8 shadow-2xl relative">
-
-      <div class="flex justify-between items-center pb-4 border-b border-neutral-100 dark:border-neutral-900">
-
-        <div>
-
-          <h3 class="font-bold text-base text-black dark:text-white" data-i18n="home.investorTitle">Investor & Developer Fast-Pack</h3>
-
-          <p class="text-xs text-neutral-500 font-mono mt-0.5" data-i18n="investor.seedNotice">Official Seed Round ($1.2M at $15M FDV) & Developer Tooling</p>
-
-        </div>
-
-        <button id="close-investor-modal-btn" class="p-1 rounded-full text-neutral-400 hover:text-black dark:hover:text-white">
-
-          <i data-lucide="x" class="w-5 h-5"></i>
-
-        </button>
-
-      </div>
-
-
-
-      <div class="mt-6 space-y-4 text-xs font-mono">
-
-        <!-- Pitch Deck Link -->
-
-        <a href="../HAICHAIN_INVESTOR_PITCH_DECK_V1.0.md" target="_blank" class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between group transition-all">
-
-          <div class="flex items-center space-x-3">
-
-            <div class="w-8 h-8 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-xs">
-
-              10p
-
-            </div>
-
-            <div>
-
-              <div class="font-semibold text-black dark:text-white group-hover:underline" data-i18n="investor.deckTitle">Institutional Pitch Deck v1.0</div>
-
-              <div class="text-[11px] text-neutral-500" data-i18n="investor.deckDesc">10-Slide Memo: Machine Economy, Moat & Unit Economics</div>
-
-            </div>
-
-          </div>
-
-          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400 group-hover:text-black dark:group-hover:text-white"></i>
-
-        </a>
-
-
-
-        <!-- Financial Model Link -->
-
-        <a href="../HAICHAIN_FINANCIAL_MODEL_3YR_PL.md" target="_blank" class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between group transition-all">
-
-          <div class="flex items-center space-x-3">
-
-            <div class="w-8 h-8 rounded-xl bg-neutral-200 text-black dark:bg-neutral-800 dark:text-white flex items-center justify-center font-bold text-xs">
-
-              P&L
-
-            </div>
-
-            <div>
-
-              <div class="font-semibold text-black dark:text-white group-hover:underline" data-i18n="investor.modelTitle">3-Year Financial Model & P&L</div>
-
-              <div class="text-[11px] text-neutral-500" data-i18n="investor.modelDesc">Month-20 Breakeven, $4.73M Gross Revenue, 45.9% EBITDA</div>
-
-            </div>
-
-          </div>
-
-          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400 group-hover:text-black dark:group-hover:text-white"></i>
-
-        </a>
-
-
-
-        <!-- Copy MCP Config Button -->
-
-        <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
-
-          <div class="flex justify-between items-center mb-2">
-
-            <span class="font-semibold text-black dark:text-white">Claude Desktop & Cursor MCP Config:</span>
-
-            <button id="copy-mcp-btn" class="px-2.5 py-1 rounded-lg bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[10px] font-bold" data-i18n="investor.copyJson">Copy JSON</button>
-
-          </div>
-
-          <pre class="text-[10px] text-neutral-600 dark:text-neutral-400 overflow-x-auto no-scrollbar font-mono bg-white dark:bg-black p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800"><code>{
-
-  "mcpServers": {
-
-    "haichain": {
-
-      "command": "node",
-
-      "args": ["@haichain/mcp-server/dist/index.js"]
-
-    }
-
-  }
-
-}</code></pre>
-
-        </div>
-
-
-
-        <!-- Solana Explorer Verification Links -->
-
-        <div class="pt-2 text-center text-[11px] text-neutral-500">
-
-          <span>Devnet Program ID: </span>
-
-          <a href="https://explorer.solana.com/address/DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">DK4Q...w4xk</a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-    <!-- FOOTER: LUXURY APPLE/WEB3 MINIMALIST (OPTIMIZED FOR DESKTOP & MOBILE) -->
+  <!-- FOOTER: LUXURY APPLE/WEB3 MINIMALIST (OPTIMIZED FOR DESKTOP & MOBILE) -->
   <footer class="w-full border-t border-brand-lightBorder dark:border-brand-border bg-white/95 dark:bg-black/95 backdrop-blur-xl py-12 sm:py-16 text-xs text-neutral-500 font-mono relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
@@ -2974,64 +2832,6 @@ Universal Autonomous Machine Financial &amp; Cognitive Operating System. Non-cus
       lucide.createIcons();
 
     });
-
-
-
-    // 2.4 Investor Drawer Handlers
-
-    const investorDrawerBtn = document.getElementById('investor-drawer-btn');
-
-    const investorModal = document.getElementById('investor-modal');
-
-    const closeInvestorModalBtn = document.getElementById('close-investor-modal-btn');
-
-    const copyMcpBtn = document.getElementById('copy-mcp-btn');
-
-
-
-    if (investorDrawerBtn && investorModal) {
-
-      investorDrawerBtn.addEventListener('click', (e) => {
-
-        e.preventDefault();
-
-        investorModal.classList.remove('hidden');
-
-      });
-
-    }
-
-
-
-    if (closeInvestorModalBtn && investorModal) {
-
-      closeInvestorModalBtn.addEventListener('click', () => {
-
-        investorModal.classList.add('hidden');
-
-      });
-
-    }
-
-
-
-    if (copyMcpBtn) {
-
-      copyMcpBtn.addEventListener('click', () => {
-
-        const jsonConfig = `{\n  "mcpServers": {\n    "haichain": {\n      "command": "node",\n      "args": ["@haichain/mcp-server/dist/index.js"]\n    }\n  }\n}`;
-
-        navigator.clipboard.writeText(jsonConfig).then(() => {
-
-          copyMcpBtn.textContent = "Copied!";
-
-          setTimeout(() => { copyMcpBtn.textContent = "Copy JSON"; }, 2000);
-
-        });
-
-      });
-
-    }
 
 
 

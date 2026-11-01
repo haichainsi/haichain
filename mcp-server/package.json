@@ -1,6 +1,7 @@
 {
   "name": "@haichain/mcp-server",
   "version": "6.2.0",
+  "type": "module",
   "description": "HAICHAIN Model Context Protocol (MCP) Server for Autonomous AI Agents",
   "main": "dist/index.js",
   "bin": {
@@ -13,7 +14,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.1",
     "@solana/web3.js": "^1.95.8",
-    "@haichain/sdk": "file:../sdk/typescript"
+    "bs58": "^5.0.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3",

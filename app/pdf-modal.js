@@ -107,11 +107,7 @@
               </button>
             </div>
 
-            <!-- Download Button -->
-            <a id="pdf-modal-download-btn" href="#" download class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-white text-black hover:bg-neutral-200 text-xs font-mono font-bold transition-all flex items-center space-x-1.5 active:scale-95 shadow-sm" title="Tải PDF">
-              <i data-lucide="download" class="w-3.5 h-3.5"></i>
-              <span id="pdf-modal-download-label" class="hidden md:inline">${isVi ? 'Tải PDF' : 'Download'}</span>
-            </a>
+
 
             <!-- Close Button (Large 36x36 for easy finger tap) -->
             <button id="pdf-modal-close-btn" type="button" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors active:scale-95 ml-1" title="Đóng">
@@ -124,7 +120,7 @@
         <div id="pdf-modal-body" class="relative w-full flex-1 bg-[#141418] flex flex-col overflow-hidden">
           
           <!-- Mobile & Universal High-DPI Canvas Stream Container -->
-          <div id="pdf-modal-canvas-container" class="w-full flex-1 overflow-y-auto overflow-x-auto touch-pan-y flex flex-col items-center py-4 px-2 sm:px-4 space-y-4 sm:space-y-6">
+          <div id="pdf-modal-canvas-container" oncontextmenu="return false;" class="w-full flex-1 overflow-y-auto overflow-x-auto touch-pan-y flex flex-col items-center py-4 px-2 sm:px-4 space-y-4 sm:space-y-6 select-none">
             <!-- Dynamically rendered pages go here -->
           </div>
 
@@ -296,7 +292,6 @@
     const iframe = document.getElementById('pdf-modal-iframe');
     const canvasContainer = document.getElementById('pdf-modal-canvas-container');
     const titleEl = document.getElementById('pdf-modal-title');
-    const downloadEl = document.getElementById('pdf-modal-download-btn');
     const pageCountEl = document.getElementById('pdf-modal-page-count');
     const loader = document.getElementById('pdf-modal-loader');
     const zoomGroup = document.getElementById('pdf-modal-zoom-group');
@@ -308,11 +303,6 @@
 
     if (titleEl) titleEl.textContent = docTitle || 'HAICHAIN Document';
     if (pageCountEl) pageCountEl.textContent = '';
-    if (downloadEl) {
-      downloadEl.href = pdfUrl;
-      downloadEl.download = pdfUrl.split('/').pop().split('?')[0];
-    }
-
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     if (loader) loader.classList.remove('hidden');
@@ -346,7 +336,7 @@
         // Fallback: try iframe
         if (iframe) {
           iframe.classList.remove('hidden');
-          iframe.src = pdfUrl.split('#')[0] + '#toolbar=1&navpanes=0&view=FitH';
+          iframe.src = pdfUrl.split('#')[0] + '#toolbar=0&navpanes=0&view=FitH';
         }
         if (loader) loader.classList.add('hidden');
       }
@@ -357,7 +347,7 @@
       if (zoomGroup) zoomGroup.classList.add('hidden');
       if (iframe) {
         iframe.classList.remove('hidden');
-        iframe.src = pdfUrl.split('#')[0] + '#toolbar=1&navpanes=0&view=FitH';
+        iframe.src = pdfUrl.split('#')[0] + '#toolbar=0&navpanes=0&view=FitH';
       }
       if (loader) loader.classList.add('hidden');
     }
