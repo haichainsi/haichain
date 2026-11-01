@@ -25,7 +25,7 @@
 1. [Tóm Tắt Điều Hành & Nghịch Lý Siêu Trí Tuệ](#tóm-tắt-điều-hành-abstract)
 2. [Triết Lý Nền Tảng $AI^2$: Con Người Làm Chủ & Máy Móc Siêu Tốc](#triết-lý-nền-tảng-ai2-con-người-làm-chủ--máy-móc-siêu-tốc)
 3. [Chương 1: Thế Tiến Thoái Lưỡng Nan & Bằng Chứng Đối Thủ Thực Nghiệm](#chương-1-thế-tiến-thoái-lưỡng-nan-của-nền-kinh-tế-máy-móc)
-4. [Chương 2: Bước Chuyển Dịch Kinh Tế: Khai Tử Mô Hình Thuê Bao SaaS](#chương-2-bước-chuyển-dịch-kinh-tế-khai-tử-mô-hình-thuê-bao-saas)
+4. [Chương 2: Bước Chuyển Dịch Kinh Tế Hậu SaaS: Giải Phóng Khỏi Bẫy Thuê Bao Đầu Người Sang Tiện Ích Vi Mô](#chương-2-bước-chuyển-dịch-kinh-tế-hậu-saas-giải-phóng-khỏi-bẫy-thuê-bao-đầu-người-sang-tiện-ích-vi-mô)
 5. [Chương 3: Kiến Trúc Trải Nghiệm Vô Hình & Chuẩn Mực "The Mom Test"](#chương-3-kiến-trúc-trải-nghiệm-vô-hình--chuẩn-mực-the-mom-test)
 6. [Chương 4: Điều Phối Tác Tử Tiên Phong & Bầy Đàn Tự Hành (HCT BIP-32)](#chương-4-điều-phối-tác-tử-tiên-phong--bầy-đàn-tự-hành)
 7. [Chương 5: Cỗ Máy Bù Trừ Đa Phương & Nén Dữ Liệu 99.999% (IPv6 MTU 771B)](#chương-5-cỗ-máy-bù-trừ--nén-dữ-liệu-đa-phương)
