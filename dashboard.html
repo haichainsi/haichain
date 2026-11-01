@@ -19,7 +19,7 @@
   <!-- TweetNaCl & BS58 Mobile E2EE Wallet Bridge -->
   <script src="/assets/tweetnacl.min.js"></script>
   <script src="/assets/bs58.min.js"></script>
-  <script src="/assets/phantom-deeplink.js?v=v2_handoff"></script>
+  <script src="/assets/phantom-deeplink.js?v=v3_callback_resilient"></script>
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
@@ -2682,12 +2682,30 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     }
 
     // Auto-connect inside Phantom / Solflare Mobile App in-app browser
-    // Mobile Wallet Redirect Callback & In-App Auto-Connect
-    (function initMobileWalletIntegration() {
-      // 1. Check for official E2EE Redirect Callback from Phantom / Solflare (returns from native app to Safari/Chrome)
+    // Mobile Wallet Redirect Callback & Cross-Tab/In-App Sync
+    async function checkMobileWalletSyncOrCallback() {
+      // 1. If already connected in this tab, nothing to do
+      if (userWallet && userWallet.address) return true;
+
+      // 2. Check if another tab or background process already connected and saved to localStorage
+      try {
+        const stored = localStorage.getItem('haichain-connected-wallet');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed && parsed.address && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(parsed.address)) {
+            console.log('[MobileWallet] Restored connected wallet from shared storage:', parsed.address);
+            userWallet = parsed;
+            updateWalletBtnUI();
+            if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
+            return true;
+          }
+        }
+      } catch (_) {}
+
+      // 3. Check for official E2EE Redirect Callback or Handoff in URL
       try {
         if (window.HaichainMobileWallet) {
-          window.HaichainMobileWallet.handleRedirectCallback(async function(result) {
+          const handled = window.HaichainMobileWallet.handleRedirectCallback(async function(result) {
             if (result && result.publicKey) {
               console.log('[MobileWallet] E2EE Return Handshake Succeeded:', result.publicKey, result.provider);
               await setConnectedWallet(result.publicKey, result.provider || 'Phantom');
@@ -2698,14 +2716,11 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
                   icon: 'check-circle'
                 });
               }
-              if (typeof openAccountModal === 'function' && window.innerWidth < 640) {
-                // Keep modal cleanly closed so user immediately sees dashboard
-                if (walletConnectModal) walletConnectModal.classList.add('hidden');
-              }
+              if (walletConnectModal) walletConnectModal.classList.add('hidden');
             }
           }, function(err) {
             console.warn('[MobileWallet] Callback notice:', err);
-            if (typeof updateWalletBtnUI === 'function') updateWalletBtnUI();
+            updateWalletBtnUI();
             if (typeof showToast === 'function') {
               showToast({
                 title: 'Phantom',
@@ -2714,12 +2729,37 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
               });
             }
           });
+          if (handled) return true;
         }
       } catch (cbErr) {
-        console.warn('initMobileWalletCallback error:', cbErr);
+        console.warn('checkMobileWalletSyncOrCallback error:', cbErr);
+      }
+      return false;
+    }
+
+    (function initMobileWalletIntegration() {
+      // Run initial check on script load
+      checkMobileWalletSyncOrCallback();
+
+      // Listen for Cross-Tab / Cross-Window Sync from other tabs
+      if (window.HaichainMobileWallet && typeof window.HaichainMobileWallet.onConnected === 'function') {
+        window.HaichainMobileWallet.onConnected(async function(result) {
+          if (result && result.publicKey && (!userWallet || userWallet.address !== result.publicKey)) {
+            console.log('[MobileWallet] Cross-Tab Sync Connected:', result.publicKey, result.provider);
+            await setConnectedWallet(result.publicKey, result.provider || 'Phantom');
+            if (typeof showToast === 'function') {
+              showToast({
+                title: (result.provider || 'Phantom') + ' Synced',
+                message: result.publicKey.slice(0, 4) + '...' + result.publicKey.slice(-4),
+                icon: 'check-circle'
+              });
+            }
+            if (walletConnectModal) walletConnectModal.classList.add('hidden');
+          }
+        });
       }
 
-      // 2. Auto-connect inside Phantom / Solflare in-app browser
+      // Auto-connect inside Phantom / Solflare in-app browser
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const autoProvider = urlParams.get('autoConnect');
@@ -2765,40 +2805,36 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       }
     })();
 
-    // Set Connected Wallet State Helper
-    // Bulletproof Auto-Revert Safeguard for Mobile Wallets
+    // Bulletproof Wakeup & Auto-Revert Safeguard for Mobile Wallets
     let walletConnectRevertTimer = null;
-    function armWalletConnectRevert(timeoutMs = 4500) {
+    function armWalletConnectRevert(timeoutMs = 6000) {
       if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
-      walletConnectRevertTimer = setTimeout(() => {
-        if (!userWallet || !userWallet.address) {
+      walletConnectRevertTimer = setTimeout(async () => {
+        const synced = await checkMobileWalletSyncOrCallback();
+        if (!synced && (!userWallet || !userWallet.address)) {
           updateWalletBtnUI();
         }
       }, timeoutMs);
     }
 
+    const onTabWakeup = async () => {
+      if (userWallet && userWallet.address) return;
+      const isConnected = await checkMobileWalletSyncOrCallback();
+      if (!isConnected) {
+        if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
+        walletConnectRevertTimer = setTimeout(() => {
+          if (!userWallet || !userWallet.address) {
+            updateWalletBtnUI();
+          }
+        }, 1500);
+      }
+    };
+
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
-        if (!userWallet || !userWallet.address) {
-          if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
-          updateWalletBtnUI();
-        }
-      }
+      if (document.visibilityState === 'visible') onTabWakeup();
     });
-
-    window.addEventListener('focus', () => {
-      if (!userWallet || !userWallet.address) {
-        if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
-        updateWalletBtnUI();
-      }
-    });
-
-    window.addEventListener('pageshow', () => {
-      if (!userWallet || !userWallet.address) {
-        if (walletConnectRevertTimer) clearTimeout(walletConnectRevertTimer);
-        updateWalletBtnUI();
-      }
-    });
+    window.addEventListener('focus', onTabWakeup);
+    window.addEventListener('pageshow', onTabWakeup);
 
     async function setConnectedWallet(pubkeyStr, providerName) {
       let solBalStr = "0.000";
