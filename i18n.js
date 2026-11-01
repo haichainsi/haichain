@@ -98,6 +98,8 @@
     "investor.copyJson": "JSON көшіру",
     "footer.certified": "v6.9.3 ӨНДІРІСТЕ СЕРТИФИКАТТАЛҒАН",
     "footer.compliance": "Кастодиалды емес FinCEN босатылған • EU MiCA сәйкес • 100% қорғалған",
+    "footer.desc": "Автономды машиналық қаржылық операциялық жүйе. Solana-дағы кастодиандық емес микро-эскроу және лездік AI есеп айырысуы.",
+    "footer.rights": "Барлық құқықтар қорғалған",
 
     "nav.philosophy": "AI² Философиясы",
     "nav.market": "Нарық деректері",
@@ -546,6 +548,8 @@
     "investor.copyJson": "Copy JSON",
     "footer.certified": "v6.9.3 PRODUCTION CERTIFIED",
     "footer.compliance": "Non-Custodial FinCEN Exempt • EU MiCA Compliant • 100% Exploit Immune",
+    "footer.desc": "The Autonomous Machine Financial Operating System. Non-custodial micro-escrows and instant AI capability settlements on Solana.",
+    "footer.rights": "All Rights Reserved",
 
     "nav.philosophy": "AI² Philosophy",
     "nav.market": "Market Data",
@@ -931,6 +935,8 @@
     "investor.copyJson": "复制 JSON",
     "footer.certified": "v6.9.3 生产级已认证",
     "footer.compliance": "非托管架构免于 FinCEN 管辖 • 符合欧盟 MiCA 规范 • 100% 免疫智能合约漏洞",
+    "footer.desc": "自主机器金融操作系统。Solana 上的非托管微托管与即时 AI 能力结算。",
+    "footer.rights": "版权所有",
 
     "nav.philosophy": "AI² 核心哲学",
     "nav.market": "市场数据",
@@ -1313,6 +1319,8 @@
     "investor.copyJson": "Copier JSON",
     "footer.certified": "v6.9.3 CERTIFIÉ PRODUCTION",
     "footer.compliance": "Non-dépositaire exempté FinCEN • Conforme UE MiCA • 100% Immunisé aux exploits",
+    "footer.desc": "Le système d'exploitation financier autonome pour machines. Micro-tiers de confiance non dépositaires et règlements instantanés des capacités d'IA sur Solana.",
+    "footer.rights": "Tous droits réservés",
 
     "nav.philosophy": "Philosophie AI²",
     "nav.market": "Marché & Données",
@@ -1695,6 +1703,8 @@
     "investor.copyJson": "JSON 복사",
     "footer.certified": "v6.9.3 프로덕션 공식 인증",
     "footer.compliance": "비수탁형 FinCEN 면제 • EU MiCA 규제 완벽 준수 • 100% 보안 취약점 면역",
+    "footer.desc": "자율 머신 금융 운영체제. 솔라나 기반의 비수탁형 마이크로 에스크로 및 즉각적인 AI 기능 결제.",
+    "footer.rights": "모든 권리 보유",
 
     "nav.philosophy": "AI² 철학",
     "nav.market": "시장 데이터",
@@ -2077,6 +2087,8 @@
     "investor.copyJson": "Copiar JSON",
     "footer.certified": "v6.9.3 CERTIFICADO PARA PRODUCCIÓN",
     "footer.compliance": "Sin custodia exento de FinCEN • Cumple con MiCA UE • 100% Inmune a exploits",
+    "footer.desc": "El sistema operativo financiero autónomo para máquinas. Micro-depósitos de garantía sin custodia y liquidaciones instantáneas de capacidades de IA en Solana.",
+    "footer.rights": "Todos los derechos reservados",
 
     "nav.philosophy": "Filosofía AI²",
     "nav.market": "Datos de Mercado",
@@ -2459,6 +2471,8 @@
     "investor.copyJson": "Копировать JSON",
     "footer.certified": "v6.9.3 СЕРТИФИЦИРОВАНО В ПРОДАКШЕН",
     "footer.compliance": "Некастодиальный • Освобожден FinCEN • Соответствует EU MiCA • 100% защита",
+    "footer.desc": "Автономная финансовая операционная система для машин. Некастодиальные микро-эскроу и мгновенные расчеты возможностей ИИ на Solana.",
+    "footer.rights": "Все права защищены",
 
     "nav.philosophy": "Философия AI²",
     "nav.market": "Рыночные данные",
@@ -2841,6 +2855,8 @@
     "investor.copyJson": "Sao Chép JSON",
     "footer.certified": "v6.9.3 CHỨNG NHẬN SẢN XUẤT",
     "footer.compliance": "Phi Lưu Ký Miễn Trừ FinCEN • Tuân Thủ EU MiCA • 100% Miễn Nhiễm Lỗ Hổng",
+    "footer.desc": "Hệ điều hành tài chính máy tự trị. Ký quỹ vi mô phi lưu ký và thanh toán năng lực AI tức thì trên Solana.",
+    "footer.rights": "Bảo lưu mọi quyền",
 
     "nav.philosophy": "Triết Lý AI²",
     "nav.market": "Thị Trường",
@@ -3226,6 +3242,8 @@
     "investor.copyJson": "JSON कॉपी करें",
     "footer.certified": "v6.9.3 उत्पादन प्रमाणित",
     "footer.compliance": "गैर-कस्टोडियल FinCEN छूट • EU MiCA अनुरूप • 100% शोषण सुरक्षित",
+    "footer.desc": "स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम। सोलाना पर गैर-कस्टोडियल माइक्रो-एस्क्रो और त्वरित एआई क्षमता निपटान।",
+    "footer.rights": "सर्वाधिकार सुरक्षित",
 
     "nav.philosophy": "AI² Philosophy",
     "nav.market": "Market Data",
@@ -3674,6 +3692,8 @@
     "investor.copyJson": "העתק JSON",
     "footer.certified": "v6.9.3 מאושר לייצור מלא",
     "footer.compliance": "ללא משמורת פטור מ-FinCEN • תואם EU MiCA • 100% חסין תקיפות",
+    "footer.desc": "מערכת ההפעלה הפיננסית האוטונומית למכונות. מיקרו-נאמנות ללא משמורת והסדרי יכולות AI מיידיים על גבי סולאנה.",
+    "footer.rights": "כל הזכויות שמורות",
 
     "nav.philosophy": "AI² Philosophy",
     "nav.market": "Market Data",
@@ -4447,6 +4467,8 @@
   window.haichainI18n = {
     languages: LANGUAGES,
     current: () => currentLang,
+    getLanguage: () => currentLang,
+    get currentLang() { return currentLang; },
     setLanguage: setLanguage,
     t: t,
     apply: applyTranslations,
