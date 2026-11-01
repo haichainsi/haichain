@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "redirects": [
+    { "source": "/whitepaper", "destination": "/HAICHAIN_WHITEPAPER_V1.0_EN.pdf", "permanent": false },
+    { "source": "/whitepaper/", "destination": "/HAICHAIN_WHITEPAPER_V1.0_EN.pdf", "permanent": false },
+    { "source": "/whitepaper.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_EN.pdf", "permanent": false },
+    { "source": "/whitepaper-en.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_EN.pdf", "permanent": false },
+    { "source": "/whitepaper-vi", "destination": "/HAICHAIN_WHITEPAPER_V1.0_VI.pdf", "permanent": false },
+    { "source": "/whitepaper-vi.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_VI.pdf", "permanent": false },
+    { "source": "/whitepaper-zh", "destination": "/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf", "permanent": false },
+    { "source": "/whitepaper-zh.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf", "permanent": false },
+    { "source": "/whitepaper-ko", "destination": "/HAICHAIN_WHITEPAPER_V1.0_KO.pdf", "permanent": false },
+    { "source": "/whitepaper-ko.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_KO.pdf", "permanent": false },
+    { "source": "/whitepaper-es", "destination": "/HAICHAIN_WHITEPAPER_V1.0_ES.pdf", "permanent": false },
+    { "source": "/whitepaper-es.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_ES.pdf", "permanent": false },
+    { "source": "/whitepaper-fr", "destination": "/HAICHAIN_WHITEPAPER_V1.0_FR.pdf", "permanent": false },
+    { "source": "/whitepaper-fr.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_FR.pdf", "permanent": false },
+    { "source": "/whitepaper-ru", "destination": "/HAICHAIN_WHITEPAPER_V1.0_RU.pdf", "permanent": false },
+    { "source": "/whitepaper-ru.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_RU.pdf", "permanent": false },
+    { "source": "/whitepaper-kk", "destination": "/HAICHAIN_WHITEPAPER_V1.0_KK.pdf", "permanent": false },
+    { "source": "/whitepaper-kk.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_KK.pdf", "permanent": false },
+    { "source": "/whitepaper-hi", "destination": "/HAICHAIN_WHITEPAPER_V1.0_HI.pdf", "permanent": false },
+    { "source": "/whitepaper-hi.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_HI.pdf", "permanent": false },
+    { "source": "/whitepaper-he", "destination": "/HAICHAIN_WHITEPAPER_V1.0_HE.pdf", "permanent": false },
+    { "source": "/whitepaper-he.pdf", "destination": "/HAICHAIN_WHITEPAPER_V1.0_HE.pdf", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/app/index.html" },
+    { "source": "/dashboard", "destination": "/app/dashboard.html" },
+    { "source": "/app", "destination": "/app/dashboard.html" },
+    { "source": "/(.*)", "destination": "/app/$1" }
+  ]
+}
