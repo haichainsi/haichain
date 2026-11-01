@@ -3593,6 +3593,23 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     }
 
     // Provider Buttons in Connect Modal (Clean 1-Tap Execution on Mobile & Desktop)
+        function closeAllWalletTrays(exceptTrayId) {
+      const trays = [
+        { id: 'phantom-mobile-tray', arrow: 'phantom-arrow' },
+        { id: 'solflare-mobile-tray', arrow: 'solflare-arrow' },
+        { id: 'metamask-mobile-tray', arrow: 'metamask-arrow' },
+        { id: 'manual-address-panel', arrow: 'manual-arrow' }
+      ];
+      trays.forEach(item => {
+        if (item.id !== exceptTrayId) {
+          const el = document.getElementById(item.id);
+          const arr = document.getElementById(item.arrow);
+          if (el) el.classList.add('hidden');
+          if (arr) arr.classList.remove('rotate-90');
+        }
+      });
+    }
+
     document.querySelectorAll('.wallet-provider-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const provider = btn.getAttribute('data-provider');
@@ -3651,19 +3668,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               });
             }
           } else if (isMobileDevice()) {
-            // Smoothly toggle inline Phantom mobile action tray
+            closeAllWalletTrays('phantom-mobile-tray');
             const tray = document.getElementById('phantom-mobile-tray');
             const arrow = document.getElementById('phantom-arrow');
-            const sTray = document.getElementById('solflare-mobile-tray');
-            const sArrow = document.getElementById('solflare-arrow');
-            const mPanel = document.getElementById('manual-address-panel');
-            const mArrow = document.getElementById('manual-arrow');
-
-            if (sTray) sTray.classList.add('hidden');
-            if (sArrow) sArrow.classList.remove('rotate-90');
-            if (mPanel) mPanel.classList.add('hidden');
-            if (mArrow) mArrow.classList.remove('rotate-90');
-
             if (tray) {
               const isHidden = tray.classList.contains('hidden');
               if (isHidden) {
@@ -3746,23 +3753,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else if (isMobileDevice()) {
-            // Smoothly toggle inline MetaMask mobile action tray
+            closeAllWalletTrays('metamask-mobile-tray');
             const tray = document.getElementById('metamask-mobile-tray');
             const arrow = document.getElementById('metamask-arrow');
-            const pTray = document.getElementById('phantom-mobile-tray');
-            const pArrow = document.getElementById('phantom-arrow');
-            const sTray = document.getElementById('solflare-mobile-tray');
-            const sArrow = document.getElementById('solflare-arrow');
-            const mPanel = document.getElementById('manual-address-panel');
-            const mArrow = document.getElementById('manual-arrow');
-
-            if (pTray) pTray.classList.add('hidden');
-            if (pArrow) pArrow.classList.remove('rotate-90');
-            if (sTray) sTray.classList.add('hidden');
-            if (sArrow) sArrow.classList.remove('rotate-90');
-            if (mPanel) mPanel.classList.add('hidden');
-            if (mArrow) mArrow.classList.remove('rotate-90');
-
             if (tray) {
               const isHidden = tray.classList.contains('hidden');
               if (isHidden) {
@@ -3812,19 +3805,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               });
             }
           } else if (isMobileDevice()) {
-            // Smoothly toggle inline Solflare mobile action tray
+            closeAllWalletTrays('solflare-mobile-tray');
             const tray = document.getElementById('solflare-mobile-tray');
             const arrow = document.getElementById('solflare-arrow');
-            const pTray = document.getElementById('phantom-mobile-tray');
-            const pArrow = document.getElementById('phantom-arrow');
-            const mPanel = document.getElementById('manual-address-panel');
-            const mArrow = document.getElementById('manual-arrow');
-
-            if (pTray) pTray.classList.add('hidden');
-            if (pArrow) pArrow.classList.remove('rotate-90');
-            if (mPanel) mPanel.classList.add('hidden');
-            if (mArrow) mArrow.classList.remove('rotate-90');
-
             if (tray) {
               const isHidden = tray.classList.contains('hidden');
               if (isHidden) {
@@ -3850,18 +3833,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
         // 4. MANUAL ADDRESS (Show/Hide Input with Clipboard Paste)
         if (provider === 'manual') {
+          closeAllWalletTrays('manual-address-panel');
           const mPanel = document.getElementById('manual-address-panel');
           const mArrow = document.getElementById('manual-arrow');
-          const pTray = document.getElementById('phantom-mobile-tray');
-          const pArrow = document.getElementById('phantom-arrow');
-          const sTray = document.getElementById('solflare-mobile-tray');
-          const sArrow = document.getElementById('solflare-arrow');
-
-          if (pTray) pTray.classList.add('hidden');
-          if (pArrow) pArrow.classList.remove('rotate-90');
-          if (sTray) sTray.classList.add('hidden');
-          if (sArrow) sArrow.classList.remove('rotate-90');
-
           if (mPanel) {
             const isHidden = mPanel.classList.contains('hidden');
             if (isHidden) {
