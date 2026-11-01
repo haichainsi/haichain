@@ -1714,6 +1714,13 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       console.warn("Solana RPC initialization:", e);
     }
 
+
+    // Cryptographically Secure Pseudorandom Nonce Generator (Anchor / Solana Compliant)
+    function generateCryptographicNonce() {
+      const buf = new Uint32Array(1);
+      window.crypto.getRandomValues(buf);
+      return (buf[0] % 900000) + 100000;
+    }
     // 3. Vault & Financial State (Production Session Persistence)
     const savedBal = localStorage.getItem('haichain-vault-balance');
     let balance = 0.0000;
@@ -2375,33 +2382,10 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       }
     }
 
-    window.simulateDemoEarlyAllocation = async function() {
-      const demoAddr = 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
-      if (!userWallet) {
-        await setConnectedWallet(demoAddr, 'Devnet Demo');
-      }
-      const addr = userWallet ? userWallet.address : demoAddr;
-      const allocs = getStoredAllocations();
-      allocs[addr] = {
-        amountUsdt: 1000,
-        haiTokens: 142857,
-        price: 0.007,
-        tgePrice: 0.010,
-        purchasedAt: new Date().toISOString(),
-        token2022Mint: TOKEN_2022_MINT,
-        transferHookProgram: TRANSFER_HOOK_PROGRAM,
-        transferHookStatus: "LOCKED_UNTIL_TGE",
-        txSignature: "4AYXzkm3NfWgPd1hXKvziJiQV8TrmJGWYwFD3RVsj9DxAMd6X12NDj6QKU2baxBi9w98wE3MXQnoq1UbyD24hVJn"
-      };
-      saveStoredAllocations(allocs);
-      updateEarlyAllocationsUI();
-      renderVestingVaultPage();
-      window.dispatchEvent(new CustomEvent('haichain:allocationUpdated'));
-      
-      const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
-      alert(isVi 
-        ? 'ĐÃ KÍCH HOẠT PHÂN BỔ MẪU THÀNH CÔNG:\n\n• Ví thụ hưởng: ' + addr + '\n• Số lượng: 142,857 HAISI ($1,000 USDT • Khối Đầu Tư Thiên Thần Bảo Mật)\n• Chuẩn: Solana Token-2022 (Transfer-Hook Active)\n• Trạng thái: Đã ghi nhận trong ví Phantom, khóa chuyển nhượng trước ngày TGE.'
-        : 'DEMO ALLOCATION ACTIVATED:\n\n• Wallet: ' + addr + '\n• Amount: 142,857 HAISI ($1,000 USDT • Confidential Strategic Tranche)\n• Standard: Solana Token-2022 (Transfer-Hook Active)\n• Status: Minted to Phantom wallet, locked until Public TGE.');
+    window.simulateDemoEarlyAllocation = function() {
+      // In live production, route directly to verified Private Sale SAFT reservation
+      const privateSaleTab = document.querySelector('[data-tab="private-sale"]');
+      if (privateSaleTab) privateSaleTab.click();
     };
 
     window.clearUserAllocation = function() {
@@ -2536,10 +2520,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
                 </p>
               </div>
               <div class="flex items-center space-x-2 shrink-0">
-                <button onclick="window.simulateDemoEarlyAllocation()" class="px-3.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-[11px] text-neutral-700 dark:text-neutral-300 transition-all flex items-center space-x-1.5">
-                  <span>⚡</span>
-                  <span>${isVi ? 'Mô Phỏng Thử Ví Demo (1,000 USDT)' : 'Simulate Demo Wallet (1,000 USDT)'}</span>
-                </button>
+                
               </div>
             </div>
 
@@ -2562,8 +2543,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
                   ${isVi ? 'Kết Nối Ví Phantom / Solana' : 'Connect Phantom / Solana Wallet'}
                 </button>
-                <button onclick="window.simulateDemoEarlyAllocation()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
-                  ${isVi ? 'Dùng Thử Ví Demo (Có sẵn 142k HAISI)' : 'Try Demo Wallet (142k HAISI pre-loaded)'}
+                <button onclick="document.querySelector('[data-tab=\'private-sale\']')?.click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
+                  ${isVi ? 'Đăng Ký Vòng Private SAFT' : 'Subscribe to Private SAFT'}
                 </button>
               </div>
             </div>
@@ -2602,10 +2583,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
                 </p>
               </div>
               <div class="flex items-center space-x-2 shrink-0">
-                <button onclick="window.simulateDemoEarlyAllocation()" class="px-3.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-[11px] text-neutral-700 dark:text-neutral-300 transition-all flex items-center space-x-1.5">
-                  <span>⚡</span>
-                  <span>${isVi ? 'Mô Phỏng Thử Ví Này (1,000 USDT)' : 'Simulate Allocation (1,000 USDT)'}</span>
-                </button>
+                
               </div>
             </div>
 
@@ -2624,8 +2602,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
                 </p>
               </div>
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <button onclick="window.simulateDemoEarlyAllocation()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
-                  ${isVi ? 'Kích Hoạt Phân Bổ Mẫu (1,000 USDT)' : 'Activate Demo Allocation (1,000 USDT)'}
+                <button onclick="document.querySelector('[data-tab=\'private-sale\']')?.click()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
+                  ${isVi ? 'Đăng Ký Vòng Private SAFT (Chiết Khấu 30%)' : 'Subscribe to Private SAFT (30% Discount)'}
                 </button>
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
                   ${isVi ? 'Đổi Địa Chỉ Ví Khác' : 'Switch Wallet'}
@@ -2843,9 +2821,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               </a>
             </div>
             <div class="flex items-center space-x-2">
-              <button onclick="window.simulateDemoEarlyAllocation()" class="text-neutral-500 hover:text-black dark:hover:text-white font-mono flex items-center space-x-1 text-xs">
-                <span>⚡ ${isVi ? 'Mô Phỏng Lại Ví' : 'Re-Simulate'}</span>
-              </button>
+              
             </div>
           </div>
         </div>
@@ -3027,7 +3003,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           const explorerUrl = data.explorerUrl || `https://explorer.solana.com/tx/${txSig}?cluster=devnet`;
 
           appendLedgerRow({
-            nonce: Math.floor(Math.random() * 800000 + 100000),
+            nonce: generateCryptographicNonce(),
             service: "Solana Devnet Testnet Faucet",
             proof: `Wallet: ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`,
             amount: `+${added.toFixed(4)} USDT (Devnet)`,
@@ -3084,7 +3060,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         dashboardDepositModal.classList.add('hidden');
 
         appendLedgerRow({
-          nonce: Math.floor(Math.random() * 800000 + 100000),
+          nonce: generateCryptographicNonce(),
           service: `Web3 On-Ramp (${userWallet.provider})`,
           proof: `Payer: ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`,
           amount: `+${added.toFixed(4)} USDT`,
@@ -3217,7 +3193,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       dashboardWithdrawModal.classList.add('hidden');
 
       appendLedgerRow({
-        nonce: Math.floor(Math.random() * 800000 + 100000),
+        nonce: generateCryptographicNonce(),
         service: "Cold Wallet Settlement Return",
         proof: `To: ${dest.slice(0, 4)}...${dest.slice(-4)}`,
         amount: `-$${amount.toFixed(4)} USDT`,
@@ -3482,7 +3458,7 @@ claude`;
       issueTicketModal.classList.add('hidden');
 
       appendLedgerRow({
-        nonce: Math.floor(Math.random() * 800000 + 100000),
+        nonce: generateCryptographicNonce(),
         service: `Ticket Issued: ${agentName}`,
         proof: `Merkle Root Validated`,
         amount: `Cap: $${maxLimit}`,
@@ -3519,7 +3495,7 @@ claude`;
           if (confirmed) {
             card.remove();
             appendLedgerRow({
-              nonce: Math.floor(Math.random() * 800000 + 100000),
+              nonce: generateCryptographicNonce(),
               service: "Agent Capability Revoked",
               proof: "Nullifier Invalidation",
               amount: "$0.0000",
@@ -3782,7 +3758,7 @@ claude`;
         ensureAgentCard(currentConnectingProvider, "BYOK Key Bounded", data.maskedKey);
 
         appendLedgerRow({
-          nonce: Math.floor(Math.random() * 800000 + 100000),
+          nonce: generateCryptographicNonce(),
           service: `BYOK Linked: ${currentConnectingProvider}`,
           proof: "Client Vault AES-256",
           amount: "Circuit Cap Active",
@@ -3856,7 +3832,7 @@ claude`;
       ensureAgentCard(currentConnectingProvider, "Gateway Bounded", "Micro-Escrow Ready");
 
       appendLedgerRow({
-        nonce: Math.floor(Math.random() * 800000 + 100000),
+        nonce: generateCryptographicNonce(),
         service: `Gateway Authorized: ${currentConnectingProvider}`,
         proof: "Devnet Delegation Permit",
         amount: "Cap: $0.0500",
@@ -3964,21 +3940,47 @@ claude`;
         return;
       }
 
-      // Ensure testing wallet has minimum funds for smooth demo execution
+      const isVi = window.haichainI18n?.currentLang === 'vi';
+
+      // 1. Strict Wallet Authentication Guard
+      if (!userWallet || !userWallet.address) {
+        walletConnectModal.classList.remove('hidden');
+        if (typeof showToast === 'function') {
+          showToast({
+            title: isVi ? 'Yêu cầu kết nối ví' : 'Wallet Required',
+            message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom để cấp quyền thực thi AI.' : 'Connect your sovereign wallet to authorize AI execution.',
+            icon: 'alert-circle'
+          });
+        }
+        return;
+      }
+
+      // 2. Strict Real Vault Balance Guard
       if (balance < selectedCost) {
-        balance = 1.0000;
-        saveBalance();
-        updateVaultUI();
+        dashboardDepositModal.classList.remove('hidden');
+        if (typeof showToast === 'function') {
+          showToast({
+            title: isVi ? 'Số dư không đủ' : 'Insufficient Vault Balance',
+            message: isVi 
+              ? `Số dư Master Vault ($${balance.toFixed(4)}) không đủ cho tác vụ $${selectedCost.toFixed(4)}. Vui lòng nạp thêm qua Faucet Devnet.`
+              : `Vault balance ($${balance.toFixed(4)}) is insufficient for $${selectedCost.toFixed(4)}. Please top up via Devnet Faucet.`,
+            icon: 'alert-circle'
+          });
+        }
+        alert(isVi
+          ? `Số dư không đủ!\n\nSố dư Master Vault của bạn hiện tại là $${balance.toFixed(4)} USDT.\nTác vụ AI "${selectedModel}" yêu cầu tối thiểu $${selectedCost.toFixed(4)} USDT.\n\nVui lòng nạp thêm tiền thử nghiệm qua Faucet để tiếp tục.`
+          : `Insufficient Vault Balance!\n\nYour Master Vault balance is $${balance.toFixed(4)} USDT.\nSelected model "${selectedModel}" requires $${selectedCost.toFixed(4)} USDT.\n\nPlease claim test funds via Faucet to execute.`);
+        return;
       }
 
       const providerName = getProviderForModel(selectedModel);
       let conn = connectedProviders[providerName];
 
-      // Auto-provision 1-Click Autonomous Gateway if not explicitly configured
+      // Auto-provision 1-Click Autonomous Gateway with authenticated wallet
       if (!conn) {
         conn = {
           type: 'gateway',
-          wallet: userWallet ? userWallet.address : 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW',
+          wallet: userWallet.address,
           limit: 0.0500,
           connectedAt: new Date().toISOString()
         };
@@ -4017,7 +4019,7 @@ claude`;
             model: selectedModel,
             prompt: prompt,
             apiKey: conn.type === 'byok' ? conn.key : null,
-            walletAddress: userWallet ? userWallet.address : 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW'
+            walletAddress: userWallet.address
           })
         });
 
