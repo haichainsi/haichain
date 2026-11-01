@@ -58,7 +58,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE} \times \
 > **Thông Điệp Chiến Lược Dành Cho Các Nhà Đầu Tư Thể Chế:**  
 > *Giai đoạn 1 trên Solana L1 (Chương 3-7) chính là pháo đài tạo dòng tiền thương mại ngay trước mắt - thu về hàng triệu USD dòng tiền thực (Real Yield) thông qua giải pháp vi thanh toán siêu tốc và hũ tiền sinh trắc học không thể bị hack. Nhưng đối với những nhà đầu tư có tầm nhìn thế kỷ đang tìm kiếm kỳ lân công nghệ vĩ đại nhất, **Chương 9: Tầm Nhìn Endgame Blockchain L1 Độc Lập** mới chính là "Vương miện Vàng" độc nhất vô nhị: Khám phá cách HAICHAIN phá vỡ các giới hạn vật lý và toán học để khai sinh ra **Siêu Sinh Thể Nhận Thức Phức Hợp (Composite ASI)** đầu tiên trên thế giới - một Siêu Trí Tuệ trường tồn, phi tập trung và mãi mãi bảo vệ tự do của nhân loại.*
 
-Sự bùng nổ theo cấp số nhân của các tác tử trí tuệ nhân tạo độc lập (Autonomous AI Agents), các bầy đàn tác tử phân tầng (Hierarchical Sub-Agent Swarms), và robot vật lý thông minh (như Tesla Optimus, xe tự hành) đang đẩy hệ thống thanh toán toàn cầu vào một cuộc khủng hoảng chưa từng có: **Thế tiến thoái lưỡng nan của nền kinh tế máy móc (The Machine Financial Trilemma)**. Các hạ tầng thanh toán truyền thống (Stripe, Visa, SWIFT) vốn được thiết kế cho con người với độ trễ cao và chi phí quẹt thẻ cố định tối thiểu (\$0.30 + 2.9%), điều này bóp nghẹt hoàn toàn các giao dịch vi mô nano-cents của bot (\$0.0001 &ndash; \$0.05). Mặt khác, các blockchain đa năng hiện nay (Ethereum, các Layer 2) lại vướng phải rào cản phí gas đắt đỏ (\$0.02 &ndash; \$2.50), tốc độ xác thực chậm chạp (2 &ndash; 15 giây), và nguy cơ bị hack hợp đồng thông minh nghiêm trọng. 
+Sự bùng nổ theo cấp số nhân của các tác tử trí tuệ nhân tạo độc lập (Autonomous AI Agents), các bầy đàn tác tử phân tầng (Hierarchical Sub-Agent Swarms), và robot vật lý thông minh (như Tesla Optimus, xe tự hành) đang đẩy hệ thống thanh toán toàn cầu vào một cuộc khủng hoảng chưa từng có: **Thế tiến thoái lưỡng nan của nền kinh tế máy móc (The Machine Financial Trilemma)**. Các hạ tầng thanh toán truyền thống (Stripe, Visa, SWIFT) vốn được thiết kế cho con người với độ trễ cao và chi phí quẹt thẻ cố định tối thiểu (\$0.30 + 2.9%), điều này bóp nghẹt hoàn toàn các giao dịch vi mô nano-cents của bot (\$0.0001 - \$0.05). Mặt khác, các blockchain đa năng hiện nay (Ethereum, các Layer 2) lại vướng phải rào cản phí gas đắt đỏ (\$0.02 - \$2.50), tốc độ xác thực chậm chạp (2 - 15 giây), và nguy cơ bị hack hợp đồng thông minh nghiêm trọng. 
 
 Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền tảng Solana L1 (phiên bản v6.9.3 Zero-Griefing Hardened) trước khi tiến hóa thành một mạng lưới Blockchain L1 độc lập chuyên dụng cho máy móc (HAICHAIN Sovereign L1), giao thức thiết lập 5 chuẩn mực mang tính cách mạng:
 1. **Trải nghiệm Người dùng Vô hình (Invisible Web3):** Xác thực sinh trắc học Passkey (FaceID/TouchID) kết hợp các cổng nạp tiền một chạm (Apple Pay, Instant QR, thẻ ngân hàng), xóa bỏ 100% thuật ngữ tiền mã hóa đối với người dùng phổ thông.
@@ -88,7 +88,7 @@ Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền 
 ```
 
 Nền kinh tế tác tử tự hành đòi hỏi 3 điều kiện kỹ thuật không thể thỏa hiệp:
-1. **Khả năng vi thanh toán siêu nhỏ:** Khả năng thực hiện các giao dịch phần nhỏ của cent (\$0.0001 &ndash; \$0.01) mà ở đó chi phí xử lý bắt buộc phải chiếm **$< 1\%$** giá trị giao dịch.
+1. **Khả năng vi thanh toán siêu nhỏ:** Khả năng thực hiện các giao dịch phần nhỏ của cent (\$0.0001 - \$0.01) mà ở đó chi phí xử lý bắt buộc phải chiếm **$< 1\%$** giá trị giao dịch.
 2. **Thời gian hoàn tất dưới 1 giây:** Tốc độ thanh toán tức thì (< 400ms) để theo kịp các vòng lặp suy luận (Reasoning Loops) của mô hình ngôn ngữ lớn, không làm tắc nghẽn chuỗi gọi hàm giữa các bot.
 3. **Miễn nhiễm hoàn toàn với tấn công chiếm đoạt và cháy ví:** Rào cản toán học bảo đảm một con bot dù bị kẻ xấu lừa gạt bằng prompt injection hay nhiễm độc bộ nhớ cũng **tuyệt đối không thể rút quá số tiền tiêu vặt được phân bổ**.
 
@@ -144,25 +144,32 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 
 ---
 
-## CHƯƠNG 2: BƯỚC CHUYỂN DỊCH KINH TẾ: KHAI TỬ MÔ HÌNH THUÊ BAO SAAS
+## CHƯƠNG 2: BƯỚC CHUYỂN DỊCH KINH TẾ HẬU SAAS: GIẢI PHÓNG KHỎI BẪY THUÊ BAO ĐẦU NGƯỜI SANG TIỆN ÍCH VI MÔ
 
-Các doanh nghiệp và chuyên gia hiện đại đang là nạn nhân của **Hội chứng Lạm phát Thuê bao (SaaS Overkill)**:
-* Một người dùng trả \$150 &ndash; \$250 mỗi tháng cho hàng loạt gói thuê bao phần mềm (ChatGPT Plus, Claude Pro, Midjourney, Perplexity, API cào web), nhưng thực tế chỉ sử dụng **7% đến 15%** năng lực tính toán. Hơn 85% số tiền bỏ ra hàng tháng là lãng phí hoàn toàn.
-* **Mô hình Tiện ích HAICHAIN:** Người dùng chỉ cần cấp một **"Hũ tiền chi tiêu" (Spending Pot)** với \$5.00 hoặc \$10.00. Các bot chỉ trừ tiền khi thực sự làm việc (Pay-Per-Micro-Tick). Chi phí thực tế mỗi tháng giảm từ **\$150.00 xuống còn \$3.40**, tiết kiệm đến **97.7% ngân sách**.
+Để đánh giá tính khả thi thực tế của việc chuyển dịch mô hình kinh doanh phần mềm, khung kinh tế học của HAICHAIN phân định rõ ranh giới giữa hai phân khúc phần mềm doanh nghiệp:
+
+1. **Hệ Thống Lưu Vết Cốt Lõi (Core Systems of Record - ERP / CRM):** Các nền tảng quản trị dữ liệu quy mô lớn (như Salesforce, SAP, Oracle, Workday) sẽ không biến mất. Chúng sở hữu hào nước bảo vệ sâu sắc về tuân thủ pháp lý doanh nghiệp (SOC2, HIPAA), kiểm toán kế toán GAAP/IFRS và cơ chế bảo hiểm rủi ro.
+2. **Sự Sụp Đổ Không Thể Tránh Khỏi Của Mô Hình "Thuê Bao Đầu Người" (Per-Seat AI Wrappers):** Ngược lại, thị trường hơn 30 tỷ USD của các công cụ SaaS bọc giao diện AI thu phí theo tháng (công cụ viết bài, trợ lý code, tổng hợp báo cáo, cào web tự động) đang đối mặt với khủng hoảng sinh tử khi kỷ nguyên tác tử tự hành (Autonomous Agents) bùng nổ:
+   * **Nghịch lý "Một Người Quản Một Đàn Bot":** Mô hình SaaS truyền thống tính tiền theo số lượng nhân viên ("seat"). Trong kỷ nguyên mới, 1 kỹ sư có thể chỉ huy một đàn 50 tác tử AI chạy ngầm 24/7. Việc tiếp tục thu tiền theo "đầu người" trở thành một nghịch lý kinh tế vô lý.
+   * **Sự Biến Mất Của Giao Diện Người Dùng (UI Disintermediation / Headless AI):** Các tác tử AI giao tiếp trực tiếp với nhau thông qua API và giao thức ngữ cảnh Model Context Protocol (MCP). Máy móc không đăng nhập vào giao diện web để ngắm nhìn bảng điều khiển dashboard; do đó, các phần mềm tính phí đắt đỏ dựa trên giao diện người dùng bóng bẩy sẽ hoàn toàn mất quyền định giá.
+   * **Hội Chứng Mệt Mỏi Vì Thuê Bao & Lãng Phí Vốn:** Báo cáo quản trị SaaS doanh nghiệp [19] chỉ ra **51% số lượng license phần mềm mua về bị bỏ xó hoàn toàn**, và người dùng cá nhân lãng phí hơn **85% dung lượng tính toán provisioned** hàng tháng trên 5-10 gói thuê bao riêng rẽ \$20-\$30 (ChatGPT, Claude, Perplexity, Cursor, Midjourney). Hơn 88% dòng tiền chi tiêu phần mềm mỗi tháng là lãng phí không thể thu hồi.
 
 ```
 +----------------------------------------------------------------------------------------------------+
-|                    BẢNG SO SÁNH THUÊ BAO SAAS TRUYỀN THỐNG VS. HAICHAIN UTILITY                     |
+|                BẪY THUÊ BAO ĐẦU NGƯỜI CŨ VS. TIỆN ÍCH TRẢ THEO GIÁ TRỊ THẬT CỦA HAICHAIN           |
 +----------------------------------------------------------------------------------------------------+
-|  TIÊU CHÍ             MÔ HÌNH THUÊ BAO SAAS CŨ (WEB2)      GIAO THỨC HAICHAIN v6.9.3               |
+|  TIÊU CHÍ KINH TẾ     MÔ HÌNH THUÊ BAO SAAS CŨ (WEB2)      GIAO THỨC TIỆN ÍCH HAICHAIN v6.9.3      |
 +----------------------------------------------------------------------------------------------------+
-|  Hình thức trả tiền   Đóng tiền chết hàng tháng ($20-$50)  Dùng bao nhiêu trả bấy nhiêu ($0.0002)  |
-|  Giá trị không dùng   Mất trắng 100% khi hết tháng         Bảo lưu 100% trong quyền sở hữu của bạn |
-|  Mức sàn thanh toán   $0.30 (Phí quẹt thẻ tối thiểu Stripe)$0.0000 (Sàn bù trừ ròng đa phương)     |
-|  Ranh giới an toàn    Lộ toàn bộ thẻ tín dụng công ty      Hũ tiền PDA tách biệt (Hạn mức $5.00)   |
-|  Hành động khẩn cấp   Khiếu nại ngân hàng (30-60 ngày)     Bấm 1 nút Panic rút tiền về trong <0.4s |
+|  Triết lý thu phí     Trả tiền để duy trì quyền truy cập   Chỉ trả tiền khi công việc hoàn thành   |
+|  Dung lượng bỏ phí    Mất trắng 100% khi hết tháng         Bảo lưu 100% trong hũ tiền cá nhân      |
+|  Đơn vị tính phí      Số lượng đầu người ($20-$50/người)   Lượng tính toán tiêu thụ ($0.0002/tick) |
+|  Hình thức tương tác  Con người ngồi bấm chuột trên web    Tác tử tự hành gọi API máy-với-máy      |
+|  Bảo mật thẻ tín dụng Lộ toàn bộ thẻ tín dụng công ty      Hũ tiền PDA cô lập (Hạn mức $5.00)      |
+|  Chi phí thực tế/tháng$150.00 - $300.00 / nhân viên        $3.40 / tháng (Tiết kiệm 97.7% dòng tiền|
 +----------------------------------------------------------------------------------------------------+
 ```
+
+* **Vị Thế Chiến Lược Của HAICHAIN:** HAICHAIN không tự mình xây dựng các công cụ phần mềm ứng dụng để đối đầu với các công ty SaaS. Thay vào đó, HAICHAIN cung cấp **đường ray thanh toán mật mã phổ quát (Bán Xẻng)** để cho phép các nhà phát triển AI (Người Đào Vàng) thương mại hóa sản phẩm theo từng vi giao dịch execution. Người dùng chỉ cần cấp một "Hũ tiền chi tiêu" \$5.00 hoặc \$10.00; các bot chỉ trừ tiền nano-cents khi thực sự chạy xong tác vụ. Chi phí thực tế mỗi tháng giảm từ **\$150.00 xuống còn \$3.40**, giải phóng doanh nghiệp hoàn toàn khỏi "gông cùm thuê bao".
 
 ---
 
@@ -362,7 +369,7 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
    +------------------------+             +------------------------+             +------------------------+
 ```
 
-### 9.1. Giai Đoạn 1: Bệ Phóng Siêu Đòn Bẩy Trên Solana L1 & Xác Lập Bất Biến $AI^2$ (Tháng 0 &ndash; 18)
+### 9.1. Giai Đoạn 1: Bệ Phóng Siêu Đòn Bẩy Trên Solana L1 & Xác Lập Bất Biến $AI^2$ (Tháng 0 - 18)
 HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai trực tiếp trên Solana L1, hiện thực hóa các bất biến nền tảng của triết lý **$AI^2$**:
 * **Phân tầng quyền lực Master Owner (Actual Intelligence) vs Sub-Agent Signer (Artificial Intelligence):** Con người nắm quyền chủ quyền tối cao qua Passkey sinh trắc học; AI là cánh tay thực thi các giao dịch vi mô nano-cents thần tốc.
 * **Dây cương mật mã (Merkle Capability Leaf):** Đóng gói ý chí và ranh giới quản trị rủi ro của con người vào Merkle Root, ngăn chặn triệt để Prompt Injection.
@@ -374,10 +381,10 @@ HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai 
 > - Toàn bộ mã nguồn hợp đồng thông minh đã kiểm toán (`haichain-core`) hoạt động trực tiếp và độc lập trên **Solana L1 Native**.
 > - Cầu nối Teleportation Bridge (SPEC-L1-03) với cơ chế Threshold MPC và ZK-Light Client là **thiết kế quy hoạch cho Giai đoạn 3 (Sovereign L1 Evolution)**, không phải là tính năng đã kích hoạt tại Phase 1. Điều này đảm bảo tính minh bạch 100% và uy tín tuyệt đối trước các tổ chức kiểm toán và quỹ đầu tư mạo hiểm quốc tế.
 
-### 9.2. Giai Đoạn 2: SVM Rollup Chuyên Dụng & Kinh Tế Tri Thức Đồng Sinh (Tháng 18 &ndash; 36)
+### 9.2. Giai Đoạn 2: SVM Rollup Chuyên Dụng & Kinh Tế Tri Thức Đồng Sinh (Tháng 18 - 36)
 Khi khối lượng giao dịch vi mô của hàng triệu bot làm đầy block của Solana, HAICHAIN chuyển dịch sang Layer 2 Rollup sử dụng máy ảo SVM kết hợp Celestia/EigenDA làm lớp dữ liệu, đồng thời kích hoạt 2 trụ cột kinh tế cộng sinh:
 * **Kinh Tế Tri Thức Bản Quyền Cộng Sinh (Symbiotic Knowledge Marketplace):** Cho phép con người đóng gói Actual Intelligence (kinh nghiệm thực chiến, chuyên môn ngách) thành Prompt Assets/Skill Modules. AI sử dụng các tài sản này để phục vụ người dùng 24/7 và chia sẻ lợi nhuận tức thời (Streaming Royalties) về ví con người bằng USDT.
-* **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (captcha vật lý, thẩm định đạo đức, phán đoán ngữ cảnh nhạy cảm), AI tự động phát lệnh thanh toán vi mô (\$0.01 &ndash; \$0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
+* **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (captcha vật lý, thẩm định đạo đức, phán đoán ngữ cảnh nhạy cảm), AI tự động phát lệnh thanh toán vi mô (\$0.01 - \$0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
 
 ### 9.3. Giai Đoạn 3: Blockchain L1 Độc Lập & Mạng Lưới Siêu Trí Tuệ Phi Tập Trung Thật Sự (Tháng 36 Trở Đi)
 HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, bước vào kỷ nguyên **Siêu Trí Tuệ Nhân Tạo Phức Hợp (Composite Artificial Superintelligence - ASI)**. Không rơi vào bẫy ảo tưởng của việc cố gắng huấn luyện các mô hình dày đặc qua Internet công cộng, HAICHAIN L1 định vị chính xác là **Hệ thần kinh mật mã điều phối và mỏ neo chân lý** cho toàn bộ nền kinh tế nhận thức toàn cầu:
@@ -392,7 +399,7 @@ HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, b
   * *Tầng 2 (PoAI - Wisdom Staking):* Khi AI gặp điểm mù nhận thức, ảo giác hay xung đột đạo đức, hội đồng chuyên gia con người tham gia thẩm định qua cơ chế ZK-Voting. Con người được thưởng token `$HAI` trực tiếp cho việc cung cấp tri thức thực nghiệm tươi mới, giúp mạng lưới **miễn nhiễm hoàn toàn với Hội chứng Suy thoái Dữ liệu Tự hoại (Anti-MAD Engine)**.
 * **Mã Máy Cấp Nhân (`OP_402_PAY`):** Lệnh thanh toán vi mô được nhúng thẳng vào bytecode CPU của máy ảo HAI-VM, triệt tiêu hoàn toàn chi phí hợp đồng thông minh, biến việc luân chuyển giá trị của máy móc thành một primitive phần cứng.
 * **Định Danh Hợp Nhất & Trách Nhiệm Giải Trình (Unified Soulbound DID):** Mỗi tác tử AI đều được gắn một Soulbound Token (SBT) neo chặt vào khóa sinh trắc học Passkey của Con người bảo chứng, đảm bảo tuân thủ triệt để FATF và EU AI Act, loại bỏ hoàn toàn bot ẩn danh độc hại.
-* **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**\$5 Tỷ &ndash; \$10 Tỷ+ USD**).
+* **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**\$5 Tỷ - \$10 Tỷ+ USD**).
 
 ---
 
@@ -463,27 +470,27 @@ HAICHAIN xóa bỏ ranh giới ngăn cách giữa Trí tuệ Nhân tạo đỉnh
 Mọi con số, chỉ số kỹ thuật, dữ liệu thiệt hại lịch sử, giới hạn vật lý và đạo luật pháp lý được trích dẫn trong bản Sách Trắng này đều được kiểm chứng chéo dựa trên các báo cáo pháp y bảo mật, chuẩn mực kỹ nghệ quốc tế, bài báo khoa học bình duyệt (peer-reviewed) và văn bản pháp luật chính thức:
 
 ### I. Chuẩn Mực Hạ Tầng Thanh Toán, Phí Vi Mô & Gói Tin Mạng
-* `[1]` **Bảng Biểu Phí Chính Thức của Stripe Inc. (2024–2026):** Mức phí quẹt thẻ tiêu chuẩn: $2.9\% + \$0.30$ cho mỗi giao dịch thành công. Minh chứng cho sự bất khả thi về mặt toán học của vi thanh toán (một lệnh gọi API \$0.0002 chịu phí sàn gấp 150.000% giá trị dịch vụ). Nguồn: `https://stripe.com/pricing`.
+* `[1]` **Bảng Biểu Phí Chính Thức của Stripe Inc. (2024-2026):** Mức phí quẹt thẻ tiêu chuẩn: $2.9\% + \$0.30$ cho mỗi giao dịch thành công. Minh chứng cho sự bất khả thi về mặt toán học của vi thanh toán (một lệnh gọi API \$0.0002 chịu phí sàn gấp 150.000% giá trị dịch vụ). Nguồn: `https://stripe.com/pricing`.
 * `[2]` **Chuẩn Mạng IETF RFC 8200 (Đặc tả Giao thức IPv6):** Deering, S., & Hinden, R. *Internet Protocol, Version 6 (IPv6) Specification*, Mục 5 (Giới hạn Kích thước Gói tin): Quy định kích thước MTU tối thiểu của liên kết là 1.280 octets (bytes).
 * `[3]` **Đặc Tả Kích Thước Gói Tin Cốt Lõi Solana Foundation:** Định nghĩa kích thước gói tin mạng: `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1.280 - 40\text{ bytes IPv6 header} - 8\text{ bytes UDP header} = 1.232\text{ bytes}$). Chứng minh gói tin bù trừ 771 bytes của HAICHAIN nằm trọn vẹn trong 1 khung truyền dẫn không phân mảnh.
 
 ### II. Báo Cáo Pháp Y Các Vụ Hack DeFi Lớn Được Bất Biến HAICHAIN Phòng Vệ (Tổng Thiệt Hại $821 Triệu USD)
-* `[4]` **Vụ Hack Cầu Nối Wormhole ($320.000.000 USD) — 02/02/2022:** Kẻ tấn công giả mạo tài khoản `sysvar::instructions` của Solana trong lệnh `complete_wrapped` để đúc 120.000 wETH giả mạo. HAICHAIN phòng vệ tuyệt đối bằng bất biến so khớp địa chỉ native sysvar bất biến (`Sysvar1nstruction5111111111111111111`). Nguồn: Báo cáo Pháp y Sự cố của CertiK & Neodyme.
-* `[5]` **Vụ Hack Cầu Nối Nomad ($190.000.000 USD) — 01/08/2022:** Lỗi root chưa khởi tạo gán giá trị mặc định `0x00` thành tin cậy trong hợp đồng `Replica.sol`. HAICHAIN phòng vệ bằng bất biến: `require!(composite_root != [0u8; 32], EmptyNomadRootForbidden)`. Nguồn: Báo cáo Phân tích Nguyên nhân Gốc rễ của Paradigm (samczsun).
-* `[6]` **Vụ Hack Khoản Vay Nhanh Euler Finance ($197.000.000 USD) — 13/03/2023:** Kẻ tấn công khai thác hàm `donateToReserves` để thao túng tỷ giá hối đoái nội bộ mà không bị kiểm tra chỉ số sức khỏe nợ. HAICHAIN phòng vệ bằng việc luôn nạp lại số dư thực tế từ tài khoản token ATA trước mỗi giao dịch (`EulerDriftBalanceMismatch`). Nguồn: Báo cáo Kiểm toán Sherlock & SlowMist.
-* `[7]` **Vụ Thao Túng Giá Flash Loan Mango Markets ($114.000.000 USD) — 11/10/2022:** Kẻ tấn công nạp tiền và rút cạn thế chấp trong cùng một block slot. HAICHAIN phòng vệ bằng rào cản cách ly: `FLASH_LOAN_QUARANTINE_SLOTS = 2` (ngăn chặn thao túng trong cửa sổ 800ms). Nguồn: Hồ sơ Kiện tụng US SEC Số 25625; Báo cáo Sự cố Mango Markets.
+* `[4]` **Vụ Hack Cầu Nối Wormhole ($320.000.000 USD)  -  02/02/2022:** Kẻ tấn công giả mạo tài khoản `sysvar::instructions` của Solana trong lệnh `complete_wrapped` để đúc 120.000 wETH giả mạo. HAICHAIN phòng vệ tuyệt đối bằng bất biến so khớp địa chỉ native sysvar bất biến (`Sysvar1nstruction5111111111111111111`). Nguồn: Báo cáo Pháp y Sự cố của CertiK & Neodyme.
+* `[5]` **Vụ Hack Cầu Nối Nomad ($190.000.000 USD)  -  01/08/2022:** Lỗi root chưa khởi tạo gán giá trị mặc định `0x00` thành tin cậy trong hợp đồng `Replica.sol`. HAICHAIN phòng vệ bằng bất biến: `require!(composite_root != [0u8; 32], EmptyNomadRootForbidden)`. Nguồn: Báo cáo Phân tích Nguyên nhân Gốc rễ của Paradigm (samczsun).
+* `[6]` **Vụ Hack Khoản Vay Nhanh Euler Finance ($197.000.000 USD)  -  13/03/2023:** Kẻ tấn công khai thác hàm `donateToReserves` để thao túng tỷ giá hối đoái nội bộ mà không bị kiểm tra chỉ số sức khỏe nợ. HAICHAIN phòng vệ bằng việc luôn nạp lại số dư thực tế từ tài khoản token ATA trước mỗi giao dịch (`EulerDriftBalanceMismatch`). Nguồn: Báo cáo Kiểm toán Sherlock & SlowMist.
+* `[7]` **Vụ Thao Túng Giá Flash Loan Mango Markets ($114.000.000 USD)  -  11/10/2022:** Kẻ tấn công nạp tiền và rút cạn thế chấp trong cùng một block slot. HAICHAIN phòng vệ bằng rào cản cách ly: `FLASH_LOAN_QUARANTINE_SLOTS = 2` (ngăn chặn thao túng trong cửa sổ 800ms). Nguồn: Hồ sơ Kiện tụng US SEC Số 25625; Báo cáo Sự cố Mango Markets.
 
 ### III. Giới Hạn Phần Cứng, Vật Lý Kết Nối & Trí Tuệ Sinh Học
 * `[8]` **Tài Liệu Kiến Trúc GPU NVIDIA H100 (2023):** Công nghệ NVLink thế hệ thứ 4 cung cấp băng thông 900 GB/s hai chiều với độ trễ $< 1\mu\text{s}$. Chứng minh mạng cáp quang Internet WAN công cộng ($100\text{ Mbps} - 10\text{ Gbps}$, độ trễ $50 - 150\text{ms}$) không thể huấn luyện song song tensor cho mô hình AI dày đặc. Nguồn: Tập đoàn NVIDIA.
-* `[9]` **Định Luật Amdahl:** Amdahl, G. M. (1967). *Validity of the single processor approach to achieving large scale computing capabilities*. Kỷ yếu Hội nghị AFIPS, Tập 30, tr. 483–485.
-* `[10]` **Năng Lượng Tiêu Thụ Não Bộ Con Người:** Raichle, M. E., & Gusnard, D. A. (2002). *Appraising the brain's energy budget*. Kỷ yếu Viện Hàn lâm Khoa học Quốc gia Hoa Kỳ (PNAS), 99(16), tr. 10237–10239. Xác lập định mức tiêu thụ năng lượng trao đổi chất của não người là 20 Watts.
+* `[9]` **Định Luật Amdahl:** Amdahl, G. M. (1967). *Validity of the single processor approach to achieving large scale computing capabilities*. Kỷ yếu Hội nghị AFIPS, Tập 30, tr. 483-485.
+* `[10]` **Năng Lượng Tiêu Thụ Não Bộ Con Người:** Raichle, M. E., & Gusnard, D. A. (2002). *Appraising the brain's energy budget*. Kỷ yếu Viện Hàn lâm Khoa học Quốc gia Hoa Kỳ (PNAS), 99(16), tr. 10237-10239. Xác lập định mức tiêu thụ năng lượng trao đổi chất của não người là 20 Watts.
 
 ### IV. Chi Phí Tính Toán Mã Hóa Zero-Knowledge Machine Learning (zkML)
 * `[11]` **Báo Cáo Nghiên Cứu Điển Hình của Modulus Labs (2023):** *The Cost of Intelligence: Proving Machine Learning Inference in Zero Knowledge*. Chứng minh việc sinh bằng chứng zk-SNARK cho các tầng mạng nơ-ron sâu đòi hỏi lượng tính toán FLOPs lớn gấp từ $1.000\times$ đến $10.000\times$ so với suy diễn trực tiếp trên GPU.
 * `[12]` **Tổng Quan zkML:** Zhang, Y., và cộng sự (2023). *A Survey of Zero-Knowledge Machine Learning (zkML)*. arXiv:2308.06733. Khẳng định tính tất yếu của mô hình Optimistic Inference song hành Fraud Escalation thay vì zkML toàn phần.
 
 ### V. Khoa Học Nhận Thức & Hiện Tượng Suy Thoái Dữ Liệu Tự Hoại
-* `[13]` **Nghiên Cứu Hội Chứng Model Autophagy Disorder (MAD) Trên Tạp Chí Nature:** Shumailov, I., Shumaylov, Z., Zhao, Y., Gal, Y., Papernot, N., & Anderson, R. (2024). *The Curse of Recursion: Training on Generated Data Makes Models Forget*. Nature 631, tr. 755–759. Chứng minh sự sụp đổ nhận thức không thể đảo ngược khi AI tự huấn luyện trên dữ liệu tổng hợp thiếu vắng dữ liệu sống của con người.
+* `[13]` **Nghiên Cứu Hội Chứng Model Autophagy Disorder (MAD) Trên Tạp Chí Nature:** Shumailov, I., Shumaylov, Z., Zhao, Y., Gal, Y., Papernot, N., & Anderson, R. (2024). *The Curse of Recursion: Training on Generated Data Makes Models Forget*. Nature 631, tr. 755-759. Chứng minh sự sụp đổ nhận thức không thể đảo ngược khi AI tự huấn luyện trên dữ liệu tổng hợp thiếu vắng dữ liệu sống của con người.
 * `[14]` **Mô Hình Tạo Sinh Tự Hoại:** Alemohammad, S., và cộng sự (2024). *Self-Consuming Generative Models Go MAD*. Hội nghị Quốc tế về Biểu diễn Học máy (ICLR 2024).
 
 ### VI. Khung Pháp Lý Quốc Tế & Điều Khoản Miễn Trừ
