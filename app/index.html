@@ -96,6 +96,12 @@
     html:not(.dark) .logo-light { display: block !important; }
     html:not(.dark) .logo-dark { display: none !important; }
 
+    /* Global Mobile Touch Responsiveness & Instant Tap Execution (Zero 300ms Delay) */
+    a, button, [role="button"], input, select, textarea {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* Responsive Logo Sizing: Harmonious & Sleek on Mobile (<640px) like Dashboard Mobile, Crisp on Desktop */
     .home-nav-logo {
       height: 23px !important;
@@ -306,11 +312,11 @@
       <!-- Brand Logo: Emblem + Official Wordmark (100% Visible in Both Light & Dark Modes) -->
 
       <!-- Brand Logo: Official HAICHAIN Monochromatic Luxury Logo (Mobile & Desktop) -->
-      <a href="/" class="flex items-center group py-1 shrink-0" title="HAICHAIN">
+      <a href="/" class="flex items-center group py-2 pr-2 shrink-0 min-h-[44px] cursor-pointer touch-manipulation" title="HAICHAIN">
         <!-- Light Mode: Dark Logo -->
-        <img src="/assets/haichain-official-logo.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-light home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v20_harmonious_spacing';}">
+        <img src="/assets/haichain-official-logo.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-light home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v20_harmonious_spacing';}">
         <!-- Dark Mode: Pure White Logo -->
-        <img src="/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing';}">
+        <img src="/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing';}">
       </a>
 
 
@@ -389,7 +395,7 @@
 
         <!-- Mobile Hamburger Button -->
 
-        <button id="mobile-menu-btn" type="button" class="p-2 md:hidden rounded-xl border border-neutral-300 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 shrink-0 flex items-center justify-center cursor-pointer transition-colors" aria-label="Toggle navigation menu" aria-expanded="false">
+        <button id="mobile-menu-btn" type="button" class="min-w-[44px] min-h-[44px] p-2 md:hidden rounded-xl border border-neutral-300 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 shrink-0 flex items-center justify-center cursor-pointer transition-colors touch-manipulation" aria-label="Toggle navigation menu" aria-expanded="false">
           <span id="hamburger-icon" class="inline-flex items-center justify-center pointer-events-none">
             <i data-lucide="menu" class="w-5 h-5"></i>
           </span>
@@ -409,14 +415,14 @@
     <!-- Mobile Slide-Down Dropdown Menu -->
 
     <div id="mobile-menu" class="menu-closed md:hidden border-t border-brand-lightBorder dark:border-brand-border bg-white/98 dark:bg-[#0a0a0c]/98 backdrop-blur-2xl px-6 py-6 space-y-4 text-base font-medium shadow-2xl">
-      <a href="#ai2-philosophy" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
-      <a href="#market-evidence" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.market">Market Data</a>
-      <a href="#spending-pot" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.architecture">Architecture & Pot</a>
-      <a href="#comparison" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.comparison">Comparison</a>
-      <a href="#target-audience" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.audiences">Audiences</a>
-      <a href="#technical-status" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.status">Status</a>
-      <a href="#endgame" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.sovereignL1">Sovereign L1 Roadmap</a>
-      <a href="/whitepaper" target="_blank" class="mobile-nav-link block py-1 text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors">
+      <a href="#ai2-philosophy" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.philosophy">AI² Philosophy</a>
+      <a href="#market-evidence" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.market">Market Data</a>
+      <a href="#spending-pot" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.architecture">Architecture & Pot</a>
+      <a href="#comparison" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.comparison">Comparison</a>
+      <a href="#target-audience" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.audiences">Audiences</a>
+      <a href="#technical-status" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.status">Status</a>
+      <a href="#endgame" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.sovereignL1">Sovereign L1 Roadmap</a>
+      <a href="/whitepaper" target="_blank" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors">
         <span data-i18n="nav.whitepaper">Technical Whitepaper v1.0</span>
         <i data-lucide="external-link" class="w-4 h-4 text-neutral-400"></i>
       </a>
@@ -2381,10 +2387,9 @@
 
 
 
-    // Mobile Hamburger Menu Logic (Smooth Slide-Down "Chạy Xuống", Anti-Double-Tap Debounced)
+    // Mobile Hamburger Menu Logic (Smooth Slide-Down "Chạy Xuống", Native Clean Click Handling)
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    let lastMenuToggle = 0;
 
     function openMobileMenu() {
       if (!mobileMenu) return;
@@ -2423,10 +2428,6 @@
         e.preventDefault();
         e.stopPropagation();
       }
-      const now = Date.now();
-      if (now - lastMenuToggle < 350) return; // Prevent double trigger from touchend + synthetic click
-      lastMenuToggle = now;
-
       if (!mobileMenu) return;
       if (mobileMenu.classList.contains('menu-open')) {
         closeMobileMenu();
@@ -2437,14 +2438,17 @@
 
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-      mobileMenuBtn.addEventListener('touchend', toggleMobileMenu);
 
       document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          setTimeout(closeMobileMenu, 150);
-        });
-        link.addEventListener('touchend', () => {
-          setTimeout(closeMobileMenu, 150);
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          // For in-page anchor links (#id), allow the smooth scroll jump to execute, then close gracefully
+          if (href && href.startsWith('#')) {
+            setTimeout(closeMobileMenu, 250);
+          } else {
+            // For external or cross-page navigation, close immediately
+            closeMobileMenu();
+          }
         });
       });
 
