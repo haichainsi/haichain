@@ -120,6 +120,48 @@
       }
     }
 
+        /* Mobile Official Brand Flag Button (Optically Aligned next to HAICHAIN Logo) */
+    .haichain-brand-flag-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 23px !important;
+      width: 26px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      flex-shrink: 0 !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .haichain-brand-flag-badge {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 18px !important;
+      height: 13px !important;
+      max-width: 18px !important;
+      max-height: 13px !important;
+      border-radius: 2px !important;
+      overflow: hidden !important;
+      transform: translateY(1px) !important;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.15) !important;
+      pointer-events: none !important;
+      flex-shrink: 0 !important;
+    }
+    .haichain-brand-flag-badge svg {
+      width: 18px !important;
+      height: 13px !important;
+      max-width: 18px !important;
+      max-height: 13px !important;
+      display: block !important;
+    }
+    html.dark .haichain-brand-flag-badge {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
+    }
+
     /* Smooth Mobile Navigation Slide-Down ("Chạy Xuống") */
     #mobile-menu {
       transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -324,7 +366,7 @@
           <img src="/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing';}">
         </a>
         <!-- Mobile Language Switcher Mount (Right next to HAICHAIN Logo on mobile, identical to dashboard) -->
-        <div id="mobile-lang-mount" class="md:hidden shrink-0 flex items-center"></div>
+        <div id="mobile-lang-mount" class="md:hidden shrink-0 flex items-center h-[23px] w-[26px] overflow-hidden"></div>
       </div>
 
 

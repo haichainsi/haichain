@@ -4174,8 +4174,8 @@ function getInitialLanguage() {
     function renderMobileLanguageSwitcherHTML() {
     const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
     return `
-      <button type="button" class="lang-switch-btn haichain-brand-flag-btn" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
-        <span class="haichain-brand-flag-badge">
+      <button type="button" class="lang-switch-btn haichain-brand-flag-btn" style="display:flex!important;align-items:center!important;justify-content:center!important;height:23px!important;width:26px!important;padding:0!important;margin:0!important;border:none!important;background:transparent!important;cursor:pointer!important;flex-shrink:0!important;" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
+        <span class="haichain-brand-flag-badge" style="display:flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:13px!important;max-width:18px!important;max-height:13px!important;border-radius:2px!important;overflow:hidden!important;transform:translateY(1px)!important;box-shadow:0 0 0 1px rgba(0,0,0,0.15)!important;flex-shrink:0!important;">
           ${current.flagSvg}
         </span>
       </button>

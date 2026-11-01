@@ -161,6 +161,13 @@
       box-shadow: 0 0 0 1px rgba(0,0,0,0.15) !important;
       pointer-events: none !important;
     }
+    .haichain-brand-flag-badge svg {
+      width: 18px !important;
+      height: 13px !important;
+      max-width: 18px !important;
+      max-height: 13px !important;
+      display: block !important;
+    }
     html.dark .haichain-brand-flag-badge {
       box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
     }
@@ -383,7 +390,7 @@
             <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-dark haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix';}">
           </a>
           <!-- Mobile Language Switcher Mount (Locked Optical Alignment) -->
-          <div id="mobile-lang-mount" class="shrink-0 flex items-center"></div>
+          <div id="mobile-lang-mount" class="shrink-0 flex items-center h-[23px] w-[26px] overflow-hidden"></div>
         </div>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
