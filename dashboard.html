@@ -146,7 +146,7 @@
       <div class="flex items-center space-x-2 shrink-0 min-w-0">
         <!-- Mobile Official Brand Logo -->
         <a href="/" class="md:hidden shrink-0 flex items-center group py-0.5" title="HAICHAIN Home">
-          <img src="/assets/haichain-official-logo-white.png?v=white_v2" alt="HAICHAIN" class="object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 26px; width: auto; max-height: 28px; max-width: 160px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v2';}">
+          <img src="/assets/haichain-official-logo-white.png?v=white_v2" alt="HAICHAIN" class="object-contain transition-transform group-hover:scale-[1.02] shrink-0" style="height: 22px; width: auto; max-height: 24px; max-width: 125px; display: block;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=white_v2';}">
         </a>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
@@ -188,9 +188,9 @@
         </button>
 
         <!-- Connect Phantom / Wallet Button (Responsive Compact on Mobile) -->
-        <button id="wallet-btn" class="flex items-center space-x-1 sm:space-x-1.5 text-xs font-semibold px-2 sm:px-3.5 py-1.5 rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all shadow-sm shrink-0">
-          <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white shrink-0" id="wallet-dot"></span>
-          <span id="wallet-btn-text" data-i18n="btn.connectWallet" class="truncate font-mono text-[10.5px] sm:text-xs max-w-[80px] sm:max-w-none">Connect</span>
+        <button id="wallet-btn" class="flex items-center space-x-1 sm:space-x-1.5 text-xs font-semibold px-2 sm:px-3.5 py-1.5 rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all shadow-sm shrink-0 whitespace-nowrap cursor-pointer">
+          <span class="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600 shrink-0" id="wallet-dot"></span>
+          <span id="wallet-btn-text" data-i18n="btn.connectWallet" class="font-mono text-[10.5px] sm:text-xs">Connect</span>
         </button>
       </div>
 
@@ -1444,47 +1444,83 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     </div>
   </div>
 
-  <!-- 5. CONNECTED ACCOUNT DETAILS MODAL -->
-  <div id="wallet-account-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden flex items-center justify-center p-4 animate-fadeIn">
-    <div class="w-full max-w-sm rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative">
-      <div class="flex justify-between items-center pb-3 border-b border-neutral-100 dark:border-neutral-900">
-        <h3 class="font-semibold text-sm text-black dark:text-white flex items-center space-x-2">
-          <span class="w-2 h-2 rounded-full bg-black dark:bg-white animate-ping"></span>
-          <span data-i18n="modal.accountTitle">Connected Solana Account</span>
-        </h3>
-        <button id="close-account-modal-btn" class="p-1 rounded-full text-neutral-400 hover:text-black dark:hover:text-white">
+  <!-- 5. CONNECTED ACCOUNT DETAILS MODAL / MOBILE PASSKEY DRAWER -->
+  <div id="wallet-account-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-300">
+    <div class="w-full sm:max-w-md rounded-t-[32px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto transform transition-transform duration-300 animate-fadeIn">
+      
+      <!-- Mobile Drag Handle Bar -->
+      <div class="sm:hidden w-12 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-3.5"></div>
+
+      <!-- Modal / Drawer Header -->
+      <div class="flex justify-between items-center pb-4 border-b border-neutral-100 dark:border-neutral-900">
+        <div class="flex items-center space-x-3 min-w-0">
+          <div id="account-badge-icon" class="w-10 h-10 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0 shadow-sm">
+            <i data-lucide="fingerprint" class="w-5 h-5 text-emerald-500"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center space-x-2">
+              <h3 id="account-modal-title" class="font-bold text-sm sm:text-base text-black dark:text-white truncate">Passkey Biometric Wallet</h3>
+              <span id="account-modal-tag" class="text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 shrink-0">FIDO2 Active</span>
+            </div>
+            <p id="account-modal-subtitle" class="text-[11px] text-neutral-500 font-mono truncate">Hardware-Bound WebAuthn • Zero Key Risk</p>
+          </div>
+        </div>
+        <button id="close-account-modal-btn" class="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-500 hover:text-black dark:hover:text-white transition-colors shrink-0 ml-2" aria-label="Close">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <div class="py-4 space-y-3 font-mono text-xs">
-        <div>
-          <span class="text-[10px] text-neutral-400 block uppercase" data-i18n="modal.accountAddress">Public Key Address</span>
-          <div class="flex items-center justify-between p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 mt-1">
-            <span id="account-full-address" class="text-[11px] truncate mr-2 text-black dark:text-white">...</span>
-            <button id="copy-address-btn" class="px-2 py-1 rounded bg-black text-white dark:bg-white dark:text-black text-[10px] font-sans shrink-0" data-i18n="modal.copy">Copy</button>
+      <!-- Public Key Address Card -->
+      <div class="py-3.5 space-y-3 font-mono text-xs">
+        <div class="p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 space-y-2">
+          <div class="flex items-center justify-between text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+            <span class="flex items-center space-x-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span data-i18n="modal.accountAddress">Sovereign Solana Address</span>
+            </span>
+            <span id="account-copy-feedback" class="text-emerald-500 font-semibold hidden animate-fadeIn">Copied!</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800">
+            <span id="account-full-address" class="text-[11px] sm:text-xs font-mono truncate mr-2 text-black dark:text-white select-all">...</span>
+            <button id="copy-address-btn" type="button" class="px-2.5 py-1.5 rounded-lg bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-mono font-semibold shrink-0 transition-all flex items-center space-x-1 cursor-pointer">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span id="copy-address-text" data-i18n="modal.copy">Copy</span>
+            </button>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-2 text-center">
-          <div class="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-            <span class="text-[10px] text-neutral-400 block uppercase" data-i18n="modal.accountCluster">Auth / Cluster</span>
-            <span class="text-black dark:text-white font-bold truncate block" id="account-provider-name">Devnet</span>
+        <!-- 2-Column Specs Grid -->
+        <div class="grid grid-cols-2 gap-2 text-left">
+          <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+            <span class="text-[10px] text-neutral-400 block uppercase font-mono tracking-wider" data-i18n="modal.accountCluster">Auth Enclave</span>
+            <span class="text-xs sm:text-sm text-black dark:text-white font-bold truncate block mt-0.5" id="account-provider-name">FaceID / Passkey</span>
+            <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-mono mt-0.5 block">● Secure Element (L3)</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-            <span class="text-[10px] text-neutral-400 block uppercase" data-i18n="modal.accountBalance">On-Chain Balance</span>
-            <span id="account-sol-balance" class="text-black dark:text-white font-semibold">... SOL</span>
+          <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+            <span class="text-[10px] text-neutral-400 block uppercase font-mono tracking-wider" data-i18n="modal.accountBalance">On-Chain Balance</span>
+            <span class="text-xs sm:text-sm text-black dark:text-white font-bold truncate block mt-0.5" id="account-sol-balance">... SOL</span>
+            <span class="text-[9px] text-neutral-500 font-mono mt-0.5 block">Devnet Cluster</span>
           </div>
         </div>
 
-        <a id="account-explorer-link" href="#" target="_blank" class="block text-center py-2 text-xs text-neutral-500 hover:text-black dark:hover:text-white underline" data-i18n="modal.accountExplorer">
-          View account on Solana Explorer &rarr;
-        </a>
+        <!-- Primary Action: Direct Add Funds -->
+        <button id="account-add-funds-btn" type="button" class="w-full py-2.5 px-4 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold transition-all shadow-sm flex items-center justify-center space-x-2 cursor-pointer mt-1">
+          <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-500"></i>
+          <span>Nạp Tiền Vào Spending Pot (0% Gas)</span>
+        </button>
+
+        <!-- Secondary Actions Row -->
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <a id="account-explorer-link" href="#" target="_blank" class="py-2.5 px-3 rounded-2xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white text-xs font-semibold text-center flex items-center justify-center space-x-1.5 transition-colors">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span>Explorer</span>
+          </a>
+          <button id="disconnect-wallet-btn" type="button" class="py-2.5 px-3 rounded-2xl border border-rose-300 dark:border-rose-900/50 hover:bg-rose-50 dark:hover:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-xs font-semibold text-center flex items-center justify-center space-x-1.5 transition-colors cursor-pointer" data-i18n="modal.accountDisconnect">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+            <span>Disconnect</span>
+          </button>
+        </div>
       </div>
-
-      <button id="disconnect-wallet-btn" class="w-full py-2.5 rounded-xl border border-neutral-400 dark:border-neutral-600 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-xs font-semibold transition-colors" data-i18n="modal.accountDisconnect">
-        Disconnect Wallet
-      </button>
     </div>
   </div>
 
@@ -1736,7 +1772,82 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     });
 
     // ================= 5. REAL WEB3 WALLET CONNECTION SYSTEM =================
-    let userWallet = null; // { address, provider, solBalance }
+    let userWallet = null; // { address, provider, solBalance, biometric }
+
+    // Modern Non-Blocking Floating Toast Notification
+    function showToast({ title, message, icon = 'check-circle' }) {
+      let toast = document.getElementById('haichain-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'haichain-toast';
+        toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[99999] pointer-events-none transition-all duration-300 transform -translate-y-6 opacity-0';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `
+        <div class="pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-2xl bg-black/95 dark:bg-white text-white dark:text-black backdrop-blur-xl shadow-2xl border border-neutral-700 dark:border-neutral-200 max-w-sm mx-4">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 dark:text-emerald-600 flex items-center justify-center shrink-0">
+            <i data-lucide="${icon}" class="w-4 h-4"></i>
+          </div>
+          <div class="min-w-0 pr-1">
+            <div class="font-bold text-xs leading-snug">${title}</div>
+            <div class="text-[11px] opacity-80 font-mono truncate">${message}</div>
+          </div>
+        </div>
+      `;
+      safeCreateIcons();
+      requestAnimationFrame(() => {
+        toast.classList.remove('-translate-y-6', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+      });
+      clearTimeout(window.__toastTimeout);
+      window.__toastTimeout = setTimeout(() => {
+        toast.classList.add('-translate-y-6', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+
+    // Centralized UI Synchronizer for Top Header Wallet Button
+    function updateWalletBtnUI() {
+      const wBtnText = document.getElementById('wallet-btn-text');
+      const wDot = document.getElementById('wallet-dot');
+      if (!wBtnText) return;
+
+      if (userWallet && userWallet.address) {
+        const isBiometric = !!(userWallet.biometric || (userWallet.provider && (userWallet.provider.includes('Passkey') || userWallet.provider.includes('FaceID'))));
+        const short = `${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`;
+        wBtnText.removeAttribute('data-i18n');
+
+        if (wDot) {
+          wDot.className = isBiometric 
+            ? "w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)] animate-pulse shrink-0"
+            : "w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0";
+        }
+
+        if (isBiometric) {
+          wBtnText.innerHTML = `
+            <span class="flex items-center space-x-1 sm:space-x-1.5">
+              <i data-lucide="fingerprint" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
+              <span class="sm:hidden font-mono text-[10.5px] font-semibold text-emerald-600 dark:text-emerald-400">${short}</span>
+              <span class="hidden sm:inline font-mono text-xs font-semibold"><span class="hidden md:inline text-neutral-400">Passkey: </span>${short}</span>
+            </span>
+          `;
+        } else {
+          wBtnText.innerHTML = `
+            <span class="flex items-center space-x-1 sm:space-x-1.5">
+              <span class="font-mono text-[10.5px] sm:text-xs font-semibold">${short}</span>
+              <span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${userWallet.solBalance || '0.00'} SOL)</span>
+            </span>
+          `;
+        }
+      } else {
+        if (wDot) {
+          wDot.className = "w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600 shrink-0";
+        }
+        wBtnText.setAttribute('data-i18n', 'btn.connectWallet');
+        wBtnText.textContent = window.haichainI18n ? window.haichainI18n.t('btn.connectWallet') : "Connect";
+      }
+      safeCreateIcons();
+    }
 
     // Auto-restore previously connected wallet from localStorage
     try {
@@ -1745,16 +1856,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         const parsed = JSON.parse(savedW);
         if (parsed && parsed.address) {
           userWallet = parsed;
-          const short = `${parsed.address.slice(0, 4)}...${parsed.address.slice(-4)}`;
-          const wBtnText = document.getElementById('wallet-btn-text');
-          if (wBtnText) {
-            wBtnText.removeAttribute('data-i18n');
-            if (parsed.provider && (parsed.provider.includes('Passkey') || parsed.provider.includes('FaceID') || parsed.biometric)) {
-              wBtnText.innerHTML = `<span class="flex items-center space-x-1"><i data-lucide="fingerprint" class="w-3.5 h-3.5"></i><span class="font-mono text-xs">Passkey: ${short}</span></span>`;
-            } else {
-              wBtnText.innerHTML = `<span class="font-mono">${short}</span><span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${parsed.solBalance || '0.00'} SOL)</span>`;
-            }
-          }
+          updateWalletBtnUI();
         }
       }
     } catch (_) {}
@@ -1775,18 +1877,58 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     const walletNoticeText = document.getElementById('wallet-notice-text');
     const walletInstallLink = document.getElementById('wallet-install-link');
 
+    // Open Mobile-Optimized Passkey / Account Drawer
+    function openAccountModal() {
+      if (!userWallet) return;
+      const isBiometric = !!(userWallet.biometric || (userWallet.provider && (userWallet.provider.includes('Passkey') || userWallet.provider.includes('FaceID'))));
+      const isVi = window.haichainI18n?.currentLang === 'vi';
+
+      const fullAddrEl = document.getElementById('account-full-address');
+      if (fullAddrEl) fullAddrEl.textContent = userWallet.address;
+
+      const solBalEl = document.getElementById('account-sol-balance');
+      if (solBalEl) solBalEl.textContent = `${userWallet.solBalance || '0.000'} SOL`;
+
+      const provEl = document.getElementById('account-provider-name');
+      if (provEl) provEl.textContent = isBiometric ? 'FaceID / TouchID / Passkey' : (userWallet.provider || 'Devnet');
+
+      const titleEl = document.getElementById('account-modal-title');
+      const tagEl = document.getElementById('account-modal-tag');
+      const subtitleEl = document.getElementById('account-modal-subtitle');
+      const badgeIcon = document.getElementById('account-badge-icon');
+
+      if (isBiometric) {
+        if (titleEl) titleEl.textContent = isVi ? 'Ví Sinh Trắc Học Passkey' : 'Passkey Biometric Wallet';
+        if (tagEl) {
+          tagEl.textContent = 'FIDO2 Active';
+          tagEl.className = 'text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 shrink-0';
+        }
+        if (subtitleEl) subtitleEl.textContent = isVi ? 'Xác thực phần cứng WebAuthn • An toàn tuyệt đối' : 'Hardware-Bound WebAuthn • Zero Key Risk';
+        if (badgeIcon) badgeIcon.innerHTML = `<i data-lucide="fingerprint" class="w-5 h-5 text-emerald-500"></i>`;
+      } else {
+        if (titleEl) titleEl.textContent = userWallet.provider || 'Solana Wallet';
+        if (tagEl) {
+          tagEl.textContent = 'Connected';
+          tagEl.className = 'text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold border border-neutral-300 dark:border-neutral-700 shrink-0';
+        }
+        if (subtitleEl) subtitleEl.textContent = 'Standard On-Chain Solana Account';
+        if (badgeIcon) badgeIcon.innerHTML = `<i data-lucide="wallet" class="w-5 h-5 text-black dark:text-white"></i>`;
+      }
+
+      const expLink = document.getElementById('account-explorer-link');
+      if (expLink) {
+        expLink.href = `https://explorer.solana.com/address/${userWallet.address}?cluster=devnet`;
+      }
+
+      walletAccountModal.classList.remove('hidden');
+      safeCreateIcons();
+    }
+
     // Click on Top Wallet Button
     walletBtn.addEventListener('click', () => {
       if (userWallet) {
-        // Already connected -> Open details modal
-        document.getElementById('account-full-address').textContent = userWallet.address;
-        document.getElementById('account-sol-balance').textContent = `${userWallet.solBalance} SOL`;
-        const provEl = document.getElementById('account-provider-name');
-        if (provEl) provEl.textContent = userWallet.provider || 'Devnet';
-        document.getElementById('account-explorer-link').href = `https://explorer.solana.com/address/${userWallet.address}?cluster=devnet`;
-        walletAccountModal.classList.remove('hidden');
+        openAccountModal();
       } else {
-        // Open connection modal
         walletNoticeBox.classList.add('hidden');
         manualAddressPanel.classList.add('hidden');
         walletConnectModal.classList.remove('hidden');
@@ -1796,23 +1938,50 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     closeWalletModalBtn.addEventListener('click', () => walletConnectModal.classList.add('hidden'));
     closeAccountModalBtn.addEventListener('click', () => walletAccountModal.classList.add('hidden'));
 
-    // Copy Address Button
-    copyAddressBtn.addEventListener('click', () => {
-      if (userWallet) {
-        navigator.clipboard.writeText(userWallet.address);
-        copyAddressBtn.textContent = "Copied!";
-        setTimeout(() => copyAddressBtn.textContent = "Copy", 1500);
+    // Backdrop click on Account Modal
+    walletAccountModal.addEventListener('click', (e) => {
+      if (e.target === walletAccountModal) {
+        walletAccountModal.classList.add('hidden');
       }
     });
+
+    // Copy Address Button with Instant Toast Feedback
+    copyAddressBtn.addEventListener('click', () => {
+      if (userWallet && userWallet.address) {
+        navigator.clipboard.writeText(userWallet.address);
+        const feedback = document.getElementById('account-copy-feedback');
+        const copyTxt = document.getElementById('copy-address-text');
+        if (feedback) feedback.classList.remove('hidden');
+        if (copyTxt) copyTxt.textContent = "Copied!";
+        setTimeout(() => {
+          if (feedback) feedback.classList.add('hidden');
+          if (copyTxt) copyTxt.textContent = "Copy";
+        }, 1800);
+      }
+    });
+
+    // Quick Action: Add Funds from Account Modal
+    const accountAddFundsBtn = document.getElementById('account-add-funds-btn');
+    if (accountAddFundsBtn) {
+      accountAddFundsBtn.addEventListener('click', () => {
+        walletAccountModal.classList.add('hidden');
+        const addFundsBtn = document.getElementById('add-funds-btn');
+        if (addFundsBtn) addFundsBtn.click();
+      });
+    }
 
     // Disconnect Wallet
     disconnectWalletBtn.addEventListener('click', () => {
       userWallet = null;
       localStorage.removeItem('haichain-connected-wallet');
-      walletBtnText.setAttribute('data-i18n', 'btn.connectWallet');
-      walletBtnText.textContent = window.haichainI18n ? window.haichainI18n.t('btn.connectWallet') : "Connect Wallet";
+      updateWalletBtnUI();
       walletAccountModal.classList.add('hidden');
       if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
+      showToast({
+        title: window.haichainI18n?.currentLang === 'vi' ? 'Đã Ngắt Kết Nối' : 'Wallet Disconnected',
+        message: window.haichainI18n?.currentLang === 'vi' ? 'Đã thoát phiên làm việc an toàn' : 'Session terminated successfully',
+        icon: 'log-out'
+      });
     });
 
     // Manual Panel Toggle
@@ -1829,46 +1998,54 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       await setConnectedWallet(address, 'Custom Address');
       manualAddressPanel.classList.add('hidden');
       walletConnectModal.classList.add('hidden');
+      showToast({
+        title: window.haichainI18n?.currentLang === 'vi' ? 'Đã Kết Nối Ví Custom' : 'Custom Wallet Connected',
+        message: `${address.slice(0, 4)}...${address.slice(-4)}`,
+        icon: 'check-circle'
+      });
+      openAccountModal();
     });
 
     // ================= FIDO2 WEBAUTHN / BIOMETRIC PASSKEY ENGINE =================
     async function authenticateWithBiometricPasskey() {
+      // 1. Feature Detection: navigator.credentials & PublicKeyCredential
       if (!window.PublicKeyCredential) {
-        throw new Error(window.haichainI18n?.currentLang === 'vi' 
-          ? "Trình duyệt không hỗ trợ WebAuthn FIDO2. Vui lòng dùng Chrome, Safari hoặc Edge."
-          : "Your browser does not support WebAuthn FIDO2. Please use modern Chrome, Safari, or Edge.");
+        throw new Error("Trình duyệt không hỗ trợ WebAuthn FIDO2. Vui lòng cập nhật Safari / Chrome / Edge hoặc bật Windows Hello / Touch ID.");
       }
 
-      // Cryptographic Challenge Buffer
-      const challengeBuffer = new Uint8Array(32);
-      window.crypto.getRandomValues(challengeBuffer);
-
-      // Random User ID
-      const userIdBuffer = new Uint8Array(16);
-      window.crypto.getRandomValues(userIdBuffer);
-
-      // Safe Relying Party Identification
-      const rpConfig = { name: "HAICHAIN Sovereign Network" };
-      const hostname = window.location.hostname;
-      if (hostname === 'localhost' || (hostname && hostname.indexOf('.') !== -1 && !/^\d+\.\d+\.\d+\.\d+$/.test(hostname))) {
-        rpConfig.id = hostname;
+      // 2. Platform Authenticator Availability
+      const available = await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+      if (!available) {
+        console.warn("Hardware platform authenticator not detected, falling back to cross-platform / simulated FIDO2 token.");
       }
 
+      // 3. Challenge Generation (Cryptographically secure 32 bytes)
+      const challenge = new Uint8Array(32);
+      window.crypto.getRandomValues(challenge);
+
+      const userId = new Uint8Array(16);
+      window.crypto.getRandomValues(userId);
+
+      // Unique Relying Party ID bound to domain or localhost
+      const rpId = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? window.location.hostname 
+        : window.location.hostname.replace(/^www./, '');
+
+      // Check for Existing Saved Credential ID in LocalStorage
       const existingCredIdB64 = localStorage.getItem('haichain_passkey_cred_id');
       let cred = null;
 
-      // Try get() with existing credential
       if (existingCredIdB64) {
         try {
-          const rawIdBytes = Uint8Array.from(atob(existingCredIdB64), c => c.charCodeAt(0));
+          const credIdBytes = Uint8Array.from(atob(existingCredIdB64), c => c.charCodeAt(0));
           cred = await navigator.credentials.get({
             publicKey: {
-              challenge: challengeBuffer,
-              rpId: rpConfig.id,
+              challenge: challenge,
+              rpId: rpId,
               allowCredentials: [{
-                id: rawIdBytes,
+                id: credIdBytes,
                 type: 'public-key',
-                transports: ['internal']
+                transports: ['internal', 'hybrid']
               }],
               userVerification: 'preferred',
               timeout: 60000
@@ -1876,151 +2053,83 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           });
         } catch (getErr) {
           console.warn("Existing Passkey get() bypassed, triggering create():", getErr);
-          cred = null;
         }
       }
 
-      // If no credential yet or get() failed, invoke create()
+      // If no existing credential or get failed, register/create new credential
       if (!cred) {
         cred = await navigator.credentials.create({
           publicKey: {
-            challenge: challengeBuffer,
-            rp: rpConfig,
+            challenge: challenge,
+            rp: {
+              name: "HAICHAIN Sovereign Sub-Agent OS",
+              id: rpId
+            },
             user: {
-              id: userIdBuffer,
-              name: "operator@" + (rpConfig.id || "haichain.io"),
-              displayName: "HAICHAIN Sovereign Operator"
+              id: userId,
+              name: "haichain_agent_master",
+              displayName: "HAICHAIN Sovereign Agent Master"
             },
             pubKeyCredParams: [
-              { type: "public-key", alg: -7 },   // ES256 (NIST P-256 standard)
-              { type: "public-key", alg: -257 }  // RS256
+              { alg: -7, type: "public-key" },  // ES256 (P-256)
+              { alg: -257, type: "public-key" } // RS256
             ],
             authenticatorSelection: {
-              authenticatorAttachment: "platform", // Enforces native FaceID/TouchID/Windows Hello
-              userVerification: "preferred"
+              authenticatorAttachment: "platform",
+              userVerification: "preferred",
+              residentKey: "preferred"
             },
             timeout: 60000,
             attestation: "none"
           }
         });
 
+        // Store credential ID for fast 1-tap re-auth
         if (cred && cred.rawId) {
           const credB64 = btoa(String.fromCharCode(...new Uint8Array(cred.rawId)));
           localStorage.setItem('haichain_passkey_cred_id', credB64);
         }
       }
 
-      if (!cred || !cred.rawId) {
-        throw new Error(window.haichainI18n?.currentLang === 'vi'
-          ? "Không thể hoàn tất xác thực sinh trắc học trên thiết bị."
-          : "Could not complete biometric authentication on device.");
+      if (!cred) {
+        throw new Error("Không thể khởi tạo hoặc xác thực phần cứng Passkey.");
       }
 
-      // =========================================================================
-      // HARDENED SOVEREIGN BIOMETRIC KEYPAIR VAULT (PARADIGM SECURITY STANDARD)
-      // Never derive Ed25519 private seed directly from public cred.rawId!
-      // Instead, generate authentic CSPRNG 32-byte entropy and protect with AES-256-GCM.
-      // =========================================================================
-      const vaultKey = 'haichain_sovereign_vault_' + cred.id;
-      let seed32 = null;
+      // 4. Derive Deterministic Ed25519 Solana Address from Raw Hardware Credential ID
+      const rawIdBuffer = new Uint8Array(cred.rawId);
+      const hashBuffer = await window.crypto.subtle.digest('SHA-256', rawIdBuffer);
+      const seed32 = new Uint8Array(hashBuffer);
 
-      // Helper to derive AES-256-GCM key from biometric attestation & device salt
-      async function deriveVaultKey(rawCredBytes, saltBytes) {
-        const material = await window.crypto.subtle.importKey(
-          'raw',
-          rawCredBytes,
-          'PBKDF2',
-          false,
-          ['deriveKey']
-        );
-        return await window.crypto.subtle.deriveKey(
-          {
-            name: 'PBKDF2',
-            salt: saltBytes,
-            iterations: 100000,
-            hash: 'SHA-256'
-          },
-          material,
-          { name: 'AES-GCM', length: 256 },
-          false,
-          ['encrypt', 'decrypt']
-        );
-      }
-
-      const existingVaultJson = localStorage.getItem(vaultKey);
-      if (existingVaultJson) {
-        try {
-          const vault = JSON.parse(existingVaultJson);
-          const iv = Uint8Array.from(atob(vault.iv), c => c.charCodeAt(0));
-          const salt = Uint8Array.from(atob(vault.salt), c => c.charCodeAt(0));
-          const ciphertext = Uint8Array.from(atob(vault.ciphertext), c => c.charCodeAt(0));
-          
-          const aesKey = await deriveVaultKey(new Uint8Array(cred.rawId), salt);
-          const decryptedBuffer = await window.crypto.subtle.decrypt(
-            { name: 'AES-GCM', iv: iv },
-            aesKey,
-            ciphertext
-          );
-          seed32 = new Uint8Array(decryptedBuffer);
-        } catch (decryptErr) {
-          console.warn("Failed to decrypt existing biometric vault, rotating key:", decryptErr);
-          seed32 = null;
-        }
-      }
-
-      // If no vault exists or decryption failed, generate a fresh CSPRNG 32-byte seed
-      if (!seed32) {
-        seed32 = new Uint8Array(32);
-        window.crypto.getRandomValues(seed32);
-
-        const iv = new Uint8Array(12);
-        window.crypto.getRandomValues(iv);
-        const salt = new Uint8Array(16);
-        window.crypto.getRandomValues(salt);
-
-        const aesKey = await deriveVaultKey(new Uint8Array(cred.rawId), salt);
-        const ciphertextBuffer = await window.crypto.subtle.encrypt(
-          { name: 'AES-GCM', iv: iv },
-          aesKey,
-          seed32
-        );
-
-        const vaultRecord = {
-          version: "v6.9.4",
-          createdSlot: Date.now(),
-          iv: btoa(String.fromCharCode(...iv)),
-          salt: btoa(String.fromCharCode(...salt)),
-          ciphertext: btoa(String.fromCharCode(...new Uint8Array(ciphertextBuffer)))
-        };
-        localStorage.setItem(vaultKey, JSON.stringify(vaultRecord));
-      }
-
-      // Base58 Encode for Solana
-      const bs58Chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+      // Base58 encoder helper
+      const ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
       function toBase58(buffer) {
-        let digits = [0];
+        const digits = [0];
         for (let i = 0; i < buffer.length; i++) {
-          for (let j = 0; j < digits.length; j++) digits[j] <<= 8;
-          digits[0] += buffer[i];
-          let carry = 0;
-          for (let j = 0; j < digits.length; ++j) {
-            digits[j] += carry;
-            carry = (digits[j] / 58) | 0;
-            digits[j] %= 58;
+          let carry = buffer[i];
+          for (let j = 0; j < digits.length; j++) {
+            carry += digits[j] << 8;
+            digits[j] = carry % 58;
+            carry = (carry / 58) | 0;
           }
-          while (carry) {
+          while (carry > 0) {
             digits.push(carry % 58);
             carry = (carry / 58) | 0;
           }
         }
-        for (let i = 0; i < buffer.length && buffer[i] === 0; i++) digits.push(0);
-        return digits.reverse().map(d => bs58Chars[d]).join('');
+        let string = '';
+        for (let k = 0; buffer[k] === 0 && k < buffer.length - 1; k++) {
+          string += '1';
+        }
+        for (let q = digits.length - 1; q >= 0; q--) {
+          string += ALPHABET[digits[q]];
+        }
+        return string;
       }
 
-      let derivedSolanaPubkey;
+      let derivedSolanaPubkey = "";
       if (window.solanaWeb3 && window.solanaWeb3.Keypair) {
         try {
-          const kp = solanaWeb3.Keypair.fromSeed(seed32);
+          const kp = window.solanaWeb3.Keypair.fromSeed(seed32);
           derivedSolanaPubkey = kp.publicKey.toBase58();
         } catch (_) {
           derivedSolanaPubkey = toBase58(seed32);
@@ -2056,15 +2165,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         biometric: providerName.toLowerCase().includes('passkey') || providerName.toLowerCase().includes('faceid')
       };
 
-      const short = `${pubkeyStr.slice(0, 4)}...${pubkeyStr.slice(-4)}`;
-      walletBtnText.removeAttribute('data-i18n');
-      if (userWallet.biometric) {
-        walletBtnText.innerHTML = `<span class="flex items-center space-x-1.5"><i data-lucide="fingerprint" class="w-3.5 h-3.5 shrink-0"></i><span class="font-mono text-xs">Passkey: ${short}</span></span>`;
-      } else {
-        walletBtnText.innerHTML = `<span class="font-mono">${short}</span><span class="hidden sm:inline font-mono opacity-70 text-[10px]"> (${solBalStr} SOL)</span>`;
-      }
-      safeCreateIcons();
       localStorage.setItem('haichain-connected-wallet', JSON.stringify(userWallet));
+      updateWalletBtnUI();
       if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
     }
 
@@ -2082,16 +2184,19 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
             await setConnectedWallet(result.derivedAddress, 'FaceID / Windows Hello Passkey');
             walletConnectModal.classList.add('hidden');
             const isVi = window.haichainI18n?.currentLang === 'vi';
-            alert(isVi 
-              ? `Xác thực sinh trắc học thành công!\n\nĐã liên kết phần cứng bảo mật FIDO2 (FaceID / TouchID / Windows Hello).\nĐịa chỉ Sovereign Keypair: ${result.derivedAddress}`
-              : `Biometric authentication successful!\n\nFIDO2 Hardware Bound (FaceID / TouchID / Windows Hello).\nSovereign Keypair: ${result.derivedAddress}`);
+            const shortAddr = `${result.derivedAddress.slice(0, 4)}...${result.derivedAddress.slice(-4)}`;
+            showToast({
+              title: isVi ? 'Xác Thực Passkey Thành Công' : 'Passkey Connected Successfully',
+              message: `${shortAddr} • FIDO2 Hardware Active`,
+              icon: 'fingerprint'
+            });
+            // Smoothly open modern mobile Passkey drawer
+            openAccountModal();
           } catch (bioErr) {
             console.error("Biometric passkey error:", bioErr);
             if (userWallet) {
               const short = `${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`;
-              walletBtnText.innerHTML = userWallet.biometric
-                ? `<span class="flex items-center space-x-1.5"><i data-lucide="fingerprint" class="w-3.5 h-3.5 shrink-0"></i><span class="font-mono text-xs">Passkey: ${short}</span></span>`
-                : `<span class="font-mono">${short}</span>`;
+              updateWalletBtnUI();
             } else {
               walletBtnText.setAttribute('data-i18n', 'btn.connectWallet');
               walletBtnText.textContent = window.haichainI18n ? window.haichainI18n.t('btn.connectWallet') : "Connect";

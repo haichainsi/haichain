@@ -292,6 +292,24 @@ pub mod haichain_core {
         msg!("HAICHAIN: Master owner advanced min_valid_nonce to {}", new_min_nonce);
         Ok(())
     }
+
+    /// 7. UPDATE COMPOSITE MERKLE ROOT (DYNAMIC CAPABILITY ROTATION & PROVIDER EXPANSION)
+    /// Allows master owner to atomically update the composite capability + whitelist root,
+    /// enabling long-term ticket replenishment, sub-agent delegation, and provider onboarding.
+    pub fn update_composite_root(
+        ctx: Context<UpdateRootContext>,
+        new_composite_root: [u8; 32],
+    ) -> Result<()> {
+        // NOMAD BRIDGE DEFENSE: Strictly forbid uninitialized 0x0 Merkle root
+        require!(new_composite_root != [0u8; 32], HaiChainMasterError::EmptyNomadRootForbidden);
+
+        let vault = &mut ctx.accounts.agent_vault;
+        require!(!vault.panic_kill_switch_tripped, HaiChainMasterError::VaultUnderPanicState);
+
+        vault.composite_root = new_composite_root;
+        msg!("HAICHAIN: Master owner updated composite root successfully.");
+        Ok(())
+    }
 }
 
 // ============================================================================
@@ -453,6 +471,17 @@ pub struct ReclaimNullifierContext<'info> {
 
 #[derive(Accounts)]
 pub struct AdvanceNonceContext<'info> {
+    #[account(
+        mut,
+        has_one = master_owner @ HaiChainMasterError::UnauthorizedOwner
+    )]
+    pub agent_vault: Account<'info, MasterAgentVault>,
+
+    pub master_owner: Signer<'info>,
+}
+
+#[derive(Accounts)]
+pub struct UpdateRootContext<'info> {
     #[account(
         mut,
         has_one = master_owner @ HaiChainMasterError::UnauthorizedOwner
