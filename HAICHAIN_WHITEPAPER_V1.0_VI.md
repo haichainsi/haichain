@@ -465,6 +465,53 @@ Khoản vốn này sẽ bị chôn vùi vĩnh viễn, tạo ra rào cản chi ph
 
 ---
 
+### 4.4. Bộ Công Cụ Lập Trình Viên Thực Chiến (Developer Quickstart & Drop-in SDK)
+Nhằm triệt tiêu hoàn toàn rào cản gia nhập cho hàng triệu kỹ sư AI và nhà phát triển phần mềm toàn cầu, HAICHAIN cung cấp bộ công cụ phát triển phần mềm `@haichain/sdk` (TypeScript/Node.js) và `haichain-py` (Python) theo mô hình **Middleware Wrapper (Drop-in Interceptor)**. Lập trình viên không cần phải nắm rõ kiến trúc Solana RPC hay cấu trúc cây Merkle phức tạp, chỉ cần bọc hàm `fetch` hoặc client gọi LLM có sẵn:
+
+```typescript
+import { wrapHaiChain } from '@haichain/sdk';
+
+// 1. Khởi tạo kết nối với Hũ chi tiêu an toàn của Agent (chỉ 2 dòng)
+const haiFetch = wrapHaiChain(fetch, { 
+  potAddress: "POT_DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk", 
+  maxPerCallUsdt: 0.001 
+});
+
+// 2. Gọi API như bình thường - SDK tự động đính kèm vé vi thanh toán nano-cent
+const response = await haiFetch("https://api.deepseek.com/v1/chat", {
+  method: "POST",
+  body: JSON.stringify({ prompt: "Phân tích dữ liệu tài chính thời gian thực..." })
+});
+```
+
+Toàn bộ quy trình xác thực số dư, kiểm tra trần chi phí và ký duyệt mật mã diễn ra hoàn toàn tự động ở tầng ngầm, biến bất kỳ tác tử AI hiện có nào thành một thực thể kinh tế tự hành chỉ trong vòng 60 giây.
+
+### 4.5. Chuẩn Hóa Giao Thức Ngữ Cảnh Mô Hình (Anthropic Model Context Protocol - MCP Integration)
+Đáp ứng xu hướng chuẩn hóa toàn cầu về giao tiếp giữa AI và công cụ ngoại vi, HAICHAIN phát hành chính thức gói mã nguồn mở `@haichain/mcp-server` tuân thủ tiêu chuẩn **Model Context Protocol (MCP)** do Anthropic khởi xướng. 
+
+Lập trình viên chỉ cần thêm một khối cấu hình JSON đơn giản vào tệp `claude_desktop_config.json`, Cursor IDE hoặc bất kỳ Agent Framework nào hỗ trợ MCP:
+
+```json
+{
+  "mcpServers": {
+    "haichain-vault": {
+      "command": "npx",
+      "args": ["-y", "@haichain/mcp-server"],
+      "env": {
+        "HAICHAIN_POT_ADDRESS": "POT_DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
+      }
+    }
+  }
+}
+```
+
+Khi máy chủ MCP được nạp, mô hình ngôn ngữ lớn (LLM) sẽ tự động sở hữu 3 công cụ (Tools) tài chính tiêu chuẩn hóa:
+1. `check_spending_pot_balance`: Tác tử tự kiểm tra hạn mức ngân sách còn lại trong hũ trước khi quyết định nhận nhiệm vụ phức tạp.
+2. `pay_for_resource`: Tác tử tự động giải ngân vi thanh toán nano-cent để mua API, thuê năng lực tính toán GPU hoặc truy xuất dữ liệu độc quyền.
+3. `emergency_freeze_pot`: Tác tử tự vệ hoặc tác tử giám sát độc lập kích hoạt khóa khẩn cấp hũ chi tiêu nếu phát hiện dấu hiệu bất thường từ nhà cung cấp dịch vụ đối tác.
+
+---
+
 ## CHƯƠNG 5: CỖ MÁY BÙ TRỪ & NÉN DỮ LIỆU ĐA PHƯƠNG
 
 Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần suất cao giữa hàng ngàn tác tử AI và các nhà cung cấp dịch vụ:
@@ -506,6 +553,32 @@ Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần su�
 1. **Tầng Cao Cấp (Senior Tranche - 80% Vốn):** Được trích lũy từ doanh thu phí bù trừ ròng của mạng lưới bằng 100% USDT/USDC và SOL nguyên chất. Khi một tác tử vỡ nợ giữa chu kỳ, Tầng Cao Cấp chi trả 1:1 ngay lập tức bằng stablecoin cho các đối tác, hoàn toàn không bán bất kỳ token `$HAISI` nào ra thị trường.
 2. **Bất Biến Chống Bán Tháo & Trái Phiếu Nợ Giảm Giá (dHAISI Bonds):** Nếu sự cố thanh lý toàn cầu vượt quá quy mô của Tầng Cao Cấp, hợp đồng thông minh cấm tuyệt đối việc xả `$HAISI` lên các sàn giao dịch. Thay vào đó, giao thức tự động phát hành **Trái Phiếu Nợ Haichain (dHAISI Bonds)** với mức chiết khấu 15% cho các quỹ tạo lập thị trường, được hoàn trả dần trong 90 ngày từ dòng tiền phí vận hành thực tế của hệ thống.
 
+
+---
+
+### 5.3. Kênh Trạng Thái Luồng Vi Mô Optimistic (Optimistic Streaming State Channels - Zero-Stall Inference)
+Mặc dù Solana L1 cung cấp tốc độ chốt giao dịch kỷ lục 400ms với mức phí $0.000001, các luồng suy luận AI tần số cực cao (phát token với chu kỳ 10-30ms) vẫn đòi hỏi một cơ chế bù trừ tức thời để triệt tiêu hoàn toàn độ trễ mạng và ngăn chặn nguy cơ tắc nghẽn giao dịch khi mạng Solana có sự đột biến tải (congestion spikes).
+
+HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc **Kênh Trạng Thái Luồng Vi Mô Song Song (Hybrid Optimistic State Channels)**:
+
+```
+[ Agent / Consumer ]                                   [ AI Service Provider ]
+        |                                                        |
+        |====== (1) Mở Kênh & Khóa Ký Quỹ On-chain ($1.00 USDT) ===>| [Solana L1]
+        |                                                        |
+        |------ (2) Ký Vé Trạng Thái Tầng RAM (< 5ms / Tick) ----->| (Stream Token)
+        |------ (Voucher: SessionID, Nonce, Cumulative_Amount) ->| (Zero Latency)
+        |                                                        |
+        |<===== (3) Quyết Toán Gom Duy Nhất 1 Vé Nonce Max =======| [Solana L1]
+        |                                                        |
+```
+
+1. **Khóa Ký Quỹ Ban Đầu (On-chain Escrow Lock):** Khi khởi tạo phiên làm việc, Agent khóa một lượng quỹ nhỏ (ví dụ $1.00 USDT) từ Spending Pot vào một tài khoản PDA chuyên dụng của State Channel trên Solana L1.
+2. **Ký Luồng Siêu Tốc Ngoài Chuỗi (Off-chain Tick Signatures < 5ms):** Trong suốt quá trình nhận luồng phản hồi từ AI Provider (stream từng cụm token), Agent liên tục ký các vé điện tử vi mô (Micro-Vouchers) bằng cặp khóa Ed25519 tại tầng RAM:
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}(\text{SessionID}, k, \text{CumulativeAmount}_k)$$
+   Quá trình này diễn ra hoàn toàn ngoài chuỗi qua kết nối WebSocket/gRPC bảo mật, đạt độ trễ dưới 5ms, **hoàn toàn độc lập với trạng thái tải của blockchain và loại bỏ 100% tình trạng giật lag suy luận (zero-stall inference)**.
+3. **Quyết Toán Gom Trên Chuỗi (Batched On-chain Settlement):** Khi kết thúc phiên hội thoại hoặc định kỳ sau mỗi 10-15 phút, AI Provider chỉ cần nộp **duy nhất 1 vé có chỉ số Nonce cao nhất** lên Solana Anchor Program để rút toàn bộ khoản thanh toán tích lũy. Hợp đồng thông minh tự động hoàn trả số dư chưa tiêu về Master Pot của Agent.
+4. **Bất Biến Rút Tiền Hết Hạn (Timeout Retract Invariant):** Nếu nhà cung cấp dịch vụ ngắt kết nối đột ngột hoặc mạng có sự cố bất khả kháng, sau khoảng thời gian khóa ấn định (ví dụ 60 giây), Agent có quyền gọi hàm `close_channel_expired` trên Solana để rút 100% số tiền còn lại về tài khoản chính, đảm bảo tuyệt đối không có rủi ro thất thoát vốn.
 
 ---
 
