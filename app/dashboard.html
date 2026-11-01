@@ -48,9 +48,10 @@
   <script src="/app/dialog.js?v=v3_modal"></script>
   <script src="/app/i18n.js?v=v25_back_to_home"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
-  <script src="/app/pdf-modal.js?v=v1_whitepaper"></script>
+  <script src="/pdfjs/pdf.min.js"></script>
+  <script src="/app/pdf-modal.js?v=v2_mobile_reader"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v9_en_docs"></script>
+  <script src="/app/sale-controller.js?v=v10_modal_delegation"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -3992,7 +3993,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           <!-- Bottom Action Links -->
           <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900 flex flex-wrap items-center justify-between gap-3 text-xs">
             <div class="flex items-center space-x-3">
-              <a href="/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf" target="_blank" class="underline hover:text-black dark:hover:text-white text-neutral-500 flex items-center space-x-1 font-mono">
+              <a href="/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf" onclick="event.preventDefault(); window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', 'HAICHAIN Pre-Seed SAFT Agreement (Standard English Edition)');" class="underline hover:text-black dark:hover:text-white text-neutral-500 flex items-center space-x-1 font-mono cursor-pointer">
                 <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
                 <span>${isVi ? 'Hợp Đồng SAFT Tiếng Anh (.PDF)' : 'Official SAFT Agreement'}</span>
               </a>
