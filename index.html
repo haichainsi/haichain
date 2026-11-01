@@ -316,12 +316,16 @@
       <!-- Brand Logo: Emblem + Official Wordmark (100% Visible in Both Light & Dark Modes) -->
 
       <!-- Brand Logo: Official HAICHAIN Monochromatic Luxury Logo (Mobile & Desktop) -->
-      <a href="/" class="flex items-center group py-2 pr-2 shrink-0 min-h-[44px] cursor-pointer touch-manipulation" title="HAICHAIN">
-        <!-- Light Mode: Dark Logo -->
-        <img src="/assets/haichain-official-logo.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-light home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v20_harmonious_spacing';}">
-        <!-- Dark Mode: Pure White Logo -->
-        <img src="/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing';}">
-      </a>
+      <div class="flex items-center shrink-0 space-x-1.5 self-center">
+        <a href="/" class="flex items-center group py-2 pr-0.5 shrink-0 cursor-pointer touch-manipulation" title="HAICHAIN">
+          <!-- Light Mode: Dark Logo -->
+          <img src="/assets/haichain-official-logo.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-light home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v20_harmonious_spacing';}">
+          <!-- Dark Mode: Pure White Logo -->
+          <img src="/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing" alt="HAICHAIN" class="logo-dark home-nav-logo h-[23px] sm:h-[30px] md:h-[32px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02] pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v20_harmonious_spacing';}">
+        </a>
+        <!-- Mobile Language Switcher Mount (Right next to HAICHAIN Logo on mobile, identical to dashboard) -->
+        <div id="mobile-lang-mount" class="md:hidden shrink-0 flex items-center"></div>
+      </div>
 
 
 
@@ -353,7 +357,7 @@
 
         <!-- Multi-Language Switcher Mount -->
 
-        <div id="lang-switcher-mount" class="shrink-0"></div>
+        <div id="lang-switcher-mount" class="hidden md:flex shrink-0"></div>
 
 
 
