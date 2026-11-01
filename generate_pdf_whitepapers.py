@@ -238,6 +238,108 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_domain = "haichain.si (탈중앙화 초지능)"
         lbl_security = "암호학적 형식 검증"
         val_security = "수학적 형식 검증 • 제로 그리핑 표준"
+    elif lang == "es":
+        doc_title = "LIBRO BLANCO OFICIAL DE HAICHAIN v1.0"
+        doc_subtitle = "Sistema Operativo Financiero y Cognitivo Universal para Máquinas Autónomas - La Base para la Superinteligencia Descentralizada"
+        doc_edition = "Libro Blanco Oficial v1.0 • Edición Estándar Institucional"
+        brand_sub_text = "Sistema Operativo Financiero y Cognitivo Universal para Máquinas Autónomas"
+        running_header_left = "LIBRO BLANCO HAICHAIN v1.0"
+        running_header_right = "haichain.si"
+        running_footer_left = "CONFIDENCIAL Y PROPIETARIO • GRUPO DE TRABAJO GLOBAL DE SISTEMAS HAICHAIN"
+        tag_text = "SISTEMA OPERATIVO DE SUPERINTELIGENCIA DESCENTRALIZADA"
+        lbl_settlement = "Activo Principal de Liquidación"
+        val_settlement = "USDT (Tether USD SPL)"
+        lbl_token = "Gas y Gobernanza Soberana"
+        val_token = "$HAISI (Suministro Fijo: 1.000.000.000)"
+        lbl_domain = "Dominio de Red Autónoma"
+        val_domain = "haichain.si (Superinteligencia)"
+        lbl_security = "Verificación Criptográfica Formal"
+        val_security = "Verificación Matemática • Estándar Zero-Griefing"
+    elif lang == "fr":
+        doc_title = "LIVRE BLANC OFFICIEL HAICHAIN v1.0"
+        doc_subtitle = "Système d'Exploitation Financier et Cognitif Universel pour Machines Autonomes - Le Socle de la Superintelligence Décentralisée"
+        doc_edition = "Livre Blanc Officiel v1.0 • Édition Standard Institutionnelle"
+        brand_sub_text = "Système d'Exploitation Financier et Cognitif Universel pour Machines Autonomes"
+        running_header_left = "LIVRE BLANC HAICHAIN v1.0"
+        running_header_right = "haichain.si"
+        running_footer_left = "CONFIDENTIEL ET PROPRIÉTAIRE • GROUPE DE TRAVAIL SYSTÈMES MONDIAUX HAICHAIN"
+        tag_text = "SYSTÈME D'EXPLOITATION DE SUPERINTELLIGENCE DÉCENTRALISÉE"
+        lbl_settlement = "Actif de Règlement Principal"
+        val_settlement = "USDT (Tether USD SPL)"
+        lbl_token = "Gas et Gouvernance Souveraine"
+        val_token = "$HAISI (Offre Fixe: 1 000 000 000)"
+        lbl_domain = "Domaine Réseau Autonome"
+        val_domain = "haichain.si (Superintelligence)"
+        lbl_security = "Vérification Cryptographique Formelle"
+        val_security = "Vérification Mathématique • Norme Zero-Griefing"
+    elif lang == "ru":
+        doc_title = "ОФИЦИАЛЬНЫЙ ТЕХНИЧЕСКИЙ WHITE PAPER HAICHAIN v1.0"
+        doc_subtitle = "Универсальная финансовая и когнитивная операционная система для автономных машин - Фундамент децентрализованного сверхразума"
+        doc_edition = "Официальный White Paper v1.0 • Международное институциональное издание"
+        brand_sub_text = "Универсальная финансовая и когнитивная операционная система для автономных машин"
+        running_header_left = "HAICHAIN WHITE PAPER v1.0"
+        running_header_right = "haichain.si"
+        running_footer_left = "КОНФИДЕНЦИАЛЬНО И ДСП • ГЛОБАЛЬНАЯ РАБОЧАЯ ГРУППА HAICHAIN"
+        tag_text = "ОПЕРАЦИОННАЯ СИСТЕМА ДЕЦЕНТРАЛИЗОВАННОГО СВЕРХРАЗУМА (ASI)"
+        lbl_settlement = "Основной расчетный актив"
+        val_settlement = "USDT (Solana SPL токен)"
+        lbl_token = "Сетевой Gas и суверенное управление"
+        val_token = "$HAISI (Фиксированная эмиссия: 1 000 000 000)"
+        lbl_domain = "Суверенный сетевой домен"
+        val_domain = "haichain.si (Децентрализованный сверхразум)"
+        lbl_security = "Криптографическая верификация"
+        val_security = "Формальная математическая верификация • Стандарт Zero-Griefing"
+    elif lang == "kk":
+        doc_title = "HAICHAIN РЕСМИ ТЕХНИКАЛЫҚ АҚ ҚАҒАЗЫ v1.0"
+        doc_subtitle = "Автономды машиналарға арналған әмбебап қаржылық және когнитивтік операциялық жүйе - Орталықсыздандырылған асқан интеллекттің іргетасы"
+        doc_edition = "Ресми Ақ Қағаз v1.0 • Халықаралық институционалдық басылым"
+        brand_sub_text = "Автономды машиналарға арналған әмбебап қаржылық және когнитивтік операциялық жүйе"
+        running_header_left = "HAICHAIN АҚ ҚАҒАЗЫ v1.0"
+        running_header_right = "haichain.si"
+        running_footer_left = "ҚҰПИЯ ЖӘНЕ ЖЕКЕ МЕНШІК • HAICHAIN ЖАҺАНДЫҚ ЖҮЙЕЛЕР ТОБЫ"
+        tag_text = "ОРТАЛЫҚСЫЗДАНДЫРЫЛҒАН АСҚАН ИНТЕЛЛЕКТ ОПЕРАЦИЯЛЫҚ ЖҮЙЕСІ (ASI)"
+        lbl_settlement = "Негізгі есеп айырысу активі"
+        val_settlement = "USDT (Solana SPL токені)"
+        lbl_token = "Желілік Gas және егемен басқару"
+        val_token = "$HAISI (Тұрақты эмиссия: 1 000 000 000)"
+        lbl_domain = "Егемен желілік домен"
+        val_domain = "haichain.si (Орталықсыздандырылған асқан интеллект)"
+        lbl_security = "Криптографиялық формалды верификация"
+        val_security = "Математикалық формалды тексеру • Zero-Griefing стандарты"
+    elif lang == "hi":
+        doc_title = "HAICHAIN आधिकारिक तकनीकी श्वेतपत्र v1.0"
+        doc_subtitle = "स्वायत्त मशीनों के लिए सार्वभौमिक वित्तीय और संज्ञानात्मक ऑपरेटिंग सिस्टम - विकेंद्रीकृत सुपरइंटेलिजेंस का आधार"
+        doc_edition = "आधिकारिक श्वेतपत्र v1.0 • अंतर्राष्ट्रीय संस्थागत मानक संस्करण"
+        brand_sub_text = "स्वायत्त मशीनों के लिए सार्वभौमिक वित्तीय और संज्ञानात्मक ऑपरेटिंग सिस्टम"
+        running_header_left = "HAICHAIN श्वेतपत्र v1.0"
+        running_header_right = "haichain.si"
+        running_footer_left = "गोपनीय एवं स्वामित्व • HAICHAIN ग्लोबल सिस्टम्स टास्कफोर्स"
+        tag_text = "विकेंद्रीकृत सुपरइंटेलिजेंस ऑपरेटिंग सिस्टम (ASI)"
+        lbl_settlement = "प्राथमिक निपटान संपत्ति"
+        val_settlement = "USDT (Solana SPL)"
+        lbl_token = "नेटवर्क गैस और संप्रभु शासन"
+        val_token = "$HAISI (निश्चित आपूर्ति: 1,000,000,000)"
+        lbl_domain = "स्वायत्त नेटवर्क डोमेन"
+        val_domain = "haichain.si (विकेंद्रीकृत सुपरइंटेलिजेंस)"
+        lbl_security = "क्रिप्टोग्राफिक औपचारिक सत्यापन"
+        val_security = "गणितीय औपचारिक सत्यापन • जीरो-ग्रीफिंग मानक"
+    elif lang == "he":
+        doc_title = "HAICHAIN נייר עמדה רשמי v1.0"
+        doc_subtitle = "מערכת הפעלה פיננסית וקוגניטיבית אוניברסלית למכונות אוטונומיות - הבסיס לבינה-על מבוזרת"
+        doc_edition = "נייר עמדה רשמי v1.0 • מהדורה מוסדית בינלאומית"
+        brand_sub_text = "מערכת הפעלה פיננסית וקוגניטיבית אוניברסלית למכונות אוטונומיות"
+        running_header_left = "HAICHAIN נייר עמדה v1.0"
+        running_header_right = "haichain.si"
+        running_footer_left = "סודי ובלעדי • כוח המשימה העולמי של מערכות HAICHAIN"
+        tag_text = "מערכת הפעלה לבינה-על מבוזרת (ASI)"
+        lbl_settlement = "נכס סליקה ראשי"
+        val_settlement = "USDT (Solana SPL)"
+        lbl_token = "גז רשת וממשל ריבוני"
+        val_token = "$HAISI (היצע קבוע: 1,000,000,000)"
+        lbl_domain = "דומיין רשת אוטונומי"
+        val_domain = "haichain.si (בינה-על מבוזרת)"
+        lbl_security = "אימות קריפטוגרפי פורמלי"
+        val_security = "אימות מתמטי • תקן אפס-הטרדה (Zero-Griefing)"
     else:
         doc_title = "SÁCH TRẮNG CHÍNH THỨC HAICHAIN v1.0"
         doc_subtitle = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành - Nền Tảng Kiến Tạo Siêu Trí Tuệ Phi Tập Trung"
@@ -256,8 +358,11 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Tiêu Chuẩn Xác Thực An Toàn"
         val_security = "Xác Thực Toán Học • Chuẩn Zero-Griefing"
 
+    body_font_size = "9.45pt" if lang in ["es", "ru"] else "9.6pt"
+    body_line_height = "1.58" if lang in ["es", "ru"] else "1.62"
+
     full_html = f"""<!DOCTYPE html>
-<html lang="{lang}">
+<html lang="{lang}" dir="{'rtl' if lang == 'he' else 'ltr'}">
 <head>
 <meta charset="utf-8">
 <title>{doc_title}</title>
@@ -312,8 +417,8 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
 
 body {{
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", "PingFang SC", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans SC", "Noto Sans KR", sans-serif;
-    font-size: 9.6pt;
-    line-height: 1.62;
+    font-size: {body_font_size};
+    line-height: {body_line_height};
     color: #18181b;
     background-color: #ffffff;
     margin: 0;
