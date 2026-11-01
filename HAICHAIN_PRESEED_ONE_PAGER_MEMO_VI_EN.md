@@ -3,9 +3,9 @@
 ### (ONE-PAGER STRATEGIC MEMO: EARLY BACKER & ANGEL ALLOCATION)
 
 * **Dự án:** HAICHAIN (The Universal Autonomous Machine Financial Operating System)
-* **Quy mô vòng nội bộ:** Tối đa \$140.000 &ndash; \$210.000 USD (Chỉ mở cho 20 &ndash; 30 triệu $HAI, tương đương 2% &ndash; 3% tổng cung)
-* **Mức giá ưu đãi nội bộ:** **\$0.007 USD / $HAI** (Định giá FDV: **\$7.000.000 USD**)
-* **Mức giá mở bán công khai dự kiến (TGE):** **\$0.010 USD / $HAI** (Định giá FDV: **\$10.000.000 USD**)
+* **Quy mô vòng nội bộ:** Tối đa \$140.000 &ndash; \$210.000 USD (Chỉ mở cho 20 &ndash; 30 triệu $HAISISI, tương đương 2% &ndash; 3% tổng cung)
+* **Mức giá ưu đãi nội bộ:** **\$0.007 USD / $HAISI** (Định giá FDV: **\$7.000.000 USD**)
+* **Mức giá mở bán công khai dự kiến (TGE):** **\$0.010 USD / $HAISI** (Định giá FDV: **\$10.000.000 USD**)
 * **Lợi thế người mua sớm:** **Chiết khấu 30%** (Lợi nhuận tiềm năng ngay khi niêm yết: **+42.8%**)
 
 ---
@@ -22,9 +22,9 @@
   * **Con người:** Giữ quyền làm chủ tối cao (Master Passkey), đặt ranh giới chi tiêu cho bot và sở hữu **Nút dừng khẩn cấp (Panic Kill-Switch)** rút 100% tiền về trong 400ms.
   * **AI:** Cánh tay thực thi tốc độ cao, trả tiền bản quyền tri thức (Streaming Royalties) cho con người và **thuê ngược lại con người** làm các nhiệm vụ ngoài đời thực (Reverse Micro-Tasking).
 
-### 3. TẠI SAO TOKEN $HAI CÓ GIÁ TRỊ TĂNG TRƯỞNG BỀN VỮNG?
-* **Mô hình Dòng tiền Thật (Real Yield in USDT):** 40% toàn bộ doanh thu phí giao dịch vi mô của hàng triệu tác tử AI trên toàn cầu được **chia trực tiếp bằng USDT thật** cho những người khóa token `$HAI` (`veHAI`). 60% doanh thu còn lại dùng để **Mua lại và Đốt bỏ $HAI (Buyback & Burn)** vĩnh viễn trên sàn DEX.
-* **Lộ trình trở thành Blockchain L1 độc lập (\$5B &ndash; \$10B FDV):** Token SPL `$HAI` sẽ chuyển đổi 1:1 trở thành Native Gas Coin của mạng lưới **HAICHAIN Sovereign L1** trong giai đoạn 3, mở ra cơ hội tăng trưởng vốn hóa hàng trăm lần cho các nhà đầu tư vòng đầu.
+### 3. TẠI SAO TOKEN $HAISI CÓ GIÁ TRỊ TĂNG TRƯỞNG BỀN VỮNG?
+* **Mô hình Dòng tiền Thật (Real Yield in USDT):** 40% toàn bộ doanh thu phí giao dịch vi mô của hàng triệu tác tử AI trên toàn cầu được **chia trực tiếp bằng USDT thật** cho những người khóa token `$HAISI` (`veHAI`). 60% doanh thu còn lại dùng để **Mua lại và Đốt bỏ $HAISI (Buyback & Burn)** vĩnh viễn trên sàn DEX.
+* **Lộ trình trở thành Blockchain L1 độc lập (\$5B &ndash; \$10B FDV):** Token SPL `$HAISI` sẽ chuyển đổi 1:1 trở thành Native Gas Coin của mạng lưới **HAICHAIN Sovereign L1** trong giai đoạn 3, mở ra cơ hội tăng trưởng vốn hóa hàng trăm lần cho các nhà đầu tư vòng đầu.
 
 ### 4. BẢNG TIẾN TRÌNH VỐN HÓA & TIỀM NĂNG TĂNG TRƯỞNG
 
@@ -65,7 +65,7 @@
 
 ### 3. TOKEN VALUATION TRAJECTORY & REAL YIELD CASH FLOW
 * **Real Yield in USDT:** 40% of all global machine settlement fees are distributed **in pure USDT** to veHAI stakers. 60% of revenues are allocated to automated on-chain **Buyback & Burn**.
-* **Sovereign L1 Endgame:** In Stage 3, $HAI transitions from an SPL utility token into the native base gas and staking coin of the independent **HAICHAIN Sovereign L1**, positioning protocol valuation in the institutional tier (**\$1B to \$5B+ FDV**).
+* **Sovereign L1 Endgame:** In Stage 3, $HAISI transitions from an SPL utility token into the native base gas and staking coin of the independent **HAICHAIN Sovereign L1**, positioning protocol valuation in the institutional tier (**\$1B to \$5B+ FDV**).
 
 ```
 +----------------------------------------------------------------------------------------------------+

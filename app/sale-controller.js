@@ -16,7 +16,7 @@
       mobileNav: 'Private',
       breadcrumb: 'Private Strategic Allocation',
       heroBadge: 'CONFIDENTIAL PRE-SEED ROUND - 30% DISCOUNT',
-      heroTitle: 'Private Backer Allocation: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: 'Private Backer Allocation: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Early capital round reserved for Core Builders & Angel Partners. Provides a <strong>30% discount</strong> prior to the official <strong>$0.010 Public TGE Launchpad</strong> on Meteora DLMM (+42.8% immediate listing yield).',
       downloadSaft: 'Download SAFT Agreement',
       downloadMemo: '1-Pager Memo',
@@ -64,7 +64,7 @@
       mobileNav: 'Private',
       breadcrumb: 'Phân Bổ Chiến Lược VIP',
       heroBadge: 'VÒNG NỘI BỘ BẢO MẬT - CHIẾT KHẤU 30%',
-      heroTitle: 'Phân Bổ Early Backer Nội Bộ: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: 'Phân Bổ Early Backer Nội Bộ: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Vòng vốn hạt giống dành riêng cho Co-builders & Đối tác Thiên thần. Hưởng <strong>chiết khấu 30%</strong> trước khi mở bán chính thức <strong>$0.010 Public TGE</strong> trên Meteora DLMM (+42.8% tỷ suất lợi nhuận niêm yết).',
       downloadSaft: 'Tải Hợp Đồng SAFT',
       downloadMemo: 'Bản Tóm Tắt 1 Trang',
@@ -112,7 +112,7 @@
       mobileNav: '战略轮',
       breadcrumb: '战略投资 VIP 额度',
       heroBadge: '机密早期轮 - 享受30%优惠折扣',
-      heroTitle: '早期支持者内部份额: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: '早期支持者内部份额: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: '专为核心建设者和天使合作伙伴保留的早期资本轮次。在Meteora DLMM正式公开发行 <strong>$0.010 TGE</strong> 之前享有 <strong>30% 折扣</strong>（+42.8% 上线溢价）。',
       downloadSaft: '下载 SAFT 协议',
       downloadMemo: '1页投资备忘录',
@@ -160,7 +160,7 @@
       mobileNav: '전략 라운드',
       breadcrumb: 'VIP 비공개 전략 배정',
       heroBadge: '기밀 초기 라운드 - 30% 할인 혜택',
-      heroTitle: '엔젤 파트너 내부 할당: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: '엔젤 파트너 내부 할당: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: '코어 빌더와 초기 엔젤 파트너 전용 라운드입니다. Meteora DLMM 공식 <strong>$0.010 Public TGE</strong> 상장 전 <strong>30% 할인</strong>(+42.8% 즉시 상장 수익률)을 제공합니다.',
       downloadSaft: 'SAFT 계약서 다운로드',
       downloadMemo: '1페이지 투자 메모',
@@ -208,7 +208,7 @@
       mobileNav: 'Privé',
       breadcrumb: 'Allocation Stratégique Privée VIP',
       heroBadge: 'TOUR CONFIDENTIEL PRÉ-SEED - REMISE DE 30%',
-      heroTitle: 'Allocation Investisseur Privé : <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0,007 USD / $HAISI</span>',
+      heroTitle: 'Allocation Investisseur Privé : <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0,007 USD / $HAISI</span>',
       heroSubtitle: 'Tour initial réservé aux bâtisseurs et investisseurs providentiels. Offre une <strong>remise de 30%</strong> avant le <strong>TGE Public à 0,010 $</strong> sur Meteora DLMM (+42,8% de rendement immédiat).',
       downloadSaft: 'Télécharger Accord SAFT',
       downloadMemo: 'Mémo en 1 Page',
@@ -256,7 +256,7 @@
       mobileNav: 'Privada',
       breadcrumb: 'Asignación VIP Estratégica',
       heroBadge: 'RONDA CONFIDENCIAL PRE-SEED - 30% DE DESCUENTO',
-      heroTitle: 'Asignación Privada Early Backer: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: 'Asignación Privada Early Backer: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Ronda inicial reservada para constructores y ángeles inversores. Proporciona un <strong>descuento del 30%</strong> antes del lanzamiento público <strong>$0.010 Public TGE</strong> en Meteora DLMM (+42.8% de rentabilidad inmediata).',
       downloadSaft: 'Descargar Acuerdo SAFT',
       downloadMemo: 'Memo en 1 Página',
@@ -304,7 +304,7 @@
       mobileNav: 'Приват',
       breadcrumb: 'VIP стратегическое выделение',
       heroBadge: 'ЗАКРЫТЫЙ ПРЕ-СИД РАУНД - СКИДКА 30%',
-      heroTitle: 'Закрытая Аллокация для Партнеров: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: 'Закрытая Аллокация для Партнеров: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Ранний инвестиционный раунд для создателей и бизнес-ангелов. Предоставляет <strong>скидку 30%</strong> до официального <strong>публичного TGE по $0.010</strong> на Meteora DLMM (+42.8% немедленной доходности при листинге).',
       downloadSaft: 'Скачать Договор SAFT',
       downloadMemo: 'Одностраничный Меморандум',
@@ -352,7 +352,7 @@
       mobileNav: 'प्राइवेट',
       breadcrumb: 'VIP रणनीतिक आवंटन',
       heroBadge: 'गोपनीय प्री-सीड राउंड - 30% छूट',
-      heroTitle: 'प्रारंभिक निवेशक आवंटन: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: 'प्रारंभिक निवेशक आवंटन: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'कोर बिल्डर्स और एंजेल पार्टनर्स के लिए आरक्षित। आधिकारिक <strong>$0.010 पब्लिक TGE</strong> से पहले <strong>30% छूट</strong> (+42.8% तत्काल लिस्टिंग लाभ)।',
       downloadSaft: 'SAFT अनुबंध डाउनलोड करें',
       downloadMemo: '1-पेज मेमो',
@@ -400,7 +400,7 @@
       mobileNav: 'פרטי',
       breadcrumb: 'הקצאה אסטרטגית VIP',
       heroBadge: 'סבב פרה-סיד חסוי - 30% הנחה',
-      heroTitle: 'הקצאה מוקדמת למשקיעים: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0.007 USD / $HAISI</span>',
+      heroTitle: 'הקצאה מוקדמת למשקיעים: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">0.007 USD / $HAISI</span>',
       heroSubtitle: 'סבב הון מוקדם המיועד לשותפים ואנג\'לים. מעניק <strong>30% הנחה</strong> לפני ה-<strong>TGE הציבורי ב-0.010$</strong> ב-Meteora DLMM.',
       downloadSaft: 'הורד הסכם SAFT',
       downloadMemo: 'תקציר בעמוד אחד',
@@ -448,7 +448,7 @@
       mobileNav: 'Жабық',
       breadcrumb: 'VIP стратегиялық үлес',
       heroBadge: 'ҚҰПИЯ ПРЕ-СИД РАУНДЫ - 30% ЖЕҢІЛДІК',
-      heroTitle: 'Ерте Қолдаушылар Үлесі: <span class="font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
+      heroTitle: 'Ерте Қолдаушылар Үлесі: <span class="whitespace-nowrap inline-block font-mono text-black dark:text-white underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">$0.007 USD / $HAISI</span>',
       heroSubtitle: 'Құрылтайшылар мен бизнес-періштелерге арналған жабық раунд. Meteora DLMM-дегі ресми <strong>$0.010 Public TGE</strong> алдында <strong>30% жеңілдік</strong> (+42.8% кірістілік) береді.',
       downloadSaft: 'SAFT Келісімін Жүктеу',
       downloadMemo: '1 Беттік Меморандум',
@@ -685,29 +685,29 @@
       <!-- 1. TOP DEAL OVERVIEW & ALLOCATION PROGRESS CARD (COMPACT APPLE TITANIUM LUXURY) -->
       <div class="p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-xs space-y-4">
         <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-3 sm:gap-4">
-          <div class="space-y-1.5 max-w-2xl">
+          <div class="space-y-1.5 flex-1 min-w-0 pr-0 xl:pr-6">
             <div class="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-[10px] sm:text-xs font-mono font-semibold tracking-wide">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>${getI18nText('heroBadge')}</span>
             </div>
-            <h1 class="text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-black dark:text-white leading-tight">
+            <h1 class="text-base sm:text-xl md:text-2xl lg:text-[26px] font-black tracking-tight text-black dark:text-white leading-snug sm:leading-tight">
               ${getI18nText('heroTitle')}
             </h1>
-            <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+            <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans max-w-3xl">
               ${getI18nText('heroSubtitle')}
             </p>
           </div>
 
-          <!-- Document Action Buttons (Compact Sleek Pill Cluster) -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="${phase.saftUrl}" download class="px-3.5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-semibold text-xs font-mono transition-all flex items-center justify-center space-x-1.5 hover:opacity-90 active:scale-95 shadow-sm">
-              <i data-lucide="file-check" class="w-3.5 h-3.5 shrink-0"></i>
+          <!-- Document Action Buttons (Interactive Online PDF Viewer Popups) -->
+          <div class="grid grid-cols-2 sm:flex sm:items-center gap-2 shrink-0 pt-1 sm:pt-0">
+            <button type="button" id="btn-open-saft-pdf" class="px-3.5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-semibold text-xs font-mono transition-all flex items-center justify-center space-x-1.5 hover:opacity-90 active:scale-95 shadow-sm cursor-pointer" title="Đọc hợp đồng SAFT online">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 shrink-0"></i>
               <span>${getI18nText('downloadSaft')}</span>
-            </a>
-            <a href="${phase.memoUrl}" download class="px-3.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs font-mono transition-all flex items-center justify-center space-x-1.5 active:scale-95">
+            </button>
+            <button type="button" id="btn-open-memo-pdf" class="px-3.5 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs font-mono transition-all flex items-center justify-center space-x-1.5 active:scale-95 cursor-pointer" title="Đọc bản tóm tắt Memo online">
               <i data-lucide="book-open" class="w-3.5 h-3.5 shrink-0"></i>
               <span>${getI18nText('downloadMemo')}</span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -894,6 +894,101 @@
     }
   }
 
+  // 6.5 UNIVERSAL ONLINE PDF VIEWER POPUP MODAL (DESKTOP & MOBILE OPTIMIZED)
+  function ensurePdfModal() {
+    if (document.getElementById('pdf-viewer-modal')) return;
+    const modal = document.createElement('div');
+    modal.id = 'pdf-viewer-modal';
+    modal.className = 'fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-4 md:p-6 transition-all duration-200';
+    modal.innerHTML = `
+      <div class="w-full max-w-5xl h-[94vh] sm:h-[88vh] bg-white dark:bg-[#0c0c0e] border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-scaleUp">
+        <!-- Modal Header -->
+        <div class="px-4 py-3 sm:px-6 sm:py-3.5 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-3 bg-neutral-50/90 dark:bg-neutral-900/90 shrink-0">
+          <div class="flex items-center space-x-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+            </div>
+            <div class="min-w-0">
+              <h3 id="pdf-modal-title" class="font-bold text-xs sm:text-sm text-black dark:text-white truncate">Document Viewer</h3>
+              <p class="text-[10px] text-neutral-400 font-mono hidden sm:block">HAICHAIN Official Institutional Documentation</p>
+            </div>
+          </div>
+          <!-- Action Buttons -->
+          <div class="flex items-center space-x-2 shrink-0">
+            <a id="pdf-modal-open-new-tab" href="#" target="_blank" class="px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white text-xs font-mono font-medium transition-all flex items-center space-x-1.5 active:scale-95" title="Mở toàn màn hình">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              <span class="hidden md:inline">${getActiveLang() === 'vi' ? 'Toàn Màn Hình' : 'Fullscreen'}</span>
+            </a>
+            <a id="pdf-modal-download-btn" href="#" download class="px-3 py-1.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-mono font-bold transition-all flex items-center space-x-1.5 hover:opacity-90 active:scale-95 shadow-sm" title="Tải PDF về máy">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span class="hidden sm:inline">${getActiveLang() === 'vi' ? 'Tải PDF' : 'Download'}</span>
+            </a>
+            <button id="pdf-modal-close-btn" class="p-1.5 sm:p-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" title="Đóng">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Viewer Body -->
+        <div class="relative w-full flex-1 bg-neutral-100 dark:bg-neutral-950 flex flex-col overflow-hidden">
+          <iframe id="pdf-modal-iframe" src="" class="w-full flex-1 border-0" allow="fullscreen"></iframe>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('#pdf-modal-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', window.closePdfViewerModal);
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        window.closePdfViewerModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        window.closePdfViewerModal();
+      }
+    });
+  }
+
+  window.openPdfViewerModal = function (pdfUrl, docTitle) {
+    ensurePdfModal();
+    const modal = document.getElementById('pdf-viewer-modal');
+    const iframe = document.getElementById('pdf-modal-iframe');
+    const titleEl = document.getElementById('pdf-modal-title');
+    const newTabEl = document.getElementById('pdf-modal-open-new-tab');
+    const downloadEl = document.getElementById('pdf-modal-download-btn');
+
+    if (titleEl) titleEl.textContent = docTitle;
+    if (newTabEl) newTabEl.href = pdfUrl;
+    if (downloadEl) {
+      downloadEl.href = pdfUrl;
+      downloadEl.download = pdfUrl.split('/').pop();
+    }
+    if (iframe) {
+      iframe.src = pdfUrl + '#toolbar=1&navpanes=0&view=FitH';
+    }
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (window.lucide) window.lucide.createIcons();
+  };
+
+  window.closePdfViewerModal = function () {
+    const modal = document.getElementById('pdf-viewer-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+      const iframe = document.getElementById('pdf-modal-iframe');
+      if (iframe) iframe.src = '';
+    }
+    document.body.style.overflow = '';
+  };
+
   // 7. CALCULATOR LOGIC
   function setupCalculatorLogic(container) {
     const inputUsdt = container.querySelector('#calc-usdt-input');
@@ -917,6 +1012,29 @@
       l1ValEl.textContent = l1Value;
       tgeTokensEl.textContent = `${tgeTokens.toLocaleString('en-US')} $HAISI (${(tgeTokens * 0.010).toLocaleString('en-US', { style: 'currency', currency: 'USD' })})`;
       streamTokensEl.textContent = `${streamTokens.toLocaleString('en-US')} $HAISI (~${Math.round(streamTokens / 180)} $HAISI/day)`;
+    }
+
+    // Document PDF Online Viewer Triggers
+    const btnSaft = container.querySelector('#btn-open-saft-pdf');
+    if (btnSaft) {
+      btnSaft.addEventListener('click', (e) => {
+        e.preventDefault();
+        const title = getActiveLang() === 'vi' 
+          ? 'Hợp Đồng SAFT Pre-Seed HAICHAIN (Song Ngữ VI & EN)' 
+          : 'HAICHAIN Pre-Seed SAFT Agreement (Bilingual VI & EN)';
+        window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_VI_EN.pdf', title);
+      });
+    }
+
+    const btnMemo = container.querySelector('#btn-open-memo-pdf');
+    if (btnMemo) {
+      btnMemo.addEventListener('click', (e) => {
+        e.preventDefault();
+        const title = getActiveLang() === 'vi' 
+          ? 'Bản Tóm Tắt Chiến Lược 1 Trang - Vòng Pre-Seed' 
+          : 'HAICHAIN Pre-Seed 1-Pager Investment Teaser Memo';
+        window.openPdfViewerModal('/HAICHAIN_PRESEED_ONE_PAGER_MEMO_VI_EN.pdf', title);
+      });
     }
 
     if (inputUsdt) {

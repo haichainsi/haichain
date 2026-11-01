@@ -5,10 +5,10 @@
 * **Mã hiệu hợp đồng:** `HAICHAIN-SAFT-PRESEED-2026`
 * **Cơ quan bảo chứng kỹ thuật:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN
 * **Phiên bản:** v1.0.0 Institutional Legal Standard (Song ngữ / Bilingual: Tiếng Việt & English)
-* **Tài sản cơ sở:** Token Quản trị & Tiện ích Mạng lưới `$HAI` (Solana SPL Token)
-* **Tổng cung cố định:** 1.000.000.000 $HAI (Một Tỷ Token)
-* **Mức giá phát hành vòng này:** **\$0.007 USD / $HAI** (Định giá FDV: **\$7.000.000 USD**)
-* **Mức giá niêm yết công khai dự kiến (TGE):** **\$0.010 USD / $HAI** (Định giá FDV: **\$10.000.000 USD**)
+* **Tài sản cơ sở:** Token Quản trị & Tiện ích Mạng lưới `$HAISI` (Solana SPL Token)
+* **Tổng cung cố định:** 1.000.000.000 $HAISI (Một Tỷ Token)
+* **Mức giá phát hành vòng này:** **\$0.007 USD / $HAISI** (Định giá FDV: **\$7.000.000 USD**)
+* **Mức giá niêm yết công khai dự kiến (TGE):** **\$0.010 USD / $HAISI** (Định giá FDV: **\$10.000.000 USD**)
 * **Tỷ lệ chiết khấu ưu đãi:** **30%** (Tỷ suất lợi nhuận ban đầu: **+42.8%**)
 
 ---
@@ -37,10 +37,10 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 1. **Số Tiền Đóng Góp (Purchase Amount):**
    * Bên Mua đồng ý thanh toán số tiền: `_____________` **USD** (bằng USDT Tether SPL/ERC-20/TRC-20 hoặc SOL theo tỷ giá quy đổi tại thời điểm chuyển tiền).
 2. **Số Lượng Token Phân Bổ (Allocated Tokens):**
-   $$\text{Số Lượng Token (\$HAI)} = \frac{\text{Số Tiền Đóng Góp (USD)}}{\$0.007 \text{ USD}}$$
-   * Tổng số token Bên Mua được quyền nhận: `_____________` **$HAI**.
+   $$\text{Số Lượng Token (\$HAISI)} = \frac{\text{Số Tiền Đóng Góp (USD)}}{\$0.007 \text{ USD}}$$
+   * Tổng số token Bên Mua được quyền nhận: `_____________` **$HAISI**.
 3. **Giới Hạn Hạn Mức Toàn Vòng:**
-   * Vòng bán nội bộ Pre-Seed bị khóa trần cứng ở mức **25.000.000 đến 30.000.000 $HAI (tối đa 3.0% tổng cung)**, tương đương tổng vốn huy động tối đa \$210.000 USD.
+   * Vòng bán nội bộ Pre-Seed bị khóa trần cứng ở mức **25.000.000 đến 30.000.000 $HAISI (tối đa 3.0% tổng cung)**, tương đương tổng vốn huy động tối đa \$210.000 USD.
 
 ---
 
@@ -74,8 +74,8 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 ### ĐIỀU 3: BẢN CHẤT TÀI SẢN & CAM KẾT PHÁP LÝ
 
 1. **Phân loại Tài sản (Utility Commodity):**
-   * Token `$HAI` được định nghĩa là **Tài nguyên Tiện ích & Quản trị Mạng lưới (Network Utility & Governance Commodity)**.
-   * `$HAI` được dùng để: Giảm 50% phí giao dịch vi mô cho AI, stake (veHAI) nhận chia sẻ dòng tiền bù trừ thực tế bằng USDT, vote quản trị thông số giao thức, và làm phí Gas cho mạng lưới Sovereign L1 trong tương lai.
+   * Token `$HAISI` được định nghĩa là **Tài nguyên Tiện ích & Quản trị Mạng lưới (Network Utility & Governance Commodity)**.
+   * `$HAISI` được dùng để: Giảm 50% phí giao dịch vi mô cho AI, stake (veHAI) nhận chia sẻ dòng tiền bù trừ thực tế bằng USDT, vote quản trị thông số giao thức, và làm phí Gas cho mạng lưới Sovereign L1 trong tương lai.
 2. **Không Cam Kết Lợi Nhuận Tài Chính (No Investment Advice):**
    * Thỏa thuận này không cấu thành một hợp đồng góp vốn cổ phần, trái phiếu hay chứng khoán có bảo đảm lợi nhuận. Bên Mua hiểu rõ rủi ro của thị trường công nghệ cao và tự chịu trách nhiệm về quyết định của mình.
 3. **Cam Kết Không Bán Tháo Phá Giá (Anti-Flipping & Non-Circumvention):**
@@ -105,17 +105,17 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 ## SIMPLE AGREEMENT FOR FUTURE TOKENS (SAFT)
 ### PRIVATE PRE-SEED ROUND - HAICHAIN PROTOCOL
 
-THIS SIMPLE AGREEMENT FOR FUTURE TOKENS (this "**Agreement**" or "**SAFT**") certifies that in exchange for the payment by the undersigned purchaser (the "**Purchaser**") of the purchase amount set forth below (the "**Purchase Amount**"), **HAICHAIN Decentralized Systems Architecture Taskforce** (the "**Company**" or "**HAICHAIN**") hereby issues to the Purchaser the right to certain allocations of **$HAI Tokens** (the "**Tokens**"), subject to the terms and conditions herein.
+THIS SIMPLE AGREEMENT FOR FUTURE TOKENS (this "**Agreement**" or "**SAFT**") certifies that in exchange for the payment by the undersigned purchaser (the "**Purchaser**") of the purchase amount set forth below (the "**Purchase Amount**"), **HAICHAIN Decentralized Systems Architecture Taskforce** (the "**Company**" or "**HAICHAIN**") hereby issues to the Purchaser the right to certain allocations of **$HAISI Tokens** (the "**Tokens**"), subject to the terms and conditions herein.
 
 ---
 
 ### 1. TRANSACTION PARAMETERS & PRICING
 1. **Token Standard:** Solana SPL Token (Anchor v6.9.3 Military-Grade Kernel).
-2. **Fixed Total Supply:** Exactly **1,000,000,000 $HAI**.
-3. **Offering Price per Token:** **\$0.007 USD / $HAI** (Implying a **\$7,000,000 USD** Fully Diluted Valuation).
-4. **Target Public Listing Price (TGE):** **\$0.010 USD / $HAI** (Implying a **\$10,000,000 USD** Fully Diluted Valuation).
+2. **Fixed Total Supply:** Exactly **1,000,000,000 $HAISI**.
+3. **Offering Price per Token:** **\$0.007 USD / $HAISI** (Implying a **\$7,000,000 USD** Fully Diluted Valuation).
+4. **Target Public Listing Price (TGE):** **\$0.010 USD / $HAISI** (Implying a **\$10,000,000 USD** Fully Diluted Valuation).
 5. **Purchaser Price Preference:** **30% Discount** relative to Public TGE (+42.8% immediate unvested listing upside).
-6. **Aggregate Round Cap:** Hard-capped at **25,000,000 to 30,000,000 $HAI (Max 3.0% of Total Supply)**, totaling \$210,000 USD.
+6. **Aggregate Round Cap:** Hard-capped at **25,000,000 to 30,000,000 $HAISI (Max 3.0% of Total Supply)**, totaling \$210,000 USD.
 
 ---
 
@@ -130,7 +130,7 @@ To ensure market integrity and prevent secondary liquidity dilution, 100% of Tok
 ---
 
 ### 3. ASSET CLASSIFICATION & REGULATORY REPRESENTATIONS
-1. **Network Utility Commodity:** The $HAI Token is structured as a functional programmatic utility commodity utilized for protocol fee abatements (50% reduction on machine micro-payments), real yield settlement distribution (USDT streaming via veHAI staking), and sovereign L1 gas consensus.
+1. **Network Utility Commodity:** The $HAISI Token is structured as a functional programmatic utility commodity utilized for protocol fee abatements (50% reduction on machine micro-payments), real yield settlement distribution (USDT streaming via veHAI staking), and sovereign L1 gas consensus.
 2. **No Equity or Security Classification:** This Agreement does not grant Purchaser equity shares, dividends, or voting shares in any corporate entity. Acquisition is based on the utility demand of the protocol.
 3. **Anti-Sybil & Anti-Dumping Covenant:** Purchaser covenants not to execute off-market OTC synthetic hedging or dumping operations designed to manipulate open market discovery during the Public Launch phase.
 
@@ -147,7 +147,7 @@ Purchaser agrees to maintain strict confidentiality regarding the preferential \
 * **Passport / National ID No:** `________________________________________________`
 * **Contact Email:** `________________________________________________`
 * **Purchase Amount (USD equivalent):** `\$________________________`
-* **Allocated $HAI Tokens:** `________________________ \$HAI`
+* **Allocated $HAISI Tokens:** `________________________ \$HAISI`
 * **Purchaser Solana Receiving Wallet (Ed25519 Pubkey):**  
   `____________________________________________________________________`
 
