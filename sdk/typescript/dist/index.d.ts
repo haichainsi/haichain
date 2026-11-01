@@ -2,7 +2,7 @@ import { Connection, PublicKey } from "@solana/web3.js";
 import { AnchorProvider } from "@coral-xyz/anchor";
 export declare const SOLANA_USDT_MINT: PublicKey;
 export type SupportedFiatCurrency = "USD" | "EUR" | "GBP" | "JPY" | "CAD" | "AUD" | "BRL" | "INR" | "SGD";
-export type SupportedCrossChainNetwork = "solana_spl" | "tron_trc20" | "ethereum_erc20" | "arbitrum" | "binance_smart_chain";
+export type SupportedCrossChainNetwork = "solana_spl" | "tron_trc20" | "ethereum_erc20" | "arbitrum" | "base_erc20" | "binance_smart_chain";
 export type SupportedPaymentRail = "apple_pay" | "google_pay" | "stripe_link" | "card_international" | "sepa_instant" | "fednow_ach" | "crypto_usdt_deposit";
 /**
  * Standard HTTP x402 (Payment Required) Header Interface for MCP
@@ -38,32 +38,130 @@ export declare class HaiChainClient {
     programId: PublicKey;
     usdtMint: PublicKey;
     constructor(connection: Connection, programId?: PublicKey, usdtMint?: PublicKey);
-    /**
-     * Generates a multi-channel USDT deposit session (Apple Pay, SEPA, Cards, or Native USDT)
-     */
     createUsdtDepositSession(request: UsdtDepositSessionRequest): Promise<UsdtDepositSessionResponse>;
-    /**
-     * Processes an incoming HTTP x402 (Payment Required) challenge from an MCP Server
-     * Automatically verifies destination whitelist, signs off-chain micro-tick, and returns auth headers.
-     */
     handleX402Challenge(headers: X402PaymentRequestHeaders, agentPrivateKey: Uint8Array, whitelistedProviders: PublicKey[]): Promise<X402PaymentAuthorizationHeaders>;
-    /**
-     * Derives deterministic PDA for Agent Spending Pot
-     * Seeds: [b"agent-vault", owner]
-     */
     getAgentVaultPda(owner: PublicKey): [PublicKey, number];
-    /**
-     * Derives deterministic Nullifier PDA for Double-Spend Replay Defense
-     * Seeds: [b"nullifier", vaultPda, nonce (u64 le)]
-     */
     getNullifierPda(vaultPda: PublicKey, nonce: number | bigint): [PublicKey, number];
-    /**
-     * One-Click Global Panic Kill-Switch (v6.9 Direct PDA Authority)
-     */
+    getProviderBondPda(providerAuthority: PublicKey): [PublicKey, number];
     triggerPanicKillSwitch(provider: AnchorProvider, agentDedicatedAta: PublicKey, userSafeDestinationAta: PublicKey): Promise<string>;
-    /**
-     * Reclaims 100% of Rent-Exempt SOL lamports from an expired Nullifier PDA
-     * Invariant v6.9.2: Rent is strictly refunded to the vaultOwner (Anti-Rent-Theft Invariant)
-     */
     reclaimExpiredNullifierRent(provider: AnchorProvider, vaultOwner: PublicKey, nonce: number | bigint, rentReceiver?: PublicKey): Promise<string>;
+}
+export interface SlaExecutionReceipt {
+    providerAuthority: string;
+    taskPromptHash: string;
+    responsePayloadHash: string;
+    executionTimestamp: number;
+    claimedQualityScore: number;
+}
+export declare class ProbabilisticSlaAuditor {
+    private faultRecords;
+    static hashPayload(payload: string): string;
+    static generateReceipt(providerAuthority: PublicKey, taskPrompt: string, responsePayload: string, claimedQualityScore?: number): SlaExecutionReceipt;
+    shouldPerformSpotCheck(spotCheckProbability?: number): boolean;
+    recordExecution(providerAuthority: string, isFault: boolean): {
+        faultRate: number;
+        shouldSlash: boolean;
+    };
+}
+export interface ProviderEndpoint {
+    id: string;
+    type: "web2_reseller" | "depin_node";
+    name: string;
+    ataAddress: string;
+    costMicroUsdt: number;
+    isHealthy: boolean;
+}
+export declare class DePinProviderRouter {
+    private providers;
+    registerEndpoint(category: string, endpoint: ProviderEndpoint): void;
+    routeRequest(category: string, forceDePinOnly?: boolean): ProviderEndpoint;
+    markFailure(category: string, endpointId: string): void;
+}
+export interface CrossChainPaymentIntent {
+    sourceChain: SupportedCrossChainNetwork;
+    senderAddress: string;
+    recipientHaiChainAta: string;
+    amountUsdt: number;
+    nonce: number;
+    intentSignature: string;
+    expiryTimestamp: number;
+}
+export declare class CrossChainIntentSolver {
+    private executedIntents;
+    verifyAndFrontLiquidity(intent: CrossChainPaymentIntent): {
+        authorized: boolean;
+        solverTxHash: string;
+        frontedAmountUsdt: number;
+    };
+}
+export interface DynamicSpotTicket {
+    providerAuthority: string;
+    basePriceMicroUsdt: number;
+    spotPriceMicroUsdt: number;
+    surgeFactorBps: number;
+    loadRatio: number;
+    expirySlot: number;
+    nonce: number;
+    signature?: string;
+}
+export declare class DynamicSpotTicketEngine {
+    static calculateDynamicPrice(basePriceMicroUsdt: number, currentLoad: number, maxCapacity: number, surgeBpsMax?: number): {
+        spotPrice: number;
+        loadRatio: number;
+        surgeBps: number;
+    };
+    static createQuotationTicket(providerAuthority: PublicKey, basePriceMicroUsdt: number, currentLoad: number, maxCapacity: number, currentSlot: number, validitySlots?: number, nonce?: number): DynamicSpotTicket;
+    static verifyQuotationTicket(ticket: DynamicSpotTicket, maxBudgetCapMicroUsdt: number, currentSlot: number): {
+        valid: boolean;
+        reason?: string;
+    };
+}
+export declare class ActionCreditsConverter {
+    static readonly MICRO_USDT_PER_CREDIT = 1000;
+    static readonly DEFAULT_VND_PER_CREDIT = 25;
+    static usdtToCredits(usdtAmount: number): number;
+    static microUsdtToCredits(microUnits: number | bigint): number;
+    static creditsToUsdt(credits: number): number;
+    static creditsToVnd(credits: number, rate?: number): number;
+    static formatCredits(credits: number): string;
+    static formatVnd(credits: number, rate?: number): string;
+}
+export declare class IdempotencyEngine {
+    private cache;
+    private ttlMs;
+    constructor(ttlMs?: number);
+    generateIdempotencyKey(sessionId: string, taskStepIndex: number, nonce: number | bigint): string;
+    executeIdempotent<T>(key: string, executeFn: () => Promise<T>): Promise<{
+        result: T;
+        cached: boolean;
+    }>;
+}
+export interface MicroTransactionRecord {
+    transactionId: string;
+    timestamp: string;
+    providerAuthority: string;
+    serviceCategory: "ai_inference" | "web_scraping" | "data_indexing" | "gpu_compute";
+    costUsdt: number;
+    nonce: number;
+}
+export interface EnterpriseConsolidatedInvoice {
+    invoiceNumber: string;
+    organizationName: string;
+    billingPeriod: string;
+    totalTransactionsCount: number;
+    subtotalUsdt: number;
+    vatTaxPct: number;
+    taxAmountUsdt: number;
+    totalDueUsdt: number;
+    totalDueCredits: number;
+    totalDueVndEstimated: number;
+    merkleAuditRoot: string;
+    categoryBreakdown: Record<string, {
+        count: number;
+        totalCostUsdt: number;
+    }>;
+    generatedAtIso: string;
+}
+export declare class EnterpriseRollupInvoiceGenerator {
+    static generateMonthlyInvoice(transactions: MicroTransactionRecord[], organizationName: string, billingPeriod: string, vatTaxPct?: number): EnterpriseConsolidatedInvoice;
 }
