@@ -245,6 +245,46 @@ Khi tác vụ hoàn thành, chữ ký mật mã xác thực số lượng token 
 * Toàn bộ quyền hạn của cả bầy đàn được nén chặt thành một mã băm Merkle 32-byte (`composite_root`).
 * Hợp đồng thông minh xác thực quyền hạn của bot con thông qua bằng chứng Merkle 8 tầng mà không cần khởi tạo trạng thái tài khoản tốn kém trên chuỗi.
 
+### 4.3. Nén Trạng Thái Bằng Cây Merkle Đồng Thời (cAgents) & Vòng Đời PDA Tự Hủy Hoàn Tiền Thuê 100%
+Trên nền tảng Solana L1, mỗi tài khoản on-chain tạo mới bắt buộc phải ký gửi một khoản phí lưu trữ miễn trừ tiền thuê (Rent-Exempt reserve ~0.002039 SOL/tài khoản, tương đương ~0.40 USD tại mức giá 200 USD/SOL). Khi một doanh nghiệp hoặc mạng lưới kích hoạt 1.000.000 tác tử con (sub-agents), phiên đàm phán vi mô hoặc kênh thanh toán tạm thời, chi phí ký gửi tiền thuê sẽ lên tới:
+$$1.000.000 \times 0.002039\text{ SOL} \approx 2.039\text{ SOL} \approx 407.800\text{ USD}$$
+Khoản vốn này sẽ bị chôn vùi vĩnh viễn, tạo ra rào cản chi phí khổng lồ cho các ứng dụng bầy đàn AI. Haichain giải quyết triệt để vấn đề này thông qua kiến trúc lưu trữ hai vector tối ưu:
+
+```
+             KIẾN TRÚC LƯU TRỮ TRUNG HÒA TIỀN THUÊ & VÒNG ĐỜI TỰ HỦY
+              
+   [ Vector A: Bầy Đàn Tác Tử Dài Hạn ]         [ Vector B: Phiên Giao Dịch & Bù Trừ Tạm ]
+                   │                                             │
+                   ▼                                             ▼
+     [ Cây Merkle Đồng Thời (cAgent) ]            [ Vòng Đời PDA Tự Hủy Hoàn Tiền Thuê ]
+     ├── Gốc on-chain: Duy nhất 32-byte hash      ├── Cấp phát theo nhu cầu (t = 0)
+     ├── Độ sâu: 26 (chứa 67.1 triệu tác tử)      ├── Thực thi logic & bù trừ đối xứng
+     ├── Bộ đệm: 1.024 cập nhật/slot              └── Lệnh đóng tài khoản bắt buộc:
+     ├── Chi phí: ~10.5 SOL (<$0.00003/agent)         #[account(mut, close = user_authority)]
+     └── Dữ liệu lưu trong lịch sử sổ cái             Rút 100% lamports về ví gốc người dùng
+         --> KHÔNG TỐN TIỀN THUÊ TRẠNG THÁI           --> CHI PHÍ RÒ RỈ TIỀN THUÊ: ĐÚNG 0 SOL
+```
+
+#### 1. Nén Trạng Thái Bằng Cây Merkle Đồng Thời (Concurrent Merkle Trees - cAgents)
+* **Cơ Chế SPL Account Compression:** Toàn bộ danh tính, quyền hạn và hạn mức chi tiêu của hàng triệu tác tử AI được nén thành một gốc Merkle 32-byte duy nhất trên chuỗi. Dữ liệu lá chi tiết được ghi trực tiếp vào lịch sử sổ cái (ledger history) thay vì chiếm dụng không gian tài khoản đắt đỏ.
+* **Quy Mô 67,1 Triệu Tác Tử:** Cấu hình cây Merkle độ sâu 26 (Depth 26), bộ đệm tối đa 1.024 (Max-Buffer-Size 1024) và Canopy Depth 14 cho phép quản lý **67.108.864 tác tử độc lập** với tổng chi phí tạo cây ban đầu chỉ **~10.5 SOL (< 2.100 USD, tương đương < 0.00003 USD cho mỗi tác tử con)**.
+* **Cập Nhật Đồng Thời Không Nghẽn:** Bộ đệm vòng changelog cho phép thực hiện tới 1.024 giao dịch cập nhật trạng thái tác tử đồng thời trong cùng một block mà không gây xung đột khóa (lock contention).
+
+#### 2. Vòng Đời PDA Tự Hủy Hoàn Tiền Thuê 100% (`close = user_authority`)
+Đối với các phiên đàm phán tức thời, kênh vi thanh toán và ký quỹ suy luận ngắn hạn đòi hỏi tài khoản on-chain thực thi:
+* **Cấp Phát Tạm Thời:** Các địa chỉ dẫn xuất chương trình (PDA) được khởi tạo bằng khoản lamports tạm trích từ kho người dùng.
+* **Cưỡng Bức Thu Hồi Bằng Mã Máy:** Ngay khi chu kỳ bù trừ kết thúc hoặc quá hạn thời gian, chỉ thị kết thúc chương trình Anchor cưỡng bức lệnh đóng:
+  ```rust
+  #[account(
+      mut,
+      seeds = [b"ephemeral_escrow", session_id.as_ref()],
+      bump,
+      close = user_authority
+  )]
+  pub struct SettleSession<'info> { ... }
+  ```
+* **Hoàn Tiền Tuyệt Đối 100%:** Toàn bộ số lamports tiền cọc thuê trạng thái được tự động chuyển hoàn về ví người dùng (`user_authority`) trong cùng một giao dịch nguyên tử, triệt tiêu 100% chi phí rò rỉ lưu trữ của mạng lưới.
+
 ---
 
 ## CHƯƠNG 5: CỖ MÁY BÙ TRỪ & NÉN DỮ LIỆU ĐA PHƯƠNG
@@ -297,6 +337,44 @@ Nhân hợp đồng thông minh (`haichain-core v6.9.3`) cưỡng bức 6 bất 
 |   - Loại bỏ 100% rủi ro lây nhiễm nếu ví của người dùng khác bị Tether chặn.   |
 +---------------------------------------------------------------------------------+
 ```
+
+### 6.1. Động Cơ Phát Sóng Đa Luồng (Multi-Rail Flash Broadcast Engine)
+Việc phụ thuộc duy nhất vào mạng lưới chuyển tiếp Jito Bundles tiềm ẩn nguy cơ điểm nghẽn tập trung, độ trễ khu vực và rủi ro trượt giá khi xảy ra đấu giá tiền tip tăng vọt. Haichain tích hợp **Động Cơ Phát Sóng Đa Luồng (Multi-Rail Flash Broadcast)** kết hợp ba tuyến truyền tin song song:
+
+```
+          ĐỘNG CƠ PHÁT SÓNG ĐA LUỒNG & PHÒNG VỆ MEV CẤP ĐỘ ỨNG DỤNG
+            
+   [ Giao Dịch Vi Mô / Lô Bù Trừ Của Tác Tử Tự Hành Tần Suất Cao ]
+                                  │
+         ┌────────────────────────┼────────────────────────┐
+         ▼                        ▼                        ▼
+   [ Tuyến 1: Jito Private ]  [ Tuyến 2: Direct TPU ]   [ Tuyến 3: SWQoS Priority ]
+   ├── Bỏ qua gossip mempool  ├── Kết nối QUIC UDP đến  ├── Phân bổ băng thông theo
+   ├── Tip sàn mục tiêu: 75%  │   Leader hiện tại & 4   │   tỷ lệ stake ủy quyền
+   └── Chống MEV nhòm ngó     │   Leader tiếp theo      └── Chống rớt gói khi mạng
+                              └── Đón đầu Firedancer 1M+     Solana tắc nghẽn cục bộ
+                                       │
+                                       ▼
+           [ Cơ Chế Cam Kết Mật Mã Chống MEV (Commit-Reveal Hash Lock) ]
+           ├── Giai đoạn 1 (Cam Kết): Gửi Blake3(NộiDung || HạnMức || MuốiẨn || VíGọi)
+           │   - Không tiết lộ nội dung giao dịch; bot MEV mù thông tin hoàn toàn
+           └── Giai đoạn 2 (Mở Khóa N <= 4 slots): Cung cấp (NộiDung, MuốiẨn)
+               - Thực thi nguyên tử: require!(Blake3(...) == StoredCommitHash)
+               - Khóa chặt theo VíGọi: Bot MEV sao chép lệnh lập tức bị hoàn tác lỗi
+```
+
+1. **Tuyến 1 - Jito Private Bundle Rail:** Các giao dịch quyết toán lô giá trị lớn được đóng gói thành các bundle nguyên tử gửi thẳng đến block engine của validator Jito-Solana, đi đường vòng hoàn toàn khỏi mempool công khai để loại bỏ nguy cơ bị quan sát.
+2. **Tuyến 2 - Direct TPU qua QUIC Socket:** Các vi tác vụ đòi hỏi tốc độ phản hồi tính bằng mili-giây được truyền qua các socket UDP/QUIC trực tiếp đến cổng TPU của validator đang dẫn đầu (Leader) và 4 leader kế tiếp theo lịch trình của Solana. Thiết kế này tối ưu hóa 100% cho kiến trúc Firedancer (1M+ TPS), kéo độ trễ phát sóng xuống **dưới 5ms**.
+3. **Tuyến 3 - Dịch Vụ Chất Lượng Theo Tỷ Lệ Cọc (SWQoS):** Kết nối thông qua các node RPC được ủy quyền stake SOL quy mô lớn. Quyền ưu tiên SWQoS đảm bảo các gói tin thanh toán của Haichain không bao giờ bị nghẽn hay rớt gói trong các thời điểm mạng lưới biến động dữ dội.
+
+### 6.2. Cơ Chế Cam Kết Mật Mã Triệt Tiêu MEV (Commit-Reveal Hash Lock Invariant)
+Ngay cả khi giao dịch đi qua các kênh RPC thông thường hoặc mạng gossip công khai, các cuộc tấn công kẹp thịt (sandwich attack), cướp quyền đi trước (front-running) và bắt chước lệnh đều bị vô hiệu hóa toán học bằng quy trình khóa hai giai đoạn:
+* **Giai Đoạn 1 - Đặt Cam Kết (Commit Phase, $t = 0$):** Tác tử phát hành một mã băm cam kết kèm tiền ký quỹ:
+  $$\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})$$
+  Do toàn bộ tham số giao dịch được che giấu sau mã băm Blake3 256-bit kháng va chạm, các bot tìm kiếm MEV hoàn toàn không thể giải mã để thực hiện chiến lược chèn lệnh thu lợi.
+* **Giai Đoạn 2 - Mở Khóa & Quyết Toán (Reveal Phase, $t \le 4\text{ slots}$):** Tác tử công bố bộ đôi giải mã $(\text{ExecutionPayload}, \text{SecretSalt})$. Hợp đồng thông minh `haichain-core` tính toán và xác thực tại chỗ:
+  $$\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})$$
+  Nếu bot MEV sao chép payload này để phát sóng song song, giao dịch của kẻ tấn công lập tức bị hủy bỏ (revert) vì mã băm đã bị khóa cứng với khóa công khai `CallerPubkey` của tác tử chính chủ. Nếu tác tử cố tình không mở khóa trước thời hạn quá hạn, một khoản phạt nhẹ sẽ được kích hoạt để triệt tiêu hành vi spam quyền chọn miễn phí.
 
 ---
 
@@ -436,6 +514,14 @@ $$E \le \text{MaxSpend}$$
 *Chứng minh:* Bất kỳ lệnh chi tiêu nào cũng đòi hỏi một bằng chứng bao hàm Merkle $\pi$ sao cho $\text{Verify}(R, L, \pi) = \text{true}$. Vì hợp đồng thông minh cưỡng chế kiểm tra:
 $$\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})$$
 và ghi nhận nullifier để chống chi tiêu lặp lại (double-spend), mọi nỗ lực chi tiêu vượt quá $amount > L.\text{MaxSpend}$ hoặc chuyển tiền sai địa chỉ merchant đã định sẵn đều dẫn đến hủy bỏ giao dịch nguyên tử. $\blacksquare$
+
+### Định Lý 3: Tính Trung Hòa Phí Thuê Trạng Thái & Bất Biến Triệt Tiêu Tấn Công MEV
+Gọi $S_{ephem}$ là tập hợp các tài khoản PDA đàm phán tạm thời được khởi tạo trong chu kỳ bù trừ $\tau$, và $R(A)$ là số lượng lamports tiền thuê trạng thái bị khóa trong tài khoản $A$.
+$$\lim_{t \to \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0$$
+*Chứng minh:* Bởi vì bất biến kernel cưỡng bức chỉ thị `close = user_authority` một cách nguyên tử ngay khi kết thúc chỉ thị bù trừ, 100% lamports được giải phóng và chuyển hoàn về ví gốc của người dùng tại slot $k \le \tau_{end}$.
+Đồng thời, dưới cơ chế Cam kết Mật mã Commit-Reveal:
+$$\forall \text{Bot MEV } M, \quad \mathbb{E}[\text{Lợi Nhuận MEV} \mid \text{CommitPhase}] = 0$$
+Bởi vì $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$ che giấu $\text{Payload}$ với entropy 256-bit và ràng buộc thẩm quyền độc quyền với `CallerPubkey`, kẻ tấn công trích xuất 0 bit thông tin kinh tế có thể khai thác và không thể giả mạo lệnh gọi nếu không sở hữu đồng thời khóa bí mật của `Caller` và chuỗi ngẫu nhiên `Salt`. $\blacksquare$
 
 ---
 

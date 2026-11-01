@@ -1,0 +1,27 @@
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+
+/manifest.json
+  Content-Type: application/manifest+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=0, must-revalidate
+
+/site.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=0, must-revalidate
+
+/apple-touch-icon.png
+  Content-Type: image/png
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+
+/assets/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+
+/favicon.ico
+  Content-Type: image/x-icon
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
