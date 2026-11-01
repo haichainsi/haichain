@@ -34,6 +34,22 @@
   Content-Type: image/png
   Cache-Control: public, max-age=86400
 
+/assets/icon-maskable-512.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/assets/icon-maskable-192.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/assets/haisi-icon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/assets/haisi-token.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
 /assets/haisi-metadata.json
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=60, must-revalidate

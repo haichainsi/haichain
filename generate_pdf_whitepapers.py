@@ -368,8 +368,15 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Tiêu Chuẩn Xác Thực An Toàn"
         val_security = "Xác Thực Toán Học • Chuẩn Zero-Griefing"
 
-    body_font_size = "9.45pt" if lang in ["es", "ru"] else "9.6pt"
-    body_line_height = "1.58" if lang in ["es", "ru"] else "1.62"
+    if lang == "he":
+        body_font_size = "11.2pt"
+        body_line_height = "1.90"
+    elif lang in ["es", "ru"]:
+        body_font_size = "9.45pt"
+        body_line_height = "1.58"
+    else:
+        body_font_size = "9.6pt"
+        body_line_height = "1.62"
 
     full_html = f"""<!DOCTYPE html>
 <html lang="{lang}" dir="{'rtl' if lang == 'he' else 'ltr'}">
