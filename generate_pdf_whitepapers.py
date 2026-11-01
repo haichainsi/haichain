@@ -3,7 +3,7 @@
 HAICHAIN International Whitepaper PDF Generator
 Compiles Markdown Whitepapers into Institutional-Grade PDF Documents
 Using Headless Browser Engine with Paged Media CSS
-Style: Pure Borderless Minimalist Typography (Zero Borders, Zero Lines, Dedicated TOC Page)
+Style: 100% Borderless Minimalist Typography (Zero Borders, Zero Lines, Dedicated TOC Page)
 Cover: Black Premium with Official White Logo (Zero Border Lines)
 Token: $HAISI
 """
@@ -130,45 +130,6 @@ def process_callouts(html):
     )
     return html
 
-def isolate_toc_and_sections(raw_text, lang="en"):
-    """
-    Separates Frontmatter (Title, Subtitle, Metadata, ASCII logo),
-    Table of Contents (dedicated page), and Main Body.
-    """
-    if lang == "en":
-        toc_pattern = r'(## TABLE OF CONTENTS\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
-    else:
-        toc_pattern = r'(## M[^\n]*L[^\n]*C[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## |\n## T|\n## 1\.)'
-    
-    m = re.search(toc_pattern, raw_text, re.DOTALL)
-    if m:
-        frontmatter = raw_text[:m.start()].strip()
-        toc = m.group(1).strip()
-        body = raw_text[m.end():].strip()
-        body = re.sub(r'^---\s*', '', body).strip()
-        
-        transformed = f"""
-<div class="frontmatter-page">
-
-{frontmatter}
-
-</div>
-
-<div class="toc-page">
-
-{toc}
-
-</div>
-
-<div class="body-content">
-
-{body}
-
-</div>
-"""
-        return transformed
-    return raw_text
-
 def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     md_path = os.path.join(WORKSPACE_DIR, md_filename)
     pdf_path = os.path.join(WORKSPACE_DIR, pdf_filename)
@@ -182,13 +143,43 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     text_with_math = format_math(raw_text)
 
     # Separate frontmatter, dedicated TOC page, and body
-    structured_text = isolate_toc_and_sections(text_with_math, lang=lang)
-
-    # Convert Markdown to HTML
+    if lang == "en":
+        toc_pattern = r'(## TABLE OF CONTENTS\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
+    else:
+        toc_pattern = r'(## M[^\n]*L[^\n]*C[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## |\n## T|\n## 1\.)'
+    
+    m = re.search(toc_pattern, text_with_math, re.DOTALL)
     md_converter = markdown.Markdown(extensions=['tables', 'fenced_code', 'attr_list'])
-    body_html = md_converter.convert(structured_text)
-    body_html = process_callouts(body_html)
+    
+    if m:
+        frontmatter_text = text_with_math[:m.start()].strip()
+        toc_text = m.group(1).strip()
+        body_text = text_with_math[m.end():].strip()
+        body_text = re.sub(r'^---\s*', '', body_text).strip()
+        
+        frontmatter_html = md_converter.convert(frontmatter_text)
+        md_converter.reset()
+        toc_html = md_converter.convert(toc_text)
+        md_converter.reset()
+        body_html = md_converter.convert(body_text)
+        
+        full_content_html = f"""
+<div class="frontmatter-page">
+{frontmatter_html}
+</div>
 
+<div class="toc-page">
+{toc_html}
+</div>
+
+<div class="body-content">
+{body_html}
+</div>
+"""
+    else:
+        full_content_html = md_converter.convert(text_with_math)
+
+    full_content_html = process_callouts(full_content_html)
     logo_data_uri = get_logo_base64()
 
     # Document metadata and titles
@@ -293,6 +284,7 @@ body {{
 a, a:link, a:visited, a:hover, a:active {{
     text-decoration: none !important;
     color: inherit !important;
+    border: none !important;
 }}
 
 /* Universal Horizontal Rules: Completely Hidden (Zero Border Lines) */
@@ -424,17 +416,39 @@ hr {{
     padding-top: 10px;
 }}
 
-/* Page 3: Standalone Dedicated Table of Contents Page */
+.frontmatter-page h1 {{
+    font-size: 16pt;
+    font-weight: 800;
+    color: #000000;
+    border: none !important;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+}}
+
+.frontmatter-page h2 {{
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: #27272a;
+    border: none !important;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 18px;
+    line-height: 1.45;
+}}
+
+/* Page 3: Dedicated Standalone Table of Contents Page */
 .toc-page {{
     page-break-before: always;
     page-break-after: always;
     break-before: page;
     break-after: page;
-    padding-top: 10px;
+    padding-top: 14px;
 }}
 
 .toc-page h2 {{
-    font-size: 15pt;
+    font-size: 14.5pt;
     font-weight: 800;
     color: #000000;
     border: none !important;
@@ -444,16 +458,23 @@ hr {{
     letter-spacing: -0.2px;
 }}
 
-.toc-page ul, .toc-page ol {{
+.toc-page ol, .toc-page ul {{
     padding-left: 20px;
     margin: 0;
 }}
 
 .toc-page li {{
-    margin-bottom: 7px;
+    margin-bottom: 6px;
     font-size: 8.8pt;
-    line-height: 1.48;
+    line-height: 1.45;
     color: #18181b;
+}}
+
+.toc-page li li {{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 8.2pt;
+    color: #3f3f46;
 }}
 
 .toc-page a {{
@@ -720,7 +741,7 @@ blockquote p {{
 
 <!-- Main Body Content with Isolated Frontmatter and Dedicated TOC Page -->
 <div class="document-content">
-{body_html}
+{full_content_html}
 </div>
 
 </body>
