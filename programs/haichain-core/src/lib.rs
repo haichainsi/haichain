@@ -35,17 +35,22 @@ pub mod haichain_core {
     pub fn initialize_agent_vault(
         ctx: Context<InitializeVaultContext>,
         composite_root: [u8; 32],
-        bump: u8,
     ) -> Result<()> {
         let vault = &mut ctx.accounts.agent_vault;
         
         // NOMAD BRIDGE DEFENSE: Strictly forbid uninitialized 0x0 Merkle root
         require!(composite_root != [0u8; 32], HaiChainMasterError::EmptyNomadRootForbidden);
 
-        // ENFORCE OFFICIAL TETHER USDT SPL MINT
+        // ENFORCE TETHER USDT SPL MINT (Strict on mainnet, flexible on devnet/testnet)
+        #[cfg(feature = "mainnet")]
         require_keys_eq!(
             ctx.accounts.token_mint.key(),
             USDT_SPL_MINT,
+            HaiChainMasterError::InvalidTokenMint
+        );
+        #[cfg(not(feature = "mainnet"))]
+        require!(
+            ctx.accounts.token_mint.key() != Pubkey::default(),
             HaiChainMasterError::InvalidTokenMint
         );
 
@@ -56,9 +61,10 @@ pub mod haichain_core {
         vault.last_deposit_slot = Clock::get()?.slot;
         vault.composite_root = composite_root;
         vault.panic_kill_switch_tripped = false;
-        vault.bump = bump;
+        vault.bump = ctx.bumps.agent_vault;
+        vault.min_valid_nonce = 0;
 
-        msg!("HAICHAIN v6.9.1: Agent Vault initialized for owner: {}", vault.master_owner);
+        msg!("HAICHAIN v6.9.4: Agent Vault initialized for owner: {}", vault.master_owner);
         Ok(())
     }
 
@@ -109,6 +115,9 @@ pub mod haichain_core {
         require!(spend_amount > 0, HaiChainMasterError::InvalidSpendAmount);
         require!(spend_amount <= MAX_SAFE_MICRO_TICK_PAYMENT, HaiChainMasterError::ExceedsMaxMicroTick);
         require!(spend_amount <= max_authorized_amount, HaiChainMasterError::ExceedsAuthorizedCapability);
+
+        // ANTI-NONCE-RECYCLE DEFENSE: Prevent replay of recycled/closed nonces
+        require!(nonce >= vault.min_valid_nonce, HaiChainMasterError::NonceAlreadyReclaimed);
 
         // VERIFY CAPABILITY EXPIRATION
         let current_slot = Clock::get()?.slot;
@@ -259,8 +268,9 @@ pub mod haichain_core {
         Ok(())
     }
 
-    /// 5. RECLAIM EXPIRED NULLIFIER RENT (ZERO-COST CYCLING)
-    /// Closes expired nullifiers and reclaims 100% of SOL rent back to the user/relayer
+    /// 5. RECLAIM EXPIRED NULLIFIER RENT (ZERO-COST CYCLING WITH ANTI-RECYCLE BARRIER)
+    /// Closes expired nullifiers, reclaims 100% of SOL rent back to the owner,
+    /// and monotonically advances min_valid_nonce to prevent nonce recycling attacks.
     pub fn reclaim_expired_nullifier(
         ctx: Context<ReclaimNullifierContext>,
         nonce: u64,
@@ -271,7 +281,26 @@ pub mod haichain_core {
             HaiChainMasterError::NullifierNotYetExpired
         );
 
-        msg!("HAICHAIN: Reclaimed rent for expired nullifier nonce {}", nonce);
+        let vault = &mut ctx.accounts.agent_vault;
+        if nonce >= vault.min_valid_nonce {
+            vault.min_valid_nonce = nonce.checked_add(1).ok_or(HaiChainMasterError::MathOverflow)?;
+        }
+
+        msg!("HAICHAIN: Reclaimed rent for expired nullifier nonce {}. Vault min_valid_nonce is now {}", 
+             nonce, vault.min_valid_nonce);
+        Ok(())
+    }
+
+    /// 6. ADVANCE MINIMUM VALID NONCE (MASS CANCELLATION & KEY COMPROMISE MITIGATION)
+    /// Allows master owner to atomically invalidate all unspent capability tickets prior to `new_min_nonce`
+    pub fn advance_min_valid_nonce(
+        ctx: Context<AdvanceNonceContext>,
+        new_min_nonce: u64,
+    ) -> Result<()> {
+        let vault = &mut ctx.accounts.agent_vault;
+        require!(new_min_nonce > vault.min_valid_nonce, HaiChainMasterError::InvalidNonceSequence);
+        vault.min_valid_nonce = new_min_nonce;
+        msg!("HAICHAIN: Master owner advanced min_valid_nonce to {}", new_min_nonce);
         Ok(())
     }
 }
@@ -281,12 +310,12 @@ pub mod haichain_core {
 // ============================================================================
 
 #[derive(Accounts)]
-#[instruction(composite_root: [u8; 32], bump: u8)]
+#[instruction(composite_root: [u8; 32])]
 pub struct InitializeVaultContext<'info> {
     #[account(
         init,
         payer = master_owner,
-        space = 8 + 32 + 32 + 32 + 8 + 8 + 32 + 1 + 1,
+        space = 8 + 32 + 32 + 32 + 8 + 8 + 32 + 1 + 1 + 8,
         seeds = [b"agent-vault", master_owner.key().as_ref()],
         bump
     )]
@@ -422,6 +451,7 @@ pub struct ReclaimNullifierContext<'info> {
     )]
     pub nullifier_record: Account<'info, NullifierRecord>,
 
+    #[account(mut)]
     pub agent_vault: Account<'info, MasterAgentVault>,
 
     /// CHECK: Strictly return rent to the vault master owner (Anti-Rent-Theft Invariant)
@@ -430,6 +460,17 @@ pub struct ReclaimNullifierContext<'info> {
         address = agent_vault.master_owner @ HaiChainMasterError::UnauthorizedRentReceiver
     )]
     pub rent_receiver: AccountInfo<'info>,
+}
+
+#[derive(Accounts)]
+pub struct AdvanceNonceContext<'info> {
+    #[account(
+        mut,
+        has_one = master_owner @ HaiChainMasterError::UnauthorizedOwner
+    )]
+    pub agent_vault: Account<'info, MasterAgentVault>,
+
+    pub master_owner: Signer<'info>,
 }
 
 // ============================================================================
@@ -446,6 +487,7 @@ pub struct MasterAgentVault {
     pub composite_root: [u8; 32],      // 32 bytes (Unified Capability + Whitelist Root)
     pub panic_kill_switch_tripped: bool,// 1 byte
     pub bump: u8,                      // 1 byte
+    pub min_valid_nonce: u64,          // 8 bytes (Anti-Nonce-Recycle Invariant)
 }
 
 #[account]
@@ -503,4 +545,8 @@ pub enum HaiChainMasterError {
     UnauthorizedRentReceiver,
     #[msg("Spend: Spend amount must be strictly greater than zero to prevent nullifier burning griefing.")]
     InvalidSpendAmount,
+    #[msg("Nonce: This nonce has already been expired, reclaimed, or superseded.")]
+    NonceAlreadyReclaimed,
+    #[msg("Nonce: New minimum nonce must be strictly greater than current min_valid_nonce.")]
+    InvalidNonceSequence,
 }

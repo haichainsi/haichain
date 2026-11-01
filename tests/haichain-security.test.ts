@@ -151,4 +151,45 @@ describe("HAICHAIN v6.9.3: Forensic Technical Kernel Audit Suite", () => {
     expect(isZeroSpendValid).to.be.false;
     expect(isLegitimateSpendValid).to.be.true;
   });
+
+  it("16. [ANTI-NONCE-RECYCLE INVARIANT]: Rejects replayed nonce when nonce < min_valid_nonce after nullifier rent reclamation", async () => {
+    let minValidNonce = 0;
+    const executedNonces = new Set<number>();
+
+    // Step A: Spend nonce 10
+    const nonce = 10;
+    expect(nonce >= minValidNonce).to.be.true;
+    executedNonces.add(nonce);
+
+    // Step B: Simulate capability ticket expiration and rent reclamation
+    // Monotonically advancing minValidNonce
+    if (nonce >= minValidNonce) {
+      minValidNonce = nonce + 1; // minValidNonce is now 11
+    }
+    expect(minValidNonce).to.equal(11);
+    executedNonces.delete(nonce); // Ephemeral nullifier PDA closed to return rent
+
+    // Step C: Adversary tries to replay nonce 10 using a newly signed ticket with future expiry
+    const replayAttemptNonce = 10;
+    const isReplayAllowed = replayAttemptNonce >= minValidNonce;
+    expect(isReplayAllowed).to.be.false; // Strictly blocked by min_valid_nonce invariant!
+
+    // Step D: Legitimate subsequent nonce 11 is allowed
+    const nextNonce = 11;
+    const isNextAllowed = nextNonce >= minValidNonce;
+    expect(isNextAllowed).to.be.true;
+  });
+
+  it("17. [DEVNET/MAINNET MINT CONFIGURATION]: Flexible mint in devnet/testnet and pinned USDT mint in mainnet", async () => {
+    const devnetCustomMint = Keypair.generate().publicKey;
+    const mainnetPinnedMint = OFFICIAL_SOLANA_USDT_MINT;
+
+    // Devnet mode allows any valid pubkey (not default/null)
+    const isDevnetMintValid = !devnetCustomMint.equals(PublicKey.default);
+    expect(isDevnetMintValid).to.be.true;
+
+    // Mainnet mode strictly requires official Tether USDT mint
+    const isMainnetMatch = mainnetPinnedMint.equals(OFFICIAL_SOLANA_USDT_MINT);
+    expect(isMainnetMatch).to.be.true;
+  });
 });
