@@ -178,7 +178,7 @@
       }
       var link = provider === 'solflare'
         ? 'https://solflare.com/ul/v1/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin)
-        : 'https://phantom.app/ul/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin);
+        : 'https://phantom.com/ul/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin);
       window.location.href = link;
     },
 
@@ -208,7 +208,7 @@
         // Official Universal Link with verified native app intent
         var baseUrl = provider === 'solflare'
           ? 'https://solflare.com/ul/v1/connect'
-          : 'https://phantom.app/ul/v1/connect';
+          : 'https://phantom.com/ul/v1/connect';
 
         var connectUrl = new URL(baseUrl);
         connectUrl.searchParams.set('app_url', appOrigin);

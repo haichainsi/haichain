@@ -157,6 +157,8 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         toc_pattern = r'(## [^\n]*(?:СОДЕРЖАНИЕ|TABLE OF CONTENTS)[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. |\n- \*\*1\.)'
     elif lang == "vi":
         toc_pattern = r'(## M[^\n]*L[^\n]*C[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## |\n## T|\n## 1\.)'
+    elif lang == "he":
+        toc_pattern = r'(## [^\n]*(?:תוכן העניינים|TABLE OF CONTENTS)[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
     else:
         toc_pattern = r'(## [^\n]*TABLE OF CONTENTS[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
     
@@ -424,7 +426,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
 }}
 
 body {{
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", "PingFang SC", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans SC", "Noto Sans KR", sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Hebrew", "David", "Arial Hebrew", "Microsoft YaHei", "PingFang SC", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans SC", "Noto Sans KR", sans-serif;
     font-size: {body_font_size};
     line-height: {body_line_height};
     color: #18181b;
@@ -849,6 +851,30 @@ blockquote p {{
     margin: 0;
     text-align: justify;
     border: none !important;
+}}
+
+/* RTL Specific Rules for Hebrew */
+html[dir="rtl"] p {{
+    text-align: justify;
+}}
+html[dir="rtl"] pre, html[dir="rtl"] code, html[dir="rtl"] .math-display, html[dir="rtl"] .math-inline {{
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: embed;
+}}
+html[dir="rtl"] .academic-remark .remark-lead {{
+    text-align: right !important;
+}}
+html[dir="rtl"] th, html[dir="rtl"] td {{
+    text-align: right;
+}}
+html[dir="rtl"] ul, html[dir="rtl"] ol {{
+    padding-left: 0;
+    padding-right: 22px;
+}}
+html[dir="rtl"] .toc-page ol, html[dir="rtl"] .toc-page ul {{
+    padding-left: 0;
+    padding-right: 20px;
 }}
 </style>
 </head>
