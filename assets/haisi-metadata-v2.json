@@ -1,0 +1,34 @@
+{
+  "name": "Haichain SI",
+  "symbol": "HAISI",
+  "description": "Haichain SI ($HAISI) - The Autonomous AI Super Intelligence Safe Spending Pot & Sub-Cent Settlement Rail on Solana L1.",
+  "image": "https://haichain.si/assets/haisi-icon-v2.png",
+  "external_url": "https://haichain.si",
+  "attributes": [
+    {
+      "trait_type": "Standard",
+      "value": "Solana Token-2022"
+    },
+    {
+      "trait_type": "Extension",
+      "value": "Transfer-Hook"
+    },
+    {
+      "trait_type": "Program ID",
+      "value": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
+    },
+    {
+      "trait_type": "Decimals",
+      "value": 9
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://haichain.si/assets/haisi-icon-v2.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  }
+}

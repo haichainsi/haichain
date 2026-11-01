@@ -60,15 +60,15 @@ async function main() {
   );
   console.log(`    ✓ Name Updated! Tx: ${nameTxSig}`);
 
-  // 5. Update URI -> "https://haichain.si/assets/haisi-metadata.json"
-  console.log('\n[5] Updating URI to "https://haichain.si/assets/haisi-metadata.json"...');
+  // 5. Update URI -> "https://haichain.si/assets/haisi-metadata-v2.json"
+  console.log('\n[5] Updating URI to "https://haichain.si/assets/haisi-metadata-v2.json"...');
   const uriTxSig = await tokenMetadataUpdateFieldWithRentTransfer(
     connection,
     payer,
     mint,
     payer,
     'Uri',
-    'https://haichain.si/assets/haisi-metadata.json',
+    'https://haichain.si/assets/haisi-metadata-v2.json',
     [],
     { commitment: 'confirmed' },
     TOKEN_2022_PROGRAM_ID
