@@ -4186,10 +4186,10 @@ function getInitialLanguage() {
     return `
       <div id="haichain-mobile-lang-drawer" class="hidden sm:hidden fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
         <!-- Backdrop Overlay -->
-        <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-auto"></div>
+        <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         
         <!-- Bottom Action Sheet -->
-        <div id="mobile-lang-sheet" class="absolute inset-x-0 bottom-0 bg-white dark:bg-[#0d0d0d] rounded-t-3xl border-t border-neutral-200 dark:border-neutral-800 p-5 shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[85vh] overflow-y-auto pointer-events-auto">
+        <div id="mobile-lang-sheet" class="absolute inset-x-0 bottom-0 bg-white dark:bg-[#0d0d0d] rounded-t-3xl border-t border-neutral-200 dark:border-neutral-800 p-5 shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[85vh] overflow-y-auto pointer-events-none">
           <!-- Grab Pill Indicator -->
           <div class="w-12 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-4"></div>
           
@@ -4252,8 +4252,12 @@ function getInitialLanguage() {
     const backdrop = document.getElementById('mobile-lang-backdrop');
     const sheet = document.getElementById('mobile-lang-sheet');
     if (drawer && backdrop && sheet) {
-      drawer.classList.remove('hidden');
-      drawer.classList.remove('pointer-events-none');
+      drawer.classList.remove('hidden', 'pointer-events-none');
+      drawer.classList.add('pointer-events-auto');
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.add('pointer-events-auto');
+      sheet.classList.remove('pointer-events-none');
+      sheet.classList.add('pointer-events-auto');
       requestAnimationFrame(() => {
         backdrop.classList.remove('opacity-0');
         backdrop.classList.add('opacity-100');
@@ -4269,14 +4273,16 @@ function getInitialLanguage() {
     const sheet = document.getElementById('mobile-lang-sheet');
     if (drawer && backdrop && sheet) {
       // IMMEDIATELY disable pointer-events to prevent lingering transparent overlay blocking header & logo!
+      drawer.classList.remove('pointer-events-auto');
       drawer.classList.add('pointer-events-none');
-      backdrop.classList.remove('opacity-100');
-      backdrop.classList.add('opacity-0');
-      sheet.classList.add('translate-y-full');
+      backdrop.classList.remove('pointer-events-auto', 'opacity-100');
+      backdrop.classList.add('pointer-events-none', 'opacity-0');
+      sheet.classList.remove('pointer-events-auto');
+      sheet.classList.add('pointer-events-none', 'translate-y-full');
       document.body.style.overflow = '';
       setTimeout(() => {
         const liveDrawer = document.getElementById('haichain-mobile-lang-drawer');
-        if (liveDrawer && liveDrawer.classList.contains('pointer-events-none')) {
+        if (liveDrawer) {
           liveDrawer.classList.add('hidden');
         }
       }, 300);

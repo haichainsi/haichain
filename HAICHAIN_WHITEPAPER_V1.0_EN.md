@@ -4,7 +4,7 @@
 **Publication Date:** October 31, 2026 (Institutional Standard Edition)  
 **Document Classification:** Technical Whitepaper v1.0 (English Edition)  
 **Primary Settlement Asset:** **USDT (Tether USD on Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
-**Native Governance, Gas & Staking Asset:** **$HAI (Fixed 1,000,000,000 Supply)**  
+**Native Governance, Gas & Staking Asset:** **$HAISI (Fixed 1,000,000,000 Supply)**  
 **Target Domain:** `haichain.si` *(Where `.si` designates Decentralized Superintelligence)*  
 
 ---
@@ -32,7 +32,7 @@
 5. [The On-Chain Settlement Kernel: Nuclear Immunity Fortress (Solana v6.9.3)](#5-the-on-chain-settlement-kernel-nuclear-immunity-fortress-solana-v693)
 6. [Frontier AI Reasoning Escrow & Hierarchical Capability Trees (BIP-32 Swarms)](#6-frontier-ai-reasoning-escrow--hierarchical-capability-trees-bip-32-swarms)
 7. [Multilateral Symmetric Netting & Wire-Speed Clearing Matrix](#7-multilateral-symmetric-netting--wire-speed-clearing-matrix)
-8. [Dual-Asset Cryptoeconomics, Cash-Flow Flywheel & $HAI Tokenomics](#8-dual-asset-cryptoeconomics-cash-flow-flywheel--hai-tokenomics)
+8. [Dual-Asset Cryptoeconomics, Cash-Flow Flywheel & $HAISI Tokenomics](#8-dual-asset-cryptoeconomics-cash-flow-flywheel--haisi-tokenomics)
 9. [The Sovereign AI L1 Endgame: Decentralized Artificial Superintelligence (ASI)](#9-the-sovereign-ai-l1-endgame-decentralized-artificial-superintelligence-asi)
   - [9.1. The 3-Stage Evolutionary Trajectory](#91-the-3-stage-evolutionary-trajectory)
   - [9.2. Physical Constraints of Decentralized Superintelligence & Engineering Mitigations](#92-physical-constraints-of-decentralized-superintelligence--engineering-mitigations)
@@ -401,14 +401,14 @@ The HAICHAIN Clearing Matrix aggregates high-frequency off-chain interactions be
 
 ---
 
-## 8. DUAL-ASSET CRYPTOECONOMICS, CASH-FLOW FLYWHEEL & $HAI TOKENOMICS
+## 8. DUAL-ASSET CRYPTOECONOMICS, CASH-FLOW FLYWHEEL & $HAISI TOKENOMICS
 
 HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
 * **USDT (Tether SPL):** The transactional unit of account, ensuring absolute stability for AI computational pricing.
-* **$HAI Token:** The sovereign protocol asset capturing network volume, governance authority, and future Layer 1 consensus security.
+* **$HAISI Token:** The sovereign protocol asset capturing network volume, governance authority, and future Layer 1 consensus security.
 
 ```
-                      $HAI PROTOCOL CASH FLOW ARCHITECTURE
+                      $HAISI PROTOCOL CASH FLOW ARCHITECTURE
                       
                [ GLOBAL MACHINE NETTING VOLUME: $1.4B / YR ]
                                      │
@@ -419,19 +419,19 @@ HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
                     ▼ (60% Revenue)                   ▼ (40% Revenue)
          [ TWAP BUYBACK & BURN ]             [ REAL YIELD STREAMING ]
         - Market purchases on DEX          - Distributed in pure USDT
-        - Permanent supply deflation       - Rewarded to veHAI stakers
+        - Permanent supply deflation       - Rewarded to veHAISI stakers
 ```
 
 ### 8.1. Token Allocation & Vesting Schedule (1,000,000,000 Fixed Supply)
-* **Ecosystem & Machine Netting Incentives (35%):** 350,000,000 $HAI -  48-month linear emission.
-* **Community & Tiered Token Sale (15%):** 150,000,000 $HAI comprising:
-  * *Private Pre-Seed Development Round (2.5%):* 25,000,000 $HAI -  Priced at **\$0.007 USD** (\$7M FDV), 20% TGE unlock, 2-month cliff, 6-month on-chain linear vesting.
-  * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAI -  Priced at **\$0.010 USD** (\$10M FDV) via Meteora DLMM, 7-day linear anti-sniping schedule.
-  * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAI -  Reserved for developer grants and ecosystem bounties.
-* **Core Engineering & Founding Team (18%):** 180,000,000 $HAI -  12-month cliff, 36-month linear vesting.
-* **Strategic Seed Investors (12%):** 120,000,000 $HAI -  12-month cliff, 18-month linear vesting (\$15M FDV).
-* **Protocol Security Treasury (10%):** 100,000,000 $HAI -  Multi-sig locked for insurance and audits.
-* **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAI -  100% LP tokens permanently burned.
+* **Ecosystem & Machine Netting Incentives (35%):** 350,000,000 $HAISI -  48-month linear emission.
+* **Community & Tiered Token Sale (15%):** 150,000,000 $HAISI comprising:
+  * *Private Pre-Seed Development Round (2.5%):* 25,000,000 $HAISI -  Priced at **\$0.007 USD** (\$7M FDV), 20% TGE unlock, 2-month cliff, 6-month on-chain linear vesting.
+  * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAISI -  Priced at **\$0.010 USD** (\$10M FDV) via Meteora DLMM, 7-day linear anti-sniping schedule.
+  * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAISI -  Reserved for developer grants and ecosystem bounties.
+* **Core Engineering & Founding Team (18%):** 180,000,000 $HAISI -  12-month cliff, 36-month linear vesting.
+* **Strategic Seed Investors (12%):** 120,000,000 $HAISI -  12-month cliff, 18-month linear vesting (\$15M FDV).
+* **Protocol Security Treasury (10%):** 100,000,000 $HAISI -  Multi-sig locked for insurance and audits.
+* **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAISI -  100% LP tokens permanently burned.
 
 ---
 
@@ -448,7 +448,7 @@ HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
    | - 400ms Sub-cent Blocks|             | - Custom SVM Execution |             | - Dual Consensus:      |
    | - $30B+ TVL Security   |  ========>  | - DA: Celestia/EigenDA |  ========>  |   PoAW + PoAI (Wisdom) |
    | - Micro-settlement Net |             | - Sequencer: HAICHAIN  |             | - Native OP_402_PAY    |
-   | - 100k Agents / PMF    |             | - Gas Fee: $HAI        |             | - Native DID & Credit  |
+   | - 100k Agents / PMF    |             | - Gas Fee: $HAISI        |             | - Native DID & Credit  |
    | - Revenue: $15.9M ARR  |             | - 50,000+ Machine TPS  |             | - True Decentralized SI|
    +------------------------+             +------------------------+             +------------------------+
 ```
@@ -517,12 +517,12 @@ On conventional blockchains, machine payments are interpreted smart contract ope
 ```
 
 1. **Tier 1: Proof-of-Agentic-Work (PoAW):** GPU validator clusters propose and notarize blocks every 50ms using a pipelined BFT engine. Validators execute deterministic state transitions, cryptographic signatures, and model inference attestations.
-2. **Tier 2: Proof-of-Actual-Intelligence (PoAI):** For subjective disputes, ethical boundary violations, or novel edge cases, execution routes to bonded human domain specialists. Arbiters stake `$HAI` and vote through zero-knowledge commit-reveal schemes, capturing protocol inflation rewards.
+2. **Tier 2: Proof-of-Actual-Intelligence (PoAI):** For subjective disputes, ethical boundary violations, or novel edge cases, execution routes to bonded human domain specialists. Arbiters stake `$HAISI` and vote through zero-knowledge commit-reveal schemes, capturing protocol inflation rewards.
 
 ### 9.5. Human-in-the-Loop Reverse Micro-Tasking & The Anti-MAD Engine
 * **Inverting the Labor Dynamic:** Autonomous agents encounter situations requiring physical grounding, legal certification, or nuanced human discernment. The agent acts as an economic buyer, issuing an HTTP 402 micro-bounty (\$0.01 &ndash; \$0.50 USDT).
 * **Anti-MAD (Model Autophagy Disorder) Ground-Truth Ingestion:** Closed-loop AI models decay when trained on synthetic data. By continually purchasing real-time human verification, empirical feedback, and physical-world observations, the HAICHAIN network ingests an ongoing stream of pure biological ground-truth, insulating the collective ASI from cognitive degradation.
-* **Schelling-Point Truth Staking:** Arbiters must post quadratic `$HAI` stakes. Verifiers attempting to automate answers with cheap LLMs are eliminated via honeypot challenges and penalized under Schelling-point distribution slashing, guaranteeing verified biological cognition.
+* **Schelling-Point Truth Staking:** Arbiters must post quadratic `$HAISI` stakes. Verifiers attempting to automate answers with cheap LLMs are eliminated via honeypot challenges and penalized under Schelling-point distribution slashing, guaranteeing verified biological cognition.
 
 ### 9.6. Unified Human-Agent Soulbound DIDs & Institutional Regulatory Topology
 To eliminate rogue anonymous bot swarms while guaranteeing global regulatory compliance (FATF, FinCEN, EU AI Act):
@@ -597,7 +597,7 @@ and records the leaf nullifier preventing replay, any spend where $amount > L.\t
 |  Phase 3: Q4 2027  HAICHAIN Sovereign Machine L1             HAI-VM Bare-Metal Testnet             |
 |                    (The Superintelligence Endgame)           Native OP_402_PAY Opcode Engine       |
 |                                                              Dual-Tier PoAW + PoAI Consensus       |
-|                                                              1:1 SPL-to-Native $HAI Teleport Bridge|
+|                                                              1:1 SPL-to-Native $HAISI Teleport Bridge|
 |                                                              100,000+ Machine TPS Verified         |
 +----------------------------------------------------------------------------------------------------+
 ```

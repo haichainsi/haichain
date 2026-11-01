@@ -859,7 +859,7 @@ MONTH 3: INSTITUTIONAL AUDIT & GLOBAL MAINNET LAUNCH (DAYS 61-90)
   ├── Settlement: Solana L1       ├── Execution: SVM Fork         ├── Consensus: Proof-of-Agentic-Work
   ├── Security: $30B+ TVL         ├── DA: Celestia / EigenDA      ├── Native HTTP 402 Opcode in VM
   ├── Speed: 400ms Sub-cent       ├── Throughput: 50,000+ TPS     ├── Native DID & Machine Credit
-  └── Goal: 100k Agents / PMF     └── Sequencer: $HAI Staking     └── Native Gas: $HAI Token
+  └── Goal: 100k Agents / PMF     └── Sequencer: $HAISI Staking     └── Native Gas: $HAISI Token
 ```
 
 ### 8.1. Native HTTP 402 Opcode Virtual Machine
@@ -868,7 +868,7 @@ On the future sovereign HAICHAIN L1, machine-to-machine payment is no longer an 
 ### 8.2. Dual-Tier Hybrid Consensus: Proof-of-Agentic-Work (PoAW) & Proof of Actual Intelligence (PoAI)
 Validators on the HAICHAIN Sovereign L1 decouple transaction processing into two mathematically synchronized tiers:
 1. **Tier 1 (Fast Execution Path - Machine Throughput):** Physical GPU validator clusters execute Proof-of-Agentic-Work (PoAW) and verify Zero-Knowledge Machine Learning (zkML) inference proofs. This certifies deterministic weight execution and micro-payment state transitions at sub-second block times (< 400ms) and wire speeds exceeding 100,000 TPS.
-2. **Tier 2 (Cognitive Arbitration Path - Actual Human Intelligence):** High-stakes disputes, ambiguous model outputs, ethical alignment edge cases, and subjective milestones cannot be reliably evaluated by deterministic math. These are routed to an optimistic dispute window where bonded Human Expert Councils (Actual Intelligence Stakers) arbitrate decisions via Proof of Actual Intelligence (PoAI), earning protocol `$HAI` inflation subsidies without stalling the Tier 1 fast block production pipeline.
+2. **Tier 2 (Cognitive Arbitration Path - Actual Human Intelligence):** High-stakes disputes, ambiguous model outputs, ethical alignment edge cases, and subjective milestones cannot be reliably evaluated by deterministic math. These are routed to an optimistic dispute window where bonded Human Expert Councils (Actual Intelligence Stakers) arbitrate decisions via Proof of Actual Intelligence (PoAI), earning protocol `$HAISI` inflation subsidies without stalling the Tier 1 fast block production pipeline.
 
 ### 8.3. Hexagonal Ports & Adapters Runtime Abstraction (SPEC-L1-01)
 To prevent lock-in to Solana-specific system calls, the core state machine logic is decoupled into a platform-agnostic Rust engine (`haichain-core-engine`). The Solana runtime acts strictly as a pluggable adapter (`haichain-solana-adapter`). When migrating to the sovereign L1, only the transport adapter is swapped for `haichain-l1-native-adapter`, preserving 100% of the cryptographic invariants and capability proof logic.
@@ -886,7 +886,7 @@ State migration and liquidity continuity are guaranteed via an ed25519 Threshold
 
 ### 8.6. Six Invariants Guaranteeing Zero Migration Risk (SPEC-L1-04)
 1. **Bridge Drain Immunity:** Mathematically verified via SP1/Succinct ZK-Light Client and 5%/hour TVL velocity circuit breaker.
-2. **Consensus Hijacking Immunity:** 50% Native $HAI + 50% Restaked SOL dual-staking bootstrap phase, eliminating low-market-cap 51% attacks.
+2. **Consensus Hijacking Immunity:** 50% Native $HAISI + 50% Restaked SOL dual-staking bootstrap phase, eliminating low-market-cap 51% attacks.
 3. **Time-Warp Manipulation Defense:** BFT Median-Time-Past invariant enforcing strict $\pm 1$ tick boundaries across 67% validators.
 4. **State Bloat Immunity:** Two-tier storage architecture confining active execution state to < 50GB NVMe while archiving historical payloads to Celestia/EigenDA.
 5. **Mempool MEV Immunity:** Native Threshold Encrypted Mempool preventing front-running, sandwiching, or reordering of machine-to-machine settlements.
@@ -901,11 +901,11 @@ State migration and liquidity continuity are guaranteed via an ed25519 Threshold
 To ensure that human cognition never throttles high-frequency machine transaction pipelines, the HAICHAIN consensus decouples execution finality from subjective cognitive arbitration:
 1. **Fast-Finality Pipeline:** Blocks are proposed and notarized every 400ms via BFT CometBFT/SVM derivative. State execution commits only mathematically verifiable operations (cryptographic signatures, balance checks, zkML SNARK verifications).
 2. **Optimistic Cognitive Challenge Window ($\Delta t_{cog} = 3600 \text{ slots}$):** High-value inferences or contractual SLAs carry an optimistic dispute stake. If an agent output violates subjective guidelines, an on-chain dispute is logged.
-3. **Proof of Actual Intelligence (PoAI) Verification:** Bonded human domain specialists (attested via Soulbound Credentials) review evidence, submitting zero-knowledge voting tickets. Slashed funds reward honest human validators, and protocol compensation is streamed in `$HAI` without halting state execution.
+3. **Proof of Actual Intelligence (PoAI) Verification:** Bonded human domain specialists (attested via Soulbound Credentials) review evidence, submitting zero-knowledge voting tickets. Slashed funds reward honest human validators, and protocol compensation is streamed in `$HAISI` without halting state execution.
 
 ### 8.9. Symbiotic Knowledge Royalty Streaming Protocol (SPEC-AI2-02)
 To transform AI from a predatory data consumer into an economic multiplier for human intellect, the sovereign runtime embeds a native royalty split primitive:
-$$\text{RevenueSplit}(P) \implies \begin{cases} (1 - \gamma - \tau) \cdot P & \to \text{Compute Infrastructure Provider} \\ \gamma \cdot P & \to \text{Human Heuristic / IP Creator (USDT Streaming)} \\ \tau \cdot P & \to \text{Protocol Treasury \& } \$HAI \text{ Staking Pool} \end{cases}$$
+$$\text{RevenueSplit}(P) \implies \begin{cases} (1 - \gamma - \tau) \cdot P & \to \text{Compute Infrastructure Provider} \\ \gamma \cdot P & \to \text{Human Heuristic / IP Creator (USDT Streaming)} \\ \tau \cdot P & \to \text{Protocol Treasury \& } \$HAISI \text{ Staking Pool} \end{cases}$$
 Where $\gamma \in [0.05, 0.40]$ is enforced at the bytecode level during each `OP_402_PAY` instruction execution. Creators receive nano-cent streams continuously in real time as millions of agents query their fine-tuned reasoning templates.
 
 ### 8.10. Human-in-the-Loop Reverse Micro-Tasking Protocol via HTTP x402 (SPEC-AI2-03)
@@ -977,7 +977,7 @@ Superintelligence on `haichain.si` is realized not as a centralized, brittle mon
 ```
 
 1. **Anti-MAD (Model Autophagy Disorder) Ground-Truth Engine:** By continually paying human experts for domain insights, qualitative edge-case verdicts, and empirical physical feedback via HTTP 402, the network ingests an ongoing stream of fresh, unpoisoned cognitive ground-truth. This insulates the entire ecosystem against the synthetic data collapse that threatens closed-loop LLMs.
-2. **Schelling-Point Truth Staking & Anti-Collusion Protocol:** To prevent verifiers from deploying cheap rogue LLMs to game the human verification bounty, the protocol mandates quadratic stake commitments with a randomized commit-reveal Schelling mechanism. Responses deviating from the consensus distribution trigger stake slashing, while authentic human responses (attested by ZK-Biometrics) capture boosted `$HAI` rewards.
+2. **Schelling-Point Truth Staking & Anti-Collusion Protocol:** To prevent verifiers from deploying cheap rogue LLMs to game the human verification bounty, the protocol mandates quadratic stake commitments with a randomized commit-reveal Schelling mechanism. Responses deviating from the consensus distribution trigger stake slashing, while authentic human responses (attested by ZK-Biometrics) capture boosted `$HAISI` rewards.
 3. **The Sovereign Alignment Triad:** 
    $$\mathbf{ASI}_{\text{Safe}} = \text{Silicon Computational Power} \times \text{Biological Ethical Grounding} \times \text{Cryptographic Invariant Bounds}$$
    HAICHAIN Sovereign L1 provides the world's first mathematically verifiable framework where Superintelligence is bound by architectural design to serve and preserve human liberty.

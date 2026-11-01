@@ -133,6 +133,9 @@
       cursor: pointer !important;
       touch-action: manipulation !important;
       -webkit-tap-highlight-color: transparent !important;
+      min-height: 44px !important;
+      min-width: 95px !important;
+      padding: 2px 0 !important;
     }
     .haichain-brand-logo-img {
       height: 23px !important;
@@ -303,6 +306,23 @@
     }
     .haichain-bottom-dock-btn * {
       pointer-events: none !important;
+    }
+
+    /* Bulletproof Mobile Tab Button Responsiveness (Zero Lag, Instant Touch Registration) */
+    .mobile-tab-btn {
+      touch-action: manipulation !important;
+      -webkit-tap-highlight-color: transparent !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+    }
+    .mobile-tab-btn * {
+      pointer-events: none !important;
+    }
+
+    /* Bulletproof Hidden Utility Invariant (Prevents Flex Overrides & Ghost Modals) */
+    .hidden {
+      display: none !important;
     }
 
   </style>
@@ -1027,7 +1047,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     </main>
 
     <!-- MOBILE BOTTOM NAVIGATION (NATIVE APP FEEL, ZERO OVERFLOW, APPLE-TIER DOCK) -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-30 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]" style="padding-bottom: max(env(safe-area-inset-bottom, 0px), 6px);">
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]" style="padding-bottom: max(env(safe-area-inset-bottom, 0px), 6px);">
       <!-- Tab 1: Vault -->
       <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-overview">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/10 text-black dark:text-white transition-all relative">
@@ -1788,6 +1808,15 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     // INSTANT UNIVERSAL CLICK DELEGATOR (RUNS IMMEDIATELY, GUARANTEES 100% RELIABILITY)
     // =========================================================================
     document.addEventListener('click', (e) => {
+      // 0. Logo Link Delegation (Mobile Header & Desktop Sidebar - Guaranteed Instant Navigation)
+      const logoLink = e.target.closest('.haichain-brand-logo-link, a[href="/"]');
+      if (logoLink) {
+        if (window.location.pathname !== '/' && window.location.pathname !== '') {
+          window.location.href = '/';
+          return;
+        }
+      }
+
       // 1. Mobile & Desktop Navigation Tabs
       const tabBtn = e.target.closest('.nav-tab-btn, .mobile-tab-btn, .haichain-bottom-dock-btn');
       if (tabBtn) {
@@ -2008,11 +2037,10 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
 
     mobileTabBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        switchTab(btn.getAttribute('data-tab'));
-      });
-      btn.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        switchTab(btn.getAttribute('data-tab'));
+        const targetTab = btn.getAttribute('data-tab');
+        if (targetTab && typeof switchTab === 'function') {
+          switchTab(targetTab);
+        }
       });
     });
 
@@ -2146,6 +2174,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[99999] pointer-events-none transition-all duration-300 transform -translate-y-6 opacity-0';
         document.body.appendChild(toast);
       }
+      toast.style.display = 'block';
       toast.innerHTML = `
         <div class="pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-2xl bg-black/95 dark:bg-white text-white dark:text-black backdrop-blur-xl shadow-2xl border border-neutral-700 dark:border-neutral-200 max-w-sm mx-4">
           <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 dark:text-emerald-600 flex items-center justify-center shrink-0">
@@ -2163,9 +2192,20 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         toast.classList.add('translate-y-0', 'opacity-100');
       });
       clearTimeout(window.__toastTimeout);
+      clearTimeout(window.__toastHideTimeout);
       window.__toastTimeout = setTimeout(() => {
         toast.classList.add('-translate-y-6', 'opacity-0');
         toast.classList.remove('translate-y-0', 'opacity-100');
+        const child = toast.firstElementChild;
+        if (child) {
+          child.classList.remove('pointer-events-auto');
+          child.classList.add('pointer-events-none');
+        }
+        window.__toastHideTimeout = setTimeout(() => {
+          if (toast && toast.classList.contains('opacity-0')) {
+            toast.style.display = 'none';
+          }
+        }, 320);
       }, 3200);
     }
 
@@ -2327,6 +2367,15 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         walletAccountModal.classList.add('hidden');
       }
     });
+
+    // Backdrop click on Connect Modal
+    if (walletConnectModal) {
+      walletConnectModal.addEventListener('click', (e) => {
+        if (e.target === walletConnectModal) {
+          walletConnectModal.classList.add('hidden');
+        }
+      });
+    }
 
     // Copy Address Button with Instant Toast Feedback
     copyAddressBtn.addEventListener('click', () => {

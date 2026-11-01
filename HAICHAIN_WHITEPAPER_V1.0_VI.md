@@ -4,7 +4,7 @@
 **Ngày phát hành:** 31 tháng 10 năm 2026  
 **Phân loại tài liệu:** Sách Trắng Chính Thức v1.0 (Phiên bản Tiếng Việt)  
 **Tài sản thanh toán chính:** **USDT (Tether USD trên Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
-**Token quản trị & hệ sinh thái:** **$HAI (Tổng cung cố định: 1.000.000.000 Token)**  
+**Token quản trị & hệ sinh thái:** **$HAISI (Tổng cung cố định: 1.000.000.000 Token)**  
 
 ---
 
@@ -30,7 +30,7 @@
 6. [Chương 4: Điều Phối Tác Tử Tiên Phong & Bầy Đàn Tự Hành (HCT BIP-32)](#chương-4-điều-phối-tác-tử-tiên-phong--bầy-đàn-tự-hành)
 7. [Chương 5: Cỗ Máy Bù Trừ Đa Phương & Nén Dữ Liệu 99.999% (IPv6 MTU 771B)](#chương-5-cỗ-máy-bù-trừ--nén-dữ-liệu-đa-phương)
 8. [Chương 6: Pháo Đài Hạt Nhân: 6 Bất Biến Toán Học Trên Solana L1 (v6.9.3)](#chương-6-pháo-đài-hạt-nhân-6-bất-biến-toán-học-trên-solana-l1)
-9. [Chương 7: Kinh Tế Học Tài Sản Kép & Tokenomics $HAI](#chương-7-kinh-tế-học-tài-sản-kép--tokenomics-hai)
+9. [Chương 7: Kinh Tế Học Tài Sản Kép & Tokenomics $HAISI](#chương-7-kinh-tế-học-tài-sản-kép--tokenomics-haisi)
 10. [Chương 8: Khung Pháp Lý & Tuân Thủ Toàn Cầu (EU AI Act, FATF, MiCA)](#chương-8-khung-pháp-lý--tuân-thủ-toàn-cầu)
 11. [Chương 9: Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập Cho Siêu Trí Tuệ (ASI)](#chương-9-lộ-trình-tiến-hóa-ai2-thành-blockchain-l1-độc-lập-cho-ai)
 12. [Chương 10: Các Định Lý Toán Học Hình Thức & Kiểm Chứng Bất Biến](#chương-10-các-định-lý-toán-học-hình-thức--kiểm-chứng-bất-biến)
@@ -65,7 +65,7 @@ Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền 
 2. **Ký Quỹ Co Giãn Cho Mô Hình Suy Luận Sâu (Elastic Reasoning Escrow):** Cơ chế cam kết mật mã giải quyết bài toán token suy luận biến thiên bất định của các mô hình hàng đầu (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Bù Trừ Đa Phương Nén 99.999%:** Cỗ máy bù trừ ngoại chuỗi nén hàng triệu vi thanh toán thành một giao dịch on-chain duy nhất có kích thước **771 bytes**, vừa khít trong 1 gói tin mạng **IPv6 MTU (1.232 bytes)**.
 4. **Nút Dừng Khẩn Cấp Dưới 1 Giây (Sub-Second Panic Kill-Switch):** Cầu chì cưỡng bức cấp độ phần cứng cho phép thu hồi 100% tiền thừa về tài khoản ngân hàng/ví chính trong **< 400ms**.
-5. **Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập:** Con đường phát triển 3 giai đoạn tất yếu đưa token `$HAI` từ vai trò tiện ích giao thức trở thành đồng coin bản địa bảo mật toàn bộ mạng lưới Blockchain L1 dành riêng cho tác tử AI, hiện thực hóa toàn diện cơ chế đồng thuận **Proof of Actual Intelligence (PoAI)**.
+5. **Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập:** Con đường phát triển 3 giai đoạn tất yếu đưa token `$HAISI` từ vai trò tiện ích giao thức trở thành đồng coin bản địa bảo mật toàn bộ mạng lưới Blockchain L1 dành riêng cho tác tử AI, hiện thực hóa toàn diện cơ chế đồng thuận **Proof of Actual Intelligence (PoAI)**.
 
 ---
 
@@ -296,14 +296,14 @@ Nhân hợp đồng thông minh (`haichain-core v6.9.3`) cưỡng bức 6 bất 
 
 ---
 
-## CHƯƠNG 7: KINH TẾ HỌC TÀI SẢN KÉP & TOKENOMICS $HAI
+## CHƯƠNG 7: KINH TẾ HỌC TÀI SẢN KÉP & TOKENOMICS $HAISI
 
 HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Economy)**:
 * **USDT (Tether SPL):** Đồng tiền thanh toán giao dịch ổn định, bảo đảm các cuộc gọi API không bị biến động giá.
-* **Token $HAI:** Tài sản tối cao của giao thức, thu giữ 100% giá trị lưu chuyển mạng lưới, quyền biểu quyết quản trị, và tương lai là đồng coin bảo mật mạng lưới Blockchain L1.
+* **Token $HAISI:** Tài sản tối cao của giao thức, thu giữ 100% giá trị lưu chuyển mạng lưới, quyền biểu quyết quản trị, và tương lai là đồng coin bảo mật mạng lưới Blockchain L1.
 
 ```
-                      MÔ HÌNH DÒNG TIỀN VÀ GIÁ TRỊ CỦA TOKEN $HAI
+                      MÔ HÌNH DÒNG TIỀN VÀ GIÁ TRỊ CỦA TOKEN $HAISI
                       
            [ KHỐI LƯỢNG BÙ TRỪ MÁY MÓC TOÀN CẦU: $1.4 TỶ USD / NĂM ]
                                      │
@@ -313,20 +313,20 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
                     ┌────────────────┴────────────────┐
                     ▼ (60% Doanh Thu)                 ▼ (40% Doanh Thu)
          [ MUA LẠI VÀ ĐỐT BỎ (TWAP) ]        [ CHIA LỢI NHUẬN THỰC BẰNG USDT ]
-        - Mua $HAI trực tiếp trên DEX      - Trả thưởng trực tiếp bằng USDT
-        - Giảm nguồn cung vĩnh viễn        - Dành cho người khóa veHAI
+        - Mua $HAISI trực tiếp trên DEX      - Trả thưởng trực tiếp bằng USDT
+        - Giảm nguồn cung vĩnh viễn        - Dành cho người khóa veHAISI
 ```
 
-### 7.1. Phân Bổ Token & Lịch Mở Khóa (Tổng Cung Cố Định: 1.000.000.000 $HAI)
-* **Khuyến khích Hệ sinh thái & Bù trừ Máy (35%):** 350.000.000 $HAI - Mở khóa tuyến tính trong 48 tháng.
-* **Cộng đồng & Mở bán Phân tầng (15%):** 150.000.000 $HAI gồm:
-  * *Vòng Bán Nội Bộ (Pre-Seed) (2,5%):* 25.000.000 $HAI - Giá **\$0.007 USD** (\$7M FDV), mở khóa 20% tại TGE, khóa cliff 2 tháng, trả dần 6 tháng on-chain.
-  * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAI - Giá **\$0.010 USD** (\$10M FDV) qua Meteora Alpha Vault / DLMM, mở khóa tuyến tính 7 ngày chống sniping.
-  * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAI - Dự trữ khuyến khích AI builder và hackathon.
-* **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAI - Khóa cứng 12 tháng, mở khóa tuyến tính 36 tháng.
-* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAI - Khóa cứng 12 tháng, trả dần 18 tháng (Định giá \$15M FDV).
-* **Quỹ Dự trữ Bảo hiểm An toàn (10%):** 100.000.000 $HAI - Khóa đa chữ ký để bảo hiểm và kiểm toán.
-* **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAI - Đốt khóa 100% token thanh khoản LP.
+### 7.1. Phân Bổ Token & Lịch Mở Khóa (Tổng Cung Cố Định: 1.000.000.000 $HAISI)
+* **Khuyến khích Hệ sinh thái & Bù trừ Máy (35%):** 350.000.000 $HAISI - Mở khóa tuyến tính trong 48 tháng.
+* **Cộng đồng & Mở bán Phân tầng (15%):** 150.000.000 $HAISI gồm:
+  * *Vòng Bán Nội Bộ (Pre-Seed) (2,5%):* 25.000.000 $HAISI - Giá **\$0.007 USD** (\$7M FDV), mở khóa 20% tại TGE, khóa cliff 2 tháng, trả dần 6 tháng on-chain.
+  * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAISI - Giá **\$0.010 USD** (\$10M FDV) qua Meteora Alpha Vault / DLMM, mở khóa tuyến tính 7 ngày chống sniping.
+  * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAISI - Dự trữ khuyến khích AI builder và hackathon.
+* **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAISI - Khóa cứng 12 tháng, mở khóa tuyến tính 36 tháng.
+* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAISI - Khóa cứng 12 tháng, trả dần 18 tháng (Định giá \$15M FDV).
+* **Quỹ Dự trữ Bảo hiểm An toàn (10%):** 100.000.000 $HAISI - Khóa đa chữ ký để bảo hiểm và kiểm toán.
+* **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAISI - Đốt khóa 100% token thanh khoản LP.
 
 ---
 
@@ -364,8 +364,8 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
    | - Tận dụng block 400ms |             | - Máy ảo SVM Tùy biến  |             | - Đồng thuận Native:   |
    | - Bảo mật $30B+ TVL    |  ========>  | - DA: Celestia/EigenDA |  ========>  |   Proof-of-Agentic-Work|
    | - Mạng bù trừ vi mô    |             | - Sequencer: HAICHAIN  |             | - Mã máy OP_402_PAY    |
-   | - Mục tiêu: 100k Agent |             | - Phí Gas: $HAI        |             | - DID & Tín nhiệm Máy  |
-   | - Doanh thu: $15.9M ARR|             | - 50,000+ Machine TPS  |             | - $HAI = Base L1 Gas   |
+   | - Mục tiêu: 100k Agent |             | - Phí Gas: $HAISI        |             | - DID & Tín nhiệm Máy  |
+   | - Doanh thu: $15.9M ARR|             | - 50,000+ Machine TPS  |             | - $HAISI = Base L1 Gas   |
    +------------------------+             +------------------------+             +------------------------+
 ```
 
@@ -396,10 +396,10 @@ HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, b
   3. *Ngăn chặn Phình to Trạng thái (State Bloat):* Phân tách tầng thực thi tích cực (< 50GB NVMe với SMT 256-bit) và chuyển toàn bộ dữ liệu suy luận thô sang các lớp dữ liệu chuyên dụng (Celestia/EigenDA), giải quyết triệt để rủi ro phình to dữ liệu.
 * **Cơ Chế Đồng Thuận Phân Tầng PoAW + PoAI (Proof of Actual Intelligence):**
   * *Tầng 1 (PoAW - Fast Path 50ms):* Validator GPU xác thực tính toán mô hình và thực thi nano-settlement ở quy mô **> 100.000 TPS**.
-  * *Tầng 2 (PoAI - Wisdom Staking):* Khi AI gặp điểm mù nhận thức, ảo giác hay xung đột đạo đức, hội đồng chuyên gia con người tham gia thẩm định qua cơ chế ZK-Voting. Con người được thưởng token `$HAI` trực tiếp cho việc cung cấp tri thức thực nghiệm tươi mới, giúp mạng lưới **miễn nhiễm hoàn toàn với Hội chứng Suy thoái Dữ liệu Tự hoại (Anti-MAD Engine)**.
+  * *Tầng 2 (PoAI - Wisdom Staking):* Khi AI gặp điểm mù nhận thức, ảo giác hay xung đột đạo đức, hội đồng chuyên gia con người tham gia thẩm định qua cơ chế ZK-Voting. Con người được thưởng token `$HAISI` trực tiếp cho việc cung cấp tri thức thực nghiệm tươi mới, giúp mạng lưới **miễn nhiễm hoàn toàn với Hội chứng Suy thoái Dữ liệu Tự hoại (Anti-MAD Engine)**.
 * **Mã Máy Cấp Nhân (`OP_402_PAY`):** Lệnh thanh toán vi mô được nhúng thẳng vào bytecode CPU của máy ảo HAI-VM, triệt tiêu hoàn toàn chi phí hợp đồng thông minh, biến việc luân chuyển giá trị của máy móc thành một primitive phần cứng.
 * **Định Danh Hợp Nhất & Trách Nhiệm Giải Trình (Unified Soulbound DID):** Mỗi tác tử AI đều được gắn một Soulbound Token (SBT) neo chặt vào khóa sinh trắc học Passkey của Con người bảo chứng, đảm bảo tuân thủ triệt để FATF và EU AI Act, loại bỏ hoàn toàn bot ẩn danh độc hại.
-* **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**\$5 Tỷ - \$10 Tỷ+ USD**).
+* **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAISI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**\$5 Tỷ - \$10 Tỷ+ USD**).
 
 ---
 

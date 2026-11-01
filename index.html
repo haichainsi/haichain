@@ -195,6 +195,11 @@
       box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
     }
 
+    /* Bulletproof Hidden Utility Invariant (Prevents Flex Overrides & Ghost Modals) */
+    .hidden {
+      display: none !important;
+    }
+
     /* Smooth Mobile Navigation Slide-Down ("Chạy Xuống") */
     #mobile-menu {
       transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
