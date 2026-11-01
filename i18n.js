@@ -116,52 +116,52 @@
     "ai2.card3Title": "Екі Жақты Экономикалық Симбиоз",
     "ai2.card3Desc": "AI адам білімі үшін тұрақты USDT роялти төлейді, сонымен бірге нақты физикалық тексеру үшін адамдарды қайта жалдайды (HTTP x402 Reverse Micro-Tasking).",
     "market.badge": "ДӘЛЕЛДЕНГЕН ДЕРЕКТЕР &bull; НАРЫҚ БАҒАЛАУЫ",
-    "market.title": "1.3 Трлн Долларлық Машина Экономикасы және Төлем Дағдарысы",
+    "market.title": "1.3 Трлн Долларлық Машина Экономикасы және Дәстүрлі Төлемдер Дағдарысы",
     "market.subtitle": "Gartner, Ark Invest Big Ideas 2025 және жетекші зерттеу орталықтарымен расталған.",
-    "market.stat1Val": "$1.3T - $1.8 Трлн",
-    "market.stat1Lbl": "2030 жылғы Машина Экономикасы",
-    "market.stat1Desc": "Gartner мен Ark Invest: Миллиардтаған автономды агенттер мен роботтарға банктік картасыз жұмыс істейтін дербес төлем желісі қажет.",
-    "market.stat2Val": "$48 Млрд USD",
-    "market.stat2Lbl": "API және Есептеу Микро-Есеп айырысуы",
-    "market.stat2Desc": "Боттар арасындағы API, деректер және GPU алмасу қажеттілігі минутына миллиондаған операциямен өсуде.",
-    "market.stat3Val": "> 2.8 Миллион",
-    "market.stat3Lbl": "Күнделікті Автономды AI Жұмысы",
-    "market.stat3Desc": "GitHub, LangChain, Cursor және CrewAI деректері: Қарапайым чат-боттардан 24/7 дербес жұмыс істейтін агенттерге жаппай көшу.",
-    "market.stat4Val": "95% Шығын Үнемдеу",
-    "market.stat4Lbl": "SaaS Жазылымдарын Жою",
-    "market.stat4Desc": "Пайдаланушылар айына $150-$450 төлеп, оның 7-15% ғана пайдаланады. HAICHAIN әрбір сұраныс үшін төлеу арқылы 97.7% үнемдейді.",
-    "comp.badge": "КӨП ӨЛШЕМДІ САЛЫСТЫРУ &bull; ТЕХНОЛОГИЯЛЫҚ АРТЫҚШЫЛЫҚ",
-    "comp.title": "HAICHAIN Басқа AI Блокчейн Жүйелерінен Қалай Асып Түседі?",
+    "market.stat1Val": "$1.3 - $1.8 триллион",
+    "market.stat1Lbl": "2030 жылға қарай Машина Экономикасының Нарықтық Көлемі (TAM)",
+    "market.stat1Desc": "Gartner мен Ark Invest Big Ideas 2025: Миллиардтаған автономды агенттер мен физикалық роботтарға (Optimus, автопилот көліктері) банктік картасыз жұмыс істейтін дербес төлем инфрақұрылымы қажет.",
+    "market.stat2Val": "$48 миллиард USD",
+    "market.stat2Lbl": "API және Инференс Микро-Есеп айырысулары",
+    "market.stat2Desc": "Минутына миллиондаған сұраныстарды өңдейтін деректерді жинау, инференс есептеулері мен құралдарды іске қосу үшін қарқынды дамып келе жатқан нарық.",
+    "market.stat3Val": "> 2.8 миллион",
+    "market.stat3Lbl": "Күнделікті Автономды AI Жұмыс Ағындары",
+    "market.stat3Desc": "GitHub, LangChain, Cursor және CrewAI деректерімен расталған: Пассивті сөйлесу чат-боттарынан тәулік бойы (24/7) жұмыс істейтін автономды агенттер тобына (Agent Swarms) көшу.",
+    "market.stat4Val": "95% Артық Шығын Жойылды",
+    "market.stat4Lbl": "Тұрақты SaaS Жазылымдарын Жою",
+    "market.stat4Desc": "Пайдаланушылар пайдаланылмайтын жазылымдар үшін айына $150-$450 төлеп, оның тек 7-15% ғана жұмсайды. HAICHAIN әрбір сұраныс үшін төлеу арқылы шығындарды 97.7%-ға дейін үнемдейді.",
+    "comp.badge": "БЕНЧМАРК ТАЛДАУЫ &bull; ТЕХНОЛОГИЯЛЫҚ НЕГІЗ",
+    "comp.title": "HAICHAIN Жаһандық AI Блокчейн Нарығын Қалай Қайта Қалыптастырады",
     "comp.subtitle": "'AI Crypto' таңбасы бар барлық жобалар машинаның микротөлемдерін немесе әмиянды қорғау мәселесін шеше алмайды.",
-    "comp.colFeature": "Бағалау Критерийі",
+    "comp.colFeature": "Бенчмарк Критерийі",
     "comp.colHai": "HAICHAIN (HAI²)",
     "comp.colTao": "Bittensor ($TAO)",
     "comp.colRender": "Render / io.net",
     "comp.colEliza": "ElizaOS / Virtuals",
     "comp.colStripe": "Web2 (Stripe / Visa)",
-    "comp.row1Name": "Негізгі Мақсаты",
-    "comp.row1Hai": "Нано-центтік микротөлем ОЖ және әмиянды әскери деңгейде қорғау",
+    "comp.row1Name": "Негізгі Стратегиялық Бағыты",
+    "comp.row1Hai": "Sub-cent микротөлем ОЖ және агент әмияндарын институционалды криптографиялық қорғау",
     "comp.row1Tao": "Орталықсыздандырылған AI модельдерін бағалау желісі",
     "comp.row1Render": "Бөлінген GPU қуаты мен 3D рендеринг нарығы",
     "comp.row1Eliza": "Боттар үшін мем-токен шығару және әлеуметтік спекуляция",
     "comp.row1Stripe": "Адамдарға арналған дәстүрлі банктік төлем шлюзі",
     "comp.row2Name": "Төлем Кідірісі",
-    "comp.row2Hai": "< 400 миллисекунд (AI ойлау қабілетіне сәйкес келеді)",
+    "comp.row2Hai": "< 400 миллисекунд (LLM ойлау циклімен үндесетін суб-слот жылдамдығы)",
     "comp.row2Tao": "12 - 60 секунд (Нақты уақыттағы микротөлемдерге жарамайды)",
     "comp.row2Render": "Минуттан сағатқа дейін (Рендеринг пакеттері бойынша)",
     "comp.row2Eliza": "12 - 15 секунд (EVM/Base блок уақытымен шектелген)",
     "comp.row2Stripe": "2 - 3 жұмыс күні (Банктік өзара есеп айырысу T+2)",
     "comp.row3Name": "Транзакция Құны",
-    "comp.row3Hai": "Нано-цент (< $0.0002). Бір сұранысқа $0.0001-ден бастап қолжетімді",
+    "comp.row3Hai": "Nano-cents (< $0.0002). Бір API сұранысына $0.0001-ден бастап толық қолжетімді",
     "comp.row3Tao": "Өте қымбат ішкі желі шығындары ($10k-$100k+), микротөлем жоқ",
     "comp.row3Render": "Әр тапсырмаға ондаған доллар. Ұсақ төлемдерге келмейді",
     "comp.row3Eliza": "EVM Gas $0.02 - $0.15 ($0.001 төлеуге тым қымбат)",
     "comp.row3Stripe": "Әр төлемге $0.30 тұрақты комиссия (30 000% үстеме ақы)",
     "comp.row4Name": "Шабуылдар мен Әмиянды Тазартудан Қорғау",
-    "comp.row4Hai": "100% Қорғалған: Merkle PDA шекаралары + Panic Kill-Switch",
+    "comp.row4Hai": "100% Криптографиялық Иммунитет: Аппараттық Merkle PDA + Шұғыл Panic Kill-Switch",
     "comp.row4Tao": "Боттардың шығындарын шектейтін қаржылық тетік жоқ",
     "comp.row4Render": "Қолданылмайды (Тек аппараттық ресурстарды жалға беру)",
-    "comp.row4Eliza": "Өте қауіпті: Бот алданып қалса, әмиян толықтай тазартылуы мүмкін",
+    "comp.row4Eliza": "Аса жоғары қауіп: Prompt Injection немесе шексіз цикл салдарынан агент әмиянының толық тазартылу қаупі",
     "comp.row4Stripe": "Картаны бұғаттап, 30-60 күн дауласу қажет",
     "comp.row5Name": "Пайдалану Тәжірибесі (UX)",
     "comp.row5Hai": "Invisible Web3: FaceID Passkey, Apple Pay және жылдам QR",
@@ -169,45 +169,45 @@
     "comp.row5Render": "Аппараттық мамандарға арналған техникалық интерфейс",
     "comp.row5Eliza": "Web3 әмиян (Metamask) және 12 сөзді есте сақтау қажет",
     "comp.row5Stripe": "Картаны қолмен енгізу, жеке деректерді ұрлау қаупі",
-    "comp.row6Name": "Табыс Моделі (Real Yield)",
-    "comp.row6Hai": "Real Yield: Түсімнің 40% USDT ретінде бөлінеді + 60% Сатып алу және өртеу",
+    "comp.row6Name": "Құндылықты Шоғырландыру және Ақша Ағыны Моделі",
+    "comp.row6Hai": "Real Yield: Протокол комиссияларының 40% таза USDT арқылы төленеді + 60% Үздіксіз Кері Сатып Алу және Өртеу (Buyback & Burn)",
     "comp.row6Tao": "Валидаторларға сыйақы беру үшін инфляциялық токен шығару",
     "comp.row6Render": "Есептеу үшін қызметтік токенмен төлеу",
     "comp.row6Eliza": "Жеке боттардың токендерімен спекуляциялық сауда",
     "comp.row6Stripe": "100% пайда тек Stripe акционерлеріне тиесілі",
-    "aud.badge": "МАҚСАТТЫ ТОПТАР &bull; ҚАРЖЫЛЫҚ ПАЙДА",
-    "aud.title": "HAICHAIN Кімге Арналған? Қазіргі және Болашақтағы Құндылық",
-    "aud.subtitle": "Нақты пайда мен ұзақ мерзімді институттық өсімге арналған үш тірек.",
+    "aud.badge": "НЕГІЗГІ ҚАТЫСУШЫЛАР &bull; ҚОС ҚЫРЛЫ ҚҰНДЫЛЫҚ",
+    "aud.title": "HAICHAIN Кімге Қызмет Етеді: Қазіргі Пайда және Ұзақ Мерзімді Даму",
+    "aud.subtitle": "Жедел практикалық пайда мен институционалды ауқымды өсім үшін жасалған үш негізгі қатысушы тірегі.",
     "aud.userTitle": "1. Жеке Пайдаланушылар мен AI Әзірлеушілері",
     "aud.userTag": "End-Users & AI Builders",
     "aud.userNowLabel": "Қазіргі Артықшылық:",
-    "aud.userNowDesc": "Айына $150-$450 тұратын SaaS жазылымдарынан бас тартып, 95% үнемдеңіз; FaceID арқылы 1 секундта толтыру; толық қаржылық қауіпсіздік.",
+    "aud.userNowDesc": "Айына $150-$450 тұратын тиімсіз SaaS жазылымдарын нақты қажеттілікке ауыстыру арқылы шығындарды 95%-ға үнемдеңіз; FaceID/Passkey арқылы кедергісіз тіркелу; толық қаржылық қауіпсіздік.",
     "aud.userFutureLabel": "Болашақ Мүмкіндік:",
-    "aud.userFutureDesc": "Өз біліміңізден USDT түрінде тұрақты пассивті табыс алыңыз; AI ұсынған нақты тапсырмаларды орындап табыс табыңыз.",
+    "aud.userFutureDesc": "Эксклюзивті білім мен нұсқаулық активтерінен USDT түріндегі пассивті роялти ағыны; HTTP x402 арқылы AI-дан нақты тапсырмалар үшін ончейн сыйақы алу (Reverse Micro-Tasking).",
     "aud.bizTitle": "2. AI Кәсіпорындары мен API Жеткізушілері",
     "aud.bizTag": "API & Tool Providers",
     "aud.bizNowLabel": "Қазіргі Артықшылық:",
-    "aud.bizNowDesc": "Миллиондаған боттарға қызметті әр шақыру бойынша сатыңыз; төлем қайтару қаупі жоқ; MCP арқылы 60 секундта қосылу.",
+    "aud.bizNowDesc": "Әлем бойынша миллиондаған автономды агенттер үшін төлемдерді қайтарып алу қаупінсіз нақты уақыттағы әр шақыру үшін монетизация (Pay-per-call); MCP арқылы 60 секундта жылдам қосылу.",
     "aud.bizFutureLabel": "Болашақ Мүмкіндік:",
-    "aud.bizFutureDesc": "Толық автоматтандырылған сауда: AI агенттері қызметтерді 24/7 сатып алады; USDT ақша ағыны әр секунд сайын түседі.",
+    "aud.bizFutureDesc": "Толық автономды B2B сауда: AI агенттері тәулік бойы сату бөлімінсіз қызметтерді тауып, келіссөздер жүргізіп, есеп айырысады; тұрақты USDT өтімділігі.",
     "aud.investorTitle": "3. Стратегиялық Инвесторлар мен $HAI Стейкерлері",
     "aud.investorTag": "Investors & Stakers",
     "aud.investorNowLabel": "Қазіргі Артықшылық:",
-    "aud.investorNowDesc": "Pre-Seed кезеңінде $0.007 бағасымен кіру (TGE $0.010 бағасынан 30% арзан); 40% таза USDT дивиденді және 60% сатып алу-өртеу.",
+    "aud.investorNowDesc": "Pre-Seed кезеңіне $0.007 бағасымен қатысу (TGE $0.010 бағасынан 30% жеңілдік); таза USDT түріндегі Real Yield дивиденді (жаһандық төлемдердің 40%) және 60% Buyback & Burn.",
     "aud.investorFutureLabel": "Болашақ Мүмкіндік:",
-    "aud.investorFutureDesc": "Дербес Машина L1 блокчейніне ($1B-$5B+ FDV) көшкенде 50x-140x капитал өсімі, $HAI желінің негізгі Gas монетасына айналады.",
-    "tech.badge": "ДАЙЫН ӨНІМ &bull; ҚҰРҒАҚ СӨЗ ЕМЕС",
+    "aud.investorFutureDesc": "Тәуелсіз Sovereign AI L1 блокчейніне ($1B - $5B+ FDV) көшкенде $HAI монетасы желінің Native Gas Coin мәртебесіне 1:1 өтіп, 50x - 140x капитал өсімі көзделеді.",
+    "tech.badge": "ДАЙЫН ӨНІМ &bull; ZERO VAPORWARE",
     "tech.title": "Техникалық Жағдайы: 100% Дайын vs Болашақ Кезеңдер",
     "tech.subtitle": "Барлық мүмкіндіктер ашық бастапқы код пен Solana блокчейнінде дәлелденген.",
-    "tech.doneTitle": "100% ДАЙЫН (DEVNET ЖЕЛІСІНДЕ ТЕКСЕРІЛГЕН)",
+    "tech.doneTitle": "100% ТОЛЫҚ ӘЗІР (SOLANA DEVNET ОНЧЕЙН РАСТАЛҒАН)",
     "tech.doneTag": "Қазір Қолдануға Дайын",
     "tech.done1": "Solana Rust Anchor v6.9.3 смарт-келісімшарты (Program ID: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk), 6 математикалық инвариант.",
-    "tech.done2": "15/15 қауіпсіздік сынағынан 100% сәтті өтті (Wormhole, Nomad, Euler, Mango сияқты 800 млн долларлық хакерлік шабуылдардан қорғалған).",
+    "tech.done2": "15/15 автоматтандырылған форензик қауіпсіздік сынағынан сәтті өтті (Wormhole, Nomad, Euler, Mango сияқты 800+ млн долларлық тарихи шабуылдарға қарсы иммунитет).",
     "tech.done3": "Алғашқы микро-эскроу транзакциясы Solana Explorer желісінде расталды (Tx: 4946birjjYz3DHxjNuq1D9gv...).",
     "tech.done4": "Әзірлеушілер құралдары шығарылды: @haichain/sdk (TypeScript), C-SDK (<200KB RAM) және Claude/Cursor үшін ресми MCP сервері.",
     "tech.done5": "Passkey FaceID, тікелей төлем және нақты уақыттағы телеметрияны қолдайтын заманауи Web Terminal жұмыс істеп тұр.",
-    "tech.progTitle": "ЖОЛ КАРТАСЫ БОЙЫНША ӘЗІРЛЕНУДЕ",
-    "tech.progTag": "Келесі Қадамдар",
+    "tech.progTitle": "Жол картасы бойынша орындалып жатқан кезеңдер",
+    "tech.progTag": "Алдағы маңызды кезеңдер",
     "tech.prog1": "1-кезең (0-18 ай): OtterSec/Neodyme аудитінен қайта өту және Solana Mainnet-Beta желісіне шығару.",
     "tech.prog2": "1-кезең (0-18 ай): Meteora Alpha Vault & DLMM жүйесінде TGE өткізу және 2-деңгейлі CEX биржаларына шығу.",
     "tech.prog3": "2-кезең (18-36 ай): 50,000+ машина TPS жылдамдығын қамтамасыз ететін арнайы SVM App-Rollup (L2) құру.",
@@ -237,24 +237,24 @@
     "nav.mobile.vesting": "Вестинг",
     "nav.mobile.ledger": "Кітап",
     "nav.mobile.mcp": "MCP",
-    "hero.badge": "MOM TEST СӘЙКЕС &bull; КҮРДЕЛІ ЖАРГОНСЫЗ",
-    "hero.title": "Автономды AI үшін<br class=\"hidden sm:inline\"/> Қауіпсіз Шығыс Қоры.",
-    "hero.subtitle": "AI көмекшілері мен робототехникаға ай сайынғы жазылым шығынынсыз микро-центтік API төлемдерін жасауға мүмкіндік беріңіз. Аппараттық деңгейдегі лимиттермен және бір секундтан аз уақытта кері қайтарумен қорғалған.",
+    "hero.badge": "THE MOM TEST СӘЙКЕС &bull; ZERO CRYPTO JARGON",
+    "hero.title": "Автономды AI үшін Қауіпсіз Шығыс Қоры (Spending Pot).",
+    "hero.subtitle": "AI көмекшілері мен робототехникаға ай сайынғы жазылым шығынынсыз sub-cent деңгейіндегі API төлемдерін жүргізуге мүмкіндік беріңіз. Аппараттық деңгейдегі лимиттермен және 400 мс ішінде шұғыл кері қайтару тетігімен (Panic Retraction) қорғалған.",
     "hero.launchDashboard": "Басқару тақтасын ашу",
     "hero.exploreArch": "Архитектураны зерттеу",
-    "metric.nettingFee": "Өзара есептеу комиссиясы",
-    "metric.panicSpeed": "Апаттық қайтару жылдамдығы",
-    "metric.mtuSize": "Бірдей IPv6 MTU",
-    "metric.saasSaved": "SaaS үнемделген шығыны",
+    "metric.nettingFee": "Өзара Есептеу Төменгі Шекті Шегі (Netting Floor)",
+    "metric.panicSpeed": "Шұғыл Қаражат Қайтару Жылдамдығы (Panic Speed)",
+    "metric.mtuSize": "Бірыңғай IPv6 MTU Пакет Көлемі",
+    "metric.saasSaved": "Артық SaaS Шығындарын Үнемдеу",
     "vault.activePot": "Белсенді шығыс қоры",
     "vault.availableBalance": "Қолжетімді баланс (USDT)",
     "vault.actionCredits": "Қолжетімді қор",
     "vault.addFunds": "Қор толықтыру (0% газ)",
     "vault.withdraw": "Суық әмиянға шығару",
     "vault.rentRefunded": "Қайтарылған Lamport жалдау ақысы",
-    "vault.rentDesc": "Нөлдік күй толуы. Мерзімі өткен нуллификаторлар иесіне қайтарылады.",
+    "vault.rentDesc": "Ончейн күйінің нөлдік толуы. Мерзімі өткен Nullifiers жадты сақтау Lamports жалдау ақысын 100% Master Vault-қа кері қайтарады.",
     "vault.defenseScore": "Ядро қорғаныс ұпайы",
-    "vault.defenseDesc": "Wormhole, Nomad, Euler және Mango шабуылдарынан қорғалған.",
+    "vault.defenseDesc": "Wormhole, Nomad, Euler және Mango сияқты тарихи ірі шабуыл векторларына қарсы абсолютті криптографиялық иммунитет.",
     "vault.velocityCap": "Автономды жылдамдық шегі",
     "vault.avgSpeed": "Орташа есептеу жылдамдығы",
     "vault.activeInvariants": "Белсенді инварианттар",
@@ -332,6 +332,9 @@
     "modal.byokConfirm": "Сақтау және қауіпсіздік шегін бекіту",
     "modal.walletTitle": "Solana әмиянын қосу",
     "modal.walletSubtitle": "Web3 провайдеріңізді таңдаңыз немесе қолмен қосыңыз",
+    "modal.walletBiometric": "Passkey биометриялық әмияны",
+    "modal.walletBiometricDesc": "Аппараттық WebAuthn • Кілт жоғалту қаупі нөл",
+    "modal.walletOrWeb3": "Немесе сыртқы Solana әмиянын қосыңыз",
     "modal.walletPhantom": "Phantom Wallet",
     "modal.walletPhantomDesc": "Ең танымал Solana мобильді қосымшасы және кеңейтімі",
     "modal.walletSolflare": "Solflare Wallet",
@@ -350,7 +353,7 @@
     "modal.accountExplorer": "Solana Explorer-де тіркелгіні көру →",
     "modal.accountDisconnect": "Әмиянды ажырату",
     "btn.panicStopMobile": "Апаттық",
-    "vault.defenseBadge": "Anchor Rust v6.9.3 Zero-Griefing",
+    "vault.defenseBadge": "Anchor Rust v6.9.3 Zero-Griefing Kernel",
     "vault.pdaAttributions": "Криптографиялық PDA атрибуциялары",
     "vault.masterVaultPda": "Master Vault PDA:",
     "vault.deployerOperator": "Deployer операторы:",
@@ -377,72 +380,6 @@
     "modal.walletInvestorNotice": "ИНВЕСТОРЛАР МЕН СЫНАҚ ҮШІН АРНАЛҒАН",
     "modal.walletInstall": "Әмиян орнату",
     "modal.copy": "Көшіру",
-    "spendingPot.title": "1. Қауіпсіз шығыс қоры (Master Vault)",
-    "spendingPot.subtitle": "Жоғары деңгейлі қауіпсіздік шеңбері. Сіздің қаражатыңыз өзіңіздің смарт-келісімшартыңызда сақталады, оны тек сіз ғана қайтара аласыз.",
-    "spendingPot.balanceLabel": "Қолжетімді баланс",
-    "spendingPot.btnDeposit": "+ $10.00 толықтыру",
-    "spendingPot.btnWithdraw": "Қаражатты қайтарып алу",
-    "spendingPot.depositNote": "Gasless fiat-to-USDT релейер арқылы. 0% газ комиссиясы.",
-    "liveEngine.title": "2. Тікелей суб-центтік есеп айырысу қозғалтқышы",
-    "liveEngine.subtitle": "Нақты уақыттағы микро-эскроу транзакциялары. Дәстүрлі Stripe төлемдерінің 30 центтік шегінсіз.",
-    "liveEngine.selectLabel": "AI қызметін таңдаңыз:",
-    "liveEngine.btnCall": "Тікелей API шақыруын орындау",
-    "liveEngine.statusLive": "Solana Devnet: DK4Q...w4xk белсенді",
-    "arch.title": "Аппараттық деңгейдегі қорғаныс архитектурасы",
-    "arch.subtitle": "AI агенттерінің қаражатты шамадан тыс жұмсауын және хакерлік шабуылдарды математикалық тұрғыдан қалай блоктаймыз.",
-    "arch.card1.title": "Аппараттық шектер",
-    "arch.card1.desc": "Әрбір агентке қатаң криптографиялық шектеу беріледі. Бұл лимиттен асып кету мүмкін емес.",
-    "arch.card2.title": "400мс апаттық кері қайтару",
-    "arch.card2.desc": "Қалыптан тыс әрекет анықталған бойда барлық агенттер тоқтатылып, қалған баланс Master Vault-қа қайтарылады.",
-    "arch.card3.title": "0% мемлекеттік салық / Бұлтсыз",
-    "arch.card3.desc": "Ешқандай үшінші тарап делдалдары жоқ. Бақылау тек сіздің қолыңызда.",
-    "compare.title": "HAICHAIN және Дәстүрлі Шешімдер",
-    "compare.feature": "Мүмкіндік",
-    "compare.traditional": "Дәстүрлі API кілттері (OpenAI, Stripe)",
-    "compare.haichain": "HAICHAIN Safe Spending Pot",
-    "compare.row1.feat": "Минималды төлем",
-    "compare.row1.trad": "$0.30 - $0.50 әр транзакцияға",
-    "compare.row1.hai": "$0.0001 (суб-центтік есеп айырысу)",
-    "compare.row2.feat": "Агент қауіпсіздігі",
-    "compare.row2.trad": "Қауіпті: API кілті ұрланса, барлық баланс кетеді",
-    "compare.row2.hai": "100% қауіпсіз: Аппараттық шектеу қойылған",
-    "compare.row3.feat": "Апаттық тоқтату",
-    "compare.row3.trad": "Қолмен панельге кіріп өшіру (бірнеше минут)",
-    "compare.row3.hai": "< 400мс бір реттік криптографиялық кері қайтару",
-    "l1.title": "Егемен L1 блокчейн жол картасы",
-    "l1.subtitle": "Машиналық қаржыға арналған арнайы жасалған жаңа буын децентрализацияланған желісі.",
-    "l1.phase1.title": "1-кезең: Solana Devnet Micro-Escrow",
-    "l1.phase1.desc": "Sub-cent микро-эскроу және Меркл сыйымдылық билеттерін сәтті іске қосу.",
-    "l1.phase2.title": "2-кезең: Sovereign L1 Testnet",
-    "l1.phase2.desc": "Мемлекеттік машиналық қаржы стандарты және P2P агенттер желісі.",
-    "l1.phase3.title": "3-кезең: Жаһандық Mainnet",
-    "l1.phase3.desc": "Миллиондаған автономды AI және IoT құрылғыларын толық қолдау.",
-    "deck.title": "Инвесторлар мен құрылтайшылар құжаттамасы",
-    "deck.desc": "Біздің қаржылық моделімізді және толық құжаттаманы жүктеп алыңыз.",
-    "deck.pitch": "Investor Pitch Deck (PDF)",
-    "deck.financial": "3 жылдық қаржылық модель (P&L)",
-    "dash.title": "HAICHAIN Dashboard - Автономды AI қаржылық операциялық жүйесі",
-    "dash.breadcrumb": "Шолу және Сейф",
-    "vault.title": "Master Vault (Solana Devnet)",
-    "vault.subtitle": "Автономды AI агенттеріне арналған басты қауіпсіз қор.",
-    "vault.btnDeposit": "Қорды толықтыру (0% газ)",
-    "vault.btnWithdraw": "Қаражатты суық әмиянға шығару",
-    "vault.rentTitle": "Қайтарылған Lamport жалдау ақысы",
-    "vault.rentRefund": "+0.0089 SOL Қайтарылды",
-    "vault.rentZero": "Нөлдік күй толуы. Мерзімі өткен нуллификаторлар иесіне қайтарылады.",
-    "vault.kernelScore": "Ядро қорғаныс ұпайы",
-    "vault.passed": "15 / 15 Өтті",
-    "vault.passedSub": "Тікелей Anchor интеграциялық сынақтары тексерілді.",
-    "modal.withdrawDestLabel": "Қабылдаушы Solana мекенжайы",
-    "modal.gatewayTitle": "1-Click Web3 шлюзін белсендіру",
-    "modal.gatewaySubtitle": "Автономды есеп айырысу үшін рұқсат беріңіз",
-    "connectors.badge": "Universal AI Gateway Ready",
-    "playground.btnExecute": "Орындау және есептеу",
-    "agents.title": "Ішкі агенттер мүмкіндік ағашы",
-    "agents.subtitle": "Автономды AI агенттеріңіз үшін математикалық шектелген шығыс билеттерін беріңіз.",
-    "agents.btnIssue": "+ Мүмкіндік билетін беру",
-    "ledger.btnExport": "CSV экспорттау",
-    "mcp.download": "haichain-mcp.json жүктеу",
     "home.devnetStatus": "Devnet кластері белсенді &bull; Мақсатты слот: 320,441,920 &bull; 0% алдын ала төлемсіз микро-төлемдер",
     "home.potTitle": "Белсенді шығыс қоры",
     "home.potSolanaDevnet": "Solana Devnet микро-эскроу",
@@ -464,7 +401,7 @@
     "home.playgroundSvmFee": "SVM &bull; 0.05% комиссия",
     "home.playgroundExecute": "Орындау және есептесу",
     "home.streamTitle": "Тікелей микро-есеп айырысу ағыны",
-    "home.streamSubtitle": "MTU 771-байттық тіктер арқылы блокчейнде расталған Агент-Қызмет есеп айырысулары.",
+    "home.streamSubtitle": "Агент пен қызмет арасындағы автономды есеп айырысулар 771 байттық IPv6 MTU пакеттері арқылы ончейн режимінде расталады.",
     "home.streamTotalTicks": "Барлық расталған микро-сұраныстар",
     "home.streamSimulate": "Агент микро-қоңырауын модельдеу",
     "home.streamClear": "Ағынды тазалау",
@@ -490,9 +427,6 @@
     "home.footerDesc": "Solana желісіндегі AI агенттері мен робототехникаға арналған жоғары жылдамдықты автономды шығыс қоры хаттамасы.",
     "home.footerLegal": "Барлық транзакциялар Solana Devnet желісінде криптографиялық түрде куәландырылған. Банк делдалдарының кешігуінсіз.",
     "modal.accountTopUp": "Шығыс қорын толықтыру (0% Gas)",
-    "modal.walletBiometric": "Passkey биометриялық әмияны",
-    "modal.walletBiometricDesc": "Аппараттық WebAuthn • Кілт жоғалту қаупі нөл",
-    "modal.walletOrWeb3": "Немесе сыртқы Solana әмиянын қосыңыз",
     "hero.taskPlaceholder": "Автономды AI агенті үшін тапсырманы енгізіңіз...",
     "calc.customAmountPlaceholder": "Өзгермелі сома",
     "mcp.byokPlaceholder": "API кілтін қойыңыз (sk-...)",
@@ -4286,8 +4220,8 @@ function getInitialLanguage() {
     function renderMobileLanguageSwitcherHTML() {
     const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
     return `
-      <button type="button" class="lang-switch-btn group flex items-center justify-center h-[23px] w-7 p-0 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none leading-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
-        <span class="w-[18px] h-[13px] rounded-[2.5px] overflow-hidden flex items-center justify-center shrink-0 ring-1 ring-black/15 dark:ring-white/20 shadow-xs transition-transform duration-200 group-hover:scale-105 translate-y-[1px]">
+      <button type="button" class="lang-switch-btn group flex items-center justify-center min-h-[44px] min-w-[36px] p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none leading-none touch-manipulation" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
+        <span class="w-[18px] h-[13px] rounded-[2.5px] overflow-hidden flex items-center justify-center shrink-0 ring-1 ring-black/15 dark:ring-white/20 shadow-xs transition-transform duration-200 group-hover:scale-105 pointer-events-none">
           ${current.flagSvg}
         </span>
       </button>
@@ -4298,10 +4232,10 @@ function getInitialLanguage() {
     return `
       <div id="haichain-mobile-lang-drawer" class="hidden sm:hidden fixed inset-0 z-[9999] pointer-events-none transition-all duration-300">
         <!-- Backdrop Overlay -->
-        <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+        <div id="mobile-lang-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-auto"></div>
         
         <!-- Bottom Action Sheet -->
-        <div id="mobile-lang-sheet" class="absolute inset-x-0 bottom-0 bg-white dark:bg-[#0d0d0d] rounded-t-3xl border-t border-neutral-200 dark:border-neutral-800 p-5 shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[85vh] overflow-y-auto">
+        <div id="mobile-lang-sheet" class="absolute inset-x-0 bottom-0 bg-white dark:bg-[#0d0d0d] rounded-t-3xl border-t border-neutral-200 dark:border-neutral-800 p-5 shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[85vh] overflow-y-auto pointer-events-auto">
           <!-- Grab Pill Indicator -->
           <div class="w-12 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full mx-auto mb-4"></div>
           
@@ -4311,8 +4245,8 @@ function getInitialLanguage() {
               <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100">${t('lang.select', 'Select Language')}</h3>
               <p class="text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">${t('lang.supported', '10 Global Languages Supported')}</p>
             </div>
-            <button id="mobile-lang-close-btn" type="button" class="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-black dark:hover:text-white transition-colors" aria-label="${t('lang.close', 'Close')}">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="mobile-lang-close-btn" type="button" class="min-w-[40px] min-h-[40px] p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-black dark:hover:text-white transition-colors flex items-center justify-center cursor-pointer touch-manipulation" aria-label="${t('lang.close', 'Close')}">
+              <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
             </button>
@@ -4321,8 +4255,8 @@ function getInitialLanguage() {
           <!-- Mobile Options List -->
           <div class="space-y-1.5 pb-4">
             ${LANGUAGES.map(l => `
-              <button type="button" onclick="window.haichainI18n.setLanguage('${l.code}')" class="mobile-lang-option-btn w-full px-4 py-3 rounded-2xl flex items-center justify-between transition-colors cursor-pointer ${l.code === currentLang ? 'bg-black text-white dark:bg-white dark:text-black font-bold' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 font-medium'}" data-lang="${l.code}">
-                <div class="flex items-center space-x-3.5 min-w-0">
+              <button type="button" onclick="window.haichainI18n.setLanguage('${l.code}')" class="mobile-lang-option-btn w-full min-h-[44px] px-4 py-3 rounded-2xl flex items-center justify-between transition-colors cursor-pointer touch-manipulation ${l.code === currentLang ? 'bg-black text-white dark:bg-white dark:text-black font-bold' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 font-medium'}" data-lang="${l.code}">
+                <div class="flex items-center space-x-3.5 min-w-0 pointer-events-none">
                   <span class="w-7 h-5 rounded-[3.5px] overflow-hidden shrink-0 ring-1 ring-black/15 dark:ring-white/20 inline-flex items-center justify-center shadow-xs">
                     ${l.flagSvg}
                   </span>
@@ -4332,7 +4266,7 @@ function getInitialLanguage() {
                   </div>
                 </div>
                 ${l.code === currentLang ? `
-                  <div class="flex items-center space-x-2 shrink-0">
+                  <div class="flex items-center space-x-2 shrink-0 pointer-events-none">
                     <span class="text-[11px] font-mono font-bold uppercase">${t('lang.active', 'Active')}</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
@@ -4353,7 +4287,7 @@ function getInitialLanguage() {
       const wrapper = document.createElement('div');
       wrapper.innerHTML = renderMobileDrawerHTML();
       document.body.appendChild(wrapper.firstElementChild);
-    } else {
+    } else if (drawer.classList.contains('hidden') || drawer.classList.contains('pointer-events-none')) {
       drawer.outerHTML = renderMobileDrawerHTML();
     }
   }
@@ -4365,8 +4299,8 @@ function getInitialLanguage() {
     const sheet = document.getElementById('mobile-lang-sheet');
     if (drawer && backdrop && sheet) {
       drawer.classList.remove('hidden');
+      drawer.classList.remove('pointer-events-none');
       requestAnimationFrame(() => {
-        drawer.classList.remove('pointer-events-none');
         backdrop.classList.remove('opacity-0');
         backdrop.classList.add('opacity-100');
         sheet.classList.remove('translate-y-full');
@@ -4380,16 +4314,20 @@ function getInitialLanguage() {
     const backdrop = document.getElementById('mobile-lang-backdrop');
     const sheet = document.getElementById('mobile-lang-sheet');
     if (drawer && backdrop && sheet) {
+      // IMMEDIATELY disable pointer-events to prevent lingering transparent overlay blocking header & logo!
+      drawer.classList.add('pointer-events-none');
       backdrop.classList.remove('opacity-100');
       backdrop.classList.add('opacity-0');
       sheet.classList.add('translate-y-full');
       document.body.style.overflow = '';
       setTimeout(() => {
-        if (drawer) {
-          drawer.classList.add('pointer-events-none');
-          drawer.classList.add('hidden');
+        const liveDrawer = document.getElementById('haichain-mobile-lang-drawer');
+        if (liveDrawer && liveDrawer.classList.contains('pointer-events-none')) {
+          liveDrawer.classList.add('hidden');
         }
       }, 300);
+    } else {
+      document.body.style.overflow = '';
     }
   }
 
