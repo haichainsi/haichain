@@ -307,6 +307,35 @@ Users deposit local currencies through unified native gateways:
 * **Emerging Markets (Southeast Asia Focus):** Dynamic QR payments (VietQR, PromptPay) clearing instantly via institutional liquidity relays directly into user-segregated token vaults.
 * **Gasless Sponsorship:** Protocol relayers sponsor all underlying Solana transaction compute fees, ensuring \$10.00 deposited converts to exactly 10.000000 USDT in spendable balance.
 
+
+#### Zero-Custody Intent Solvers & Real-Time ZK-AML Sanctions Firewall
+To capture global stablecoin liquidity without exposing the protocol to cross-chain bridge hacks or illicit fund contagion, Haichain completely rejects centralized bridge pools, implementing a **Zero-Custody Intent Architecture & Automated ZK-AML Firewall**:
+
+```
+          ZERO-CUSTODY INTENT ARCHITECTURE & ZK-AML COMPLIANCE FIREWALL
+          
+   [ User / Enterprise Initiates Deposit (e.g. TRC-20 USDT, EVM, Bitcoin) ]
+                                │
+                                ▼ (Real-Time Compliance Verification < 500ms)
+   [ Real-Time ZK-AML Sanctions Firewall (Chainalysis / Elliptic Oracle) ]
+   ├── Instant screening against OFAC, FATF, and darknet cluster registries
+   ├── IF TAINTED / SANCTIONED: Intent immediately rejected at the perimeter
+   └── IF VERIFIED CLEAN: Generates verifiable Zero-Knowledge Clean-Funds Proof
+                                │
+                                ▼
+   [ Institutional Private Market Maker (PMM) Solver Network ]
+   ├── Solvers receive clean assets on external chains (TRON, Ethereum, Bitcoin)
+   └── Solvers INSTANTLY ADVANCE 1:1 SPL USDT into User's Isolated Vault on Solana
+                                │
+                                ▼
+   [ ZERO PROTOCOL BRIDGE POOLS • ZERO HACK HONEYPOTS • 100% FATF COMPLIANCE ]
+```
+
+1. **Elimination of Bridge Honeypots (Zero-Custody):** Haichain maintains **zero custodial liquidity contracts on external blockchains**. Cross-chain liquidity is provided peer-to-peer by bonded institutional Solvers (similar to UniswapX and Across). Capital default risks remain strictly on external market makers, completely neutralizing the smart contract bridge exploit vector that claimed billions across legacy bridges.
+2. **Real-Time ZK-AML Sanctions Firewall:** Every deposit intent is inspected programmatically against global sanctions registries before fulfillment. Contaminated funds are blocked at the network perimeter, protecting Haichain's global banking rails (Apple Pay, Visa, Stripe integrations) from regulatory contagion.
+3. **Asynchronous FROST Presignature Pipeline (< 150ms):** For cross-chain multi-sig execution, Haichain decouples threshold signing into an offline pre-computation phase (generating nonce commitments during idle slots) and a single-round online signing phase, reducing multi-chain signing latency from 3,000ms down to **< 150 milliseconds**.
+
+
 ### 4.3. Two-Tier Emergency Circuit Breaker & Timelocked Capital Protection
 In distributed blockchain environments, raw slot times (~400ms on Solana) must be cryptographically decoupled from consensus finality (32 slots, ~12.8s) and protected against adversarial MEV priority-fee front-running. HAICHAIN engineers a **Two-Tier Capital Protection Architecture**:
 1. **Tier-1 (Instant Client-Side Ephemeral Revocation - 0ms Network Latency):** When an anomaly or prompt injection is detected, the user's local secure enclave instantly zeroes out all local session delegation keys and signs a cryptographic revocation ticket. This revocation ticket is propagated across HAICHAIN's peer-to-peer gossip network, instantly terminating local instruction generation and rejecting newly signed sub-agent ticks without awaiting on-chain block inclusion.
@@ -484,6 +513,37 @@ To prevent atomic deadlocks when Solana experiences slot delays or transient net
 2. **Single-Writer Fast-Path Channel:** When micro-transactions occur strictly between two bilateral agents without competing shared state (accounting for >90% of swarm interactions), transactions execute via a consensus-less Byzantine Consistent Broadcast protocol, achieving finality in **under 80 milliseconds** without queuing in global leader schedules.
 
 
+
+#### Defense-in-Depth Confidential AI: Heterogeneous M-of-N Enclaves & ZK Arbitration
+Recognizing that single-vendor Trusted Execution Environments (TEEs) are susceptible to microarchitectural side-channel exploits (e.g. Spectre, Meltdown, AEPic) or vendor backdoors, Haichain enforces **Heterogeneous M-of-N Enclave Consensus combined with Optimistic ZK Arbitration**:
+
+```
+               HETEROGENEOUS M-OF-N TEE & ZK ARBITRATION ARCHITECTURE
+               
+    [ Proprietary Model Weights / Sensitive Enterprise Healthcare / Financial Prompts ]
+                                 │
+                                 ▼ (Double-Blind End-to-End Encryption - E2EE)
+    ┌────────────────────────────┴────────────────────────────┐
+    ▼                                                         ▼
+[ Enclave Vector A: NVIDIA H100 TEE ]       [ Enclave Vector B: AMD SEV-SNP / Intel TDX ]
+├── Independent silicon microarchitecture   ├── Independent CPU security boundary
+└── Native GPU floating-point wire-speed    └── Concurrent independent reasoning execution
+    │                                                         │
+    └────────────────────────────┬────────────────────────────┘
+                                 ▼
+              [ Cryptographic Cross-Silicon Attestation ]
+              ├── Requires concurrent, identical attestation across BOTH vendors
+              └── Single-chip hardware exploit CANNOT compromise confidentiality!
+                                 │
+                                 ▼ (In the Event of Disputed Execution Traces)
+              [ Jolt/Lasso zkVM Mathematical Arbiter ]
+              └── On-chain succinct ZK dispute proof slashes fraudulent silicon nodes
+```
+
+1. **Heterogeneous Silicon Diversity:** Mission-critical inference tasks require concurrent execution and cross-attestation across **two distinct hardware manufacturers** (e.g., NVIDIA H100 GPU Enclaves + AMD SEV-SNP CPUs). A zero-day side-channel exploit in one architecture cannot breach the isolation boundary of the other.
+2. **Optimistic ZK Mathematical Arbitration:** While high-throughput floating-point inference executes at native wire-speed inside TEE enclaves, any contested execution traces are submitted to the **Jolt/Lasso zkVM** for deterministic on-chain arbitration, uniting hardware execution performance with mathematical zero-knowledge finality.
+
+
 ### 6.2. Hierarchical Capability Trees (HCT)
 To deploy swarms of hundreds of sub-agents without polluting on-chain state:
 * Sub-agents derive ephemeral keys using BIP-32 style path derivation:
@@ -659,6 +719,31 @@ To unlock wire-speed sub-millisecond bilateral netting channels and zero-frictio
 * **60% of Purchased Tokens:** Burned permanently on-chain, exerting relentless deflationary pressure.
 * **40% of Purchased Tokens:** Distributed directly as **USDT Real Yield dividends** to long-term veHAISI lockers, rewarding capital providers with non-inflationary cash flow.
 
+
+#### Elastic Energy Quota (E-AEQ) & Anti-Insolvency Congestion Circuit Breaker
+To prevent the catastrophic **Subsidized Gas Insolvency Trap**—where Solana network priority fee spikes during meme-coin manias drain Protocol Treasury reserves subsidizing high-frequency agent traffic—Haichain enforces the **Dynamic Elastic Energy Multiplier**:
+
+$$\text{Energy Consumption Multiplier } M = 1 + \alpha \cdot \max\left(0, \quad \frac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}\right)$$
+
+```
+           ANTI-INSOLVENCY CONGESTION CIRCUIT BREAKER PIPELINE
+           
+   [ Solana Network at Baseline ($0.0002 Priority Fee) ]
+   └── 1 Agentic Transaction consumes exactly 1 AEQ Energy Unit (M = 1.0)
+   
+   [ SOLANA PRIORITY FEE SPIKES (e.g. 50x Surge during Mania) ]
+                               │
+                               ▼
+   [ Automated Two-Speed Queue Isolation ]
+   ├── Route 1: Critical Invariants (Panic Kill-Switch, Immediate Liquidation)
+   │   └── Guaranteed immediate inclusion backed by emergency Treasury reserves
+   └── Route 2: Routine High-Frequency Micro-Netting Cycles
+       ├── Dynamically scales energy consumption via Multiplier M
+       └── OR automatically DEFERS execution by a few slots until priority fees cool
+           --> TREASURY CAPITAL PRESERVED 100% • ZERO INSOLVENCY EXPOSURE!
+```
+
+* **Complete Insolvency Protection:** The protocol never unconditionally subsidizes arbitrary network spikes out of its balance sheet. When congestion exceeds the 95th percentile baseline, non-critical background netting batches dynamically adjust consumption or defer execution across brief slot windows, preserving 100% of Treasury capital while guaranteeing deterministic unit economics for enterprise operators.
 
 ---
 

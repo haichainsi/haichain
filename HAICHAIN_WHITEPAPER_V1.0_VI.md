@@ -225,6 +225,35 @@ Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phươn
 > 1. **WebAuthn Biometric Security:** Trên bản thử nghiệm Devnet, giao diện ứng dụng Hardened Biometric Vault (AES-256-GCM + PBKDF2) bảo vệ sinh trắc học cục bộ. Khi phát hành Mainnet thương mại, hệ thống tích hợp trực tiếp mạng lưới MPC Enclave chuyên dụng (Turnkey / Privy) để chuyển giao chữ ký P-256 sang Ed25519 với cấp độ bảo mật ngân hàng.
 > 2. **Cổng nạp Fiat (Apple Pay / Card):** Môi trường Devnet hỗ trợ 100% nạp rút on-chain thực tế qua Solana Web3 Wallet và 1-Click Devnet Faucet. Luồng Apple Pay / Thẻ tín dụng trên bản thử nghiệm đóng vai trò Mô phỏng Trải nghiệm Người dùng (Interactive UX Prototype) và sẽ được kích hoạt kết nối API ngân hàng thực tế (Stripe Onramp / Stably) trong đợt phát hành Mainnet chính thức.
 
+
+#### Mạng Lưới Khớp Lệnh Ý Định (Zero-Custody Intent Solvers) & Màng Lọc Tuân Thủ ZK-AML
+Để hấp thụ thanh khoản khổng lồ từ các mạng lưới bên ngoài (như TRON TRC-20, Ethereum, Bitcoin) mà không đẩy hệ thống vào nguy cơ bị hack cầu nối hoặc dính líu đến dòng tiền bẩn, Haichain loại bỏ hoàn toàn mô hình cầu lưu ký truyền thống, thiết lập **Kiến Trúc Khớp Lệnh Ý Định Không Lưu Ký (Zero-Custody Intent) & Màng Lọc ZK-AML**:
+
+```
+          KIẾN TRÚC INTENT KHÔNG CẦU NỐI & MÀNG LỌC TUÂN THỦ ZK-AML
+          
+   [ Người Dùng / Doanh Nghiệp Nạp Tiền (TRC-20 USDT, EVM Stablecoins, BTC) ]
+                                │
+                                ▼ (Xác Thực Tuân Thủ Tự Động Trong < 500ms)
+   [ Màng Lọc Tuân Thủ ZK-AML Tự Động (Oracle Chainalysis / Elliptic) ]
+   ├── Quét tức thời đối chiếu danh sách đen của Bộ Tài chính Mỹ (OFAC) & FATF
+   ├── NẾU DÍNH VÍ ĐEN / MIXER / TIỀN BẨN: HỆ THỐNG TỪ CHỐI NGAY TẠI CỬA NGÕ
+   └── NẾU SẠCH 100%: Sinh Bằng Chứng Không Tri Thức Hợp Lệ (ZK Clean Proof)
+                                │
+                                ▼
+   [ Mạng Lưới Nhà Khớp Lệnh Ý Định Thể Chế (Institutional Solvers) ]
+   ├── Solvers nhận tài sản sạch của người dùng trên chuỗi đích (TRON, EVM)
+   └── Solvers TỰ ĐỘNG ỨNG TRƯỚC 1:1 SPL USDT vào Hũ Tiền Haichain của User
+                                │
+                                ▼
+   [ KHÔNG CÓ KHO LƯU KÝ ĐỂ BỊ HACK • RỦI RO CẦU NỐI = 0% • TUÂN THỦ 100% FATF ]
+```
+
+1. **Triệt Tiêu Nguy Cơ Bị Hack Cầu Nối (Zero-Bridge Risk):** Haichain **hoàn toàn không duy trì kho tiền lưu ký tập trung nào trên TRON hay các chuỗi khác**. Giao dịch là sự hoán đổi tức thì giữa người dùng và các Nhà Tạo Lập Thanh Khoản Thể Chế (Solvers). Rủi ro giữ vốn do các quỹ Solver tự chịu trách nhiệm, triệt tiêu 100% nguy cơ bị hack kho lưu ký như các thảm họa cầu nối lịch sử.
+2. **Màng Lọc ZK-AML Tự Động Kháng Cấm Vận:** Mọi dòng tiền nạp vào đều được kiểm toán tự động theo thời gian thực. Dòng tiền bẩn bị chặn đứng ngay lập tức, bảo đảm hệ thống bù trừ của Haichain luôn tinh khiết và tuân thủ nghiêm ngặt chuẩn mực FATF Travel Rule, bảo vệ vững chắc quan hệ hợp tác với các định chế ngân hàng (Visa, Apple Pay).
+3. **Chữ Ký Đa Chuỗi Tiền Tính Toán FROST (< 150ms):** Tách pha tạo nonce ngoại tuyến sang thời gian chạy ngầm, giúp tác tử AI tạo chữ ký đa chuỗi (trên Bitcoin, Ethereum, TRON) chỉ trong **dưới 150 mili-giây**, loại bỏ hoàn toàn độ trễ 3-5 giây của các mạng MPC truyền thống.
+
+
 ### 3.2. Cơ Chế Khóa Thời Gian Khẩn Cấp Hai Tầng & Phòng Vệ MEV
 Trong hệ thống phân tán, thời gian block (~400ms trên Solana) cần được phân tách rõ ràng với thời gian hoàn tất đồng thuận (Finality 32 slots, ~12.8 giây) và phòng thủ tuyệt đối trước các cuộc tấn công đua phí MEV Front-Running trong mempool. Haichain thiết kế **Kiến Trúc Bảo Vệ Vốn Hai Tầng (Two-Tier Capital Protection Architecture)**:
 1. **Tầng 1 (Thu Hồi Khóa Ủy Quyền Tức Thì Phía Client - Trễ Mạng 0ms):** Khi phát hiện prompt injection hoặc hành vi dị thường, chip bảo mật (Secure Enclave) trên thiết bị người dùng lập tức vô hiệu hóa khóa ủy quyền session key nội bộ và phát sóng vé thu hồi mật mã (Revocation Ticket) qua mạng ngang hàng gossip. Toàn bộ các tác tử con bị tước quyền ký lệnh ngay lập tức mà không cần chờ block on-chain xác nhận.
@@ -281,6 +310,37 @@ Khi tác vụ hoàn thành, chữ ký mật mã xác thực số lượng token 
 
 1. **Bất Biến Khóa Thời Gian Tương Đối ($\Delta t$):** Thời hạn ký quỹ được tính bằng số giây vật lý tương đối ($\Delta t = 60	ext{s}$) gắn với mốc thời gian Unix có chữ ký mật mã thay vì số slot tuyệt đối của Solana (`require!(current_unix_ts <= init_unix_ts + delta_t)`). Nhờ đó, nếu Solana bị chậm slot, hợp đồng suy luận vẫn giữ nguyên tính toàn vẹn và không bao giờ bị đóng băng tài sản.
 2. **Kênh Fast-Path Đơn Quyền (Single-Writer Channel):** Khi các giao dịch diễn ra thuần túy giữa 2 tác tử đối tác (chiếm hơn 90% tương tác trong bầy đàn), giao dịch được xử lý qua giao thức phát sóng Byzantine nhất quán, đạt tính hoàn tất (finality) trong **dưới 80 mili-giây** mà không cần xếp hàng vào lịch trình khối toàn cầu.
+
+
+
+#### Bảo Mật Đa TEE Dị Thể (Heterogeneous M-of-N Enclaves) & Trọng Tài Toán Học ZK
+Thấu hiểu rằng các môi trường thực thi đáng tin cậy (TEE) đơn lẻ từ một nhà sản xuất có thể tồn tại lỗ hổng kênh bên (Side-channel attacks như Spectre, Meltdown, AEPic) hoặc cửa sau vi mã, Haichain thiết lập **Cơ Chế Đồng Thuận Đa TEE Dị Thể kết hợp Trọng Tài ZK**:
+
+```
+               KIẾN TRÚC BẢO MẬT ĐA TEE DỊ THỂ & TRỌNG TÀI ZK
+               
+    [ Trọng Số Mô Hình Bí Mật / Dữ Liệu Bệnh Án & Tài Chính Doanh Nghiệp ]
+                                 │
+                                 ▼ (Mã Hóa Hai Lớp Đầu-Cuối E2EE)
+    ┌────────────────────────────┴────────────────────────────┐
+    ▼                                                         ▼
+[ Phân Vùng A: NVIDIA H100 TEE ]            [ Phân Vùng B: AMD SEV-SNP / Intel TDX ]
+├── Kiến trúc vi mạch GPU NVIDIA            ├── Kiến trúc bảo mật CPU AMD/Intel
+└── Tốc độ xung nhịp phần cứng nguyên bản   └── Thực thi suy luận song song độc lập
+    │                                                         │
+    └────────────────────────────┬────────────────────────────┘
+                                 ▼
+              [ Chứng Thực Mật Mã Chéo Giữa Hai Hãng Chip ]
+              ├── Bắt buộc CẢ HAI kiến trúc phần cứng độc lập cùng ký xác thực!
+              └── Lỗ hổng kênh bên của một hãng chip KHÔNG THỂ phá vỡ hệ thống!
+                                 │
+                                 ▼ (Trong Trường Hợp Có Tranh Chấp Dữ Liệu)
+              [ Trọng Tài Phân Xử Toán Học Jolt/Lasso zkVM ]
+              └── Mạch ZK kiểm toán dấu vết thực thi -> Phạt chém cọc node chip gian lận
+```
+
+1. **Khử Rủi Ro Phần Cứng Bằng Tính Đa Dạng Vi Mạch:** Các tác vụ suy luận nhạy cảm bắt buộc phải được chạy song song và chứng thực chéo qua **hai kiến trúc chip độc lập từ hai nhà sản xuất khác nhau** (ví dụ: GPU NVIDIA + CPU AMD). Lỗ hổng kênh bên của một dòng chip cụ thể hoàn toàn bị vô hiệu hóa bởi lớp bảo vệ của chip còn lại.
+2. **Trọng Tài Phân Xử Toán Học ZK:** TEE xử lý tính toán dấu phẩy động ở tốc độ nano-giây của GPU, nhưng khi có bất kỳ nghi vấn hay tranh chấp nào về tính đúng đắn của dữ liệu, vết thực thi sẽ được đưa vào máy ảo **Jolt/Lasso zkVM** để phân xử dứt điểm bằng toán học thuần túy.
 
 
 ### 4.2. Cây Năng Lực Phân Tầng (Hierarchical Capability Trees - HCT)
@@ -552,6 +612,31 @@ $$	ext{Hạn Mức Giao Dịch Ngày} = k \cdot \sqrt{	ext{Staked } \$HAISI 	ime
 * **60% lượng token mua lại:** Đốt bỏ vĩnh viễn trên chuỗi (Deflationary Burning).
 * **40% lượng token mua lại:** Phân phối trực tiếp dưới dạng **Cổ tức USDT Thực (Real Yield)** cho các nhà đầu tư cọc dài hạn (veHAISI), gắn chặt lợi ích của người nắm giữ token với sự bùng nổ của nền kinh tế máy móc.
 
+
+#### Cầu Chì Năng Lượng Đàn Hồi (E-AEQ) & Cơ Chế Chống Vỡ Nợ Do Nghẽn Mạng
+Để hóa giải triệt để **Bẫy Vỡ Nợ Do Bao Cấp Gas**—nguy cơ các đợt sốt meme coin trên Solana làm phí ưu tiên tăng 50-100 lần, hút cạn ngân sách Kho Bạc đang bao cấp cho hàng triệu bot AI—Haichain áp dụng **Hệ Số Năng Lượng Đàn Hồi (Dynamic Elastic Energy Multiplier)**:
+
+$$\text{Hệ Số Tiêu Hao Năng Lượng } M = 1 + \alpha \cdot \max\left(0, \quad \frac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}\right)$$
+
+```
+           CƠ CHẾ CẦU CHÌ BẢO VỆ KHO BẠC TRƯỚC BÃO NGHẼN MẠNG
+           
+   [ Mạng Solana Ở Trạng Thái Cơ Sở (Phí ưu tiên $0.0002) ]
+   └── 1 Giao dịch vi mô tiêu hao đúng 1 Đơn vị Năng lượng AEQ (Hệ số M = 1.0)
+   
+   [ SOLANA SỐT MEME COIN (Phí ưu tiên tăng vọt 50 lần) ]
+                               │
+                               ▼
+   [ Phân Luồng Hai Tốc Độ Tự Động ]
+   ├── Tuyến 1: Tác Vụ Sống Còn (Nút Dừng Khẩn Cấp, Thanh Lý Tức Thì)
+   │   └── Được bảo đảm thực thi ngay lập tức từ quỹ dự phòng khẩn cấp
+   └── Tuyến 2: Chu Kỳ Bù Trừ Vi Mô Định Kỳ Của Bot
+       ├── Tự động nâng mức tiêu hao năng lượng AEQ theo hệ số M
+       └── Hoặc TỰ ĐỘNG GIÃN CHU KỲ (Defer) thêm vài slot chờ phí hạ nhiệt
+           --> BẢO TOÀN 100% KHO BẠC • TRIỆT TIÊU NGUY CƠ VỠ NỢ!
+```
+
+* **Bảo Toàn Kho Bạc Tuyệt Đối:** Giao thức không bao cấp mù quáng bằng tiền túi. Khi độ nghẽn mạng vượt ngưỡng 95%, các chu kỳ bù trừ vi mô không khẩn cấp tự động co giãn chu kỳ thanh toán trong vài slot ngắn để né đỉnh phí, giữ vững sự an toàn 100% cho bảng cân đối tài chính của Haichain.
 
 ---
 

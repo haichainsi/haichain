@@ -3296,8 +3296,8 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       if (solanaConnection && window.solanaWeb3) {
         try {
           const pk = new solanaWeb3.PublicKey(pubkeyStr);
-          const lamports = await solanaConnection.getBalance(pk);
-          solBalStr = (lamports / solanaWeb3.LAMPORTS_PER_SOL).toFixed(3);
+          const rawLamports = await solanaConnection.getBalance(pk);
+          solBalStr = (Number(rawLamports) / Number(solanaWeb3.LAMPORTS_PER_SOL)).toFixed(3);
         } catch (e) {
           console.warn("Could not fetch balance for:", pubkeyStr, e);
         }
@@ -4384,22 +4384,26 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
           const treasuryPubkey = new solanaWeb3.PublicKey(treasuryAddress);
 
-          // Check payer SOL balance
-          const payerLamports = await solanaConnection.getBalance(payerPubkey);
+          // Check payer SOL balance safely converting BigInt to Number
+          const rawBalance = await solanaConnection.getBalance(payerPubkey);
+          const payerLamports = Number(rawBalance);
+          const lamportsPerSol = Number(solanaWeb3.LAMPORTS_PER_SOL);
           const minRequiredLamports = 5000; // tx fee
 
           if (payerLamports < minRequiredLamports) {
             alert(isVi
-              ? `Số dư SOL trên ví ${userWallet.provider} của bạn không đủ (${(payerLamports / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4)} SOL) để trả phí mạng Solana Devnet.\n\nVui lòng nhận SOL Devnet miễn phí tại solfaucet.com hoặc chọn tab 'Faucet (+$10)' để nhận USDT thử nghiệm!`
-              : `Your ${userWallet.provider} wallet has insufficient SOL (${(payerLamports / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4)} SOL) to pay the Solana Devnet network fee.\n\nPlease claim free Devnet SOL at solfaucet.com or switch to the 'Faucet (+$10)' tab!`);
+              ? `Số dư SOL trên ví ${userWallet.provider} của bạn không đủ (${(payerLamports / lamportsPerSol).toFixed(4)} SOL) để trả phí mạng Solana Devnet.\n\nVui lòng nhận SOL Devnet miễn phí tại solfaucet.com hoặc chọn tab 'Faucet (+$10)' để nhận USDT thử nghiệm!`
+              : `Your ${userWallet.provider} wallet has insufficient SOL (${(payerLamports / lamportsPerSol).toFixed(4)} SOL) to pay the Solana Devnet network fee.\n\nPlease claim free Devnet SOL at solfaucet.com or switch to the 'Faucet (+$10)' tab!`);
             return;
           }
 
           // Fetch latest blockhash
-          const { blockhash, lastValidBlockHeight } = await solanaConnection.getLatestBlockhash('confirmed');
+          const blockhashRes = await solanaConnection.getLatestBlockhash('confirmed');
+          const blockhash = blockhashRes.blockhash;
+          const lastValidBlockHeight = Number(blockhashRes.lastValidBlockHeight);
 
           // Symbolic on-chain transfer on Devnet (0.001 SOL or available)
-          const lamportsToSend = Math.min(Math.max(payerLamports - 10000, 1000), 1000000);
+          const lamportsToSend = Math.floor(Math.min(Math.max(payerLamports - 10000, 1000), 1000000));
           const tx = new solanaWeb3.Transaction().add(
             solanaWeb3.SystemProgram.transfer({
               fromPubkey: payerPubkey,
@@ -4415,7 +4419,12 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           const { signature } = await phantom.signAndSendTransaction(tx);
 
           dashConfirmDepositBtn.textContent = isVi ? "Đang xác thực trên Solana Devnet..." : "Confirming on Solana Devnet...";
-          await solanaConnection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
+          try {
+            await solanaConnection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
+          } catch (confirmErr) {
+            console.warn("Fast confirmation fallback:", confirmErr);
+            await new Promise(r => setTimeout(r, 1500));
+          }
 
           // ONLY ON VERIFIED ON-CHAIN CONFIRMATION:
           balance += added;

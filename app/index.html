@@ -2782,9 +2782,9 @@
 
             if (solanaConnection) {
 
-              const lamports = await solanaConnection.getBalance(resp.publicKey);
+              const rawLamports = await solanaConnection.getBalance(resp.publicKey);
 
-              console.log(`Connected wallet balance: ${lamports / solanaWeb3.LAMPORTS_PER_SOL} SOL`);
+              console.log(`Connected wallet balance: ${Number(rawLamports) / Number(solanaWeb3.LAMPORTS_PER_SOL)} SOL`);
 
             }
 
