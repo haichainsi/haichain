@@ -2214,6 +2214,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               const resp = await phantom.connect();
               await setConnectedWallet(resp.publicKey.toString(), 'Phantom');
               walletConnectModal.classList.add('hidden');
+              showToast({ title: 'Phantom Connected', message: `${resp.publicKey.toString().slice(0, 4)}...${resp.publicKey.toString().slice(-4)}`, icon: 'check-circle' });
+              openAccountModal();
             } catch (err) {
               console.error("Phantom connection rejected:", err);
               walletNoticeText.innerHTML = "Phantom connection was canceled or rejected.";
@@ -2236,6 +2238,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               await window.solflare.connect();
               await setConnectedWallet(window.solflare.publicKey.toString(), 'Solflare');
               walletConnectModal.classList.add('hidden');
+              showToast({ title: 'Solflare Connected', message: `${window.solflare.publicKey.toString().slice(0, 4)}...${window.solflare.publicKey.toString().slice(-4)}`, icon: 'check-circle' });
+              openAccountModal();
             } catch (err) {
               console.error("Solflare error:", err);
               walletNoticeText.innerHTML = "Solflare connection was canceled or rejected.";
@@ -2257,6 +2261,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           const demoAddress = "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW";
           await setConnectedWallet(demoAddress, 'Devnet Demo');
           walletConnectModal.classList.add('hidden');
+          showToast({ title: window.haichainI18n?.currentLang === 'vi' ? 'Đã Kết Nối Demo' : 'Demo Connected', message: `${demoAddress.slice(0, 4)}...${demoAddress.slice(-4)}`, icon: 'sparkles' });
+          openAccountModal();
           alert(`Devnet Demo Wallet Activated:\n\nAddress: ${demoAddress}\nDevnet Balance: ${userWallet.solBalance} SOL\n\nYou can now test all AI Playground & Micro-Escrow features live.`);
         }
       });

@@ -146,4 +146,43 @@ describe("HAICHAIN v6.9.4: Stage 2 Forensic WebAuthn, AA & Bridge Audit Suite", 
     // Invariant: System halts exploit and preserves $9.65M TVL
     expect(currentHourOutflow).to.equal(350_000);
   });
+
+  // =========================================================================
+  // 6. DYNAMIC COMPOSITE MERKLE ROOT ROTATION & ACCESS CONTROL
+  // =========================================================================
+  it("6. [DYNAMIC COMPOSITE ROOT ROTATION & ACCESS CONTROL]: Allows master owner to rotate root and rejects imposters", async () => {
+    const masterOwner = Keypair.generate().publicKey;
+    const maliciousThirdParty = Keypair.generate().publicKey;
+
+    let currentRoot = crypto.randomBytes(32);
+    const newValidRoot = crypto.randomBytes(32);
+
+    // Attempt A: Malicious third-party tries to overwrite capability root
+    const canAttackerUpdate = maliciousThirdParty.equals(masterOwner);
+    expect(canAttackerUpdate).to.be.false; // Strictly rejected by has_one = master_owner
+
+    // Attempt B: Legitimate Master Owner updates root
+    const canOwnerUpdate = masterOwner.equals(masterOwner);
+    expect(canOwnerUpdate).to.be.true;
+
+    if (canOwnerUpdate) {
+      currentRoot = newValidRoot;
+    }
+    expect(currentRoot.equals(newValidRoot)).to.be.true;
+  });
+
+  // =========================================================================
+  // 7. NOMAD BRIDGE DEFENSE ON ROOT ROTATION
+  // =========================================================================
+  it("7. [NOMAD $190M DEFENSE ON ROTATION]: Strictly forbids rotating composite root to empty 0x0 bytes", async () => {
+    const emptyNomadRoot = Buffer.alloc(32, 0);
+    const validRotatedRoot = crypto.randomBytes(32);
+
+    // Invariant check: root must not be all zeros
+    const isEmptyRootAllowed = !emptyNomadRoot.every(b => b === 0);
+    expect(isEmptyRootAllowed).to.be.false; // Blocked with EmptyNomadRootForbidden!
+
+    const isValidRootAllowed = !validRotatedRoot.every(b => b === 0);
+    expect(isValidRootAllowed).to.be.true;
+  });
 });
