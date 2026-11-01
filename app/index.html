@@ -120,12 +120,19 @@
       }
     }
 
-        /* Left Brand Cluster (Logo + Language Flag) - Exactly Identical to Dashboard Mobile */
-    .haichain-brand-cluster {
-      display: flex !important;
-      align-items: center !important;
-      flex-shrink: 0 !important;
-      gap: 6px !important;
+    /* Left Brand Cluster (Logo + Language Flag) - Mobile Only */
+    @media (max-width: 767.98px) {
+      .haichain-brand-cluster {
+        display: flex !important;
+        align-items: center !important;
+        flex-shrink: 0 !important;
+        gap: 6px !important;
+      }
+    }
+    @media (min-width: 768px) {
+      .haichain-brand-cluster {
+        display: none !important;
+      }
     }
     .haichain-brand-logo-link {
       display: flex !important;
