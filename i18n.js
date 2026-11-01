@@ -4235,7 +4235,7 @@
     return `
       <div class="relative inline-block text-left" id="haichain-lang-dropdown">
         <!-- Minimalist Flag-Only Trigger Button (Harmonious Twin of Theme Toggle) -->
-        <button id="lang-switch-btn" type="button" class="group flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
+        <button id="lang-switch-btn" type="button" class="lang-switch-btn group flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
           <span class="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-200 group-hover:scale-105">
             ${current.flagSvg}
           </span>
@@ -4273,6 +4273,17 @@
           </div>
         </div>
       </div>
+    `;
+  }
+
+    function renderMobileLanguageSwitcherHTML() {
+    const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
+    return `
+      <button type="button" class="lang-switch-btn group flex items-center justify-center w-7 h-7 p-0 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
+        <span class="w-5 h-3.5 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-200 group-hover:scale-105">
+          ${current.flagSvg}
+        </span>
+      </button>
     `;
   }
 
@@ -4420,11 +4431,11 @@
     }
 
     // 2. Language Switcher Trigger Clicked
-    const switchBtn = e.target.closest('#lang-switch-btn');
+    const switchBtn = e.target.closest('#lang-switch-btn, .lang-switch-btn');
     if (switchBtn) {
       e.preventDefault();
       e.stopPropagation();
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 640 || switchBtn.closest('#mobile-lang-mount')) {
         openMobileDrawer();
       } else {
         toggleMenu();
@@ -4475,11 +4486,21 @@
   });
 
   function updateSwitcherUI() {
-    const container = document.getElementById('lang-switcher-mount');
-    if (container) {
+    const desktopMounts = [
+      document.getElementById('desktop-lang-mount'),
+      document.getElementById('lang-switcher-mount')
+    ].filter(Boolean);
+
+    desktopMounts.forEach(container => {
       container.innerHTML = renderLanguageSwitcherHTML();
-      setupHoverListeners();
+    });
+
+    const mobileContainer = document.getElementById('mobile-lang-mount');
+    if (mobileContainer) {
+      mobileContainer.innerHTML = renderMobileLanguageSwitcherHTML();
     }
+
+    setupHoverListeners();
     ensureMobileDrawer();
   }
 

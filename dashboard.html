@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v20_harmonious_spacing"></script>
+  <script src="/app/i18n.js?v=v21_lang_near_logo"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
@@ -159,16 +159,18 @@
         <!-- Mobile Official Brand Logo (Dedicated Dashboard Mobile Design - Crisp & Balanced) -->
         <a href="/" class="md:hidden shrink-0 flex items-center group py-0.5" title="HAICHAIN Home">
           <!-- Light Mode: Dark Logo -->
-          <img src="/assets/haichain-dashboard-mobile-logo.png?v=v16_mobile_nav_fix" alt="HAICHAIN" class="logo-light dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v15_clean_icons';}">
+          <img src="/assets/haichain-dashboard-mobile-logo.png?v=v21_lang_near_logo" alt="HAICHAIN" class="logo-light dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v21_lang_near_logo';}">
           <!-- Dark Mode: Pure White Logo -->
-          <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v16_mobile_nav_fix" alt="HAICHAIN" class="logo-dark dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v15_clean_icons';}">
+          <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v21_lang_near_logo" alt="HAICHAIN" class="logo-dark dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v21_lang_near_logo';}">
         </a>
+        <!-- Mobile Language Switcher Mount (Directly adjacent to HAICHAIN Logo) -->
+        <div id="mobile-lang-mount" class="md:hidden shrink-0 flex items-center"></div>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
       </div>
 
       <!-- Right Header Controls (Harmonious, Borderless & Spacious Suite) -->
-      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 ml-auto">
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0 ml-auto">
         <!-- Live Cluster Pill (Visible on LG+) -->
         <div class="hidden lg:flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[11px] font-mono text-neutral-800 dark:text-neutral-200">
           <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-ping"></span>
@@ -194,7 +196,8 @@
         </button>
 
         <!-- Multi-Language Switcher Dropdown Mount -->
-        <div id="lang-switcher-mount" class="shrink-0 flex items-center"></div>
+        <!-- Desktop Multi-Language Switcher Dropdown Mount -->
+        <div id="desktop-lang-mount" class="hidden md:flex shrink-0 items-center"></div>
 
         <!-- Theme Toggle -->
         <button id="theme-toggle" class="flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 bg-transparent text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors shrink-0 cursor-pointer shadow-none" title="Toggle Light/Dark">
