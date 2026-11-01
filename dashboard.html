@@ -1729,7 +1729,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       <!-- Modal / Drawer Header -->
       <div class="flex justify-between items-center pb-4 border-b border-neutral-100 dark:border-neutral-900">
         <div class="flex items-center space-x-3 min-w-0">
-          <div id="account-badge-icon" class="w-10 h-10 rounded-2xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0 shadow-sm">
+          <div id="account-badge-icon" class="w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
             <i data-lucide="fingerprint" class="w-5 h-5 text-emerald-500"></i>
           </div>
           <div class="min-w-0">
@@ -2498,7 +2498,10 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           tagEl.className = 'text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 shrink-0';
         }
         if (subtitleEl) subtitleEl.textContent = isVi ? 'Xác thực phần cứng WebAuthn • An toàn tuyệt đối' : 'Hardware-Bound WebAuthn • Zero Key Risk';
-        if (badgeIcon) badgeIcon.innerHTML = `<i data-lucide="fingerprint" class="w-5 h-5 text-emerald-500"></i>`;
+        if (badgeIcon) {
+          badgeIcon.className = "w-10 h-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-500 flex items-center justify-center shrink-0 shadow-sm";
+          badgeIcon.innerHTML = '<i data-lucide="fingerprint" class="w-5 h-5 text-emerald-500"></i>';
+        }
       } else {
         if (titleEl) titleEl.textContent = userWallet.provider || 'Solana Wallet';
         if (tagEl) {
@@ -2506,7 +2509,19 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           tagEl.className = 'text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold border border-neutral-300 dark:border-neutral-700 shrink-0';
         }
         if (subtitleEl) subtitleEl.textContent = 'Standard On-Chain Solana Account';
-        if (badgeIcon) badgeIcon.innerHTML = `<i data-lucide="wallet" class="w-5 h-5 text-black dark:text-white"></i>`;
+        const prov = (userWallet.provider || 'Phantom').toLowerCase();
+        if (badgeIcon) {
+          if (prov.includes('phantom')) {
+            badgeIcon.className = "w-10 h-10 rounded-2xl bg-[#AB9FF2]/20 border border-[#AB9FF2]/40 flex items-center justify-center shrink-0 shadow-sm p-1.5";
+            badgeIcon.innerHTML = '<svg class="w-full h-full" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="128" height="128" rx="28" fill="#AB9FF2"/><path d="M106.5 64h-10.8c0-19.8-16.1-35.9-35.9-35.9S23.9 44.2 23.9 64c0 19.8 16.1 35.9 35.9 35.9 5 0 9.8-1 14.2-2.9l-4.1-13.6c-3.1 1.3-6.5 2-10.1 2-13.4 0-24.3-10.9-24.3-24.3 0-13.4 10.9-24.3 24.3-24.3 12.7 0 23.1 9.8 24.2 22.3H72c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h34.5c1.4 0 2.5-1.1 2.5-2.5s-1.1-1.6-2.5-1.6z" fill="#FFFFFF"/><ellipse cx="49" cy="56" rx="5" ry="7" fill="#222222"/><ellipse cx="73" cy="56" rx="5" ry="7" fill="#222222"/></svg>';
+          } else if (prov.includes('solflare')) {
+            badgeIcon.className = "w-10 h-10 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 shadow-sm text-xl";
+            badgeIcon.innerHTML = '<span>🔥</span>';
+          } else {
+            badgeIcon.className = "w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-sm";
+            badgeIcon.innerHTML = '<i data-lucide="wallet" class="w-5 h-5 text-neutral-800 dark:text-neutral-200"></i>';
+          }
+        }
       }
 
       const expLink = document.getElementById('account-explorer-link');
