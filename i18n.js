@@ -4185,7 +4185,7 @@
     return `
       <div class="relative inline-block text-left" id="haichain-lang-dropdown">
         <!-- Minimalist Flag-Only Trigger Button (Harmonious Twin of Theme Toggle) -->
-        <button id="lang-switch-btn" type="button" class="group flex items-center justify-center w-8 h-8 sm:w-auto sm:h-auto p-0 sm:p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-900 bg-neutral-100/70 dark:bg-neutral-900/70 text-neutral-800 dark:text-neutral-200 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="Select Language (Current: ${current.native} / ${current.name})" aria-label="Select Language">
+        <button id="lang-switch-btn" type="button" class="group flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="Select Language" aria-label="Select Language">
           <span class="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-200 group-hover:scale-105">
             ${current.flagSvg}
           </span>
