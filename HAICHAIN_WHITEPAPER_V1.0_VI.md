@@ -27,9 +27,19 @@
 3. [Chương 1: Thế Tiến Thoái Lưỡng Nan & Bằng Chứng Đối Thủ Thực Nghiệm](#chương-1-thế-tiến-thoái-lưỡng-nan-của-nền-kinh-tế-máy-móc)
 4. [Chương 2: Chuỗi Tiếp Nối Kinh Tế SaaS-to-Agentic: Tích Hợp Thuê Bao Doanh Nghiệp Với Tiện Ích Vi Mô Cho Tác Tử](#chương-2-bước-chuyển-dịch-kinh-tế-hậu-saas-giải-phóng-khỏi-bẫy-thuê-bao-đầu-người-sang-tiện-ích-vi-mô)
 5. [Chương 3: Kiến Trúc Trải Nghiệm Vô Hình & Chuẩn Mực "The Mom Test"](#chương-3-kiến-trúc-trải-nghiệm-vô-hình--chuẩn-mực-the-mom-test)
+  - [3.1. Cổng Nạp Tiền Đa Kênh Toàn Cầu (Universal Fiat Abstraction)](#31-cổng-nạp-tiền-đa-kênh-toàn-cầu-universal-fiat-abstraction)
+  - [3.2. Khóa Thời Gian Khẩn Cấp Hai Tầng & Phòng Vệ MEV](#32-cơ-chế-khóa-thời-gian-khẩn-cấp-hai-tầng--phòng-vệ-mev)
+  - [3.3. Cơ Chế Phân Luồng Kép: Tiêu Dùng 1-Chạm vs Nhà Phát Triển Web3](#33-cơ-chế-phân-luồng-kép-dual-rail-architecture-chế-độ-tiêu-dùng-1-chạm-vs-chế-độ-nhà-phát-triển-web3)
+  - [3.4. Phục Hồi Sinh Trắc Học Đa Thiết Bị & Xóa Bỏ Nỗi Sợ Mất Khóa](#34-cơ-chế-phục-hồi-sinh-trắc-học-đa-thiết-bị-biometric-multi-device-recovery--xóa-bỏ-nỗi-sợ-mất-khóa)
 6. [Chương 4: Điều Phối Tác Tử Tiên Phong & Bầy Đàn Tự Hành (HCT BIP-32)](#chương-4-điều-phối-tác-tử-tiên-phong--bầy-đàn-tự-hành)
+  - [4.1. Cây Năng Lực Phân Tầng (HCT)](#41-cây-năng-lực-phân-tầng-hierarchical-capability-trees---hct)
+  - [4.2. Giao Thức Thanh Toán Máy Móc HTTP x402](#42-giao-thức-thanh-toán-máy-móc-tự-hành-http-x402)
+  - [4.3. Nén Trạng Thái cAgents & Hoàn Tiền Thuê 100%](#43-tối-ưu-hóa-chi-phí-thuê-trạng-thái-solana-cho-hàng-triệu-tác-tử-rent-exempt-neutrality)
+  - [4.4. Cơ Chế Trần Chi Phí An Toàn & Các Mẫu Ý Định 1-Chạm](#44-cơ-chế-trần-chi-phí-an-toàn-deterministic-budget-cap--các-mẫu-ý-định-1-chạm-1-click-intent-templates)
 7. [Chương 5: Cỗ Máy Bù Trừ Đa Phương & Nén Dữ Liệu 99.999% (IPv6 MTU 771B)](#chương-5-cỗ-máy-bù-trừ--nén-dữ-liệu-đa-phương)
 8. [Chương 6: Pháo Đài Hạt Nhân: 6 Bất Biến Toán Học Trên Solana L1 (v6.9.3)](#chương-6-pháo-đài-hạt-nhân-6-bất-biến-toán-học-trên-solana-l1)
+  - [6.1 - 6.6. Sáu Bất Biến An Ninh Nền Tảng](#chương-6-pháo-đài-hạt-nhân-6-bất-biến-toán-học-trên-solana-l1)
+  - [6.7. Cầu Chì Tự Động AI Sentinel Watchdog (< 10ms)](#67-cầu-chì-tự-động-ai-sentinel-watchdog-tự-động-đóng-băng-dòng-tiền-khi-phát-hiện-hành-vi-bất-thường--10ms)
 9. [Chương 7: Kinh Tế Học Tài Sản Kép & Tokenomics $HAISI](#chương-7-kinh-tế-học-tài-sản-kép--tokenomics-haisi)
   - [7.1. Phân Bổ Token & Lịch Mở Khóa](#71-phân-bổ-token--lịch-mở-khóa-tổng-cung-cố-định-1000000000-haisi)
   - [7.2. Phân Bổ Băng Thông Theo Cọc & Vòng Xoáy Dòng Tiền Thật](#72-cơ-chế-phân-bổ-băng-thông-theo-cọc-stake-to-transact--vòng-xoáy-dòng-tiền-thật-real-yield-flywheel)
@@ -39,6 +49,7 @@
 10. [Chương 8: Khung Pháp Lý & Tuân Thủ Toàn Cầu (EU AI Act, FATF, MiCA)](#chương-8-khung-pháp-lý--tuân-thủ-toàn-cầu)
   - [8.1. Tuân Thủ Điều 17 Luật GDPR Châu Âu & ZK-eDID](#81-tuân-thủ-toàn-diện-điều-17-luật-gdpr-châu-âu-quyền-được-lãng-quên--zk-edid)
   - [8.2. Tiêu Chuẩn Tuân Thủ SOC2 Type II & EU AI Act (Điều 14) Cho Doanh Nghiệp](#82-tiêu-chuẩn-tuân-thủ-soc2-type-ii--eu-ai-act-điều-14---sự-giám-sát-của-con-người-rào-cản-phòng-vệ-cho-doanh-nghiệp)
+  - [8.3. Cam Kết Quyền Riêng Tư Prompt & Điện Toán Bảo Mật TEE](#83-cam-kết-quyền-riêng-tư-prompt--điện-toán-bảo-mật-tee-confidential-computing--zero-knowledge-prompt-privacy)
 11. [Chương 9: Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập Cho Siêu Trí Tuệ (ASI)](#chương-9-lộ-trình-tiến-hóa-ai2-thành-blockchain-l1-độc-lập-cho-ai)
 12. [Chương 10: Các Định Lý Toán Học Hình Thức & Kiểm Chứng Bất Biến](#chương-10-các-định-lý-toán-học-hình-thức--kiểm-chứng-bất-biến)
 13. [Chương 11: Lộ Trình Triển Khai Chiến Lược & Các Cột Mốc Cam Kết](#chương-11-lộ-trình-triển-khai-chiến-lược--các-cột-mốc-cam-kết)
@@ -265,6 +276,33 @@ Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phươn
 Trong hệ thống phân tán, thời gian block (~400ms trên Solana) cần được phân tách rõ ràng với thời gian hoàn tất đồng thuận (Finality 32 slots, ~12.8 giây) và phòng thủ tuyệt đối trước các cuộc tấn công đua phí MEV Front-Running trong mempool. Haichain thiết kế **Kiến Trúc Bảo Vệ Vốn Hai Tầng (Two-Tier Capital Protection Architecture)**:
 1. **Tầng 1 (Thu Hồi Khóa Ủy Quyền Tức Thì Phía Client - Trễ Mạng 0ms):** Khi phát hiện prompt injection hoặc hành vi dị thường, chip bảo mật (Secure Enclave) trên thiết bị người dùng lập tức vô hiệu hóa khóa ủy quyền session key nội bộ và phát sóng vé thu hồi mật mã (Revocation Ticket) qua mạng ngang hàng gossip. Toàn bộ các tác tử con bị tước quyền ký lệnh ngay lập tức mà không cần chờ block on-chain xác nhận.
 2. **Tầng 2 (Bộ Ngắt Mạch Khẩn Cấp On-Chain Miễn Nhiễm MEV):** Lệnh Panic được định tuyến độc quyền qua cụm validator riêng (Jito MEV-protected bundle), né tránh hoàn toàn mempool công cộng để loại trừ nguy cơ bị bot chèn giao dịch rút trộm tiền. Kho ký quỹ chuyển sang trạng thái khóa thách đấu thời gian thực (Challenge Timelock), và 100% tài sản thanh khoản được chuyển an toàn về ví lạnh ngay khi block hoàn tất đồng thuận.
+
+### 3.3. Cơ Chế Phân Luồng Kép (Dual-Rail Architecture): Chế Độ Tiêu Dùng 1-Chạm vs Chế Độ Nhà Phát Triển Web3
+Để xóa bỏ hoàn toàn rào cản tâm lý của 95% người dùng Web2 khi tiếp cận AI Agent, Haichain tách biệt trải nghiệm người dùng thành hai tuyến độc lập:
+
+```
+               KIẾN TRÚC PHÂN LUỒNG KÉP (DUAL-RAIL USER JOURNEY)
+               
+    [ NGƯỜI DÙNG PHỔ THÔNG (CONSUMER RAIL) ]    [ NHÀ PHÁT TRIỂN / DEGEN (PRO WEB3 RAIL) ]
+    ├── Đăng nhập: 1 chạm FaceID / TouchID      ├── Kết nối: Phantom, Solflare, Backpack
+    ├── Nạp tiền: Apple Pay, Card, QR VietQR    ├── Nạp tiền: SPL USDT trực tiếp on-chain
+    ├── Giao diện: 100% tiếng người, $ USD       ├── Giao diện: Hiển thị đầy đủ PDA, TxHash,
+    └── Không nhìn thấy ví, SOL hay Gas fee     │   tùy chỉnh tham số Merkle & Slip Fee
+        (Gasless Paymaster bao cấp 100%)        └── Tự quản lý private key & devnet RPCs
+```
+
+1. **Tuyến Phổ Thông (Consumer Fast-Rail - True Invisible Web3):**
+   * Người dùng chỉ thấy số dư bằng **$ USD** và đăng nhập tức thì bằng cảm biến sinh trắc học thiết bị (Apple FaceID, TouchID, Android Biometrics).
+   * Tuyệt đối không hiển thị bất kỳ thuật ngữ crypto nào (`SOL`, `Lamports`, `PDA`, `SPL Token`).
+   * Thanh toán nạp tiền bằng Apple Pay, Google Pay hoặc quét mã ngân hàng địa phương (VietQR / SEPA / Pix). Mạng lưới chuyển tiếp tự động thực thi việc hoán đổi và cấp phát số dư USDT vào Vault PDA mà người dùng không hề hay biết.
+2. **Tuyến Chuyên Gia (Pro Web3 Rail):**
+   * Dành cho các kỹ sư AI, DeFi degens và doanh nghiệp Web3 muốn trực tiếp tương tác với hợp đồng thông minh. Hỗ trợ kết nối ví Phantom, Solflare, Backpack, tùy chỉnh chữ ký nonce và kiểm toán giao dịch on-chain qua Solana Explorer.
+
+### 3.4. Cơ Chế Phục Hồi Sinh Trắc Học Đa Thiết Bị (Biometric Multi-Device Recovery) & Xóa Bỏ Nỗi Sợ Mất Khóa
+Nỗi sợ lớn nhất của người dùng Web2 khi nghe đến "Zero-Custody" là việc làm mất điện thoại sẽ mất sạch tiền và không có ai hỗ trợ. Haichain giải quyết triệt để vấn đề này qua **Cơ Chế Phục Hồi Ngưỡng Bí Mật Không Tri Thức (Threshold ZK-Secret Sharing)**:
+* **Đồng Bộ Sinh Trắc Học Đa Thiết Bị (Cross-Device Passkey Sync):** Nhờ tiêu chuẩn FIDO2/WebAuthn hiện đại, cặp khóa sinh trắc học được đồng bộ an toàn qua chuỗi bảo mật đám mây phần cứng của hệ điều hành (Apple iCloud Keychain / Google Password Manager), bảo vệ bằng mã hóa đầu-cuối (End-to-End Encryption).
+* **Khôi Phục Ủy Quyền Dự Phòng (Social & Backup Guardian Recovery):** Người dùng có thể ủy quyền một thiết bị thứ hai (iPad, laptop) hoặc một địa chỉ email bảo chứng làm người giám hộ (Guardian). Khi mất thiết bị chính, giao thức cho phép kích hoạt quy trình xác thực đa yếu tố ZK-Proof để khôi phục quyền điều khiển Vault PDA mà máy chủ Haichain không bao giờ nắm giữ chìa khóa riêng tư.
+
 ---
 
 ## CHƯƠNG 4: ĐIỀU PHỐI TÁC TỬ TIÊN PHONG & BẦY ĐÀN TỰ HÀNH
@@ -396,6 +434,34 @@ Khoản vốn này sẽ bị chôn vùi vĩnh viễn, tạo ra rào cản chi ph
   pub struct SettleSession<'info> { ... }
   ```
 * **Hoàn Tiền Tuyệt Đối 100%:** Toàn bộ số lamports tiền cọc thuê trạng thái được tự động chuyển hoàn về ví người dùng (`user_authority`) trong cùng một giao dịch nguyên tử, triệt tiêu 100% chi phí rò rỉ lưu trữ của mạng lưới.
+
+### 4.4. Cơ Chế Trần Chi Phí An Toàn (Deterministic Budget Cap) & Các Mẫu Ý Định 1-Chạm (1-Click Intent Templates)
+Để triệt tiêu hoàn toàn **Tâm Lý Lo Sợ Cháy Túi Từng Cent (Pay-per-token Anxiety)** khi bot AI hoạt động tự hành, Haichain thiết lập hai cơ chế bảo vệ trải nghiệm:
+
+```
+          CƠ CHẾ TRẦN CHI PHÍ AN TOÀN & Ý ĐỊNH 1-CHẠM
+          
+   [ Người Dùng Chọn Mẫu Ý Định: "Nghiên Cứu Chuyên Sâu Thị Trường - $3.00 Max" ]
+                                  │
+                                  ▼
+      [ Bộ Thông Dịch Ý Định Tự Động Biên Dịch Ra Merkle Capability Leaf ]
+      ├── Hạn mức trần cứng: Max_Budget = 3.00 USDT (Cưỡng bức bằng mã máy)
+      ├── Whitelist nhà cung cấp: Perplexity API + Claude 3.5 Sonnet
+      └── Thời hạn hiệu lực: Tự động hủy sau 60 phút
+                                  │
+                                  ▼
+   [ Bầy Tác Tử Thực Thi Tác Vụ • Trừ Dần Từng Cent Qua Cổng Streaming SSE ]
+   ├── NẾU TÁC VỤ HOÀN THÀNH: Tiền thừa (ví dụ $1.20) giữ nguyên trong hũ
+   └── NẾU GẶP VÒNG LẶP / QUÁ TẢI: CHẠM TRẦN $3.00 -> CẮT LUỒNG NGAY LẬP TỨC!
+       --> BẢO ĐẢM 100% KHÔNG BAO GIỜ BỊ PHÁT SINH CƯỚC NGOÀI Ý MUỐN
+```
+
+1. **Bất Biến Ngắt Dòng Token Cứng (Hard Token-Streaming Cutoff Invariant):**
+   * Người dùng có thể thiết lập mức trần ngân sách cho từng tác vụ đơn lẻ (ví dụ: $0.50, $2.00, $5.00).
+   * Tại Gateway, bộ đệm luồng phản hồi liên tục cộng dồn số cent đã tiêu. Khi chạm đúng trần ngân sách, luồng dữ liệu SSE lập tức bị ngắt kết nối (`SSE_BUFFER_RUNOUT_CUTOFF`), bảo đảm tuyệt đối bot không thể tiêu vượt dù chỉ 0.0001 USD.
+2. **Các Mẫu Ý Định 1-Chạm (1-Click Natural Language Intent Templates):**
+   * Thay vì bắt người dùng tự tạo cây phân quyền phức tạp, giao diện cung cấp sẵn các gói ý định ngôn ngữ tự nhiên: *"Gói Lập Trình Mã Nguồn $5"*, *"Gói Dịch Thuật Đa Ngôn Ngữ $1"*, *"Gói Phân Tích Tài Chính $3"*.
+   * Người dùng chỉ cần gõ yêu cầu, bộ biên dịch Intent Compiler tự động đóng gói các ràng buộc kỹ thuật (API Whitelist, Max Budget, Nonce, Time-to-Live) thành lá Merkle hợp lệ, biến công nghệ mật mã thành trải nghiệm chọn gói trực quan.
 
 ---
 
@@ -551,6 +617,34 @@ $$\text{Slashing Penalty} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \t
 
 * **Xâu Chuỗi Tối Đa 64 Lệnh Nguyên Tử:** Tác tử có thể thực hiện liên hoàn chuỗi thao tác: rút tiền cọc, mở phiên, thanh toán dịch vụ mới, kiểm tra kết quả và tất toán tiền thừa ngay trong 1 giao dịch duy nhất.
 * **Nối Ống Tham Số Không Sao Chép (Zero-Copy Piping):** Đầu ra của chỉ thị $k$ tự động làm tham số đầu vào của chỉ thị $k+1$, cho phép các tác tử AI tự do khám phá và chi trả cho các dịch vụ mới phát sinh giữa phiên suy luận mà không bao giờ gặp lỗi cấu trúc tài khoản.
+
+### 6.7. Cầu Chì Tự Động AI Sentinel Watchdog: Tự Động Đóng Băng Dòng Tiền Khi Phát Hiện Hành Vi Bất Thường (< 10ms)
+Nhận thức được rằng **Độ trễ sinh học của con người (200ms - 30 giây) quá chậm so với tốc độ tính bằng nano-giây của bot AI**, Haichain không chỉ dựa vào Nút Dừng Khẩn Cấp thủ công mà trang bị thêm **Vệ Binh Tự Động (AI Sentinel Watchdog)** trực tiếp tại tầng biên:
+
+$$\text{Trigger Condition: } \left( \frac{\Delta \text{Calls}}{\Delta t} > \Theta_{\text{rate}} \right) \lor \left( \text{Similarity}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{loop}} \right) \lor \left( \text{Dest} \notin \mathcal{W}_{\text{whitelist}} \right)$$
+
+```
+            CƠ CHẾ CẦU CHÌ TỰ ĐỘNG AI SENTINEL WATCHDOG (< 10ms)
+            
+   [ Tác Tử AI Phát Sinh Giao Dịch & Luồng Suy Luận Liên Tục ]
+                                  │
+                                  ▼
+   [ AI Sentinel Watchdog Quét Thời Gian Thực Tại Cổng Gateway ]
+   ├── 1. Kiểm tra tần suất: Số cuộc gọi/giây vượt ngưỡng an toàn?
+   ├── 2. Kiểm tra nội dung: Phát hiện vòng lặp vô tận (Repetition Penalty)?
+   └── 3. Kiểm tra đích đến: Yêu cầu chuyển tiền đến địa chỉ ngoài Whitelist?
+                                  │
+             ┌────────────────────┴────────────────────┐
+             ▼ (Phát hiện 1 trong 3 dấu hiệu bất thường)
+   [ KÍCH HOẠT ĐÓNG BĂNG TẠM THỜI TỨC THÌ (SOFT-FREEZE < 10ms) ]
+   ├── Cắt đứt kết nối API và đóng băng phiên giao dịch trong 10 mili-giây
+   ├── Bảo vệ 100% số tiền còn lại trong Vault PDA của người dùng
+   └── Bắn thông báo đẩy (Push Notification) về điện thoại của Master Owner:
+       "Phát hiện bot bị lặp - Đã tự động ngắt kết nối an toàn!"
+```
+
+* **Phát Hiện Vòng Lặp & Ảo Giác Tự Động:** Nếu mô hình gặp lỗi lặp token liên tục hoặc bầy đàn bot gửi yêu cầu dồn dập vượt quá ngưỡng cho phép, Sentinel Watchdog ngắt mạch ngay tại cổng trong **dưới 10 mili-giây**, trước khi tài khoản bị hao hụt.
+* **Thông Báo Đẩy Thông Minh:** Thay vì bắt người dùng ngồi canh màn hình, hệ thống tự động bảo vệ và gửi thông báo giải thích ngắn gọn bằng ngôn ngữ đời thường, mang lại cảm giác an tâm tuyệt đối.
 
 ---
 
@@ -771,6 +865,31 @@ Haichain giải quyết triệt để rủi ro pháp lý này bằng kiến trú
    Trong trường hợp mô hình ngôn ngữ lớn (LLM) bị tấn công tiêm mã độc (Indirect Prompt Injection) hoặc phát sinh hành vi lệch chuẩn, người quản trị doanh nghiệp chỉ cần kích hoạt lệnh Panic qua cảm biến vân tay/khuôn mặt trên thiết bị cá nhân. Toàn bộ số dư USDT còn lại trong Vault PDA của tác tử lập tức bị đóng băng và thu hồi về ví an toàn của doanh nghiệp trong đúng **1 slot Solana (< 400ms)**, triệt tiêu 100% thiệt hại tài chính.
 3. **Phân Lập Kho Tài Khoản Tuyệt Đối (Zero-Commingling Vault PDA) Đạt Chuẩn SOC2 Type II:**
    Khác với các sàn giao dịch hoặc nền tảng tiền mã hóa truyền thống thường gom tiền khách hàng vào một ví tổng (omnibus pool), Haichain tạo cho mỗi tác tử và mỗi dự án một **Địa chỉ Tài khoản Phát sinh (PDA) độc lập duy nhất** trên Solana L1. Tiền của tác tử A hoàn toàn cách ly với tác tử B. Bất kỳ lệnh đóng băng tư pháp hoặc kiểm toán của bên thứ ba nào đối với một tài khoản cụ thể cũng không bao giờ gây ảnh hưởng đến tính toàn vẹn của các kho quỹ doanh nghiệp khác.
+
+### 8.3. Cam Kết Quyền Riêng Tư Prompt & Điện Toán Bảo Mật TEE (Confidential Computing & Zero-Knowledge Prompt Privacy)
+Hiểu rõ rằng **Bí mật kinh doanh, mã nguồn độc quyền và dữ liệu cá nhân trong prompt quan trọng gấp nhiều lần số tiền trong ví**, Haichain xây dựng kiến trúc bảo vệ quyền riêng tư cấp phần cứng:
+
+```
+           KIẾN TRÚC BẢO VỆ DỮ LIỆU PROMPT CẤP PHẦN CỨNG (TEE)
+           
+   [ Người Dùng Gửi Prompt (Chứa Dữ Liệu Nhạy Cảm / Bí Mật Kinh Doanh) ]
+                                  │
+                                  ▼ (Đường truyền mã hóa TLS 1.3 End-to-End)
+   [ Vùng Nhớ Phần Cứng Bảo Mật TEE (NVIDIA H100 / AMD SEV-SNP Enclave) ]
+   ├── Dữ liệu prompt chỉ được giải mã bên trong Enclave phần cứng bảo vệ
+   ├── KHÔNG MỘT AI (KỂ CẢ ADMIN HAICHAIN HAY RELAYER) CÓ THỂ ĐỌC ĐƯỢC
+   └── Bộ nhớ Enclave tự xóa sạch (Zero-Wipe) ngay khi trả kết quả về
+                                  │
+                                  ▼
+   [ Chuyển Tiếp Trực Tiếp Đến API Nhà Cung Cấp Đích Đã Ký Nhận ]
+   └── CAM KẾT ZERO-LOGGING: KHÔNG LƯU TRỮ PROMPT, KHÔNG DÙNG ĐỂ HUẤN LUYỆN!
+```
+
+1. **Xử Lý Trong Vùng Nhớ Phần Cứng Cách Ly (Confidential Computing TEE):** Toàn bộ cổng Gateway Relayer của Haichain được vận hành bên trong các Enclave phần cứng tin cậy (Trusted Execution Environments - như AMD SEV-SNP, Intel SGX hoặc NVIDIA H100 Confidential Computing). Bộ nhớ của Enclave được mã hóa bằng khóa phần cứng của CPU, ngăn chặn hoàn toàn việc quản trị viên hệ thống, hacker chiếm quyền root hoặc các node mạng khác trích xuất dữ liệu prompt.
+2. **Cam Kết Không Lưu Trữ & Không Huấn Luyện (Zero-Retention & Anti-Training Invariant):**
+   * Giao thức không lưu trữ bất kỳ bản ghi (log) nào chứa nội dung văn bản prompt hay kết quả trả về của người dùng trên đĩa cứng.
+   * Dữ liệu prompt sau khi hoàn tất phiên thanh toán micro-escrow sẽ bị xóa sạch khỏi bộ nhớ RAM (`memzero_explicit`).
+   * Haichain cam kết về mặt pháp lý và kỹ thuật: **Không bao giờ sử dụng dữ liệu trao đổi của người dùng để huấn luyện hay tinh chỉnh lại bất kỳ mô hình AI nào**.
 
 ---
 

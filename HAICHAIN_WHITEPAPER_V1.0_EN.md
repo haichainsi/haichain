@@ -29,8 +29,19 @@
   - [3.1. The Post-SaaS Economy: Unlocking Micro-Utility from the Per-Seat Subscription Trap](#31-the-post-saas-economy-unlocking-micro-utility-from-the-per-seat-subscription-trap)
   - [3.2. Empirical Competitor Audit: Critical Blind Spots in Incumbent AI & Crypto Architectures](#32-empirical-competitor-audit-critical-blind-spots-in-incumbent-ai--crypto-architectures)
 4. [Consumer & Enterprise Layer: Invisible Web3 & The Mom-Test Architecture](#4-consumer--enterprise-layer-invisible-web3--the-mom-test-architecture)
+  - [4.1. Universal Fiat Abstraction & Gasless Onboarding](#4-consumer--enterprise-layer-invisible-web3--the-mom-test-architecture)
+  - [4.2. Zero-Custody Intent Solvers & ZK-AML Compliance](#4-consumer--enterprise-layer-invisible-web3--the-mom-test-architecture)
+  - [4.3. Two-Tier Emergency Circuit Breaker & Timelocked Capital Protection](#43-two-tier-emergency-circuit-breaker--timelocked-capital-protection)
+  - [4.4. Dual-Rail Architecture: Consumer Fast-Rail vs Web3 Power-User Rail](#44-dual-rail-architecture-consumer-fast-rail-vs-web3-power-user-rail)
+  - [4.5. Biometric Multi-Device Recovery & Elimination of Key-Loss Anxiety](#45-biometric-multi-device-recovery--elimination-of-key-loss-anxiety)
 5. [The On-Chain Settlement Kernel: Nuclear Immunity Fortress (Solana v6.9.3)](#5-the-on-chain-settlement-kernel-nuclear-immunity-fortress-solana-v693)
+  - [5.1 - 5.6. Six Nuclear Security Invariants](#5-the-on-chain-settlement-kernel-nuclear-immunity-fortress-solana-v693)
+  - [5.7. Autonomous AI Sentinel Watchdog (< 10ms Circuit Breaker)](#57-autonomous-ai-sentinel-watchdog-sub-10ms-anomaly-detection--soft-freeze-circuit-breaker)
 6. [Frontier AI Reasoning Escrow & Hierarchical Capability Trees (BIP-32 Swarms)](#6-frontier-ai-reasoning-escrow--hierarchical-capability-trees-bip-32-swarms)
+  - [6.1. BIP-32 Swarm Derivation & Cryptographic Isolation](#6-frontier-ai-reasoning-escrow--hierarchical-capability-trees-bip-32-swarms)
+  - [6.2. HTTP x402 Autonomous Machine Paywall Protocol](#6-frontier-ai-reasoning-escrow--hierarchical-capability-trees-bip-32-swarms)
+  - [6.3. Concurrent Merkle Trees (cAgents) & 100% Rent Neutrality](#6-frontier-ai-reasoning-escrow--hierarchical-capability-trees-bip-32-swarms)
+  - [6.4. Deterministic Budget Capping & 1-Click Intent Templates](#64-deterministic-budget-capping--1-click-natural-language-intent-templates)
 7. [Multilateral Symmetric Netting & Wire-Speed Clearing Matrix](#7-multilateral-symmetric-netting--wire-speed-clearing-matrix)
 8. [Dual-Asset Cryptoeconomics, Cash-Flow Flywheel & $HAISI Tokenomics](#8-dual-asset-cryptoeconomics-cash-flow-flywheel--haisi-tokenomics)
   - [8.1. Token Allocation & Vesting Schedule](#81-token-allocation--vesting-schedule-total-fixed-supply-1000000000-haisi)
@@ -46,6 +57,7 @@
   - [9.5. Human-in-the-Loop Reverse Micro-Tasking & The Anti-MAD Engine](#95-human-in-the-loop-reverse-micro-tasking--the-anti-mad-engine)
   - [9.6. Zero-Knowledge Ephemeral DIDs & GDPR Article 17 Legal Compliance](#96-zero-knowledge-ephemeral-dids--gdpr-article-17-legal-compliance)
   - [9.7. Institutional Enterprise Safeguards: SOC2 Type II & EU AI Act (Article 14 Human Oversight)](#97-institutional-enterprise-safeguards-soc2-type-ii--eu-ai-act-article-14-human-oversight)
+  - [9.8. Zero-Knowledge Prompt Privacy & TEE Confidential Computing Architecture](#98-zero-knowledge-prompt-privacy--tee-confidential-computing-architecture)
   - [9.1. The 3-Stage Evolutionary Trajectory](#91-the-3-stage-evolutionary-trajectory)
   - [9.2. Physical Constraints of Decentralized Superintelligence & Engineering Mitigations](#92-physical-constraints-of-decentralized-superintelligence--engineering-mitigations)
   - [9.3. HAI-VM & The Native `OP_402_PAY` Hardware-Level Instruction](#93-hai-vm--the-native-op_402_pay-hardware-level-instruction)
@@ -353,6 +365,32 @@ In distributed blockchain environments, raw slot times (~400ms on Solana) must b
 1. **Tier-1 (Instant Client-Side Ephemeral Revocation - 0ms Network Latency):** When an anomaly or prompt injection is detected, the user's local secure enclave instantly zeroes out all local session delegation keys and signs a cryptographic revocation ticket. This revocation ticket is propagated across HAICHAIN's peer-to-peer gossip network, instantly terminating local instruction generation and rejecting newly signed sub-agent ticks without awaiting on-chain block inclusion.
 2. **Tier-2 (On-Chain Timelocked Emergency Circuit Breaker with MEV Immunity):** The on-chain settlement kernel asserts `panic_circuit_breaker_tripped = true` via private validator bundles (Jito MEV-protected bundles) to bypass the public mempool and prevent malicious front-running. The vault immediately halts state progression, transitions active micro-netting batches into a deterministic challenge timelock, and sweeps all unencumbered liquid collateral to the user's cold storage upon block finalization.
 
+### 4.4. Dual-Rail Architecture: Consumer Fast-Rail vs Web3 Power-User Rail
+To eliminate psychological hesitation across 95% of mainstream Web2 consumers encountering autonomous AI swarms, Haichain partitions user experience into two distinct architectural rails:
+
+```
+                  DUAL-RAIL USER ONBOARDING ARCHITECTURE
+                  
+    [ CONSUMER FAST-RAIL (TRUE INVISIBLE WEB3) ]    [ PRO WEB3 POWER-USER RAIL ]
+    ├── Login: 1-Touch FaceID / TouchID Passkey     ├── Wallets: Phantom, Solflare, Backpack
+    ├── Onramp: Apple Pay, Cards, Local Instant QR  ├── Onramp: Direct on-chain SPL USDT
+    ├── UI: 100% Fiat-denominated ($ USD)           ├── UI: Granular PDA addresses, TxHashes,
+    └── Zero crypto jargon, zero gas fee friction   │   Merkle proofs & custom slip fees
+        (100% sponsored by Gasless Paymaster)       └── Self-custodied keys & custom RPCs
+```
+
+1. **The Consumer Fast-Rail (True Invisible Web3):**
+   * Users see balances exclusively in **$ USD** and authenticate via device biometrics (Apple FaceID, TouchID, Android Biometrics).
+   * Blockchain terminology (`SOL`, `Lamports`, `PDA`, `SPL Token`) is completely abstracted away from the primary interface.
+   * Onboarding is powered by Apple Pay, Google Pay, or localized instant bank transfers (VietQR / SEPA / Pix). A Gasless Paymaster sponsors all underlying network gas, routing USDT deposits directly into the user's isolated Vault PDA invisibly.
+2. **The Pro Web3 Power-User Rail:**
+   * Designed for AI developers, quantitative traders, and Web3 natives seeking low-level programmatic control. Supports Phantom, Solflare, and Backpack, customizable nonce management, and direct on-chain state verification via Solana Explorer.
+
+### 4.5. Biometric Multi-Device Recovery & Elimination of Key-Loss Anxiety
+The primary deterrent for Web2 consumers adopting non-custodial systems is the anxiety of permanent asset loss upon losing their physical smartphone. Haichain resolves this via **Threshold Zero-Knowledge Secret Sharing (ZK-SSS)**:
+* **Operating System Native Cloud Sync:** Built upon modern FIDO2/WebAuthn specifications, primary cryptographic credentials synchronize across the user's trusted device ecosystem via end-to-end encrypted hardware keychains (Apple iCloud Keychain / Google Password Manager).
+* **Social & Designated Guardian Recovery:** Users can designate a secondary hardware device (tablet, laptop) or a verified institutional identity provider as a recovery guardian. In the event of primary hardware destruction, a multi-factor ZK-Proof re-establishes vault authority without the Haichain protocol ever accessing or storing private keys.
+
 ---
 
 ## 5. THE ON-CHAIN SETTLEMENT KERNEL: NUCLEAR IMMUNITY FORTRESS (SOLANA v6.9.3)
@@ -470,6 +508,34 @@ To overcome the rigid account pre-declaration constraint of legacy Sealevel tran
 
 * **Zero Intermediary Overhead:** Unlike ERC-4337, which requires separate Paymaster and Bundler smart contract deployments, Haichain PTB enables up to 64 heterogeneous instructions chained atomically within a single transaction envelope.
 * **Dynamic Pipe Composability:** The output object of instruction $k$ (e.g., dynamically computed session authority or intermediate tool output) is directly passed as the input parameter of instruction $k+1$ zero-copy, enabling autonomous agents to dynamically discover and consume arbitrary third-party services mid-inference without transaction layout serialization errors.
+
+### 5.7. Autonomous AI Sentinel Watchdog: Sub-10ms Anomaly Detection & Soft-Freeze Circuit Breaker
+Recognizing that **human neuro-biological reaction time (200ms - 30 seconds) is vastly outpaced by sub-millisecond autonomous machine execution**, Haichain supplements manual panic retraction with the **Autonomous AI Sentinel Watchdog** embedded directly at the gateway edge:
+
+$$\text{Trigger Condition: } \left( \frac{\Delta \text{Calls}}{\Delta t} > \Theta_{\text{rate}} \right) \lor \left( \text{Similarity}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{loop}} \right) \lor \left( \text{Dest} \notin \mathcal{W}_{\text{whitelist}} \right)$$
+
+```
+          AUTONOMOUS AI SENTINEL WATCHDOG ARCHITECTURE (< 10ms)
+          
+   [ Autonomous AI Agent Initiates Continuous Inference & Escrow Streams ]
+                                  │
+                                  ▼
+   [ AI Sentinel Watchdog Edge Inspection at Gateway Perimeter ]
+   ├── 1. Rate-Anomaly: Request frequency exceeds nominal envelope?
+   ├── 2. Content-Anomaly: Infinite token repetition / runaway recursion?
+   └── 3. Routing-Anomaly: Outbound transfer targeted outside signed whitelist?
+                                  │
+             ┌────────────────────┴────────────────────┐
+             ▼ (Any anomaly condition detected)
+   [ INSTANT EDGE SOFT-FREEZE TRIGGERED (< 10ms) ]
+   ├── Immediately severs API stream and freezes active session ticket
+   ├── Preserves 100% of remaining balance in the user's Vault PDA
+   └── Dispatches high-priority push notification to Master Owner:
+       "Runaway agent loop halted - Vault balance preserved safely!"
+```
+
+* **Automated Runaway Loop & Hallucination Containment:** If a model encounters prompt-injection drift or degenerative token repetition, Sentinel Watchdog trips the circuit breaker in **less than 10 milliseconds**, preventing balance exhaustion.
+* **Proactive Contextual Alerts:** The protocol protects capital autonomously, dispatching plain-language status alerts to the user's mobile device, eliminating the stress of manual session monitoring.
 
 ---
 
@@ -600,6 +666,34 @@ For transient reasoning sessions, bilateral netting rounds, and short-lived escr
   pub struct SettleSession<'info> { ... }
   ```
 * **Zero Long-Term Rent Overhead:** Upon task execution or timeout expiration, the closing instruction drains 100% of the rent lamports back to `user_authority` in the exact same atomic transaction, ensuring the protocol’s ongoing state rent liability is strictly zero.
+
+### 6.4. Deterministic Budget Capping & 1-Click Natural Language Intent Templates
+To permanently resolve **Pay-Per-Token Anxiety** - the psychological fear that an autonomous bot trapped in an infinite loop or reasoning recursion will rapidly drain deposited funds - Haichain provides dual safety abstractions:
+
+```
+           DETERMINISTIC BUDGET CAPPING & INTENT TEMPLATES
+           
+   [ User Selects Intent Template: "Deep Market Research Swarm - $3.00 Max" ]
+                                  │
+                                  ▼
+      [ Intent Compiler Synthesizes Cryptographic Merkle Capability Leaf ]
+      ├── Hard Budget Ceiling: Max_Budget = 3.00 USDT (Enforced via bytecode)
+      ├── Provider Whitelist: Perplexity API + Claude 3.5 Sonnet
+      └── Ephemeral Expiry: Automatically self-terminates after 60 minutes
+                                  │
+                                  ▼
+   [ Swarm Executes Tasks • Deducting Micro-Cents via SSE Streaming Gateway ]
+   ├── ON TASK SUCCESS: Unspent balance ($1.20) remains secure in user vault
+   └── ON RUNAWAY LOOP: Hard $3.00 ceiling reached -> Instant SSE stream cut!
+       --> MATHEMATICALLY GUARANTEED ZERO UNANTICIPATED EXPENSES
+```
+
+1. **Hard Token-Streaming Cutoff Invariant:**
+   * Users define strict budget ceilings for individual autonomous agent executions ($0.50, $2.00, $5.00).
+   * The Gateway settlement buffer tracks accumulated micro-cent expenditures in real-time. Upon reaching the hard ceiling, the Server-Sent Events (SSE) stream terminates immediately (`SSE_BUFFER_RUNOUT_CUTOFF`), ensuring expenditure never exceeds the predefined limit.
+2. **1-Click Natural Language Intent Templates:**
+   * Rather than manually assembling complex cryptographic trees, users select pre-built Natural Language Intent templates: *"Deep Coding Session ($5)"*, *"Document Translation ($1)"*, *"Financial Valuation Analysis ($3)"*.
+   * The Intent Compiler parses human constraints, automatically generating compliant Merkle capability leaves with bound merchant whitelists, budget maximums, and ephemeral time-to-live expirations.
 
 ---
 
@@ -1022,6 +1116,31 @@ To bridge enterprise adoption across Fortune 500 corporations and regulated fina
    If an agent suffers an adverse prompt-injection attack or behavioral drift, enterprise operators can trigger an emergency Panic Sweep via device-level biometric sensors (TouchID/FaceID). 100% of unspent funds in the Agent's Vault PDA are instantly swept into the enterprise's cold storage account within **a single Solana block (< 400ms)**, terminating financial exposure instantaneously.
 3. **Segregated Vault PDAs (Zero-Commingling) with SOC2 Type II Alignment:**
    Unlike centralized custodians that co-mingle organizational funds within omnibus master wallets, Haichain generates an isolated **Program Derived Address (PDA)** for every unique agent and project. Funds belonging to Enterprise A are cryptographically segregated from Enterprise B. Third-party audits, judicial inquiries, or individual account reviews never compromise the operational integrity of unassociated enterprise vaults.
+
+### 9.8. Zero-Knowledge Prompt Privacy & TEE Confidential Computing Architecture
+Recognizing that **proprietary intellectual property, source code, and sensitive corporate data within prompts are vastly more valuable than fractional transactional fees**, Haichain guarantees hardware-grade prompt privacy:
+
+```
+         HARDWARE-GRADE CONFIDENTIAL COMPUTING ARCHITECTURE (TEE)
+         
+   [ User Dispatches AI Prompt (Proprietary Code / Confidential IP) ]
+                                  │
+                                  ▼ (End-to-End Encrypted via TLS 1.3)
+   [ Hardware-Enforced TEE Enclave (NVIDIA H100 / AMD SEV-SNP Confidential VM) ]
+   ├── Prompt payloads decrypted strictly within hardware enclave memory
+   ├── ZERO ACCESS TO PROTOCOL OPERATORS, RELAYER NODES, OR CLOUD PROVIDERS
+   └── Enclave volatile memory automatically zero-wiped upon response delivery
+                                  │
+                                  ▼
+   [ Direct Encrypted Relay to Signed Downstream Frontier Model API ]
+   └── MANDATORY ZERO-RETENTION: NEVER LOGGED TO DISK, NEVER USED FOR TRAINING!
+```
+
+1. **Hardware-Isolated Enclave Processing (Confidential Computing TEE):** All Haichain Gateway Relayer services operate within hardware-certified Trusted Execution Environments (TEEs) - including AMD SEV-SNP, Intel SGX, and NVIDIA H100 Confidential Computing instances. Enclave memory is hardware-encrypted by the CPU root key, rendering memory inspection impossible for host operating systems, root administrators, or malicious third parties.
+2. **Zero-Retention & Anti-Training Invariant:**
+   * The protocol never stores plain-text prompt strings, context embeddings, or inference outputs on persistent disk storage.
+   * Upon completion of micro-escrow settlement, all working memory buffers are immediately purged via explicit zeroization (`memzero_explicit`).
+   * Haichain guarantees both technically and contractually: **User prompt data is never retained, logged, or utilized for foundation model training or commercial fine-tuning**.
 
 ---
 
