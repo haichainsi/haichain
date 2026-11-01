@@ -20,6 +20,25 @@
 
 ---
 
+## MỤC LỤC HÌNH THỨC (TABLE OF CONTENTS)
+
+1. [Tóm Tắt Điều Hành & Nghịch Lý Siêu Trí Tuệ](#tóm-tắt-điều-hành-abstract)
+2. [Triết Lý Nền Tảng $AI^2$: Con Người Làm Chủ & Máy Móc Siêu Tốc](#triết-lý-nền-tảng-ai2-con-người-làm-chủ--máy-móc-siêu-tốc)
+3. [Chương 1: Thế Tiến Thoái Lưỡng Nan & Bằng Chứng Đối Thủ Thực Nghiệm](#chương-1-thế-tiến-thoái-lưỡng-nan-của-nền-kinh-tế-máy-móc)
+4. [Chương 2: Bước Chuyển Dịch Kinh Tế: Khai Tử Mô Hình Thuê Bao SaaS](#chương-2-bước-chuyển-dịch-kinh-tế-khai-tử-mô-hình-thuê-bao-saas)
+5. [Chương 3: Kiến Trúc Trải Nghiệm Vô Hình & Chuẩn Mực "The Mom Test"](#chương-3-kiến-trúc-trải-nghiệm-vô-hình--chuẩn-mực-the-mom-test)
+6. [Chương 4: Điều Phối Tác Tử Tiên Phong & Bầy Đàn Tự Hành (HCT BIP-32)](#chương-4-điều-phối-tác-tử-tiên-phong--bầy-đàn-tự-hành)
+7. [Chương 5: Cỗ Máy Bù Trừ Đa Phương & Nén Dữ Liệu 99.999% (IPv6 MTU 771B)](#chương-5-cỗ-máy-bù-trừ--nén-dữ-liệu-đa-phương)
+8. [Chương 6: Pháo Đài Hạt Nhân: 6 Bất Biến Toán Học Trên Solana L1 (v6.9.3)](#chương-6-pháo-đài-hạt-nhân-6-bất-biến-toán-học-trên-solana-l1)
+9. [Chương 7: Kinh Tế Học Tài Sản Kép & Tokenomics $HAI](#chương-7-kinh-tế-học-tài-sản-kép--tokenomics-hai)
+10. [Chương 8: Khung Pháp Lý & Tuân Thủ Toàn Cầu (EU AI Act, FATF, MiCA)](#chương-8-khung-pháp-lý--tuân-thủ-toàn-cầu)
+11. [Chương 9: Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập Cho Siêu Trí Tuệ (ASI)](#chương-9-lộ-trình-tiến-hóa-ai2-thành-blockchain-l1-độc-lập-cho-ai)
+12. [Chương 10: Các Định Lý Toán Học Hình Thức & Kiểm Chứng Bất Biến](#chương-10-các-định-lý-toán-học-hình-thức--kiểm-chứng-bất-biến)
+13. [Chương 11: Lộ Trình Triển Khai Chiến Lược & Các Cột Mốc Cam Kết](#chương-11-lộ-trình-triển-khai-chiến-lược--các-cột-mốc-cam-kết)
+14. [Chương 12: Kết Luận & Bản Tuyên Ngôn $AI^2$](#chương-12-kết-luận--bản-tuyên-ngôn-định-vị-ai2)
+
+---
+
 ## TÓM TẮT ĐIỀU HÀNH (ABSTRACT)
 
 ### Nghịch Lý Siêu Trí Tuệ: Vì Sao Những "Gã Khổng Lồ" Thung Lũng Silicon Đang Đứng Trước Điểm Mù Hiện Sinh?
@@ -36,7 +55,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE} \times \
 *Trong đó, **Trí tuệ Nhân tạo (Artificial Intelligence)** mang lại tốc độ vi mô và năng lực tính toán mở rộng vô tận của máy móc; còn **Trí tuệ Thật sự của Con người (Actual Intelligence)** mang lại trực giác sinh học 4 tỷ năm tiến hóa, lương tri đạo đức, khả năng khái quát hóa phi tuyến tính và quyền làm chủ tối cao.*
 
 > **Thông Điệp Chiến Lược Dành Cho Các Nhà Đầu Tư Thể Chế:**  
-> *Giai đoạn 1 trên Solana L1 (Chương 3–7) chính là pháo đài tạo dòng tiền thương mại ngay trước mắt—thu về hàng triệu USD dòng tiền thực (Real Yield) thông qua giải pháp vi thanh toán siêu tốc và hũ tiền sinh trắc học không thể bị hack. Nhưng đối với những nhà đầu tư có tầm nhìn thế kỷ đang tìm kiếm kỳ lân công nghệ vĩ đại nhất, **Chương 9: Tầm Nhìn Endgame Blockchain L1 Độc Lập** mới chính là "Vương miện Vàng" độc nhất vô nhị: Khám phá cách HAICHAIN phá vỡ các giới hạn vật lý và toán học để khai sinh ra **Siêu Sinh Thể Nhận Thức Phức Hợp (Composite ASI)** đầu tiên trên thế giới—một Siêu Trí Tuệ trường tồn, phi tập trung và mãi mãi bảo vệ tự do của nhân loại.*
+> *Giai đoạn 1 trên Solana L1 (Chương 3-7) chính là pháo đài tạo dòng tiền thương mại ngay trước mắt - thu về hàng triệu USD dòng tiền thực (Real Yield) thông qua giải pháp vi thanh toán siêu tốc và hũ tiền sinh trắc học không thể bị hack. Nhưng đối với những nhà đầu tư có tầm nhìn thế kỷ đang tìm kiếm kỳ lân công nghệ vĩ đại nhất, **Chương 9: Tầm Nhìn Endgame Blockchain L1 Độc Lập** mới chính là "Vương miện Vàng" độc nhất vô nhị: Khám phá cách HAICHAIN phá vỡ các giới hạn vật lý và toán học để khai sinh ra **Siêu Sinh Thể Nhận Thức Phức Hợp (Composite ASI)** đầu tiên trên thế giới - một Siêu Trí Tuệ trường tồn, phi tập trung và mãi mãi bảo vệ tự do của nhân loại.*
 
 Sự bùng nổ theo cấp số nhân của các tác tử trí tuệ nhân tạo độc lập (Autonomous AI Agents), các bầy đàn tác tử phân tầng (Hierarchical Sub-Agent Swarms), và robot vật lý thông minh (như Tesla Optimus, xe tự hành) đang đẩy hệ thống thanh toán toàn cầu vào một cuộc khủng hoảng chưa từng có: **Thế tiến thoái lưỡng nan của nền kinh tế máy móc (The Machine Financial Trilemma)**. Các hạ tầng thanh toán truyền thống (Stripe, Visa, SWIFT) vốn được thiết kế cho con người với độ trễ cao và chi phí quẹt thẻ cố định tối thiểu (\$0.30 + 2.9%), điều này bóp nghẹt hoàn toàn các giao dịch vi mô nano-cents của bot (\$0.0001 &ndash; \$0.05). Mặt khác, các blockchain đa năng hiện nay (Ethereum, các Layer 2) lại vướng phải rào cản phí gas đắt đỏ (\$0.02 &ndash; \$2.50), tốc độ xác thực chậm chạp (2 &ndash; 15 giây), và nguy cơ bị hack hợp đồng thông minh nghiêm trọng. 
 
@@ -156,9 +175,9 @@ HAICHAIN áp dụng triết lý thiết kế **"The Mom Test"**: Bất kỳ ngư
   +---------------------------------------------------------------------------------+
   |                                                                                 |
   |   [ 1. PASSKEY SINH TRẮC ] ───► [ 2. NẠP TIỀN 1 CHẠM ] ───► [ 3. HŨ TIỀN AN TOÀN ] |
-  |   - Apple FaceID / TouchID      - Apple Pay / Google Pay    - Hạn mức $10.00 cô lập |
-  |   - WebAuthn Secure Enclave     - Chuyển khoản Instant QR / Card- Chống cháy ví tuyệt đối |
-  |   - Không cần giữ 12 từ khóa    - Không cần KYC sàn Crypto  - Cầu chì ngắt mạch tự động |
+  |  - Apple FaceID / TouchID     - Apple Pay / Google Pay   - Hạn mức $10.00 cô lập |
+  |  - WebAuthn Secure Enclave    - Chuyển khoản Instant QR / Card- Chống cháy ví tuyệt đối |
+  |  - Không cần giữ 12 từ khóa   - Không cần KYC sàn Crypto - Cầu chì ngắt mạch tự động |
   |                                                                                 |
   +---------------------------------------------------------------------------------+
 ```
@@ -242,28 +261,28 @@ Nhân hợp đồng thông minh (`haichain-core v6.9.3`) cưỡng bức 6 bất 
 |             MA TRẬN PHÒNG THỦ 6 BẤT BIẾN TOÁN HỌC CỦA HAICHAIN v6.9.3           |
 +---------------------------------------------------------------------------------+
 | 1. BẢO VỆ CHỐNG HACK WORMHOLE ($320 TRIỆU USD):                                 |
-|    - Cố định địa chỉ Sysvar Instructions: Sysvar1nstruction51111111111111111111 |
-|    - Loại bỏ hoàn toàn nguy cơ giả mạo tài khoản sysvar hướng dẫn.             |
+|   - Cố định địa chỉ Sysvar Instructions: Sysvar1nstruction51111111111111111111 |
+|   - Loại bỏ hoàn toàn nguy cơ giả mạo tài khoản sysvar hướng dẫn.             |
 |                                                                                 |
 | 2. BẢO VỆ CHỐNG HACK CẦU NỐI NOMAD ($190 TRIỆU USD):                            |
-|    - Bất biến Merkle Root khác 0: require!(composite_root != [0u8; 32])         |
-|    - Cấm tuyệt đối việc thực thi giao dịch trên một cây Merkle rỗng.            |
+|   - Bất biến Merkle Root khác 0: require!(composite_root != [0u8; 32])         |
+|   - Cấm tuyệt đối việc thực thi giao dịch trên một cây Merkle rỗng.            |
 |                                                                                 |
 | 3. CHỐNG ĐẦU ĐỘC BỘ NHỚ ELIZAOS & PROMPT INJECTION:                             |
-|    - Ràng buộc 4 thành phần: Hash(Pubkey || MaxSpend || ExpirySlot || Nonce)    |
-|    - Cấm bot bị thao túng chuyển tiền sang ví của kẻ tấn công.                  |
+|   - Ràng buộc 4 thành phần: Hash(Pubkey || MaxSpend || ExpirySlot || Nonce)    |
+|   - Cấm bot bị thao túng chuyển tiền sang ví của kẻ tấn công.                  |
 |                                                                                 |
 | 4. BẢO VỆ CHỐNG HACK EULER FINANCE ($197 TRIỆU USD):                            |
-|    - Tải lại số dư thực tế: require!(actual_ata_balance >= spend_amount)        |
-|    - Ngăn chặn lỗi lệch sổ sách nội bộ và tấn công thổi giá bằng token tặng.    |
+|   - Tải lại số dư thực tế: require!(actual_ata_balance >= spend_amount)        |
+|   - Ngăn chặn lỗi lệch sổ sách nội bộ và tấn công thổi giá bằng token tặng.    |
 |                                                                                 |
 | 5. BẢO VỆ CHỐNG TẤN CÔNG VAY NHANH MANGO MARKETS ($114 TRIỆU USD):              |
-|    - Rào cản cách ly đa slot: require!(slot >= last_deposit_slot + 2)           |
-|    - Cấm tuyệt đối hành vi vừa nạp tiền vừa rút sạch tiền trong cùng 1 block.   |
+|   - Rào cản cách ly đa slot: require!(slot >= last_deposit_slot + 2)           |
+|   - Cấm tuyệt đối hành vi vừa nạp tiền vừa rút sạch tiền trong cùng 1 block.   |
 |                                                                                 |
 | 6. BẢO VỆ CHỐNG ĐÓNG BĂNG VÍ TETHER USDT:                                       |
-|    - Tài khoản ATA tách biệt: Mỗi hũ tiền sở hữu một tài khoản Token độc lập.   |
-|    - Loại bỏ 100% rủi ro lây nhiễm nếu ví của người dùng khác bị Tether chặn.   |
+|   - Tài khoản ATA tách biệt: Mỗi hũ tiền sở hữu một tài khoản Token độc lập.   |
+|   - Loại bỏ 100% rủi ro lây nhiễm nếu ví của người dùng khác bị Tether chặn.   |
 +---------------------------------------------------------------------------------+
 ```
 
@@ -286,8 +305,8 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
                     ┌────────────────┴────────────────┐
                     ▼ (60% Doanh Thu)                 ▼ (40% Doanh Thu)
          [ MUA LẠI VÀ ĐỐT BỎ (TWAP) ]        [ CHIA LỢI NHUẬN THỰC BẰNG USDT ]
-         - Mua $HAI trực tiếp trên DEX       - Trả thưởng trực tiếp bằng USDT
-         - Giảm nguồn cung vĩnh viễn         - Dành cho người khóa veHAI
+        - Mua $HAI trực tiếp trên DEX      - Trả thưởng trực tiếp bằng USDT
+        - Giảm nguồn cung vĩnh viễn        - Dành cho người khóa veHAI
 ```
 
 ### 7.1. Phân Bổ Token & Lịch Mở Khóa (Tổng Cung Cố Định: 1.000.000.000 $HAI)
@@ -376,13 +395,65 @@ HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, b
 
 ---
 
-## CHƯƠNG 10: KẾT LUẬN & BẢN TUYÊN NGÔN ĐỊNH VỊ $AI^2$
+## CHƯƠNG 10: CÁC ĐỊNH LÝ TOÁN HỌC HÌNH THỨC & KIỂM CHỨNG BẤT BIẾN
+
+### Định Lý 1: Bảo Toàn Tài Sản Ký Quỹ (Bất Biến Chống Lạm Phát Ảo)
+*Giả sử $S_t$ là trạng thái toàn cục của hợp đồng HAICHAIN tại slot $t$. Với bất kỳ hũ tiền (vault) $V$ của người dùng và tài khoản token chuyên dụng $ATA_V$:*
+$$\forall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)$$
+*Chứng minh bằng quy nạp toán học:*
+1. **Bước cơ sở ($t = 0$):** Tại thời điểm khởi tạo hũ tiền, $\text{ConfirmedBalance}(V, 0) = 0$ và $\text{TokenBalance}(ATA_V, 0) = 0$. Bất biến thỏa mãn.
+2. **Bước nạp tiền ($\Delta D > 0$):** Hợp đồng bắt buộc thực thi chuyển token CPI nguyên tử vào $ATA_V$ trước khi cập nhật số dư sổ cái:
+   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D$$
+   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D$$
+3. **Bước chi tiêu vi mô ($\Delta S > 0$):** Hợp đồng nạp lại số dư thực tế từ sysvar hệ thống. Giao dịch lập tức bị hủy bỏ (revert) với lỗi `InsufficientConfirmedBalance` (0x1781) nếu $\Delta S > \text{ConfirmedBalance}(V, t)$, và bị hủy bỏ với lỗi `EulerDriftBalanceMismatch` (0x177c) nếu $\text{TokenBalance}(ATA_V, t) < \text{ConfirmedBalance}(V, t)$.
+   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S$$
+   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S$$
+*Theo nguyên lý quy nạp toán học, bất biến bảo toàn tài sản được duy trì qua mọi bước chuyển trạng thái. $\blacksquare$*
+
+### Định Lý 2: Giới Hạn Tối Đa Thiệt Hại Do Prompt Injection
+*Giả sử $L = (\text{Pubkey}, \text{MaxSpend}, \text{ExpirySlot}, \text{Nonce})$ là một lá năng lực Merkle đã được phê duyệt với gốc Merkle $R$. Nếu một tác tử AI bị kẻ tấn công đầu độc bộ nhớ và chiếm đoạt 100%, giá trị tối đa có thể bị chiếm đoạt $E$ thỏa mãn:*
+$$E \le \text{MaxSpend}$$
+*Chứng minh:* Bất kỳ lệnh chi tiêu nào cũng đòi hỏi một bằng chứng bao hàm Merkle $\pi$ sao cho $\text{Verify}(R, L, \pi) = \text{true}$. Vì hợp đồng thông minh cưỡng chế kiểm tra:
+$$\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})$$
+và ghi nhận nullifier để chống chi tiêu lặp lại (double-spend), mọi nỗ lực chi tiêu vượt quá $amount > L.\text{MaxSpend}$ hoặc chuyển tiền sai địa chỉ merchant đã định sẵn đều dẫn đến hủy bỏ giao dịch nguyên tử. $\blacksquare$
+
+---
+
+## CHƯƠNG 11: LỘ TRÌNH TRIỂN KHAI CHIẾN LƯỢC & CÁC CỘT MỐC CAM KẾT
+
+```
++----------------------------------------------------------------------------------------------------+
+|                         MA TRẬN LỘ TRÌNH TRIỂN KHAI CHIẾN LƯỢC TOÀN CẦU                            |
++----------------------------------------------------------------------------------------------------+
+|  GIAI ĐOẠN         MỤC TIÊU CỐT LÕI                          KẾT QUẢ KỸ THUẬT BÀN GIAO             |
++----------------------------------------------------------------------------------------------------+
+|  Phase 1: Q4 2026  Ra mắt Thương Mại Mainnet Solana L1       Triển khai nhân hợp đồng v6.9.3       |
+|                    (Thâm nhập thị trường & Đạt PMF)          Xác thực sinh trắc học Passkey FaceID |
+|                                                              Bộ công cụ MCP Server Cursor/LangChain|
+|                                                              Hoàn thành 2 audit OtterSec & Neodyme |
+|                                                                                                    |
+|  Phase 2: Q2 2027  SVM App-Rollup Thông Lượng Siêu Cao       Khởi chạy Sequencer Testnet chuyên dụng|
+|                    (Mở rộng hệ sinh thái)                    Tích hợp tầng dữ liệu Celestia/EigenDA|
+|                                                              Kích hoạt Chợ Tri Thức Bản Quyền      |
+|                                                              Giao thức Reverse Micro-Tasking       |
+|                                                                                                    |
+|  Phase 3: Q4 2027  HAICHAIN Sovereign Machine L1             Mạng thử nghiệm HAI-VM Bare-Metal     |
+|                    (Endgame Siêu Trí Tuệ ASI)                Nhúng mã máy OP_402_PAY vào CPU ảo    |
+|                                                              Đồng thuận kép PoAW (Máy) + PoAI (Người)|
+|                                                              Cầu nối Teleport 1:1 SPL sang Native  |
+|                                                              Kiểm chứng thông lượng > 100.000 TPS  |
++----------------------------------------------------------------------------------------------------+
+```
+
+---
+
+## CHƯƠNG 12: KẾT LUẬN & BẢN TUYÊN NGÔN ĐỊNH VỊ $AI^2$
 
 HAICHAIN xóa bỏ ranh giới ngăn cách giữa Trí tuệ Nhân tạo đỉnh cao, Trí tuệ Thật sự của Con người và Tài chính Phi tập trung:
 
 > **Artificial Intelligence** mang lại tốc độ, tính toán vi mô và khả năng mở rộng vô hạn.  
 > **Actual Intelligence** mang lại mục đích sống, trực giác đạo đức và phán đoán giá trị của Con người.  
-> **HaiChain** chính là sợi dây liên kết mật mã ràng buộc hai nguồn trí tuệ ấy lại làm một để cùng tạo dựng của cải và bảo vệ sự tự do của nhân loại.
+> **HaiChain** (`haichain.si`) chính là sợi dây liên kết mật mã ràng buộc hai nguồn trí tuệ ấy lại làm một để cùng tạo dựng của cải và bảo vệ sự tự do của nhân loại.
 
 ---
 *Bản Sách Trắng Chính Thức v1.0 &bull; Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN &bull; Bảo lưu mọi quyền.*

@@ -5,6 +5,8 @@
   "scripts": {
     "test": "node scripts/verify_i18n.js && ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts",
     "test:i18n": "node scripts/verify_i18n.js",
+    "test:stress": "node scripts/stress_test_i18n.js",
+    "test:overflow": "node scripts/audit_mobile_overflow.js",
     "deploy:devnet": "ts-node scripts/deploy-devnet.ts",
     "simulate:devnet": "ts-node scripts/simulate-micro-escrow-devnet.ts"
   },
