@@ -161,9 +161,9 @@
         </div>
 
         <!-- Consolidated Unified AI Integration Hub Trigger (Icon on Mobile, Full on Desktop) -->
-        <button id="ai-hub-btn" class="flex items-center space-x-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold bg-transparent sm:bg-neutral-100 hover:bg-neutral-200 dark:bg-transparent dark:sm:bg-neutral-900 dark:hover:bg-neutral-800 border-0 sm:border border-transparent sm:border-neutral-300 dark:sm:border-neutral-700 text-black dark:text-white transition-all shrink-0 cursor-pointer shadow-none sm:shadow-xs" title="Kết Nối AI: AI Gateway & Claude MCP">
+        <button id="ai-hub-btn" class="flex items-center space-x-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold bg-transparent sm:bg-neutral-100 hover:bg-neutral-200 dark:bg-transparent dark:sm:bg-neutral-900 dark:hover:bg-neutral-800 border-0 sm:border border-transparent sm:border-neutral-300 dark:sm:border-neutral-700 text-black dark:text-white transition-all shrink-0 cursor-pointer shadow-none sm:shadow-xs" title="AI Integration Hub: AI Gateway & Claude MCP">
           <i data-lucide="cpu" class="w-3.5 h-3.5 shrink-0 text-black dark:text-white"></i>
-          <span class="hidden md:inline font-mono">Kết Nối AI</span>
+          <span class="hidden md:inline font-mono">AI Connect</span>
           <span class="hidden sm:inline md:hidden text-[10px] font-bold font-mono">AI Hub</span>
         </button>
 
@@ -994,7 +994,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         </button>
         <button id="hub-tab-stats" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center transition-all cursor-pointer font-bold flex items-center justify-center space-x-1.5">
           <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
-          <span>3. Kho Bạc (20%)</span>
+          <span>3. Treasury (20%)</span>
         </button>
       </div>
 
@@ -1015,13 +1015,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             http://localhost:3000/v1
           </div>
           <p id="gw-desc-text" class="text-[10.5px] text-neutral-500 pt-0.5 font-sans">
-            Tự động khấu trừ chi phí suy luận trực tiếp từ Spending Pot trên Solana, tự động trích 20% Treasury Margin. IDE của bạn chỉ cần đổi Base URL.
+            Autonomous inference deduction directly from the Spending Pot on Solana with 20% Treasury Margin. Simply update the Base URL in your IDE.
           </p>
         </div>
 
         <div id="gw-code-container" class="space-y-1">
           <div class="flex justify-between items-center text-[10.5px] text-neutral-400">
-            <span id="gw-snippet-title">Cấu hình nhanh:</span>
+            <span id="gw-snippet-title">Quick Configuration:</span>
             <span class="text-[9.5px] text-neutral-400 flex items-center space-x-1 font-semibold">
               <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
               <span>Devnet Active</span>
@@ -1029,13 +1029,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           </div>
           <pre id="gw-code-snippet" class="p-3 rounded-2xl bg-neutral-950 text-neutral-200 font-mono text-[10px] leading-relaxed border border-neutral-800 whitespace-pre-wrap break-all overflow-hidden select-all">// Trong Cursor Settings -> Models -> OpenAI API Key:
 Base URL: http://localhost:3000/v1
-API Key: agent_cursor_ide_02 (hoặc Spending Pot ID của bạn)
-Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
+API Key: agent_cursor_ide_02 (or your Spending Pot ID)
+Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
         </div>
 
         <button id="copy-gw-config-btn" type="button" class="w-full py-2.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-md flex items-center justify-center space-x-1.5 cursor-pointer active:scale-95">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-          <span id="copy-gw-btn-text">Sao Chép Cấu Hình Gateway</span>
+          <span id="copy-gw-btn-text">Copy Gateway Config</span>
         </button>
       </div>
 
@@ -1043,23 +1043,23 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       <div id="hub-section-mcp" class="hidden space-y-3 font-mono text-xs">
         <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-1.5">
           <div class="flex items-center justify-between text-neutral-400 text-[11px]">
-            <span class="font-bold text-black dark:text-white">Đường Dẫn File Config:</span>
+            <span class="font-bold text-black dark:text-white">Config File Path:</span>
             <span class="text-[10px] text-black dark:text-white font-mono font-bold bg-neutral-200 dark:bg-neutral-800 px-2 py-0.5 rounded-md">Auto-Paste</span>
           </div>
           <div class="p-2 rounded-xl bg-black text-white font-mono text-[11px] select-all break-all border border-neutral-800" id="mcp-config-path-text">%APPDATA%\Claude\claude_desktop_config.json</div>
           <div class="text-[10px] text-neutral-500 font-sans">
-            Sao chép mã JSON dưới đây vào file cấu hình Claude Desktop rồi khởi động lại Claude để cấp quyền tự trị tài chính.
+            Copy JSON configuration below into your Claude Desktop config file, then restart Claude to grant autonomous financial settlement authority.
           </div>
           <div class="pt-1 border-t border-neutral-200 dark:border-neutral-800 text-[10px] text-neutral-600 dark:text-neutral-400 font-mono flex items-center space-x-1">
             <i data-lucide="zap" class="w-3 h-3 text-black dark:text-white shrink-0"></i>
-            <span>Hoặc chạy lệnh: <code class="bg-black/10 dark:bg-black/60 px-1.5 py-0.5 rounded text-black dark:text-white font-bold select-all">node scripts/install-claude-mcp.js</code></span>
+            <span>Or run command: <code class="bg-black/10 dark:bg-black/60 px-1.5 py-0.5 rounded text-black dark:text-white font-bold select-all">node scripts/install-claude-mcp.js</code></span>
           </div>
         </div>
 
         <div class="relative rounded-2xl bg-neutral-950 border border-neutral-800 p-3.5 space-y-1.5 shadow-inner">
           <div class="flex items-center justify-between pb-1.5 border-b border-neutral-800 text-[11px] text-neutral-400">
             <span class="font-mono text-neutral-300">claude_desktop_config.json</span>
-            <span class="text-white font-mono text-[10px] bg-neutral-800 px-2 py-0.5 rounded-full border border-neutral-700">3 Công Cụ Sẵn Sàng</span>
+            <span class="text-white font-mono text-[10px] bg-neutral-800 px-2 py-0.5 rounded-full border border-neutral-700">3 Tools Ready</span>
           </div>
           <pre id="mcp-json-snippet" class="text-neutral-200 font-mono text-[10.5px] leading-relaxed whitespace-pre-wrap break-all overflow-hidden select-all">{
   "mcpServers": {
@@ -1077,23 +1077,23 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         <div class="grid grid-cols-2 gap-2 pt-0.5">
           <button id="copy-mcp-config-btn" type="button" class="py-2.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-md flex items-center justify-center space-x-1.5 cursor-pointer active:scale-95">
             <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-            <span id="copy-mcp-btn-text">Sao Chép JSON</span>
+            <span id="copy-mcp-btn-text">Copy JSON</span>
           </button>
           <a href="/download/claude_desktop_config.json" download="claude_desktop_config.json" class="py-2.5 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-black dark:text-white font-semibold text-xs transition-all shadow-xs flex items-center justify-center space-x-1.5 cursor-pointer text-center active:scale-95">
             <i data-lucide="download" class="w-3.5 h-3.5"></i>
-            <span>Tải File .json</span>
+            <span>Download .json</span>
           </a>
         </div>
 
         <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10.5px] text-neutral-700 dark:text-neutral-300 space-y-1">
           <div class="font-bold flex items-center space-x-1.5 text-xs text-black dark:text-white">
             <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i>
-            <span>3 Công Cụ Tài Chính Độc Quyền:</span>
+            <span>3 Exclusive Financial Tools:</span>
           </div>
           <ul class="list-disc list-inside space-y-0.5 font-mono text-[10px] text-neutral-600 dark:text-neutral-400">
-            <li><strong>get_agent_spending_pot_balance</strong> - Tra cứu số dư ví tức thì trên Solana</li>
-            <li><strong>execute_micro_payment</strong> - Thanh toán vi mô dưới 1 giây có TxSig on-chain</li>
-            <li><strong>trigger_emergency_panic</strong> - Khóa quỹ khẩn cấp thu hồi 100% trong 380ms</li>
+            <li><strong>get_agent_spending_pot_balance</strong> - Instant on-chain wallet balance lookup on Solana</li>
+            <li><strong>execute_micro_payment</strong> - Sub-second micro-settlement with on-chain TxSig</li>
+            <li><strong>trigger_emergency_panic</strong> - Emergency kill-switch retracts 100% funds in 380ms</li>
           </ul>
         </div>
       </div>
@@ -1125,7 +1125,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           </div>
           <div class="pt-1 text-center">
             <a href="https://explorer.solana.com/address/HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW?cluster=devnet" target="_blank" class="text-white hover:underline flex items-center justify-center space-x-1 font-bold">
-              <span>Xem Ví Kho Bạc trên Solana Explorer</span>
+              <span>View Treasury Wallet on Solana Explorer</span>
               <i data-lucide="external-link" class="w-3 h-3"></i>
             </a>
           </div>
@@ -1343,7 +1343,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
                 <span class="font-bold text-sm text-black dark:text-white" data-i18n="modal.walletBiometric">FaceID / TouchID / Windows Hello</span>
                 <span class="text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold tracking-wider">Passkey FIDO2</span>
               </div>
-              <div class="text-[11px] text-neutral-600 dark:text-neutral-400 mt-0.5" data-i18n="modal.walletBiometricDesc">Xác thực sinh trắc học phần cứng FIDO2 (Không cần mật khẩu hay ví Web3)</div>
+              <div class="text-[11px] text-neutral-600 dark:text-neutral-400 mt-0.5" data-i18n="modal.walletBiometricDesc">FIDO2 Hardware-Bound Biometric Authentication (Zero seed phrase, zero password)</div>
             </div>
           </div>
           <span class="text-xs font-mono text-black dark:text-white font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -1352,7 +1352,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         <!-- Divider -->
         <div class="relative py-1 flex items-center justify-center">
           <div class="border-t border-neutral-200 dark:border-neutral-800 w-full"></div>
-          <span class="bg-white dark:bg-brand-card px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletOrWeb3">HOẶC DÙNG VÍ ON-CHAIN SOLANA</span>
+          <span class="bg-white dark:bg-brand-card px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletOrWeb3">OR CONNECT WITH ON-CHAIN SOLANA WALLET</span>
         </div>
 
         <!-- 1. Phantom -->
@@ -1488,7 +1488,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
         <!-- Primary Action: Direct Add Funds -->
         <button id="account-add-funds-btn" type="button" class="w-full py-2.5 px-4 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold transition-all shadow-sm flex items-center justify-center space-x-2 cursor-pointer mt-1">
           <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-500"></i>
-          <span>Nạp Tiền Vào Spending Pot (0% Gas)</span>
+          <span data-i18n="modal.accountTopUp">Top Up Spending Pot (0% Gas)</span>
         </button>
 
         <!-- Secondary Actions Row -->
@@ -2010,7 +2010,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
     async function authenticateWithBiometricPasskey() {
       // 1. Feature Detection: navigator.credentials & PublicKeyCredential
       if (!window.PublicKeyCredential) {
-        throw new Error("Trình duyệt không hỗ trợ WebAuthn FIDO2. Vui lòng cập nhật Safari / Chrome / Edge hoặc bật Windows Hello / Touch ID.");
+        throw new Error("Browser does not support WebAuthn FIDO2. Please update your browser or enable Windows Hello / Touch ID.");
       }
 
       // 2. Platform Authenticator Availability
@@ -2092,7 +2092,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
       }
 
       if (!cred) {
-        throw new Error("Không thể khởi tạo hoặc xác thực phần cứng Passkey.");
+        throw new Error("Failed to initialize or authenticate Passkey hardware credential.");
       }
 
       // =========================================================================
@@ -3218,19 +3218,19 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
 
     const cursorGwSnippet = `// Trong Cursor Settings -> Models -> OpenAI API Key:
 Base URL: http://localhost:3000/v1
-API Key: agent_cursor_ide_02 (hoặc Spending Pot ID của bạn)
-Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022
+API Key: agent_cursor_ide_02 (or your Spending Pot ID)
+Model Override: gpt-4o or claude-3-5-sonnet-20241022
 
 // Trong Cline / Roo Code (VS Code Extension):
 API Provider: OpenAI Compatible
 Base URL: http://localhost:3000/v1
 API Key: agent_cursor_ide_02`;
 
-    const claudeCodeGwSnippet = `# Cấu hình Claude Code CLI kết nối HAICHAIN Settlement Gateway:
+    const claudeCodeGwSnippet = `# Configure Claude Code CLI to connect with HAICHAIN Settlement Gateway:
 export ANTHROPIC_BASE_URL="http://localhost:3000"
 export ANTHROPIC_API_KEY="agent_claude_desktop_01"
 
-# Khởi chạy Claude Code CLI (Bỏ qua phí $20/tháng, thanh toán chính xác từng token trên Solana):
+# Launch Claude Code CLI (Zero monthly sub, pay exactly per token on Solana):
 claude`;
 
     const claudeConfigJson = JSON.stringify({
@@ -3324,8 +3324,8 @@ claude`;
         if (gwTabClaude) gwTabClaude.className = "flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold";
         if (gwProtocolBadge) gwProtocolBadge.textContent = "POST /v1/chat/completions";
         if (gwUrlDisplay) gwUrlDisplay.textContent = "http://localhost:3000/v1";
-        if (gwDescText) gwDescText.textContent = "Tự động khấu trừ chi phí suy luận trực tiếp từ Spending Pot trên Solana, tự động trích 20% Treasury Margin. IDE của bạn chỉ cần đổi Base URL.";
-        if (gwSnippetTitle) gwSnippetTitle.textContent = "Cấu hình nhanh Cursor / Cline:";
+        if (gwDescText) gwDescText.textContent = "Autonomous inference deduction directly from the Spending Pot on Solana with 20% Treasury Margin. Simply update the Base URL in your IDE.";
+        if (gwSnippetTitle) gwSnippetTitle.textContent = "Quick Cursor / Cline Configuration:";
         if (gwCodeSnippet) gwCodeSnippet.textContent = cursorGwSnippet;
       });
     }
@@ -3336,8 +3336,8 @@ claude`;
         if (gwTabCursor) gwTabCursor.className = "flex-1 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white text-center font-bold";
         if (gwProtocolBadge) gwProtocolBadge.textContent = "POST /v1/messages";
         if (gwUrlDisplay) gwUrlDisplay.textContent = "http://localhost:3000";
-        if (gwDescText) gwDescText.textContent = "Kết nối Claude Code CLI với HAICHAIN. Tuân thủ định dạng /v1/messages của Anthropic kèm cơ chế ngắt mạch phần cứng.";
-        if (gwSnippetTitle) gwSnippetTitle.textContent = "Cấu hình Shell Claude Code CLI:";
+        if (gwDescText) gwDescText.textContent = "Connect Claude Code CLI with HAICHAIN. Fully compliant with Anthropic /v1/messages with hardware circuit-breaker.";
+        if (gwSnippetTitle) gwSnippetTitle.textContent = "Claude Code CLI Shell Configuration:";
         if (gwCodeSnippet) gwCodeSnippet.textContent = claudeCodeGwSnippet;
       });
     }
@@ -3348,12 +3348,12 @@ claude`;
         const textToCopy = gwCodeSnippet ? gwCodeSnippet.textContent : cursorGwSnippet;
         try {
           await navigator.clipboard.writeText(textToCopy);
-          if (copyGwBtnText) copyGwBtnText.textContent = "Đã Sao Chép! ✓";
+          if (copyGwBtnText) copyGwBtnText.textContent = "Copied! ✓";
           setTimeout(() => {
-            if (copyGwBtnText) copyGwBtnText.textContent = "Sao Chép Cấu Hình Gateway";
+            if (copyGwBtnText) copyGwBtnText.textContent = "Copy Gateway Config";
           }, 2500);
         } catch (_) {
-          alert("Đã sao chép cấu hình vào clipboard!");
+          showToast({ title: "Config Copied!", message: "Saved to clipboard", icon: "copy" });
         }
       });
     }
@@ -3363,12 +3363,12 @@ claude`;
         const textToCopy = mcpJsonSnippet ? mcpJsonSnippet.textContent : claudeConfigJson;
         try {
           await navigator.clipboard.writeText(textToCopy);
-          if (copyMcpBtnText) copyMcpBtnText.textContent = "Đã Sao Chép! ✓";
+          if (copyMcpBtnText) copyMcpBtnText.textContent = "Copied! ✓";
           setTimeout(() => {
-            if (copyMcpBtnText) copyMcpBtnText.textContent = "Sao Chép JSON";
+            if (copyMcpBtnText) copyMcpBtnText.textContent = "Copy JSON";
           }, 2500);
         } catch (_) {
-          alert("Đã sao chép JSON vào clipboard!");
+          showToast({ title: "JSON Copied!", message: "Saved to clipboard", icon: "copy" });
         }
       });
     }
