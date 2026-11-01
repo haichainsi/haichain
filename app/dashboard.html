@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HAICHAIN is the Autonomous Machine Financial Operating System on Solana. Non-custodial micro-escrows and instant AI capability settlements.">
-  <meta property="og:title" content="HAICHAIN - Autonomous Machine Financial Operating System">
-  <meta property="og:description" content="HAICHAIN is the Autonomous Machine Financial Operating System on Solana. Non-custodial micro-escrows and instant AI capability settlements.">
-  <title>HAICHAIN Dashboard - Autonomous Machine Financial Operating System</title>
+  <meta name="description" content="HAICHAIN: Universal Autonomous Machine Financial & Cognitive Operating System - The Bedrock for Decentralized Superintelligence.">
+  <meta property="og:title" content="HAICHAIN - Decentralized Superintelligence Operating System">
+  <meta property="og:description" content="HAICHAIN: Universal Autonomous Machine Financial & Cognitive Operating System - The Bedrock for Decentralized Superintelligence.">
+  <title>HAICHAIN Dashboard - Decentralized Superintelligence Operating System</title>
   <!-- 1. Web Browser Tab Favicon (Crisp Multi-Resolution Black Emblem) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=v3_crisp">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=v3_crisp">
@@ -2356,10 +2356,17 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       }
     });
 
-    // Auto switch to tab from URL param or hash (e.g. ?tab=tab-preseed)
+    // Auto switch to tab from URL param or hash (e.g. ?tab=preseed or ?tab=tab-preseed)
     try {
       const initUrlParams = new URLSearchParams(window.location.search);
-      const urlTab = initUrlParams.get('tab') || window.location.hash.replace('#', '');
+      let urlTab = (initUrlParams.get('tab') || window.location.hash.replace('#', '')).toLowerCase();
+      if (urlTab === 'preseed' || urlTab === 'presale' || urlTab === 'private' || urlTab === 'sale') urlTab = 'tab-preseed';
+      if (urlTab === 'vesting' || urlTab === 'vault') urlTab = 'tab-vesting';
+      if (urlTab === 'overview') urlTab = 'tab-overview';
+      if (urlTab === 'agents' || urlTab === 'bot') urlTab = 'tab-agents';
+      if (urlTab === 'playground') urlTab = 'tab-playground';
+      if (urlTab === 'ledger') urlTab = 'tab-ledger';
+      if (urlTab === 'mcp') urlTab = 'tab-mcp';
       if (urlTab && tabTitles[urlTab]) {
         switchTab(urlTab);
       }
@@ -3651,7 +3658,16 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
       const isVi = lang === 'vi';
       const allocations = getStoredAllocations();
-      const currentAddress = userWallet ? userWallet.address : null;
+      let currentAddress = userWallet ? userWallet.address : null;
+      if (!currentAddress) {
+        try {
+          const savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+          if (savedW && savedW.address) {
+            currentAddress = savedW.address;
+            userWallet = savedW;
+          }
+        } catch (_) {}
+      }
       const alloc = currentAddress ? allocations[currentAddress] : null;
 
       // Update sidebar indicator badge
@@ -3712,7 +3728,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
                   ${isVi ? 'Kết Nối Ví Phantom / Solana' : 'Connect Phantom / Solana Wallet'}
                 </button>
-                <button onclick="document.querySelector('[data-tab=\'private-sale\']')?.click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
+                <button onclick="window.switchTab('tab-preseed')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
                   ${isVi ? 'Đăng Ký Vòng Private SAFT' : 'Subscribe to Private SAFT'}
                 </button>
               </div>
@@ -3771,7 +3787,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
                 </p>
               </div>
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <button onclick="document.querySelector('[data-tab=\'private-sale\']')?.click()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
+                <button onclick="window.switchTab('tab-preseed')" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
                   ${isVi ? 'Đăng Ký Vòng Private SAFT (Chiết Khấu 30%)' : 'Subscribe to Private SAFT (30% Discount)'}
                 </button>
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
