@@ -6,7 +6,7 @@
  *  - 100% In-App Canvas Rendering: Zero iframes, zero Google Docs, zero native browser PDF plugins.
  *  - ZERO "Open in New Tab" icons, ZERO pop-out buttons, ZERO download buttons.
  *  - High-DPI Vector Crispness: Rendered at devicePixelRatio (up to 2.5x) for Retina & OLED clarity.
- *  - Instant First Page (<150ms) with lazy IntersectionObserver streaming for remaining pages.
+ *  - Robust Page 1 Rendering: Resilient dimension calculation with double-RAF layout sync.
  *  - Adaptive Zoom: Fit, 75%, 100%, 125%, 150%, 200% with smooth reflow.
  *  - Floating Minimalist Page Navigator (Trang X / Y) with touch momentum.
  *  - Multilingual Title & Badge: en, vi, zh, ko, es, fr, ru, kk, hi, he.
@@ -22,6 +22,7 @@
   let renderingTasks = new Map();
   let currentPageIndex = 1;
   let isZooming = false;
+  let resizeDebounce = null;
 
   function getCurrentLang() {
     if (window.haichainI18n && typeof window.haichainI18n.getLanguage === 'function') {
@@ -35,7 +36,7 @@
       case 'vi':
         return {
           title: 'Bạch Thư Kỹ Thuật HAICHAIN v1.0 (Tiếng Việt)',
-          loading: 'Đang hiển thị tài liệu trực tiếp...',
+          loading: 'Đang tải tài liệu...',
           pagePrefix: 'Trang',
           pageSuffix: 'trang',
           fit: 'Vừa trang',
@@ -44,8 +45,8 @@
       case 'zh':
         return {
           title: 'HAICHAIN 技术白皮书 v1.0 (中文)',
-          loading: '正在载入文档，请稍候...',
-          pagePrefix: '页',
+          loading: '正在载入文档...',
+          pagePrefix: '第',
           pageSuffix: '页',
           fit: '适应宽度',
           close: '关闭'
@@ -54,7 +55,7 @@
         return {
           title: 'HAICHAIN 기술 백서 v1.0 (한국어)',
           loading: '문서를 실시간 렌더링 중입니다...',
-          pagePrefix: '페이지',
+          pagePrefix: '',
           pageSuffix: '페이지',
           fit: '너비 맞춤',
           close: '닫기'
@@ -62,8 +63,8 @@
       case 'es':
         return {
           title: 'Libro Blanco Técnico de HAICHAIN v1.0 (Español)',
-          loading: 'Renderizando documento en vivo...',
-          pagePrefix: 'Página',
+          loading: 'Cargando documento...',
+          pagePrefix: 'Pág.',
           pageSuffix: 'págs',
           fit: 'Ajustar',
           close: 'Cerrar'
@@ -71,7 +72,7 @@
       case 'fr':
         return {
           title: 'Livre Blanc Technique HAICHAIN v1.0 (Français)',
-          loading: 'Rendu du document en direct...',
+          loading: 'Chargement du document...',
           pagePrefix: 'Page',
           pageSuffix: 'pages',
           fit: 'Ajuster',
@@ -89,8 +90,8 @@
       case 'kk':
         return {
           title: 'HAICHAIN Техникалық ақ қағазы v1.0 (Қазақша)',
-          loading: 'Құжат тікелей өңделуде...',
-          pagePrefix: 'Бет',
+          loading: 'Құжат өңделуде...',
+          pagePrefix: '',
           pageSuffix: 'бет',
           fit: 'Сәйкестеу',
           close: 'Жабу'
@@ -98,16 +99,16 @@
       case 'hi':
         return {
           title: 'HAICHAIN तकनीकी श्वेतपत्र v1.0 (हिन्दी)',
-          loading: 'दस्तावेज़ तैयार हो रहा है...',
+          loading: 'दस्तावेज़ लोड हो रहा है...',
           pagePrefix: 'पृष्ठ',
           pageSuffix: 'पृष्ठ',
-          fit: 'फ़िट',
+          fit: 'अनुकूलित करें',
           close: 'बंद करें'
         };
       case 'he':
         return {
           title: 'HAICHAIN נייר עמדה טכני v1.0 (עברית)',
-          loading: 'מעבד מסמך...',
+          loading: 'טוען מסמך...',
           pagePrefix: 'עמוד',
           pageSuffix: 'עמודים',
           fit: 'התאם',
@@ -116,7 +117,7 @@
       default:
         return {
           title: 'HAICHAIN Technical Whitepaper v1.0 (English)',
-          loading: 'Rendering live document...',
+          loading: 'Loading document...',
           pagePrefix: 'Page',
           pageSuffix: 'pages',
           fit: 'Fit',
@@ -149,44 +150,61 @@
     });
   }
 
+  function getPageWidth() {
+    const container = document.getElementById('pdf-pages-container');
+    const scrollEl = document.getElementById('pdf-modal-scroll');
+    const winW = window.innerWidth || document.documentElement.clientWidth || 390;
+
+    let w = (container && container.clientWidth > 50) ? container.clientWidth : 0;
+    if (w < 50 && scrollEl && scrollEl.clientWidth > 50) {
+      w = scrollEl.clientWidth;
+    }
+    if (w < 50) {
+      w = winW;
+    }
+
+    const padding = winW < 640 ? 16 : 32;
+    return Math.max(280, Math.min(w - padding, 820));
+  }
+
   function ensurePdfModal() {
     let modal = document.getElementById('pdf-viewer-modal');
     if (modal) return modal;
 
     modal = document.createElement('div');
     modal.id = 'pdf-viewer-modal';
-    modal.className = 'fixed inset-0 z-[100] bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-1 sm:p-4 md:p-6 transition-all duration-200';
+    modal.className = 'fixed inset-0 z-[100] bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-0 sm:p-4 md:p-6 transition-all duration-200';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
 
     modal.innerHTML = `
-      <div class="relative w-full max-w-5xl h-[96dvh] sm:h-[90vh] bg-white dark:bg-[#0c0c0e] border border-neutral-200 dark:border-neutral-800 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-scaleUp">
+      <div class="w-full max-w-5xl h-full sm:h-[90vh] bg-white dark:bg-[#0c0c0e] border-0 sm:border border-neutral-200 dark:border-neutral-800 rounded-none sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-scaleUp">
         
-        <!-- Modal Top Bar: Luxury Title + Zoom Controls + Close Button ONLY -->
-        <div class="px-3 py-2.5 sm:px-6 sm:py-3 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-2 sm:gap-4 bg-neutral-50/95 dark:bg-neutral-900/95 shrink-0 backdrop-blur-sm z-20">
+        <!-- Modal Top Bar: Luxury Title + Close Button ONLY (Zero download, zero open new tab buttons) -->
+        <div class="px-3.5 py-2.5 sm:px-6 sm:py-3.5 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-3 bg-neutral-50/95 dark:bg-neutral-900/95 shrink-0 backdrop-blur-sm z-20">
           
-          <!-- Document Icon, Title & Page Count Badge -->
+          <!-- Document Icon & Title -->
           <div class="flex items-center space-x-2 sm:space-x-2.5 min-w-0">
             <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
               <i data-lucide="file-text" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
             </div>
             <div class="min-w-0">
-              <div class="flex items-center space-x-1.5 sm:space-x-2">
+              <div class="flex items-center space-x-2">
                 <h3 id="pdf-modal-title" class="font-bold text-xs sm:text-sm text-black dark:text-white truncate">HAICHAIN Document</h3>
-                <span id="pdf-modal-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 shrink-0"></span>
+                <span id="pdf-modal-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hidden sm:inline-block"></span>
               </div>
-              <p class="text-[10px] text-neutral-400 font-mono hidden sm:block truncate">Universal Autonomous Machine Financial &amp; Cognitive Operating System</p>
+              <p class="text-[10px] text-neutral-400 font-mono hidden sm:block">Universal Autonomous Machine Financial &amp; Cognitive Operating System</p>
             </div>
           </div>
 
-          <!-- Header Controls: Zoom Out / Fit / Zoom In + Close (✕) -->
-          <div class="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
+          <!-- Controls: Zoom & Close Button ONLY -->
+          <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
             <!-- Zoom Out (-) -->
             <button id="pdf-modal-zoom-out" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Thu nhỏ (-)">
               <i data-lucide="zoom-out" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
             </button>
-            
-            <!-- Zoom Level Display / Fit Toggle -->
+
+            <!-- Zoom Fit (100%) -->
             <button id="pdf-modal-zoom-fit" type="button" class="px-2 h-7 sm:h-8 rounded-lg flex items-center justify-center text-[10px] sm:text-[11px] font-mono font-medium text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Vừa màn hình (100%)">
               <span id="pdf-modal-zoom-label">100%</span>
             </button>
@@ -315,15 +333,17 @@
     const container = document.getElementById('pdf-pages-container');
     if (!container) return;
 
+    const baseW = getPageWidth();
     const slots = container.querySelectorAll('.pdf-page-slot');
     slots.forEach((slot) => {
       const origW = parseFloat(slot.dataset.origW) || 595;
       const origH = parseFloat(slot.dataset.origH) || 842;
-      const targetW = Math.min(container.clientWidth - 16, origW * currentScale);
-      const targetH = targetW * (origH / origW);
+      const targetW = Math.round(baseW * currentScale);
+      const targetH = Math.round(targetW * (origH / origW));
       slot.style.width = `${targetW}px`;
+      slot.style.height = `${targetH}px`;
       slot.style.minHeight = `${targetH}px`;
-      
+
       const canvas = slot.querySelector('canvas');
       if (canvas) canvas.classList.add('hidden');
       const skeleton = slot.querySelector('.pdf-skeleton');
@@ -350,13 +370,16 @@
     const meta = getI18nMeta(lang);
     const indicator = document.getElementById('pdf-modal-page-indicator');
     if (indicator) {
-      indicator.textContent = `${meta.pagePrefix} ${pageNum} / ${total}`;
+      if (meta.pagePrefix) {
+        indicator.textContent = `${meta.pagePrefix} ${pageNum} / ${total}`;
+      } else {
+        indicator.textContent = `${pageNum} / ${total} ${meta.pageSuffix || ''}`.trim();
+      }
     }
   }
 
   async function renderPageSlot(pageNum) {
     if (!currentPdfDoc || renderedPages.has(pageNum)) return;
-    renderedPages.add(pageNum);
 
     const slot = document.getElementById(`pdf-slot-${pageNum}`);
     if (!slot) return;
@@ -372,24 +395,28 @@
       slot.dataset.origW = unscaled.width;
       slot.dataset.origH = unscaled.height;
 
-      const container = document.getElementById('pdf-pages-container');
-      const containerW = container ? container.clientWidth - 16 : 800;
-      const displayW = Math.min(containerW, unscaled.width * currentScale);
-      const displayH = displayW * (unscaled.height / unscaled.width);
+      const baseW = getPageWidth();
+      const displayW = Math.max(280, Math.round(baseW * currentScale));
+      const displayH = Math.max(396, Math.round(displayW * (unscaled.height / unscaled.width)));
 
-      const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+      const dpr = Math.min(window.devicePixelRatio || 1.5, 2.5);
       const renderScale = (displayW / unscaled.width) * dpr;
       const viewport = page.getViewport({ scale: renderScale });
 
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
+      if (viewport.width <= 0 || viewport.height <= 0) {
+        return; // wait for proper dimensions
+      }
+
+      canvas.width = Math.round(viewport.width);
+      canvas.height = Math.round(viewport.height);
       canvas.style.width = `${displayW}px`;
       canvas.style.height = `${displayH}px`;
 
       slot.style.width = `${displayW}px`;
+      slot.style.height = `${displayH}px`;
       slot.style.minHeight = `${displayH}px`;
 
-      const ctx = canvas.getContext('2d', { alpha: false });
+      const ctx = canvas.getContext('2d');
       const renderTask = page.render({
         canvasContext: ctx,
         viewport: viewport
@@ -399,11 +426,15 @@
       await renderTask.promise;
       renderingTasks.delete(pageNum);
 
+      // Successfully drawn!
+      renderedPages.add(pageNum);
+
       canvas.classList.remove('hidden');
       if (skeleton) skeleton.classList.add('hidden');
     } catch (err) {
       if (err?.name === 'RenderingCancelledException') return;
       console.warn(`Error rendering page ${pageNum}:`, err);
+      renderedPages.delete(pageNum);
     }
   }
 
@@ -480,7 +511,7 @@
       const pdfjs = await ensurePdfJs();
       const loadingTask = pdfjs.getDocument({
         url: pdfUrl,
-        cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+        cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
         cMapPacked: true
       });
 
@@ -493,22 +524,26 @@
 
       updatePageIndicator(1, totalPages);
 
-      // Create lightweight placeholder slots for every page
+      // Double-RAF to ensure DOM layout width is 100% computed before sizing slots
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+      const baseW = getPageWidth();
+
+      // Create lightweight placeholder slots for every page with correct aspect ratio
       for (let i = 1; i <= totalPages; i++) {
         const slot = document.createElement('div');
         slot.id = `pdf-slot-${i}`;
-        slot.className = 'pdf-page-slot relative bg-white shadow-md sm:shadow-xl rounded-md overflow-hidden flex items-center justify-center transition-all duration-200 border border-neutral-200/50 dark:border-neutral-800/50';
+        slot.className = 'pdf-page-slot relative bg-white dark:bg-[#0c0c0e] shadow-md sm:shadow-xl rounded-md overflow-hidden flex items-center justify-center transition-all duration-200 border border-neutral-200/50 dark:border-neutral-800/50';
         slot.dataset.page = i;
         slot.dataset.origW = '595';
         slot.dataset.origH = '842';
-        slot.style.width = '100%';
-        slot.style.maxWidth = '780px';
-        slot.style.minHeight = '1000px';
+        slot.style.width = `${baseW}px`;
+        slot.style.aspectRatio = '595 / 842';
 
         slot.innerHTML = `
           <div class="pdf-skeleton absolute inset-0 flex flex-col items-center justify-center text-neutral-400 bg-neutral-50 dark:bg-neutral-900/60 font-mono text-xs select-none">
             <div class="w-6 h-6 border-2 border-neutral-300 dark:border-neutral-700 border-t-black dark:border-t-white rounded-full animate-spin mb-2"></div>
-            <span>${meta.pagePrefix} ${i} / ${totalPages}</span>
+            <span>${meta.pagePrefix || 'Page'} ${i} / ${totalPages}</span>
           </div>
           <canvas class="hidden block w-full h-auto shadow-xs select-none" style="pointer-events: none;"></canvas>
         `;
@@ -516,7 +551,7 @@
         container.appendChild(slot);
       }
 
-      // Fast-render Page 1 immediately (<100ms)
+      // Fast-render Page 1 immediately with full dimensions
       await renderPageSlot(1);
       if (totalPages >= 2) {
         renderPageSlot(2);
@@ -567,13 +602,24 @@
         fallbackIframe.classList.add('hidden');
       }
 
-      if (currentPdfDoc) {
-        try { currentPdfDoc.destroy(); } catch (err) {}
-        currentPdfDoc = null;
-      }
+      const loader = document.getElementById('pdf-modal-loader');
+      if (loader) loader.classList.add('hidden');
+
+      currentPdfDoc = null;
     }
     document.body.style.overflow = '';
   };
+
+  // Resize handler for device rotation
+  window.addEventListener('resize', () => {
+    if (!currentPdfDoc) return;
+    clearTimeout(resizeDebounce);
+    resizeDebounce = setTimeout(() => {
+      const container = document.getElementById('pdf-pages-container');
+      if (!container || !container.children.length) return;
+      changeZoom(currentScale);
+    }, 200);
+  });
 
   window.openWhitepaperModal = function () {
     const lang = getCurrentLang();
