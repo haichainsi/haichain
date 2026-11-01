@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v16_mobile_nav_fix"></script>
+  <script src="/app/i18n.js?v=v17_logo_harmonious"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
@@ -1677,6 +1677,17 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
       });
     });
 
+    // Bulletproof Global Event Delegation for Nav Tabs (Guaranteed Desktop & Mobile Tab Switching)
+    document.addEventListener('click', (e) => {
+      const tabBtn = e.target.closest('.nav-tab-btn, .mobile-tab-btn');
+      if (tabBtn) {
+        const targetTab = tabBtn.getAttribute('data-tab');
+        if (targetTab) {
+          switchTab(targetTab);
+        }
+      }
+    });
+
     // Auto switch to tab from URL param or hash (e.g. ?tab=tab-preseed)
     try {
       const initUrlParams = new URLSearchParams(window.location.search);
@@ -2835,36 +2846,74 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
       const dot = document.getElementById('deposit-wallet-dot');
       const addr = document.getElementById('deposit-wallet-address');
       const btn = document.getElementById('deposit-connect-btn');
-      if (userWallet) {
-        if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-ping shrink-0";
+      const isRealWeb3 = userWallet && (userWallet.provider === 'Phantom' || userWallet.provider === 'Solflare');
+
+      if (isRealWeb3) {
+        if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)] shrink-0";
         if (addr) {
           addr.className = "font-mono text-xs text-black dark:text-white font-bold truncate";
-          addr.textContent = `${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)} (${userWallet.solBalance || '0.00'} SOL)`;
+          addr.textContent = `${userWallet.provider}: ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)} (${userWallet.solBalance || '0.00'} SOL)`;
         }
         if (btn) {
-          btn.className = "px-2.5 py-1 rounded-md text-[10px] font-mono text-black dark:text-white bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 shrink-0 font-bold";
-          btn.textContent = "Verified ✓";
+          btn.className = "px-2.5 py-1 rounded-md text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 shrink-0 font-bold";
+          btn.textContent = "Connected ✓";
           btn.disabled = true;
         }
+        if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
+          dashConfirmDepositBtn.textContent = window.haichainI18n?.currentLang === 'vi' 
+            ? "Xác Nhận Nạp On-Chain (Ký Ví Phantom)" 
+            : "Confirm On-Chain Deposit (Sign with Phantom)";
+        }
       } else {
-        if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-neutral-400 shrink-0";
+        if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0";
         if (addr) {
-          addr.className = "font-mono text-xs text-neutral-500 dark:text-neutral-400 font-bold truncate";
-          addr.textContent = window.haichainI18n ? window.haichainI18n.t('modal.gatewayDisconnected') : "Wallet Disconnected";
+          addr.className = "font-mono text-xs text-amber-600 dark:text-amber-400 font-bold truncate";
+          addr.textContent = userWallet && userWallet.provider === 'Passkey' 
+            ? "Passkey Active • Connect Phantom/Solflare to Deposit"
+            : (window.haichainI18n ? window.haichainI18n.t('modal.gatewayDisconnected') : "Web3 Wallet Disconnected");
         }
         if (btn) {
-          btn.className = "px-3 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs shrink-0 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-xs";
-          btn.textContent = window.haichainI18n ? window.haichainI18n.t('btn.connectWallet') : "Connect";
+          btn.className = "px-3 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs shrink-0 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-xs cursor-pointer";
+          btn.textContent = "Connect Phantom";
           btn.disabled = false;
+        }
+        if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
+          dashConfirmDepositBtn.textContent = window.haichainI18n?.currentLang === 'vi' 
+            ? "Kết Nối Ví Phantom Để Nạp" 
+            : "Connect Phantom Wallet to Deposit";
         }
       }
     }
 
     const depositConnectBtn = document.getElementById('deposit-connect-btn');
     if (depositConnectBtn) {
-      depositConnectBtn.addEventListener('click', () => {
-        dashboardDepositModal.classList.add('hidden');
-        walletConnectModal.classList.remove('hidden');
+      depositConnectBtn.addEventListener('click', async () => {
+        const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+        const solflare = window.solflare?.isSolflare ? window.solflare : null;
+        if (phantom) {
+          try {
+            depositConnectBtn.textContent = "Connecting...";
+            const resp = await phantom.connect();
+            await setConnectedWallet(resp.publicKey ? resp.publicKey.toString() : phantom.publicKey.toString(), 'Phantom');
+            updateDepositWalletBanner();
+          } catch (err) {
+            console.warn("Phantom connection rejected:", err);
+            updateDepositWalletBanner();
+          }
+        } else if (solflare) {
+          try {
+            depositConnectBtn.textContent = "Connecting...";
+            await solflare.connect();
+            await setConnectedWallet(solflare.publicKey.toString(), 'Solflare');
+            updateDepositWalletBanner();
+          } catch (err) {
+            console.warn("Solflare connection rejected:", err);
+            updateDepositWalletBanner();
+          }
+        } else {
+          dashboardDepositModal.classList.add('hidden');
+          walletConnectModal.classList.remove('hidden');
+        }
       });
     }
 
@@ -2926,7 +2975,7 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
         if (depositFaucetBanner) depositFaucetBanner.classList.add('hidden');
         if (depositFiatBanner) depositFiatBanner.classList.add('hidden');
         if (depositWalletBanner) depositWalletBanner.classList.remove('hidden');
-        if (dashConfirmDepositBtn) dashConfirmDepositBtn.textContent = "Confirm Deposit (0% Gas)";
+        updateDepositWalletBanner();
       } else {
         if (depositFaucetBanner) depositFaucetBanner.classList.add('hidden');
         if (depositWalletBanner) depositWalletBanner.classList.add('hidden');
@@ -3025,42 +3074,134 @@ Model Override: gpt-4o or claude-3-5-sonnet-20241022</pre>
         return;
       }
 
-      // 2. WEB3 WALLET MODE
+      // 2. WEB3 WALLET MODE - Strictly requires real Web3 extension & confirmed on-chain transaction
       if (selectedDepositMethod === 'web3') {
-        if (userWallet.provider === 'Phantom' || userWallet.provider === 'Solflare') {
-          try {
-            const web3Provider = userWallet.provider === 'Phantom' ? (window.phantom?.solana || window.solana) : window.solflare;
-            if (web3Provider && typeof web3Provider.signMessage === 'function') {
-              const msg = `HAICHAIN Master Vault On-Ramp Deposit Authorization:\n\nAmount: ${added.toFixed(4)} USDT\nPayer: ${userWallet.address}\nDevnet Program: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk\nTimestamp: ${new Date().toISOString()}`;
-              await web3Provider.signMessage(new TextEncoder().encode(msg), "utf8");
+        const isRealWeb3 = userWallet && (userWallet.provider === 'Phantom' || userWallet.provider === 'Solflare');
+
+        if (!isRealWeb3) {
+          const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+          const solflare = window.solflare?.isSolflare ? window.solflare : null;
+          const web3Available = phantom || solflare;
+
+          if (web3Available) {
+            try {
+              dashConfirmDepositBtn.textContent = isVi ? "Đang kết nối ví Phantom..." : "Connecting Phantom Wallet...";
+              const resp = await web3Available.connect();
+              await setConnectedWallet(resp.publicKey ? resp.publicKey.toString() : web3Available.publicKey.toString(), phantom ? 'Phantom' : 'Solflare');
+              updateDepositWalletBanner();
+              alert(isVi 
+                ? `Đã kết nối ví ${userWallet.provider} thành công!\n\nĐịa chỉ ví: ${userWallet.address}\n\nVui lòng bấm 'Xác Nhận Nạp On-Chain' để ký và duyệt giao dịch chuyển tiền trên Solana Devnet.`
+                : `Connected to ${userWallet.provider} successfully!\n\nWallet: ${userWallet.address}\n\nPlease click 'Confirm On-Chain Deposit' to approve the real transfer transaction on Solana Devnet.`);
+              return;
+            } catch (connErr) {
+              console.warn("Wallet connection rejected:", connErr);
+              alert(isVi ? "Bạn đã từ chối kết nối ví Web3." : "Web3 wallet connection was canceled or rejected.");
+              updateDepositWalletBanner();
+              return;
             }
-          } catch (sigErr) {
-            console.warn("Deposit authorization rejected:", sigErr);
-            alert(isVi ? "Giao dịch đã hủy: Bạn đã từ chối ký ủy quyền trên ví." : "Deposit Canceled: You canceled authorization in your wallet.");
+          } else {
+            alert(isVi
+              ? "Chưa phát hiện tiện ích ví Web3 (Phantom hoặc Solflare) trên trình duyệt này.\n\nĐể nạp tiền bằng ví Web3 thật, vui lòng cài đặt tiện ích Phantom tại https://phantom.app\n\nHoặc bạn có thể chuyển qua tab 'Faucet (+$10)' để nhận 10 USDT thử nghiệm Devnet miễn phí ngay lập tức!"
+              : "No Solana Web3 wallet extension (Phantom or Solflare) detected in your browser.\n\nTo deposit via Web3, please install Phantom from https://phantom.app\n\nAlternatively, switch to the 'Faucet (+$10)' tab to claim free Devnet test funds immediately!");
             return;
           }
         }
 
-        balance += added;
-        saveBalance();
-        updateVaultUI();
-        dashboardDepositModal.classList.add('hidden');
+        // Web3 wallet IS connected: Execute REAL on-chain transfer to Treasury
+        const phantom = userWallet.provider === 'Phantom' 
+          ? (window.phantom?.solana || window.solana) 
+          : window.solflare;
 
-        appendLedgerRow({
-          nonce: generateCryptographicNonce(),
-          service: `Web3 On-Ramp (${userWallet.provider})`,
-          proof: `Payer: ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`,
-          amount: `+${added.toFixed(4)} USDT`,
-          latency: "340ms",
-          isPositive: true
-        });
+        if (!phantom) {
+          alert(isVi ? "Ví Web3 bị ngắt kết nối. Vui lòng kết nối lại ví Phantom." : "Web3 wallet disconnected. Please reconnect Phantom.");
+          updateDepositWalletBanner();
+          return;
+        }
 
-        if (typeof showToast === 'function') {
-          showToast({
-            title: isVi ? 'Nạp Web3 Thành Công' : 'Web3 Deposit Successful',
-            message: `+${added.toFixed(4)} USDT • ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`,
-            icon: 'check-circle'
+        const origText = dashConfirmDepositBtn.textContent;
+        dashConfirmDepositBtn.disabled = true;
+        dashConfirmDepositBtn.textContent = isVi ? "Vui lòng duyệt giao dịch trên ví..." : "Awaiting signature in wallet...";
+
+        try {
+          if (!solanaConnection || !window.solanaWeb3) {
+            throw new Error("Solana Devnet connection is not initialized.");
+          }
+
+          const payerPubkey = phantom.publicKey;
+          const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
+          const treasuryPubkey = new solanaWeb3.PublicKey(treasuryAddress);
+
+          // Check payer SOL balance
+          const payerLamports = await solanaConnection.getBalance(payerPubkey);
+          const minRequiredLamports = 5000; // tx fee
+
+          if (payerLamports < minRequiredLamports) {
+            alert(isVi
+              ? `Số dư SOL trên ví ${userWallet.provider} của bạn không đủ (${(payerLamports / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4)} SOL) để trả phí mạng Solana Devnet.\n\nVui lòng nhận SOL Devnet miễn phí tại solfaucet.com hoặc chọn tab 'Faucet (+$10)' để nhận USDT thử nghiệm!`
+              : `Your ${userWallet.provider} wallet has insufficient SOL (${(payerLamports / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4)} SOL) to pay the Solana Devnet network fee.\n\nPlease claim free Devnet SOL at solfaucet.com or switch to the 'Faucet (+$10)' tab!`);
+            return;
+          }
+
+          // Fetch latest blockhash
+          const { blockhash, lastValidBlockHeight } = await solanaConnection.getLatestBlockhash('confirmed');
+
+          // Symbolic on-chain transfer on Devnet (0.001 SOL or available)
+          const lamportsToSend = Math.min(Math.max(payerLamports - 10000, 1000), 1000000);
+          const tx = new solanaWeb3.Transaction().add(
+            solanaWeb3.SystemProgram.transfer({
+              fromPubkey: payerPubkey,
+              toPubkey: treasuryPubkey,
+              lamports: lamportsToSend,
+            })
+          );
+          tx.feePayer = payerPubkey;
+          tx.recentBlockhash = blockhash;
+
+          // Request user to sign and send transaction in Phantom
+          dashConfirmDepositBtn.textContent = isVi ? "Chờ bạn bấm Duyệt trên Phantom..." : "Approve in Phantom extension...";
+          const { signature } = await phantom.signAndSendTransaction(tx);
+
+          dashConfirmDepositBtn.textContent = isVi ? "Đang xác thực trên Solana Devnet..." : "Confirming on Solana Devnet...";
+          await solanaConnection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
+
+          // ONLY ON VERIFIED ON-CHAIN CONFIRMATION:
+          balance += added;
+          saveBalance();
+          updateVaultUI();
+          dashboardDepositModal.classList.add('hidden');
+
+          appendLedgerRow({
+            nonce: generateCryptographicNonce(),
+            service: `Web3 On-Ramp (${userWallet.provider})`,
+            proof: `Tx: ${signature.slice(0, 8)}...${signature.slice(-8)}`,
+            amount: `+${added.toFixed(4)} USDT`,
+            latency: "410ms",
+            isPositive: true,
+            txSig: signature
           });
+
+          if (typeof showToast === 'function') {
+            showToast({
+              title: isVi ? 'Nạp Web3 Thành Công' : 'Web3 Deposit Confirmed',
+              message: `Tx: ${signature.slice(0, 6)}...${signature.slice(-6)} on Solana Devnet`,
+              icon: 'check-circle'
+            });
+          }
+
+          alert(isVi 
+            ? `🎉 Nạp Tiền Web3 Thành Công!\n\nGiao dịch đã được xác nhận bất biến trên mạng Solana Devnet.\nTxHash: ${signature}\nNgười nạp: ${payerPubkey.toString()}\nKho bạc nhận: ${treasuryAddress}\n\nSố dư Master Vault mới: $${balance.toFixed(4)} USDT`
+            : `🎉 Web3 Deposit Confirmed On-Chain!\n\nTransaction finalized on Solana Devnet.\nTxHash: ${signature}\nPayer: ${payerPubkey.toString()}\nTreasury: ${treasuryAddress}\n\nNew Master Vault Balance: $${balance.toFixed(4)} USDT`);
+        } catch (txErr) {
+          console.warn("On-chain Web3 deposit error:", txErr);
+          const errMsg = txErr.message || String(txErr);
+          if (errMsg.includes('User rejected') || errMsg.includes('rejected') || errMsg.includes('canceled') || errMsg.includes('User denied')) {
+            alert(isVi ? "Giao dịch đã hủy: Bạn đã từ chối duyệt giao dịch trên ví." : "Deposit Canceled: You rejected the transaction in your wallet.");
+          } else {
+            alert(isVi ? `Giao dịch thất bại trên Solana Devnet: ${errMsg}` : `Solana Devnet transaction failed: ${errMsg}`);
+          }
+        } finally {
+          dashConfirmDepositBtn.disabled = false;
+          dashConfirmDepositBtn.textContent = origText;
         }
         return;
       }
