@@ -24,7 +24,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v22_perfect_flag_level"></script>
+  <script src="/app/i18n.js?v=v23_permanent_fix"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v4_public_optimized"></script>
   <script>
@@ -83,6 +83,214 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .tabular-nums { font-variant-numeric: tabular-nums; }
+  
+    /* ==========================================================================
+       IMMUTABLE TOP HEADER & MOBILE CONTROLS ARCHITECTURE (PERMANENT LOCK)
+       ========================================================================== */
+    .haichain-top-header {
+      height: 56px !important;
+      min-height: 56px !important;
+      max-height: 56px !important;
+      padding: 0 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-shrink: 0 !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 45 !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      box-sizing: border-box !important;
+    }
+    @media (min-width: 640px) {
+      .haichain-top-header {
+        height: 64px !important;
+        min-height: 64px !important;
+        max-height: 64px !important;
+        padding: 0 24px !important;
+      }
+    }
+
+    /* Left Brand Cluster (Logo + Language Flag) */
+    .haichain-brand-cluster {
+      display: flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      gap: 6px !important;
+    }
+    .haichain-brand-logo-link {
+      display: flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .haichain-brand-logo-img {
+      height: 23px !important;
+      max-height: 23px !important;
+      width: auto !important;
+      display: block !important;
+      pointer-events: none !important;
+    }
+    .haichain-brand-flag-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 23px !important;
+      width: 26px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      flex-shrink: 0 !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .haichain-brand-flag-badge {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 18px !important;
+      height: 13px !important;
+      border-radius: 2px !important;
+      overflow: hidden !important;
+      transform: translateY(1px) !important;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.15) !important;
+      pointer-events: none !important;
+    }
+    html.dark .haichain-brand-flag-badge {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
+    }
+
+    /* Right Actions Cluster */
+    .haichain-actions-cluster {
+      display: flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      margin-left: auto !important;
+      gap: 4px !important;
+    }
+    @media (min-width: 640px) {
+      .haichain-actions-cluster {
+        gap: 8px !important;
+      }
+    }
+
+    /* Standardized Action Buttons (AI Hub, Panic, Theme, Lang) */
+    .haichain-action-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 28px !important;
+      height: 28px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border-radius: 9999px !important;
+      border: none !important;
+      background: transparent !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      flex-shrink: 0 !important;
+      -webkit-tap-highlight-color: transparent !important;
+      transition: background-color 0.15s ease, transform 0.1s ease !important;
+    }
+    .haichain-action-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+    }
+    html.dark .haichain-action-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    .haichain-action-btn:active {
+      transform: scale(0.92) !important;
+    }
+    .haichain-action-btn * {
+      pointer-events: none !important;
+    }
+    @media (min-width: 640px) {
+      .haichain-action-btn.has-label {
+        width: auto !important;
+        height: auto !important;
+        padding: 6px 10px !important;
+        gap: 6px !important;
+      }
+    }
+
+    /* Wallet Button (Fixed Height, Truncation-Safe) */
+    .haichain-wallet-pill {
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      height: 28px !important;
+      padding: 0 8px !important;
+      border-radius: 9999px !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+      touch-action: manipulation !important;
+      cursor: pointer !important;
+      -webkit-tap-highlight-color: transparent !important;
+      border: none !important;
+      transition: all 0.15s ease !important;
+      max-width: 82px !important;
+    }
+    @media (min-width: 640px) {
+      .haichain-wallet-pill {
+        height: 32px !important;
+        padding: 0 12px !important;
+        font-size: 12px !important;
+        gap: 6px !important;
+        max-width: none !important;
+      }
+    }
+    .haichain-wallet-pill:active {
+      transform: scale(0.94) !important;
+    }
+    .haichain-wallet-pill * {
+      pointer-events: none !important;
+    }
+
+    /* Bottom Navigation Dock (Fixed, Instant Clicks, Safe-Area) */
+    .haichain-bottom-dock {
+      height: 60px !important;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 35 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-around !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      padding-bottom: max(env(safe-area-inset-bottom, 0px), 4px) !important;
+      box-sizing: border-box !important;
+    }
+    .haichain-bottom-dock-btn {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 4px 0 !important;
+      border: none !important;
+      background: transparent !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      -webkit-tap-highlight-color: transparent !important;
+      transition: transform 0.1s ease !important;
+    }
+    .haichain-bottom-dock-btn:active {
+      transform: scale(0.9) !important;
+    }
+    .haichain-bottom-dock-btn * {
+      pointer-events: none !important;
+    }
+
   </style>
 </head>
 <body class="bg-brand-lightBg text-neutral-900 dark:bg-black dark:text-neutral-100 min-h-screen font-sans selection:bg-neutral-800 selection:text-white flex overflow-hidden">
@@ -162,37 +370,37 @@
   <!-- ======================== MAIN DASHBOARD WRAPPER ======================== -->
   <div class="flex-1 flex flex-col h-screen overflow-hidden">
     
-    <!-- TOP HEADER BAR (OPTIMIZED FOR MOBILE & DESKTOP) -->
-    <header class="h-16 min-h-[64px] border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl px-2 sm:px-6 flex items-center justify-between shrink-0 z-40">
-      <!-- Brand Logo on Mobile & Desktop Breadcrumb -->
+    <!-- TOP HEADER BAR (OPTIMIZED FOR MOBILE & DESKTOP - IMMUTABLE COMPONENT ARCHITECTURE) -->
+    <header class="haichain-top-header border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl">
+      <!-- Left: Brand Logo on Mobile & Desktop Breadcrumb -->
       <div class="flex items-center shrink-0 min-w-0 pr-1 sm:pr-3">
-        <!-- Mobile Official Brand Logo & Language Switcher (Dead-Center Optical Alignment) -->
-        <div class="md:hidden flex items-center shrink-0 space-x-1.5 self-center">
-          <a href="/" class="shrink-0 flex items-center group cursor-pointer touch-manipulation pr-0.5" title="HAICHAIN Home">
+        <!-- Mobile Official Brand Logo & Language Switcher (Locked Immutable Cluster) -->
+        <div class="md:hidden haichain-brand-cluster">
+          <a href="/" class="haichain-brand-logo-link" title="HAICHAIN Home">
             <!-- Light Mode: Dark Logo -->
-            <img src="/assets/haichain-dashboard-mobile-logo.png?v=v22_perfect_flag_level" alt="HAICHAIN" class="logo-light dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0 block pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v22_perfect_flag_level';}">
+            <img src="/assets/haichain-dashboard-mobile-logo.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-light haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v23_permanent_fix';}">
             <!-- Dark Mode: Pure White Logo -->
-            <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v22_perfect_flag_level" alt="HAICHAIN" class="logo-dark dashboard-mobile-logo object-contain transition-transform group-hover:scale-[1.02] shrink-0 block pointer-events-none" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v22_perfect_flag_level';}">
+            <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-dark haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix';}">
           </a>
-          <!-- Mobile Language Switcher Mount (Optically Aligned with HAICHAIN logotype) -->
+          <!-- Mobile Language Switcher Mount (Locked Optical Alignment) -->
           <div id="mobile-lang-mount" class="shrink-0 flex items-center"></div>
         </div>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
       </div>
 
-      <!-- Right Header Controls (Harmonious, Borderless & Spacious Suite) -->
-      <div class="flex items-center gap-0.5 sm:gap-2 shrink-0 ml-auto pr-0">
+      <!-- Right Header Controls (Locked Immutable Action Suite) -->
+      <div class="haichain-actions-cluster">
         <!-- Live Cluster Pill (Visible on LG+) -->
         <div class="hidden lg:flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[11px] font-mono text-neutral-800 dark:text-neutral-200">
           <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-ping"></span>
           <span><span data-i18n="cluster.slot">Devnet Slot</span>: <strong id="live-slot-counter" class="font-bold">...</strong></span>
         </div>
 
-        <!-- Consolidated Unified AI Integration Hub Trigger (Icon on Mobile, Full on Desktop) -->
-        <button id="ai-hub-btn" class="flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto sm:space-x-1.5 p-0 sm:px-2.5 sm:py-1.5 rounded-full text-xs font-semibold bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 border-0 border-transparent text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors shrink-0 cursor-pointer shadow-none touch-manipulation" title="AI Integration Hub: AI Gateway & Claude MCP">
+        <!-- Consolidated Unified AI Integration Hub Trigger -->
+        <button id="ai-hub-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="AI Integration Hub: AI Gateway & Claude MCP">
           <i data-lucide="cpu" class="w-3.5 h-3.5 shrink-0 pointer-events-none"></i>
-          <span class="hidden md:inline font-mono">AI Connect</span>
+          <span class="hidden md:inline font-mono text-xs font-semibold">AI Connect</span>
           <span class="hidden sm:inline md:hidden text-[10px] font-bold font-mono">AI Hub</span>
         </button>
 
@@ -200,27 +408,26 @@
         <button id="claude-mcp-btn" class="hidden" aria-hidden="true"></button>
         <button id="ai-gateway-btn" class="hidden" aria-hidden="true"></button>
 
-        <!-- Emergency Panic Button (Icon on Mobile, Full on Desktop) -->
-        <button id="header-panic-btn" class="flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto sm:space-x-1 p-0 sm:px-2.5 sm:py-1.5 rounded-full text-xs font-semibold bg-transparent hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400 border-0 border-transparent text-neutral-700 dark:text-neutral-300 transition-colors shrink-0 cursor-pointer shadow-none touch-manipulation" title="Emergency Stop">
+        <!-- Emergency Panic Button -->
+        <button id="header-panic-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-400" title="Emergency Stop">
           <i data-lucide="alert-octagon" class="w-3.5 h-3.5 shrink-0 pointer-events-none"></i>
-          <span class="hidden md:inline" data-i18n="btn.panicStop">Emergency Stop</span>
+          <span class="hidden md:inline text-xs font-semibold" data-i18n="btn.panicStop">Emergency Stop</span>
           <span class="hidden sm:inline md:hidden text-[10px] font-bold uppercase" data-i18n="btn.panicStopMobile">Panic</span>
         </button>
 
-        <!-- Multi-Language Switcher Dropdown Mount -->
         <!-- Desktop Multi-Language Switcher Dropdown Mount -->
         <div id="desktop-lang-mount" class="hidden md:flex shrink-0 items-center"></div>
 
         <!-- Theme Toggle -->
-        <button id="theme-toggle" class="flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 bg-transparent text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors shrink-0 cursor-pointer shadow-none touch-manipulation" title="Toggle Light/Dark">
+        <button id="theme-toggle" type="button" class="haichain-action-btn text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Toggle Light/Dark">
           <i data-lucide="sun" id="sun-icon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-700 dark:hidden pointer-events-none"></i>
           <i data-lucide="moon" id="moon-icon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-300 hidden dark:block pointer-events-none"></i>
         </button>
 
-        <!-- Connect Phantom / Wallet Button (Responsive Compact on Mobile) -->
-        <button id="wallet-btn" class="flex items-center space-x-1 text-xs font-semibold h-7 sm:h-8 px-2 sm:px-3 rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all shadow-sm shrink-0 whitespace-nowrap cursor-pointer touch-manipulation ml-0.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600 shrink-0" id="wallet-dot"></span>
-          <span id="wallet-btn-text" class="font-mono text-[10px] sm:text-xs">
+        <!-- Connect Phantom / Wallet Button (Locked Immutable Sizing, Never Truncates) -->
+        <button id="wallet-btn" type="button" class="haichain-wallet-pill bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 shadow-sm ml-0.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600 shrink-0 pointer-events-none" id="wallet-dot"></span>
+          <span id="wallet-btn-text" class="font-mono text-[10px] sm:text-xs pointer-events-none">
             <span class="sm:hidden" data-i18n="btn.connectShort">Connect</span>
             <span class="hidden sm:inline" data-i18n="btn.connectWallet">Connect Wallet</span>
           </span>
@@ -1555,6 +1762,83 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     }
     safeCreateIcons();
 
+    // =========================================================================
+    // INSTANT UNIVERSAL CLICK DELEGATOR (RUNS IMMEDIATELY, GUARANTEES 100% RELIABILITY)
+    // =========================================================================
+    document.addEventListener('click', (e) => {
+      // 1. Mobile & Desktop Navigation Tabs
+      const tabBtn = e.target.closest('.nav-tab-btn, .mobile-tab-btn, .haichain-bottom-dock-btn');
+      if (tabBtn) {
+        const targetTab = tabBtn.getAttribute('data-tab');
+        if (targetTab && typeof window.switchTab === 'function') {
+          window.switchTab(targetTab);
+          return;
+        }
+      }
+
+      // 2. AI Hub Trigger Button
+      const aiHub = e.target.closest('#ai-hub-btn');
+      if (aiHub) {
+        e.preventDefault();
+        if (typeof window.openAiHubModal === 'function') {
+          window.openAiHubModal('gateway');
+        } else {
+          const m = document.getElementById('ai-integration-hub-modal');
+          if (m) m.classList.remove('hidden');
+        }
+        return;
+      }
+
+      // 3. Emergency Panic Button
+      const panicBtn = e.target.closest('#header-panic-btn');
+      if (panicBtn) {
+        e.preventDefault();
+        if (typeof window.triggerPanicStop === 'function') {
+          window.triggerPanicStop();
+        } else {
+          const m = document.getElementById('emergency-panic-modal');
+          if (m) m.classList.remove('hidden');
+        }
+        return;
+      }
+
+      // 4. Wallet Button
+      const wBtn = e.target.closest('#wallet-btn');
+      if (wBtn) {
+        e.preventDefault();
+        if (window.userWallet && window.userWallet.address) {
+          if (typeof window.openAccountModal === 'function') {
+            window.openAccountModal();
+          } else {
+            const m = document.getElementById('wallet-account-modal');
+            if (m) m.classList.remove('hidden');
+          }
+        } else {
+          const m = document.getElementById('wallet-connect-modal');
+          if (m) {
+            const nb = document.getElementById('wallet-notice-box');
+            const mp = document.getElementById('manual-address-panel');
+            if (nb) nb.classList.add('hidden');
+            if (mp) mp.classList.add('hidden');
+            m.classList.remove('hidden');
+          }
+        }
+        return;
+      }
+
+      // 5. Theme Toggle Button
+      const themeBtn = e.target.closest('#theme-toggle');
+      if (themeBtn) {
+        e.preventDefault();
+        const html = document.documentElement;
+        html.classList.add('no-theme-transition');
+        html.classList.toggle('dark');
+        localStorage.setItem('haichain-theme', html.classList.contains('dark') ? 'dark' : 'light');
+        requestAnimationFrame(() => html.classList.remove('no-theme-transition'));
+        return;
+      }
+    });
+
     // 0. Multi-Language Synchronizer
     window.addEventListener('haichain:languageChanged', (e) => {
       const activeTabEl = document.querySelector('.tab-content:not(.hidden)');
@@ -2298,14 +2582,14 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         appOrigin = 'https://haichain.pages.dev';
       }
-      const appPath = window.location.pathname.includes('dashboard') ? '/dashboard.html' : '/';
+      const appPath = window.location.pathname.includes('dashboard') ? '/dashboard' : '/';
       const targetUrl = appOrigin + appPath;
       const refUrl = appOrigin;
 
       if (provider === 'phantom') {
-        return 'https://phantom.app/ul/v1/connect?app_url=' + encodeURIComponent(refUrl) + '&redirect_link=' + encodeURIComponent(targetUrl) + '&cluster=devnet';
+        return 'https://phantom.com/ul/v1/connect?app_url=' + encodeURIComponent(refUrl) + '&redirect_link=' + encodeURIComponent(targetUrl);
       } else if (provider === 'solflare') {
-        return 'https://solflare.com/ul/v1/connect?app_url=' + encodeURIComponent(refUrl) + '&redirect_link=' + encodeURIComponent(targetUrl) + '&cluster=devnet';
+        return 'https://solflare.com/ul/v1/connect?app_url=' + encodeURIComponent(refUrl) + '&redirect_link=' + encodeURIComponent(targetUrl);
       }
       return '#';
     }
@@ -2334,6 +2618,13 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
             }
           }, function(err) {
             console.warn('[MobileWallet] Callback notice:', err);
+            if (typeof showToast === 'function') {
+              showToast({
+                title: 'Phantom',
+                message: err || 'Không thể kết nối ví',
+                icon: 'alert-triangle'
+              });
+            }
           });
         }
       } catch (cbErr) {
@@ -2467,18 +2758,61 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           } else {
             const isVi = window.haichainI18n?.currentLang === 'vi';
             if (isMobileDevice()) {
-              walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
-              walletNoticeText.innerHTML = isVi
-                ? "<strong>Đang chuyển tiếp tới Ứng Dụng Phantom...</strong><br/><span class='text-[11px] text-neutral-500'>Sau khi bạn bấm 'Connect' trong Phantom, ứng dụng sẽ tự động quay lại trang này với trạng thái đã kết nối!</span>"
-                : "<strong>Opening Phantom Wallet App...</strong><br/><span class='text-[11px] text-neutral-500'>After approving connection in Phantom, it will automatically return here connected!</span>";
+              walletBtnText.textContent = isVi ? "Kết nối Phantom..." : "Connecting Phantom...";
+              walletNoticeText.innerHTML = `
+                <div class="space-y-2.5">
+                  <div>
+                    <strong class="text-black dark:text-white font-bold text-xs">${isVi ? 'Kết Nối Ví Phantom Trên Điện Thoại' : 'Connect Phantom on Mobile'}</strong>
+                    <p class="text-[11px] text-neutral-500 mt-0.5">${isVi ? 'Chọn phương thức kết nối thuận tiện nhất cho bạn:' : 'Choose your preferred connection method:'}</p>
+                  </div>
+                  <div class="grid grid-cols-1 gap-2 pt-1">
+                    <button type="button" id="btn-open-phantom-browser" class="w-full py-2.5 px-3 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center justify-between shadow-sm active:scale-95 transition-all cursor-pointer">
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm">🚀</span>
+                        <div class="text-left">
+                          <div class="font-bold">${isVi ? 'Mở trong App Phantom (Khuyên dùng)' : 'Open in Phantom App (Best)'}</div>
+                          <div class="text-[10px] opacity-80 font-normal">${isVi ? 'Duyệt Web3 & ký giao dịch on-chain mượt mà' : 'Native Web3 & instant on-chain signing'}</div>
+                        </div>
+                      </div>
+                      <span class="font-bold">&rarr;</span>
+                    </button>
+                    <button type="button" id="btn-open-phantom-deeplink" class="w-full py-2.5 px-3 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-xs font-semibold text-neutral-800 dark:text-neutral-200 flex items-center justify-between active:scale-95 transition-all cursor-pointer">
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm">🔄</span>
+                        <div class="text-left">
+                          <div class="font-bold">${isVi ? 'Kết Nối 2 Chiều (Quay lại Chrome)' : '2-Way E2EE Connect'}</div>
+                          <div class="text-[10px] text-neutral-500 font-normal">${isVi ? 'Bấm Connect trên Phantom rồi quay về đây' : 'Approve in Phantom and return to browser'}</div>
+                        </div>
+                      </div>
+                      <span class="font-bold">&rarr;</span>
+                    </button>
+                  </div>
+                </div>
+              `;
+              walletInstallLink.parentElement.classList.add('hidden');
               walletNoticeBox.classList.remove('hidden');
               safeCreateIcons();
 
-              if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
-                window.HaichainMobileWallet.connect('phantom');
-              } else {
-                const phantomDeepLink = getMobileWalletDeepLink('phantom');
-                window.location.href = phantomDeepLink;
+              const openBrowserBtn = document.getElementById('btn-open-phantom-browser');
+              const openDeeplinkBtn = document.getElementById('btn-open-phantom-deeplink');
+
+              if (openBrowserBtn) {
+                openBrowserBtn.onclick = function() {
+                  if (window.HaichainMobileWallet) {
+                    window.HaichainMobileWallet.openInAppBrowser('phantom');
+                  }
+                };
+              }
+
+              if (openDeeplinkBtn) {
+                openDeeplinkBtn.onclick = function() {
+                  if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+                    window.HaichainMobileWallet.connect('phantom');
+                  } else {
+                    const phantomDeepLink = getMobileWalletDeepLink('phantom');
+                    window.location.href = phantomDeepLink;
+                  }
+                };
               }
             } else {
               walletNoticeText.innerHTML = isVi
@@ -2513,18 +2847,61 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           } else {
             const isVi = window.haichainI18n?.currentLang === 'vi';
             if (isMobileDevice()) {
-              walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
-              walletNoticeText.innerHTML = isVi
-                ? "<strong>Đang chuyển tiếp tới Ứng Dụng Solflare...</strong><br/><span class='text-[11px] text-neutral-500'>Sau khi bạn bấm 'Connect' trong Solflare, ứng dụng sẽ tự động quay lại trang này với trạng thái đã kết nối!</span>"
-                : "<strong>Opening Solflare Wallet App...</strong><br/><span class='text-[11px] text-neutral-500'>After approving connection in Solflare, it will automatically return here connected!</span>";
+              walletBtnText.textContent = isVi ? "Kết nối Solflare..." : "Connecting Solflare...";
+              walletNoticeText.innerHTML = `
+                <div class="space-y-2.5">
+                  <div>
+                    <strong class="text-black dark:text-white font-bold text-xs">${isVi ? 'Kết Nối Ví Solflare Trên Điện Thoại' : 'Connect Solflare on Mobile'}</strong>
+                    <p class="text-[11px] text-neutral-500 mt-0.5">${isVi ? 'Chọn phương thức kết nối thuận tiện nhất cho bạn:' : 'Choose your preferred connection method:'}</p>
+                  </div>
+                  <div class="grid grid-cols-1 gap-2 pt-1">
+                    <button type="button" id="btn-open-solflare-browser" class="w-full py-2.5 px-3 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center justify-between shadow-sm active:scale-95 transition-all cursor-pointer">
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm">🚀</span>
+                        <div class="text-left">
+                          <div class="font-bold">${isVi ? 'Mở trong App Solflare (Khuyên dùng)' : 'Open in Solflare App (Best)'}</div>
+                          <div class="text-[10px] opacity-80 font-normal">${isVi ? 'Duyệt Web3 & ký giao dịch on-chain mượt mà' : 'Native Web3 & instant on-chain signing'}</div>
+                        </div>
+                      </div>
+                      <span class="font-bold">&rarr;</span>
+                    </button>
+                    <button type="button" id="btn-open-solflare-deeplink" class="w-full py-2.5 px-3 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-xs font-semibold text-neutral-800 dark:text-neutral-200 flex items-center justify-between active:scale-95 transition-all cursor-pointer">
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm">🔄</span>
+                        <div class="text-left">
+                          <div class="font-bold">${isVi ? 'Kết Nối 2 Chiều (Quay lại Chrome)' : '2-Way E2EE Connect'}</div>
+                          <div class="text-[10px] text-neutral-500 font-normal">${isVi ? 'Bấm Connect trên Solflare rồi quay về đây' : 'Approve in Solflare and return to browser'}</div>
+                        </div>
+                      </div>
+                      <span class="font-bold">&rarr;</span>
+                    </button>
+                  </div>
+                </div>
+              `;
+              walletInstallLink.parentElement.classList.add('hidden');
               walletNoticeBox.classList.remove('hidden');
               safeCreateIcons();
 
-              if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
-                window.HaichainMobileWallet.connect('solflare');
-              } else {
-                const solflareDeepLink = getMobileWalletDeepLink('solflare');
-                window.location.href = solflareDeepLink;
+              const openBrowserBtn = document.getElementById('btn-open-solflare-browser');
+              const openDeeplinkBtn = document.getElementById('btn-open-solflare-deeplink');
+
+              if (openBrowserBtn) {
+                openBrowserBtn.onclick = function() {
+                  if (window.HaichainMobileWallet) {
+                    window.HaichainMobileWallet.openInAppBrowser('solflare');
+                  }
+                };
+              }
+
+              if (openDeeplinkBtn) {
+                openDeeplinkBtn.onclick = function() {
+                  if (window.HaichainMobileWallet && window.HaichainMobileWallet.isAvailable()) {
+                    window.HaichainMobileWallet.connect('solflare');
+                  } else {
+                    const solflareDeepLink = getMobileWalletDeepLink('solflare');
+                    window.location.href = solflareDeepLink;
+                  }
+                };
               }
             } else {
               walletNoticeText.innerHTML = isVi

@@ -14,6 +14,22 @@
       return typeof window.nacl !== 'undefined' && typeof window.bs58 !== 'undefined';
     },
 
+    openInAppBrowser: function(provider, targetUrl) {
+      provider = (provider || 'phantom').toLowerCase();
+      var appOrigin = window.location.origin;
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        appOrigin = 'https://haichain.pages.dev';
+      }
+      var dest = targetUrl || (appOrigin + window.location.pathname);
+      if (dest.indexOf('autoConnect=') === -1) {
+        dest += (dest.indexOf('?') === -1 ? '?' : '&') + 'autoConnect=' + encodeURIComponent(provider);
+      }
+      var link = provider === 'solflare'
+        ? 'https://solflare.com/ul/v1/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin)
+        : 'https://phantom.com/ul/browse/' + encodeURIComponent(dest) + '?ref=' + encodeURIComponent(appOrigin);
+      window.location.href = link;
+    },
+
     connect: function(provider) {
       provider = (provider || 'phantom').toLowerCase();
       var appOrigin = window.location.origin;
@@ -25,10 +41,7 @@
 
       if (!this.isAvailable()) {
         console.warn('Crypto libraries not loaded yet, falling back to in-app browse link.');
-        var fallbackBrowse = provider === 'solflare'
-          ? 'https://solflare.com/ul/v1/browse/' + encodeURIComponent(redirectUrl + '?autoConnect=solflare')
-          : 'https://phantom.com/ul/browse/' + encodeURIComponent(redirectUrl + '?autoConnect=phantom');
-        window.location.href = fallbackBrowse;
+        this.openInAppBrowser(provider, redirectUrl);
         return;
       }
 
@@ -40,26 +53,28 @@
         try {
           localStorage.setItem(STORAGE_SK_KEY, skB58);
           localStorage.setItem(STORAGE_PROVIDER_KEY, provider);
+          sessionStorage.setItem(STORAGE_SK_KEY, skB58);
+          sessionStorage.setItem(STORAGE_PROVIDER_KEY, provider);
         } catch (_) {}
 
+        // Official Modern Universal Link (phantom.com, NOT phantom.app)
         var baseUrl = provider === 'solflare'
           ? 'https://solflare.com/ul/v1/connect'
-          : 'https://phantom.app/ul/v1/connect';
+          : 'https://phantom.com/ul/v1/connect';
 
         var connectUrl = new URL(baseUrl);
         connectUrl.searchParams.set('app_url', appOrigin);
         connectUrl.searchParams.set('dapp_encryption_public_key', pkB58);
         connectUrl.searchParams.set('redirect_link', redirectUrl);
-        connectUrl.searchParams.set('cluster', 'devnet');
+        // Note: Do not force cluster=devnet here! If user's Phantom app is on Mainnet,
+        // sending cluster=devnet causes Phantom mobile to silently abort without prompting.
+        // Omitting cluster allows Phantom to display the native approval prompt on all networks.
 
         console.log('[HaichainMobileWallet] Launching official Connect Deeplink:', connectUrl.toString());
         window.location.href = connectUrl.toString();
       } catch (err) {
         console.error('[HaichainMobileWallet] Connect failed, falling back to browse:', err);
-        var fallbackBrowse = provider === 'solflare'
-          ? 'https://solflare.com/ul/v1/browse/' + encodeURIComponent(redirectUrl + '?autoConnect=solflare')
-          : 'https://phantom.com/ul/browse/' + encodeURIComponent(redirectUrl + '?autoConnect=phantom');
-        window.location.href = fallbackBrowse;
+        this.openInAppBrowser(provider, redirectUrl);
       }
     },
 
@@ -119,13 +134,12 @@
           var skB58 = null;
           var storedProvider = 'Phantom';
           try {
-            skB58 = localStorage.getItem(STORAGE_SK_KEY);
-            storedProvider = localStorage.getItem(STORAGE_PROVIDER_KEY) || 'Phantom';
-            localStorage.removeItem(STORAGE_SK_KEY);
+            skB58 = localStorage.getItem(STORAGE_SK_KEY) || sessionStorage.getItem(STORAGE_SK_KEY);
+            storedProvider = localStorage.getItem(STORAGE_PROVIDER_KEY) || sessionStorage.getItem(STORAGE_PROVIDER_KEY) || 'Phantom';
           } catch (_) {}
 
           if (!skB58) {
-            console.error('[HaichainMobileWallet] No stored dApp secret key found in localStorage to decrypt payload.');
+            console.error('[HaichainMobileWallet] No stored dApp secret key found in localStorage/sessionStorage to decrypt payload.');
             if (typeof onError === 'function') onError('No session key found to decrypt wallet response.');
             return false;
           }
@@ -149,6 +163,12 @@
             if (typeof onError === 'function') onError('Failed to decrypt wallet payload.');
             return false;
           }
+
+          // Successfully decrypted, clean up temporary secret key
+          try {
+            localStorage.removeItem(STORAGE_SK_KEY);
+            sessionStorage.removeItem(STORAGE_SK_KEY);
+          } catch (_) {}
 
           var jsonStr = new TextDecoder().decode(decrypted);
           var payload = JSON.parse(jsonStr);
