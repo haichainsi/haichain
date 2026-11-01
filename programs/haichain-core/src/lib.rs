@@ -21,6 +21,8 @@ use anchor_spl::token::{self, Token, TokenAccount, Transfer};
 declare_id!("DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk");
 
 pub const FLASH_LOAN_QUARANTINE_SLOTS: u64 = 2;
+pub const MIN_QUARANTINE_TRIGGER_DEPOSIT: u64 = 1_000_000; // 1.00 USDT minimum deposit to reset quarantine barrier (Anti-Griefing DoS)
+pub const ROOT_ROTATION_GRACE_SLOTS: u64 = 150; // ~60 seconds sliding window for in-flight capability tickets
 pub const MAX_SAFE_MICRO_TICK_PAYMENT: u64 = 50_000_000; // 50.00 USDT max per single micro-tick (6 decimals)
 
 /// Official Solana Mainnet Tether USD SPL Token Mint
@@ -59,11 +61,13 @@ pub mod haichain_core {
         vault.confirmed_balance = 0;
         vault.last_deposit_slot = Clock::get()?.slot;
         vault.composite_root = composite_root;
+        vault.previous_composite_root = [0u8; 32];
+        vault.root_rotation_slot = 0;
         vault.panic_kill_switch_tripped = false;
         vault.bump = ctx.bumps.agent_vault;
         vault.min_valid_nonce = 0;
 
-        msg!("HAICHAIN v6.9.4: Agent Vault initialized for owner: {}", vault.master_owner);
+        msg!("HAICHAIN v6.9.5: Agent Vault initialized for owner: {}", vault.master_owner);
         Ok(())
     }
 
@@ -88,13 +92,19 @@ pub mod haichain_core {
             amount,
         )?;
 
-        // MANGO MARKETS DEFENSE: Update last deposit slot to enforce multi-slot quarantine barrier
-        vault.last_deposit_slot = Clock::get()?.slot;
+        // ANTI-GRIEFING MANGO DEFENSE ($3.60/HOUR PERPETUAL DOS FIX):
+        // Only meaningful deposits (>= 1.00 USDT) reset the multi-slot quarantine barrier.
+        // Dust deposits (< 1.00 USDT) cannot execute economic oracle flash loan manipulation,
+        // so they do NOT trigger quarantine, completely defeating micro-cent DoS griefing!
+        if amount >= MIN_QUARANTINE_TRIGGER_DEPOSIT {
+            vault.last_deposit_slot = Clock::get()?.slot;
+        }
+
         vault.confirmed_balance = vault.confirmed_balance.checked_add(amount)
             .ok_or(HaiChainMasterError::MathOverflow)?;
 
-        msg!("HAICHAIN v6.9.1: Deposited {} USDT micro-units by {}. Quarantine active until slot {}", 
-             amount, ctx.accounts.depositor.key(), vault.last_deposit_slot + FLASH_LOAN_QUARANTINE_SLOTS);
+        msg!("HAICHAIN v6.9.5: Deposited {} USDT micro-units by {}. Active deposit slot {}", 
+             amount, ctx.accounts.depositor.key(), vault.last_deposit_slot);
         Ok(())
     }
 
@@ -153,7 +163,15 @@ pub mod haichain_core {
                 computed_hash = anchor_lang::solana_program::keccak::hashv(&[proof_element, &computed_hash]).0;
             }
         }
-        require!(computed_hash == vault.composite_root, HaiChainMasterError::InvalidCapabilityProof);
+        
+        // SLIDING WINDOW MERKLE ROOT VALIDATION:
+        // Accept proof if matching current composite_root OR previous_composite_root within ROOT_ROTATION_GRACE_SLOTS
+        let is_current_root_valid = computed_hash == vault.composite_root;
+        let is_previous_root_valid = vault.previous_composite_root != [0u8; 32]
+            && computed_hash == vault.previous_composite_root
+            && current_slot <= vault.root_rotation_slot + ROOT_ROTATION_GRACE_SLOTS;
+
+        require!(is_current_root_valid || is_previous_root_valid, HaiChainMasterError::InvalidCapabilityProof);
 
         // Record Nullifier state (Double-Spend Replay Defense + Expiry tracking for Rent Reclamation)
         let nullifier = &mut ctx.accounts.nullifier_record;
@@ -306,8 +324,13 @@ pub mod haichain_core {
         let vault = &mut ctx.accounts.agent_vault;
         require!(!vault.panic_kill_switch_tripped, HaiChainMasterError::VaultUnderPanicState);
 
+        // SLIDING WINDOW MERKLE ROTATION:
+        // Rotate current active root to previous_composite_root and record current slot
+        vault.previous_composite_root = vault.composite_root;
         vault.composite_root = new_composite_root;
-        msg!("HAICHAIN: Master owner updated composite root successfully.");
+        vault.root_rotation_slot = Clock::get()?.slot;
+
+        msg!("HAICHAIN: Master owner updated composite root. Active grace window set for previous root.");
         Ok(())
     }
 }
@@ -322,7 +345,7 @@ pub struct InitializeVaultContext<'info> {
     #[account(
         init,
         payer = master_owner,
-        space = 8 + 32 + 32 + 32 + 8 + 8 + 32 + 1 + 1 + 8,
+        space = 8 + 32 + 32 + 32 + 8 + 8 + 32 + 1 + 1 + 8 + 32 + 8,
         seeds = [b"agent-vault", master_owner.key().as_ref()],
         bump
     )]
@@ -506,6 +529,8 @@ pub struct MasterAgentVault {
     pub panic_kill_switch_tripped: bool,// 1 byte
     pub bump: u8,                      // 1 byte
     pub min_valid_nonce: u64,          // 8 bytes (Anti-Nonce-Recycle Invariant)
+    pub previous_composite_root: [u8; 32], // 32 bytes (Sliding Window Rotation Invariant)
+    pub root_rotation_slot: u64,       // 8 bytes (Slot when rotation occurred)
 }
 
 #[account]

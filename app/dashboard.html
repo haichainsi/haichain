@@ -602,7 +602,7 @@
               </button>
             </div>
 
-            <!-- Quick Demo Prompts -->
+            <!-- Production Task Templates -->
             <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono">
               <span class="text-neutral-400 dark:text-neutral-500 text-[10px] uppercase tracking-wider font-sans font-semibold">Quick Demos:</span>
               <button type="button" class="preset-prompt-btn px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all" data-prompt="Explain how HAICHAIN protects AI agents from prompt injection wallet drain" data-model="Claude 3.5 Sonnet">
@@ -638,7 +638,7 @@
                 <div class="text-neutral-400">[Master Vault PDA] FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F (Authority: HD1b...5nVW)</div>
                 <div class="text-neutral-200 flex items-center space-x-2 pt-1 font-semibold">
                   <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-ping"></span>
-                  <span>[Ready] Choose an AI engine or quick demo preset and click "Execute & Settle On-Chain" to broadcast live micro-escrow.</span>
+                  <span>[Ready] Choose an AI engine or task template and click "Execute & Settle On-Chain" to broadcast live micro-escrow.</span>
                 </div>
               </div>
             </div>
@@ -1397,25 +1397,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           <span class="text-xs font-mono text-neutral-400">&rarr;</span>
         </button>
 
-        <!-- Divider -->
-        <div class="relative py-2 flex items-center justify-center">
-          <div class="border-t border-neutral-200 dark:border-neutral-800 w-full"></div>
-          <span class="bg-white dark:bg-brand-card px-2 text-[10px] uppercase font-mono text-neutral-400 absolute" data-i18n="modal.walletInvestorNotice">DEDICATED FOR INVESTORS & TRIAL</span>
-        </div>
-
-        <!-- 4. Official Devnet Demo Account (Funded with 2.5 SOL) -->
-        <button class="wallet-provider-btn w-full p-4 rounded-2xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white flex items-center justify-between transition-all bg-neutral-100 dark:bg-neutral-900 text-left" data-provider="demo">
-          <div class="flex items-center space-x-3.5">
-            <div class="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white">
-              <i data-lucide="sparkles" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <div class="font-semibold text-sm text-black dark:text-white" data-i18n="modal.walletDemo">Devnet Demo Wallet (Pre-funded 2.500 SOL)</div>
-              <div class="text-[11px] text-neutral-500" data-i18n="modal.walletDemoDesc">Experience immediately without installing extensions</div>
-            </div>
-          </div>
-          <span class="text-xs font-mono text-black dark:text-white font-bold">&rarr;</span>
-        </button>
+        
       </div>
 
       <!-- Manual Address Input Panel (Initially Hidden) -->
@@ -2341,7 +2323,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
               walletInstallLink.parentElement.classList.add('hidden');
             }
           } else {
-            walletNoticeText.innerHTML = "<strong>Solflare extension not detected</strong>. You can install Solflare or use the Demo Devnet Wallet.";
+            walletNoticeText.innerHTML = "<strong>Solflare extension not detected</strong>. You can install Solflare or enter your custom address below.";
             walletInstallLink.href = "https://solflare.com/";
             walletInstallLink.innerHTML = `<span>Install Solflare Wallet</span><i data-lucide="external-link" class="w-3 h-3"></i>`;
             walletInstallLink.parentElement.classList.remove('hidden');
@@ -2350,15 +2332,7 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
           }
         } else if (provider === 'manual') {
           manualAddressPanel.classList.toggle('hidden');
-        } else if (provider === 'demo') {
-          // Explicit Devnet Demo selection
-          const demoAddress = "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW";
-          await setConnectedWallet(demoAddress, 'Devnet Demo');
-          walletConnectModal.classList.add('hidden');
-          showToast({ title: window.haichainI18n?.currentLang === 'vi' ? 'Đã Kết Nối Demo' : 'Demo Connected', message: `${demoAddress.slice(0, 4)}...${demoAddress.slice(-4)}`, icon: 'sparkles' });
-          openAccountModal();
-          alert(`Devnet Demo Wallet Activated:\n\nAddress: ${demoAddress}\nDevnet Balance: ${userWallet.solBalance} SOL\n\nYou can now test all AI Playground & Micro-Escrow features live.`);
-        }
+
       });
     });
 
@@ -2535,8 +2509,8 @@ Model Override: gpt-4o hoặc claude-3-5-sonnet-20241022</pre>
                 </h3>
                 <p class="text-xs text-neutral-500 mt-1.5 leading-relaxed">
                   ${isVi 
-                    ? 'Hãy kết nối ví Phantom, Solflare hoặc kích hoạt Ví Demo Devnet để xác thực khóa công khai (Ed25519) và mở khóa két phân bổ vesting cá nhân của bạn.' 
-                    : 'Connect Phantom, Solflare, or activate the Devnet Demo Wallet to verify your Ed25519 public key and unlock your personal vesting allocation vault.'}
+                    ? 'Hãy kết nối ví Phantom, Solflare, Passkey sinh trắc học hoặc nhập địa chỉ ví Solana cá nhân để xác thực và mở khóa két phân bổ vesting của bạn.' 
+                    : 'Connect Phantom, Solflare, Biometric Passkey, or enter your personal Solana address to verify your Ed25519 public key and unlock your personal vesting allocation vault.'}
                 </p>
               </div>
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">

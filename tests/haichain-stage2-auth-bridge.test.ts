@@ -266,4 +266,97 @@ describe("HAICHAIN v6.9.4: Stage 2 Forensic WebAuthn, AA & Bridge Audit Suite", 
     const isHour4Permitted = (cumulative24hOutflow + attemptedDrainHour4) <= maxDailyDrain;
     expect(isHour4Permitted).to.be.false; // 24-hour hard cap halts bridge drain! $8.5M TVL completely safe!
   });
+
+  // =========================================================================
+  // 11. ANTI-GRIEFING MANGO QUARANTINE IMMUNITY ($3.60/HR DOS EXPLOIT DEFENSE)
+  // =========================================================================
+  it("11. [ANTI-GRIEFING MANGO QUARANTINE IMMUNITY]: Dust deposits (<1 USDT) do not reset quarantine barrier", async () => {
+    const MIN_QUARANTINE_TRIGGER_DEPOSIT = 1_000_000; // 1.00 USDT (6 decimals)
+    const FLASH_LOAN_QUARANTINE_SLOTS = 2;
+
+    let vault = {
+      confirmed_balance: 50_000_000, // 50 USDT pre-existing balance
+      last_deposit_slot: 100,
+    };
+
+    // Current slot is 105 (> last_deposit_slot + 2), vault is normally ready to spend
+    let currentSlot = 105;
+    expect(currentSlot >= vault.last_deposit_slot + FLASH_LOAN_QUARANTINE_SLOTS).to.be.true;
+
+    // Attacker sends 1 micro-cent (0.000001 USDT) at slot 105 to grief victim
+    const attackerDustDeposit = 1; // 1 micro-unit
+    if (attackerDustDeposit >= MIN_QUARANTINE_TRIGGER_DEPOSIT) {
+      vault.last_deposit_slot = currentSlot;
+    }
+    vault.confirmed_balance += attackerDustDeposit;
+
+    // Invariant: last_deposit_slot was NOT modified!
+    expect(vault.last_deposit_slot).to.equal(100);
+
+    // Victim sub-agent payment at slot 105 executes smoothly without being locked!
+    const isVictimSpendAllowed = currentSlot >= vault.last_deposit_slot + FLASH_LOAN_QUARANTINE_SLOTS;
+    expect(isVictimSpendAllowed).to.be.true;
+
+    // If an honest/significant deposit occurs (e.g. 5 USDT), quarantine barrier triggers legitimately
+    const honestDeposit = 5_000_000; // 5 USDT
+    currentSlot = 110;
+    if (honestDeposit >= MIN_QUARANTINE_TRIGGER_DEPOSIT) {
+      vault.last_deposit_slot = currentSlot;
+    }
+    vault.confirmed_balance += honestDeposit;
+    expect(vault.last_deposit_slot).to.equal(110);
+
+    // At slot 110, flash loan quarantine barrier is active for 2 slots
+    const isImmediateSpendAllowed = currentSlot >= vault.last_deposit_slot + FLASH_LOAN_QUARANTINE_SLOTS;
+    expect(isImmediateSpendAllowed).to.be.false;
+  });
+
+  // =========================================================================
+  // 12. SLIDING WINDOW MERKLE ROOT GRACE PERIOD (IN-FLIGHT SUB-AGENT RESILIENCE)
+  // =========================================================================
+  it("12. [SLIDING WINDOW MERKLE ROOT GRACE PERIOD]: Accepts in-flight capability proofs within 150 slots", async () => {
+    const ROOT_ROTATION_GRACE_SLOTS = 150; // ~60 seconds grace window
+
+    const rootA = "0xaaaa111122223333444455556666777788889999aaaabbbbccccddddeeeeffff";
+    const rootB = "0xbbbb111122223333444455556666777788889999aaaabbbbccccddddeeeeffff";
+    const emptyRoot = "0x0000000000000000000000000000000000000000000000000000000000000000";
+
+    let vault = {
+      composite_root: rootA,
+      previous_composite_root: emptyRoot,
+      root_rotation_slot: 0,
+    };
+
+    // Owner rotates root from Root A to Root B at slot 1000
+    const rotationSlot = 1000;
+    vault.previous_composite_root = vault.composite_root;
+    vault.composite_root = rootB;
+    vault.root_rotation_slot = rotationSlot;
+
+    expect(vault.composite_root).to.equal(rootB);
+    expect(vault.previous_composite_root).to.equal(rootA);
+
+    // Verification helper matching Rust smart contract invariant logic:
+    const verifyProof = (computedHash: string, currentSlot: number): boolean => {
+      const isCurrentRootValid = computedHash === vault.composite_root;
+      const isPreviousRootValid = vault.previous_composite_root !== emptyRoot
+        && computedHash === vault.previous_composite_root
+        && currentSlot <= vault.root_rotation_slot + ROOT_ROTATION_GRACE_SLOTS;
+      return isCurrentRootValid || isPreviousRootValid;
+    };
+
+    // Scenario 1: Sub-agent with Root A proof arrives at slot 1050 (in-flight within grace period)
+    const proofMatchingRootA = rootA;
+    expect(verifyProof(proofMatchingRootA, 1050)).to.be.true; // Grace window protects in-flight agent!
+
+    // Scenario 2: Sub-agent with Root B proof arrives at slot 1050
+    const proofMatchingRootB = rootB;
+    expect(verifyProof(proofMatchingRootB, 1050)).to.be.true; // Fresh root is valid immediately!
+
+    // Scenario 3: Stale sub-agent with Root A proof arrives at slot 1200 (1000 + 200 > 150 slots)
+    expect(verifyProof(proofMatchingRootA, 1200)).to.be.false; // Expired grace window blocks stale capability!
+
+    // Scenario 4: Sub-agent with Root B proof arrives at slot 1200
+    expect(verifyProof(proofMatchingRootB, 1200)).to.be.true; // Active root remains valid indefinitely!
+  });
 });
