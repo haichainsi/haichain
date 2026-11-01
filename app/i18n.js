@@ -42,6 +42,10 @@
 
   const TRANSLATIONS = {
   "kk": {
+    "lang.select": "Тілді таңдау",
+    "lang.supported": "10 жаһандық тіл қолданылады",
+    "lang.active": "Белсенді",
+    "lang.close": "Жабу",
     "meta.title": "HAICHAIN - Автономды Машиналық Қаржылық Операциялық Жүйе",
     "meta.description": "HAICHAIN - Solana негізіндегі автономды машиналық қаржылық ОЖ. Кастодиандық емес микро-эскроу және лездік AI есеп айырысуы.",
 
@@ -490,6 +494,10 @@
     "home.footerLegal": "Барлық транзакциялар Solana Devnet желісінде криптографиялық түрде куәландырылған. Банк делдалдарының кешігуінсіз."
   },
   "en": {
+    "lang.select": "Select Language",
+    "lang.supported": "10 Global Languages Supported",
+    "lang.active": "Active",
+    "lang.close": "Close",
     "meta.title": "HAICHAIN - Autonomous Machine Financial Operating System",
     "meta.description": "HAICHAIN is the Autonomous Machine Financial Operating System on Solana. Non-custodial micro-escrows and instant AI capability settlements.",
 
@@ -875,6 +883,10 @@
     "home.footerLegal": "All transactions cryptographically authorized on Solana Devnet. Zero banking intermediary delay."
   },
   "zh": {
+    "lang.select": "选择语言",
+    "lang.supported": "支持 10 种全球语言",
+    "lang.active": "当前选择",
+    "lang.close": "关闭",
     "meta.title": "HAICHAIN - 自主机器金融操作系统",
     "meta.description": "HAICHAIN 是基于 Solana 的自主机器金融操作系统。支持非托管微托管与即时 AI 计算能力结算。",
 
@@ -1257,6 +1269,10 @@
     "modal.depositWalletRequired": "请在存款前先连接您的 Solana 钱包，以便将链上资金准确记入 Master Vault。"
   },
   "fr": {
+    "lang.select": "Choisir la langue",
+    "lang.supported": "10 langues mondiales prises en charge",
+    "lang.active": "Actif",
+    "lang.close": "Fermer",
     "meta.title": "HAICHAIN - Système d'Exploitation Financier pour Machines Autonomes",
     "meta.description": "HAICHAIN est le système d'exploitation financier pour machines autonomes sur Solana. Micro-séquestres non dépositaires et règlements IA instantanés.",
 
@@ -1639,6 +1655,10 @@
     "mcp.copied": "Copié dans le presse-papiers !"
   },
   "ko": {
+    "lang.select": "언어 선택",
+    "lang.supported": "10개 글로벌 언어 지원",
+    "lang.active": "선택됨",
+    "lang.close": "닫기",
     "meta.title": "HAICHAIN - 자율 머신 금융 운영체제",
     "meta.description": "HAICHAIN은 솔라나 기반 자율 머신 금융 운영체제입니다. 비수탁형 마이크로 에스크로 및 즉각적인 AI 컴퓨팅 결제를 지원합니다.",
 
@@ -2021,6 +2041,10 @@
     "modal.depositWalletRequired": "마스터 볼트에 온체인 자금을 정확히 귀속시키려면 입금 전에 솔라나 지갑을 연결하세요."
   },
   "es": {
+    "lang.select": "Seleccionar idioma",
+    "lang.supported": "10 idiomas globales compatibles",
+    "lang.active": "Activo",
+    "lang.close": "Cerrar",
     "meta.title": "HAICHAIN - Sistema Operativo Financiero para Máquinas Autónomas",
     "meta.description": "HAICHAIN es el sistema operativo financiero para máquinas autónomas en Solana. Micro-escrows no custodiales y liquidaciones instantáneas de IA.",
 
@@ -2403,6 +2427,10 @@
     "mcp.copied": "¡Copiado al portapapeles!"
   },
   "ru": {
+    "lang.select": "Выбрать язык",
+    "lang.supported": "Поддерживается 10 языков мира",
+    "lang.active": "Активен",
+    "lang.close": "Закрыть",
     "meta.title": "HAICHAIN - Автономная Финансовая Операционная Система для Машин",
     "meta.description": "HAICHAIN - автономная финансовая операционная система на базе Solana. Некастодиальные микро-эскроу и мгновенные расчеты для ИИ.",
 
@@ -2785,6 +2813,10 @@
     "modal.depositWalletRequired": "Пожалуйста, подключите кошелек Solana перед внесением депозита для точного учета ончейн-средств."
   },
   "vi": {
+    "lang.select": "Chọn ngôn ngữ",
+    "lang.supported": "Hỗ trợ 10 ngôn ngữ toàn cầu",
+    "lang.active": "Đang chọn",
+    "lang.close": "Đóng",
     "meta.title": "HAICHAIN - Hệ Điều Hành Tài Chính Máy Móc Tự Trị",
     "meta.description": "HAICHAIN là Hệ điều hành tài chính máy móc tự trị trên Solana. Hỗ trợ ký quỹ vi mô phi lưu ký và thanh toán năng lực AI tức thì.",
 
@@ -3170,6 +3202,10 @@
     "modal.depositWalletRequired": "Vui lòng kết nối ví Solana trước khi nạp để xác thực nguồn tiền on-chain vào Master Vault."
   },
   "hi": {
+    "lang.select": "भाषा चुनें",
+    "lang.supported": "10 वैश्विक भाषाएं समर्थित",
+    "lang.active": "सक्रिय",
+    "lang.close": "बंद करें",
     "meta.title": "HAICHAIN - स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम",
     "meta.description": "HAICHAIN सोलाना पर स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम है। नॉन-कस्टोडियल माइक्रो-एस्क्रो और त्वरित AI निपटान।",
 
@@ -3618,6 +3654,10 @@
     "home.footerLegal": "Solana Devnet पर सभी लेनदेन क्रिप्टोग्राफ़िक रूप से अधिकृत हैं। बिना किसी बैंकिंग देरी के।"
   },
   "he": {
+    "lang.select": "בחר שפה",
+    "lang.supported": "10 שפות עולמיות נתמכות",
+    "lang.active": "פעיל",
+    "lang.close": "סגור",
     "meta.title": "HAICHAIN - מערכת הפעלה פיננסית אוטונומית למכונות",
     "meta.description": "HAICHAIN היא מערכת הפעלה פיננסית למכונות אוטונומיות על גבי סולאנה. נאמנויות מיקרו ללא משמורת והסדרים מיידיים של יכולות AI.",
 
@@ -4185,7 +4225,7 @@
     return `
       <div class="relative inline-block text-left" id="haichain-lang-dropdown">
         <!-- Minimalist Flag-Only Trigger Button (Harmonious Twin of Theme Toggle) -->
-        <button id="lang-switch-btn" type="button" class="group flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="Select Language" aria-label="Select Language">
+        <button id="lang-switch-btn" type="button" class="group flex items-center justify-center w-7 h-7 sm:w-auto sm:h-auto p-0 sm:p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
           <span class="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2.5px] overflow-hidden inline-flex items-center justify-center shrink-0 shadow-2xs transition-transform duration-200 group-hover:scale-105">
             ${current.flagSvg}
           </span>
@@ -4195,7 +4235,7 @@
         <div id="lang-dropdown-menu" class="hidden absolute right-0 top-full pt-2 w-64 z-[9999] font-sans text-xs">
           <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] backdrop-blur-2xl shadow-2xl p-2">
             <div class="px-3 py-1.5 flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500 border-b border-neutral-100 dark:border-neutral-900 mb-1">
-              <span>Select Language / 语言 / Ngôn ngữ</span>
+              <span>${t('lang.select', 'Select Language')}</span>
               <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 font-mono">10</span>
             </div>
             <div class="space-y-1 max-h-[70vh] overflow-y-auto no-scrollbar">
@@ -4240,10 +4280,10 @@
           <!-- Sheet Header -->
           <div class="flex items-center justify-between pb-3.5 mb-3 border-b border-neutral-100 dark:border-neutral-800">
             <div>
-              <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100">Select Language / Ngôn ngữ</h3>
-              <p class="text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">10 Global Languages Supported</p>
+              <h3 class="font-bold text-sm text-neutral-900 dark:text-neutral-100">${t('lang.select', 'Select Language')}</h3>
+              <p class="text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">${t('lang.supported', '10 Global Languages Supported')}</p>
             </div>
-            <button id="mobile-lang-close-btn" type="button" class="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-black dark:hover:text-white transition-colors" aria-label="Close">
+            <button id="mobile-lang-close-btn" type="button" class="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-black dark:hover:text-white transition-colors" aria-label="${t('lang.close', 'Close')}">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -4265,7 +4305,7 @@
                 </div>
                 ${l.code === currentLang ? `
                   <div class="flex items-center space-x-2 shrink-0">
-                    <span class="text-[11px] font-mono font-bold uppercase">Active</span>
+                    <span class="text-[11px] font-mono font-bold uppercase">${t('lang.active', 'Active')}</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                     </svg>
