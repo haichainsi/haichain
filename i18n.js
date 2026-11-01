@@ -48,12 +48,10 @@
     "lang.close": "Жабу",
     "meta.title": "HAICHAIN - Автономды Машиналық Қаржылық Операциялық Жүйе",
     "meta.description": "HAICHAIN - Solana негізіндегі автономды машиналық қаржылық ОЖ. Кастодиандық емес микро-эскроу және лездік AI есеп айырысуы.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Карта",
     "modal.depositWeb3": "Web3 Әмиян",
-
-    "cluster.devnetLive": "Solana Devnet тікелей кластері",
+    "cluster.devnetLive": "Solana Devnet белсенді",
     "cluster.programLabel": "Бағдарлама:",
     "cluster.auditsPassed": "15/15 Аудиттен өтті",
     "cluster.genesisTx": "Тексерілген Genesis транзакциясы",
@@ -103,7 +101,6 @@
     "footer.compliance": "Кастодиалды емес FinCEN босатылған • EU MiCA сәйкес • 100% қорғалған",
     "footer.desc": "Автономды машиналық қаржылық операциялық жүйе. Solana-дағы кастодиандық емес микро-эскроу және лездік AI есеп айырысуы.",
     "footer.rights": "Барлық құқықтар қорғалған",
-
     "nav.philosophy": "AI² Философиясы",
     "nav.market": "Нарық деректері",
     "nav.comparison": "Салыстыру",
@@ -228,7 +225,6 @@
     "nav.vesting": "Вестинг сейфі",
     "nav.ledger": "Аудит кітабы",
     "nav.mcp": "MCP және Dev орталығы",
-    "cluster.devnetLive": "Solana Devnet белсенді",
     "cluster.slot": "Devnet слоты",
     "btn.connectWallet": "Әмиянды қосу",
     "btn.connectShort": "Қосу",
@@ -492,7 +488,19 @@
     "home.investorPitch": "Веб-сайт таныстырылымы және GTM Pitch",
     "home.investorClose": "Жабу",
     "home.footerDesc": "Solana желісіндегі AI агенттері мен робототехникаға арналған жоғары жылдамдықты автономды шығыс қоры хаттамасы.",
-    "home.footerLegal": "Барлық транзакциялар Solana Devnet желісінде криптографиялық түрде куәландырылған. Банк делдалдарының кешігуінсіз."
+    "home.footerLegal": "Барлық транзакциялар Solana Devnet желісінде криптографиялық түрде куәландырылған. Банк делдалдарының кешігуінсіз.",
+    "modal.accountTopUp": "Шығыс қорын толықтыру (0% Gas)",
+    "modal.walletBiometric": "Passkey биометриялық әмияны",
+    "modal.walletBiometricDesc": "Аппараттық WebAuthn • Кілт жоғалту қаупі нөл",
+    "modal.walletOrWeb3": "Немесе сыртқы Solana әмиянын қосыңыз",
+    "hero.taskPlaceholder": "Автономды AI агенті үшін тапсырманы енгізіңіз...",
+    "calc.customAmountPlaceholder": "Өзгермелі сома",
+    "mcp.byokPlaceholder": "API кілтін қойыңыз (sk-...)",
+    "modal.manualWalletPlaceholder": "мысалы: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "Әмиян ажыратылды",
+    "toast.walletDisconnectedMsg": "Сессия қауіпсіз аяқталды",
+    "toast.configCopiedTitle": "Конфигурация көшірілді!",
+    "toast.configCopiedMsg": "Алмасу буферіне сақталды"
   },
   "en": {
     "lang.select": "Select Language",
@@ -501,12 +509,10 @@
     "lang.close": "Close",
     "meta.title": "HAICHAIN - Autonomous Machine Financial Operating System",
     "meta.description": "HAICHAIN is the Autonomous Machine Financial Operating System on Solana. Non-custodial micro-escrows and instant AI capability settlements.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Card",
     "modal.depositWeb3": "Web3 Wallet",
-
-    "cluster.devnetLive": "Solana Devnet Live Cluster",
+    "cluster.devnetLive": "Solana Devnet Live",
     "cluster.programLabel": "Program:",
     "cluster.auditsPassed": "15/15 Audits Passed",
     "cluster.genesisTx": "Verified Genesis Tx",
@@ -556,7 +562,6 @@
     "footer.compliance": "Non-Custodial FinCEN Exempt • EU MiCA Compliant • 100% Exploit Immune",
     "footer.desc": "The Autonomous Machine Financial Operating System. Non-custodial micro-escrows and instant AI capability settlements on Solana.",
     "footer.rights": "All Rights Reserved",
-
     "nav.philosophy": "AI² Philosophy",
     "nav.market": "Market Data",
     "nav.comparison": "Comparison",
@@ -681,7 +686,6 @@
     "nav.vesting": "Vesting Vault",
     "nav.ledger": "Audit Ledger",
     "nav.mcp": "MCP & Dev Center",
-    "cluster.devnetLive": "Solana Devnet Live",
     "cluster.slot": "Devnet Slot",
     "btn.connectWallet": "Connect Wallet",
     "btn.connectShort": "Connect",
@@ -789,9 +793,9 @@
     "modal.byokConfirm": "Save & Bind Safety Cap",
     "modal.walletTitle": "Connect Solana Wallet & Passkey",
     "modal.walletSubtitle": "Choose biometric Passkey or connect on-chain wallet",
-    "modal.walletBiometric": "FaceID / TouchID / Windows Hello",
-    "modal.walletBiometricDesc": "Hardware FIDO2 biometric authentication (Zero passwords, zero seed phrases)",
-    "modal.walletOrWeb3": "OR CONNECT ON-CHAIN SOLANA WALLET",
+    "modal.walletBiometric": "Passkey Biometric Wallet",
+    "modal.walletBiometricDesc": "Hardware-Bound WebAuthn • Zero Key Risk",
+    "modal.walletOrWeb3": "Or connect external Solana extension",
     "modal.walletPhantom": "Phantom Wallet",
     "modal.walletPhantomDesc": "Popular Solana mobile app & browser extension",
     "modal.walletSolflare": "Solflare Wallet",
@@ -882,7 +886,16 @@
     "home.investorPitch": "Website Showcase & GTM Pitch",
     "home.investorClose": "Close Fast-Pack",
     "home.footerDesc": "The high-velocity autonomous spending pot protocol for AI agents and robotics on Solana.",
-    "home.footerLegal": "All transactions cryptographically authorized on Solana Devnet. Zero banking intermediary delay."
+    "home.footerLegal": "All transactions cryptographically authorized on Solana Devnet. Zero banking intermediary delay.",
+    "modal.accountTopUp": "Top Up Spending Pot (0% Gas)",
+    "hero.taskPlaceholder": "Enter task for autonomous AI agent...",
+    "calc.customAmountPlaceholder": "Custom amount",
+    "mcp.byokPlaceholder": "Paste API Key (sk-...)",
+    "modal.manualWalletPlaceholder": "e.g. 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "Wallet Disconnected",
+    "toast.walletDisconnectedMsg": "Session terminated safely",
+    "toast.configCopiedTitle": "Config Copied!",
+    "toast.configCopiedMsg": "Saved to clipboard"
   },
   "zh": {
     "lang.select": "选择语言",
@@ -891,12 +904,10 @@
     "lang.close": "关闭",
     "meta.title": "HAICHAIN - 自主机器金融操作系统",
     "meta.description": "HAICHAIN 是基于 Solana 的自主机器金融操作系统。支持非托管微托管与即时 AI 计算能力结算。",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "银行卡",
     "modal.depositWeb3": "Web3 钱包",
-
-    "cluster.devnetLive": "Solana Devnet 实时集群",
+    "cluster.devnetLive": "Solana Devnet 运行中",
     "cluster.programLabel": "程序合约:",
     "cluster.auditsPassed": "15/15 项安全审计通过",
     "cluster.genesisTx": "已验证创世交易",
@@ -946,7 +957,6 @@
     "footer.compliance": "非托管架构免于 FinCEN 管辖 • 符合欧盟 MiCA 规范 • 100% 免疫智能合约漏洞",
     "footer.desc": "自主机器金融操作系统。Solana 上的非托管微托管与即时 AI 能力结算。",
     "footer.rights": "版权所有",
-
     "nav.philosophy": "AI² 核心哲学",
     "nav.market": "市场数据",
     "nav.comparison": "竞品对比",
@@ -1071,7 +1081,6 @@
     "nav.vesting": "锁仓金库",
     "nav.ledger": "链上审计账本",
     "nav.mcp": "MCP 与开发者中心",
-    "cluster.devnetLive": "Solana Devnet 运行中",
     "cluster.slot": "当前区块 Slot",
     "btn.connectWallet": "连接钱包",
     "btn.connectShort": "连接",
@@ -1269,7 +1278,19 @@
     "home.footerDesc": "专为 Solana 上的 AI 代理与机器人打造的高速率自主资金库协议。",
     "home.footerLegal": "所有交易均通过 Solana Devnet 密码学签名授权。彻底免除传统银行中介延迟。",
     "agent.oneClickDesc": "一键授权 AI 代理在指定的支出上限与有效期内自主调用服务。",
-    "modal.depositWalletRequired": "请在存款前先连接您的 Solana 钱包，以便将链上资金准确记入 Master Vault。"
+    "modal.depositWalletRequired": "请在存款前先连接您的 Solana 钱包，以便将链上资金准确记入 Master Vault。",
+    "modal.accountTopUp": "充值支出资金池 (0% Gas)",
+    "modal.walletBiometric": "Passkey 生物识别钱包",
+    "modal.walletBiometricDesc": "硬件级 WebAuthn 绑定 • 零私钥泄露风险",
+    "modal.walletOrWeb3": "或连接外部 Solana 扩展钱包",
+    "hero.taskPlaceholder": "输入自主 AI Agent 的执行任务...",
+    "calc.customAmountPlaceholder": "自定义金额",
+    "mcp.byokPlaceholder": "粘贴 API 密钥 (sk-...)",
+    "modal.manualWalletPlaceholder": "例如: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "钱包已断开连接",
+    "toast.walletDisconnectedMsg": "会话已安全退出",
+    "toast.configCopiedTitle": "配置已复制!",
+    "toast.configCopiedMsg": "已保存至剪贴板"
   },
   "fr": {
     "lang.select": "Choisir la langue",
@@ -1278,12 +1299,10 @@
     "lang.close": "Fermer",
     "meta.title": "HAICHAIN - Système d'Exploitation Financier pour Machines Autonomes",
     "meta.description": "HAICHAIN est le système d'exploitation financier pour machines autonomes sur Solana. Micro-séquestres non dépositaires et règlements IA instantanés.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Carte",
     "modal.depositWeb3": "Portefeuille Web3",
-
-    "cluster.devnetLive": "Cluster Solana Devnet en direct",
+    "cluster.devnetLive": "Solana Devnet En Direct",
     "cluster.programLabel": "Programme:",
     "cluster.auditsPassed": "15/15 Audits Validés",
     "cluster.genesisTx": "Tx Genesis Vérifiée",
@@ -1333,7 +1352,6 @@
     "footer.compliance": "Non-dépositaire exempté FinCEN • Conforme UE MiCA • 100% Immunisé aux exploits",
     "footer.desc": "Le système d'exploitation financier autonome pour machines. Micro-tiers de confiance non dépositaires et règlements instantanés des capacités d'IA sur Solana.",
     "footer.rights": "Tous droits réservés",
-
     "nav.philosophy": "Philosophie AI²",
     "nav.market": "Marché & Données",
     "nav.comparison": "Comparatif",
@@ -1458,7 +1476,6 @@
     "nav.vesting": "Coffre Vesting",
     "nav.ledger": "Registre d'Audit",
     "nav.mcp": "MCP & Centre Développeurs",
-    "cluster.devnetLive": "Solana Devnet En Direct",
     "cluster.slot": "Slot Devnet",
     "btn.connectWallet": "Connecter le Portefeuille",
     "btn.connectShort": "Connecter",
@@ -1656,7 +1673,19 @@
     "home.footerDesc": "Le protocole de coffre de dépenses autonome à haute vélocité pour les agents IA et la robotique sur Solana.",
     "home.footerLegal": "Toutes les transactions sont cryptographiquement autorisées sur Solana Devnet. Sans délai bancaire intermédiaire.",
     "agent.oneClickDesc": "Autorisez les agents IA en un clic dans la limite de dépenses et la durée imparties.",
-    "mcp.copied": "Copié dans le presse-papiers !"
+    "mcp.copied": "Copié dans le presse-papiers !",
+    "modal.accountTopUp": "Recharger le Spending Pot (0% Gas)",
+    "modal.walletBiometric": "Portefeuille Biométrique Passkey",
+    "modal.walletBiometricDesc": "WebAuthn Matériel • Risque de Clé Zéro",
+    "modal.walletOrWeb3": "Ou connecter une extension Solana externe",
+    "hero.taskPlaceholder": "Entrez la tâche pour l'Agent IA autonome...",
+    "calc.customAmountPlaceholder": "Montant personnalisé",
+    "mcp.byokPlaceholder": "Collez la clé API (sk-...)",
+    "modal.manualWalletPlaceholder": "ex: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "Portefeuille Déconnecté",
+    "toast.walletDisconnectedMsg": "Session fermée en toute sécurité",
+    "toast.configCopiedTitle": "Configuration Copiée!",
+    "toast.configCopiedMsg": "Enregistré dans le presse-papiers"
   },
   "ko": {
     "lang.select": "언어 선택",
@@ -1665,12 +1694,10 @@
     "lang.close": "닫기",
     "meta.title": "HAICHAIN - 자율 머신 금융 운영체제",
     "meta.description": "HAICHAIN은 솔라나 기반 자율 머신 금융 운영체제입니다. 비수탁형 마이크로 에스크로 및 즉각적인 AI 컴퓨팅 결제를 지원합니다.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "신용/체크카드",
     "modal.depositWeb3": "Web3 지갑",
-
-    "cluster.devnetLive": "Solana Devnet 라이브 클러스터",
+    "cluster.devnetLive": "Solana Devnet 가동 중",
     "cluster.programLabel": "프로그램:",
     "cluster.auditsPassed": "15/15 보안 감사 통과",
     "cluster.genesisTx": "검증된 제네시스 트랜잭션",
@@ -1720,7 +1747,6 @@
     "footer.compliance": "비수탁형 FinCEN 면제 • EU MiCA 규제 완벽 준수 • 100% 보안 취약점 면역",
     "footer.desc": "자율 머신 금융 운영체제. 솔라나 기반의 비수탁형 마이크로 에스크로 및 즉각적인 AI 기능 결제.",
     "footer.rights": "모든 권리 보유",
-
     "nav.philosophy": "AI² 철학",
     "nav.market": "시장 데이터",
     "nav.comparison": "비교 분석",
@@ -1845,7 +1871,6 @@
     "nav.vesting": "베스팅 금고",
     "nav.ledger": "온체인 감사 원장",
     "nav.mcp": "MCP 및 개발자 센터",
-    "cluster.devnetLive": "Solana Devnet 가동 중",
     "cluster.slot": "Devnet 슬롯",
     "btn.connectWallet": "지갑 연결",
     "btn.connectShort": "연결",
@@ -2043,7 +2068,19 @@
     "home.footerLegal": "모든 거래는 Solana Devnet에서 암호화 서명으로 승인됩니다. 은행 중개 지연 제로.",
     "agent.oneClickDesc": "지정된 지출 한도 및 유효 기간 내에서 AI 에이전트의 자율 호출을 원클릭으로 승인하세요.",
     "mcp.copied": "클립보드에 복사되었습니다!",
-    "modal.depositWalletRequired": "마스터 볼트에 온체인 자금을 정확히 귀속시키려면 입금 전에 솔라나 지갑을 연결하세요."
+    "modal.depositWalletRequired": "마스터 볼트에 온체인 자금을 정확히 귀속시키려면 입금 전에 솔라나 지갑을 연결하세요.",
+    "modal.accountTopUp": "지출 금고 충전 (0% Gas)",
+    "modal.walletBiometric": "패스키 생체인식 지갑",
+    "modal.walletBiometricDesc": "하드웨어 바인딩 WebAuthn • 개인키 탈취 위험 제로",
+    "modal.walletOrWeb3": "또는 외부 Solana 확장 지갑 연결",
+    "hero.taskPlaceholder": "자율 AI Agent 작업을 입력하세요...",
+    "calc.customAmountPlaceholder": "사용자 지정 금액",
+    "mcp.byokPlaceholder": "API 키 붙여넣기 (sk-...)",
+    "modal.manualWalletPlaceholder": "예: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "지갑 연결 해제됨",
+    "toast.walletDisconnectedMsg": "세션이 안전하게 종료되었습니다",
+    "toast.configCopiedTitle": "설정 복사 완료!",
+    "toast.configCopiedMsg": "클립보드에 저장되었습니다"
   },
   "es": {
     "lang.select": "Seleccionar idioma",
@@ -2052,12 +2089,10 @@
     "lang.close": "Cerrar",
     "meta.title": "HAICHAIN - Sistema Operativo Financiero para Máquinas Autónomas",
     "meta.description": "HAICHAIN es el sistema operativo financiero para máquinas autónomas en Solana. Micro-escrows no custodiales y liquidaciones instantáneas de IA.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Tarjeta",
     "modal.depositWeb3": "Billetera Web3",
-
-    "cluster.devnetLive": "Clúster en vivo de Solana Devnet",
+    "cluster.devnetLive": "Solana Devnet en Vivo",
     "cluster.programLabel": "Programa:",
     "cluster.auditsPassed": "15/15 Auditorías Aprobadas",
     "cluster.genesisTx": "Tx Génesis Verificada",
@@ -2107,7 +2142,6 @@
     "footer.compliance": "Sin custodia exento de FinCEN • Cumple con MiCA UE • 100% Inmune a exploits",
     "footer.desc": "El sistema operativo financiero autónomo para máquinas. Micro-depósitos de garantía sin custodia y liquidaciones instantáneas de capacidades de IA en Solana.",
     "footer.rights": "Todos los derechos reservados",
-
     "nav.philosophy": "Filosofía AI²",
     "nav.market": "Datos de Mercado",
     "nav.comparison": "Comparativa",
@@ -2232,7 +2266,6 @@
     "nav.vesting": "Bóveda Vesting",
     "nav.ledger": "Libro Mayor de Auditoría",
     "nav.mcp": "MCP y Centro Dev",
-    "cluster.devnetLive": "Solana Devnet en Vivo",
     "cluster.slot": "Slot de Devnet",
     "btn.connectWallet": "Conectar Billetera",
     "btn.connectShort": "Conectar",
@@ -2430,7 +2463,19 @@
     "home.footerDesc": "El protocolo de bóveda de gastos autónoma de alta velocidad para agentes de IA y robótica en Solana.",
     "home.footerLegal": "Todas las transacciones autorizadas criptográficamente en Solana Devnet. Sin demoras bancarias.",
     "agent.oneClickDesc": "Autorice agentes de IA con un solo clic dentro del límite de gasto y expiración designados.",
-    "mcp.copied": "¡Copiado al portapapeles!"
+    "mcp.copied": "¡Copiado al portapapeles!",
+    "modal.accountTopUp": "Recargar Fondo de Gasto (0% Gas)",
+    "modal.walletBiometric": "Billetera Biométrica Passkey",
+    "modal.walletBiometricDesc": "WebAuthn Basado en Hardware • Riesgo Cero de Claves",
+    "modal.walletOrWeb3": "O conectar extensión externa de Solana",
+    "hero.taskPlaceholder": "Ingrese la tarea para el Agente IA autónomo...",
+    "calc.customAmountPlaceholder": "Cantidad personalizada",
+    "mcp.byokPlaceholder": "Pegar clave API (sk-...)",
+    "modal.manualWalletPlaceholder": "ej: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "Billetera Desconectada",
+    "toast.walletDisconnectedMsg": "Sesión terminada de forma segura",
+    "toast.configCopiedTitle": "¡Configuración Copiada!",
+    "toast.configCopiedMsg": "Guardado en el portapapeles"
   },
   "ru": {
     "lang.select": "Выбрать язык",
@@ -2439,12 +2484,10 @@
     "lang.close": "Закрыть",
     "meta.title": "HAICHAIN - Автономная Финансовая Операционная Система для Машин",
     "meta.description": "HAICHAIN - автономная финансовая операционная система на базе Solana. Некастодиальные микро-эскроу и мгновенные расчеты для ИИ.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Карта",
     "modal.depositWeb3": "Web3 Кошелек",
-
-    "cluster.devnetLive": "Живой кластер Solana Devnet",
+    "cluster.devnetLive": "Solana Devnet Онлайн",
     "cluster.programLabel": "Программа:",
     "cluster.auditsPassed": "15/15 аудитов пройдено",
     "cluster.genesisTx": "Проверенная транзакция Genesis",
@@ -2494,7 +2537,6 @@
     "footer.compliance": "Некастодиальный • Освобожден FinCEN • Соответствует EU MiCA • 100% защита",
     "footer.desc": "Автономная финансовая операционная система для машин. Некастодиальные микро-эскроу и мгновенные расчеты возможностей ИИ на Solana.",
     "footer.rights": "Все права защищены",
-
     "nav.philosophy": "Философия AI²",
     "nav.market": "Рыночные данные",
     "nav.comparison": "Сравнение",
@@ -2619,7 +2661,6 @@
     "nav.vesting": "Сейф вестинга",
     "nav.ledger": "Реестр Аудита",
     "nav.mcp": "MCP и Центр Разработки",
-    "cluster.devnetLive": "Solana Devnet Онлайн",
     "cluster.slot": "Слот Devnet",
     "btn.connectWallet": "Подключить Кошелек",
     "btn.connectShort": "Войти",
@@ -2817,7 +2858,19 @@
     "home.footerLegal": "Все транзакции криптографически авторизованы в Solana Devnet. Без задержек банковских посредников.",
     "agent.oneClickDesc": "Авторизуйте AI-агентов в один клик в пределах заданного лимита расходов и срока действия.",
     "mcp.copied": "Скопировано в буфер обмена!",
-    "modal.depositWalletRequired": "Пожалуйста, подключите кошелек Solana перед внесением депозита для точного учета ончейн-средств."
+    "modal.depositWalletRequired": "Пожалуйста, подключите кошелек Solana перед внесением депозита для точного учета ончейн-средств.",
+    "modal.accountTopUp": "Пополнить Spending Pot (0% Gas)",
+    "modal.walletBiometric": "Биометрический кошелек Passkey",
+    "modal.walletBiometricDesc": "Аппаратный WebAuthn • Нулевой риск утери ключа",
+    "modal.walletOrWeb3": "Или подключите внешнее расширение Solana",
+    "hero.taskPlaceholder": "Введите задачу для автономного AI-агента...",
+    "calc.customAmountPlaceholder": "Своя сумма",
+    "mcp.byokPlaceholder": "Вставьте ключ API (sk-...)",
+    "modal.manualWalletPlaceholder": "напр.: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "Кошелек отключен",
+    "toast.walletDisconnectedMsg": "Сессия безопасно завершена",
+    "toast.configCopiedTitle": "Конфигурация скопирована!",
+    "toast.configCopiedMsg": "Сохранено в буфер обмена"
   },
   "vi": {
     "lang.select": "Chọn ngôn ngữ",
@@ -2826,12 +2879,10 @@
     "lang.close": "Đóng",
     "meta.title": "HAICHAIN - Hệ Điều Hành Tài Chính Máy Móc Tự Trị",
     "meta.description": "HAICHAIN là Hệ điều hành tài chính máy móc tự trị trên Solana. Hỗ trợ ký quỹ vi mô phi lưu ký và thanh toán năng lực AI tức thì.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "Thẻ Tín Dụng",
     "modal.depositWeb3": "Ví Web3",
-
-    "cluster.devnetLive": "Cụm Solana Devnet Trực Tiếp",
+    "cluster.devnetLive": "Solana Devnet Đang Chạy",
     "cluster.programLabel": "Chương trình:",
     "cluster.auditsPassed": "15/15 Kiểm toán Đạt chuẩn",
     "cluster.genesisTx": "Giao dịch Genesis Đã xác thực",
@@ -2881,7 +2932,6 @@
     "footer.compliance": "Phi Lưu Ký Miễn Trừ FinCEN • Tuân Thủ EU MiCA • 100% Miễn Nhiễm Lỗ Hổng",
     "footer.desc": "Hệ điều hành tài chính máy tự trị. Ký quỹ vi mô phi lưu ký và thanh toán năng lực AI tức thì trên Solana.",
     "footer.rights": "Bảo lưu mọi quyền",
-
     "nav.philosophy": "Triết Lý AI²",
     "nav.market": "Thị Trường",
     "nav.comparison": "So Sánh",
@@ -3006,7 +3056,6 @@
     "nav.vesting": "Két Vesting",
     "nav.ledger": "Nhật Ký Kiểm Toán",
     "nav.mcp": "MCP & Lập Trình Viên",
-    "cluster.devnetLive": "Solana Devnet Đang Chạy",
     "cluster.slot": "Devnet Slot",
     "btn.connectWallet": "Kết Nối Ví",
     "btn.connectShort": "Kết nối",
@@ -3106,9 +3155,9 @@
     "modal.byokConfirm": "Lưu & Gắn Hạn Mức An Toàn",
     "modal.walletTitle": "Kết Nối Tài Khoản & Ví Solana",
     "modal.walletSubtitle": "Xác thực sinh trắc học FaceID/Passkey hoặc kết nối ví Web3",
-    "modal.walletBiometric": "FaceID / TouchID / Windows Hello",
-    "modal.walletBiometricDesc": "Xác thực sinh trắc học phần cứng FIDO2 (Không cần mật khẩu hay ví Web3)",
-    "modal.walletOrWeb3": "HOẶC DÙNG VÍ ON-CHAIN SOLANA",
+    "modal.walletBiometric": "Ví Sinh Trắc Học Passkey",
+    "modal.walletBiometricDesc": "Xác thực phần cứng WebAuthn • An toàn tuyệt đối",
+    "modal.walletOrWeb3": "Hoặc kết nối tiện ích ví Solana ngoài",
     "modal.walletPhantom": "Ví Phantom",
     "modal.walletPhantomDesc": "Ứng dụng di động & tiện ích ví Solana phổ biến nhất",
     "modal.walletSolflare": "Ví Solflare",
@@ -3207,7 +3256,16 @@
     "home.footerLegal": "Mọi giao dịch được xác thực bằng mật mã trên Solana Devnet. Không phụ thuộc độ trễ ngân hàng truyền thống.",
     "agent.oneClickDesc": "Ủy quyền 1 chạm cho các AI agent tự động gọi dịch vụ trong giới hạn chi tiêu và thời hạn hiệu lực.",
     "mcp.copied": "Đã sao chép vào bộ nhớ tạm!",
-    "modal.depositWalletRequired": "Vui lòng kết nối ví Solana trước khi nạp để xác thực nguồn tiền on-chain vào Master Vault."
+    "modal.depositWalletRequired": "Vui lòng kết nối ví Solana trước khi nạp để xác thực nguồn tiền on-chain vào Master Vault.",
+    "modal.accountTopUp": "Nạp Tiền Vào Spending Pot (0% Gas)",
+    "hero.taskPlaceholder": "Nhập tác vụ cho AI Agent tự trị...",
+    "calc.customAmountPlaceholder": "Số tiền tùy chỉnh",
+    "mcp.byokPlaceholder": "Dán mã API Key (sk-...)",
+    "modal.manualWalletPlaceholder": "ví dụ: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "Đã Ngắt Kết Nối Ví",
+    "toast.walletDisconnectedMsg": "Đã thoát phiên làm việc an toàn",
+    "toast.configCopiedTitle": "Đã Sao Chép Cấu Hình!",
+    "toast.configCopiedMsg": "Đã lưu vào bộ nhớ tạm"
   },
   "hi": {
     "lang.select": "भाषा चुनें",
@@ -3216,12 +3274,10 @@
     "lang.close": "बंद करें",
     "meta.title": "HAICHAIN - स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम",
     "meta.description": "HAICHAIN सोलाना पर स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम है। नॉन-कस्टोडियल माइक्रो-एस्क्रो और त्वरित AI निपटान।",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "कार्ड",
     "modal.depositWeb3": "Web3 वॉलेट",
-
-    "cluster.devnetLive": "सोलाना डेवनेट लाइव क्लस्टर",
+    "cluster.devnetLive": "Solana Devnet लाइव",
     "cluster.programLabel": "प्रोग्राम:",
     "cluster.auditsPassed": "15/15 ऑडिट उत्तीर्ण",
     "cluster.genesisTx": "सत्यापित जेनेसिस लेन-देन",
@@ -3271,7 +3327,6 @@
     "footer.compliance": "गैर-कस्टोडियल FinCEN छूट • EU MiCA अनुरूप • 100% शोषण सुरक्षित",
     "footer.desc": "स्वायत्त मशीन वित्तीय ऑपरेटिंग सिस्टम। सोलाना पर गैर-कस्टोडियल माइक्रो-एस्क्रो और त्वरित एआई क्षमता निपटान।",
     "footer.rights": "सर्वाधिकार सुरक्षित",
-
     "nav.philosophy": "AI² Philosophy",
     "nav.market": "Market Data",
     "nav.comparison": "Comparison",
@@ -3396,7 +3451,6 @@
     "nav.vesting": "वेस्टिंग वॉल्ट",
     "nav.ledger": "ऑडिट लेजर",
     "nav.mcp": "MCP और देव केंद्र",
-    "cluster.devnetLive": "Solana Devnet लाइव",
     "cluster.slot": "Devnet स्लॉट",
     "btn.connectWallet": "वॉलेट कनेक्ट करें",
     "btn.connectShort": "कनेक्ट",
@@ -3660,7 +3714,19 @@
     "home.investorPitch": "वेबसाइट शोकेस और GTM पिच",
     "home.investorClose": "फास्ट-पैक बंद करें",
     "home.footerDesc": "Solana पर AI एजेंटों और रोबोटिक्स के लिए उच्च-वेग स्वायत्त खर्च पॉट प्रोटोकॉल।",
-    "home.footerLegal": "Solana Devnet पर सभी लेनदेन क्रिप्टोग्राफ़िक रूप से अधिकृत हैं। बिना किसी बैंकिंग देरी के।"
+    "home.footerLegal": "Solana Devnet पर सभी लेनदेन क्रिप्टोग्राफ़िक रूप से अधिकृत हैं। बिना किसी बैंकिंग देरी के।",
+    "modal.accountTopUp": "स्पेंडिंग पॉट टॉप अप करें (0% Gas)",
+    "modal.walletBiometric": "पासकी बायोमेट्रिक वॉलेट",
+    "modal.walletBiometricDesc": "हार्डवेयर-बाउंड WebAuthn • शून्य कुंजी जोखिम",
+    "modal.walletOrWeb3": "या बाहरी Solana एक्सटेंशन कनेक्ट करें",
+    "hero.taskPlaceholder": "स्वायत्त AI एजेंट के लिए कार्य दर्ज करें...",
+    "calc.customAmountPlaceholder": "कस्टम राशि",
+    "mcp.byokPlaceholder": "API कुंजी पेस्ट करें (sk-...)",
+    "modal.manualWalletPlaceholder": "उदा: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "वॉलेट डिस्कनेक्ट हो गया",
+    "toast.walletDisconnectedMsg": "सत्र सुरक्षित रूप से समाप्त हो गया",
+    "toast.configCopiedTitle": "कॉन्फिग कॉपी हो गया!",
+    "toast.configCopiedMsg": "क्लिपबोर्ड पर सहेजा गया"
   },
   "he": {
     "lang.select": "בחר שפה",
@@ -3669,12 +3735,10 @@
     "lang.close": "סגור",
     "meta.title": "HAICHAIN - מערכת הפעלה פיננסית אוטונומית למכונות",
     "meta.description": "HAICHAIN היא מערכת הפעלה פיננסית למכונות אוטונומיות על גבי סולאנה. נאמנויות מיקרו ללא משמורת והסדרים מיידיים של יכולות AI.",
-
     "modal.depositApplePay": "Apple Pay",
     "modal.depositCard": "כרטיס",
     "modal.depositWeb3": "ארנק Web3",
-
-    "cluster.devnetLive": "אשכול חי של Solana Devnet",
+    "cluster.devnetLive": "Solana Devnet חי",
     "cluster.programLabel": "תוכנית:",
     "cluster.auditsPassed": "15/15 ביקורות אושרו",
     "cluster.genesisTx": "עסקת Genesis מאומתת",
@@ -3724,7 +3788,6 @@
     "footer.compliance": "ללא משמורת פטור מ-FinCEN • תואם EU MiCA • 100% חסין תקיפות",
     "footer.desc": "מערכת ההפעלה הפיננסית האוטונומית למכונות. מיקרו-נאמנות ללא משמורת והסדרי יכולות AI מיידיים על גבי סולאנה.",
     "footer.rights": "כל הזכויות שמורות",
-
     "nav.philosophy": "AI² Philosophy",
     "nav.market": "Market Data",
     "nav.comparison": "Comparison",
@@ -3849,7 +3912,6 @@
     "nav.vesting": "כספת הבשלות",
     "nav.ledger": "ספר ביקורת",
     "nav.mcp": "מרכז MCP ומפתחים",
-    "cluster.devnetLive": "Solana Devnet חי",
     "cluster.slot": "סלוט Devnet",
     "btn.connectWallet": "חבר ארנק",
     "btn.connectShort": "חיבור",
@@ -4113,11 +4175,22 @@
     "home.investorPitch": "מצגת פלטפורמה ו-GTM Pitch",
     "home.investorClose": "סגור חבילה",
     "home.footerDesc": "פרוטוקול קופת הוצאות אוטונומית במהירות גבוהה עבור סוכני AI ורובוטיקה בסולאנה.",
-    "home.footerLegal": "כל העסקאות מורשות קריפטוגרפית על גבי Solana Devnet. ללא עיכובי בנקים מסורתיים."
+    "home.footerLegal": "כל העסקאות מורשות קריפטוגרפית על גבי Solana Devnet. ללא עיכובי בנקים מסורתיים.",
+    "modal.accountTopUp": "הפקדה לקופת הוצאות (0% Gas)",
+    "modal.walletBiometric": "ארנק ביומטרי Passkey",
+    "modal.walletBiometricDesc": "WebAuthn מבוסס חומרה • אפס סיכון מפתחות",
+    "modal.walletOrWeb3": "או חבר תוסף חיצוני של Solana",
+    "hero.taskPlaceholder": "הזן משימה עבור סוכן ה-AI האוטונומי...",
+    "calc.customAmountPlaceholder": "סכום מותאם אישית",
+    "mcp.byokPlaceholder": "הדבק מפתח API (sk-...)",
+    "modal.manualWalletPlaceholder": "למשל: 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    "toast.walletDisconnectedTitle": "הארנק נותק",
+    "toast.walletDisconnectedMsg": "הפעילות הסתיימה בצורה מאובטחת",
+    "toast.configCopiedTitle": "ההגדרות הועתקו!",
+    "toast.configCopiedMsg": "נשמר בלוח הגזירים"
   }
 };
 
-  // State Management with Cross-Page & URL Param Sync
   function getInitialLanguage() {
     try {
       const urlLang = new URLSearchParams(window.location.search).get('lang');
