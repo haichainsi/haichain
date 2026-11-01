@@ -29,3 +29,9 @@ yarn-debug.log*
 yarn-error.log*
 .DS_Store
 Thumbs.db
+
+# Generated Mobile Bridge client scripts
+assets/*.min.js
+app/assets/*.min.js
+assets/phantom-deeplink.js
+app/assets/phantom-deeplink.js

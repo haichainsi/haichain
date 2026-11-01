@@ -43,6 +43,7 @@
 10. [Formal Mathematical Theorems & Invariant Verification](#10-formal-mathematical-theorems--invariant-verification)
 11. [Strategic Roadmap & Milestone Commitments](#11-strategic-roadmap--milestone-commitments)
 12. [Conclusion & The $AI^2$ Manifesto](#12-conclusion--the-ai2-manifesto)
+13. [References & Verifiable Empirical Citations Index](#13-references--verifiable-empirical-citations-index)
 
 ---
 
