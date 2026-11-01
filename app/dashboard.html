@@ -593,9 +593,9 @@
 
         <!-- Consolidated Unified AI Integration Hub Trigger (High-Visibility AI Connect Pill) -->
         <!-- Consolidated Unified AI Integration Hub Trigger -->
-        <button id="ai-hub-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="AI Integration Hub: Connect AI">
+        <button id="ai-hub-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white" title="Connect AI" data-i18n-title="nav.aiConnectTitle">
           <i data-lucide="cpu" class="w-3.5 h-3.5 shrink-0 pointer-events-none"></i>
-          <span class="hidden md:inline font-mono text-xs font-semibold">Connect AI</span>
+          <span class="hidden md:inline font-mono text-xs font-semibold" data-i18n="nav.aiConnect">Connect AI</span>
           <span class="hidden sm:inline md:hidden text-[10px] font-bold font-mono">AI</span>
         </button>
 
@@ -1042,7 +1042,7 @@
           <!-- Prompt Box & Execute Button -->
           <div class="space-y-3">
             <div class="flex flex-col sm:flex-row gap-2">
-              <input type="text" id="playground-prompt" value="Explain how HAICHAIN protects AI agents from prompt injection wallet drain" class="flex-1 px-4 py-3.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
+              <input type="text" id="playground-prompt" value="Explain how HAICHAIN protects AI agents from prompt injection wallet drain" data-i18n-value="playground.defaultPrompt" data-i18n-placeholder="playground.promptPlaceholder" class="flex-1 px-4 py-3.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
               <button id="playground-execute-btn" class="px-6 py-3.5 rounded-2xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center space-x-2 shrink-0 shadow-sm min-h-[48px]">
                 <i data-lucide="zap" class="w-4 h-4"></i>
                 <span data-i18n="playground.executeBtn">Execute & Settle On-Chain</span>
@@ -1094,7 +1094,7 @@
                 <div class="text-neutral-400">[Master Vault PDA] FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F (Authority: HD1b...5nVW)</div>
                 <div class="text-neutral-200 flex items-center space-x-2 pt-1 font-semibold">
                   <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-ping"></span>
-                  <span>[Ready] Choose an AI engine or task template and click "Execute & Settle On-Chain" to broadcast live micro-escrow.</span>
+                  <span id="playground-terminal-ready" data-i18n="playground.terminalReady">[Ready] Choose an AI engine or task template and click "Execute & Settle On-Chain" to broadcast live micro-escrow.</span>
                 </div>
               </div>
             </div>
@@ -1433,10 +1433,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           </div>
           <div class="min-w-0">
             <div class="flex items-center space-x-2">
-              <h3 class="font-bold text-sm sm:text-base text-black dark:text-white tracking-tight truncate">Kết nối HAICHAIN với AI</h3>
-              <span class="px-2 py-0.5 text-[9px] font-mono rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-800 shrink-0 font-semibold uppercase tracking-wider">3 Lựa Chọn</span>
+              <h3 class="font-bold text-sm sm:text-base text-black dark:text-white tracking-tight truncate" data-i18n="aiHub.modalTitle">HAICHAIN AI Hub</h3>
+              <span class="px-2 py-0.5 text-[9px] font-mono rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-800 shrink-0 font-semibold uppercase tracking-wider" data-i18n="aiHub.modalBadge">3 Options</span>
             </div>
-            <p class="text-[10.5px] sm:text-[11.5px] text-neutral-500 truncate">Chọn cách kết nối phù hợp nhất với trải nghiệm của bạn</p>
+            <p class="text-[10.5px] sm:text-[11.5px] text-neutral-500 truncate" data-i18n="aiHub.modalSubtitle">Choose the best connection mode for your experience</p>
           </div>
         </div>
         <button id="close-ai-hub-modal" type="button" class="w-9 h-9 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0" title="Đóng">
@@ -1448,15 +1448,15 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       <div class="my-3 flex p-1 bg-neutral-100 dark:bg-neutral-900/80 rounded-xl text-xs font-semibold shrink-0 gap-1 border border-neutral-200/50 dark:border-neutral-800/50">
         <button id="hub-tab-desktop" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-black text-white dark:bg-white dark:text-black shadow-xs text-center font-bold flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
           <i data-lucide="laptop" class="w-3.5 h-3.5 shrink-0"></i>
-          <span class="truncate">1. Desktop App</span>
+          <span class="truncate" data-i18n="aiHub.tabDesktop">1. Desktop App</span>
         </button>
         <button id="hub-tab-online" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-medium flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
           <i data-lucide="globe" class="w-3.5 h-3.5 shrink-0"></i>
-          <span class="truncate">2. Claude Online</span>
+          <span class="truncate" data-i18n="aiHub.tabOnline">2. Claude Online</span>
         </button>
         <button id="hub-tab-web" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-medium flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
           <i data-lucide="zap" class="w-3.5 h-3.5 shrink-0"></i>
-          <span class="truncate">3. Web Direct</span>
+          <span class="truncate" data-i18n="aiHub.tabWeb">3. Web Direct</span>
         </button>
       </div>
 
@@ -1466,9 +1466,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="flex items-center justify-between">
             <span class="text-black dark:text-white font-sans font-bold text-xs flex items-center space-x-1.5">
               <i data-lucide="terminal" class="w-3.5 h-3.5 text-neutral-500"></i>
-              <span>Cài đặt 1-Click Tự Động (Khuyên dùng)</span>
+              <span data-i18n="aiHub.desktopTitle">1-Click Auto Install (Recommended)</span>
             </span>
-            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold">Tự Động 100%</span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.desktopBadge">100% Automated</span>
           </div>
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
             Dành cho máy tính đã cài <strong>Claude Desktop</strong> hoặc <strong>Cursor IDE</strong>. Tự động cấu hình MCP server và kết nối két chi tiêu on-chain.
@@ -1491,36 +1491,36 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
         <button id="copy-desktop-install-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm transition-all active:scale-98 cursor-pointer">
           <i data-lucide="copy" class="w-4 h-4"></i>
-          <span id="copy-desktop-install-text">Sao chép lệnh cài đặt 1-Click</span>
+          <span id="copy-desktop-install-text" data-i18n="aiHub.desktopCopyBtn">Copy 1-Click Install Command</span>
         </button>
 
         <!-- 3 Step Walkthrough -->
         <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-2 font-sans">
           <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
             <i data-lucide="check" class="w-3.5 h-3.5 text-neutral-400 shrink-0"></i>
-            <span>3 bước kích hoạt:</span>
+            <span data-i18n="aiHub.desktopStepsTitle">3 Activation Steps:</span>
           </div>
           <div class="space-y-1.5 text-[10.5px] sm:text-[11px]">
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
-              <span>Sao chép lệnh trên và dán vào <strong>Terminal / PowerShell / Command Prompt</strong> rồi nhấn Enter.</span>
+              <span data-i18n="aiHub.desktopStep1">Copy the command above, paste into Terminal / PowerShell / Command Prompt, and press Enter.</span>
             </div>
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
-              <span>Khởi động lại ứng dụng <strong>Claude Desktop</strong>.</span>
+              <span data-i18n="aiHub.desktopStep2">Restart the Claude Desktop application.</span>
             </div>
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
-              <span>Biểu tượng 🔨 Tools sẽ xuất hiện ở góc khung chat! Bạn chỉ cần gõ: <em>"Kiểm tra số dư két chi tiêu HAICHAIN"</em>.</span>
+              <span data-i18n="aiHub.desktopStep3">The 🔌 Tools icon will appear in the chat bar! Simply type: "Check HAICHAIN spending vault balance".</span>
             </div>
           </div>
         </div>
 
         <!-- Optional Manual JSON Download -->
         <div class="pt-1 flex items-center justify-between text-[11px] text-neutral-500 font-sans">
-          <span>Cấu hình thủ công qua file JSON?</span>
+          <span data-i18n="aiHub.desktopManualText">Configure manually via JSON file?</span>
           <a href="/download/claude_desktop_config.json" download="claude_desktop_config.json" class="text-black dark:text-white hover:underline font-semibold flex items-center space-x-1">
-            <span>Tải file .json</span>
+            <span data-i18n="aiHub.desktopDownloadJson">Download .json file</span>
             <i data-lucide="download" class="w-3 h-3"></i>
           </a>
         </div>
@@ -1532,9 +1532,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="flex items-center justify-between">
             <span class="text-black dark:text-white font-sans font-bold text-xs flex items-center space-x-1.5">
               <i data-lucide="cloud" class="w-3.5 h-3.5 text-neutral-500"></i>
-              <span>Remote MCP Server (SSE qua HTTPS)</span>
+              <span data-i18n="aiHub.onlineTitle">Remote MCP Server (SSE over HTTPS)</span>
             </span>
-            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold">Đám Mây</span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">Cloud</span>
           </div>
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
             Dành cho người dùng chat trên web <strong>claude.ai</strong> trên trình duyệt (Chrome, Safari, Brave, Edge). Kết nối trực tiếp qua giao thức đám mây.
@@ -1557,27 +1557,27 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
         <button id="copy-online-mcp-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm transition-all active:scale-98 cursor-pointer">
           <i data-lucide="copy" class="w-4 h-4"></i>
-          <span id="copy-online-mcp-text">Sao chép đường dẫn Remote MCP</span>
+          <span id="copy-online-mcp-text" data-i18n="aiHub.onlineCopyBtn">Copy Remote MCP URL</span>
         </button>
 
         <!-- 3 Step Guide for claude.ai online -->
         <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-2 font-sans">
           <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
             <i data-lucide="info" class="w-3.5 h-3.5 text-neutral-400 shrink-0"></i>
-            <span>Cách thiết lập trên claude.ai:</span>
+            <span data-i18n="aiHub.onlineStepsTitle">How to set up on claude.ai:</span>
           </div>
           <div class="space-y-1.5 text-[10.5px] sm:text-[11px]">
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
-              <span>Truy cập <strong>claude.ai</strong> và đăng nhập vào tài khoản của bạn.</span>
+              <span data-i18n="aiHub.onlineStep1">Go to claude.ai and log into your account.</span>
             </div>
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
-              <span>Bấm vào Avatar (góc dưới bên trái) ➔ Chọn <strong>Settings</strong> ➔ <strong>Developer / Connectors</strong>.</span>
+              <span data-i18n="aiHub.onlineStep2">Click your Avatar (bottom-left) -> Settings -> Developer / Connectors.</span>
             </div>
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
-              <span>Dán đường link <code class="font-bold text-black dark:text-white">https://mcp.haichain.si/sse</code> vào ô Server URL rồi bấm <strong>Connect</strong>.</span>
+              <span data-i18n="aiHub.onlineStep3">Paste https://mcp.haichain.si/sse into Server URL and click Connect.</span>
             </div>
           </div>
         </div>
@@ -1589,40 +1589,36 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="flex items-center justify-between">
             <span class="text-black dark:text-white font-sans font-bold text-xs flex items-center space-x-1.5">
               <i data-lucide="sparkles" class="w-3.5 h-3.5 text-neutral-400"></i>
-              <span>Trải nghiệm Trực tiếp trên Web</span>
+              <span data-i18n="aiHub.webTitle">Instant Web Experience</span>
             </span>
             <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold">Web3 Direct</span>
           </div>
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
-            Dành cho người dùng Web3 muốn gọi AI suy luận ngay trên trình duyệt mà không cần cài Claude hay sử dụng dòng lệnh.
-          </p>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed" data-i18n="aiHub.webDesc">For Web3 users who want to run AI inference directly in browser without installing Claude or using command lines.</p>
         </div>
 
         <!-- 3 Feature Badges (Monochrome Luxury) -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 font-sans text-center">
           <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
-            <span class="block text-[11px] font-bold text-black dark:text-white">Đa Mô Hình AI</span>
+            <span class="block text-[11px] font-bold text-black dark:text-white" data-i18n="aiHub.webFeature1Title">Multi-AI Model</span>
             <span class="text-[10px] text-neutral-500">Gemini, GPT-4o, Claude 3.5, DeepSeek</span>
           </div>
           <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
-            <span class="block text-[11px] font-bold text-black dark:text-white">Két Chi Tiêu Bảo Vệ</span>
-            <span class="text-[10px] text-neutral-500">Khống chế ngân sách, an toàn vốn 100%</span>
+            <span class="block text-[11px] font-bold text-black dark:text-white" data-i18n="aiHub.webFeature2Title">Protected Spending Vault</span>
+            <span class="text-[10px] text-neutral-500" data-i18n="aiHub.webFeature2Desc">Hard budget limits, 100% capital safety</span>
           </div>
           <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
-            <span class="block text-[11px] font-bold text-black dark:text-white">Nút Khẩn Cấp Panic</span>
-            <span class="text-[10px] text-neutral-500">Thu hồi toàn bộ tiền về ví trong 380ms</span>
+            <span class="block text-[11px] font-bold text-black dark:text-white" data-i18n="aiHub.webFeature3Title">Panic Circuit Breaker</span>
+            <span class="text-[10px] text-neutral-500" data-i18n="aiHub.webFeature3Desc">Reclaim 100% funds to wallet in 380ms</span>
           </div>
         </div>
 
         <!-- Big Launch CTA Button (Solid Monochrome) -->
         <button id="btn-open-web-playground" type="button" class="w-full py-3.5 px-4 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm active:scale-98 transition-all cursor-pointer">
           <i data-lucide="play" class="w-4 h-4 fill-current"></i>
-          <span>Mở AI Playground Ngay Bây Giờ &rarr;</span>
+          <span data-i18n="aiHub.webLaunchBtn">Open AI Playground Now →</span>
         </button>
 
-        <p class="text-center text-[10.5px] text-neutral-500 font-sans">
-          Chỉ cần kết nối ví Phantom / Solflare hoặc nhập API key của riêng bạn (BYOK).
-        </p>
+        <p class="text-center text-[10.5px] text-neutral-500 font-sans" data-i18n="aiHub.webFooter">Just connect Phantom / Solflare wallet or enter your own API key (BYOK).</p>
       </div>
 
     </div>
@@ -2187,7 +2183,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           }[targetTab];
           if (targetTab === 'tab-preseed') {
             const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
-            currentTabTitle.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+            currentTabTitle.textContent = getDashNotice('tabStrategic');
           } else {
             currentTabTitle.textContent = titleKey ? window.haichainI18n.t(titleKey) : 'Dashboard';
           }
@@ -2373,6 +2369,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
     // 0. Multi-Language Synchronizer
     window.addEventListener('haichain:languageChanged', (e) => {
+        const newLang = e.detail && (e.detail.lang || e.detail.language);
+        if (typeof renderVestingVaultPage === 'function') {
+          renderVestingVaultPage();
+        }
       const activeTabEl = document.querySelector('.tab-content:not(.hidden)');
       if (activeTabEl && window.haichainI18n) {
         const titleKey = {
@@ -2387,7 +2387,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         if (titleEl) {
           if (activeTabEl.id === 'tab-preseed') {
             const isVi = window.haichainI18n.getLanguage() === 'vi';
-            titleEl.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+            titleEl.textContent = getDashNotice('tabStrategic');
           } else if (titleKey) {
             titleEl.textContent = window.haichainI18n.t(titleKey);
           }
@@ -2517,7 +2517,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         }[targetTab];
         if (targetTab === 'tab-preseed') {
           const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
-          currentTabTitle.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+          currentTabTitle.textContent = getDashNotice('tabStrategic');
         } else {
           currentTabTitle.textContent = titleKey ? window.haichainI18n.t(titleKey) : (tabTitles[targetTab] || 'Dashboard');
         }
@@ -2846,12 +2846,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const badgeIcon = document.getElementById('account-badge-icon');
 
       if (isBiometric) {
-        if (titleEl) titleEl.textContent = isVi ? 'Ví Sinh Trắc Học Passkey' : 'Passkey Biometric Wallet';
+        if (titleEl) titleEl.textContent = getDashNotice('passkeyTitle');
         if (tagEl) {
           tagEl.textContent = 'FIDO2 Active';
           tagEl.className = 'text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 shrink-0';
         }
-        if (subtitleEl) subtitleEl.textContent = isVi ? 'Xác thực phần cứng WebAuthn • An toàn tuyệt đối' : 'Hardware-Bound WebAuthn • Zero Key Risk';
+        if (subtitleEl) subtitleEl.textContent = getDashNotice('passkeySubtitle');
         if (badgeIcon) {
           badgeIcon.className = "w-10 h-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-500 flex items-center justify-center shrink-0 shadow-sm";
           badgeIcon.innerHTML = '<i data-lucide="fingerprint" class="w-5 h-5 text-emerald-500"></i>';
@@ -2899,7 +2899,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           syncContainer.classList.remove('hidden');
           syncLink.href = window.HaichainMobileWallet.buildHandoffUrl(userWallet.address, userWallet.provider);
           if (syncText) {
-            syncText.textContent = isVi ? 'Đồng bộ sang trình duyệt Chrome' : 'Sync Wallet to Chrome Browser';
+            syncText.textContent = getDashNotice('syncChrome');
           }
         } else {
           syncContainer.classList.add('hidden');
@@ -3034,11 +3034,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       btnTrayPhantomDeep.addEventListener('click', () => {
         const isVi = window.haichainI18n?.currentLang === 'vi';
         walletConnectModal.classList.add('hidden');
-        walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
+        walletBtnText.textContent = getDashNotice('openingPhantom');
         armWalletConnectRevert(4500);
         showToast({
-          title: isVi ? 'Đang mở Phantom...' : 'Opening Phantom App...',
-          message: isVi ? 'Cấp quyền trong Phantom để quay lại Chrome' : 'Approve in Phantom to return to Chrome',
+          title: getDashNotice('openingPhantomTitle'),
+          message: getDashNotice('approvePhantomMsg'),
           icon: 'arrow-right'
         });
         setTimeout(() => {
@@ -3086,11 +3086,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       btnTraySolflareDeep.addEventListener('click', () => {
         const isVi = window.haichainI18n?.currentLang === 'vi';
         walletConnectModal.classList.add('hidden');
-        walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
+        walletBtnText.textContent = getDashNotice('openingSolflare');
         armWalletConnectRevert(4500);
         showToast({
-          title: isVi ? 'Đang mở Solflare...' : 'Opening Solflare App...',
-          message: isVi ? 'Cấp quyền trong Solflare để quay lại Chrome' : 'Approve in Solflare to return to Chrome',
+          title: getDashNotice('openingSolflareTitle'),
+          message: getDashNotice('approveSolflareMsg'),
           icon: 'arrow-right'
         });
         setTimeout(() => {
@@ -3629,13 +3629,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         if (provider === 'biometric') {
           try {
             walletNoticeBox.classList.add('hidden');
-            walletBtnText.textContent = isVi ? "Quét sinh trắc học..." : "Scanning Biometric...";
+            walletBtnText.textContent = getDashNotice('scanningBio');
             const result = await authenticateWithBiometricPasskey();
             await setConnectedWallet(result.derivedAddress, 'FaceID / Windows Hello Passkey');
             walletConnectModal.classList.add('hidden');
             const shortAddr = result.derivedAddress.slice(0, 4) + '...' + result.derivedAddress.slice(-4);
             showToast({
-              title: isVi ? 'Xác Thực Passkey Thành Công' : 'Passkey Connected Successfully',
+              title: getDashNotice('passkeyConnected'),
               message: shortAddr + ' • FIDO2 Hardware Active',
               icon: 'fingerprint'
             });
@@ -3643,7 +3643,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           } catch (bioErr) {
             console.error("Biometric passkey error:", bioErr);
             updateWalletBtnUI();
-            walletNoticeText.innerHTML = '<strong>' + (isVi ? 'Lỗi xác thực sinh trắc học' : 'Biometric Error') + ':</strong> ' + (bioErr.message || bioErr);
+            walletNoticeText.innerHTML = '<strong>' + getDashNotice('bioError') + ':</strong> ' + (bioErr.message || bioErr);
             walletNoticeBox.classList.remove('hidden');
             walletInstallLink.parentElement.classList.add('hidden');
             safeCreateIcons();
@@ -3656,7 +3656,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
           if (phantom) {
             try {
-              walletBtnText.textContent = isVi ? "Đang kết nối Phantom..." : "Connecting Phantom...";
+              walletBtnText.textContent = getDashNotice('connectingPhantom');
               const resp = await phantom.connect();
               const pubKey = resp.publicKey ? resp.publicKey.toString() : phantom.publicKey.toString();
               await setConnectedWallet(pubKey, 'Phantom');
@@ -3672,7 +3672,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               updateWalletBtnUI();
               showToast({
                 title: 'Phantom',
-                message: isVi ? 'Người dùng đã hủy kết nối' : 'Connection rejected',
+                message: getDashNotice('connectionRejected'),
                 icon: 'alert-triangle'
               });
             }
@@ -3708,7 +3708,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           const mm = getMetaMaskProvider();
           if (mm) {
             try {
-              walletBtnText.textContent = isVi ? "Đang kết nối MetaMask..." : "Connecting MetaMask...";
+              walletBtnText.textContent = getDashNotice('connectingMetaMask');
               const accounts = await mm.request({ method: 'eth_requestAccounts' });
               if (!accounts || accounts.length === 0) {
                 throw new Error("No accounts authorized in MetaMask");
@@ -3752,7 +3752,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               if (err.code === 4001) {
                 showToast({
                   title: 'MetaMask',
-                  message: isVi ? 'Người dùng đã hủy kết nối' : 'Connection rejected',
+                  message: getDashNotice('connectionRejected'),
                   icon: 'alert-triangle'
                 });
               } else {
@@ -3793,7 +3793,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           const solflare = window.solflare?.isSolflare ? window.solflare : null;
           if (solflare) {
             try {
-              walletBtnText.textContent = isVi ? "Đang kết nối Solflare..." : "Connecting Solflare...";
+              walletBtnText.textContent = getDashNotice('connectingSolflare');
               await window.solflare.connect();
               const pubKey = window.solflare.publicKey.toString();
               await setConnectedWallet(pubKey, 'Solflare');
@@ -3809,7 +3809,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               updateWalletBtnUI();
               showToast({
                 title: 'Solflare',
-                message: isVi ? 'Người dùng đã hủy kết nối' : 'Connection rejected',
+                message: getDashNotice('connectionRejected'),
                 icon: 'alert-triangle'
               });
             }
@@ -3918,7 +3918,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     window.clearUserAllocation = function() {
       if (!userWallet) return;
       const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
-      if (confirm(isVi ? 'Bạn có muốn đặt lại dữ liệu phân bổ mẫu cho ví này?' : 'Reset simulation allocation for this wallet?')) {
+      if (confirm(getDashNotice('resetSimulationConfirm'))) {
         const allocs = getStoredAllocations();
         delete allocs[userWallet.address];
         saveStoredAllocations(allocs);
@@ -3978,10 +3978,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             <div class="flex items-center space-x-2">
               <span class="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse"></span>
               <h3 class="font-bold text-sm sm:text-base text-black dark:text-white">
-                ${isVi ? 'Két Vesting Token-2022 Đang Hoạt Động' : 'Active Token-2022 Vesting Vault'}
+                ${getDashNotice('activeVestingVault')}
               </h3>
               <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
-                ${isVi ? 'Khối Thiên Thần' : 'Angel Tranche'}
+                ${getDashNotice('angelTranche')}
               </span>
             </div>
             <p class="text-xs text-neutral-500 font-mono">
@@ -3993,7 +3993,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="flex items-center space-x-2 shrink-0">
             <button onclick="window.switchTab('tab-vesting')" class="px-4 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center space-x-2 transition-all shadow-sm">
               <i data-lucide="shield-check" class="w-4 h-4 text-black dark:text-white"></i>
-              <span>${isVi ? 'Truy Cập Két Vesting Của Tôi →' : 'Open My Vesting Vault →'}</span>
+              <span>${getDashNotice('openMyVestingVault')}</span>
             </button>
           </div>
         </div>
@@ -4002,12 +4002,1012 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     }
 
     // 2. DEDICATED VESTING VAULT PAGE CONTROLLER (STRICT ZERO PRICE LEAKAGE: NEVER PRINTS $0.007)
+    
+    // 10-Language Official Vesting Vault Internationalization Matrix
+    const VESTING_VAULT_I18N = {
+  "kk": {
+      "metaMaskNotDetected": "Браузеріңізде MetaMask кеңейтімі табылмады.",
+      "checkingMetaMaskBalance": "MetaMask балансы тексерілуде...",
+      "approveInMetaMaskPopup": "MetaMask терезесінде растаңыз...",
+      "metaMaskDepositSuccess": "MetaMask Салымы Сәтті Расталды",
+      "depositCanceledMetaMask": "Салым тоқтатылды: MetaMask-та қол қоюдан бас тарттыңыз.",
+      "metaMaskError": "MetaMask қатесі:",
+
+    "vaultTitle": "Token-2022 Вестинг Сейфі және Бөліністер",
+    "vaultSubtitle": "On-chain $HAISI бөлініс тізілімі және криптографиялық Transfer-Hook вестингтік смарт-келісімшарттары.",
+    "authRequired": "Solana Әмиянын Растау Қажет",
+    "authDesc": "Жеке вестинг бөлінісіңізді ашу және Ed25519 ашық кілтін растау үшін Phantom, Solflare, биометриялық Passkey қосыңыз немесе Solana мекенжайыңызды енгізіңіз.",
+    "connectWalletBtn": "Phantom / Solana Әмиянын Қосу",
+    "subscribeSaftBtn": "Private SAFT Раундына Жазылу",
+    "authAddress": "Расталған Әмиян:",
+    "noAllocTitle": "Бұл Әмиян Мекенжайына Бөлініс Табылмады",
+    "noAllocDesc": "Бұл әмиян мекенжайы қазынашылық жүйесіндегі белсенді SAFT келісіміне немесе бастапқы токен бөлінісіне әлі байланыстырылмаған. Егер қаражат аударған болсаңыз, желінің растауын күтіңіз.",
+    "subscribeDiscountBtn": "Private SAFT Раундына Жазылу (30% Жеңілдік)",
+    "switchWalletBtn": "Басқа Әмиянға Ауысу",
+    "portfolioTitle": "Инвестор Портфелі және Вестинг Сейфі",
+    "trancheBadge": "Құпия Стратегиялық Бөлініс",
+    "transferHookStatus": "Token-2022 Transfer-Hook Бұғатталған",
+    "addToPhantomBtn": "$HAISI-ді Phantom-ға Қосу",
+    "resetSimTitle": "Үлгі деректерін қалпына келтіру",
+    "kpiTotalBalance": "Бөлінген Жалпы $HAISI",
+    "kpiTokenStandard": "Solana Token-2022 Кеңейтімі",
+    "kpiCommittedCapital": "Бөлінген Инвестициялық Капитал",
+    "kpiTreasuryVault": "Multi-Sig L1 Қазынашылығы",
+    "kpiTgeBenchmark": "Ашық TGE Негізгі Бағасы",
+    "kpiBenchmarkSubtitle": "Бастапқы Баға $10M FDV",
+    "kpiTgeValuation": "TGE-дегі Күтілетін Құн",
+    "kpiNotionalSurplus": "Атаулы Артықшылық",
+    "transferHookTitle": "Transfer-Hook Криптографиялық Инварианты",
+    "transferHookDesc": "Барлық ерте кезеңдегі $HAISI токендері клифф және сызықты вестинг шарттары Solana валидаторларымен расталмайынша тасымалдауды математикалық түрде бұғаттайтын ончейн Transfer-Hook кеңейтімімен жасалған.",
+    "step1Title": "1. TGE Бұғатты Ашу (20%)",
+    "step1Desc": "Жария 런치падта листинг болған кезде бірден қолжетімді.",
+    "step2Title": "2. Клифф Кезеңі (1 және 2 айлар)",
+    "step2Desc": "0% аудару мүмкіндігі. Нарықтық сатылымнан қорғау үшін толық бұғаттау.",
+    "step3Title": "3. Сызықты Стриминг (3-8 айлар)",
+    "step3Desc": "180 күн бойы күн сайын біркелкі үлестірілетін үздіксіз микро-стриминг.",
+    "dailyRate": "$HAISI / күн",
+    "copyMintPrompt": "TOKEN-2022 MINT МЕКЕНЖАЙЫ КӨШІРІЛДІ ($HAISI):",
+    "copyMintGuide": "Phantom-ға қосу үшін:\n1. Phantom ашыңыз -> 'Manage token list' басыңыз.\n2. Mint мекенжайын іздеу жолағына қойыңыз.\n3. $HAISI (Haichain SI) балансы мен таңбасын қосыңыз."
+  },
+  "en": {
+      "metaMaskNotDetected": "MetaMask extension not detected in your browser.",
+      "checkingMetaMaskBalance": "Checking MetaMask balance...",
+      "approveInMetaMaskPopup": "Approve in MetaMask popup...",
+      "metaMaskDepositSuccess": "MetaMask Deposit Confirmed",
+      "depositCanceledMetaMask": "Deposit Canceled: You rejected the signature in MetaMask.",
+      "metaMaskError": "MetaMask error:",
+
+    "vaultTitle": "Token-2022 Vesting Vault & Allocations",
+    "vaultSubtitle": "On-chain $HAISI (Haichain SI) allocation ledger and cryptographic Transfer-Hook vesting smart contracts.",
+    "authRequired": "Solana Wallet Authentication Required",
+    "authDesc": "Connect Phantom, Solflare, Biometric Passkey, or enter your personal Solana address to verify your Ed25519 public key and unlock your personal vesting allocation vault.",
+    "connectWalletBtn": "Connect Phantom / Solana Wallet",
+    "subscribeSaftBtn": "Subscribe to Private SAFT",
+    "authAddress": "Authenticated Address:",
+    "noAllocTitle": "No Allocation Found for this Address",
+    "noAllocDesc": "This wallet address is not currently bound to any active SAFT agreement or early token tranche in the treasury vault. If you have recently sent funds, please allow network block finalization.",
+    "subscribeDiscountBtn": "Subscribe to Private SAFT (30% Discount)",
+    "switchWalletBtn": "Switch Wallet",
+    "portfolioTitle": "Investor Portfolio & Vesting Vault",
+    "trancheBadge": "Confidential Strategic Tranche",
+    "transferHookStatus": "Token-2022 Transfer-Hook Locked",
+    "addToPhantomBtn": "Add $HAISI to Phantom",
+    "resetSimTitle": "Reset simulation",
+    "kpiTotalBalance": "Total $HAISI Balance",
+    "kpiTokenStandard": "Solana Token-2022 Extension",
+    "kpiCommittedCapital": "Committed Capital",
+    "kpiTreasuryVault": "Multi-Sig Treasury Vault",
+    "kpiTgeBenchmark": "Public TGE Benchmark",
+    "kpiBenchmarkSubtitle": "Floor Launchpad Benchmark",
+    "kpiTgeValuation": "TGE Notional Valuation",
+    "kpiNotionalSurplus": "Notional Surplus",
+    "transferHookTitle": "Transfer-Hook Cryptographic Invariant",
+    "transferHookDesc": "All early $HAISI tokens are minted with on-chain Transfer-Hook extensions that mathematically block transfers until cliff and linear vesting conditions are verified by Solana runtime validators.",
+    "step1Title": "1. TGE Unlock (20%)",
+    "step1Desc": "Available immediately at public launchpad listing.",
+    "step2Title": "2. Cliff Period (Months 1 & 2)",
+    "step2Desc": "0% transferability. Complete lock to prevent market dumping.",
+    "step3Title": "3. Linear Stream (Months 3 to 8)",
+    "step3Desc": "Daily continuous micro-streaming unlocking evenly over 180 days.",
+    "dailyRate": "$HAISI / day",
+    "copyMintPrompt": "TOKEN-2022 MINT COPIED ($HAISI):",
+    "copyMintGuide": "To view in Phantom:\n1. Open Phantom -> Click 'Manage token list'.\n2. Paste the Mint Address into search.\n3. Toggle ON to view your official $HAISI (Haichain SI) balance."
+  },
+  "zh": {
+      "metaMaskNotDetected": "未在您的浏览器中检测到 MetaMask 插件。",
+      "checkingMetaMaskBalance": "正在检查 MetaMask 余额...",
+      "approveInMetaMaskPopup": "请在 MetaMask 弹窗中完成授权...",
+      "metaMaskDepositSuccess": "MetaMask 充值确认成功",
+      "depositCanceledMetaMask": "充值已取消：您在 MetaMask 中拒绝了交易签名。",
+      "metaMaskError": "MetaMask 错误：",
+
+    "vaultTitle": "Token-2022 锁仓金库与分配份额",
+    "vaultSubtitle": "链上 $HAISI (Haichain SI) 认购分配账本与密码学 Transfer-Hook 锁仓智能合约。",
+    "authRequired": "需要验证 Solana 钱包",
+    "authDesc": "连接 Phantom、Solflare、生物识别 Passkey 或输入您的 Solana 地址以验证 Ed25519 公钥并解锁您的专属锁仓金库。",
+    "connectWalletBtn": "连接 Phantom / Solana 钱包",
+    "subscribeSaftBtn": "认购私募 SAFT 份额",
+    "authAddress": "已验证钱包地址：",
+    "noAllocTitle": "未找到此地址的认购分配份额",
+    "noAllocDesc": "此钱包地址目前未绑定金库系统中的任何有效 SAFT 协议或早期代币分配。如果您刚刚完成转账，请等待链上区块确认。",
+    "subscribeDiscountBtn": "认购私募 SAFT 份额 (享 30% 优惠折扣)",
+    "switchWalletBtn": "切换其他钱包",
+    "portfolioTitle": "投资者投资组合与锁仓金库",
+    "trancheBadge": "机密战略早期轮次",
+    "transferHookStatus": "Token-2022 Transfer-Hook 密码学锁定",
+    "addToPhantomBtn": "将 $HAISI 添加至 Phantom",
+    "resetSimTitle": "重置模拟数据",
+    "kpiTotalBalance": "总 $HAISI 分配余额",
+    "kpiTokenStandard": "Solana Token-2022 扩展规范",
+    "kpiCommittedCapital": "承诺投资本金",
+    "kpiTreasuryVault": "L1 多签国库金库",
+    "kpiTgeBenchmark": "公开 TGE 基准发售盘",
+    "kpiBenchmarkSubtitle": "初始启动估值 $10M FDV",
+    "kpiTgeValuation": "TGE 预期票面市值",
+    "kpiNotionalSurplus": "名义未实现溢价",
+    "transferHookTitle": "Transfer-Hook 密码学不变性约束",
+    "transferHookDesc": "所有早期 $HAISI 代币均通过链上 Transfer-Hook 扩展发行，在满足锁仓和线性释放条件并通过 Solana 验证之前，任何转账均在数学底层被严格拦截。",
+    "step1Title": "1. TGE 首发解锁 (20%)",
+    "step1Desc": "在公开 Launchpad 上线时立即可用。",
+    "step2Title": "2. 锁仓期 (第1与第2个月)",
+    "step2Desc": "0% 转让率。完全冻结以防止二级市场恶意抛售。",
+    "step3Title": "3. 线性流式释放 (第3至第8个月)",
+    "step3Desc": "在 180 天内每日平滑持续微支付式释放。",
+    "dailyRate": "$HAISI / 天",
+    "copyMintPrompt": "TOKEN-2022 MINT 地址已复制 ($HAISI)：",
+    "copyMintGuide": "添加至 Phantom 方法：\n1. 打开 Phantom -> 点击 'Manage token list'。\n2. 将 Mint 地址粘贴至搜索框。\n3. 开启 $HAISI (Haichain SI) 显示开关即可查看到账余额与图标。"
+  },
+  "vi": {
+      "metaMaskNotDetected": "Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn.",
+      "checkingMetaMaskBalance": "Đang kiểm tra số dư ví MetaMask...",
+      "approveInMetaMaskPopup": "Chờ bạn duyệt trên MetaMask...",
+      "metaMaskDepositSuccess": "Nạp MetaMask Thành Công",
+      "depositCanceledMetaMask": "Giao dịch đã hủy: Bạn đã từ chối duyệt giao dịch trên ví MetaMask.",
+      "metaMaskError": "Lỗi giao dịch MetaMask:",
+
+    "vaultTitle": "Két Vesting Token-2022 & Danh Mục Phân Bổ",
+    "vaultSubtitle": "Sổ cái phân bổ token $HAISI (Haichain SI) và hợp đồng Vesting on-chain được bảo vệ bằng Transfer-Hook mật mã.",
+    "authRequired": "Yêu Cầu Kết Nối Ví Solana",
+    "authDesc": "Hãy kết nối ví Phantom, Solflare, Passkey sinh trắc học hoặc nhập địa chỉ ví Solana cá nhân để xác thực và mở khóa két phân bổ vesting của bạn.",
+    "connectWalletBtn": "Kết Nối Ví Phantom / Solana",
+    "subscribeSaftBtn": "Đăng Ký Vòng Private SAFT",
+    "authAddress": "Ví đang xác thực:",
+    "noAllocTitle": "Chưa Ghi Nhận Phân Bổ Nào Cho Địa Chỉ Ví Này",
+    "noAllocDesc": "Địa chỉ ví này hiện chưa có hợp đồng SAFT hoặc phân bổ token sớm nào trong hệ thống kho bạc. Nếu bạn đã chuyển USDT/SOL, giao dịch sẽ được ghi nhận ngay khi khối on-chain hoàn tất xác thực.",
+    "subscribeDiscountBtn": "Đăng Ký Vòng Private SAFT (Chiết Khấu 30%)",
+    "switchWalletBtn": "Đổi Địa Chỉ Ví Khác",
+    "portfolioTitle": "Két Vesting & Danh Mục Đầu Tư",
+    "trancheBadge": "Khối Đầu Tư Thiên Thần Bảo Mật",
+    "transferHookStatus": "Token-2022 Transfer-Hook Đang Khóa",
+    "addToPhantomBtn": "Thêm $HAISI vào Phantom",
+    "resetSimTitle": "Đặt lại dữ liệu mẫu",
+    "kpiTotalBalance": "Tổng $HAISI Đã Phân Bổ",
+    "kpiTokenStandard": "Chuẩn Solana Token-2022",
+    "kpiCommittedCapital": "Vốn Đầu Tư Cam Kết",
+    "kpiTreasuryVault": "Kho Bạc Multi-Sig L1",
+    "kpiTgeBenchmark": "Mốc Niêm Yết Tham Chiếu",
+    "kpiBenchmarkSubtitle": "Định Giá Khởi Điểm $10M",
+    "kpiTgeValuation": "Giá Trị Dự Kiến Tại TGE",
+    "kpiNotionalSurplus": "Tỷ Suất Danh Nghĩa",
+    "transferHookTitle": "Transfer-Hook Mật Mã Bất Biến",
+    "transferHookDesc": "Mọi token $HAISI sớm đều được đúc kèm tiện ích mở rộng Transfer-Hook on-chain, ngăn chặn việc chuyển nhượng cho đến khi điều kiện cliff và vesting được xác thực bởi runtime Solana.",
+    "step1Title": "1. Mở Khóa TGE (20%)",
+    "step1Desc": "Khả dụng ngay khi niêm yết trên launchpad công khai.",
+    "step2Title": "2. Giai Đoạn Cliff (Tháng 1 & 2)",
+    "step2Desc": "0% chuyển nhượng. Đóng băng hoàn toàn để ngăn chặn áp lực xả thị trường.",
+    "step3Title": "3. Mở Khóa Tuyến Tính (Tháng 3 đến 8)",
+    "step3Desc": "Mở khóa vi dòng tiền liên tục mỗi ngày, chia đều trong 180 ngày.",
+    "dailyRate": "$HAISI / ngày",
+    "copyMintPrompt": "ĐÃ SAO CHÉP ĐỊA CHỈ MINT TOKEN-2022 ($HAISI):",
+    "copyMintGuide": "Cách thêm vào ví Phantom:\n1. Mở ví Phantom -> Bấm nút 'Manage token list'.\n2. Dán địa chỉ Mint trên vào ô tìm kiếm.\n3. Bật hiển thị token $HAISI (Haichain SI) để xem số dư và biểu tượng của bạn."
+  },
+  "ko": {
+      "metaMaskNotDetected": "브라우저에서 MetaMask 확장 프로그램이 감지되지 않았습니다.",
+      "checkingMetaMaskBalance": "MetaMask 잔액 확인 중...",
+      "approveInMetaMaskPopup": "MetaMask 팝업에서 승인하세요...",
+      "metaMaskDepositSuccess": "MetaMask 입금 확인 완료",
+      "depositCanceledMetaMask": "입금 취소: MetaMask 서명을 거부했습니다.",
+      "metaMaskError": "MetaMask 오류:",
+
+    "vaultTitle": "Token-2022 베스팅 볼트 및 토큰 배분",
+    "vaultSubtitle": "온체인 $HAISI (Haichain SI) 배분 원장 및 암호학적 Transfer-Hook 베스팅 스마트 컨트랙트.",
+    "authRequired": "Solana 지갑 인증 필요",
+    "authDesc": "Phantom, Solflare, 생체 인식 Passkey를 연결하거나 Solana 주소를 입력하여 Ed25519 공개 키를 확인하고 전용 베스팅 볼트를 잠금 해제하세요.",
+    "connectWalletBtn": "Phantom / Solana 지갑 연결",
+    "subscribeSaftBtn": "프라이빗 SAFT 청약 신청",
+    "authAddress": "인증된 지갑 주소:",
+    "noAllocTitle": "해당 지갑 주소에 대한 배분 내역이 없습니다",
+    "noAllocDesc": "이 지갑 주소는 현재 국고 금고의 활성 SAFT 계약이나 초기 토큰 트랜치에 연결되어 있지 않습니다. 최근 자금을 전송하셨다면 네트워크 확인을 기다려 주세요.",
+    "subscribeDiscountBtn": "프라이빗 SAFT 청약 (30% 할인)",
+    "switchWalletBtn": "다른 지갑으로 전환",
+    "portfolioTitle": "투자자 포트폴리오 및 베스팅 볼트",
+    "trancheBadge": "기밀 전략 트랜치",
+    "transferHookStatus": "Token-2022 Transfer-Hook 잠금 활성",
+    "addToPhantomBtn": "Phantom 지갑에 $HAISI 추가",
+    "resetSimTitle": "시뮬레이션 데이터 초기화",
+    "kpiTotalBalance": "총 $HAISI 배분 잔액",
+    "kpiTokenStandard": "Solana Token-2022 확장 표준",
+    "kpiCommittedCapital": "약정 투자 자본",
+    "kpiTreasuryVault": "Multi-Sig 국고 금고",
+    "kpiTgeBenchmark": "공개 TGE 벤치마크",
+    "kpiBenchmarkSubtitle": "초기 런치패드 $10M FDV",
+    "kpiTgeValuation": "TGE 예상 평가 가치",
+    "kpiNotionalSurplus": "명목 미실현 프리미엄",
+    "transferHookTitle": "Transfer-Hook 암호학적 불변성",
+    "transferHookDesc": "모든 초기 $HAISI 토큰은 Solana 런타임 검증자에 의해 클리프 및 선형 베스팅 조건이 충족될 때까지 전송을 수학적으로 차단하는 온체인 Transfer-Hook 확장으로 발행됩니다.",
+    "step1Title": "1. TGE 잠금 해제 (20%)",
+    "step1Desc": "공개 런치패드 상장 즉시 수령 가능.",
+    "step2Title": "2. 클리프 기간 (1~2개월차)",
+    "step2Desc": "전송 불가능 (0%). 시장 덤핑을 방지하기 위한 완전 동결.",
+    "step3Title": "3. 선형 스트리밍 (3~8개월차)",
+    "step3Desc": "180일 동안 매일 균등하게 잠금 해제되는 연속 마이크로 스트리밍.",
+    "dailyRate": "$HAISI / 일",
+    "copyMintPrompt": "TOKEN-2022 MINT 주소가 복사되었습니다 ($HAISI):",
+    "copyMintGuide": "Phantom 지갑에 추가하는 방법:\n1. Phantom 열기 -> 'Manage token list' 클릭.\n2. 검색창에 Mint 주소 붙여넣기.\n3. $HAISI (Haichain SI) 토큰 활성화."
+  },
+  "fr": {
+      "metaMaskNotDetected": "Extension MetaMask non détectée dans votre navigateur.",
+      "checkingMetaMaskBalance": "Vérification du solde MetaMask...",
+      "approveInMetaMaskPopup": "Approuvez dans la fenêtre MetaMask...",
+      "metaMaskDepositSuccess": "Dépôt MetaMask Confirmé",
+      "depositCanceledMetaMask": "Dépôt annulé : signature MetaMask rejetée.",
+      "metaMaskError": "Erreur MetaMask :",
+
+    "vaultTitle": "Coffre de Vesting Token-2022 & Allocations",
+    "vaultSubtitle": "Registre d'allocation $HAISI (Haichain SI) on-chain et contrats intelligents de vesting sécurisés par Transfer-Hook.",
+    "authRequired": "Authentification de Portefeuille Solana Requise",
+    "authDesc": "Connectez Phantom, Solflare, Passkey biométrique ou entrez votre adresse Solana pour vérifier votre clé publique Ed25519 et déverrouiller votre coffre de vesting.",
+    "connectWalletBtn": "Connecter Portefeuille Phantom / Solana",
+    "subscribeSaftBtn": "Souscrire au SAFT Privé",
+    "authAddress": "Adresse Authentifiée :",
+    "noAllocTitle": "Aucune Allocation Trouvée pour cette Adresse",
+    "noAllocDesc": "Cette adresse de portefeuille n'est actuellement liée à aucun accord SAFT actif dans la trésorerie. Si vous avez récemment envoyé des fonds, veuillez patienter pendant la finalisation du bloc.",
+    "subscribeDiscountBtn": "Souscrire au SAFT Privé (-30% de Réduction)",
+    "switchWalletBtn": "Changer de Portefeuille",
+    "portfolioTitle": "Portefeuille Investisseur & Coffre de Vesting",
+    "trancheBadge": "Tranche Stratégique Confidentielle",
+    "transferHookStatus": "Verrouillage Token-2022 Transfer-Hook Actif",
+    "addToPhantomBtn": "Ajouter $HAISI à Phantom",
+    "resetSimTitle": "Réinitialiser la simulation",
+    "kpiTotalBalance": "Solde Total $HAISI Alloué",
+    "kpiTokenStandard": "Extension Solana Token-2022",
+    "kpiCommittedCapital": "Capital Investi Engagé",
+    "kpiTreasuryVault": "Coffre Trésorerie Multi-Sig L1",
+    "kpiTgeBenchmark": "Référence TGE Publique",
+    "kpiBenchmarkSubtitle": "Valorisation de Départ $10M",
+    "kpiTgeValuation": "Valorisation Notionnelle TGE",
+    "kpiNotionalSurplus": "Surplus Notionnel",
+    "transferHookTitle": "Invariant Cryptographique Transfer-Hook",
+    "transferHookDesc": "Tous les tokens $HAISI initiaux intègrent l'extension on-chain Transfer-Hook, bloquant mathématiquement tout transfert jusqu'à ce que les conditions de vesting soient vérifiées par les validateurs Solana.",
+    "step1Title": "1. Déblocage TGE (20%)",
+    "step1Desc": "Disponible immédiatement dès la cotation publique sur le launchpad.",
+    "step2Title": "2. Période de Cliff (Mois 1 & 2)",
+    "step2Desc": "0% transférable. Gel complet pour protéger le marché contre le dumping.",
+    "step3Title": "3. Flux Linéaire (Mois 3 à 8)",
+    "step3Desc": "Micro-flux continu quotidien débloqué uniformément sur 180 jours.",
+    "dailyRate": "$HAISI / jour",
+    "copyMintPrompt": "ADRESSE MINT TOKEN-2022 COPIÉE ($HAISI) :",
+    "copyMintGuide": "Pour afficher dans Phantom :\n1. Ouvrez Phantom -> Cliquez sur 'Manage token list'.\n2. Collez l'adresse Mint dans la recherche.\n3. Activez $HAISI (Haichain SI)."
+  },
+  "es": {
+      "metaMaskNotDetected": "No se detectó la extensión de MetaMask en su navegador.",
+      "checkingMetaMaskBalance": "Comprobando saldo de MetaMask...",
+      "approveInMetaMaskPopup": "Apruebe en la ventana de MetaMask...",
+      "metaMaskDepositSuccess": "Depósito de MetaMask Confirmado",
+      "depositCanceledMetaMask": "Depósito cancelado: Rechazó la firma en MetaMask.",
+      "metaMaskError": "Error de MetaMask:",
+
+    "vaultTitle": "Bóveda de Vesting Token-2022 y Asignaciones",
+    "vaultSubtitle": "Libro mayor de asignaciones $HAISI (Haichain SI) en cadena y contratos inteligentes de vesting con Transfer-Hook criptográfico.",
+    "authRequired": "Autenticación de Billetera Solana Requerida",
+    "authDesc": "Conecte Phantom, Solflare, Passkey biométrica o ingrese su dirección de Solana para verificar su clave pública Ed25519 y desbloquear su bóveda de vesting.",
+    "connectWalletBtn": "Conectar Billetera Phantom / Solana",
+    "subscribeSaftBtn": "Suscribirse al SAFT Privado",
+    "authAddress": "Dirección Autenticada:",
+    "noAllocTitle": "No se Encontró Ninguna Asignación para esta Dirección",
+    "noAllocDesc": "Esta dirección de billetera no está vinculada actualmente a ningún acuerdo SAFT activo en la tesorería. Si ha enviado fondos recientemente, espere la confirmación del bloque.",
+    "subscribeDiscountBtn": "Suscribirse al SAFT Privado (30% de Descuento)",
+    "switchWalletBtn": "Cambiar de Billetera",
+    "portfolioTitle": "Portafolio del Inversor y Bóveda de Vesting",
+    "trancheBadge": "Tramo Estratégico Confidencial",
+    "transferHookStatus": "Bloqueo Token-2022 Transfer-Hook Activo",
+    "addToPhantomBtn": "Agregar $HAISI a Phantom",
+    "resetSimTitle": "Restablecer simulación",
+    "kpiTotalBalance": "Saldo Total de $HAISI Asignado",
+    "kpiTokenStandard": "Extensión Solana Token-2022",
+    "kpiCommittedCapital": "Capital Invertido Comprometido",
+    "kpiTreasuryVault": "Bóveda de Tesorería Multi-Sig L1",
+    "kpiTgeBenchmark": "Referencia TGE Pública",
+    "kpiBenchmarkSubtitle": "Valoración Inicial de $10M",
+    "kpiTgeValuation": "Valoración Nocional en TGE",
+    "kpiNotionalSurplus": "Excedente Nocional",
+    "transferHookTitle": "Invariante Criptográfico Transfer-Hook",
+    "transferHookDesc": "Todos los tokens $HAISI tempranos se emiten con la extensión en cadena Transfer-Hook, bloqueando matemáticamente las transferencias hasta que los validadores de Solana verifiquen las condiciones de vesting.",
+    "step1Title": "1. Desbloqueo TGE (20%)",
+    "step1Desc": "Disponible de inmediato en la cotización pública del launchpad.",
+    "step2Title": "2. Periodo de Cliff (Meses 1 y 2)",
+    "step2Desc": "0% transferible. Bloqueo total para prevenir ventas masivas en el mercado.",
+    "step3Title": "3. Transmisión Lineal (Meses 3 a 8)",
+    "step3Desc": "Micro-transmisión continua diaria desbloqueada uniformemente durante 180 días.",
+    "dailyRate": "$HAISI / día",
+    "copyMintPrompt": "DIRECCIÓN MINT TOKEN-2022 COPIADA ($HAISI):",
+    "copyMintGuide": "Para ver en Phantom:\n1. Abra Phantom -> Haga clic en 'Manage token list'.\n2. Pegue la dirección Mint en la búsqueda.\n3. Active $HAISI (Haichain SI)."
+  },
+  "ru": {
+      "metaMaskNotDetected": "Расширение MetaMask не обнаружено в вашем браузере.",
+      "checkingMetaMaskBalance": "Проверка баланса MetaMask...",
+      "approveInMetaMaskPopup": "Подтвердите во всплывающем окне MetaMask...",
+      "metaMaskDepositSuccess": "Пополнение через MetaMask Подтверждено",
+      "depositCanceledMetaMask": "Пополнение отменено: Вы отклонили подпись в MetaMask.",
+      "metaMaskError": "Ошибка MetaMask:",
+
+    "vaultTitle": "Сейф Вестинга Token-2022 и Аллокации",
+    "vaultSubtitle": "Ончейн реестр аллокаций $HAISI (Haichain SI) и криптографические смарт-контракты вестинга Transfer-Hook.",
+    "authRequired": "Требуется Аутентификация Solana Кошелька",
+    "authDesc": "Подключите Phantom, Solflare, биометрический Passkey или введите адрес Solana для верификации публичного ключа Ed25519 и доступа к сейфу вестинга.",
+    "connectWalletBtn": "Подключить Phantom / Solana Кошелек",
+    "subscribeSaftBtn": "Подписаться на Приватный SAFT",
+    "authAddress": "Аутентифицированный адрес:",
+    "noAllocTitle": "Аллокаций для этого адреса не найдено",
+    "noAllocDesc": "Этот адрес кошелька не привязан к действующему соглашению SAFT или траншу в казначействе. Если вы недавно перевели средства, дождитесь финализации блока в сети.",
+    "subscribeDiscountBtn": "Подписаться на Приватный SAFT (Скидка 30%)",
+    "switchWalletBtn": "Сменить Кошелек",
+    "portfolioTitle": "Портфель Инвестора и Сейф Вестинга",
+    "trancheBadge": "Конфиденциальный Стратегический Транш",
+    "transferHookStatus": "Блокировка Token-2022 Transfer-Hook Активна",
+    "addToPhantomBtn": "Добавить $HAISI в Phantom",
+    "resetSimTitle": "Сбросить демо-данные",
+    "kpiTotalBalance": "Всего Аллоцировано $HAISI",
+    "kpiTokenStandard": "Стандарт Solana Token-2022",
+    "kpiCommittedCapital": "Инвестированный Капитал",
+    "kpiTreasuryVault": "Мультисиг Казначейство L1",
+    "kpiTgeBenchmark": "Ориентир Публичного TGE",
+    "kpiBenchmarkSubtitle": "Стартовая оценка $10M FDV",
+    "kpiTgeValuation": "Ожидаемая Стоимость при TGE",
+    "kpiNotionalSurplus": "Номинальная Премия",
+    "transferHookTitle": "Криптографический Инвариант Transfer-Hook",
+    "transferHookDesc": "Все токены $HAISI раннего раунда выпускаются с ончейн расширением Transfer-Hook, математически блокирующим переводы до подтверждения условий клиффа и вестинга валидаторами Solana.",
+    "step1Title": "1. Разблокировка TGE (20%)",
+    "step1Desc": "Доступно немедленно при публичном листинге на launchpad.",
+    "step2Title": "2. Период Клиффа (1 и 2 месяцы)",
+    "step2Desc": "0% переводимости. Полная заморозка для защиты рынка от демпинга.",
+    "step3Title": "3. Линейный Стриминг (3-8 месяцы)",
+    "step3Desc": "Ежедневный непрерывный микро-стриминг, равномерно разблокируемый в течение 180 дней.",
+    "dailyRate": "$HAISI / день",
+    "copyMintPrompt": "АДРЕС MINT TOKEN-2022 СКОПИРОВАН ($HAISI):",
+    "copyMintGuide": "Для добавления в Phantom:\n1. Откройте Phantom -> Нажмите 'Manage token list'.\n2. Вставьте адрес Mint в поиск.\n3. Включите токен $HAISI (Haichain SI)."
+  },
+  "hi": {
+      "metaMaskNotDetected": "आपके ब्राउज़र में MetaMask एक्सटेंशन नहीं मिला।",
+      "checkingMetaMaskBalance": "MetaMask शेष की जांच की जा रही है...",
+      "approveInMetaMaskPopup": "MetaMask पॉपअप में स्वीकृत करें...",
+      "metaMaskDepositSuccess": "MetaMask जमा की पुष्टि हुई",
+      "depositCanceledMetaMask": "जमा रद्द: आपने MetaMask में हस्ताक्षर अस्वीकार कर दिया।",
+      "metaMaskError": "MetaMask त्रुटि:",
+
+    "vaultTitle": "Token-2022 वेस्टिंग वॉल्ट और आवंटन",
+    "vaultSubtitle": "ऑन-चेन $HAISI आवंटन लेजर और क्रिप्टोग्राफ़िक Transfer-Hook वेस्टिंग स्मार्ट अनुबंध।",
+    "authRequired": "Solana वॉलेट प्रमाणीकरण आवश्यक है",
+    "authDesc": "अपनी एड25519 सार्वजनिक कुंजी सत्यापित करने और अपने वेस्टिंग वॉल्ट को अनलॉक करने के लिए Phantom, Solflare, पासकी कनेक्ट करें या Solana पता दर्ज करें।",
+    "connectWalletBtn": "Phantom / Solana वॉलेट कनेक्ट करें",
+    "subscribeSaftBtn": "प्राइवेट SAFT के लिए सदस्यता लें",
+    "authAddress": "प्रमाणित पता:",
+    "noAllocTitle": "इस पते के लिए कोई आवंटन नहीं मिला",
+    "noAllocDesc": "यह वॉलेट पता वर्तमान में ट्रेजरी वॉल्ट में किसी भी सक्रिय SAFT समझौते से जुड़ा नहीं है। यदि आपने हाल ही में धन भेजा है, तो कृपया नेटवर्क ब्लॉक पुष्टिकरण की प्रतीक्षा करें।",
+    "subscribeDiscountBtn": "प्राइवेट SAFT के लिए सदस्यता लें (30% छूट)",
+    "switchWalletBtn": "वॉलेट बदलें",
+    "portfolioTitle": "निवेशक पोर्टफोलियो और वेस्टिंग वॉल्ट",
+    "trancheBadge": "गोपनीय रणनीतिक ट्रांच",
+    "transferHookStatus": "Token-2022 Transfer-Hook लॉक सक्रिय",
+    "addToPhantomBtn": "Phantom में $HAISI जोड़ें",
+    "resetSimTitle": "सिमुलेशन रीसेट करें",
+    "kpiTotalBalance": "कुल $HAISI शेष",
+    "kpiTokenStandard": "Solana Token-2022 एक्सटेंशन",
+    "kpiCommittedCapital": "प्रतिबद्ध पूंजी",
+    "kpiTreasuryVault": "मल्टी-सिग ट्रेजरी वॉल्ट",
+    "kpiTgeBenchmark": "सार्वजनिक TGE बेंचमार्क",
+    "kpiBenchmarkSubtitle": "प्रारंभिक मूल्यांकन $10M",
+    "kpiTgeValuation": "TGE अनुमानित मूल्यांकन",
+    "kpiNotionalSurplus": "अवास्तविक लाभ",
+    "transferHookTitle": "Transfer-Hook क्रिप्टोग्राफ़िक इनवेरिएंट",
+    "transferHookDesc": "सभी शुरुआती $HAISI टोकन ऑन-चेन Transfer-Hook एक्सटेंशन के साथ बनाए गए हैं, जो तब तक ट्रांसफर को गणितीय रूप से ब्लॉक करते हैं जब तक कि वेस्टिंग शर्तों को सत्यापित नहीं किया जाता।",
+    "step1Title": "1. TGE अनलॉक (20%)",
+    "step1Desc": "सार्वजनिक लॉन्चपैड लिस्टिंग पर तुरंत उपलब्ध।",
+    "step2Title": "2. क्लिफ अवधि (महीने 1 और 2)",
+    "step2Desc": "0% स्थानांतरणीयता। बाजार में डंपिंग रोकने के लिए पूर्ण लॉक।",
+    "step3Title": "3. लीनियर स्ट्रीम (महीने 3 से 8)",
+    "step3Desc": "180 दिनों में समान रूप से दैनिक निरंतर माइक्रो-स्ट्रीमिंग अनलॉक।",
+    "dailyRate": "$HAISI / दिन",
+    "copyMintPrompt": "TOKEN-2022 MINT पता कॉपी किया गया ($HAISI):",
+    "copyMintGuide": "Phantom में देखने के लिए:\n1. Phantom खोलें -> 'Manage token list' पर क्लिक करें।\n2. खोज में Mint पता चिपकाएँ।\n3. $HAISI (Haichain SI) टॉगल चालू करें।"
+  },
+  "he": {
+      "metaMaskNotDetected": "תוסף MetaMask לא זוהה בדפדפן שלך.",
+      "checkingMetaMaskBalance": "בודק יתרת MetaMask...",
+      "approveInMetaMaskPopup": "אשר בחלון הקופץ של MetaMask...",
+      "metaMaskDepositSuccess": "הפקדת MetaMask אושרה",
+      "depositCanceledMetaMask": "ההפקדה בוטלה: דחית את החתימה ב-MetaMask.",
+      "metaMaskError": "שגיאת MetaMask:",
+
+    "vaultTitle": "כספת ווסטינג Token-2022 והקצאות",
+    "vaultSubtitle": "ספר הקצאות $HAISI ברשת וחוזי ווסטינג חכמים המוגנים באמצעות Transfer-Hook קריפטוגרפי.",
+    "authRequired": "נדרש אימות ארנק Solana",
+    "authDesc": "חבר את Phantom, Solflare, Passkey ביומטרי או הזן את כתובת ה-Solana שלך כדי לאמת את המפתח הציבורי ולפתוח את כספת הווסטינג שלך.",
+    "connectWalletBtn": "חבר ארנק Phantom / Solana",
+    "subscribeSaftBtn": "הרשמה ל-SAFT פרטי",
+    "authAddress": "כתובת מאומתת:",
+    "noAllocTitle": "לא נמצאה הקצאה עבור כתובת זו",
+    "noAllocDesc": "כתובת ארנק זו אינה קשורה כעת להסכם SAFT פעיל בקופת האוצר. אם העברת כספים לאחרונה, המתן לאישור הבלוק ברשת.",
+    "subscribeDiscountBtn": "הרשמה ל-SAFT פרטי (30% הנחה)",
+    "switchWalletBtn": "החלף ארנק",
+    "portfolioTitle": "תיק משקיע וכספת ווסטינג",
+    "trancheBadge": "הקצאה אסטרטגית חסויה",
+    "transferHookStatus": "נעילת Token-2022 Transfer-Hook פעילה",
+    "addToPhantomBtn": "הוסף $HAISI ל-Phantom",
+    "resetSimTitle": "אפס הדמיה",
+    "kpiTotalBalance": "סך יתרת $HAISI שהוקצתה",
+    "kpiTokenStandard": "תקן Solana Token-2022",
+    "kpiCommittedCapital": "הון מושקע",
+    "kpiTreasuryVault": "קופת אוצר מרובת חתימות",
+    "kpiTgeBenchmark": "מדד TGE ציבורי",
+    "kpiBenchmarkSubtitle": "שווי פתיחה של 10 מיליון דולר",
+    "kpiTgeValuation": "שווי משוער בהשקה (TGE)",
+    "kpiNotionalSurplus": "פרמיה נומינלית",
+    "transferHookTitle": "Transfer-Hook קריפטוגרפי קבוע",
+    "transferHookDesc": "כל אסימוני $HAISI המוקדמים מונפקים עם הרחבת Transfer-Hook ברשת, החוסמת העברות באופן מתמטי עד לאימות תנאי הווסטינג על ידי מאמתי Solana.",
+    "step1Title": "1. שחרור ב-TGE (20%)",
+    "step1Desc": "זמין מיד עם הרישום ב-Launchpad הציבורי.",
+    "step2Title": "2. תקופת נעילה (חודשים 1 ו-2)",
+    "step2Desc": "0% העברות. נעילה מוחלטת להגנה מפני לחץ מכירות.",
+    "step3Title": "3. שחרור ליניארי (חודשים 3 עד 8)",
+    "step3Desc": "הזרמה רציפה יומית המשתחררת באופן שווה על פני 180 יום.",
+    "dailyRate": "$HAISI / יום",
+    "copyMintPrompt": "כתובת MINT של TOKEN-2022 הועתקה ($HAISI):",
+    "copyMintGuide": "לצפייה ב-Phantom:\n1. פתח את Phantom -> לחץ על 'Manage token list'.\n2. הדבק את כתובת ה-Mint בחיפוש.\n3. הפעל את $HAISI (Haichain SI)."
+  }
+};
+
+    
+    const DASH_NOTICES_I18N = {
+  "kk": {
+    "tabStrategic": "Стратегиялық VIP Бөлініс",
+    "passkeyTitle": "Биометриялық Passkey Әмияны",
+    "passkeySubtitle": "WebAuthn аппараттық растауы • Абсолютті қауіпсіздік",
+    "syncChrome": "Chrome браузеріне синхрондау",
+    "openingPhantom": "Phantom ашылуда...",
+    "openingPhantomTitle": "Phantom Қосымшасы Ашылуда...",
+    "approvePhantomMsg": "Chrome-ға оралу үшін Phantom-да рұқсат беріңіз",
+    "openingSolflare": "Solflare ашылуда...",
+    "openingSolflareTitle": "Solflare Қосымшасы Ашылуда...",
+    "approveSolflareMsg": "Chrome-ға оралу үшін Solflare-де рұқсат беріңіз",
+    "scanningBio": "Биометрия тексерілуде...",
+    "passkeyConnected": "Passkey Сәтті Қосылды",
+    "bioError": "Биометриялық Қате",
+    "connectingPhantom": "Phantom-ға қосылуда...",
+    "connectingMetaMask": "MetaMask-қа қосылуда...",
+    "connectingSolflare": "Solflare-ге қосылуда...",
+    "connectionRejected": "Пайдаланушы байланысты тоқтатты",
+    "resetSimulationConfirm": "Бұл әмиян үшін үлгі бөлініс деректерін қалпына келтіру керек пе?",
+    "activeVestingVault": "Белсенді Token-2022 Вестинг Сейфі",
+    "angelTranche": "Періштелер Траншы",
+    "openMyVestingVault": "Менің Вестинг Сейфіме Өту →",
+    "connectedCheck": "Қосылды ✓",
+    "passkeyActiveDeposit": "Passkey Қосулы • Толықтыру үшін Phantom/Solflare-ді қосыңыз",
+    "connectPhantomBtn": "Phantom-ды Қосу",
+    "connectingBtn": "Қосылуда...",
+    "walletNotConnected": "Әмиян Қосылмаған",
+    "connectWalletBeforeDeposit": "Қаражат салмас бұрын Passkey немесе Phantom әмиянын қосыңыз.",
+    "enterValidDeposit": "Жарамды салым сомасын енгізіңіз (> 0).",
+    "broadcastingFaucet": "Solana Devnet Faucet транзакциясы жіберілуде...",
+    "faucetClaimed": "Сынақ Faucet Қабылданды",
+    "faucetCredited": "Devnet Master Vault-қа қаражат сәтті қосылды!",
+    "connectingPhantomWallet": "Phantom әмиянына қосылуда...",
+    "web3Rejected": "Web3 әмиян қосылымынан бас тартылды.",
+    "web3Disconnected": "Web3 әмияны ажыратылды. Phantom-ды қайта қосыңыз.",
+    "awaitingSignature": "Әмиянда қол қоюды растаңыз...",
+    "gaslessDepositSuccess": "Комиссиясыз Салым Сәтті Аяқталды (0% Gas)",
+    "depositCredited": "Master Vault-қа қаражат түсті!",
+    "approveInPhantomExt": "Phantom кеңейтімінде растаңыз...",
+    "confirmingSolana": "Solana Devnet-те расталуда...",
+    "web3DepositSuccess": "Web3 Салымы Сәтті Расталды",
+    "depositCanceledUser": "Салым тоқтатылды: Әмиянда транзакциядан бас тарттыңыз.",
+    "solanaTxFailed": "Solana Devnet транзакциясы сәтсіз аяқталды:",
+    "cannotWithdrawEmergency": "Vault Апаттық Жағдайда (Emergency Stop) болған кезде қаражат шығару мүмкін емес.",
+    "connectWalletBeforeWithdraw": "Қаражат шығармас бұрын расталған әмиянды қосыңыз.",
+    "zeroBalance": "Нөлдік Баланс",
+    "zeroBalanceMsg": "Master Vault балансы $0.0000 USDT. Шығаратын қаражат жоқ.",
+    "enterValidWithdraw": "Жарамды шығару сомасын енгізіңіз (> 0).",
+    "withdrawCanceledMetaMask": "Шығару тоқтатылды: MetaMask-та қол қоюдан бас тарттыңыз.",
+    "withdrawCanceled": "Шығару тоқтатылды: Әмиянда қол қоюдан бас тарттыңыз.",
+    "withdrawSuccess": "Қаражат Шығару Сәтті Орындалды",
+    "walletRequiredAi": "AI-ді орындау үшін Passkey немесе Phantom әмиянын қосыңыз.",
+    "insufficientVaultBalance": "Vault Балансы Жеткіліксіз"
+  },
+  "en": {
+    "tabStrategic": "Private Strategic Allocation",
+    "passkeyTitle": "Passkey Biometric Wallet",
+    "passkeySubtitle": "Hardware-Bound WebAuthn • Zero Key Risk",
+    "syncChrome": "Sync Wallet to Chrome Browser",
+    "openingPhantom": "Opening Phantom...",
+    "openingPhantomTitle": "Opening Phantom App...",
+    "approvePhantomMsg": "Approve in Phantom to return to Chrome",
+    "openingSolflare": "Opening Solflare...",
+    "openingSolflareTitle": "Opening Solflare App...",
+    "approveSolflareMsg": "Approve in Solflare to return to Chrome",
+    "scanningBio": "Scanning Biometric...",
+    "passkeyConnected": "Passkey Connected Successfully",
+    "bioError": "Biometric Error",
+    "connectingPhantom": "Connecting Phantom...",
+    "connectingMetaMask": "Connecting MetaMask...",
+    "connectingSolflare": "Connecting Solflare...",
+    "connectionRejected": "Connection rejected by user",
+    "resetSimulationConfirm": "Reset simulation allocation for this wallet?",
+    "activeVestingVault": "Active Token-2022 Vesting Vault",
+    "angelTranche": "Angel Tranche",
+    "openMyVestingVault": "Open My Vesting Vault →",
+    "connectedCheck": "Connected ✓",
+    "passkeyActiveDeposit": "Passkey Active • Connect Phantom/Solflare to Deposit",
+    "connectPhantomBtn": "Connect Phantom",
+    "connectingBtn": "Connecting...",
+    "walletNotConnected": "Wallet Not Connected",
+    "connectWalletBeforeDeposit": "Please connect a Passkey or Phantom wallet before depositing.",
+    "enterValidDeposit": "Please enter a valid deposit amount (> 0).",
+    "broadcastingFaucet": "Broadcasting Solana Devnet Faucet Tx...",
+    "faucetClaimed": "Testnet Faucet Claimed",
+    "faucetCredited": "Faucet Credited to Master Vault!",
+    "connectingPhantomWallet": "Connecting Phantom Wallet...",
+    "web3Rejected": "Web3 wallet connection was canceled or rejected.",
+    "web3Disconnected": "Web3 wallet disconnected. Please reconnect Phantom.",
+    "awaitingSignature": "Awaiting signature in wallet...",
+    "gaslessDepositSuccess": "Gasless Deposit Confirmed (0% Gas)",
+    "depositCredited": "Credited to Master Vault!",
+    "approveInPhantomExt": "Approve in Phantom extension...",
+    "confirmingSolana": "Confirming on Solana Devnet...",
+    "web3DepositSuccess": "Web3 Deposit Confirmed",
+    "depositCanceledUser": "Deposit Canceled: You rejected the transaction in your wallet.",
+    "solanaTxFailed": "Solana Devnet transaction failed:",
+    "cannotWithdrawEmergency": "Cannot withdraw while Vault is in Emergency Stop state.",
+    "connectWalletBeforeWithdraw": "Please connect a verified wallet before withdrawing.",
+    "zeroBalance": "Zero Balance",
+    "zeroBalanceMsg": "Your Master Vault balance is $0.0000 USDT. No funds available to withdraw.",
+    "enterValidWithdraw": "Please enter a valid withdrawal amount (> 0).",
+    "withdrawCanceledMetaMask": "Withdrawal Canceled: You rejected the MetaMask authorization signature.",
+    "withdrawCanceled": "Withdrawal Canceled: You rejected the cryptographic authorization signature.",
+    "withdrawSuccess": "Withdrawal Executed",
+    "walletRequiredAi": "Connect your sovereign wallet to authorize AI execution.",
+    "insufficientVaultBalance": "Insufficient Vault Balance"
+  },
+  "zh": {
+    "tabStrategic": "机密战略分配",
+    "passkeyTitle": "生物识别 Passkey 钱包",
+    "passkeySubtitle": "WebAuthn 硬件级加密验证 • 零私钥泄露风险",
+    "syncChrome": "同步钱包至 Chrome 浏览器",
+    "openingPhantom": "正在打开 Phantom...",
+    "openingPhantomTitle": "正在调起 Phantom 客户端...",
+    "approvePhantomMsg": "请在 Phantom 中完成授权以返回 Chrome",
+    "openingSolflare": "正在打开 Solflare...",
+    "openingSolflareTitle": "正在调起 Solflare 客户端...",
+    "approveSolflareMsg": "请在 Solflare 中完成授权以返回 Chrome",
+    "scanningBio": "正在扫描生物识别特征...",
+    "passkeyConnected": "Passkey 验证连接成功",
+    "bioError": "生物识别验证失败",
+    "connectingPhantom": "正在连接 Phantom 钱包...",
+    "connectingMetaMask": "正在连接 MetaMask 钱包...",
+    "connectingSolflare": "正在连接 Solflare 钱包...",
+    "connectionRejected": "用户已取消连接",
+    "resetSimulationConfirm": "确定要重置该钱包的模拟认购分配数据吗？",
+    "activeVestingVault": "活跃的 Token-2022 锁仓金库",
+    "angelTranche": "天使轮份额",
+    "openMyVestingVault": "进入我的锁仓金库 →",
+    "connectedCheck": "已连接 ✓",
+    "passkeyActiveDeposit": "Passkey 已启用 • 连接 Phantom/Solflare 进行链上入金",
+    "connectPhantomBtn": "连接 Phantom",
+    "connectingBtn": "连接中...",
+    "walletNotConnected": "未连接钱包",
+    "connectWalletBeforeDeposit": "充值前请先连接 Passkey 或 Phantom 钱包。",
+    "enterValidDeposit": "请输入有效的充值金额 (> 0)。",
+    "broadcastingFaucet": "正在广播 Solana Devnet 水龙头交易...",
+    "faucetClaimed": "测试网水龙头领取成功",
+    "faucetCredited": "水龙头代币已成功充入 Master Vault！",
+    "connectingPhantomWallet": "正在连接 Phantom 钱包...",
+    "web3Rejected": "Web3 钱包连接已取消或被拒绝。",
+    "web3Disconnected": "Web3 钱包已断开连接，请重新连接 Phantom。",
+    "awaitingSignature": "正在等待钱包内确认签名...",
+    "gaslessDepositSuccess": "零 Gas 充值已确认 (0% 手续费)",
+    "depositCredited": "资金已入账至 Master Vault！",
+    "approveInPhantomExt": "请在 Phantom 扩展程序中确认...",
+    "confirmingSolana": "Solana Devnet 区块链确认中...",
+    "web3DepositSuccess": "Web3 充值确认成功",
+    "depositCanceledUser": "充值已取消：您在钱包中拒绝了该笔交易。",
+    "solanaTxFailed": "Solana Devnet 链上交易失败：",
+    "cannotWithdrawEmergency": "金库当前处于紧急熔断状态 (Emergency Stop)，禁止提现。",
+    "connectWalletBeforeWithdraw": "提现前请先连接已验证的钱包地址。",
+    "zeroBalance": "余额为零",
+    "zeroBalanceMsg": "您的 Master Vault 余额为 $0.0000 USDT，暂无可提现金额。",
+    "enterValidWithdraw": "请输入有效的提现金额 (> 0)。",
+    "withdrawCanceledMetaMask": "提现已取消：您拒绝了 MetaMask 授权签名。",
+    "withdrawCanceled": "提现已取消：您拒绝了密码学授权签名。",
+    "withdrawSuccess": "提现执行成功",
+    "walletRequiredAi": "请连接 Passkey 或 Phantom 钱包以授权 AI 推理执行。",
+    "insufficientVaultBalance": "金库可用余额不足"
+  },
+  "vi": {
+    "tabStrategic": "Phân Bổ Chiến Lược VIP",
+    "passkeyTitle": "Ví Sinh Trắc Học Passkey",
+    "passkeySubtitle": "Xác thực phần cứng WebAuthn • An toàn tuyệt đối",
+    "syncChrome": "Đồng bộ sang trình duyệt Chrome",
+    "openingPhantom": "Đang mở Phantom...",
+    "openingPhantomTitle": "Đang mở Phantom App...",
+    "approvePhantomMsg": "Cấp quyền trong Phantom để quay lại Chrome",
+    "openingSolflare": "Đang mở Solflare...",
+    "openingSolflareTitle": "Đang mở Solflare App...",
+    "approveSolflareMsg": "Cấp quyền trong Solflare để quay lại Chrome",
+    "scanningBio": "Quét sinh trắc học...",
+    "passkeyConnected": "Xác Thực Passkey Thành Công",
+    "bioError": "Lỗi xác thực sinh trắc học",
+    "connectingPhantom": "Đang kết nối Phantom...",
+    "connectingMetaMask": "Đang kết nối MetaMask...",
+    "connectingSolflare": "Đang kết nối Solflare...",
+    "connectionRejected": "Người dùng đã hủy kết nối",
+    "resetSimulationConfirm": "Bạn có muốn đặt lại dữ liệu phân bổ mẫu cho ví này?",
+    "activeVestingVault": "Két Vesting Token-2022 Đang Hoạt Động",
+    "angelTranche": "Khối Thiên Thần",
+    "openMyVestingVault": "Truy Cập Két Vesting Của Tôi →",
+    "connectedCheck": "Đã Kết Nối ✓",
+    "passkeyActiveDeposit": "Passkey Đang Bật • Kết Nối Phantom để Nạp On-Chain",
+    "connectPhantomBtn": "Kết Nối Phantom",
+    "connectingBtn": "Đang kết nối...",
+    "walletNotConnected": "Chưa kết nối ví",
+    "connectWalletBeforeDeposit": "Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.",
+    "enterValidDeposit": "Vui lòng nhập số tiền nạp hợp lệ (> 0).",
+    "broadcastingFaucet": "Đang gửi giao dịch Solana Devnet Faucet...",
+    "faucetClaimed": "Nhận Testnet Faucet Thành Công",
+    "faucetCredited": "Đã nạp USDT Devnet vào Master Vault!",
+    "connectingPhantomWallet": "Đang kết nối ví Phantom...",
+    "web3Rejected": "Bạn đã từ chối kết nối ví Web3.",
+    "web3Disconnected": "Ví Web3 bị ngắt kết nối. Vui lòng kết nối lại ví Phantom.",
+    "awaitingSignature": "Vui lòng duyệt giao dịch trên ví...",
+    "gaslessDepositSuccess": "Nạp Tiền Thành Công (0% Gas)",
+    "depositCredited": "Đã nạp tiền vào Master Vault!",
+    "approveInPhantomExt": "Chờ bạn bấm Duyệt trên Phantom...",
+    "confirmingSolana": "Đang xác thực trên Solana Devnet...",
+    "web3DepositSuccess": "Nạp Web3 Thành Công",
+    "depositCanceledUser": "Giao dịch đã hủy: Bạn đã từ chối duyệt giao dịch trên ví.",
+    "solanaTxFailed": "Giao dịch thất bại trên Solana Devnet:",
+    "cannotWithdrawEmergency": "Không thể rút tiền khi Vault đang ở trạng thái Khẩn cấp (Emergency Stop).",
+    "connectWalletBeforeWithdraw": "Vui lòng kết nối ví trước khi thực hiện rút tiền.",
+    "zeroBalance": "Số dư bằng 0",
+    "zeroBalanceMsg": "Số dư Master Vault của bạn là $0.0000 USDT. Không có khoản tiền nào để rút.",
+    "enterValidWithdraw": "Vui lòng nhập số tiền rút hợp lệ (> 0).",
+    "withdrawCanceledMetaMask": "Rút tiền đã hủy: Bạn đã từ chối ký xác thực giao dịch trên ví MetaMask.",
+    "withdrawCanceled": "Rút tiền đã hủy: Bạn đã từ chối ký xác thực giao dịch trên ví.",
+    "withdrawSuccess": "Rút Tiền Thành Công",
+    "walletRequiredAi": "Vui lòng kết nối ví Passkey hoặc Phantom để cấp quyền thực thi AI.",
+    "insufficientVaultBalance": "Số dư không đủ"
+  },
+  "ko": {
+    "tabStrategic": "프라이빗 전략 배분",
+    "passkeyTitle": "생체 인식 Passkey 지갑",
+    "passkeySubtitle": "WebAuthn 하드웨어 인증 • 제로 키 리스크",
+    "syncChrome": "Chrome 브라우저로 지갑 동기화",
+    "openingPhantom": "Phantom 실행 중...",
+    "openingPhantomTitle": "Phantom 앱 여는 중...",
+    "approvePhantomMsg": "Chrome으로 돌아가려면 Phantom에서 승인하세요",
+    "openingSolflare": "Solflare 실행 중...",
+    "openingSolflareTitle": "Solflare 앱 여는 중...",
+    "approveSolflareMsg": "Chrome으로 돌아가려면 Solflare에서 승인하세요",
+    "scanningBio": "생체 인식 스캔 중...",
+    "passkeyConnected": "Passkey 인증 연결 성공",
+    "bioError": "생체 인식 오류",
+    "connectingPhantom": "Phantom 지갑 연결 중...",
+    "connectingMetaMask": "MetaMask 지갑 연결 중...",
+    "connectingSolflare": "Solflare 지갑 연결 중...",
+    "connectionRejected": "사용자가 연결을 취소했습니다",
+    "resetSimulationConfirm": "이 지갑의 모의 배분 데이터를 초기화하시겠습니까?",
+    "activeVestingVault": "활성 Token-2022 베스팅 볼트",
+    "angelTranche": "엔젤 트랜치",
+    "openMyVestingVault": "내 베스팅 볼트 열기 →",
+    "connectedCheck": "연결됨 ✓",
+    "passkeyActiveDeposit": "Passkey 활성 • 온체인 입금을 위해 Phantom/Solflare 연결",
+    "connectPhantomBtn": "Phantom 연결",
+    "connectingBtn": "연결 중...",
+    "walletNotConnected": "지갑 미연결",
+    "connectWalletBeforeDeposit": "입금하기 전에 Passkey 또는 Phantom 지갑을 연결하세요.",
+    "enterValidDeposit": "유효한 입금 금액(> 0)을 입력하세요.",
+    "broadcastingFaucet": "Solana Devnet Faucet 트랜잭션 전송 중...",
+    "faucetClaimed": "테스트넷 Faucet 수령 완료",
+    "faucetCredited": "Master Vault에 Faucet 잔액이 입금되었습니다!",
+    "connectingPhantomWallet": "Phantom 지갑 연결 중...",
+    "web3Rejected": "Web3 지갑 연결이 취소되었습니다.",
+    "web3Disconnected": "Web3 지갑 연결이 끊어졌습니다. Phantom을 다시 연결하세요.",
+    "awaitingSignature": "지갑에서 서명 승인을 기다리는 중...",
+    "gaslessDepositSuccess": "무가스 입금 완료 (0% 가스비)",
+    "depositCredited": "Master Vault에 입금 완료되었습니다!",
+    "approveInPhantomExt": "Phantom 확장 프로그램에서 승인하세요...",
+    "confirmingSolana": "Solana Devnet 확인 중...",
+    "web3DepositSuccess": "Web3 입금 확인 완료",
+    "depositCanceledUser": "입금 취소: 지갑에서 트랜잭션을 거부했습니다.",
+    "solanaTxFailed": "Solana Devnet 트랜잭션 실패:",
+    "cannotWithdrawEmergency": "Vault가 긴급 정지(Emergency Stop) 상태일 때는 출금할 수 없습니다.",
+    "connectWalletBeforeWithdraw": "출금하기 전에 인증된 지갑을 연결하세요.",
+    "zeroBalance": "잔액 없음",
+    "zeroBalanceMsg": "Master Vault 잔액이 $0.0000 USDT입니다. 출금 가능한 자금이 없습니다.",
+    "enterValidWithdraw": "유효한 출금 금액(> 0)을 입력하세요.",
+    "withdrawCanceledMetaMask": "출금 취소: MetaMask 서명을 거부했습니다.",
+    "withdrawCanceled": "출금 취소: 지갑 서명을 거부했습니다.",
+    "withdrawSuccess": "출금 실행 완료",
+    "walletRequiredAi": "AI 실행을 승인하려면 Passkey 또는 Phantom 지갑을 연결하세요.",
+    "insufficientVaultBalance": "Vault 잔액 부족"
+  },
+  "fr": {
+    "tabStrategic": "Allocation Stratégique Privée",
+    "passkeyTitle": "Portefeuille Biométrique Passkey",
+    "passkeySubtitle": "Authentification WebAuthn • Sécurité Matérielle Absolue",
+    "syncChrome": "Synchroniser avec Chrome",
+    "openingPhantom": "Ouverture de Phantom...",
+    "openingPhantomTitle": "Ouverture de l'Application Phantom...",
+    "approvePhantomMsg": "Approuvez dans Phantom pour revenir à Chrome",
+    "openingSolflare": "Ouverture de Solflare...",
+    "openingSolflareTitle": "Ouverture de l'Application Solflare...",
+    "approveSolflareMsg": "Approuvez dans Solflare pour revenir à Chrome",
+    "scanningBio": "Numérisation biométrique...",
+    "passkeyConnected": "Passkey Connecté avec Succès",
+    "bioError": "Erreur Biométrique",
+    "connectingPhantom": "Connexion à Phantom...",
+    "connectingMetaMask": "Connexion à MetaMask...",
+    "connectingSolflare": "Connexion à Solflare...",
+    "connectionRejected": "Connexion rejetée par l'utilisateur",
+    "resetSimulationConfirm": "Réinitialiser les données de simulation pour ce portefeuille ?",
+    "activeVestingVault": "Coffre de Vesting Token-2022 Actif",
+    "angelTranche": "Tranche Angel",
+    "openMyVestingVault": "Ouvrir Mon Coffre de Vesting →",
+    "connectedCheck": "Connecté ✓",
+    "passkeyActiveDeposit": "Passkey Actif • Connectez Phantom/Solflare pour déposer",
+    "connectPhantomBtn": "Connecter Phantom",
+    "connectingBtn": "Connexion...",
+    "walletNotConnected": "Portefeuille Non Connecté",
+    "connectWalletBeforeDeposit": "Veuillez connecter un portefeuille Passkey ou Phantom avant de déposer.",
+    "enterValidDeposit": "Veuillez entrer un montant valide (> 0).",
+    "broadcastingFaucet": "Diffusion de la transaction Faucet Solana Devnet...",
+    "faucetClaimed": "Faucet Testnet Réclamé",
+    "faucetCredited": "Crédit Faucet ajouté au Master Vault !",
+    "connectingPhantomWallet": "Connexion au portefeuille Phantom...",
+    "web3Rejected": "La connexion au portefeuille Web3 a été annulée.",
+    "web3Disconnected": "Portefeuille Web3 déconnecté. Veuillez reconnecter Phantom.",
+    "awaitingSignature": "En attente de signature dans le portefeuille...",
+    "gaslessDepositSuccess": "Dépôt sans Gas Confirmé (0% Gas)",
+    "depositCredited": "Fonds crédités sur le Master Vault !",
+    "approveInPhantomExt": "Approuvez dans l'extension Phantom...",
+    "confirmingSolana": "Confirmation sur Solana Devnet...",
+    "web3DepositSuccess": "Dépôt Web3 Confirmé",
+    "depositCanceledUser": "Dépôt annulé : transaction rejetée dans le portefeuille.",
+    "solanaTxFailed": "Échec de la transaction Solana Devnet :",
+    "cannotWithdrawEmergency": "Impossible de retirer pendant l'état d'arrêt d'urgence.",
+    "connectWalletBeforeWithdraw": "Veuillez connecter votre portefeuille avant de retirer.",
+    "zeroBalance": "Solde Nul",
+    "zeroBalanceMsg": "Votre solde Master Vault est de $0.0000 USDT. Aucun fonds à retirer.",
+    "enterValidWithdraw": "Veuillez entrer un montant de retrait valide (> 0).",
+    "withdrawCanceledMetaMask": "Retrait annulé : signature MetaMask rejetée.",
+    "withdrawCanceled": "Retrait annulé : signature rejetée dans le portefeuille.",
+    "withdrawSuccess": "Retrait Exécuté avec Succès",
+    "walletRequiredAi": "Connectez votre portefeuille pour autoriser l'exécution de l'IA.",
+    "insufficientVaultBalance": "Solde insuffisant dans le Vault"
+  },
+  "es": {
+    "tabStrategic": "Asignación Estratégica Privada",
+    "passkeyTitle": "Billetera Biométrica Passkey",
+    "passkeySubtitle": "Autenticación WebAuthn por hardware • Cero riesgo de claves",
+    "syncChrome": "Sincronizar billetera con Chrome",
+    "openingPhantom": "Abriendo Phantom...",
+    "openingPhantomTitle": "Abriendo la Aplicación Phantom...",
+    "approvePhantomMsg": "Aprueba en Phantom para volver a Chrome",
+    "openingSolflare": "Abriendo Solflare...",
+    "openingSolflareTitle": "Abriendo la Aplicación Solflare...",
+    "approveSolflareMsg": "Aprueba en Solflare para volver a Chrome",
+    "scanningBio": "Escaneando biometría...",
+    "passkeyConnected": "Passkey Conectada con Éxito",
+    "bioError": "Error Biométrico",
+    "connectingPhantom": "Conectando Phantom...",
+    "connectingMetaMask": "Conectando MetaMask...",
+    "connectingSolflare": "Conectando Solflare...",
+    "connectionRejected": "Conexión rechazada por el usuario",
+    "resetSimulationConfirm": "¿Restablecer datos de simulación para esta billetera?",
+    "activeVestingVault": "Bóveda de Vesting Token-2022 Activa",
+    "angelTranche": "Tramo Ángel",
+    "openMyVestingVault": "Abrir Mi Bóveda de Vesting →",
+    "connectedCheck": "Conectado ✓",
+    "passkeyActiveDeposit": "Passkey Activa • Conecte Phantom/Solflare para depositar",
+    "connectPhantomBtn": "Conectar Phantom",
+    "connectingBtn": "Conectando...",
+    "walletNotConnected": "Billetera No Conectada",
+    "connectWalletBeforeDeposit": "Conecte una billetera Passkey o Phantom antes de depositar.",
+    "enterValidDeposit": "Ingrese un monto válido de depósito (> 0).",
+    "broadcastingFaucet": "Transmitiendo transacción de Faucet en Solana Devnet...",
+    "faucetClaimed": "Faucet de Testnet Reclamado",
+    "faucetCredited": "¡Fondos del Faucet acreditados en el Master Vault!",
+    "connectingPhantomWallet": "Conectando Billetera Phantom...",
+    "web3Rejected": "La conexión de billetera Web3 fue cancelada o rechazada.",
+    "web3Disconnected": "Billetera Web3 desconectada. Vuelva a conectar Phantom.",
+    "awaitingSignature": "Esperando firma en la billetera...",
+    "gaslessDepositSuccess": "Depósito sin Gas Confirmado (0% Gas)",
+    "depositCredited": "¡Fondos acreditados en Master Vault!",
+    "approveInPhantomExt": "Apruebe en la extensión de Phantom...",
+    "confirmingSolana": "Confirmando en Solana Devnet...",
+    "web3DepositSuccess": "Depósito Web3 Confirmado",
+    "depositCanceledUser": "Depósito cancelado: Rechazó la transacción en su billetera.",
+    "solanaTxFailed": "Transacción fallida en Solana Devnet:",
+    "cannotWithdrawEmergency": "No se puede retirar mientras la Bóveda esté en Parada de Emergencia.",
+    "connectWalletBeforeWithdraw": "Conecte una billetera verificada antes de retirar fondos.",
+    "zeroBalance": "Saldo Cero",
+    "zeroBalanceMsg": "Su saldo en Master Vault es de $0.0000 USDT. No hay fondos para retirar.",
+    "enterValidWithdraw": "Ingrese un monto de retiro válido (> 0).",
+    "withdrawCanceledMetaMask": "Retiro cancelado: Rechazó la firma en MetaMask.",
+    "withdrawCanceled": "Retiro cancelado: Rechazó la firma en la billetera.",
+    "withdrawSuccess": "Retiro Ejecutado con Éxito",
+    "walletRequiredAi": "Conecte su billetera para autorizar la ejecución de IA.",
+    "insufficientVaultBalance": "Saldo insuficiente en la Bóveda"
+  },
+  "ru": {
+    "tabStrategic": "Приватная Стратегическая Аллокация",
+    "passkeyTitle": "Биометрический Passkey Кошелек",
+    "passkeySubtitle": "Аппаратная аутентификация WebAuthn • Абсолютная безопасность",
+    "syncChrome": "Синхронизировать кошелек с Chrome",
+    "openingPhantom": "Открытие Phantom...",
+    "openingPhantomTitle": "Открытие Приложения Phantom...",
+    "approvePhantomMsg": "Подтвердите в Phantom для возврата в Chrome",
+    "openingSolflare": "Открытие Solflare...",
+    "openingSolflareTitle": "Открытие Приложения Solflare...",
+    "approveSolflareMsg": "Подтвердите в Solflare для возврата в Chrome",
+    "scanningBio": "Сканирование биометрии...",
+    "passkeyConnected": "Passkey Успешно Подключен",
+    "bioError": "Биометрическая Ошибка",
+    "connectingPhantom": "Подключение к Phantom...",
+    "connectingMetaMask": "Подключение к MetaMask...",
+    "connectingSolflare": "Подключение к Solflare...",
+    "connectionRejected": "Подключение отклонено пользователем",
+    "resetSimulationConfirm": "Сбросить данные симуляции для этого кошелька?",
+    "activeVestingVault": "Активный Сейф Вестинга Token-2022",
+    "angelTranche": "Ангельский Транш",
+    "openMyVestingVault": "Открыть Мой Сейф Вестинга →",
+    "connectedCheck": "Подключено ✓",
+    "passkeyActiveDeposit": "Passkey Активен • Подключите Phantom/Solflare для пополнения",
+    "connectPhantomBtn": "Подключить Phantom",
+    "connectingBtn": "Подключение...",
+    "walletNotConnected": "Кошелек Не Подключен",
+    "connectWalletBeforeDeposit": "Подключите Passkey или Phantom кошелек перед внесением средств.",
+    "enterValidDeposit": "Введите корректную сумму пополнения (> 0).",
+    "broadcastingFaucet": "Отправка транзакции Faucet Solana Devnet...",
+    "faucetClaimed": "Тестовый Faucet Получен",
+    "faucetCredited": "Баланс Faucet зачислен в Master Vault!",
+    "connectingPhantomWallet": "Подключение кошелька Phantom...",
+    "web3Rejected": "Подключение Web3 кошелька было отменено.",
+    "web3Disconnected": "Web3 кошелек отключен. Подключите Phantom заново.",
+    "awaitingSignature": "Ожидание подписи в кошельке...",
+    "gaslessDepositSuccess": "Пополнение без комиссии (0% Gas)",
+    "depositCredited": "Средства зачислены в Master Vault!",
+    "approveInPhantomExt": "Подтвердите в расширении Phantom...",
+    "confirmingSolana": "Подтверждение в сети Solana Devnet...",
+    "web3DepositSuccess": "Web3 Пополнение Подтверждено",
+    "depositCanceledUser": "Пополнение отменено: Вы отклонили транзакцию в кошельке.",
+    "solanaTxFailed": "Ошибка транзакции в Solana Devnet:",
+    "cannotWithdrawEmergency": "Вывод невозможен в режиме аварийной остановки (Emergency Stop).",
+    "connectWalletBeforeWithdraw": "Подключите верифицированный кошелек перед выводом средств.",
+    "zeroBalance": "Нулевой Баланс",
+    "zeroBalanceMsg": "Баланс Master Vault составляет $0.0000 USDT. Нет средств для вывода.",
+    "enterValidWithdraw": "Введите корректную сумму вывода (> 0).",
+    "withdrawCanceledMetaMask": "Вывод отменен: Вы отклонили подпись в MetaMask.",
+    "withdrawCanceled": "Вывод отменен: Вы отклонили подпись в кошельке.",
+    "withdrawSuccess": "Вывод Успешно Выполнен",
+    "walletRequiredAi": "Подключите кошелек для авторизации выполнения ИИ.",
+    "insufficientVaultBalance": "Недостаточно средств в Сейфе"
+  },
+  "hi": {
+    "tabStrategic": "प्राइवेट रणनीतिक आवंटन",
+    "passkeyTitle": "बायोमेट्रिक पासकी वॉलेट",
+    "passkeySubtitle": "हार्डवेयर-आधारित WebAuthn • शून्य की-जोखिम",
+    "syncChrome": "Chrome ब्राउज़र में वॉलेट सिंक करें",
+    "openingPhantom": "Phantom खोला जा रहा है...",
+    "openingPhantomTitle": "Phantom ऐप खोला जा रहा है...",
+    "approvePhantomMsg": "Chrome पर लौटने के लिए Phantom में अनुमति दें",
+    "openingSolflare": "Solflare खोला जा रहा है...",
+    "openingSolflareTitle": "Solflare ऐप खोला जा रहा है...",
+    "approveSolflareMsg": "Chrome पर लौटने के लिए Solflare में अनुमति दें",
+    "scanningBio": "बायोमेट्रिक स्कैन किया जा रहा है...",
+    "passkeyConnected": "पासकी सफलतापूर्वक कनेक्ट हो गई",
+    "bioError": "बायोमेट्रिक त्रुटि",
+    "connectingPhantom": "Phantom कनेक्ट हो रहा है...",
+    "connectingMetaMask": "MetaMask कनेक्ट हो रहा है...",
+    "connectingSolflare": "Solflare कनेक्ट हो रहा है...",
+    "connectionRejected": "उपयोगकर्ता द्वारा कनेक्शन अस्वीकृत",
+    "resetSimulationConfirm": "क्या इस वॉलेट के लिए सिमुलेशन डेटा रीसेट करें?",
+    "activeVestingVault": "सक्रिय Token-2022 वेस्टिंग वॉल्ट",
+    "angelTranche": "एंजेल ट्रांच",
+    "openMyVestingVault": "मेरा वेस्टिंग वॉल्ट खोलें →",
+    "connectedCheck": "कनेक्टेड ✓",
+    "passkeyActiveDeposit": "पासकी सक्रिय • जमा करने के लिए Phantom/Solflare कनेक्ट करें",
+    "connectPhantomBtn": "Phantom कनेक्ट करें",
+    "connectingBtn": "कनेक्ट हो रहा है...",
+    "walletNotConnected": "वॉलेट कनेक्ट नहीं है",
+    "connectWalletBeforeDeposit": "जमा करने से पहले कृपया पासकी या Phantom वॉलेट कनेक्ट करें।",
+    "enterValidDeposit": "कृपया एक वैध जमा राशि दर्ज करें (> 0)।",
+    "broadcastingFaucet": "Solana Devnet Faucet लेनदेन प्रसारित किया जा रहा है...",
+    "faucetClaimed": "टेस्टनेट फॉसेट प्राप्त हुआ",
+    "faucetCredited": "Master Vault में फॉसेट जमा हो गया!",
+    "connectingPhantomWallet": "Phantom वॉलेट कनेक्ट किया जा रहा है...",
+    "web3Rejected": "Web3 वॉलेट कनेक्शन रद्द कर दिया गया।",
+    "web3Disconnected": "Web3 वॉलेट डिस्कनेक्ट हो गया। कृपया Phantom पुनः कनेक्ट करें।",
+    "awaitingSignature": "वॉलेट में हस्ताक्षर की प्रतीक्षा है...",
+    "gaslessDepositSuccess": "गैसलेस जमा की पुष्टि (0% Gas)",
+    "depositCredited": "Master Vault में धनराशि जमा हो गई!",
+    "approveInPhantomExt": "Phantom एक्सटेंशन में स्वीकृत करें...",
+    "confirmingSolana": "Solana Devnet पर पुष्टि की जा रही है...",
+    "web3DepositSuccess": "Web3 जमा की पुष्टि हुई",
+    "depositCanceledUser": "जमा रद्द: आपने वॉलेट में लेनदेन अस्वीकार कर दिया।",
+    "solanaTxFailed": "Solana Devnet लेनदेन विफल:",
+    "cannotWithdrawEmergency": "आपातकालीन स्थिति में निकासी संभव नहीं है।",
+    "connectWalletBeforeWithdraw": "निकासी से पहले कृपया अपना वॉलेट कनेक्ट करें।",
+    "zeroBalance": "शून्य शेष",
+    "zeroBalanceMsg": "आपके Master Vault का शेष $0.0000 USDT है। निकासी के लिए कोई फंड नहीं है।",
+    "enterValidWithdraw": "कृपया एक वैध निकासी राशि दर्ज करें (> 0)।",
+    "withdrawCanceledMetaMask": "निकासी रद्द: आपने MetaMask हस्ताक्षर अस्वीकार कर दिया।",
+    "withdrawCanceled": "निकासी रद्द: आपने वॉलेट हस्ताक्षर अस्वीकार कर दिया।",
+    "withdrawSuccess": "निकासी सफलतापूर्वक निष्पादित हुई",
+    "walletRequiredAi": "AI निष्पादन अधिकृत करने के लिए अपना वॉलेट कनेक्ट करें।",
+    "insufficientVaultBalance": "वॉल्ट में अपर्याप्त शेष"
+  },
+  "he": {
+    "tabStrategic": "הקצאה אסטרטגית פרטית",
+    "passkeyTitle": "ארנק ביומטרי Passkey",
+    "passkeySubtitle": "אימות חומרה WebAuthn • אפס סיכון למפתחות",
+    "syncChrome": "סנכרן ארנק לדפדפן Chrome",
+    "openingPhantom": "פותח את Phantom...",
+    "openingPhantomTitle": "פותח את אפליקציית Phantom...",
+    "approvePhantomMsg": "אשר ב-Phantom כדי לחזור ל-Chrome",
+    "openingSolflare": "פותח את Solflare...",
+    "openingSolflareTitle": "פותח את אפליקציית Solflare...",
+    "approveSolflareMsg": "אשר ב-Solflare כדי לחזור ל-Chrome",
+    "scanningBio": "סורק נתונים ביומטריים...",
+    "passkeyConnected": "Passkey חובר בהצלחה",
+    "bioError": "שגיאה ביומטרית",
+    "connectingPhantom": "מתחבר ל-Phantom...",
+    "connectingMetaMask": "מתחבר ל-MetaMask...",
+    "connectingSolflare": "מתחבר ל-Solflare...",
+    "connectionRejected": "החיבור נדחה על ידי המשתמש",
+    "resetSimulationConfirm": "האם לאפס את נתוני ההדמיה עבור ארנק זה?",
+    "activeVestingVault": "כספת ווסטינג Token-2022 פעילה",
+    "angelTranche": "טרנץ' אנג'ל",
+    "openMyVestingVault": "פתח את כספת הווסטינג שלי →",
+    "connectedCheck": "מחובר ✓",
+    "passkeyActiveDeposit": "Passkey פעיל • חבר Phantom/Solflare להפקדה",
+    "connectPhantomBtn": "חבר את Phantom",
+    "connectingBtn": "מתחבר...",
+    "walletNotConnected": "ארנק לא מחובר",
+    "connectWalletBeforeDeposit": "אנא חבר ארנק Passkey או Phantom לפני ההפקדה.",
+    "enterValidDeposit": "אנא הזן סכום הפקדה תקין (> 0).",
+    "broadcastingFaucet": "משדר עסקת Faucet ב-Solana Devnet...",
+    "faucetClaimed": "ברז רשת הבדיקה נתבע בהצלחה",
+    "faucetCredited": "הסכום זוכה ל-Master Vault!",
+    "connectingPhantomWallet": "מתחבר לארנק Phantom...",
+    "web3Rejected": "חיבור ארנק Web3 בוטל או נדחה.",
+    "web3Disconnected": "ארנק Web3 מנותק. אנא חבר מחדש את Phantom.",
+    "awaitingSignature": "ממתין לחתימה בארנק...",
+    "gaslessDepositSuccess": "הפקדה ללא עמלות גז אושרה (0% Gas)",
+    "depositCredited": "הכספים זוכו ב-Master Vault!",
+    "approveInPhantomExt": "אשר בתוסף Phantom...",
+    "confirmingSolana": "מאמת ב-Solana Devnet...",
+    "web3DepositSuccess": "הפקדת Web3 אושרה",
+    "depositCanceledUser": "ההפקדה בוטלה: דחית את העסקה בארנק שלך.",
+    "solanaTxFailed": "עסקת Solana Devnet נכשלה:",
+    "cannotWithdrawEmergency": "לא ניתן למשוך כספים כאשר הכספת במצב עצירת חירום.",
+    "connectWalletBeforeWithdraw": "אנא חבר ארנק מאומת לפני משיכת כספים.",
+    "zeroBalance": "יתרה אפס",
+    "zeroBalanceMsg": "יתרת ה-Master Vault שלך היא $0.0000 USDT. אין כספים למשיכה.",
+    "enterValidWithdraw": "אנא הזן סכום משיכה תקין (> 0).",
+    "withdrawCanceledMetaMask": "המשיכה בוטלה: דחית את חתימת האימות ב-MetaMask.",
+    "withdrawCanceled": "המשיכה בוטלה: דחית את חתימת האימות בארנק.",
+    "withdrawSuccess": "המשיכה בוצעה בהצלחה",
+    "walletRequiredAi": "חבר את הארנק שלך כדי לאשר ביצוע AI.",
+    "insufficientVaultBalance": "יתרה לא מספקת בכספת"
+  }
+};
+
+    function getDashNotice(key) {
+      const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
+      const dict = DASH_NOTICES_I18N[lang] || DASH_NOTICES_I18N['en'];
+      return dict[key] || DASH_NOTICES_I18N['en'][key] || '';
+    }
+  
+    function getVestingText(key, lang) {
+      const l = lang || (window.haichainI18n ? window.haichainI18n.current() : 'en');
+      const dict = VESTING_VAULT_I18N[l] || VESTING_VAULT_I18N['en'];
+      return dict[key] || VESTING_VAULT_I18N['en'][key] || '';
+    }
+
     function renderVestingVaultPage() {
       const container = document.getElementById('vesting-vault-page-container');
       if (!container) return;
 
       const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
-      const isVi = lang === 'vi';
       const allocations = getStoredAllocations();
       let currentAddress = userWallet ? userWallet.address : null;
       if (!currentAddress) {
@@ -4040,7 +5040,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   <div>
                     <div class="flex items-center space-x-2">
                       <h2 class="font-bold text-lg sm:text-xl text-black dark:text-white">
-                        ${isVi ? 'Két Vesting Token-2022 & Danh Mục Phân Bổ' : 'Token-2022 Vesting Vault & Allocations'}
+                        ${getVestingText('vaultTitle', lang)}
                       </h2>
                       <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
                         Solana L1
@@ -4049,14 +5049,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   </div>
                 </div>
                 <p class="text-xs text-neutral-500 mt-1">
-                  ${isVi 
-                    ? 'Sổ cái phân bổ token $HAISI (Haichain SI) và hợp đồng Vesting on-chain được bảo vệ bằng Transfer-Hook mật mã.' 
-                    : 'On-chain $HAISI (Haichain SI) allocation ledger and cryptographic Transfer-Hook vesting smart contracts.'}
+                  ${getVestingText('vaultSubtitle', lang)}
                 </p>
               </div>
-              <div class="flex items-center space-x-2 shrink-0">
-                
-              </div>
+              <div class="flex items-center space-x-2 shrink-0"></div>
             </div>
 
             <!-- Lock Box Prompt -->
@@ -4066,20 +5062,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               </div>
               <div>
                 <h3 class="font-bold text-base text-black dark:text-white">
-                  ${isVi ? 'Yêu Cầu Kết Nối Ví Solana' : 'Solana Wallet Authentication Required'}
+                  ${getVestingText('authRequired', lang)}
                 </h3>
                 <p class="text-xs text-neutral-500 mt-1.5 leading-relaxed">
-                  ${isVi 
-                    ? 'Hãy kết nối ví Phantom, Solflare, Passkey sinh trắc học hoặc nhập địa chỉ ví Solana cá nhân để xác thực và mở khóa két phân bổ vesting của bạn.' 
-                    : 'Connect Phantom, Solflare, Biometric Passkey, or enter your personal Solana address to verify your Ed25519 public key and unlock your personal vesting allocation vault.'}
+                  ${getVestingText('authDesc', lang)}
                 </p>
               </div>
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
-                  ${isVi ? 'Kết Nối Ví Phantom / Solana' : 'Connect Phantom / Solana Wallet'}
+                  ${getVestingText('connectWalletBtn', lang)}
                 </button>
                 <button onclick="window.switchTab('tab-preseed')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
-                  ${isVi ? 'Đăng Ký Vòng Private SAFT' : 'Subscribe to Private SAFT'}
+                  ${getVestingText('subscribeSaftBtn', lang)}
                 </button>
               </div>
             </div>
@@ -4102,7 +5096,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   <div>
                     <div class="flex items-center space-x-2">
                       <h2 class="font-bold text-lg sm:text-xl text-black dark:text-white">
-                        ${isVi ? 'Két Vesting Token-2022 & Danh Mục Phân Bổ' : 'Token-2022 Vesting Vault & Allocations'}
+                        ${getVestingText('vaultTitle', lang)}
                       </h2>
                       <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
                         ${shortAddr}
@@ -4111,14 +5105,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   </div>
                 </div>
                 <p class="text-xs text-neutral-500 mt-1">
-                  ${isVi 
-                    ? `Ví đang xác thực: <span class="font-mono text-black dark:text-white font-bold">${currentAddress}</span>` 
-                    : `Authenticated Address: <span class="font-mono text-black dark:text-white font-bold">${currentAddress}</span>`}
+                  ${getVestingText('authAddress', lang)} <span class="font-mono text-black dark:text-white font-bold">${currentAddress}</span>
                 </p>
               </div>
-              <div class="flex items-center space-x-2 shrink-0">
-                
-              </div>
+              <div class="flex items-center space-x-2 shrink-0"></div>
             </div>
 
             <div class="p-8 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-center max-w-xl mx-auto space-y-4">
@@ -4127,20 +5117,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               </div>
               <div>
                 <h3 class="font-bold text-base text-black dark:text-white">
-                  ${isVi ? 'Chưa Ghi Nhận Phân Bổ Nào Cho Địa Chỉ Ví Này' : 'No Allocation Found for this Address'}
+                  ${getVestingText('noAllocTitle', lang)}
                 </h3>
                 <p class="text-xs text-neutral-500 mt-1.5 leading-relaxed">
-                  ${isVi 
-                    ? 'Địa chỉ ví này hiện chưa có hợp đồng SAFT hoặc phân bổ token sớm nào trong hệ thống kho bạc. Nếu bạn đã chuyển USDT/SOL, giao dịch sẽ được ghi nhận ngay khi khối on-chain hoàn tất xác thực.' 
-                    : 'This wallet address is not currently bound to any active SAFT agreement or early token tranche in the treasury vault. If you have recently sent funds, please allow network block finalization.'}
+                  ${getVestingText('noAllocDesc', lang)}
                 </p>
               </div>
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button onclick="window.switchTab('tab-preseed')" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
-                  ${isVi ? 'Đăng Ký Vòng Private SAFT (Chiết Khấu 30%)' : 'Subscribe to Private SAFT (30% Discount)'}
+                  ${getVestingText('subscribeDiscountBtn', lang)}
                 </button>
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
-                  ${isVi ? 'Đổi Địa Chỉ Ví Khác' : 'Switch Wallet'}
+                  ${getVestingText('switchWalletBtn', lang)}
                 </button>
               </div>
             </div>
@@ -4150,7 +5138,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         return;
       }
 
-      // STATE 3: Active Allocation Found! (INVARIANT: ZERO MENTION OF $0.007!)
+      // STATE 3: Active Allocation Found!
       const haiTotal = alloc.haiTokens || Math.round((alloc.amountUsdt || 1000) / 0.007);
       const paidUsdt = alloc.amountUsdt || 1000;
       const tgeVal = haiTotal * 0.010;
@@ -4171,28 +5159,31 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               <div class="min-w-0 space-y-1">
                 <div class="flex flex-wrap items-center gap-2">
                   <h2 class="font-bold text-lg sm:text-xl text-black dark:text-white whitespace-nowrap">
-                    ${isVi ? 'Két Vesting & Danh Mục Đầu Tư' : 'Investor Portfolio & Vesting Vault'}
+                    ${getVestingText('portfolioTitle', lang)}
                   </h2>
                   <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 font-semibold">
-                    ${isVi ? 'Khối Đầu Tư Thiên Thần Bảo Mật' : 'Confidential Strategic Tranche'}
+                    ${getVestingText('trancheBadge', lang)}
                   </span>
                   <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-300 dark:border-neutral-700 flex items-center space-x-1.5">
                     <span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
-                    <span>Token-2022 Transfer-Hook Locked</span>
+                    <span>${getVestingText('transferHookStatus', lang)}</span>
                   </span>
                 </div>
-                <p class="text-xs text-neutral-500 font-mono truncate">
-                  ${isVi ? `Ví Thụ Hưởng Được Ủy Quyền: <strong class="text-neutral-800 dark:text-neutral-200 font-bold">${currentAddress}</strong>` : `Authorized Beneficiary Wallet: <strong class="text-neutral-800 dark:text-neutral-200 font-bold">${currentAddress}</strong>`}
-                </p>
+                <div class="flex items-center space-x-2 text-xs text-neutral-500 font-mono">
+                  <span>${getVestingText('authAddress', lang)}</span>
+                  <span class="text-black dark:text-white font-bold">${shortAddr}</span>
+                </div>
               </div>
             </div>
+
+            <!-- Header Actions -->
             <div class="flex items-center space-x-2 shrink-0">
-              <button onclick="window.addHaiTokenToPhantom()" class="px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-mono font-semibold text-black dark:text-white transition-all flex items-center space-x-2.5 shadow-sm">
+              <button onclick="window.copyToken2022Mint()" class="px-4 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm flex items-center space-x-2">
                 <div class="w-5 h-5 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden p-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                 </div>
-                <span>${isVi ? 'Thêm $HAISI vào Phantom' : 'Add $HAISI to Phantom'}</span>
+                <span>${getVestingText('addToPhantomBtn', lang)}</span>
               </button>
-              <button onclick="window.clearUserAllocation()" class="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-black dark:hover:text-white transition-colors" title="${isVi ? 'Đặt lại dữ liệu mẫu' : 'Reset simulation'}">
+              <button onclick="window.clearUserAllocation()" class="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-black dark:hover:text-white transition-colors" title="${getVestingText('resetSimTitle', lang)}">
                 <i data-lucide="refresh-cw" class="w-4 h-4"></i>
               </button>
             </div>
@@ -4201,31 +5192,31 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <!-- 4 Executive KPI Cards -->
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono">
             <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2">
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Tổng $HAISI Đã Phân Bổ' : 'Total $HAISI Balance'}</span>
+              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiTotalBalance', lang)}</span>
               <div class="flex items-center space-x-2.5">
                 <div class="w-7 h-7 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-xs p-1"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                 </div>
                 <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${haiTotal.toLocaleString()} <span class="text-xs font-bold text-neutral-400">HAISI</span></div>
               </div>
-              <span class="text-[10px] text-neutral-500 font-sans block">${isVi ? 'Chuẩn Solana Token-2022' : 'Solana Token-2022 Extension'}</span>
+              <span class="text-[10px] text-neutral-500 font-sans block">${getVestingText('kpiTokenStandard', lang)}</span>
             </div>
 
             <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1">
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Vốn Đầu Tư Cam Kết' : 'Committed Capital'}</span>
-              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">$${paidUsdt.toLocaleString()}</div>
-              <span class="text-[10px] text-neutral-500 font-sans block">${isVi ? 'Kho Bạc Multi-Sig L1' : 'Multi-Sig Treasury Vault'}</span>
+              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiCommittedCapital', lang)}</span>
+              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${paidUsdt.toLocaleString()}</div>
+              <span class="text-[10px] text-neutral-500 font-sans block">${getVestingText('kpiTreasuryVault', lang)}</span>
             </div>
 
             <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1">
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Mốc Niêm Yết Tham Chiếu' : 'Public TGE Benchmark'}</span>
+              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiTgeBenchmark', lang)}</span>
               <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">$0.010</div>
-              <span class="text-[10px] text-neutral-500 font-sans block">${isVi ? 'Định Giá Khởi Điểm $10M' : 'Floor Launchpad Benchmark'}</span>
+              <span class="text-[10px] text-neutral-500 font-sans block">${getVestingText('kpiBenchmarkSubtitle', lang)}</span>
             </div>
 
             <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1">
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Giá Trị Dự Kiến Tại TGE' : 'TGE Notional Valuation'}</span>
-              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">$${tgeVal.toLocaleString()}</div>
-              <span class="text-[10px] text-neutral-600 dark:text-neutral-400 font-bold block">+${unvestedYield}% ${isVi ? 'Tỷ Suất Danh Nghĩa' : 'Notional Surplus'}</span>
+              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiTgeValuation', lang)}</span>
+              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${tgeVal.toLocaleString()}</div>
+              <span class="text-[10px] text-neutral-600 dark:text-neutral-400 font-bold block">+${unvestedYield}% ${getVestingText('kpiNotionalSurplus', lang)}</span>
             </div>
           </div>
 
@@ -4234,7 +5225,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-neutral-800 gap-2">
               <div class="flex items-center space-x-2 text-white font-bold">
                 <span class="px-2 py-0.5 rounded-md bg-white text-black text-[10px]">SOLANA TOKEN-2022</span>
-                <span>Transfer-Hook Cryptographic Invariant</span>
+                <span>${getVestingText('transferHookTitle', lang)}</span>
               </div>
               <a href="https://explorer.solana.com/address/${TOKEN_2022_MINT}?cluster=devnet" target="_blank" class="text-white hover:underline text-[11px] flex items-center space-x-1">
                 <span>Mint: ${TOKEN_2022_MINT.slice(0, 8)}...${TOKEN_2022_MINT.slice(-6)}</span>
@@ -4242,119 +5233,41 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               </a>
             </div>
 
-            <p class="leading-relaxed text-neutral-400 font-sans text-xs">
-              ${isVi
-                ? `<strong>Trải nghiệm hiển thị trên Ví Phantom của bạn:</strong> Bạn nhận được đúng token <strong>$HAISI</strong> (Haichain SI) vào ví Phantom với đầy đủ logo nhận diện và số dư <strong>${haiTotal.toLocaleString()} HAISI</strong>. Thuộc tính <em>Transfer-Hook (Chương trình ${TRANSFER_HOOK_PROGRAM.slice(0, 8)}...${TRANSFER_HOOK_PROGRAM.slice(-6)})</em> trên Solana L1 sẽ tự động kiểm soát và ngăn chặn các giao dịch chuyển khoản hoặc xả token trên sàn DEX trước ngày TGE. Đến đúng khối slot niêm yết TGE, Transfer-Hook sẽ tự động mở khóa theo lịch trình toán học bên dưới.`
-                : `<strong>Phantom Wallet Experience:</strong> You hold the genuine <strong>$HAISI</strong> (Haichain SI) token in your Phantom wallet with the official visual metadata and exact balance of <strong>${haiTotal.toLocaleString()} HAISI</strong>. The <em>Token-2022 Transfer-Hook (Program ${TRANSFER_HOOK_PROGRAM.slice(0, 8)}...${TRANSFER_HOOK_PROGRAM.slice(-6)})</em> cryptographically blocks unauthorized secondary transfers and DEX pool dumping prior to the official Public TGE slot. On TGE date, the hook dynamically unlocks transfers per the mathematical schedule below.`
-              }
+            <p class="text-neutral-400 text-xs font-sans leading-relaxed">
+              ${getVestingText('transferHookDesc', lang)}
             </p>
 
-            <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px]">
-              <span class="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
-                Transfer-Hook: <strong class="text-white font-bold">Locked Until TGE Slot</strong>
-              </span>
-              <span class="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
-                Program ID: <strong>${TRANSFER_HOOK_PROGRAM.slice(0, 6)}...${TRANSFER_HOOK_PROGRAM.slice(-4)}</strong>
-              </span>
-              <span class="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
-                Anti-DEX Arbitrage: <strong class="text-white">Active On-Chain</strong>
-              </span>
-            </div>
-          </div>
-
-          <!-- Vesting Invariant Breakdown & Progress Timeline -->
-          <div class="space-y-4 font-mono text-xs">
-            <div class="flex justify-between items-center text-neutral-400">
-              <span class="font-sans font-semibold text-black dark:text-white">
-                ${isVi ? 'Lịch Trình Mở Khóa Vesting Mật Mã (Vesting Schedule)' : 'Cryptographic Vesting Streaming Schedule'}
-              </span>
-              <span class="text-[11px] text-neutral-500 font-sans">Meteora DLMM Protected</span>
-            </div>
-
-            <!-- Visual Progress Bar -->
-            <div class="w-full h-3.5 rounded-full bg-neutral-200 dark:bg-neutral-800 flex overflow-hidden border border-neutral-300 dark:border-neutral-700">
-              <div class="h-full bg-black dark:bg-white transition-all" style="width: 20%" title="TGE Unlock 20%"></div>
-              <div class="h-full bg-neutral-400 dark:bg-neutral-600 transition-all" style="width: 20%" title="2-Month Cliff"></div>
-              <div class="h-full bg-neutral-300 dark:bg-neutral-500 transition-all" style="width: 60%" title="6-Month Linear Streaming"></div>
-            </div>
-
-            <!-- Steps Grid (3 Equal Columns with Executive Hierarchy) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-1">
-              <!-- Step 1: TGE -->
-              <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 space-y-2.5 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800/80">
-                    <div class="flex items-center space-x-2 text-black dark:text-white font-bold text-xs">
-                      <span class="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse"></span>
-                      <span>${isVi ? '1. Mở Khóa TGE' : '1. TGE Unlock'}</span>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-black text-white dark:bg-white dark:text-black font-bold">20%</span>
-                  </div>
-                  <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums pt-2">
-                    ${tgeClaimHai.toLocaleString()} <span class="text-xs font-semibold text-neutral-500">HAISI</span>
-                  </div>
+            <!-- 3-Phase Vesting Visual Timeline -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 font-mono">
+              <div class="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-white font-bold text-xs">${getVestingText('step1Title', lang)}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-white text-black font-bold">20%</span>
                 </div>
-                <div class="text-[11px] text-neutral-500 font-sans pt-1">
-                  ${isVi ? 'Khả dụng ngay ngày đầu niêm yết TGE' : 'Immediately claimable on Day 1 of listing'}
-                </div>
+                <div class="text-white font-bold text-sm">${tgeClaimHai.toLocaleString()} HAISI</div>
+                <p class="text-[10px] text-neutral-400 font-sans">${getVestingText('step1Desc', lang)}</p>
               </div>
 
-              <!-- Step 2: Cliff -->
-              <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 space-y-2.5 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800/80">
-                    <div class="flex items-center space-x-2 text-neutral-600 dark:text-neutral-400 font-bold text-xs">
-                      <span class="w-2 h-2 rounded-full bg-neutral-400"></span>
-                      <span>${isVi ? '2. Giai Đoạn Cliff' : '2. Cliff Period'}</span>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold">${isVi ? 'Tháng 1 & 2' : 'Mo 1 & 2'}</span>
-                  </div>
-                  <div class="text-xl sm:text-2xl font-black text-neutral-400 tabular-nums pt-2">
-                    0 <span class="text-xs font-semibold text-neutral-500">HAISI</span>
-                  </div>
+              <div class="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-white font-bold text-xs">${getVestingText('step2Title', lang)}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-neutral-800 text-neutral-400 font-bold">0%</span>
                 </div>
-                <div class="text-[11px] text-neutral-500 font-sans pt-1">
-                  ${isVi ? 'Đóng băng 100% bảo vệ giá sàn chống xả' : '100% frozen to protect floor price'}
-                </div>
+                <div class="text-neutral-400 font-bold text-sm">0 HAISI</div>
+                <p class="text-[10px] text-neutral-400 font-sans">${getVestingText('step2Desc', lang)}</p>
               </div>
 
-              <!-- Step 3: Linear Streaming -->
-              <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 space-y-2.5 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800/80">
-                    <div class="flex items-center space-x-2 text-black dark:text-white font-bold text-xs">
-                      <span class="w-2 h-2 rounded-full bg-black dark:bg-white"></span>
-                      <span>${isVi ? '3. Mở Khóa Tuyến Tính' : '3. Linear Stream'}</span>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-300 dark:border-neutral-700 font-bold">60%</span>
-                  </div>
-                  <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums pt-2">
-                    ${linearHai.toLocaleString()} <span class="text-xs font-semibold text-neutral-500">HAISI</span>
-                  </div>
+              <div class="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-white font-bold text-xs">${getVestingText('step3Title', lang)}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-white text-black font-bold">80%</span>
                 </div>
-                <div class="text-[11px] text-neutral-500 font-sans pt-1">
-                  ~${monthlyStream.toLocaleString()} HAISI / ${isVi ? 'tháng (mở từng giây)' : 'mo (per-second stream)'}
-                </div>
+                <div class="text-white font-bold text-sm">${linearHai.toLocaleString()} HAISI</div>
+                <p class="text-[10px] text-neutral-400 font-sans">${getVestingText('step3Desc', lang)} (~${monthlyStream.toLocaleString()} HAISI / mo)</p>
               </div>
             </div>
           </div>
 
-          <!-- Bottom Action Links -->
-          <div class="pt-4 border-t border-neutral-100 dark:border-neutral-900 flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div class="flex items-center space-x-3">
-              <a href="/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf" onclick="event.preventDefault(); window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', 'HAICHAIN Pre-Seed SAFT Agreement (Standard English Edition)');" class="underline hover:text-black dark:hover:text-white text-neutral-500 flex items-center space-x-1 font-mono cursor-pointer">
-                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-                <span>${isVi ? 'Hợp Đồng SAFT Tiếng Anh (.PDF)' : 'Official SAFT Agreement'}</span>
-              </a>
-              <a href="https://explorer.solana.com/address/${window.HAICHAIN_SALE_CONFIG ? window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS : 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW'}?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white text-neutral-500 flex items-center space-x-1 font-mono">
-                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                <span>${isVi ? 'Kho Bạc Multi-Sig' : 'Multi-Sig Treasury'}</span>
-              </a>
-            </div>
-            <div class="flex items-center space-x-2">
-              
-            </div>
-          </div>
         </div>
       `;
 
@@ -4457,7 +5370,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         }
         if (btn) {
           btn.className = "px-2.5 py-1 rounded-md text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 shrink-0 font-bold";
-          btn.textContent = isVi ? "Đã Kết Nối ✓" : "Connected ✓";
+          btn.textContent = getDashNotice('connectedCheck');
           btn.disabled = true;
         }
         if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
@@ -4471,12 +5384,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           addr.className = "font-mono text-xs text-amber-600 dark:text-amber-400 font-bold truncate";
           const provLower = (userWallet?.provider || '').toLowerCase();
           addr.textContent = userWallet && (provLower.includes('passkey') || provLower.includes('faceid'))
-            ? (isVi ? "Passkey Đang Bật • Kết Nối Phantom để Nạp On-Chain" : "Passkey Active • Connect Phantom/Solflare to Deposit")
+            ? getDashNotice('passkeyActiveDeposit')
             : (window.haichainI18n ? window.haichainI18n.t('modal.gatewayDisconnected') : "Web3 Wallet Disconnected");
         }
         if (btn) {
           btn.className = "px-3 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs shrink-0 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-xs cursor-pointer";
-          btn.textContent = isVi ? "Kết Nối Phantom" : "Connect Phantom";
+          btn.textContent = getDashNotice('connectPhantomBtn');
           btn.disabled = false;
         }
         if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
@@ -4495,7 +5408,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const solflare = window.solflare?.isSolflare ? window.solflare : null;
         if (phantom) {
           try {
-            depositConnectBtn.textContent = isVi ? "Đang kết nối..." : "Connecting...";
+            depositConnectBtn.textContent = getDashNotice('connectingBtn');
             const resp = await phantom.connect();
             await setConnectedWallet(resp.publicKey ? resp.publicKey.toString() : phantom.publicKey.toString(), 'Phantom');
             updateDepositWalletBanner();
@@ -4505,7 +5418,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           }
         } else if (solflare) {
           try {
-            depositConnectBtn.textContent = isVi ? "Đang kết nối..." : "Connecting...";
+            depositConnectBtn.textContent = getDashNotice('connectingBtn');
             await solflare.connect();
             await setConnectedWallet(solflare.publicKey.toString(), 'Solflare');
             updateDepositWalletBanner();
@@ -4534,12 +5447,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         walletConnectModal.classList.remove('hidden');
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
-            message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.' : 'Please connect a Passkey or Solana wallet before depositing.',
+            title: getDashNotice('walletNotConnected'),
+            message: getDashNotice('connectWalletBeforeDeposit'),
             icon: 'alert-circle'
           });
         } else {
-          alert(isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.' : 'Please connect a wallet before depositing.');
+          alert(getDashNotice('connectWalletBeforeDeposit'));
         }
         return;
       }
@@ -4610,8 +5523,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         walletConnectModal.classList.remove('hidden');
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
-            message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.' : 'Please connect a wallet before depositing.',
+            title: getDashNotice('walletNotConnected'),
+            message: getDashNotice('connectWalletBeforeDeposit'),
             icon: 'alert-circle'
           });
         }
@@ -4620,7 +5533,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
       const added = parseFloat(dashDepositAmount.value);
       if (isNaN(added) || added <= 0) {
-        alert(isVi ? "Vui lòng nhập số tiền nạp hợp lệ (> 0)." : "Please enter a valid deposit amount.");
+        alert(getDashNotice('enterValidDeposit'));
         return;
       }
 
@@ -4628,7 +5541,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       if (selectedDepositMethod === 'faucet') {
         const origBtnText = dashConfirmDepositBtn.textContent;
         dashConfirmDepositBtn.disabled = true;
-        dashConfirmDepositBtn.textContent = isVi ? "Đang gửi giao dịch Solana Devnet Faucet..." : "Broadcasting Solana Devnet Faucet Tx...";
+        dashConfirmDepositBtn.textContent = getDashNotice('broadcastingFaucet');
 
         try {
           let data = null;
@@ -4671,7 +5584,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
           if (typeof showToast === 'function') {
             showToast({
-              title: isVi ? 'Nhận Testnet Faucet Thành Công' : 'Testnet Faucet Claimed',
+              title: getDashNotice('faucetClaimed'),
               message: isVi 
                 ? `+${added.toFixed(2)} USDT thử nghiệm đã nạp vào ví ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`
                 : `+${added.toFixed(2)} Devnet test USDT credited to ${userWallet.address.slice(0, 4)}...${userWallet.address.slice(-4)}`,
@@ -4687,7 +5600,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           saveBalance();
           updateVaultUI();
           dashboardDepositModal.classList.add('hidden');
-          alert(isVi ? `Đã nạp +${added.toFixed(2)} USDT Devnet vào Master Vault!` : `Faucet Credited +${added.toFixed(2)} USDT to Master Vault!`);
+          alert(getDashNotice('faucetCredited'));
         } finally {
           dashConfirmDepositBtn.disabled = false;
           dashConfirmDepositBtn.textContent = origBtnText;
@@ -4695,9 +5608,114 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         return;
       }
 
-      // 2. WEB3 WALLET MODE - Strictly requires real Web3 extension & confirmed on-chain transaction
+      // 2. WEB3 WALLET MODE - Strictly requires real Web3 wallet interaction & verified balance
       if (selectedDepositMethod === 'web3') {
         const activeWeb3 = getActiveWeb3Wallet();
+
+        // A. METAMASK (EVM) ON-CHAIN / SIGNATURE DEPOSIT
+        if ((activeWeb3 && activeWeb3.provider === 'MetaMask') || (userWallet && (userWallet.isEVM || (userWallet.provider && userWallet.provider.toLowerCase().includes('metamask'))))) {
+          const mm = getMetaMaskProvider() || window.ethereum;
+          if (!mm) {
+            alert(getDashNotice('metaMaskNotDetected'));
+            return;
+          }
+
+          const origText = dashConfirmDepositBtn.textContent;
+          dashConfirmDepositBtn.disabled = true;
+          dashConfirmDepositBtn.textContent = getDashNotice('checkingMetaMaskBalance');
+
+          try {
+            // Check real EVM balance first
+            let ethBal = 0;
+            try {
+              const rawHex = await mm.request({ method: 'eth_getBalance', params: [userWallet.address, 'latest'] });
+              if (rawHex) {
+                const wei = BigInt(rawHex);
+                ethBal = Number(wei) / 1e18;
+              }
+            } catch (balErr) {
+              console.warn("Could not fetch MetaMask balance:", balErr);
+            }
+
+            if (ethBal <= 0) {
+              alert(isVi
+                ? `⚠️ Số Dư Ví MetaMask Không Đủ (0 ETH)!
+
+Ví MetaMask của bạn (${userWallet.address.slice(0, 6)}...${userWallet.address.slice(-4)}) hiện có 0 ETH, không đủ phí gas mạng để thực hiện giao dịch on-chain.
+
+• Nếu bạn muốn nạp thử nghiệm miễn phí: Vui lòng chuyển sang tab 'Faucet (+$10)' để nhận ngay 10 USDT vào Master Vault.
+• Nếu bạn muốn nạp Web3 thật: Vui lòng nạp thêm ETH vào ví MetaMask.`
+                : `⚠️ Insufficient MetaMask Balance (0 ETH)!
+
+Your MetaMask wallet (${userWallet.address.slice(0, 6)}...${userWallet.address.slice(-4)}) currently has 0 ETH, which is not enough to cover network gas fees.
+
+• To claim free test funds, please switch to the 'Faucet (+$10)' tab.
+• To deposit real crypto, please fund your MetaMask wallet with ETH.`);
+              return;
+            }
+
+            // User has funds: Request explicit cryptographic approval popup in MetaMask
+            dashConfirmDepositBtn.textContent = getDashNotice('approveInMetaMaskPopup');
+            const depositMsg = `HAICHAIN Master Vault Web3 Deposit Authorization:\n\nAmount: $${added.toFixed(2)} USDT\nDepositor: ${userWallet.address}\nTimestamp: ${new Date().toISOString()}\nNetwork: EVM Multi-Chain`;
+            const signature = await mm.request({
+              method: 'personal_sign',
+              params: [depositMsg, userWallet.address]
+            });
+
+            // ONLY ON SUCCESSFUL METAMASK APPROVAL:
+            balance += added;
+            saveBalance();
+            updateVaultUI();
+            dashboardDepositModal.classList.add('hidden');
+
+            appendLedgerRow({
+              nonce: generateCryptographicNonce(),
+              service: `Web3 MetaMask Deposit`,
+              proof: `Sig: ${signature.slice(0, 8)}...${signature.slice(-8)}`,
+              amount: `+${added.toFixed(4)} USDT`,
+              latency: "380ms",
+              isPositive: true,
+              txSig: signature
+            });
+
+            if (typeof showToast === 'function') {
+              showToast({
+                title: getDashNotice('metaMaskDepositSuccess'),
+                message: `+$${added.toFixed(2)} USDT • Ký xác thực: ${signature.slice(0, 6)}...`,
+                icon: 'check-circle'
+              });
+            }
+
+            alert(isVi 
+              ? `🎉 Nạp Tiền Web3 MetaMask Thành Công!
+
+Giao dịch đã được ví MetaMask ký xác thực thành công.
+Người nạp: ${userWallet.address}
+Số tiền: +$${added.toFixed(2)} USDT
+
+Số dư Master Vault mới: $${balance.toFixed(4)} USDT`
+              : `🎉 MetaMask Deposit Confirmed!
+
+Authorization verified by MetaMask.
+Depositor: ${userWallet.address}
+Amount: +$${added.toFixed(2)} USDT
+
+New Master Vault Balance: $${balance.toFixed(4)} USDT`);
+          } catch (mmErr) {
+            console.warn("MetaMask deposit error:", mmErr);
+            if (mmErr.code === 4001 || String(mmErr).includes('rejected') || String(mmErr).includes('User denied')) {
+              alert(getDashNotice('depositCanceledMetaMask'));
+            } else {
+              alert(getDashNotice('metaMaskError') + ' ' + (mmErr.message || mmErr));
+            }
+          } finally {
+            dashConfirmDepositBtn.disabled = false;
+            dashConfirmDepositBtn.textContent = origText;
+          }
+          return;
+        }
+
+        // B. SOLANA (PHANTOM / SOLFLARE) WEB3 DEPOSIT
 
         if (!activeWeb3) {
           const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
@@ -4706,7 +5724,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
           if (web3Available) {
             try {
-              dashConfirmDepositBtn.textContent = isVi ? "Đang kết nối ví Phantom..." : "Connecting Phantom Wallet...";
+              dashConfirmDepositBtn.textContent = getDashNotice('connectingPhantomWallet');
               const resp = await web3Available.connect();
               await setConnectedWallet(resp.publicKey ? resp.publicKey.toString() : web3Available.publicKey.toString(), phantom ? 'Phantom' : 'Solflare');
               updateDepositWalletBanner();
@@ -4716,7 +5734,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               return;
             } catch (connErr) {
               console.warn("Wallet connection rejected:", connErr);
-              alert(isVi ? "Bạn đã từ chối kết nối ví Web3." : "Web3 wallet connection was canceled or rejected.");
+              alert(getDashNotice('web3Rejected'));
               updateDepositWalletBanner();
               return;
             }
@@ -4753,14 +5771,14 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
             return;
           }
-          alert(isVi ? "Ví Web3 bị ngắt kết nối. Vui lòng kết nối lại ví Phantom." : "Web3 wallet disconnected. Please reconnect Phantom.");
+          alert(getDashNotice('web3Disconnected'));
           updateDepositWalletBanner();
           return;
         }
 
         const origText = dashConfirmDepositBtn.textContent;
         dashConfirmDepositBtn.disabled = true;
-        dashConfirmDepositBtn.textContent = isVi ? "Vui lòng duyệt giao dịch trên ví..." : "Awaiting signature in wallet...";
+        dashConfirmDepositBtn.textContent = getDashNotice('awaitingSignature');
 
         try {
           if (!solanaConnection || !window.solanaWeb3) {
@@ -4778,9 +5796,23 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           const minRequiredLamports = 5000; // tx fee
 
           if (payerLamports < minRequiredLamports) {
-            dashConfirmDepositBtn.textContent = isVi 
-              ? "Relayer Đang Trợ Cấp Gas & Nạp..." 
-              : "Relayer Sponsoring Gas & Crediting...";
+            alert(isVi 
+              ? `⚠️ Số Dư Ví ${userWallet.provider} Không Đủ (0 SOL)!
+
+Ví của bạn hiện có 0 SOL nên không đủ phí gas mạng để gửi giao dịch on-chain.
+
+• Nếu bạn muốn nạp thử nghiệm miễn phí: Vui lòng chuyển sang tab "Faucet (+$10)" để nhận 10 USDT vào Master Vault.
+• Nếu bạn muốn nạp bằng ví Web3 thật: Vui lòng nạp thêm SOL vào ví qua faucet.solana.com.`
+              : `⚠️ Insufficient ${userWallet.provider} Balance (0 SOL)!
+
+Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
+
+• To claim free test funds, please switch to the 'Faucet (+$10)' tab.
+• To deposit real on-chain funds, please fund your wallet with SOL at faucet.solana.com.`);
+            return;
+          }
+
+          if (false) {
 
             try {
               let txSig = "5KtP9" + Math.random().toString(36).substring(2, 12) + "gaslessUSDT";
@@ -4816,7 +5848,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
               if (typeof showToast === 'function') {
                 showToast({
-                  title: isVi ? 'Nạp Tiền Thành Công (0% Gas)' : 'Gasless Deposit Confirmed',
+                  title: getDashNotice('gaslessDepositSuccess'),
                   message: isVi 
                     ? `+${added.toFixed(2)} USDT đã vào Master Vault & Trợ cấp 0.02 SOL vào ví` 
                     : `+$${added.toFixed(2)} USDT credited & 0.02 SOL gas subsidized`,
@@ -4834,7 +5866,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               saveBalance();
               updateVaultUI();
               dashboardDepositModal.classList.add('hidden');
-              alert(isVi ? `Đã nạp +$${added.toFixed(2)} USDT vào Master Vault!` : `Credited +$${added.toFixed(2)} USDT to Master Vault!`);
+              alert(getDashNotice('depositCredited'));
               return;
             }
           }
@@ -4857,10 +5889,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           tx.recentBlockhash = blockhash;
 
           // Request user to sign and send transaction in Phantom
-          dashConfirmDepositBtn.textContent = isVi ? "Chờ bạn bấm Duyệt trên Phantom..." : "Approve in Phantom extension...";
+          dashConfirmDepositBtn.textContent = getDashNotice('approveInPhantomExt');
           const { signature } = await phantom.signAndSendTransaction(tx);
 
-          dashConfirmDepositBtn.textContent = isVi ? "Đang xác thực trên Solana Devnet..." : "Confirming on Solana Devnet...";
+          dashConfirmDepositBtn.textContent = getDashNotice('confirmingSolana');
           try {
             await solanaConnection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, 'confirmed');
           } catch (confirmErr) {
@@ -4886,7 +5918,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
           if (typeof showToast === 'function') {
             showToast({
-              title: isVi ? 'Nạp Web3 Thành Công' : 'Web3 Deposit Confirmed',
+              title: getDashNotice('web3DepositSuccess'),
               message: `Tx: ${signature.slice(0, 6)}...${signature.slice(-6)} on Solana Devnet`,
               icon: 'check-circle'
             });
@@ -4899,9 +5931,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           console.warn("On-chain Web3 deposit error:", txErr);
           const errMsg = txErr.message || String(txErr);
           if (errMsg.includes('User rejected') || errMsg.includes('rejected') || errMsg.includes('canceled') || errMsg.includes('User denied')) {
-            alert(isVi ? "Giao dịch đã hủy: Bạn đã từ chối duyệt giao dịch trên ví." : "Deposit Canceled: You rejected the transaction in your wallet.");
+            alert(getDashNotice('depositCanceledUser'));
           } else {
-            alert(isVi ? `Giao dịch thất bại trên Solana Devnet: ${errMsg}` : `Solana Devnet transaction failed: ${errMsg}`);
+            alert(getDashNotice('solanaTxFailed') + ' ' + errMsg);
           }
         } finally {
           dashConfirmDepositBtn.disabled = false;
@@ -4928,27 +5960,27 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     withdrawBtn.addEventListener('click', () => {
       const isVi = window.haichainI18n?.currentLang === 'vi';
       if (isPanic) {
-        alert(isVi ? "Không thể rút tiền khi Vault đang ở trạng thái Khẩn cấp (Emergency Stop)." : "Cannot withdraw while Vault is in Emergency Stop state.");
+        alert(getDashNotice('cannotWithdrawEmergency'));
         return;
       }
       if (!userWallet) {
         walletConnectModal.classList.remove('hidden');
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
-            message: isVi ? 'Vui lòng kết nối ví trước khi thực hiện rút tiền.' : 'Please connect a wallet before withdrawing funds.',
+            title: getDashNotice('walletNotConnected'),
+            message: getDashNotice('connectWalletBeforeWithdraw'),
             icon: 'alert-circle'
           });
         } else {
-          alert(isVi ? 'Vui lòng kết nối ví trước khi rút tiền.' : 'Please connect your wallet first.');
+          alert(getDashNotice('connectWalletBeforeWithdraw'));
         }
         return;
       }
       if (balance <= 0) {
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Số dư bằng 0' : 'Zero Balance',
-            message: isVi ? 'Số dư Master Vault của bạn là $0.0000 USDT. Không có khoản tiền nào để rút.' : 'Your Master Vault balance is $0.0000 USDT. No funds available to withdraw.',
+            title: getDashNotice('zeroBalance'),
+            message: getDashNotice('zeroBalanceMsg'),
             icon: 'alert-circle'
           });
         }
@@ -4973,8 +6005,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         walletConnectModal.classList.remove('hidden');
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
-            message: isVi ? 'Vui lòng kết nối ví trước khi thực hiện rút tiền.' : 'Please connect your verified wallet before withdrawing.',
+            title: getDashNotice('walletNotConnected'),
+            message: getDashNotice('connectWalletBeforeWithdraw'),
             icon: 'alert-circle'
           });
         }
@@ -4983,7 +6015,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
       const amount = parseFloat(dashWithdrawAmount.value);
       if (isNaN(amount) || amount <= 0) {
-        alert(isVi ? "Vui lòng nhập số tiền rút hợp lệ (> 0)." : "Please enter a valid withdrawal amount.");
+        alert(getDashNotice('enterValidWithdraw'));
         return;
       }
 
@@ -5016,7 +6048,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             });
           } catch (sigErr) {
             console.warn("Withdrawal authorization rejected:", sigErr);
-            alert(isVi ? "Rút tiền đã hủy: Bạn đã từ chối ký xác thực giao dịch trên ví MetaMask." : "Withdrawal Canceled: You rejected the MetaMask authorization signature.");
+            alert(getDashNotice('withdrawCanceledMetaMask'));
             return;
           }
         }
@@ -5029,7 +6061,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           }
         } catch (sigErr) {
           console.warn("Withdrawal authorization rejected:", sigErr);
-          alert(isVi ? "Rút tiền đã hủy: Bạn đã từ chối ký xác thực giao dịch trên ví." : "Withdrawal Canceled: You rejected the cryptographic authorization signature.");
+          alert(getDashNotice('withdrawCanceled'));
           return;
         }
       }
@@ -5050,7 +6082,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
       if (typeof showToast === 'function') {
         showToast({
-          title: isVi ? 'Rút Tiền Thành Công' : 'Withdrawal Executed',
+          title: getDashNotice('withdrawSuccess'),
           message: `-$${amount.toFixed(4)} USDT • ${dest.slice(0, 4)}...${dest.slice(-4)}`,
           icon: 'check-circle'
         });
@@ -5750,7 +6782,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     const ledgerTableBody = document.getElementById('ledger-table-body');
 
     // Preset prompt chips handler
-    document.querySelectorAll('.preset-prompt-btn').forEach(chip => {
+    // Track manual editing
+      const playPromptInput = document.getElementById('playground-prompt');
+      if (playPromptInput) {
+        playPromptInput.addEventListener('input', () => { playPromptInput.dataset.userEdited = 'true'; });
+      }
+      document.querySelectorAll('.preset-prompt-btn').forEach(chip => {
       chip.addEventListener('click', () => {
         const promptText = chip.getAttribute('data-prompt');
         const targetModel = chip.getAttribute('data-model');
@@ -5781,8 +6818,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         walletConnectModal.classList.remove('hidden');
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Yêu cầu kết nối ví' : 'Wallet Required',
-            message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom để cấp quyền thực thi AI.' : 'Connect your sovereign wallet to authorize AI execution.',
+            title: getDashNotice('walletNotConnected'),
+            message: getDashNotice('walletRequiredAi'),
             icon: 'alert-circle'
           });
         }
@@ -5794,7 +6831,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         dashboardDepositModal.classList.remove('hidden');
         if (typeof showToast === 'function') {
           showToast({
-            title: isVi ? 'Số dư không đủ' : 'Insufficient Vault Balance',
+            title: getDashNotice('insufficientVaultBalance'),
             message: isVi 
               ? `Số dư Master Vault ($${balance.toFixed(4)}) không đủ cho tác vụ $${selectedCost.toFixed(4)}. Vui lòng nạp thêm qua Faucet Devnet.`
               : `Vault balance ($${balance.toFixed(4)}) is insufficient for $${selectedCost.toFixed(4)}. Please top up via Devnet Faucet.`,
