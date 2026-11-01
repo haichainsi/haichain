@@ -15,7 +15,7 @@ sequenceDiagram
     autonumber
     actor User as Human Operator
     participant Agent as Autonomous AI Agent
-    participant MCP as @haichain/mcp-server
+    participant MCP as @haichainsi/mcp-server
     participant Sol as HAICHAIN Solana Program
     participant API as External Paid API (Perplexity/GPU)
 
@@ -38,7 +38,7 @@ To instantly hook up HAICHAIN into your Claude Desktop or Cursor AI agents witho
 # In the HAICHAIN repository root:
 npm run install:mcp
 ```
-This automatically registers the compiled `@haichain/mcp-server` into `%APPDATA%/Claude/claude_desktop_config.json` (Windows) or `~/.config/Claude/` (macOS/Linux). Restart Claude Desktop and you will see all HAICHAIN tools live!
+This automatically registers the compiled `@haichainsi/mcp-server` into `%APPDATA%/Claude/claude_desktop_config.json` (Windows) or `~/.config/Claude/` (macOS/Linux). Restart Claude Desktop and you will see all HAICHAIN tools live!
 
 ### B. Starting the Live Solana Devnet Faucet & Gasless Relayer
 To test on-chain settlements with real Devnet SOL sponsorship:

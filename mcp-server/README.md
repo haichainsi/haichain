@@ -1,4 +1,4 @@
-# @haichain/mcp-server
+# @haichainsi/mcp-server
 
 Official **Model Context Protocol (MCP)** Server for **HAICHAIN**: The Universal Autonomous Machine Financial & Cognitive Operating System on Solana.
 
@@ -26,7 +26,7 @@ Add the server to your MCP client configuration (Claude Desktop or Cursor) using
   "mcpServers": {
     "haichain": {
       "command": "npx",
-      "args": ["-y", "@haichain/mcp-server"]
+      "args": ["-y", "@haichainsi/mcp-server"]
     }
   }
 }
@@ -74,7 +74,7 @@ Add the `haichain` server:
   "mcpServers": {
     "haichain": {
       "command": "npx",
-      "args": ["-y", "@haichain/mcp-server"],
+      "args": ["-y", "@haichainsi/mcp-server"],
       "env": {
         "HAICHAIN_CLUSTER": "devnet"
       }
@@ -96,7 +96,7 @@ In your project root, create or edit `.cursor/mcp.json`:
   "mcpServers": {
     "haichain": {
       "command": "npx",
-      "args": ["-y", "@haichain/mcp-server"],
+      "args": ["-y", "@haichainsi/mcp-server"],
       "env": {
         "HAICHAIN_CLUSTER": "devnet"
       }

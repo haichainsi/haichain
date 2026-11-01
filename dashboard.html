@@ -1079,7 +1079,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@haichain/mcp-server"
+        "@haichainsi/mcp-server"
       ],
       "env": {
         "SOLANA_RPC_URL": "https://api.devnet.solana.com",
@@ -1422,7 +1422,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       "command": "npx",
       "args": [
         "-y",
-        "@haichain/mcp-server"
+        "@haichainsi/mcp-server"
       ],
       "env": {
         "SOLANA_RPC_URL": "https://api.devnet.solana.com"
@@ -4753,7 +4753,7 @@ claude`;
           "command": "npx",
       "args": [
         "-y",
-        "@haichain/mcp-server"
+        "@haichainsi/mcp-server"
       ],
           "env": {
             "SOLANA_RPC_URL": "https://api.devnet.solana.com",
@@ -5703,7 +5703,7 @@ claude`;
     const copyMcpCodeBtn = document.getElementById('copy-mcp-code-btn');
     if (copyMcpCodeBtn) {
       copyMcpCodeBtn.addEventListener('click', () => {
-        const json = `{\n  "mcpServers": {\n    "haichain": {\n      "command": "npx",\n      "args": ["-y", "@haichain/mcp-server"],\n      "env": {\n        "SOLANA_RPC_URL": "https://api.devnet.solana.com",\n        "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"\n      }\n    }\n  }\n}`;
+        const json = `{\n  "mcpServers": {\n    "haichain": {\n      "command": "npx",\n      "args": ["-y", "@haichainsi/mcp-server"],\n      "env": {\n        "SOLANA_RPC_URL": "https://api.devnet.solana.com",\n        "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"\n      }\n    }\n  }\n}`;
         navigator.clipboard.writeText(json).then(() => {
           copyMcpCodeBtn.textContent = "Copied!";
           setTimeout(() => { copyMcpCodeBtn.textContent = "Copy JSON"; }, 2000);

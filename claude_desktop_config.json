@@ -4,7 +4,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@haichain/mcp-server"
+        "@haichainsi/mcp-server"
       ],
       "env": {
         "SOLANA_RPC_URL": "https://api.devnet.solana.com",
