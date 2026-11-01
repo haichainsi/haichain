@@ -302,7 +302,8 @@
       transition: transform 0.1s ease !important;
     }
     .haichain-bottom-dock-btn:active {
-      transform: scale(0.9) !important;
+      opacity: 0.65 !important;
+      transform: none !important;
     }
     .haichain-bottom-dock-btn * {
       pointer-events: none !important;
@@ -320,8 +321,8 @@
       pointer-events: none !important;
     }
 
-    /* Bulletproof Hidden Utility Invariant (Prevents Flex Overrides & Ghost Modals) */
-    .hidden {
+    /* Bulletproof Modal Hidden Invariant (Strictly hides modals without breaking Tailwind responsive classes like hidden md:flex) */
+    [id*="modal"].hidden, .modal.hidden {
       display: none !important;
     }
 
@@ -417,7 +418,7 @@
             <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-dark haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix';}">
           </a>
           <!-- Mobile Language Switcher Mount (Locked Optical Alignment) -->
-          <div id="mobile-lang-mount" class="shrink-0 flex items-center h-[23px] w-[26px] overflow-hidden"></div>
+          <div id="mobile-lang-mount" class="shrink-0 flex items-center justify-center h-[32px] w-[32px]"></div>
         </div>
         <!-- Desktop Breadcrumb Tab Title -->
         <h1 class="hidden md:block font-bold text-sm tracking-tight text-black dark:text-white truncate" id="current-tab-title" data-i18n="nav.overview">Overview & Vault</h1>
@@ -1049,7 +1050,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     <!-- MOBILE BOTTOM NAVIGATION (NATIVE APP FEEL, ZERO OVERFLOW, APPLE-TIER DOCK) -->
     <nav class="md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]" style="padding-bottom: max(env(safe-area-inset-bottom, 0px), 6px);">
       <!-- Tab 1: Vault -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-overview">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-overview">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/10 text-black dark:text-white transition-all relative">
           <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
           <span class="tab-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1058,7 +1059,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 2: Agents -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-agents">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-agents">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="bot" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1067,7 +1068,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 3: Playground -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-playground">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-playground">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="zap" class="w-4 h-4 text-black dark:text-white"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1076,7 +1077,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 4: Vesting Vault -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-vesting">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-vesting">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="shield-check" class="w-4 h-4 text-black dark:text-white"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1085,7 +1086,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 5: Ledger -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-ledger">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-ledger">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="receipt" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1094,7 +1095,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 6: MCP -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-mcp">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-mcp">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="code-2" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1103,7 +1104,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       </button>
 
       <!-- Tab 7: Private (Mobile) -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:scale-90 group cursor-pointer" data-tab="tab-preseed" id="mobile-btn-sale">
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-preseed" id="mobile-btn-sale">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
           <i data-lucide="lock" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
@@ -1807,8 +1808,161 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
     // =========================================================================
     // INSTANT UNIVERSAL CLICK DELEGATOR (RUNS IMMEDIATELY, GUARANTEES 100% RELIABILITY)
     // =========================================================================
+    // =========================================================================
+    // FIRST-CLASS ESSENTIAL CONTROLLERS (HOISTED & GUARANTEED READY ON LOAD)
+    // =========================================================================
+
+    // 1. Core Tab Switcher (Bulletproof Error-Shielded)
+    function switchTab(targetTab) {
+      if (!targetTab) return;
+      try {
+        if (targetTab === 'tab-vesting' && typeof renderVestingVaultPage === 'function') {
+          renderVestingVaultPage();
+        }
+        if (targetTab === 'tab-preseed' && typeof window.renderPreseedSalePage === 'function') {
+          window.renderPreseedSalePage();
+        }
+      } catch (err) {
+        console.warn('Tab preload warning:', err);
+      }
+
+      const allNavTabs = document.querySelectorAll('.nav-tab-btn');
+      const allMobileTabBtns = document.querySelectorAll('.mobile-tab-btn');
+      const allTabContents = document.querySelectorAll('.tab-content');
+
+      allNavTabs.forEach(b => {
+        b.classList.remove('active', 'bg-neutral-200/80', 'dark:bg-neutral-800/80', 'text-black', 'dark:text-white');
+        b.classList.add('text-neutral-600', 'dark:text-neutral-400');
+        if (b.getAttribute('data-tab') === targetTab) {
+          b.classList.add('active', 'bg-neutral-200/80', 'dark:bg-neutral-800/80', 'text-black', 'dark:text-white');
+          b.classList.remove('text-neutral-600', 'dark:text-neutral-400');
+        }
+      });
+
+      allMobileTabBtns.forEach(mb => {
+        const isSelected = mb.getAttribute('data-tab') === targetTab;
+        const indicator = mb.querySelector('.tab-indicator');
+        const textSpan = mb.querySelector('.mobile-tab-label');
+        const iconWrapper = mb.querySelector('.tab-icon-wrapper');
+        if (isSelected) {
+          if (iconWrapper) {
+            iconWrapper.className = "tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/10 text-black dark:text-white transition-all relative shadow-xs";
+          }
+          if (indicator) {
+            indicator.classList.remove('opacity-0', 'scale-0');
+          }
+          if (textSpan) {
+            textSpan.className = "mobile-tab-label mt-0.5 text-[10px] font-sans font-bold tracking-tight text-black dark:text-white whitespace-nowrap truncate max-w-[68px]";
+          }
+        } else {
+          if (iconWrapper) {
+            iconWrapper.className = "tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative";
+          }
+          if (indicator) {
+            indicator.classList.add('opacity-0', 'scale-0');
+          }
+          if (textSpan) {
+            textSpan.className = "mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]";
+          }
+        }
+      });
+
+      allTabContents.forEach(tab => tab.classList.add('hidden'));
+      const activeEl = document.getElementById(targetTab);
+      if (activeEl) {
+        activeEl.classList.remove('hidden');
+        const mainCanvas = document.querySelector('main');
+        if (mainCanvas) mainCanvas.scrollTop = 0;
+      }
+
+      const currentTabTitle = document.getElementById('current-tab-title');
+      if (currentTabTitle) {
+        if (window.haichainI18n) {
+          const titleKey = {
+            'tab-overview': 'nav.overview',
+            'tab-agents': 'nav.agents',
+            'tab-playground': 'nav.playground',
+            'tab-vesting': 'nav.vesting',
+            'tab-ledger': 'nav.ledger',
+            'tab-mcp': 'nav.mcp'
+          }[targetTab];
+          if (targetTab === 'tab-preseed') {
+            const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
+            currentTabTitle.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+          } else {
+            currentTabTitle.textContent = titleKey ? window.haichainI18n.t(titleKey) : 'Dashboard';
+          }
+        } else {
+          currentTabTitle.textContent = 'Dashboard';
+        }
+      }
+      safeCreateIcons();
+    }
+    window.switchTab = switchTab;
+
+    // 2. Open AI Hub Modal (Hoisted & Resilient)
+    function openAiHubModal(targetTab = 'gateway') {
+      const m = document.getElementById('ai-hub-modal');
+      if (m) {
+        m.classList.remove('hidden');
+        if (typeof switchAiHubTab === 'function') {
+          switchAiHubTab(targetTab);
+        }
+        safeCreateIcons();
+      }
+    }
+    window.openAiHubModal = openAiHubModal;
+
+    // 3. Emergency Panic Stop Controller
+    async function triggerPanicStop() {
+      const headerPanicBtn = document.getElementById('header-panic-btn');
+      const vaultStatusBadge = document.getElementById('vault-status-badge');
+      if (typeof isPanic !== 'undefined' && isPanic) {
+        isPanic = false;
+        const backupBal = localStorage.getItem('haichain-vault-balance-backup');
+        if (typeof balance !== 'undefined') {
+          balance = backupBal ? parseFloat(backupBal) : 0.0000;
+        }
+        if (typeof saveBalance === 'function') saveBalance();
+        if (typeof updateVaultUI === 'function') updateVaultUI();
+        if (vaultStatusBadge) {
+          vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium bg-black text-white dark:bg-white dark:text-black flex items-center space-x-1.5 font-mono shadow-xs";
+          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white dark:bg-black animate-ping"></span><span data-i18n="vault.status.active">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
+        }
+        if (headerPanicBtn) {
+          headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5"></i><span class="hidden sm:inline" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span><span class="sm:hidden" data-i18n="btn.panicStopMobile">${window.haichainI18n ? window.haichainI18n.t('btn.panicStopMobile') : 'Panic'}</span>`;
+        }
+        safeCreateIcons();
+        return;
+      }
+
+      const dialogFn = window.haichainDialog?.confirm || window.confirm;
+      const confirmed = await dialogFn("EMERGENCY KILL-SWITCH\n\nFreeze all connected agents and retract remaining funds in < 400ms?\nProceed?", { title: "Emergency Kill-Switch", danger: true, confirmText: "Trip Emergency Stop", cancelText: "Cancel" });
+      if (confirmed) {
+        if (typeof balance !== 'undefined') {
+          localStorage.setItem('haichain-vault-balance-backup', balance.toFixed(4));
+          balance = 0.0000;
+        }
+        if (typeof isPanic !== 'undefined') isPanic = true;
+        if (typeof saveBalance === 'function') saveBalance();
+        if (typeof updateVaultUI === 'function') updateVaultUI();
+        if (vaultStatusBadge) {
+          vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium border-2 border-black dark:border-white text-black dark:text-white bg-neutral-100 dark:bg-neutral-900 flex items-center space-x-1.5 font-mono";
+          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white"></span><span data-i18n="vault.status.frozen">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen (Panic Tripped)'}</span>`;
+        }
+        if (headerPanicBtn) {
+          headerPanicBtn.innerHTML = `<i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i><span data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`;
+        }
+        safeCreateIcons();
+      }
+    }
+    window.triggerPanicStop = triggerPanicStop;
+
+    // =========================================================================
+    // INSTANT UNIVERSAL CLICK & TOUCH DELEGATOR (RUNS FIRST, ZERO LAG)
+    // =========================================================================
     document.addEventListener('click', (e) => {
-      // 0. Logo Link Delegation (Mobile Header & Desktop Sidebar - Guaranteed Instant Navigation)
+      // 0. Logo Link Delegation
       const logoLink = e.target.closest('.haichain-brand-logo-link, a[href="/"]');
       if (logoLink) {
         if (window.location.pathname !== '/' && window.location.pathname !== '') {
@@ -1820,23 +1974,19 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       // 1. Mobile & Desktop Navigation Tabs
       const tabBtn = e.target.closest('.nav-tab-btn, .mobile-tab-btn, .haichain-bottom-dock-btn');
       if (tabBtn) {
+        e.preventDefault();
         const targetTab = tabBtn.getAttribute('data-tab');
-        if (targetTab && typeof window.switchTab === 'function') {
-          window.switchTab(targetTab);
-          return;
+        if (targetTab) {
+          switchTab(targetTab);
         }
+        return;
       }
 
       // 2. AI Hub Trigger Button
       const aiHub = e.target.closest('#ai-hub-btn');
       if (aiHub) {
         e.preventDefault();
-        if (typeof window.openAiHubModal === 'function') {
-          window.openAiHubModal('gateway');
-        } else {
-          const m = document.getElementById('ai-integration-hub-modal');
-          if (m) m.classList.remove('hidden');
-        }
+        openAiHubModal('gateway');
         return;
       }
 
@@ -1844,12 +1994,7 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       const panicBtn = e.target.closest('#header-panic-btn');
       if (panicBtn) {
         e.preventDefault();
-        if (typeof window.triggerPanicStop === 'function') {
-          window.triggerPanicStop();
-        } else {
-          const m = document.getElementById('emergency-panic-modal');
-          if (m) m.classList.remove('hidden');
-        }
+        triggerPanicStop();
         return;
       }
 
@@ -1887,6 +2032,37 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
         localStorage.setItem('haichain-theme', html.classList.contains('dark') ? 'dark' : 'light');
         requestAnimationFrame(() => html.classList.remove('no-theme-transition'));
         return;
+      }
+    });
+
+    // Touch event listener for instant mobile tab responsiveness
+    document.addEventListener('touchend', (e) => {
+      const tabBtn = e.target.closest('.mobile-tab-btn, .haichain-bottom-dock-btn');
+      if (tabBtn) {
+        const targetTab = tabBtn.getAttribute('data-tab');
+        if (targetTab) {
+          switchTab(targetTab);
+        }
+      }
+    }, { passive: true });
+
+    // Universal Modal Backdrop Dismissal (Guarantees zero ghost overlays blocking touch)
+    [
+      'dashboard-deposit-modal',
+      'dashboard-withdraw-modal',
+      'ai-hub-modal',
+      'issue-ticket-modal',
+      'ai-provider-modal',
+      'wallet-connect-modal',
+      'wallet-account-modal'
+    ].forEach(id => {
+      const modalEl = document.getElementById(id);
+      if (modalEl) {
+        modalEl.addEventListener('click', (e) => {
+          if (e.target === modalEl) {
+            modalEl.classList.add('hidden');
+          }
+        });
       }
     });
 

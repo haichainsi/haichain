@@ -34,7 +34,7 @@
   <!-- TweetNaCl & BS58 Mobile E2EE Wallet Bridge -->
   <script src="/assets/tweetnacl.min.js"></script>
   <script src="/assets/bs58.min.js"></script>
-  <script src="/assets/phantom-deeplink.js?v=v1_e2ee"></script>
+  <script src="/assets/phantom-deeplink.js?v=v3_callback_resilient"></script>
   <!-- Solana Web3.js for Live Devnet Transactions -->
 
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
@@ -195,8 +195,8 @@
       box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
     }
 
-    /* Bulletproof Hidden Utility Invariant (Prevents Flex Overrides & Ghost Modals) */
-    .hidden {
+    /* Bulletproof Modal Hidden Invariant (Strictly hides modals without breaking Tailwind responsive classes like hidden md:flex) */
+    [id*="modal"].hidden, .modal.hidden {
       display: none !important;
     }
 
@@ -2659,6 +2659,18 @@
                 if (walletStatusDot) walletStatusDot.className = "w-2 h-2 rounded-full bg-black dark:bg-white animate-ping";
               }
             });
+
+            if (typeof window.HaichainMobileWallet.onConnected === 'function') {
+              window.HaichainMobileWallet.onConnected(function(result) {
+                if (result && result.publicKey) {
+                  connectedWallet = result.publicKey;
+                  const short = connectedWallet.slice(0, 4) + '...' + connectedWallet.slice(-4);
+                  if (authText) authText.textContent = (result.provider || 'Phantom') + ': ' + short;
+                  if (potAddress) potAddress.textContent = connectedWallet.slice(0, 6) + '...' + connectedWallet.slice(-4);
+                  if (walletStatusDot) walletStatusDot.className = "w-2 h-2 rounded-full bg-black dark:bg-white animate-ping";
+                }
+              });
+            }
           }
         } catch (cbErr) {
           console.warn('Index MobileWallet callback error:', cbErr);

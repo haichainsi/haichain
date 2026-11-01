@@ -195,8 +195,8 @@
       box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
     }
 
-    /* Bulletproof Hidden Utility Invariant (Prevents Flex Overrides & Ghost Modals) */
-    .hidden {
+    /* Bulletproof Modal Hidden Invariant (Strictly hides modals without breaking Tailwind responsive classes like hidden md:flex) */
+    [id*="modal"].hidden, .modal.hidden {
       display: none !important;
     }
 

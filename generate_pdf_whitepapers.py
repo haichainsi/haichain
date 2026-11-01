@@ -3,8 +3,8 @@
 HAICHAIN International Whitepaper PDF Generator
 Compiles Markdown Whitepapers into Institutional-Grade PDF Documents
 Using Headless Browser Engine with Paged Media CSS
-Style: Pure Academic Minimalist Typography (Zero Boxes, Zero Vertical Accent Bars)
-Cover: Black Premium with Official White Logo
+Style: Pure Borderless Minimalist Typography (Zero Borders, Zero Lines, Dedicated TOC Page)
+Cover: Black Premium with Official White Logo (Zero Border Lines)
 Token: $HAISI
 """
 
@@ -130,6 +130,45 @@ def process_callouts(html):
     )
     return html
 
+def isolate_toc_and_sections(raw_text, lang="en"):
+    """
+    Separates Frontmatter (Title, Subtitle, Metadata, ASCII logo),
+    Table of Contents (dedicated page), and Main Body.
+    """
+    if lang == "en":
+        toc_pattern = r'(## TABLE OF CONTENTS\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
+    else:
+        toc_pattern = r'(## M[^\n]*L[^\n]*C[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## |\n## T|\n## 1\.)'
+    
+    m = re.search(toc_pattern, raw_text, re.DOTALL)
+    if m:
+        frontmatter = raw_text[:m.start()].strip()
+        toc = m.group(1).strip()
+        body = raw_text[m.end():].strip()
+        body = re.sub(r'^---\s*', '', body).strip()
+        
+        transformed = f"""
+<div class="frontmatter-page">
+
+{frontmatter}
+
+</div>
+
+<div class="toc-page">
+
+{toc}
+
+</div>
+
+<div class="body-content">
+
+{body}
+
+</div>
+"""
+        return transformed
+    return raw_text
+
 def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     md_path = os.path.join(WORKSPACE_DIR, md_filename)
     pdf_path = os.path.join(WORKSPACE_DIR, pdf_filename)
@@ -142,9 +181,12 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     # Pre-process LaTeX math before Markdown parser treats it as markup
     text_with_math = format_math(raw_text)
 
+    # Separate frontmatter, dedicated TOC page, and body
+    structured_text = isolate_toc_and_sections(text_with_math, lang=lang)
+
     # Convert Markdown to HTML
     md_converter = markdown.Markdown(extensions=['tables', 'fenced_code', 'attr_list'])
-    body_html = md_converter.convert(text_with_math)
+    body_html = md_converter.convert(structured_text)
     body_html = process_callouts(body_html)
 
     logo_data_uri = get_logo_base64()
@@ -189,7 +231,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
 <meta charset="utf-8">
 <title>{doc_title}</title>
 <style>
-/* CSS Paged Media Standards - Pure Academic Monochrome (Zero Boxes / Zero Accent Bars) */
+/* CSS Paged Media Standards - 100% Borderless Pure Academic Typography */
 @page {{
     size: A4;
     margin: 24mm 20mm 24mm 20mm;
@@ -233,6 +275,10 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     @bottom-right {{ content: none; }}
 }}
 
+* {{
+    border-color: transparent !important;
+}}
+
 body {{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 9.6pt;
@@ -243,9 +289,24 @@ body {{
     padding: 0;
 }}
 
-/* Cover Page: Black Premium Minimalist */
+/* Universal Link Styling: NEVER Underline */
+a, a:link, a:visited, a:hover, a:active {{
+    text-decoration: none !important;
+    color: inherit !important;
+}}
+
+/* Universal Horizontal Rules: Completely Hidden (Zero Border Lines) */
+hr {{
+    display: none !important;
+    border: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+}}
+
+/* Cover Page: Black Premium - Pure Borderless */
 .cover-page {{
     page-break-after: always;
+    break-after: page;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -254,10 +315,11 @@ body {{
     color: #ffffff;
     padding: 75px 60px;
     box-sizing: border-box;
+    border: none !important;
 }}
 
 .cover-header {{
-    border-bottom: 1px solid #27272a;
+    border: none !important;
     padding-bottom: 24px;
 }}
 
@@ -266,6 +328,7 @@ body {{
     width: auto;
     display: block;
     margin-bottom: 12px;
+    border: none !important;
 }}
 
 .cover-brand-sub {{
@@ -275,19 +338,21 @@ body {{
     color: #a1a1aa;
     margin-top: 4px;
     font-weight: 500;
+    border: none !important;
 }}
 
 .cover-title-container {{
     margin: auto 0;
+    border: none !important;
 }}
 
 .cover-tag {{
     display: inline-block;
-    border-bottom: 1px solid #3f3f46;
+    border: none !important;
     color: #d4d4d8;
     font-size: 7.8pt;
     font-weight: 700;
-    padding-bottom: 4px;
+    padding: 0;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -300,6 +365,7 @@ body {{
     color: #ffffff;
     margin: 0 0 16px 0;
     letter-spacing: -0.5px;
+    border: none !important;
 }}
 
 .cover-subtitle {{
@@ -309,6 +375,7 @@ body {{
     color: #a1a1aa;
     margin: 0 0 32px 0;
     max-width: 92%;
+    border: none !important;
 }}
 
 .cover-badges {{
@@ -316,13 +383,13 @@ body {{
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 24px;
     margin-top: 28px;
-    border-top: 1px solid #27272a;
-    border-bottom: 1px solid #27272a;
-    padding: 20px 0;
+    border: none !important;
+    padding: 10px 0;
 }}
 
 .cover-badge-item {{
     font-size: 8.5pt;
+    border: none !important;
 }}
 
 .cover-badge-label {{
@@ -331,16 +398,18 @@ body {{
     font-size: 7pt;
     letter-spacing: 1px;
     font-weight: 600;
+    border: none !important;
 }}
 
 .cover-badge-val {{
     color: #f4f4f5;
     font-weight: 600;
     margin-top: 3px;
+    border: none !important;
 }}
 
 .cover-footer {{
-    border-top: 1px solid #27272a;
+    border: none !important;
     padding-top: 20px;
     font-size: 8pt;
     color: #71717a;
@@ -348,13 +417,62 @@ body {{
     justify-content: space-between;
 }}
 
-/* Typography Hierarchies - Pure Academic Clean (Zero Vertical Accent Bars) */
+/* Page 2: Frontmatter (Title, Subtitle, Metadata, ASCII logo) */
+.frontmatter-page {{
+    page-break-after: always;
+    break-after: page;
+    padding-top: 10px;
+}}
+
+/* Page 3: Standalone Dedicated Table of Contents Page */
+.toc-page {{
+    page-break-before: always;
+    page-break-after: always;
+    break-before: page;
+    break-after: page;
+    padding-top: 10px;
+}}
+
+.toc-page h2 {{
+    font-size: 15pt;
+    font-weight: 800;
+    color: #000000;
+    border: none !important;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    letter-spacing: -0.2px;
+}}
+
+.toc-page ul, .toc-page ol {{
+    padding-left: 20px;
+    margin: 0;
+}}
+
+.toc-page li {{
+    margin-bottom: 7px;
+    font-size: 8.8pt;
+    line-height: 1.48;
+    color: #18181b;
+}}
+
+.toc-page a {{
+    text-decoration: none !important;
+    color: #18181b !important;
+    border: none !important;
+}}
+
+.toc-page a:hover {{
+    text-decoration: none !important;
+}}
+
+/* Typography Hierarchies - 100% Borderless */
 h1 {{
     font-size: 16pt;
     font-weight: 800;
     color: #000000;
-    border-bottom: 1px solid #000000;
-    padding-bottom: 5px;
+    border: none !important;
+    padding: 0;
     margin-top: 34px;
     margin-bottom: 14px;
     letter-spacing: -0.2px;
@@ -370,7 +488,7 @@ h2 {{
     font-size: 12.5pt;
     font-weight: 700;
     color: #000000;
-    border: none;
+    border: none !important;
     padding: 0;
     margin-top: 24px;
     margin-bottom: 10px;
@@ -382,7 +500,7 @@ h3 {{
     font-size: 10.5pt;
     font-weight: 700;
     color: #18181b;
-    border: none;
+    border: none !important;
     padding: 0;
     margin-top: 18px;
     margin-bottom: 8px;
@@ -394,7 +512,7 @@ h4 {{
     font-size: 9.6pt;
     font-weight: 700;
     color: #27272a;
-    border: none;
+    border: none !important;
     padding: 0;
     margin-top: 14px;
     margin-bottom: 6px;
@@ -407,6 +525,7 @@ p {{
     margin-bottom: 10px;
     text-align: justify;
     color: #18181b;
+    border: none !important;
 }}
 
 ul, ol {{
@@ -419,12 +538,7 @@ li {{
     margin-bottom: 5px;
 }}
 
-a {{
-    color: #000000;
-    text-decoration: underline;
-}}
-
-/* Academic Booktabs Tables (Classic LaTeX Style) */
+/* Tables - Borderless Modern Layout */
 table {{
     width: 100%;
     border-collapse: collapse;
@@ -432,41 +546,40 @@ table {{
     font-size: 8.5pt;
     page-break-inside: avoid;
     break-inside: avoid;
-    border-top: 1.5px solid #000000;
-    border-bottom: 1.5px solid #000000;
+    border: none !important;
 }}
 
 th, td {{
-    border: none;
-    border-bottom: 1px solid #e4e4e7;
-    padding: 6px 8px;
+    border: none !important;
+    padding: 7px 10px;
     text-align: left;
     vertical-align: top;
 }}
 
 th {{
-    background-color: transparent;
+    background-color: #f4f4f5;
     color: #000000;
     font-weight: 700;
-    border-bottom: 1px solid #000000;
     letter-spacing: 0.3px;
+    border: none !important;
 }}
 
-/* Technical Blocks / ASCII Architecture (Academic Hairline Style, No Dark Background) */
-pre {{
+tr:nth-child(even) td {{
     background-color: #fafafa;
+}}
+
+/* Code Blocks & ASCII Architecture - 100% Borderless */
+pre {{
+    background-color: transparent !important;
     color: #000000;
-    padding: 12px 14px;
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
+    padding: 8px 0;
+    border: none !important;
+    border-radius: 0 !important;
     font-family: Consolas, "Courier New", monospace;
     font-size: 7.6pt;
     line-height: 1.35;
     overflow: hidden;
-    margin: 16px 0;
+    margin: 14px 0;
     page-break-inside: avoid;
     break-inside: avoid;
 }}
@@ -488,7 +601,7 @@ pre code {{
     font-size: inherit;
 }}
 
-/* Academic Remarks / Notes - Pure Typography (Zero Boxes, Zero Bars, Zero Backgrounds) */
+/* Academic Remarks / Notes - Pure Typography (Zero Borders) */
 .academic-remark {{
     margin: 16px 20px;
     padding: 0;
@@ -506,6 +619,7 @@ pre code {{
     color: #000000;
     margin: 0 0 4px 0;
     text-align: left;
+    border: none !important;
 }}
 
 .academic-remark .remark-body {{
@@ -514,14 +628,13 @@ pre code {{
     line-height: 1.6;
     margin: 0;
     text-align: justify;
+    border: none !important;
 }}
 
-/* Mathematical Formulas - Pure Academic (Zero Boxes, Zero Bars, Zero Backgrounds) */
+/* Mathematical Formulas - Pure Academic (Zero Borders) */
 .math-display {{
     background: transparent !important;
     border: none !important;
-    border-left: none !important;
-    border-radius: 0 !important;
     padding: 10px 0 !important;
     margin: 14px 0 !important;
     text-align: center;
@@ -561,18 +674,13 @@ blockquote {{
 blockquote p {{
     margin: 0;
     text-align: justify;
-}}
-
-hr {{
-    border: none;
-    border-top: 1px solid #e4e4e7;
-    margin: 24px 0;
+    border: none !important;
 }}
 </style>
 </head>
 <body>
 
-<!-- Institutional Black Premium Cover Page -->
+<!-- Institutional Black Premium Cover Page (Zero Border Lines) -->
 <div class="cover-page">
     <div class="cover-header">
         <img src="{logo_data_uri}" class="cover-logo-img" alt="HAICHAIN Logo" />
@@ -610,7 +718,7 @@ hr {{
     </div>
 </div>
 
-<!-- Main Body Content -->
+<!-- Main Body Content with Isolated Frontmatter and Dedicated TOC Page -->
 <div class="document-content">
 {body_html}
 </div>
