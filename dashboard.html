@@ -160,12 +160,12 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v3_modal"></script>
-  <script src="/app/i18n.js?v=v26_global_10lang_unification"></script>
+  <script src="/app/i18n.js?v=v25_back_to_home"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v26_global_10lang_unification"></script>
+  <script src="/app/sale-controller.js?v=v11_view_saft"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -748,14 +748,14 @@
 
       <!-- ================= TAB 2: AI AGENT SWARM ================= -->
       <section id="tab-agents" class="tab-content hidden space-y-6">
-        <div class="flex justify-between items-center">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h2 class="font-bold text-lg text-black dark:text-white" data-i18n="swarm.title">Sub-Agent Capability Tree</h2>
-            <p class="text-xs text-neutral-500" data-i18n="swarm.subtitle">Issue ephemeral, mathematically bounded spending tickets for your autonomous AI agents.</p>
+            <h2 class="font-bold text-base sm:text-lg text-black dark:text-white" data-i18n="swarm.title">Sub-Agent Capability Tree</h2>
+            <p class="text-xs text-neutral-500 mt-0.5" data-i18n="swarm.subtitle">Issue ephemeral, mathematically bounded spending tickets for your autonomous AI agents.</p>
           </div>
-          <button id="open-issue-ticket-modal" class="px-4 py-2 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center space-x-2">
-            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-            <span data-i18n="swarm.issueTicket">Issue Capability Ticket</span>
+          <button id="open-issue-ticket-modal" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center justify-center space-x-2 shrink-0 shadow-xs active:scale-98 cursor-pointer">
+            <i data-lucide="plus" class="w-3.5 h-3.5 shrink-0"></i>
+            <span class="whitespace-nowrap font-medium" data-i18n="swarm.issueTicket">Issue Capability Ticket</span>
           </button>
         </div>
 
@@ -799,19 +799,16 @@
                   <i data-lucide="sparkles" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <div class="font-semibold text-xs text-black dark:text-white">Claude</div>
+                  <div class="flex items-center space-x-1.5">
+                    <div class="font-semibold text-xs text-black dark:text-white">Claude</div>
+                    <span class="text-[9px] font-mono px-1 py-0.2 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">MCP</span>
+                  </div>
                   <div class="text-[10px] text-neutral-400">3.5 Sonnet, 3.7</div>
                 </div>
               </div>
-              <div class="space-y-1.5 w-full">
-                <button class="connect-ai-provider-btn w-full py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-xs font-semibold text-black dark:text-white transition-all" data-i18n="connectors.btnConnect" data-provider="Anthropic Claude" data-models="Claude 3.5 Sonnet">
-                  Connect
-                </button>
-                <button type="button" onclick="document.getElementById('ai-hub-btn').click()" class="w-full py-1 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-[10px] font-mono font-semibold text-black dark:text-white border border-neutral-300 dark:border-neutral-700 transition-all flex items-center justify-center space-x-1 cursor-pointer">
-                  <i data-lucide="cpu" class="w-3 h-3 text-black dark:text-white"></i>
-                  <span>Claude Desktop MCP</span>
-                </button>
-              </div>
+              <button class="connect-ai-provider-btn w-full py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-xs font-semibold text-black dark:text-white transition-all cursor-pointer" data-i18n="connectors.btnConnect" data-provider="Anthropic Claude" data-models="Claude 3.5 Sonnet">
+                Connect
+              </button>
             </div>
 
             <!-- 3. Google Gemini -->
@@ -1052,25 +1049,25 @@
             <!-- Production Task Templates (Optimized 2-Col Grid on Mobile, Flex on Desktop) -->
             <div class="space-y-1.5 pt-1">
               <div class="flex items-center justify-between text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider font-sans font-semibold">
-                <span data-i18n="playground.quickDemos">Quick Demos:</span>
+                <span>Quick Demos:</span>
                 <span class="text-[9px] text-neutral-500 font-mono">1-Tap Prompt</span>
               </div>
               <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 text-[11px] font-mono">
                 <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Explain how HAICHAIN protects AI agents from prompt injection wallet drain" data-model="Claude 3.5 Sonnet">
                   <span class="shrink-0">🛡️</span>
-                  <span class="truncate" data-i18n="playground.demoAntiDrain">Anti-Drain</span>
+                  <span class="truncate">Anti-Drain</span>
                 </button>
                 <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Calculate sub-second micro-escrow netting for autonomous agent swarm on Solana L1" data-model="DeepSeek R1">
                   <span class="shrink-0">⚡</span>
-                  <span class="truncate" data-i18n="playground.demoMicroEscrow">Micro-Escrow</span>
+                  <span class="truncate">Micro-Escrow</span>
                 </button>
                 <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Compute joint torques and collision envelope for Optimus kinematic actuator tick" data-model="Optimus Kinematics">
                   <span class="shrink-0">🤖</span>
-                  <span class="truncate" data-i18n="playground.demoOptimus">Optimus AI</span>
+                  <span class="truncate">Optimus AI</span>
                 </button>
                 <button type="button" class="preset-prompt-btn px-2.5 py-2 sm:py-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-all flex items-center justify-center sm:justify-start space-x-1.5 truncate cursor-pointer active:scale-98" data-prompt="Anchor Core Program Instruction: haichain_micro_escrow_settle CPI dispatch" data-model="Perplexity Search">
                   <span class="shrink-0">📜</span>
-                  <span class="truncate" data-i18n="playground.demoAnchor">Anchor CPI</span>
+                  <span class="truncate">Anchor CPI</span>
                 </button>
               </div>
             </div>
@@ -1853,8 +1850,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="phantom">
             <div class="flex items-center space-x-3 min-w-0 flex-1">
-              <div class="w-8 h-8 rounded-xl overflow-hidden shrink-0 shadow-xs flex items-center justify-center">
-                <svg viewBox="0 0 108 108" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="108" height="108" rx="24" fill="#AB9FF2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M46.5267 69.9229C42.0054 76.8509 34.4292 85.6182 24.348 85.6182C19.5824 85.6182 15 83.6563 15 75.1342C15 53.4305 44.6326 19.8327 72.1268 19.8327C87.768 19.8327 94 30.6846 94 43.0079C94 58.8258 83.7355 76.9122 73.5321 76.9122C70.2939 76.9122 68.7053 75.1342 68.7053 72.314C68.7053 71.5783 68.8275 70.7812 69.0719 69.9229C65.5893 75.8699 58.8685 81.3878 52.5754 81.3878C47.993 81.3878 45.6713 78.5063 45.6713 74.4598C45.6713 72.9884 45.9768 71.4556 46.5267 69.9229ZM83.6761 42.5794C83.6761 46.1704 81.5575 47.9658 79.1875 47.9658C76.7816 47.9658 74.6989 46.1704 74.6989 42.5794C74.6989 38.9885 76.7816 37.1931 79.1875 37.1931C81.5575 37.1931 83.6761 38.9885 83.6761 42.5794ZM70.2103 42.5795C70.2103 46.1704 68.0916 47.9658 65.7216 47.9658C63.3157 47.9658 61.233 46.1704 61.233 42.5795C61.233 38.9885 63.3157 37.1931 65.7216 37.1931C68.0916 37.1931 70.2103 38.9885 70.2103 42.5795Z" fill="#FFFDF8"/></svg>
+              <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg shrink-0">
+                👻
               </div>
               <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletPhantom">Phantom Wallet</div>
@@ -1868,9 +1865,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div id="phantom-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
             <button type="button" id="btn-tray-phantom-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
               <span class="flex items-center space-x-1.5 truncate">
-                <span class="w-4 h-4 rounded-md overflow-hidden shrink-0 flex items-center justify-center">
-                  <svg viewBox="0 0 108 108" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="108" height="108" rx="24" fill="#AB9FF2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M46.5267 69.9229C42.0054 76.8509 34.4292 85.6182 24.348 85.6182C19.5824 85.6182 15 83.6563 15 75.1342C15 53.4305 44.6326 19.8327 72.1268 19.8327C87.768 19.8327 94 30.6846 94 43.0079C94 58.8258 83.7355 76.9122 73.5321 76.9122C70.2939 76.9122 68.7053 75.1342 68.7053 72.314C68.7053 71.5783 68.8275 70.7812 69.0719 69.9229C65.5893 75.8699 58.8685 81.3878 52.5754 81.3878C47.993 81.3878 45.6713 78.5063 45.6713 74.4598C45.6713 72.9884 45.9768 71.4556 46.5267 69.9229ZM83.6761 42.5794C83.6761 46.1704 81.5575 47.9658 79.1875 47.9658C76.7816 47.9658 74.6989 46.1704 74.6989 42.5794C74.6989 38.9885 76.7816 37.1931 79.1875 37.1931C81.5575 37.1931 83.6761 38.9885 83.6761 42.5794ZM70.2103 42.5795C70.2103 46.1704 68.0916 47.9658 65.7216 47.9658C63.3157 47.9658 61.233 46.1704 61.233 42.5795C61.233 38.9885 63.3157 37.1931 65.7216 37.1931C68.0916 37.1931 70.2103 38.9885 70.2103 42.5795Z" fill="#FFFDF8"/></svg>
-                </span>
+                <span>🚀</span>
                 <span>Open in Phantom App (Recommended)</span>
               </span>
               <span class="font-mono text-xs">&rarr;</span>
@@ -1892,8 +1887,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="solflare">
             <div class="flex items-center space-x-3 min-w-0 flex-1">
-              <div class="w-8 h-8 rounded-xl overflow-hidden shrink-0 shadow-xs flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" class="w-full h-full"><rect width="260" height="260" rx="56.75" fill="#ffef46"/><path fill="#01050b" d="M178.76,110.22l-20.55-6.93,49.16-47.13-6.84-7.29L186.38,61.32l-1.1-.37-66-21.71c-18.91,6.4-44.64,25-44.64,44.1a23.13,23.13,0,0,0,.8,6.19l.43,1.52-1.38.78c-16.18,9.21-23.08,17.71-23.08,28.4,0,11.92,7.49,20.39,22.27,25.2l17.52,5.84-51.1,49,6.79,7.27,15.47-14.13,76.82,27.2c47.52-31.58,71.62-52.29,71.62-77.4C210.8,127.1,201.82,117.84,178.76,110.22ZM163.32,130.9c15.86,5.28,24,15,24.6,28.61-.17,13.45-15.74,28.57-15.74,28.57s1.31-14-1.59-23.58c-.15-.49-.35-.94-.53-1.41a18.68,18.68,0,0,0-.65-1.78l-.08.21c-3.24-6.79-10-11.29-21.59-15l-25.58-8.2,16.13-15.58ZM95.62,60l67.22,22.46L145.42,99.11l-35-11.68c-12-4-13.1-9.36-14.76-23.92l0-.67ZM85.43,126.29a31.24,31.24,0,0,1-10.08-5.41C68,114,72,102.46,79.23,97.05l0-.06c4,5.52,10.67,9.85,19.83,12.85l26.19,8.65-16.11,15.56ZM152.55,194l-.24,2.6L86.2,172.69l18-17.22,28.94,9.5C149,170.19,154.12,177.78,152.55,194Z"/></svg>
+              <div class="w-8 h-8 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg shrink-0">
+                🔥
               </div>
               <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletSolflare">Solflare Wallet</div>
@@ -1907,9 +1902,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div id="solflare-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
             <button type="button" id="btn-tray-solflare-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
               <span class="flex items-center space-x-1.5 truncate">
-                <span class="w-4 h-4 rounded-md overflow-hidden shrink-0 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" class="w-full h-full"><rect width="260" height="260" rx="56.75" fill="#ffef46"/><path fill="#01050b" d="M178.76,110.22l-20.55-6.93,49.16-47.13-6.84-7.29L186.38,61.32l-1.1-.37-66-21.71c-18.91,6.4-44.64,25-44.64,44.1a23.13,23.13,0,0,0,.8,6.19l.43,1.52-1.38.78c-16.18,9.21-23.08,17.71-23.08,28.4,0,11.92,7.49,20.39,22.27,25.2l17.52,5.84-51.1,49,6.79,7.27,15.47-14.13,76.82,27.2c47.52-31.58,71.62-52.29,71.62-77.4C210.8,127.1,201.82,117.84,178.76,110.22ZM163.32,130.9c15.86,5.28,24,15,24.6,28.61-.17,13.45-15.74,28.57-15.74,28.57s1.31-14-1.59-23.58c-.15-.49-.35-.94-.53-1.41a18.68,18.68,0,0,0-.65-1.78l-.08.21c-3.24-6.79-10-11.29-21.59-15l-25.58-8.2,16.13-15.58ZM95.62,60l67.22,22.46L145.42,99.11l-35-11.68c-12-4-13.1-9.36-14.76-23.92l0-.67ZM85.43,126.29a31.24,31.24,0,0,1-10.08-5.41C68,114,72,102.46,79.23,97.05l0-.06c4,5.52,10.67,9.85,19.83,12.85l26.19,8.65-16.11,15.56ZM152.55,194l-.24,2.6L86.2,172.69l18-17.22,28.94,9.5C149,170.19,154.12,177.78,152.55,194Z"/></svg>
-                </span>
+                <span>🚀</span>
                 <span>Open in Solflare App</span>
               </span>
               <span class="font-mono text-xs">&rarr;</span>
@@ -1925,8 +1918,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden">
           <button class="wallet-provider-btn w-full p-2.5 sm:p-3 flex items-center justify-between text-left cursor-pointer active:opacity-75" data-provider="metamask">
             <div class="flex items-center space-x-3 min-w-0 flex-1">
-              <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 p-1 flex items-center justify-center shrink-0 shadow-xs">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 318.6 318.6" class="w-full h-full"><path fill="#e2761b" stroke="#e2761b" stroke-linecap="round" stroke-linejoin="round" d="m274.1 35.5-99.5 73.9L193 65.8z"/><path fill="#e4761b" stroke="#e4761b" stroke-linecap="round" stroke-linejoin="round" d="m44.4 35.5 98.7 74.6-17.5-44.3zm193.9 171.3-26.5 40.6 56.7 15.6 16.3-55.3zm-204.4.9L50.1 263l56.7-15.6-26.5-40.6z"/><path fill="#e4761b" stroke="#e4761b" stroke-linecap="round" stroke-linejoin="round" d="m103.6 138.2-15.8 23.9 56.3 2.5-2-60.5zm111.3 0-39-34.8-1.3 61.2 56.2-2.5zM106.8 247.4l33.8-16.5-29.2-22.8zm71.1-16.5 33.9 16.5-4.7-39.3z"/><path fill="#d7c1b3" stroke="#d7c1b3" stroke-linecap="round" stroke-linejoin="round" d="m211.8 247.4-33.9-16.5 2.7 22.1-.3 9.3zm-105 0 31.5 14.9-.2-9.3 2.5-22.1z"/><path fill="#233447" stroke="#233447" stroke-linecap="round" stroke-linejoin="round" d="m138.8 193.5-28.2-8.3 19.9-9.1zm40.9 0 8.3-17.4 20 9.1z"/><path fill="#cd6116" stroke="#cd6116" stroke-linecap="round" stroke-linejoin="round" d="m106.8 247.4 4.8-40.6-31.3.9zM207 206.8l4.8 40.6 26.5-39.7zm23.8-44.7-56.2 2.5 5.2 28.9 8.3-17.4 20 9.1zm-120.2 23.1 20-9.1 8.2 17.4 5.3-28.9-56.3-2.5z"/><path fill="#e4751f" stroke="#e4751f" stroke-linecap="round" stroke-linejoin="round" d="m87.8 162.1 23.6 46-.8-22.9zm120.3 23.1-1 22.9 23.7-46zm-64-20.6-5.3 28.9 6.6 34.1 1.5-44.9zm30.5 0-2.7 18 1.2 45 6.7-34.1z"/><path fill="#f6851b" stroke="#f6851b" stroke-linecap="round" stroke-linejoin="round" d="m179.8 193.5-6.7 34.1 4.8 3.3 29.2-22.8 1-22.9zm-69.2-8.3.8 22.9 29.2 22.8 4.8-3.3-6.6-34.1z"/><path fill="#c0ad9e" stroke="#c0ad9e" stroke-linecap="round" stroke-linejoin="round" d="m180.3 262.3.3-9.3-2.5-2.2h-37.7l-2.3 2.2.2 9.3-31.5-14.9 11 9 22.3 15.5h38.3l22.4-15.5 11-9z"/><path fill="#161616" stroke="#161616" stroke-linecap="round" stroke-linejoin="round" d="m177.9 230.9-4.8-3.3h-27.7l-4.8 3.3-2.5 22.1 2.3-2.2h37.7l2.5 2.2z"/><path fill="#763d16" stroke="#763d16" stroke-linecap="round" stroke-linejoin="round" d="m278.3 114.2 8.5-40.8-12.7-37.9-96.2 71.4 37 31.3 52.3 15.3 11.6-13.5-5-3.6 8-7.3-6.2-4.8 8-6.1zM31.8 73.4l8.5 40.8-5.4 4 8 6.1-6.1 4.8 8 7.3-5 3.6 11.5 13.5 52.3-15.3 37-31.3-96.2-71.4z"/><path fill="#f6851b" stroke="#f6851b" stroke-linecap="round" stroke-linejoin="round" d="m267.2 153.5-52.3-15.3 15.9 23.9-23.7 46 31.2-.4h46.5zm-163.6-15.3-52.3 15.3-17.4 54.2h46.4l31.1.4-23.6-46zm71 26.4 3.3-57.7 15.2-41.1h-67.5l15 41.1 3.5 57.7 1.2 18.2.1 44.8h27.7l.2-44.8z"/></svg>
+              <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg shrink-0">
+                🦊
               </div>
               <div class="min-w-0 flex-1 pr-2">
                 <div class="font-semibold text-xs sm:text-sm text-black dark:text-white truncate" data-i18n="modal.walletMetamask">MetaMask Wallet</div>
@@ -1940,9 +1933,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div id="metamask-mobile-tray" class="hidden px-2.5 pb-2.5 pt-1 space-y-1.5 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100/60 dark:bg-neutral-900/80">
             <button type="button" id="btn-tray-metamask-app" class="w-full py-2 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-[11px] flex items-center justify-between transition-opacity active:opacity-75 cursor-pointer">
               <span class="flex items-center space-x-1.5 truncate">
-                <span class="w-4 h-4 rounded-md overflow-hidden shrink-0 flex items-center justify-center p-0.5 bg-amber-500/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 318.6 318.6" class="w-full h-full"><path fill="#e2761b" stroke="#e2761b" stroke-linecap="round" stroke-linejoin="round" d="m274.1 35.5-99.5 73.9L193 65.8z"/><path fill="#e4761b" stroke="#e4761b" stroke-linecap="round" stroke-linejoin="round" d="m44.4 35.5 98.7 74.6-17.5-44.3zm193.9 171.3-26.5 40.6 56.7 15.6 16.3-55.3zm-204.4.9L50.1 263l56.7-15.6-26.5-40.6z"/><path fill="#e4761b" stroke="#e4761b" stroke-linecap="round" stroke-linejoin="round" d="m103.6 138.2-15.8 23.9 56.3 2.5-2-60.5zm111.3 0-39-34.8-1.3 61.2 56.2-2.5zM106.8 247.4l33.8-16.5-29.2-22.8zm71.1-16.5 33.9 16.5-4.7-39.3z"/><path fill="#d7c1b3" stroke="#d7c1b3" stroke-linecap="round" stroke-linejoin="round" d="m211.8 247.4-33.9-16.5 2.7 22.1-.3 9.3zm-105 0 31.5 14.9-.2-9.3 2.5-22.1z"/><path fill="#233447" stroke="#233447" stroke-linecap="round" stroke-linejoin="round" d="m138.8 193.5-28.2-8.3 19.9-9.1zm40.9 0 8.3-17.4 20 9.1z"/><path fill="#cd6116" stroke="#cd6116" stroke-linecap="round" stroke-linejoin="round" d="m106.8 247.4 4.8-40.6-31.3.9zM207 206.8l4.8 40.6 26.5-39.7zm23.8-44.7-56.2 2.5 5.2 28.9 8.3-17.4 20 9.1zm-120.2 23.1 20-9.1 8.2 17.4 5.3-28.9-56.3-2.5z"/><path fill="#e4751f" stroke="#e4751f" stroke-linecap="round" stroke-linejoin="round" d="m87.8 162.1 23.6 46-.8-22.9zm120.3 23.1-1 22.9 23.7-46zm-64-20.6-5.3 28.9 6.6 34.1 1.5-44.9zm30.5 0-2.7 18 1.2 45 6.7-34.1z"/><path fill="#f6851b" stroke="#f6851b" stroke-linecap="round" stroke-linejoin="round" d="m179.8 193.5-6.7 34.1 4.8 3.3 29.2-22.8 1-22.9zm-69.2-8.3.8 22.9 29.2 22.8 4.8-3.3-6.6-34.1z"/><path fill="#c0ad9e" stroke="#c0ad9e" stroke-linecap="round" stroke-linejoin="round" d="m180.3 262.3.3-9.3-2.5-2.2h-37.7l-2.3 2.2.2 9.3-31.5-14.9 11 9 22.3 15.5h38.3l22.4-15.5 11-9z"/><path fill="#161616" stroke="#161616" stroke-linecap="round" stroke-linejoin="round" d="m177.9 230.9-4.8-3.3h-27.7l-4.8 3.3-2.5 22.1 2.3-2.2h37.7l2.5 2.2z"/><path fill="#763d16" stroke="#763d16" stroke-linecap="round" stroke-linejoin="round" d="m278.3 114.2 8.5-40.8-12.7-37.9-96.2 71.4 37 31.3 52.3 15.3 11.6-13.5-5-3.6 8-7.3-6.2-4.8 8-6.1zM31.8 73.4l8.5 40.8-5.4 4 8 6.1-6.1 4.8 8 7.3-5 3.6 11.5 13.5 52.3-15.3 37-31.3-96.2-71.4z"/><path fill="#f6851b" stroke="#f6851b" stroke-linecap="round" stroke-linejoin="round" d="m267.2 153.5-52.3-15.3 15.9 23.9-23.7 46 31.2-.4h46.5zm-163.6-15.3-52.3 15.3-17.4 54.2h46.4l31.1.4-23.6-46zm71 26.4 3.3-57.7 15.2-41.1h-67.5l15 41.1 3.5 57.7 1.2 18.2.1 44.8h27.7l.2-44.8z"/></svg>
-                </span>
+                <span>🦊</span>
                 <span>Open in MetaMask App (Mobile Browser)</span>
               </span>
               <span class="font-mono text-xs">&rarr;</span>
@@ -2872,14 +2863,14 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const prov = (userWallet.provider || 'Phantom').toLowerCase();
         if (badgeIcon) {
           if (prov.includes('metamask')) {
-            badgeIcon.className = "w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/20 p-1.5 flex items-center justify-center shrink-0 shadow-sm";
-            badgeIcon.innerHTML = '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 318.6 318.6\" class=\"w-full h-full\"><path fill=\"#e2761b\" stroke=\"#e2761b\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m274.1 35.5-99.5 73.9L193 65.8z\"/><path fill=\"#e4761b\" stroke=\"#e4761b\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m44.4 35.5 98.7 74.6-17.5-44.3zm193.9 171.3-26.5 40.6 56.7 15.6 16.3-55.3zm-204.4.9L50.1 263l56.7-15.6-26.5-40.6z\"/><path fill=\"#e4761b\" stroke=\"#e4761b\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m103.6 138.2-15.8 23.9 56.3 2.5-2-60.5zm111.3 0-39-34.8-1.3 61.2 56.2-2.5zM106.8 247.4l33.8-16.5-29.2-22.8zm71.1-16.5 33.9 16.5-4.7-39.3z\"/><path fill=\"#d7c1b3\" stroke=\"#d7c1b3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m211.8 247.4-33.9-16.5 2.7 22.1-.3 9.3zm-105 0 31.5 14.9-.2-9.3 2.5-22.1z\"/><path fill=\"#233447\" stroke=\"#233447\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m138.8 193.5-28.2-8.3 19.9-9.1zm40.9 0 8.3-17.4 20 9.1z\"/><path fill=\"#cd6116\" stroke=\"#cd6116\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m106.8 247.4 4.8-40.6-31.3.9zM207 206.8l4.8 40.6 26.5-39.7zm23.8-44.7-56.2 2.5 5.2 28.9 8.3-17.4 20 9.1zm-120.2 23.1 20-9.1 8.2 17.4 5.3-28.9-56.3-2.5z\"/><path fill=\"#e4751f\" stroke=\"#e4751f\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m87.8 162.1 23.6 46-.8-22.9zm120.3 23.1-1 22.9 23.7-46zm-64-20.6-5.3 28.9 6.6 34.1 1.5-44.9zm30.5 0-2.7 18 1.2 45 6.7-34.1z\"/><path fill=\"#f6851b\" stroke=\"#f6851b\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m179.8 193.5-6.7 34.1 4.8 3.3 29.2-22.8 1-22.9zm-69.2-8.3.8 22.9 29.2 22.8 4.8-3.3-6.6-34.1z\"/><path fill=\"#c0ad9e\" stroke=\"#c0ad9e\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m180.3 262.3.3-9.3-2.5-2.2h-37.7l-2.3 2.2.2 9.3-31.5-14.9 11 9 22.3 15.5h38.3l22.4-15.5 11-9z\"/><path fill=\"#161616\" stroke=\"#161616\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m177.9 230.9-4.8-3.3h-27.7l-4.8 3.3-2.5 22.1 2.3-2.2h37.7l2.5 2.2z\"/><path fill=\"#763d16\" stroke=\"#763d16\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m278.3 114.2 8.5-40.8-12.7-37.9-96.2 71.4 37 31.3 52.3 15.3 11.6-13.5-5-3.6 8-7.3-6.2-4.8 8-6.1zM31.8 73.4l8.5 40.8-5.4 4 8 6.1-6.1 4.8 8 7.3-5 3.6 11.5 13.5 52.3-15.3 37-31.3-96.2-71.4z\"/><path fill=\"#f6851b\" stroke=\"#f6851b\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m267.2 153.5-52.3-15.3 15.9 23.9-23.7 46 31.2-.4h46.5zm-163.6-15.3-52.3 15.3-17.4 54.2h46.4l31.1.4-23.6-46zm71 26.4 3.3-57.7 15.2-41.1h-67.5l15 41.1 3.5 57.7 1.2 18.2.1 44.8h27.7l.2-44.8z\"/></svg>';
+            badgeIcon.className = "w-10 h-10 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 shadow-sm text-xl";
+            badgeIcon.innerHTML = '<span>🦊</span>';
           } else if (prov.includes('phantom')) {
-            badgeIcon.className = "w-10 h-10 rounded-2xl overflow-hidden shrink-0 shadow-sm flex items-center justify-center";
-            badgeIcon.innerHTML = '<svg viewBox=\"0 0 108 108\" class=\"w-full h-full\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"108\" height=\"108\" rx=\"24\" fill=\"#AB9FF2\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M46.5267 69.9229C42.0054 76.8509 34.4292 85.6182 24.348 85.6182C19.5824 85.6182 15 83.6563 15 75.1342C15 53.4305 44.6326 19.8327 72.1268 19.8327C87.768 19.8327 94 30.6846 94 43.0079C94 58.8258 83.7355 76.9122 73.5321 76.9122C70.2939 76.9122 68.7053 75.1342 68.7053 72.314C68.7053 71.5783 68.8275 70.7812 69.0719 69.9229C65.5893 75.8699 58.8685 81.3878 52.5754 81.3878C47.993 81.3878 45.6713 78.5063 45.6713 74.4598C45.6713 72.9884 45.9768 71.4556 46.5267 69.9229ZM83.6761 42.5794C83.6761 46.1704 81.5575 47.9658 79.1875 47.9658C76.7816 47.9658 74.6989 46.1704 74.6989 42.5794C74.6989 38.9885 76.7816 37.1931 79.1875 37.1931C81.5575 37.1931 83.6761 38.9885 83.6761 42.5794ZM70.2103 42.5795C70.2103 46.1704 68.0916 47.9658 65.7216 47.9658C63.3157 47.9658 61.233 46.1704 61.233 42.5795C61.233 38.9885 63.3157 37.1931 65.7216 37.1931C68.0916 37.1931 70.2103 38.9885 70.2103 42.5795Z\" fill=\"#FFFDF8\"/></svg>';
+            badgeIcon.className = "w-10 h-10 rounded-2xl bg-[#AB9FF2]/20 border border-[#AB9FF2]/40 flex items-center justify-center shrink-0 shadow-sm p-1.5";
+            badgeIcon.innerHTML = '<svg class="w-full h-full" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="128" height="128" rx="28" fill="#AB9FF2"/><path d="M106.5 64h-10.8c0-19.8-16.1-35.9-35.9-35.9S23.9 44.2 23.9 64c0 19.8 16.1 35.9 35.9 35.9 5 0 9.8-1 14.2-2.9l-4.1-13.6c-3.1 1.3-6.5 2-10.1 2-13.4 0-24.3-10.9-24.3-24.3 0-13.4 10.9-24.3 24.3-24.3 12.7 0 23.1 9.8 24.2 22.3H72c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h34.5c1.4 0 2.5-1.1 2.5-2.5s-1.1-1.6-2.5-1.6z" fill="#FFFFFF"/><ellipse cx="49" cy="56" rx="5" ry="7" fill="#222222"/><ellipse cx="73" cy="56" rx="5" ry="7" fill="#222222"/></svg>';
           } else if (prov.includes('solflare')) {
-            badgeIcon.className = "w-10 h-10 rounded-2xl overflow-hidden shrink-0 shadow-sm flex items-center justify-center";
-            badgeIcon.innerHTML = '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 260 260\" class=\"w-full h-full\"><rect width=\"260\" height=\"260\" rx=\"56.75\" fill=\"#ffef46\"/><path fill=\"#01050b\" d=\"M178.76,110.22l-20.55-6.93,49.16-47.13-6.84-7.29L186.38,61.32l-1.1-.37-66-21.71c-18.91,6.4-44.64,25-44.64,44.1a23.13,23.13,0,0,0,.8,6.19l.43,1.52-1.38.78c-16.18,9.21-23.08,17.71-23.08,28.4,0,11.92,7.49,20.39,22.27,25.2l17.52,5.84-51.1,49,6.79,7.27,15.47-14.13,76.82,27.2c47.52-31.58,71.62-52.29,71.62-77.4C210.8,127.1,201.82,117.84,178.76,110.22ZM163.32,130.9c15.86,5.28,24,15,24.6,28.61-.17,13.45-15.74,28.57-15.74,28.57s1.31-14-1.59-23.58c-.15-.49-.35-.94-.53-1.41a18.68,18.68,0,0,0-.65-1.78l-.08.21c-3.24-6.79-10-11.29-21.59-15l-25.58-8.2,16.13-15.58ZM95.62,60l67.22,22.46L145.42,99.11l-35-11.68c-12-4-13.1-9.36-14.76-23.92l0-.67ZM85.43,126.29a31.24,31.24,0,0,1-10.08-5.41C68,114,72,102.46,79.23,97.05l0-.06c4,5.52,10.67,9.85,19.83,12.85l26.19,8.65-16.11,15.56ZM152.55,194l-.24,2.6L86.2,172.69l18-17.22,28.94,9.5C149,170.19,154.12,177.78,152.55,194Z\"/></svg>';
+            badgeIcon.className = "w-10 h-10 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 shadow-sm text-xl";
+            badgeIcon.innerHTML = '<span>🔥</span>';
           } else {
             badgeIcon.className = "w-10 h-10 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 flex items-center justify-center shrink-0 shadow-sm";
             badgeIcon.innerHTML = '<i data-lucide="wallet" class="w-5 h-5 text-neutral-800 dark:text-neutral-200"></i>';
@@ -3698,7 +3689,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else {
-            walletNoticeText.innerHTML = getDashNotice('phantomNotDetected');
+            walletNoticeText.innerHTML = isVi
+              ? "<strong>Chưa phát hiện tiện ích Phantom</strong> trên trình duyệt của bạn. Hãy cài đặt extension để kết nối ví."
+              : "<strong>Phantom extension not detected</strong>. Please install Phantom to connect.";
             walletInstallLink.href = "https://phantom.app/";
             walletInstallLink.parentElement.classList.remove('hidden');
             walletNoticeBox.classList.remove('hidden');
@@ -3781,7 +3774,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else {
-            walletNoticeText.innerHTML = getDashNotice('metaMaskNotDetectedFull');
+            walletNoticeText.innerHTML = isVi
+              ? "<strong>Chưa phát hiện tiện ích MetaMask</strong> trên trình duyệt của bạn. Hãy cài đặt extension MetaMask hoặc mở trang web trên ứng dụng MetaMask Mobile."
+              : "<strong>MetaMask extension not detected</strong>. Please install the MetaMask extension or open this URL inside MetaMask Mobile App.";
             walletInstallLink.href = "https://metamask.io/download/";
             walletInstallLink.parentElement.classList.remove('hidden');
             walletNoticeBox.classList.remove('hidden');
@@ -3831,7 +3826,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else {
-            walletNoticeText.innerHTML = getDashNotice('solflareNotDetected');
+            walletNoticeText.innerHTML = isVi
+              ? "<strong>Chưa phát hiện tiện ích Solflare</strong> trên trình duyệt của bạn. Hãy cài đặt extension để kết nối ví."
+              : "<strong>Solflare extension not detected</strong>. Please install Solflare to connect.";
             walletInstallLink.href = "https://solflare.com/";
             walletInstallLink.parentElement.classList.remove('hidden');
             walletNoticeBox.classList.remove('hidden');
@@ -3932,7 +3929,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
       try {
         await navigator.clipboard.writeText(TOKEN_2022_MINT);
-        alert(`${getDashNotice('copyMintPrompt') || 'TOKEN-2022 MINT:'}\n\n${TOKEN_2022_MINT}\n\n${getDashNotice('copyMintGuide') || ''}`);
+        alert(isVi 
+          ? `ĐÃ SAO CHÉP ĐỊA CHỈ MINT TOKEN-2022 ($HAISI):\n\n${TOKEN_2022_MINT}\n\nCách thêm vào ví Phantom:\n1. Mở ví Phantom -> Bấm nút 'Manage token list' (Quản lý danh sách token).\n2. Dán địa chỉ Mint trên vào ô tìm kiếm.\n3. Bật hiển thị token $HAISI (Haichain SI) để xem số dư và biểu tượng của bạn.`
+          : `TOKEN-2022 MINT COPIED ($HAISI):\n\n${TOKEN_2022_MINT}\n\nTo view in Phantom:\n1. Open Phantom -> Click 'Manage token list'.\n2. Paste the Mint Address into search.\n3. Toggle ON to view your official $HAISI (Haichain SI) balance and Transfer-Hook status.`);
       } catch (err) {
         alert(`Token-2022 Mint ($HAISI):\n${TOKEN_2022_MINT}`);
       }
@@ -3983,9 +3982,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               </span>
             </div>
             <p class="text-xs text-neutral-500 font-mono">
-              ${isVi 
-                ? `Ví <strong class="text-black dark:text-white">${shortAddr}</strong> đang sở hữu <strong class="text-black dark:text-white font-bold underline">${haiTotal.toLocaleString()} $HAISI</strong> ($${paidUsdt.toLocaleString()} USDT). Khóa chuyển nhượng on-chain đến ngày TGE.`
-                : `Wallet <strong class="text-black dark:text-white">${shortAddr}</strong> holds <strong class="text-black dark:text-white font-bold underline">${haiTotal.toLocaleString()} $HAISI</strong> ($${paidUsdt.toLocaleString()} USDT). Transfer-Hook active until TGE.`}
+              <strong class="text-black dark:text-white">${shortAddr}</strong>: <strong class="text-black dark:text-white font-bold underline">${haiTotal.toLocaleString()} $HAISI</strong> ($${paidUsdt.toLocaleString()} USDT) • Token-2022 Transfer-Hook Locked
             </p>
           </div>
           <div class="flex items-center space-x-2 shrink-0">
@@ -4004,26 +4001,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     // 10-Language Official Vesting Vault Internationalization Matrix
     const VESTING_VAULT_I18N = {
   "kk": {
-      "phantomNotDetected": "Браузеріңізде <strong>Phantom кеңейтімі табылмады</strong>. Әмиянды қосу үшін кеңейтімді орнатыңыз.",
-      "solflareNotDetected": "Браузеріңізде <strong>Solflare кеңейтімі табылмады</strong>. Әмиянды қосу үшін кеңейтімді орнатыңыз.",
-      "metaMaskNotDetectedFull": "Браузеріңізде <strong>MetaMask кеңейтімі табылмады</strong>. MetaMask қосымшасын орнатыңыз.",
-      "confirmOnChainDepositPhantom": "On-Chain Салымды Растау (Phantom қолтаңбасы)",
-      "connectPhantomToDeposit": "Салым Салу Үшін Phantom-ды Қосу",
-      "metaMaskInsufficientEth": "⚠️ MetaMask Әмиянында Баланс Жеткіліксіз (0 ETH)!\n\nТранзакция үшін ETH қажет.",
-      "web3ConnectedConfirmPrompt": "Әмиян сәтті қосылды!\n\nТранзакцияға қол қою үшін 'On-Chain Салымды Растау' түймесін басыңыз.",
-      "noWeb3DetectedFaucetGuide": "Бұл браузерде Web3 әмияны (Phantom немесе Solflare) табылмады.\n\nPhantom орнатыңыз немесе тегін 10 USDT сынақтан өту үшін 'Faucet (+$10)' қойындысын пайдаланыңыз!",
-      "insufficientSolGaslessGuide": "⚠️ Әмиянда Баланс Жеткіліксіз (0 SOL)!\n\nHAICHAIN Gasless Relayer салымды комиссиясыз автоматты түрде өңдейді.",
-      "web3DepositConfirmedDevnet": "🎉 Web3 Салымы Сәтті Орындалды!\n\nТранзакция Solana Devnet желісінде расталды.",
-      "fiatSandboxNotice": "Fiat Төлем Шлюзі туралы хабарлама:\n\nHAICHAIN желісі Solana Devnet сынақ ортасында жұмыс істеуде. Тегін тестілеу үшін 'Faucet (+$10)' қойындысына өтіңіз!",
-      "zeroBalanceCannotWithdraw": "Master Vault балансы $0.0000 USDT. Шығаратын қаражат жоқ.",
-      "insufficientWithdrawBalance": "Баланс жеткіліксіз!\n\nMaster Vault балансы сұралған сомадан аз.",
-      "invalidSolanaAddress": "Тағайындалған әмиян мекенжайы қате!\n\nSolana Base58 жарамды мекенжайын енгізіңіз (32-44 таңба).",
-      "withdrawSuccessNotice": "Қаражат шығару сәтті аяқталды!\n\nҚаражат әмиянға жіберілді. Өңдеу жылдамдығы: 380мс.",
-      "vaultBalanceInsufficientForTask": "Master Vault балансы бұл AI тапсырмасы үшін жеткіліксіз. Faucet арқылы толықтырыңыз.",
-      "aiSecurityKernelHeader": "[HAICHAIN Security Kernel: Қауіпсіздік Талдауы]",
-      "aiAnchorCodeHeader": "[Solana Anchor Смарт-Келісімшарт Коды]",
-      "aiEnterpriseAnalysisHeader": "[Кәсіпорын Деңгейіндегі Автономды Талдау]",
-
       "metaMaskNotDetected": "Браузеріңізде MetaMask кеңейтімі табылмады.",
       "checkingMetaMaskBalance": "MetaMask балансы тексерілуде...",
       "approveInMetaMaskPopup": "MetaMask терезесінде растаңыз...",
@@ -4068,26 +4045,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Phantom-ға қосу үшін:\n1. Phantom ашыңыз -> 'Manage token list' басыңыз.\n2. Mint мекенжайын іздеу жолағына қойыңыз.\n3. $HAISI (Haichain SI) балансы мен таңбасын қосыңыз."
   },
   "en": {
-      "phantomNotDetected": "<strong>Phantom extension not detected</strong> in your browser. Please install the extension to connect.",
-      "solflareNotDetected": "<strong>Solflare extension not detected</strong> in your browser. Please install the extension to connect.",
-      "metaMaskNotDetectedFull": "<strong>MetaMask extension not detected</strong> in your browser. Please install MetaMask to connect.",
-      "confirmOnChainDepositPhantom": "Confirm On-Chain Deposit (Sign Phantom)",
-      "connectPhantomToDeposit": "Connect Phantom to Deposit",
-      "metaMaskInsufficientEth": "⚠️ MetaMask Balance Insufficient (0 ETH)!\n\nETH is required for network fees.",
-      "web3ConnectedConfirmPrompt": "Wallet connected successfully!\n\nPlease click 'Confirm On-Chain Deposit' to sign the transaction.",
-      "noWeb3DetectedFaucetGuide": "Web3 wallet (Phantom or Solflare) not detected in this browser.\n\nPlease install Phantom or switch to the 'Faucet (+$10)' tab to receive free Devnet USDT!",
-      "insufficientSolGaslessGuide": "⚠️ Wallet Balance Insufficient (0 SOL)!\n\nHAICHAIN Gasless Relayer will sponsor your transaction with 0% gas fees.",
-      "web3DepositConfirmedDevnet": "🎉 Web3 Deposit Confirmed!\n\nTransaction finalized on Solana Devnet.",
-      "fiatSandboxNotice": "Fiat Gateway Notice:\n\nHAICHAIN is currently operating on Solana Devnet. Please use the 'Faucet (+$10)' tab to test for free!",
-      "zeroBalanceCannotWithdraw": "Master Vault balance is $0.0000 USDT. No funds available to withdraw.",
-      "insufficientWithdrawBalance": "Insufficient balance!\n\nYour Master Vault balance is less than the requested withdrawal amount.",
-      "invalidSolanaAddress": "Invalid destination address!\n\nPlease enter a valid Solana address (Base58 string of 32-44 characters).",
-      "withdrawSuccessNotice": "Withdrawal successful!\n\nFunds dispatched to your wallet. Speed: 380ms.",
-      "vaultBalanceInsufficientForTask": "Master Vault balance is insufficient for this AI task. Please top up via Faucet.",
-      "aiSecurityKernelHeader": "[HAICHAIN Security Kernel: Sovereign AI Safety Analysis]",
-      "aiAnchorCodeHeader": "[Solana Anchor Micro-Escrow Instruction Logic]",
-      "aiEnterpriseAnalysisHeader": "[Enterprise Sovereign Agent Analysis]",
-
       "metaMaskNotDetected": "MetaMask extension not detected in your browser.",
       "checkingMetaMaskBalance": "Checking MetaMask balance...",
       "approveInMetaMaskPopup": "Approve in MetaMask popup...",
@@ -4132,26 +4089,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "To view in Phantom:\n1. Open Phantom -> Click 'Manage token list'.\n2. Paste the Mint Address into search.\n3. Toggle ON to view your official $HAISI (Haichain SI) balance."
   },
   "zh": {
-      "phantomNotDetected": "您的浏览器<strong>未检测到 Phantom 插件</strong>。请安装插件后连接钱包。",
-      "solflareNotDetected": "您的浏览器<strong>未检测到 Solflare 插件</strong>。请安装插件后连接钱包。",
-      "metaMaskNotDetectedFull": "您的浏览器<strong>未检测到 MetaMask 插件</strong>。请安装插件或使用移动端连接。",
-      "confirmOnChainDepositPhantom": "确认链上充值 (Phantom 签名)",
-      "connectPhantomToDeposit": "连接 Phantom 钱包进行充值",
-      "metaMaskInsufficientEth": "⚠️ MetaMask 余额不足 (0 ETH)！\n\n链上交易需要支付网络 Gas 费用。",
-      "web3ConnectedConfirmPrompt": "钱包连接成功！\n\n请点击“确认链上充值”在钱包中完成交易签名与广播。",
-      "noWeb3DetectedFaucetGuide": "未在此浏览器中检测到 Web3 钱包 (Phantom 或 Solflare)。\n\n请安装 Phantom 插件，或切换至“水龙头 (+$10)”标签页立即免费领取 10 USDT 测试代币！",
-      "insufficientSolGaslessGuide": "⚠️ 钱包 SOL 余额不足 (0 SOL)！\n\nHAICHAIN 免 Gas 中继器将自动全额补贴网络手续费。",
-      "web3DepositConfirmedDevnet": "🎉 Web3 充值确认成功！\n\n交易已在 Solana Devnet 网络上不可篡改地确认。",
-      "fiatSandboxNotice": "法币支付通道提示：\n\nHAICHAIN 当前运行在 Solana Devnet 环境。请切换至“水龙头 (+$10)”标签免费体验 AI 智能体任务！",
-      "zeroBalanceCannotWithdraw": "Master Vault 当前余额为 $0.0000 USDT，无可用提现资金。",
-      "insufficientWithdrawBalance": "可用余额不足！\n\n您的 Master Vault 余额小于请求的提现金额。",
-      "invalidSolanaAddress": "目标钱包地址格式错误！\n\n请输入有效的 Solana Base58 地址 (32 - 44 位字符)。",
-      "withdrawSuccessNotice": "提现执行成功！\n\n资金已全额原路结算至您的钱包。响应耗时：380ms。",
-      "vaultBalanceInsufficientForTask": "Master Vault 可用余额不足以支付此 AI 任务。请通过水龙头免费充值。",
-      "aiSecurityKernelHeader": "[HAICHAIN 安全内核：专属 AI 防护架构分析]",
-      "aiAnchorCodeHeader": "[Solana Anchor 微托管智能合约指令代码]",
-      "aiEnterpriseAnalysisHeader": "[企业级自主智能体推理报告]",
-
       "metaMaskNotDetected": "未在您的浏览器中检测到 MetaMask 插件。",
       "checkingMetaMaskBalance": "正在检查 MetaMask 余额...",
       "approveInMetaMaskPopup": "请在 MetaMask 弹窗中完成授权...",
@@ -4196,26 +4133,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "添加至 Phantom 方法：\n1. 打开 Phantom -> 点击 'Manage token list'。\n2. 将 Mint 地址粘贴至搜索框。\n3. 开启 $HAISI (Haichain SI) 显示开关即可查看到账余额与图标。"
   },
   "vi": {
-      "phantomNotDetected": "<strong>Chưa phát hiện tiện ích Phantom</strong> trên trình duyệt của bạn. Hãy cài đặt extension để kết nối ví.",
-      "solflareNotDetected": "<strong>Chưa phát hiện tiện ích Solflare</strong> trên trình duyệt của bạn. Hãy cài đặt extension để kết nối ví.",
-      "metaMaskNotDetectedFull": "<strong>Chưa phát hiện tiện ích MetaMask</strong> trên trình duyệt của bạn. Hãy cài đặt MetaMask để kết nối.",
-      "confirmOnChainDepositPhantom": "Xác Nhận Nạp On-Chain (Ký Ví Phantom)",
-      "connectPhantomToDeposit": "Kết Nối Ví Phantom Để Nạp",
-      "metaMaskInsufficientEth": "⚠️ Số Dư Ví MetaMask Không Đủ (0 ETH)!\n\nCần ETH để trả phí mạng.",
-      "web3ConnectedConfirmPrompt": "Đã kết nối ví thành công!\n\nVui lòng bấm 'Xác Nhận Nạp On-Chain' để ký và duyệt giao dịch.",
-      "noWeb3DetectedFaucetGuide": "Chưa phát hiện tiện ích ví Web3 trên trình duyệt này.\n\nHãy cài đặt Phantom hoặc chuyển qua tab 'Faucet (+$10)' để nhận 10 USDT thử nghiệm miễn phí!",
-      "insufficientSolGaslessGuide": "⚠️ Số Dư Ví Không Đủ (0 SOL)!\n\nHAICHAIN Gasless Relayer đã tự động trợ cấp 0% phí gas cho bạn.",
-      "web3DepositConfirmedDevnet": "🎉 Nạp Tiền Web3 Thành Công!\n\nGiao dịch đã được xác nhận bất biến trên mạng Solana Devnet.",
-      "fiatSandboxNotice": "Thông Báo Cổng Thanh Toán Fiat:\n\nHAICHAIN đang vận hành trên Solana Devnet. Vui lòng chuyển qua tab 'Faucet (+$10)' để trải nghiệm miễn phí!",
-      "zeroBalanceCannotWithdraw": "Số dư trong Master Vault của bạn hiện tại là $0.0000 USDT. Không có khoản tiền nào để rút.",
-      "insufficientWithdrawBalance": "Số dư không đủ!\n\nSố dư Master Vault nhỏ hơn số tiền bạn muốn rút.",
-      "invalidSolanaAddress": "Địa chỉ ví đích không hợp lệ!\n\nVui lòng nhập đúng địa chỉ ví Solana hợp lệ (Base58, 32 - 44 ký tự).",
-      "withdrawSuccessNotice": "Rút tiền thành công!\n\nĐã giải ngân về địa chỉ ví của bạn. Tốc độ xử lý: 380ms.",
-      "vaultBalanceInsufficientForTask": "Số dư Master Vault không đủ cho tác vụ AI này. Vui lòng nạp thêm qua Faucet Devnet.",
-      "aiSecurityKernelHeader": "[HAICHAIN Security Kernel: Phân Tích An Toàn AI Độc Quyền]",
-      "aiAnchorCodeHeader": "[Mã Lệnh Solana Anchor Xác Thực Hợp Đồng Vi Thanh Toán]",
-      "aiEnterpriseAnalysisHeader": "[Phân Tích Tự Hành Cấp Độ Doanh Nghiệp]",
-
       "metaMaskNotDetected": "Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn.",
       "checkingMetaMaskBalance": "Đang kiểm tra số dư ví MetaMask...",
       "approveInMetaMaskPopup": "Chờ bạn duyệt trên MetaMask...",
@@ -4260,26 +4177,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Cách thêm vào ví Phantom:\n1. Mở ví Phantom -> Bấm nút 'Manage token list'.\n2. Dán địa chỉ Mint trên vào ô tìm kiếm.\n3. Bật hiển thị token $HAISI (Haichain SI) để xem số dư và biểu tượng của bạn."
   },
   "ko": {
-      "phantomNotDetected": "브라우저에서 <strong>Phantom 확장 프로그램이 감지되지 않았습니다</strong>. 지갑을 연결하려면 확장 프로그램을 설치하세요.",
-      "solflareNotDetected": "브라우저에서 <strong>Solflare 확장 프로그램이 감지되지 않았습니다</strong>. 지갑을 연결하려면 확장 프로그램을 설치하세요.",
-      "metaMaskNotDetectedFull": "브라우저에서 <strong>MetaMask 확장 프로그램이 감지되지 않았습니다</strong>. MetaMask를 설치하세요.",
-      "confirmOnChainDepositPhantom": "온체인 입금 확인 (Phantom 서명)",
-      "connectPhantomToDeposit": "입금할 Phantom 지갑 연결",
-      "metaMaskInsufficientEth": "⚠️ MetaMask 잔액 부족 (0 ETH)!\n\n네트워크 수수료를 위한 ETH가 필요합니다.",
-      "web3ConnectedConfirmPrompt": "지갑이 연결되었습니다!\n\n트랜잭션을 승인하려면 '온체인 입금 확인'을 클릭하세요.",
-      "noWeb3DetectedFaucetGuide": "이 브라우저에서 Web3 지갑을 감지할 수 없습니다.\n\nPhantom을 설치하거나 'Faucet (+$10)' 탭에서 무료 테스트 USDT를 받으세요!",
-      "insufficientSolGaslessGuide": "⚠️ SOL 잔액 부족 (0 SOL)!\n\nHAICHAIN 가스리스 릴레이어가 수수료를 0%로 지원합니다.",
-      "web3DepositConfirmedDevnet": "🎉 Web3 입금 확인 완료!\n\nSolana Devnet에서 트랜잭션이 확정되었습니다.",
-      "fiatSandboxNotice": "법정화폐 결제 안내:\n\nHAICHAIN은 현재 Solana Devnet에서 운영 중입니다. 무료 체험을 위해 'Faucet (+$10)' 탭을 이용해 주세요!",
-      "zeroBalanceCannotWithdraw": "Master Vault 잔액이 $0.0000 USDT입니다. 출금 가능한 자금이 없습니다.",
-      "insufficientWithdrawBalance": "잔액 부족!\n\nMaster Vault 잔액이 출금 요청 금액보다 적습니다.",
-      "invalidSolanaAddress": "유효하지 않은 지갑 주소입니다!\n\n올바른 Solana Base58 주소(32~44자)를 입력하세요.",
-      "withdrawSuccessNotice": "출금 실행 완료!\n\n지갑으로 즉시 송금되었습니다. 처리 속도: 380ms.",
-      "vaultBalanceInsufficientForTask": "Master Vault 잔액이 이 AI 작업에 부족합니다. Faucet을 통해 충전하세요.",
-      "aiSecurityKernelHeader": "[HAICHAIN 보안 커널: 전용 AI 안전 분석]",
-      "aiAnchorCodeHeader": "[Solana Anchor 마이크로 에스크로 스마트 컨트랙트 코드]",
-      "aiEnterpriseAnalysisHeader": "[기업용 자율 에이전트 추론 분석]",
-
       "metaMaskNotDetected": "브라우저에서 MetaMask 확장 프로그램이 감지되지 않았습니다.",
       "checkingMetaMaskBalance": "MetaMask 잔액 확인 중...",
       "approveInMetaMaskPopup": "MetaMask 팝업에서 승인하세요...",
@@ -4324,26 +4221,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Phantom 지갑에 추가하는 방법:\n1. Phantom 열기 -> 'Manage token list' 클릭.\n2. 검색창에 Mint 주소 붙여넣기.\n3. $HAISI (Haichain SI) 토큰 활성화."
   },
   "fr": {
-      "phantomNotDetected": "<strong>Extension Phantom non détectée</strong> dans votre navigateur. Veuillez l'installer pour vous connecter.",
-      "solflareNotDetected": "<strong>Extension Solflare non détectée</strong> dans votre navigateur. Veuillez l'installer pour vous connecter.",
-      "metaMaskNotDetectedFull": "<strong>Extension MetaMask non détectée</strong> dans votre navigateur. Veuillez installer MetaMask.",
-      "confirmOnChainDepositPhantom": "Confirmer le Dépôt On-Chain (Signer Phantom)",
-      "connectPhantomToDeposit": "Connecter Phantom pour Déposer",
-      "metaMaskInsufficientEth": "⚠️ Solde MetaMask Insuffisant (0 ETH)!\n\nDes ETH sont requis pour les frais de réseau.",
-      "web3ConnectedConfirmPrompt": "Portefeuille connecté avec succès !\n\nCliquez sur 'Confirmer le Dépôt On-Chain' pour signer la transaction.",
-      "noWeb3DetectedFaucetGuide": "Portefeuille Web3 non détecté dans ce navigateur.\n\nInstallez Phantom ou passez à l'onglet 'Faucet (+$10)' pour obtenir 10 USDT de test gratuits !",
-      "insufficientSolGaslessGuide": "⚠️ Solde SOL Insuffisant (0 SOL)!\n\nLe Relayer Sans Gas HAICHAIN sponsorise vos frais à 0%.",
-      "web3DepositConfirmedDevnet": "🎉 Dépôt Web3 Confirmé !\n\nTransaction validée sur Solana Devnet.",
-      "fiatSandboxNotice": "Avis Passerelle Fiat :\n\nHAICHAIN fonctionne actuellement sur Solana Devnet. Utilisez le Faucet pour tester gratuitement !",
-      "zeroBalanceCannotWithdraw": "Le solde Master Vault est de $0.0000 USDT. Aucun fonds à retirer.",
-      "insufficientWithdrawBalance": "Solde insuffisant !\n\nVotre solde Master Vault est inférieur au montant demandé.",
-      "invalidSolanaAddress": "Adresse de destination invalide !\n\nVeuillez saisir une adresse Solana valide (Base58, 32 à 44 caractères).",
-      "withdrawSuccessNotice": "Retrait réussi !\n\nFonds envoyés vers votre portefeuille. Délai : 380ms.",
-      "vaultBalanceInsufficientForTask": "Solde Master Vault insuffisant pour cette tâche IA. Veuillez recharger via le Faucet.",
-      "aiSecurityKernelHeader": "[Noyau de Sécurité HAICHAIN : Analyse de Sûreté IA]",
-      "aiAnchorCodeHeader": "[Code d'Instruction Micro-Escrow Solana Anchor]",
-      "aiEnterpriseAnalysisHeader": "[Rapport d'Analyse Autonome Entreprise]",
-
       "metaMaskNotDetected": "Extension MetaMask non détectée dans votre navigateur.",
       "checkingMetaMaskBalance": "Vérification du solde MetaMask...",
       "approveInMetaMaskPopup": "Approuvez dans la fenêtre MetaMask...",
@@ -4388,26 +4265,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Pour afficher dans Phantom :\n1. Ouvrez Phantom -> Cliquez sur 'Manage token list'.\n2. Collez l'adresse Mint dans la recherche.\n3. Activez $HAISI (Haichain SI)."
   },
   "es": {
-      "phantomNotDetected": "<strong>Extensión Phantom no detectada</strong> en su navegador. Instale la extensión para conectar su billetera.",
-      "solflareNotDetected": "<strong>Extensión Solflare no detectada</strong> en su navegador. Instale la extensión para conectar su billetera.",
-      "metaMaskNotDetectedFull": "<strong>Extensión MetaMask no detectada</strong> en su navegador. Instale MetaMask para conectar.",
-      "confirmOnChainDepositPhantom": "Confirmar Depósito On-Chain (Firmar Phantom)",
-      "connectPhantomToDeposit": "Conectar Phantom para Depositar",
-      "metaMaskInsufficientEth": "⚠️ ¡Saldo de MetaMask Insuficiente (0 ETH)!\n\nSe requiere ETH para las tarifas de red.",
-      "web3ConnectedConfirmPrompt": "¡Billetera conectada con éxito!\n\nHaga clic en 'Confirmar Depósito On-Chain' para firmar la transacción.",
-      "noWeb3DetectedFaucetGuide": "Billetera Web3 no detectada en este navegador.\n\nInstale Phantom o use la pestaña 'Faucet (+$10)' para recibir 10 USDT de prueba gratis.",
-      "insufficientSolGaslessGuide": "⚠️ ¡Saldo SOL Insuficiente (0 SOL)!\n\nEl Relayer sin Gas de HAICHAIN cubrirá sus tarifas al 0%.",
-      "web3DepositConfirmedDevnet": "🎉 ¡Depósito Web3 Confirmado!\n\nTransacción finalizada en Solana Devnet.",
-      "fiatSandboxNotice": "Aviso de Pasarela Fiat:\n\nHAICHAIN opera actualmente en Solana Devnet. ¡Utilice el Faucet para realizar pruebas gratuitas!",
-      "zeroBalanceCannotWithdraw": "Su saldo en Master Vault es de $0.0000 USDT. No hay fondos para retirar.",
-      "insufficientWithdrawBalance": "¡Saldo insuficiente!\n\nSu saldo en Master Vault es menor que el monto solicitado.",
-      "invalidSolanaAddress": "¡Dirección de destino no válida!\n\nIngrese una dirección válida de Solana (Base58, 32-44 caracteres).",
-      "withdrawSuccessNotice": "¡Retiro exitoso!\n\nFondos enviados a su billetera. Tiempo de procesamiento: 380 ms.",
-      "vaultBalanceInsufficientForTask": "Saldo insuficiente en Master Vault para esta tarea de IA. Recargue mediante el Faucet.",
-      "aiSecurityKernelHeader": "[Núcleo de Seguridad HAICHAIN: Análisis de Seguridad de IA]",
-      "aiAnchorCodeHeader": "[Lógica de Instrucción Micro-Escrow de Solana Anchor]",
-      "aiEnterpriseAnalysisHeader": "[Análisis de Agentes Autónomos Empresariales]",
-
       "metaMaskNotDetected": "No se detectó la extensión de MetaMask en su navegador.",
       "checkingMetaMaskBalance": "Comprobando saldo de MetaMask...",
       "approveInMetaMaskPopup": "Apruebe en la ventana de MetaMask...",
@@ -4452,26 +4309,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Para ver en Phantom:\n1. Abra Phantom -> Haga clic en 'Manage token list'.\n2. Pegue la dirección Mint en la búsqueda.\n3. Active $HAISI (Haichain SI)."
   },
   "ru": {
-      "phantomNotDetected": "В вашем браузере <strong>не обнаружено расширение Phantom</strong>. Установите расширение для подключения.",
-      "solflareNotDetected": "В вашем браузере <strong>не обнаружено расширение Solflare</strong>. Установите расширение для подключения.",
-      "metaMaskNotDetectedFull": "В вашем браузере <strong>не обнаружено расширение MetaMask</strong>. Установите расширение MetaMask.",
-      "confirmOnChainDepositPhantom": "Подтвердить Ончейн-Пополнение (Подпись Phantom)",
-      "connectPhantomToDeposit": "Подключить Phantom для Пополнения",
-      "metaMaskInsufficientEth": "⚠️ Недостаточно средств в MetaMask (0 ETH)!\n\nТребуется ETH для оплаты сетевой комиссии.",
-      "web3ConnectedConfirmPrompt": "Кошелек успешно подключен!\n\nНажмите 'Подтвердить Ончейн-Пополнение' для подписания транзакции.",
-      "noWeb3DetectedFaucetGuide": "Web3 кошелек не обнаружен в браузере.\n\nУстановите Phantom или перейдите во вкладку 'Faucet (+$10)' для получения бесплатных тестовых USDT!",
-      "insufficientSolGaslessGuide": "⚠️ Недостаточно SOL на балансе (0 SOL)!\n\nБезгазовый релейер HAICHAIN покроет 100% комиссии сети.",
-      "web3DepositConfirmedDevnet": "🎉 Web3 Пополнение Подтверждено!\n\nТранзакция финализирована в сети Solana Devnet.",
-      "fiatSandboxNotice": "Уведомление о Фиатном Шлюзе:\n\nHAICHAIN работает в тестовой сети Solana Devnet. Используйте вкладку 'Faucet (+$10)' для бесплатного тестирования!",
-      "zeroBalanceCannotWithdraw": "Баланс Master Vault составляет $0.0000 USDT. Нет средств для вывода.",
-      "insufficientWithdrawBalance": "Недостаточный баланс!\n\nБаланс Master Vault меньше запрашиваемой суммы вывода.",
-      "invalidSolanaAddress": "Некорректный адрес кошелька!\n\nВведите действительный адрес Solana (Base58, 32-44 символа).",
-      "withdrawSuccessNotice": "Вывод успешно выполнен!\n\nСредства отправлены на ваш кошелек. Скорость: 380 мс.",
-      "vaultBalanceInsufficientForTask": "Баланса Master Vault недостаточно для этой задачи ИИ. Пополните через Faucet.",
-      "aiSecurityKernelHeader": "[Ядро Безопасности HAICHAIN: Анализ Безопасности ИИ]",
-      "aiAnchorCodeHeader": "[Код Инструкции Микро-Эскроу Solana Anchor]",
-      "aiEnterpriseAnalysisHeader": "[Корпоративный Автономный Анализ]",
-
       "metaMaskNotDetected": "Расширение MetaMask не обнаружено в вашем браузере.",
       "checkingMetaMaskBalance": "Проверка баланса MetaMask...",
       "approveInMetaMaskPopup": "Подтвердите во всплывающем окне MetaMask...",
@@ -4516,26 +4353,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Для добавления в Phantom:\n1. Откройте Phantom -> Нажмите 'Manage token list'.\n2. Вставьте адрес Mint в поиск.\n3. Включите токен $HAISI (Haichain SI)."
   },
   "hi": {
-      "phantomNotDetected": "आपके ब्राउज़र में <strong>Phantom एक्सटेंशन नहीं मिला</strong>। कनेक्ट करने के लिए एक्सटेंशन इंस्टॉल करें।",
-      "solflareNotDetected": "आपके ब्राउज़र में <strong>Solflare एक्सटेंशन नहीं मिला</strong>। कनेक्ट करने के लिए एक्सटेंशन इंस्टॉल करें।",
-      "metaMaskNotDetectedFull": "आपके ब्राउज़र में <strong>MetaMask एक्सटेंशन नहीं मिला</strong>। कनेक्ट करने के लिए MetaMask इंस्टॉल करें।",
-      "confirmOnChainDepositPhantom": "ऑन-चेन जमा की पुष्टि करें (Phantom हस्ताक्षर)",
-      "connectPhantomToDeposit": "जमा करने के लिए Phantom कनेक्ट करें",
-      "metaMaskInsufficientEth": "⚠️ MetaMask में अपर्याप्त शेष (0 ETH)!\n\nनेटवर्क शुल्क के लिए ETH आवश्यक है।",
-      "web3ConnectedConfirmPrompt": "वॉलेट सफलतापूर्वक कनेक्ट हुआ!\n\nलेनदेन पर हस्ताक्षर करने के लिए 'ऑन-चेन जमा की पुष्टि करें' पर क्लिक करें।",
-      "noWeb3DetectedFaucetGuide": "इस ब्राउज़र में Web3 वॉलेट नहीं मिला।\n\nकृपया Phantom इंस्टॉल करें या मुफ्त Devnet USDT के लिए 'Faucet (+$10)' टैब पर जाएं!",
-      "insufficientSolGaslessGuide": "⚠️ वॉलेट में अपर्याप्त SOL (0 SOL)!\n\nHAICHAIN गैसलेस रिलेयर 0% गैस शुल्क के साथ प्रायोजित करेगा।",
-      "web3DepositConfirmedDevnet": "🎉 Web3 जमा की पुष्टि हुई!\n\nSolana Devnet पर लेनदेन अंतिम रूप से पूरा हुआ।",
-      "fiatSandboxNotice": "फ़िएट गेटवे सूचना:\n\nHAICHAIN वर्तमान में Solana Devnet पर चल रहा है। मुफ्त परीक्षण के लिए फॉसेट का उपयोग करें!",
-      "zeroBalanceCannotWithdraw": "Master Vault का शेष $0.0000 USDT है। निकासी के लिए कोई फंड नहीं है।",
-      "insufficientWithdrawBalance": "अपर्याप्त शेष!\n\nआपका वॉल्ट शेष अनुरोधित निकासी राशि से कम है।",
-      "invalidSolanaAddress": "अमान्य गंतव्य पता!\n\nकृपया एक वैध Solana पता दर्ज करें (32-44 वर्ण)।",
-      "withdrawSuccessNotice": "निकासी सफल!\n\nफंड आपके वॉलेट में भेज दिया गया है। गति: 380ms।",
-      "vaultBalanceInsufficientForTask": "इस AI कार्य के लिए वॉल्ट में अपर्याप्त शेष है। फॉसेट से टॉप अप करें।",
-      "aiSecurityKernelHeader": "[HAICHAIN सुरक्षा कर्नेल: AI सुरक्षा विश्लेषण]",
-      "aiAnchorCodeHeader": "[Solana Anchor माइक्रो-एस्क्रो निर्देश कोड]",
-      "aiEnterpriseAnalysisHeader": "[एंटरप्राइज स्वायत्त एजेंट विश्लेषण]",
-
       "metaMaskNotDetected": "आपके ब्राउज़र में MetaMask एक्सटेंशन नहीं मिला।",
       "checkingMetaMaskBalance": "MetaMask शेष की जांच की जा रही है...",
       "approveInMetaMaskPopup": "MetaMask पॉपअप में स्वीकृत करें...",
@@ -4580,26 +4397,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Phantom में देखने के लिए:\n1. Phantom खोलें -> 'Manage token list' पर क्लिक करें।\n2. खोज में Mint पता चिपकाएँ।\n3. $HAISI (Haichain SI) टॉगल चालू करें।"
   },
   "he": {
-      "phantomNotDetected": "<strong>תוסף Phantom לא זוהה</strong> בדפדפן שלך. אנא התקן את התוסף כדי להתחבר.",
-      "solflareNotDetected": "<strong>תוסף Solflare לא זוהה</strong> בדפדפן שלך. אנא התקן את התוסף כדי להתחבר.",
-      "metaMaskNotDetectedFull": "<strong>תוסף MetaMask לא זוהה</strong> בדפדפן שלך. אנא התקן את MetaMask כדי להתחבר.",
-      "confirmOnChainDepositPhantom": "אשר הפקדה ברשת (חתימת Phantom)",
-      "connectPhantomToDeposit": "חבר את Phantom להפקדה",
-      "metaMaskInsufficientEth": "⚠️ יתרת MetaMask אינה מספקת (0 ETH)!\n\nנדרש ETH לתשלום עמלות הרשת.",
-      "web3ConnectedConfirmPrompt": "הארנק חובר בהצלחה!\n\nאנא לחץ על 'אשר הפקדה ברשת' לחתימה על העסקה.",
-      "noWeb3DetectedFaucetGuide": "לא זוהה ארנק Web3 בדפדפן זה.\n\nהתקן את Phantom או עבור לכרטיסיית 'Faucet (+$10)' לקבלת USDT חינם ברשת הבדיקה!",
-      "insufficientSolGaslessGuide": "⚠️ יתרת SOL אינה מספקת (0 SOL)!\n\nממסר ה-Gasless של HAICHAIN יממן את העמלות ב-0%.",
-      "web3DepositConfirmedDevnet": "🎉 הפקדת Web3 אושרה!\n\nהעסקה אושרה ברשת Solana Devnet.",
-      "fiatSandboxNotice": "הודעת שער פיאט:\n\nHAICHAIN פועל כעת ברשת Solana Devnet. השתמש בברז לבדיקות חינם!",
-      "zeroBalanceCannotWithdraw": "יתרת ה-Master Vault היא $0.0000 USDT. אין כספים למשיכה.",
-      "insufficientWithdrawBalance": "יתרה לא מספקת!\n\nיתרת ה-Master Vault שלך נמוכה מסכום המשיכה המבוקש.",
-      "invalidSolanaAddress": "כתובת יעד לא תקינה!\n\nאנא הזן כתובת Solana תקינה (Base58, 32-44 תווים).",
-      "withdrawSuccessNotice": "המשיכה בוצעה בהצלחה!\n\nהכספים נשלחו לארנק שלך. מהירות עיבוד: 380ms.",
-      "vaultBalanceInsufficientForTask": "יתרת ה-Master Vault אינה מספקת למשימת AI זו. טען מחדש דרך הברז.",
-      "aiSecurityKernelHeader": "[גרעין האבטחה של HAICHAIN: ניתוח בטיחות AI]",
-      "aiAnchorCodeHeader": "[קוד הוראות מיקרו-אסקרו של Solana Anchor]",
-      "aiEnterpriseAnalysisHeader": "[דוח ניתוח סוכנים אוטונומיים]",
-
       "metaMaskNotDetected": "תוסף MetaMask לא זוהה בדפדפן שלך.",
       "checkingMetaMaskBalance": "בודק יתרת MetaMask...",
       "approveInMetaMaskPopup": "אשר בחלון הקופץ של MetaMask...",
@@ -5232,15 +5029,15 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900 gap-4">
               <div>
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-sm p-1.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                <div class="flex items-start space-x-3">
+                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-sm p-1.5 mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                   </div>
-                  <div>
-                    <div class="flex items-center space-x-2">
-                      <h2 class="font-bold text-lg sm:text-xl text-black dark:text-white">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                      <h2 class="font-bold text-base sm:text-xl text-black dark:text-white leading-tight">
                         ${getVestingText('vaultTitle', lang)}
                       </h2>
-                      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+                      <span class="shrink-0 whitespace-nowrap px-2 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800 mt-0.5">
                         Solana L1
                       </span>
                     </div>
@@ -5572,7 +5369,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           btn.disabled = true;
         }
         if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
-          dashConfirmDepositBtn.textContent = getDashNotice('confirmOnChainDepositPhantom');
+          dashConfirmDepositBtn.textContent = isVi 
+            ? "Xác Nhận Nạp On-Chain (Ký Ví Phantom)" 
+            : "Confirm On-Chain Deposit (Sign with Phantom)";
         }
       } else {
         if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0";
@@ -5589,7 +5388,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           btn.disabled = false;
         }
         if (dashConfirmDepositBtn && selectedDepositMethod === 'web3') {
-          dashConfirmDepositBtn.textContent = getDashNotice('connectPhantomToDeposit');
+          dashConfirmDepositBtn.textContent = isVi 
+            ? "Kết Nối Ví Phantom Để Nạp" 
+            : "Connect Phantom Wallet to Deposit";
         }
       }
     }
@@ -6050,7 +5851,9 @@ Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
                 });
               }
 
-              alert(getDashNotice('gaslessDepositSuccess'));
+              alert(isVi 
+                ? `🎉 Nạp Tiền Web3 Thành Công (Hỗ Trợ 0% Phí Gas)!\n\nVí ${userWallet.provider} của bạn có 0 SOL nên HAICHAIN Gasless Relayer đã tự động:\n1. Nạp +$${added.toFixed(2)} USDT vào Master Vault.\n2. Tự động trợ cấp phí mạng Devnet cho ví ${payerPubkey.toString()}.\n\nTxHash: ${txSig.slice(0, 16)}...\nSố dư Master Vault mới: $${balance.toFixed(4)} USDT`
+                : `🎉 Web3 Gasless Deposit Confirmed!\n\nBecause your wallet had 0 SOL, HAICHAIN Relayer automatically:\n1. Credited +$${added.toFixed(2)} USDT to your Master Vault.\n2. Subsidized Devnet gas for ${payerPubkey.toString()}.\n\nTxHash: ${txSig.slice(0, 16)}...\nNew Vault Balance: $${balance.toFixed(4)} USDT`);
               return;
             } catch (sponsorErr) {
               console.warn("Relayer gas subsidy error:", sponsorErr);
@@ -6280,7 +6083,9 @@ Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
         });
       }
 
-      alert(getDashNotice('withdrawSuccessNotice'));
+      alert(isVi
+        ? `Rút tiền thành công!\n\nĐã giải ngân $${amount.toFixed(4)} USDT về địa chỉ ví:\n${dest}\n\nTốc độ xử lý: 380ms (Instant Sub-Second Retraction).`
+        : `Withdrawal successful!\n\nDisbursed $${amount.toFixed(4)} USDT to:\n${dest}\n\nSettlement speed: 380ms.`);
     });
 
     // ================= UNIFIED AI INTEGRATION HUB (PREMIUM LUXURY MONOCHROME) =================
@@ -7022,15 +6827,11 @@ Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
         if (typeof showToast === 'function') {
           showToast({
             title: getDashNotice('insufficientVaultBalance'),
-            message: isVi 
-              ? `Số dư Master Vault ($${balance.toFixed(4)}) không đủ cho tác vụ $${selectedCost.toFixed(4)}. Vui lòng nạp thêm qua Faucet Devnet.`
-              : `Vault balance ($${balance.toFixed(4)}) is insufficient for $${selectedCost.toFixed(4)}. Please top up via Devnet Faucet.`,
+            message: getDashNotice('vaultBalanceInsufficientForTask'),
             icon: 'alert-circle'
           });
         }
-        alert(isVi
-          ? `Số dư không đủ!\n\nSố dư Master Vault của bạn hiện tại là $${balance.toFixed(4)} USDT.\nTác vụ AI "${selectedModel}" yêu cầu tối thiểu $${selectedCost.toFixed(4)} USDT.\n\nVui lòng nạp thêm tiền thử nghiệm qua Faucet để tiếp tục.`
-          : `Insufficient Vault Balance!\n\nYour Master Vault balance is $${balance.toFixed(4)} USDT.\nSelected model "${selectedModel}" requires $${selectedCost.toFixed(4)} USDT.\n\nPlease claim test funds via Faucet to execute.`);
+        alert(getDashNotice('vaultBalanceInsufficientForTask'));
         return;
       }
 
@@ -7098,7 +6899,8 @@ Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
           let generatedResponse = "";
 
           if (pLower.includes('prompt injection') || pLower.includes('wallet drain') || pLower.includes('security') || pLower.includes('bảo mật') || pLower.includes('hack')) {
-            generatedResponse = `${getDashNotice('aiSecurityKernelHeader')}\n\n` +
+            generatedResponse = isVi
+              ? `[HAICHAIN Security Kernel: Phân Tích An Toàn AI Độc Quyền]\n\n` +
                 `Hệ thống HAICHAIN bảo vệ ví Master Vault trước các cuộc tấn công Prompt Injection và chiếm quyền Agent:\n` +
                 `1. Thẻ Năng Lực Merkle Rời Rạc (Ephemeral Capability Leaf): Bot con không bao giờ nắm giữ Khóa riêng tư. Bot chỉ nhận một chứng chỉ chi tiêu (Merkle Leaf) bị giới hạn cứng bởi MaxLimit ($0.0500 USDT) và ExpirySlot.\n` +
                 `2. Khóa Dừng Khẩn Cấp Dưới 400ms (Sub-Second Nullifier Circuit Breaker): Ngay khi phát hiện lệnh chuyển tiền bất thường hoặc cố tình vượt hạn mức, Vault tự động kích hoạt Emergency Stop trên Solana Devnet trong 380ms, vô hiệu hóa vĩnh viễn Nullifier PDA.\n` +
@@ -7109,7 +6911,8 @@ Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
                 `2. Sub-Second Nullifier Circuit Breaker: If an agent is hijacked via adversarial prompt injection, the Master Vault trips an emergency stop on-chain within 380ms, permanently invalidating the active nullifier PDA.\n` +
                 `3. Single MTU Netting (771-Byte Proof): All agent-to-API settlements are batched and settled directly on Solana Devnet (Program DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk) with zero token-leakage guarantee.`;
           } else if (pLower.includes('code') || pLower.includes('smart contract') || pLower.includes('rust') || pLower.includes('solana') || pLower.includes('mã nguồn')) {
-            generatedResponse = `${getDashNotice('aiAnchorCodeHeader')}\n\n` +
+            generatedResponse = isVi
+              ? `[Mã Lệnh Solana Anchor Xác Thực Hợp Đồng Vi Thanh Toán]\n\n` +
                 `#[derive(Accounts)]\n` +
                 `pub struct SettleEscrow<'info> {\n` +
                 `    #[account(mut, seeds = [b"vault", authority.key().as_ref()], bump)]\n` +
@@ -7133,7 +6936,8 @@ Your wallet has 0 SOL, which is not enough to cover Solana network gas fees.
                 `// Instruction validates Merkle proof and decrements authorized pot without user re-signing.`;
           } else {
             const cleanPrompt = prompt.replace(/[\r\n]+/g, ' ').trim();
-            generatedResponse = `${getDashNotice('aiEnterpriseAnalysisHeader')}\n\n` +
+            generatedResponse = isVi
+              ? `[Phân Tích Tự Hành Cấp Độ Doanh Nghiệp qua ${selectedModel}]\n\n` +
                 `Yêu cầu suy luận: "${cleanPrompt.length > 80 ? cleanPrompt.slice(0, 80) + '...' : cleanPrompt}"\n\n` +
                 `1. Phân Tích Ngữ Cảnh: Yêu cầu tính toán hợp lệ, đã vượt qua bộ lọc ZK-AML & Chốt chặn Danh sách trắng.\n` +
                 `2. Thực Thi Suy Luận: Xử lý hoàn tất với độ trễ tối ưu 18ms. Tài nguyên điện toán và dữ liệu đã được bù trừ tự động bằng vi thanh toán USDT.\n` +
