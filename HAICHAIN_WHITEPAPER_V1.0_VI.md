@@ -25,7 +25,7 @@
 1. [Tóm Tắt Điều Hành & Nghịch Lý Siêu Trí Tuệ](#tóm-tắt-điều-hành-abstract)
 2. [Triết Lý Nền Tảng $AI^2$: Con Người Làm Chủ & Máy Móc Siêu Tốc](#triết-lý-nền-tảng-ai2-con-người-làm-chủ--máy-móc-siêu-tốc)
 3. [Chương 1: Thế Tiến Thoái Lưỡng Nan & Bằng Chứng Đối Thủ Thực Nghiệm](#chương-1-thế-tiến-thoái-lưỡng-nan-của-nền-kinh-tế-máy-móc)
-4. [Chương 2: Bước Chuyển Dịch Kinh Tế Hậu SaaS: Giải Phóng Khỏi Bẫy Thuê Bao Đầu Người Sang Tiện Ích Vi Mô](#chương-2-bước-chuyển-dịch-kinh-tế-hậu-saas-giải-phóng-khỏi-bẫy-thuê-bao-đầu-người-sang-tiện-ích-vi-mô)
+4. [Chương 2: Chuỗi Tiếp Nối Kinh Tế SaaS-to-Agentic: Tích Hợp Thuê Bao Doanh Nghiệp Với Tiện Ích Vi Mô Cho Tác Tử](#chương-2-bước-chuyển-dịch-kinh-tế-hậu-saas-giải-phóng-khỏi-bẫy-thuê-bao-đầu-người-sang-tiện-ích-vi-mô)
 5. [Chương 3: Kiến Trúc Trải Nghiệm Vô Hình & Chuẩn Mực "The Mom Test"](#chương-3-kiến-trúc-trải-nghiệm-vô-hình--chuẩn-mực-the-mom-test)
 6. [Chương 4: Điều Phối Tác Tử Tiên Phong & Bầy Đàn Tự Hành (HCT BIP-32)](#chương-4-điều-phối-tác-tử-tiên-phong--bầy-đàn-tự-hành)
 7. [Chương 5: Cỗ Máy Bù Trừ Đa Phương & Nén Dữ Liệu 99.999% (IPv6 MTU 771B)](#chương-5-cỗ-máy-bù-trừ--nén-dữ-liệu-đa-phương)
@@ -144,7 +144,7 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 
 ---
 
-## CHƯƠNG 2: BƯỚC CHUYỂN DỊCH KINH TẾ HẬU SAAS: GIẢI PHÓNG KHỎI BẪY THUÊ BAO ĐẦU NGƯỜI SANG TIỆN ÍCH VI MÔ
+## CHƯƠNG 2: CHUỖI TIẾP NỐI KINH TẾ SAAS-TO-AGENTIC: TÍCH HỢP THUÊ BAO DOANH NGHIỆP VỚI TIỆN ÍCH VI MÔ CHO TÁC TỬ
 
 Để đánh giá tính khả thi thực tế của việc chuyển dịch mô hình kinh doanh phần mềm, khung kinh tế học của HAICHAIN phân định rõ ranh giới giữa hai phân khúc phần mềm doanh nghiệp:
 
@@ -201,13 +201,10 @@ Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phươn
 > 1. **WebAuthn Biometric Security:** Trên bản thử nghiệm Devnet, giao diện ứng dụng Hardened Biometric Vault (AES-256-GCM + PBKDF2) bảo vệ sinh trắc học cục bộ. Khi phát hành Mainnet thương mại, hệ thống tích hợp trực tiếp mạng lưới MPC Enclave chuyên dụng (Turnkey / Privy) để chuyển giao chữ ký P-256 sang Ed25519 với cấp độ bảo mật ngân hàng.
 > 2. **Cổng nạp Fiat (Apple Pay / Card):** Môi trường Devnet hỗ trợ 100% nạp rút on-chain thực tế qua Solana Web3 Wallet và 1-Click Devnet Faucet. Luồng Apple Pay / Thẻ tín dụng trên bản thử nghiệm đóng vai trò Mô phỏng Trải nghiệm Người dùng (Interactive UX Prototype) và sẽ được kích hoạt kết nối API ngân hàng thực tế (Stripe Onramp / Stably) trong đợt phát hành Mainnet chính thức.
 
-### 3.2. Nút Bấm Dừng Khẩn Cấp Dưới 1 Giây (One-Click Panic Kill-Switch)
-Khi phát hiện bot có biểu hiện bất thường hoặc bị tấn công:
-1. Người dùng chỉ cần nhấn nút đỏ **"Emergency Stop"** trên điện thoại hoặc máy tính.
-2. Một giao dịch ưu tiên cao được gửi qua mạng lưới bundle riêng biệt.
-3. Cờ on-chain `panic_kill_switch_tripped` lập tức chuyển sang `true`, đóng băng vĩnh viễn hũ tiền.
-4. Toàn bộ 100% số tiền còn lại trong tài khoản được rút ngược về tài khoản ngân hàng hoặc ví mẹ an toàn trong **dưới 400 mili-giây**.
-
+### 3.2. Cơ Chế Khóa Thời Gian Khẩn Cấp Hai Tầng & Phòng Vệ MEV
+Trong hệ thống phân tán, thời gian block (~400ms trên Solana) cần được phân tách rõ ràng với thời gian hoàn tất đồng thuận (Finality 32 slots, ~12.8 giây) và phòng thủ tuyệt đối trước các cuộc tấn công đua phí MEV Front-Running trong mempool. Haichain thiết kế **Kiến Trúc Bảo Vệ Vốn Hai Tầng (Two-Tier Capital Protection Architecture)**:
+1. **Tầng 1 (Thu Hồi Khóa Ủy Quyền Tức Thì Phía Client - Trễ Mạng 0ms):** Khi phát hiện prompt injection hoặc hành vi dị thường, chip bảo mật (Secure Enclave) trên thiết bị người dùng lập tức vô hiệu hóa khóa ủy quyền session key nội bộ và phát sóng vé thu hồi mật mã (Revocation Ticket) qua mạng ngang hàng gossip. Toàn bộ các tác tử con bị tước quyền ký lệnh ngay lập tức mà không cần chờ block on-chain xác nhận.
+2. **Tầng 2 (Bộ Ngắt Mạch Khẩn Cấp On-Chain Miễn Nhiễm MEV):** Lệnh Panic được định tuyến độc quyền qua cụm validator riêng (Jito MEV-protected bundle), né tránh hoàn toàn mempool công cộng để loại trừ nguy cơ bị bot chèn giao dịch rút trộm tiền. Kho ký quỹ chuyển sang trạng thái khóa thách đấu thời gian thực (Challenge Timelock), và 100% tài sản thanh khoản được chuyển an toàn về ví lạnh ngay khi block hoàn tất đồng thuận.
 ---
 
 ## CHƯƠNG 4: ĐIỀU PHỐI TÁC TỬ TIÊN PHONG & BẦY ĐÀN TỰ HÀNH
@@ -255,9 +252,16 @@ Khi tác vụ hoàn thành, chữ ký mật mã xác thực số lượng token 
 Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần suất cao giữa hàng ngàn tác tử AI và các nhà cung cấp dịch vụ:
 1. **Bù trừ Ròng Đa phương Đối xứng:** Các dòng tiền qua lại được cấn trừ ngoại chuỗi:
    $$NetBalance_i = \sum Inflow_i - \sum Outflow_i$$
-2. **Hiệu Suất Nén 99.999%:** Hơn 1.000.000 giao dịch vi thanh toán lẻ được nén lại thành 1 giao dịch quyết toán duy nhất trên chuỗi.
-3. **Đóng Gói Vừa Khít 1 Khung Truyền IPv6 MTU:** Gói tin quyết toán hoàn chỉnh có kích thước chính xác **771 bytes**, nằm trọn vẹn trong giới hạn **IPv6 MTU 1.232 bytes**, bảo đảm không bị phân mảnh gói tin trên các tuyến cáp quang biển quốc tế.
+2. **Hiệu Suất Nén 99.999%:** Hơn 1.000.000 vi giao dịch được nén vào một bản cập nhật trạng thái duy nhất.
+3. **Đóng Gói Khung Truyền IPv6 MTU (771 Bytes):** Toàn bộ dữ liệu quyết toán của một chu kỳ nằm gọn trong 771 bytes, tối ưu tuyệt đối cho khung truyền IPv6 MTU (1.232 bytes), loại bỏ hoàn toàn hiện tượng phân mảnh gói tin qua các tuyến cáp quang xuyên lục địa.
 
+### Quỹ Bảo Hiểm Thanh Khoản Bù Trừ (CHGB) & Cơ Chế Chống Vỡ Nợ Dây Chuyền
+Điểm yếu cốt tử của các hệ thống bù trừ đa phương là **Rủi ro sụp đổ dây chuyền (Liquidity Gridlock)**: nếu một tác tử giao dịch tần suất cao bị mất kết nối mạng hoặc cạn kiệt số dư giữa chu kỳ, phương trình bù trừ đối xứng bị phá vỡ, đe dọa đóng băng thanh khoản của toàn bộ $(K-1)$ tác tử đối tác còn lại.
+
+Để bảo đảm tính bất biến của hệ thống, Haichain thiết lập **Quỹ Bảo Hiểm Bù Trừ (Clearing House Guarantee Buffer - CHGB)**:
+1. **Ký Quỹ Khả Năng Thanh Toán:** Mọi node chuyển tiếp bù trừ và tác tử giao dịch lớn bắt buộc phải ký quỹ tài sản bảo đảm bằng `$HAISI` và USDT vào Kho Dự phòng Thanh khoản.
+2. **Hấp Thụ Thâm Hụt:** Nếu Tác tử $X$ vỡ nợ giữa chu kỳ bù trừ, quỹ CHGB tự động ứng trước khoản thâm hụt trong hạn mức cho phép, giúp $(K-1)$ đối tác còn lại nhận tiền đầy đủ mà không bị nghẽn thanh toán.
+3. **Phạt Tịch Thu (Slashing) & Đấu Giá:** Khoản tiền `$HAISI` ký quỹ của Tác tử $X$ gian lận hoặc phá sản lập tức bị tịch thu và đưa ra đấu giá tự động để bù đắp lại cho quỹ CHGB, đồng thời tước bỏ quyền tham gia mạng lưới của tác tử vi phạm.
 ---
 
 ## CHƯƠNG 6: PHÁO ĐÀI HẠT NHÂN: 6 BẤT BIẾN TOÁN HỌC TRÊN SOLANA L1
@@ -348,6 +352,14 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
 |                                       xem riêng tư hỗ trợ kế toán doanh nghiệp đạt chuẩn IFRS/GAAP.|
 +----------------------------------------------------------------------------------------------------+
 ```
+
+### 8.1. Tuân Thủ Toàn Diện Điều 17 Luật GDPR Châu Âu (Quyền Được Lãng Quên) & ZK-eDID
+Việc ghi nhận vĩnh viễn dữ liệu danh tính hay thông tin sinh trắc học lên blockchain bất biến vi phạm nghiêm trọng **Điều 17 Luật Bảo vệ Dữ liệu Cá nhân của Liên minh Châu Âu (EU GDPR - "Quyền Được Lãng Quên")**, đe dọa các án phạt lên tới hàng chục triệu euro.
+
+Haichain giải quyết triệt để rủi ro pháp lý này bằng kiến trúc **Định Danh Ngắn Hạn Zero-Knowledge (ZK-eDID)**:
+* **Cách Ly Sinh Trắc Học Ngoại Chuỗi (Zero PII on-chain):** Không có bất kỳ dữ liệu định danh cá nhân (PII), thông tin sinh trắc học hay mã băm danh tính người dùng nào được ghi vào sổ cái blockchain bất biến. Mọi dữ liệu sinh trắc học nằm độc quyền trong chip bảo mật phần cứng (Secure Enclave / WebAuthn) trên thiết bị của người dùng.
+* **Xác Thực Danh Tính Bằng Chứng Không Tri Thức:** Sổ cái blockchain chỉ xác thực bằng chứng mật mã Zero-Knowledge (ZK-Proof) xác nhận tính duy nhất của con người và tính hợp lệ của chữ ký tại thời điểm ký lệnh.
+* **Bất Biến Thu Hồi Mật Mã Theo Điều 17 GDPR:** Khi người dùng yêu cầu chấm dứt tài khoản hoặc xóa dữ liệu, hợp đồng thông minh đăng ký một vé thu hồi mật mã (Cryptographic Nullifier Ticket) và hủy cặp khóa cục bộ. Mọi hoạt động on-chain trong quá khứ bị ngắt kết nối toán học vĩnh viễn khỏi danh tính con người, đảm bảo tuân thủ tuyệt đối 100% quy chuẩn pháp lý của EU GDPR, MiCA và Đạo luật Trí tuệ Nhân tạo EU AI Act.
 
 ---
 

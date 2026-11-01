@@ -4236,6 +4236,7 @@ function getInitialLanguage() {
   }
 
   function ensureMobileDrawer() {
+    if (!document.body) return;
     let drawer = document.getElementById('haichain-mobile-lang-drawer');
     if (!drawer) {
       const wrapper = document.createElement('div');
@@ -4409,8 +4410,11 @@ function getInitialLanguage() {
     ensureMobileDrawer();
   }
 
-  // Initialize
+  // Initialize (Fast-path: runs as early as interactive/complete or DOMContentLoaded)
+  let initialized = false;
   function init() {
+    if (initialized) return;
+    initialized = true;
     document.documentElement.setAttribute('lang', currentLang);
     document.documentElement.setAttribute('dir', currentLang === 'he' ? 'rtl' : 'ltr');
     updateSwitcherUI();
@@ -4418,10 +4422,15 @@ function getInitialLanguage() {
     window.dispatchEvent(new CustomEvent('haichain:languageChanged', { detail: { lang: currentLang } }));
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
     init();
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        init();
+      }
+    });
   }
 
   // Expose globally
