@@ -42,6 +42,8 @@
 
   const TRANSLATIONS = {
   "kk": {
+    "vault.addFundsShort": "Қор қосу",
+    "vault.withdrawShort": "Шығару",
     "lang.select": "Тілді таңдау",
     "lang.supported": "10 жаһандық тіл қолданылады",
     "lang.active": "Белсенді",
@@ -437,6 +439,8 @@
     "toast.configCopiedMsg": "Алмасу буферіне сақталды"
   },
   "en": {
+    "vault.addFundsShort": "Add Funds",
+    "vault.withdrawShort": "Withdraw",
     "lang.select": "Select Language",
     "lang.supported": "10 Global Languages Supported",
     "lang.active": "Active",
@@ -832,6 +836,8 @@
     "toast.configCopiedMsg": "Saved to clipboard"
   },
   "zh": {
+    "vault.addFundsShort": "充值注资",
+    "vault.withdrawShort": "提取资金",
     "lang.select": "选择语言",
     "lang.supported": "支持 10 种全球语言",
     "lang.active": "当前选择",
@@ -1227,6 +1233,8 @@
     "toast.configCopiedMsg": "已保存至剪贴板"
   },
   "fr": {
+    "vault.addFundsShort": "Approvisionner",
+    "vault.withdrawShort": "Retirer",
     "lang.select": "Choisir la langue",
     "lang.supported": "10 langues mondiales prises en charge",
     "lang.active": "Actif",
@@ -1622,6 +1630,8 @@
     "toast.configCopiedMsg": "Enregistré dans le presse-papiers"
   },
   "ko": {
+    "vault.addFundsShort": "자금 충전",
+    "vault.withdrawShort": "출금하기",
     "lang.select": "언어 선택",
     "lang.supported": "10개 글로벌 언어 지원",
     "lang.active": "선택됨",
@@ -2017,6 +2027,8 @@
     "toast.configCopiedMsg": "클립보드에 저장되었습니다"
   },
   "es": {
+    "vault.addFundsShort": "Añadir Fondos",
+    "vault.withdrawShort": "Retirar",
     "lang.select": "Seleccionar idioma",
     "lang.supported": "10 idiomas globales compatibles",
     "lang.active": "Activo",
@@ -2412,6 +2424,8 @@
     "toast.configCopiedMsg": "Guardado en el portapapeles"
   },
   "ru": {
+    "vault.addFundsShort": "Пополнить",
+    "vault.withdrawShort": "Вывести",
     "lang.select": "Выбрать язык",
     "lang.supported": "Поддерживается 10 языков мира",
     "lang.active": "Активен",
@@ -2807,6 +2821,8 @@
     "toast.configCopiedMsg": "Сохранено в буфер обмена"
   },
   "vi": {
+    "vault.addFundsShort": "Nạp Tiền",
+    "vault.withdrawShort": "Rút Tiền",
     "lang.select": "Chọn ngôn ngữ",
     "lang.supported": "Hỗ trợ 10 ngôn ngữ toàn cầu",
     "lang.active": "Đang chọn",
@@ -3202,6 +3218,8 @@
     "toast.configCopiedMsg": "Đã lưu vào bộ nhớ tạm"
   },
   "hi": {
+    "vault.addFundsShort": "फंड जोड़ें",
+    "vault.withdrawShort": "निकालें",
     "lang.select": "भाषा चुनें",
     "lang.supported": "10 वैश्विक भाषाएं समर्थित",
     "lang.active": "सक्रिय",
@@ -3597,6 +3615,8 @@
     "toast.configCopiedMsg": "क्लिपबोर्ड पर सहेजा गया"
   },
   "he": {
+    "vault.addFundsShort": "הפקדה",
+    "vault.withdrawShort": "משיכה",
     "lang.select": "בחר שפה",
     "lang.supported": "10 שפות עולמיות נתמכות",
     "lang.active": "פעיל",
@@ -4154,8 +4174,8 @@ function getInitialLanguage() {
     function renderMobileLanguageSwitcherHTML() {
     const current = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
     return `
-      <button type="button" class="lang-switch-btn group flex items-center justify-center min-h-[44px] min-w-[36px] p-1.5 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none leading-none touch-manipulation" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
-        <span class="w-[18px] h-[13px] rounded-[2.5px] overflow-hidden flex items-center justify-center shrink-0 ring-1 ring-black/15 dark:ring-white/20 shadow-xs transition-transform duration-200 group-hover:scale-105 pointer-events-none">
+      <button type="button" class="lang-switch-btn group flex items-center justify-center h-[23px] w-7 p-0 rounded-full border-0 border-transparent bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 transition-colors duration-200 cursor-pointer shrink-0 active:scale-95 focus:outline-none shadow-none leading-none touch-manipulation" title="${t('lang.select', 'Select Language')}" aria-label="${t('lang.select', 'Select Language')}">
+        <span class="w-[18px] h-[13px] rounded-[2.5px] overflow-hidden flex items-center justify-center shrink-0 ring-1 ring-black/15 dark:ring-white/20 shadow-xs transition-transform duration-200 group-hover:scale-105 pointer-events-none translate-y-[0.5px]">
           ${current.flagSvg}
         </span>
       </button>
