@@ -198,14 +198,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
 
     # Document metadata and titles
     if lang == "en":
-        doc_title = "HAICHAIN WHITEPAPER v1.0"
-        doc_subtitle = "Universal Autonomous Machine Financial & Cognitive Operating System - The Bedrock for Decentralized Superintelligence"
+        doc_title = "HAICHAIN: The Economic Bedrock for the AI² Symbiotic Superintelligence Era"
+        doc_subtitle = "Empowering billions of AI Agents and Autonomous Robots to freely compute, transact, and coalesce with human real-world intelligence to co-create abundance—ensuring all generated wealth and sovereign ownership remain permanently with humanity. The financial operating system for the autonomous machine age today; the economic bedrock for the AI² symbiotic superintelligence era tomorrow."
         doc_edition = "Official Whitepaper v1.0 • Institutional Standard Edition"
-        brand_sub_text = "Universal Autonomous Machine Financial & Cognitive Operating System"
-        running_header_left = "HAICHAIN WHITEPAPER v1.0"
+        brand_sub_text = "Financial Operating System for the Autonomous Machine Age"
+        running_header_left = "HAICHAIN: The Economic Bedrock for the AI² Era"
         running_header_right = "haichain.si"
         running_footer_left = "CONFIDENTIAL & PROPRIETARY • HAICHAIN GLOBAL SYSTEMS TASKFORCE"
-        tag_text = "DECENTRALIZED SUPERINTELLIGENCE OPERATING SYSTEM"
+        tag_text = "FINANCIAL OPERATING SYSTEM FOR THE AUTONOMOUS MACHINE AGE"
         lbl_settlement = "Primary Settlement Asset"
         val_settlement = "USDT (Tether USD SPL)"
         lbl_token = "Sovereign Gas & Governance"
@@ -215,14 +215,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Cryptographic Verification"
         val_security = "Formal Verification • Zero-Griefing Standard"
     elif lang == "zh":
-        doc_title = "HAICHAIN 官方技术白皮书 v1.0"
-        doc_subtitle = "自主机器通用财务与认知操作系统 - 去中心化超级智能的基石"
+        doc_title = "HAICHAIN: AI² 共生超级智能时代的基石经济网络"
+        doc_subtitle = "赋能数十亿 AI 智能体与自主机器人自由协作、结算并与人类现实智慧深度融合以共同创造财富——确保所有创造的财富与主权掌控权永远属于人类。今日自主机器时代的金融操作系统，明日 AI² 共生超级智能时代的基石经济网络。"
         doc_edition = "官方技术白皮书 v1.0 • 国际机构标准版"
-        brand_sub_text = "自主机器通用财务与认知操作系统"
-        running_header_left = "HAICHAIN 白皮书 v1.0"
+        brand_sub_text = "自主机器时代的金融操作系统"
+        running_header_left = "HAICHAIN: AI² 共生超级智能时代的基石经济网络"
         running_header_right = "haichain.si"
         running_footer_left = "机密与专有技术 • HAICHAIN 全球系统特别工作组"
-        tag_text = "去中心化超级智能操作系统 (ASI)"
+        tag_text = "自主机器时代的金融操作系统"
         lbl_settlement = "核心结算资产"
         val_settlement = "USDT (Solana SPL 代币)"
         lbl_token = "网络 Gas 与主权治理代币"
@@ -232,14 +232,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "密码学形式化验证"
         val_security = "形式化数学验证 • 零恶意攻击标准"
     elif lang == "ko":
-        doc_title = "HAICHAIN 공식 기술 백서 v1.0"
-        doc_subtitle = "자율 기계를 위한 보편적 금융 및 인지 운영체제 - 탈중앙화 초지능을 구축하는 기반"
+        doc_title = "HAICHAIN: AI² 공생 초지능 시대를 위한 경제적 기반"
+        doc_subtitle = "수십억 개의 AI 에이전트와 자율 로봇이 자유롭게 작업하고 거래하며 인간의 실제 지능과 융합하여 부를 공동 창출하도록 지원합니다. 창출된 모든 부와 주권적 소유권은 영원히 인류에게 귀속됩니다. 오늘날 자율 기계 시대를 위한 금융 운영체제이자, 내일의 AI² 공생 초지능 시대를 위한 경제적 기반입니다."
         doc_edition = "공식 기술 백서 v1.0 • 국제 기관 표준 에디션"
-        brand_sub_text = "자율 기계를 위한 보편적 금융 및 인지 운영체제"
-        running_header_left = "HAICHAIN 백서 v1.0"
+        brand_sub_text = "자율 기계 시대를 위한 금융 운영체제"
+        running_header_left = "HAICHAIN: AI² 공생 초지능 시대를 위한 경제적 기반"
         running_header_right = "haichain.si"
         running_footer_left = "기밀 및 독점 정보 • HAICHAIN 글로벌 시스템 태스크포스"
-        tag_text = "탈중앙화 초지능 운영체제 (ASI)"
+        tag_text = "자율 기계 시대를 위한 금융 운영체제"
         lbl_settlement = "주요 정산 자산"
         val_settlement = "USDT (Solana SPL)"
         lbl_token = "네트워크 가스 및 거버넌스"
@@ -249,14 +249,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "암호학적 형식 검증"
         val_security = "수학적 형식 검증 • 제로 그리핑 표준"
     elif lang == "es":
-        doc_title = "LIBRO BLANCO OFICIAL DE HAICHAIN v1.0"
-        doc_subtitle = "Sistema Operativo Financiero y Cognitivo Universal para Máquinas Autónomas - La Base para la Superinteligencia Descentralizada"
+        doc_title = "HAICHAIN: La Base Económica para la Era de la Superinteligencia Simbiótica AI²"
+        doc_subtitle = "Permitiendo a miles de millones de Agentes de IA y Robots Autónomos trabajar, realizar transacciones y unirse libremente con la inteligencia del mundo real humano para co-crear riqueza, garantizando que toda la riqueza y la soberanía pertenezcan para siempre a la humanidad. El sistema operativo financiero para la era de las máquinas autónomas hoy; la base económica para la era de la superinteligencia simbiótica AI² mañana."
         doc_edition = "Libro Blanco Oficial v1.0 • Edición Estándar Institucional"
-        brand_sub_text = "Sistema Operativo Financiero y Cognitivo Universal para Máquinas Autónomas"
-        running_header_left = "LIBRO BLANCO HAICHAIN v1.0"
+        brand_sub_text = "Sistema Operativo Financiero para la Era de las Máquinas Autónomas"
+        running_header_left = "HAICHAIN: La Base Económica para la Era AI²"
         running_header_right = "haichain.si"
         running_footer_left = "CONFIDENCIAL Y PROPIETARIO • GRUPO DE TRABAJO GLOBAL DE SISTEMAS HAICHAIN"
-        tag_text = "SISTEMA OPERATIVO DE SUPERINTELIGENCIA DESCENTRALIZADA"
+        tag_text = "SISTEMA OPERATIVO FINANCIERO PARA LA ERA DE LAS MÁQUINAS AUTÓNOMAS"
         lbl_settlement = "Activo Principal de Liquidación"
         val_settlement = "USDT (Tether USD SPL)"
         lbl_token = "Gas y Gobernanza Soberana"
@@ -266,14 +266,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Verificación Criptográfica Formal"
         val_security = "Verificación Matemática • Estándar Zero-Griefing"
     elif lang == "fr":
-        doc_title = "LIVRE BLANC OFFICIEL HAICHAIN v1.0"
-        doc_subtitle = "Système d'Exploitation Financier et Cognitif Universel pour Machines Autonomes - Le Socle de la Superintelligence Décentralisée"
+        doc_title = "HAICHAIN: Le Socle Économique pour l'Ère de la Superintelligence Symbiotique AI²"
+        doc_subtitle = "Permettre à des milliards d'Agents IA et de Robots Autonomes d'opérer, de transiger et de fusionner librement avec l'intelligence humaine réelle pour co-créer la richesse, garantissant que toute la richesse et la souveraineté appartiennent à jamais à l'humanité. Le système d'exploitation financier pour l'ère des machines autonomes aujourd'hui ; le socle économique pour l'ère de la superintelligence symbiotique AI² demain."
         doc_edition = "Livre Blanc Officiel v1.0 • Édition Standard Institutionnelle"
-        brand_sub_text = "Système d'Exploitation Financier et Cognitif Universel pour Machines Autonomes"
-        running_header_left = "LIVRE BLANC HAICHAIN v1.0"
+        brand_sub_text = "Système d'Exploitation Financier pour l'Ère des Machines Autonomes"
+        running_header_left = "HAICHAIN: Le Socle Économique pour l'Ère AI²"
         running_header_right = "haichain.si"
         running_footer_left = "CONFIDENTIEL ET PROPRIÉTAIRE • GROUPE DE TRAVAIL SYSTÈMES MONDIAUX HAICHAIN"
-        tag_text = "SYSTÈME D'EXPLOITATION DE SUPERINTELLIGENCE DÉCENTRALISÉE"
+        tag_text = "SYSTÈME D'EXPLOITATION FINANCIER POUR L'ÈRE DES MACHINES AUTONOMES"
         lbl_settlement = "Actif de Règlement Principal"
         val_settlement = "USDT (Tether USD SPL)"
         lbl_token = "Gas et Gouvernance Souveraine"
@@ -283,14 +283,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Vérification Cryptographique Formelle"
         val_security = "Vérification Mathématique • Norme Zero-Griefing"
     elif lang == "ru":
-        doc_title = "ОФИЦИАЛЬНЫЙ ТЕХНИЧЕСКИЙ WHITE PAPER HAICHAIN v1.0"
-        doc_subtitle = "Универсальная финансовая и когнитивная операционная система для автономных машин - Фундамент децентрализованного сверхразума"
+        doc_title = "HAICHAIN: Экономический фундамент для эпохи симбиотического сверхразума AI²"
+        doc_subtitle = "Предоставление миллиардам ИИ-агентов и автономных роботов возможности свободно вычислять, совершать транзакции и объединяться с реальным интеллектом человека для совместного создания богатства — гарантируя, что все созданные блага и суверенное владение навсегда остаются за человечеством. Финансовая операционная система для эпохи автономных машин сегодня; экономический фундамент для эпохи симбиотического сверхразума AI² завтра."
         doc_edition = "Официальный White Paper v1.0 • Международное институциональное издание"
-        brand_sub_text = "Универсальная финансовая и когнитивная операционная система для автономных машин"
-        running_header_left = "HAICHAIN WHITE PAPER v1.0"
+        brand_sub_text = "Финансовая операционная система для эпохи автономных машин"
+        running_header_left = "HAICHAIN: Экономический фундамент для эпохи AI²"
         running_header_right = "haichain.si"
         running_footer_left = "КОНФИДЕНЦИАЛЬНО И ДСП • ГЛОБАЛЬНАЯ РАБОЧАЯ ГРУППА HAICHAIN"
-        tag_text = "ОПЕРАЦИОННАЯ СИСТЕМА ДЕЦЕНТРАЛИЗОВАННОГО СВЕРХРАЗУМА (ASI)"
+        tag_text = "ФИНАНСОВАЯ ОПЕРАЦИОННАЯ СИСТЕМА ДЛЯ ЭПОХИ АВТОНОМНЫХ МАШИН"
         lbl_settlement = "Основной расчетный актив"
         val_settlement = "USDT (Solana SPL токен)"
         lbl_token = "Сетевой Gas и суверенное управление"
@@ -300,14 +300,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Криптографическая верификация"
         val_security = "Формальная математическая верификация • Стандарт Zero-Griefing"
     elif lang == "kk":
-        doc_title = "HAICHAIN РЕСМИ ТЕХНИКАЛЫҚ АҚ ҚАҒАЗЫ v1.0"
-        doc_subtitle = "Автономды машиналарға арналған әмбебап қаржылық және когнитивтік операциялық жүйе - Орталықсыздандырылған асқан интеллекттің іргетасы"
+        doc_title = "HAICHAIN: AI² симбиотикалық асқан интеллект дәуіріне арналған экономикалық іргетас"
+        doc_subtitle = "Миллиардтаған AI агенттері мен автономды роботтарға еркін жұмыс істеуге, транзакциялар жасауға және адамның нақты интеллектімен бірігіп байлық жасауға мүмкіндік береді — барлық жасалған игілік пен егемендік мәңгілікке адамзатқа тиесілі болады. Бүгінгі автономды машиналар дәуіріне арналған қаржылық операциялық жүйе; ертеңгі AI² симбиотикалық асқан интеллект дәуірінің экономикалық іргетасы."
         doc_edition = "Ресми Ақ Қағаз v1.0 • Халықаралық институционалдық басылым"
-        brand_sub_text = "Автономды машиналарға арналған әмбебап қаржылық және когнитивтік операциялық жүйе"
-        running_header_left = "HAICHAIN АҚ ҚАҒАЗЫ v1.0"
+        brand_sub_text = "Автономды машиналар дәуіріне арналған қаржылық операциялық жүйе"
+        running_header_left = "HAICHAIN: AI² дәуіріне арналған экономикалық іргетас"
         running_header_right = "haichain.si"
         running_footer_left = "ҚҰПИЯ ЖӘНЕ ЖЕКЕ МЕНШІК • HAICHAIN ЖАҺАНДЫҚ ЖҮЙЕЛЕР ТОБЫ"
-        tag_text = "ОРТАЛЫҚСЫЗДАНДЫРЫЛҒАН АСҚАН ИНТЕЛЛЕКТ ОПЕРАЦИЯЛЫҚ ЖҮЙЕСІ (ASI)"
+        tag_text = "АВТОНОМДЫ МАШИНАЛАР ДӘУІРІНЕ АРНАЛҒАН ҚАРЖЫЛЫҚ ОПЕРАЦИЯЛЫҚ ЖҮЙЕ"
         lbl_settlement = "Негізгі есеп айырысу активі"
         val_settlement = "USDT (Solana SPL токені)"
         lbl_token = "Желілік Gas және егемен басқару"
@@ -317,14 +317,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "Криптографиялық формалды верификация"
         val_security = "Математикалық формалды тексеру • Zero-Griefing стандарты"
     elif lang == "hi":
-        doc_title = "HAICHAIN आधिकारिक तकनीकी श्वेतपत्र v1.0"
-        doc_subtitle = "स्वायत्त मशीनों के लिए सार्वभौमिक वित्तीय और संज्ञानात्मक ऑपरेटिंग सिस्टम - विकेंद्रीकृत सुपरइंटेलिजेंस का आधार"
+        doc_title = "HAICHAIN: AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार"
+        doc_subtitle = "अरबों एआई एजेंटों और स्वायत्त रोबोटों को स्वतंत्र रूप से कार्य करने, लेनदेन करने और वास्तविक मानव बुद्धि के साथ मिलकर समृद्धि का निर्माण करने में सक्षम बनाना—यह सुनिश्चित करते हुए कि सारा सृजित धन और संप्रभु स्वामित्व हमेशा मानवता के पास रहे। आज स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम; कल AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार।"
         doc_edition = "आधिकारिक श्वेतपत्र v1.0 • अंतर्राष्ट्रीय संस्थागत मानक संस्करण"
-        brand_sub_text = "स्वायत्त मशीनों के लिए सार्वभौमिक वित्तीय और संज्ञानात्मक ऑपरेटिंग सिस्टम"
-        running_header_left = "HAICHAIN श्वेतपत्र v1.0"
+        brand_sub_text = "स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम"
+        running_header_left = "HAICHAIN: AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार"
         running_header_right = "haichain.si"
         running_footer_left = "गोपनीय एवं स्वामित्व • HAICHAIN ग्लोबल सिस्टम्स टास्कफोर्स"
-        tag_text = "विकेंद्रीकृत सुपरइंटेलिजेंस ऑपरेटिंग सिस्टम (ASI)"
+        tag_text = "स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम"
         lbl_settlement = "प्राथमिक निपटान संपत्ति"
         val_settlement = "USDT (Solana SPL)"
         lbl_token = "नेटवर्क गैस और संप्रभु शासन"
@@ -334,14 +334,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "क्रिप्टोग्राफिक औपचारिक सत्यापन"
         val_security = "गणितीय औपचारिक सत्यापन • जीरो-ग्रीफिंग मानक"
     elif lang == "he":
-        doc_title = "HAICHAIN נייר עמדה רשמי v1.0"
-        doc_subtitle = "מערכת הפעלה פיננסית וקוגניטיבית אוניברסלית למכונות אוטונומיות - הבסיס לבינה-על מבוזרת"
+        doc_title = "HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²"
+        doc_subtitle = "הענקת כוח למיליארדי סוכני AI ורובוטים אוטונומיים לחשב, לסחור ולהתמזג בחופשיות עם הבינה האנושית בעולם האמיתי כדי לייצר שפע משותף — תוך הבטחה שכל העושר והבעלות הריבונית יישארו לנצח בידי האנושות. מערכת ההפעלה הפיננסית לעידן המכונות האוטונומיות כיום; התשתית הכלכלית לעידן בינת-העל הסימביוטית AI² מחר."
         doc_edition = "נייר עמדה רשמי v1.0 • מהדורה מוסדית בינלאומית"
-        brand_sub_text = "מערכת הפעלה פיננסית וקוגניטיבית אוניברסלית למכונות אוטונומיות"
-        running_header_left = "HAICHAIN נייר עמדה v1.0"
+        brand_sub_text = "מערכת הפעלה פיננסית לעידן המכונות האוטונומיות"
+        running_header_left = "HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²"
         running_header_right = "haichain.si"
         running_footer_left = "סודי ובלעדי • כוח המשימה העולמי של מערכות HAICHAIN"
-        tag_text = "מערכת הפעלה לבינה-על מבוזרת (ASI)"
+        tag_text = "מערכת הפעלה פיננסית לעידן המכונות האוטונומיות"
         lbl_settlement = "נכס סליקה ראשי"
         val_settlement = "USDT (Solana SPL)"
         lbl_token = "גז רשת וממשל ריבוני"
@@ -351,14 +351,14 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         lbl_security = "אימות קריפטוגרפי פורמלי"
         val_security = "אימות מתמטי • תקן אפס-הטרדה (Zero-Griefing)"
     else:
-        doc_title = "SÁCH TRẮNG CHÍNH THỨC HAICHAIN v1.0"
-        doc_subtitle = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành - Nền Tảng Kiến Tạo Siêu Trí Tuệ Phi Tập Trung"
+        doc_title = "HAICHAIN: Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²"
+        doc_subtitle = "Giúp hàng tỷ tác nhân AI Agent, Robot AI tự do làm việc, giao dịch và hợp nhất với trí tuệ thực tế của con người để cùng tạo ra của cải, toàn bộ của cải và quyền làm chủ mãi mãi thuộc về con người. Hệ điều hành tài chính cho kỷ nguyên máy tự trị hôm nay. Nền tảng kinh tế cho kỷ nguyên siêu trí tuệ cộng sinh AI² ngày mai."
         doc_edition = "Sách Trắng v1.0 • Phiên Bản Tiêu Chuẩn Thể Chế Quốc Tế"
-        brand_sub_text = "Hệ Điều Hành Tài Chính & Nhận Thức Phổ Quát Dành Cho Máy Móc Tự Hành"
-        running_header_left = "SÁCH TRẮNG HAICHAIN v1.0"
+        brand_sub_text = "Hệ Điều Hành Tài Chính Cho Kỷ Nguyên Máy Tự Trị"
+        running_header_left = "HAICHAIN: Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²"
         running_header_right = "haichain.si"
         running_footer_left = "BẢO LƯU MỌI QUYỀN • HỘI ĐỒNG KIẾN TRÚC HỆ THỐNG PHÂN TÁN HAICHAIN"
-        tag_text = "HỆ ĐIỀU HÀNH SIÊU TRÍ TUỆ PHI TẬP TRUNG"
+        tag_text = "HỆ ĐIỀU HÀNH TÀI CHÍNH CHO KỶ NGUYÊN MÁY TỰ TRỊ"
         lbl_settlement = "Tài Sản Quyết Toán Chính"
         val_settlement = "USDT (Tether USD SPL)"
         lbl_token = "Gas Chủ Quyền & Quản Trị"
@@ -367,7 +367,6 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_domain = "haichain.si (Superintelligence)"
         lbl_security = "Tiêu Chuẩn Xác Thực An Toàn"
         val_security = "Xác Thực Toán Học • Chuẩn Zero-Griefing"
-
     if lang == "he":
         body_font_size = "11.2pt"
         body_line_height = "1.90"
@@ -467,27 +466,27 @@ hr {{
     justify-content: space-between;
     background-color: #050505;
     color: #ffffff;
-    padding: 75px 60px;
+    padding: 65px 55px;
     box-sizing: border-box;
     border: none !important;
 }}
 
 .cover-header {{
     border: none !important;
-    padding-bottom: 24px;
+    padding-bottom: 16px;
 }}
 
 .cover-logo-img {{
-    height: 38px;
+    height: 36px;
     width: auto;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     border: none !important;
 }}
 
 .cover-brand-sub {{
-    font-size: 8.5pt;
-    letter-spacing: 2px;
+    font-size: 8pt;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: #a1a1aa;
     margin-top: 4px;
@@ -504,31 +503,31 @@ hr {{
     display: inline-block;
     border: none !important;
     color: #d4d4d8;
-    font-size: 7.8pt;
+    font-size: 8pt;
     font-weight: 700;
     padding: 0;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }}
 
 .cover-title {{
-    font-size: 26pt;
+    font-size: 21pt;
     font-weight: 800;
-    line-height: 1.22;
+    line-height: 1.25;
     color: #ffffff;
-    margin: 0 0 16px 0;
-    letter-spacing: -0.5px;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.4px;
     border: none !important;
 }}
 
 .cover-subtitle {{
-    font-size: 12.5pt;
+    font-size: 10.2pt;
     font-weight: 400;
-    line-height: 1.55;
+    line-height: 1.58;
     color: #a1a1aa;
-    margin: 0 0 32px 0;
-    max-width: 92%;
+    margin: 0 0 24px 0;
+    max-width: 95%;
     border: none !important;
 }}
 
@@ -966,3 +965,6 @@ if __name__ == "__main__":
     build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_ES.md", "HAICHAIN_WHITEPAPER_V1.0_ES.pdf", lang="es")
     build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_FR.md", "HAICHAIN_WHITEPAPER_V1.0_FR.pdf", lang="fr")
     build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_RU.md", "HAICHAIN_WHITEPAPER_V1.0_RU.pdf", lang="ru")
+    build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_KK.md", "HAICHAIN_WHITEPAPER_V1.0_KK.pdf", lang="kk")
+    build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_HI.md", "HAICHAIN_WHITEPAPER_V1.0_HI.pdf", lang="hi")
+    build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_HE.md", "HAICHAIN_WHITEPAPER_V1.0_HE.pdf", lang="he")

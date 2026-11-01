@@ -1,4 +1,4 @@
-# HAICHAIN: מערכת הפעלה פיננסית וקוגניטיבית אוניברסלית למכונות אוטונומיות - הבסיס לבינה-על מבוזרת
+# HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²
 ## נייר עמדה רשמי v1.0 - ארכיטקטורה, אינווריאנטים קריפטוגרפיים ושלב הסיום של בינה-על ריבונית L1
 **תוכנן על ידי:** כוח המשימה העולמי למערכות HAICHAIN וקבוצת העבודה לארכיטקטורת ליבה קריפטוגרפית  
 **תאריך פרסום:** 1 בנובמבר 2026 (מהדורה מוסדית בינלאומית)  
@@ -143,7 +143,9 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = 	ext{ARTIFICIAL INTELLIGENCE} 	imes 	ex
 
 נגדיר את פונקציית התועלת הכוללת של המערכת:
 
-$$U_{AI^2} = \max_{\mathbf{a} \in \mathcal{A}} \left[ \mathbb{E}_{\mathcal{H}} \left( \Phi(\mathbf{a}) ight) + \lambda \cdot \Psi_{\mathcal{M}}(\mathbf{a}) - \mathcal{R}(\mathbf{a}) ight]$$
+$$U_{AI^2} = \max_{\mathbf{a} \in \mathcal{A}} \left[ \mathbb{E}_{\mathcal{H}} \left( \Phi(\mathbf{a}) 
+ight) + \lambda \cdot \Psi_{\mathcal{M}}(\mathbf{a}) - \mathcal{R}(\mathbf{a}) 
+ight]$$
 
 כאשר:
 - $\Phi(\mathbf{a})$ מייצג את וקטור המטרות והערכים האקסיומטיים הנקבעים על ידי הריבון האנושי $\mathcal{H}$.
@@ -153,7 +155,8 @@ $$U_{AI^2} = \max_{\mathbf{a} \in \mathcal{A}} \left[ \mathbb{E}_{\mathcal{H}} \
 
 **מסקנה 2.1 (ריבונות ללא ערעור):** לכל פעולה $\mathbf{a}^*$ הנבחרת על ידי נחיל המכונות מתקיים:
 
-$$\lim_{t 	o \infty} P\left( \mathcal{R}(\mathbf{a}^*) > \mathcal{B}_{cap} ight) = 0$$
+$$\lim_{t 	o \infty} P\left( \mathcal{R}(\mathbf{a}^*) > \mathcal{B}_{cap} 
+ight) = 0$$
 
 כאשר $\mathcal{B}_{cap}$ היא תקרת התקציב הדטרמיניסטית שנקבעה על ידי המשתמש. חריגה מתקציב זה בלתי אפשרית ברמת המכונה הווירטואלית של הבלוקצ'יין.
 
@@ -469,12 +472,14 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
 
 #### 2. אינווריאנט נעילת גיבוב Commit-Reveal:
 * בבלוק הראשון ($Slot_N$), הסוכן שולח התחייבות עיוורת:
-  $$\mathcal{H}_{	ext{commit}} = 	ext{BLAKE3}\left(	ext{Tx}_{	ext{payload}} \parallel 	ext{salt} \parallel k_{	ext{eph}}ight)$$
+  $$\mathcal{H}_{	ext{commit}} = 	ext{BLAKE3}\left(	ext{Tx}_{	ext{payload}} \parallel 	ext{salt} \parallel k_{	ext{eph}}
+ight)$$
 * בבלוק הבא ($Slot_{N+1}$), נחשף המפתח הארעי $k_{	ext{eph}}$. מנוע הליבה מאמת את ההתאמה ומבצע את העסקה באופן חסין-חזיתית (Anti-Frontrunning).
 
 #### 3. אינווריאנט קנסות דינמי מותאם תנודתיות:
 אם ולידטור או ממסר מעכבים את שלב החשיפה כדי לנצל שינויי מחיר, מופעל קנס חיתוך מיידי:
-$$\mathcal{S}_{	ext{slash}} = \mathcal{B}_{	ext{stake}} \cdot \min\left(1.0, \; \gamma \cdot rac{|\Delta P|}{P_0} + lpha \cdot \Delta tight)$$
+$$\mathcal{S}_{	ext{slash}} = \mathcal{B}_{	ext{stake}} \cdot \min\left(1.0, \; \gamma \cdot rac{|\Delta P|}{P_0} + lpha \cdot \Delta t
+ight)$$
 
 ### 5.3. שרשור בלוקי עסקאות ניתנים לתכנות (PTB Chaining) על גבי SVM
 מערכת HAICHAIN משתמשת בהרכבה אטומית של הוראות מרובות בטרנזקציה בודדת:
@@ -912,7 +917,8 @@ OP_402_PAY  r1, r2, r3  ; r1: כתובת סוכן היעד, r2: סכום ב-USDT
 ### משפט 1: שימור בטחונות הכספת (אינווריאנט אי-אינפלציוני)
 **ניסוח המשפט:** לכל מצב מערכת בזמן $t$, סך כל הנכסים המופקדים בחשבונות הנאמנות של HAICHAIN שווה בדיוק לסכום היתרות הנעולות, הכספים שסולקו ועודפי הכספים שהוחזרו לצרכנים, ללא שום אפשרות ליצירת יתרות פיקטיביות.
 
-$$orall t \ge 0, \quad \mathcal{V}_{	ext{total}}(t) = \sum_{k \in \mathcal{K}} \left( \mathcal{C}_{	ext{locked}}^{(k)}(t) + \mathcal{S}_{	ext{settled}}^{(k)}(t) + \mathcal{R}_{	ext{refunded}}^{(k)}(t) ight)$$
+$$orall t \ge 0, \quad \mathcal{V}_{	ext{total}}(t) = \sum_{k \in \mathcal{K}} \left( \mathcal{C}_{	ext{locked}}^{(k)}(t) + \mathcal{S}_{	ext{settled}}^{(k)}(t) + \mathcal{R}_{	ext{refunded}}^{(k)}(t) 
+ight)$$
 
 **הוכחה (Proof):**
 במסגרת Anchor Rust של תוכנית v6.9.3, כל עדכון יתרה מתבצע באמצעות הוראת `checked_add` ו-`checked_sub` המוגנות מפני גלישת מספרים (Overflow/Underflow). כניסה של כספים מותנית בהעברה אטומית מחשבון ה-ATA של הצרכן ל-PDA של הנאמנות. שחרור כספים מתאפשר אך ורק באמצעות חתימה תקפה של הריבון או הוכחת ביצוע מאומתת קריפטוגרפית. מכיוון שסכום השינויים בכל עסקה $\Delta \mathcal{V} = 0$, האינווריאנט נשמר לכל $t$. $lacksquare$

@@ -1,4 +1,4 @@
-# HAICHAIN: SISTEMA OPERATIVO COGNITIVO Y FINANCIERO UNIVERSAL PARA MÁQUINAS AUTÓNOMAS - EL CIMIENTO DE LA SUPERINTELIGENCIA DESCENTRALIZADA
+# HAICHAIN: La Base Económica para la Era de la Superinteligencia Simbiótica AI²
 ## Libro Blanco Técnico Oficial v1.0 - Arquitectura, Invariantes Criptográficos y el Fin de Juego de la Superinteligencia AI L1 Soberana
 **Diseñado por:** El Grupo de Trabajo de Sistemas Globales de HAICHAIN & Comité de Arquitectura del Núcleo Criptográfico  
 **Fecha de Publicación:** 31 de octubre de 2026 (Edición Estándar Institucional)  
@@ -463,7 +463,8 @@ Incluso si una transacción se transmite a través de canales públicos, el MEV 
 Una vulnerabilidad clásica de los esquemas de Compromiso-Revelación es el **Abandono Especulativo (Last-Look Griefing)**: un agente malicioso se compromete en el slot 0, observa los movimientos de precios durante 4 slots y, si el mercado se mueve en su contra, se niega deliberadamente a revelar, perdiendo una tarifa nominal para evitar una pérdida de mercado sustancial.
 
 Haichain cierra definitivamente esta vulnerabilidad aplicando el **Invariante de Penalización Indexado a la Volatilidad**:
-$$	ext{Penalización de Slashing} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	imes rac{|\Delta P_{4	ext{ slots}}|}{P_0} 	imes \gammaight) \quad (	ext{donde } \gamma = 1.5)$$
+$$	ext{Penalización de Slashing} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	imes rac{|\Delta P_{4	ext{ slots}}|}{P_0} 	imes \gamma
+ight) \quad (	ext{donde } \gamma = 1.5)$$
 
 * **Eliminación por Teoría de Juegos:** Si un activo fluctúa un $2.0\%$ en contra del agente durante la ventana de 4 slots, negarse a revelar activa una penalización inmediata en cadena de:
   $$	ext{Penalización} = 	ext{OrderValue} 	imes 2.0\% 	imes 1.5 = 3.0\% 	ext{ del Valor de la Orden}$$
@@ -497,8 +498,11 @@ Para superar la restricción de pre-declaración de cuentas de las transacciones
 ### 5.7. Perro Guardián Sentinel de IA Autónoma: Detección de Anomalías Sub-10ms y Congelación Suave
 Reconociendo que **el tiempo de reacción neuro-biológica humana (200ms - 30s) se ve ampliamente superado por la ejecución autónoma de las máquinas**, Haichain complementa la retracción manual con el **Perro Guardián Sentinel de IA Autónoma**, incrustado directamente en el borde de la pasarela:
 
-$$	ext{Condición de Disparo: } \left( rac{\Delta 	ext{Llamadas}}{\Delta t} > \Theta_{	ext{tasa}} ight) \lor \left( 	ext{Similitud}(	ext{Token}_t, 	ext{Token}_{t-k}) > \Theta_{	ext{bucle}} ight) \lor \left( 	ext{Destino} 
-otin \mathcal{W}_{	ext{whitelist}} ight)$$
+$$	ext{Condición de Disparo: } \left( rac{\Delta 	ext{Llamadas}}{\Delta t} > \Theta_{	ext{tasa}} 
+ight) \lor \left( 	ext{Similitud}(	ext{Token}_t, 	ext{Token}_{t-k}) > \Theta_{	ext{bucle}} 
+ight) \lor \left( 	ext{Destino} 
+otin \mathcal{W}_{	ext{whitelist}} 
+ight)$$
 
 ```
           ARQUITECTURA DEL GUARDÍAN SENTINEL DE IA (< 10ms)
@@ -880,7 +884,8 @@ El 100% del margen de red y tarifas de compensación se recauda en **USDT puro**
 #### Cuota Elástica de Energía (E-AEQ) y Disyuntor de Congestión Anti-Insolvencia
 Para prevenir la **Trampa de Insolvencia por Gas Subvencionado** - donde picos de tarifas prioritarias en Solana durante euforias de memecoins agotan las reservas de la Tesorería - Haichain aplica el **Multiplicador Dinámico de Energía Elástica**:
 
-$$	ext{Multiplicador de Consumo } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{prioridad}} - P_{	ext{base}}}{P_{	ext{base}}}ight)$$
+$$	ext{Multiplicador de Consumo } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{prioridad}} - P_{	ext{base}}}{P_{	ext{base}}}
+ight)$$
 
 ```
            PIPELINE DE DISYUNTOR DE CONGESTIÓN ANTI-INSOLVENCIA

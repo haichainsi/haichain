@@ -1,4 +1,4 @@
-# HAICHAIN: 自主机器通用财务与认知操作系统 - 去中心化超级智能的基石
+# HAICHAIN: AI² 共生超级智能时代的基石经济网络
 ## 官方技术白皮书 v1.0 - 核心架构、密码学不变量与主权 AI L1 超级智能终局
 **架构制定机构:** HAICHAIN 全球系统特别工作组 & 密码学核心架构工作委员会  
 **发布日期:** 2026年10月31日 (国际机构标准版)  
@@ -461,7 +461,8 @@ HAICHAIN 严格确立并贯彻 **"妈妈测试公理" (The Mom-Test Axiom)**: *�
 传统提交-揭示方案的一个经典博弈漏洞是 **"免费期权恶意反悔 (Last-Look Griefing)"**: 攻击者在 Slot 0 发起提交，在接下来的 4 个槽位内密切观察二级市场价格变动；若市场波动对自己不利，便故意不发送 Reveal 交易，宁愿损失微小的基础押金以规避巨大的市场亏损。
 
 HAICHAIN 引入了 **波动率指数动态惩罚不变量**，彻底封死了这一投机套利空间:
-$$	ext{罚没金额 (Slashing Penalty)} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	imes rac{|\Delta P_{4	ext{ slots}}|}{P_0} 	imes \gammaight) \quad (	ext{其中 } \gamma = 1.5)$$
+$$	ext{罚没金额 (Slashing Penalty)} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	imes rac{|\Delta P_{4	ext{ slots}}|}{P_0} 	imes \gamma
+ight) \quad (	ext{其中 } \gamma = 1.5)$$
 
 * **数学博弈论层面的降维打击:** 若某标的资产在 4 个槽位内向不利于提交者的方向跳变了 $2.0\%$，拒绝履行揭示将引发链上强制执行惩罚:
   $$	ext{罚没金额} = 	ext{OrderValue} 	imes 2.0\% 	imes 1.5 = 3.0\% 	ext{ 的订单总额}$$
@@ -495,8 +496,11 @@ $$	ext{罚没金额 (Slashing Penalty)} = \max\left(	ext{BaseFee}, \quad 	ext{Or
 ### 5.7. 自主 AI 哨兵监控程序: 毫秒级异常检测与软冻结熔断
 鉴于**人类大脑的生物反应时间 (200 毫秒至 30 秒) 远远落后于机器毫秒级的高频运转**，HAICHAIN 在网关边界嵌入了 **自主 AI 哨兵监控程序 (Autonomous AI Sentinel Watchdog)**，实现全天候物理防护:
 
-$$	ext{触发条件: } \left( rac{\Delta 	ext{调用次数}}{\Delta t} > \Theta_{	ext{速率}} ight) \lor \left( 	ext{余弦相似度}(	ext{Token}_t, 	ext{Token}_{t-k}) > \Theta_{	ext{死循环}} ight) \lor \left( 	ext{资金目标地址} 
-otin \mathcal{W}_{	ext{白名单}} ight)$$
+$$	ext{触发条件: } \left( rac{\Delta 	ext{调用次数}}{\Delta t} > \Theta_{	ext{速率}} 
+ight) \lor \left( 	ext{余弦相似度}(	ext{Token}_t, 	ext{Token}_{t-k}) > \Theta_{	ext{死循环}} 
+ight) \lor \left( 	ext{资金目标地址} 
+otin \mathcal{W}_{	ext{白名单}} 
+ight)$$
 
 ```
           自主 AI 哨兵监控程序边缘防护流水线 (< 10ms)
@@ -878,7 +882,8 @@ $$	ext{每日交易限额} = k \cdot \sqrt{	ext{质押的 } \$HAISI 	imes 	ext{�
 #### 弹性算力配额 (E-AEQ) 与抗破产网络拥堵熔断器
 为杜绝 **补贴 Gas 导致协议破产的陷阱** - 即在 Meme 币狂热期间 Solana 网络优先费暴涨 50 倍，导致协议为高频智能体代付 Gas 而迅速烧干国库资产 - HAICHAIN 强制执行 **动态弹性算力乘数**:
 
-$$	ext{能耗系数乘数 } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}ight)$$
+$$	ext{能耗系数乘数 } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}
+ight)$$
 
 ```
            抗破产网络拥堵分流与防护机制

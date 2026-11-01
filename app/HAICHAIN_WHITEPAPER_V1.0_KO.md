@@ -1,4 +1,4 @@
-# HAICHAIN: 자율 기계를 위한 보편적 금융 및 인지 운영체제 - 탈중앙화 초지능 구축의 기반
+# HAICHAIN: AI² 공생 초지능 시대를 위한 경제적 기반
 ## 공식 기술 백서 v1.0 - 핵심 아키텍처, 암호학적 불변성 및 주권 AI L1 초지능 엔드게임
 **아키텍처 제정 기관:** HAICHAIN 글로벌 시스템 태스크포스 & 암호학 핵심 아키텍처 실무위원회  
 **발행일:** 2026년 10월 31일 (국제 기관 표준 에디션)  
@@ -461,7 +461,8 @@ HAICHAIN은 **"엄마 테스트 공리" (The Mom-Test Axiom)**를 엄격히 공�
 2단계 커밋-공개 방식의 전형적인 취약점은 **"무료 옵션성 악의적 포기 (Last-Look Griefing)"**입니다: 악의적인 에이전트가 슬롯 0에서 트랜잭션을 커밋한 후 4슬롯 동안 2차 시장 가격을 관찰하다가 시장 변동이 불리하면 공개 트랜잭션을 의도적으로 거부하여 막대한 시장 손실을 피하는 행위입니다.
 
 HAICHAIN은 **변동성 연계 슬래싱 불변성**을 통해 이 허점을 영구적으로 차단합니다:
-$$	ext{슬래싱 페널티} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	imes rac{|\Delta P_{4	ext{ slots}}|}{P_0} 	imes \gammaight) \quad (	ext{여기서 } \gamma = 1.5)$$
+$$	ext{슬래싱 페널티} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	imes rac{|\Delta P_{4	ext{ slots}}|}{P_0} 	imes \gamma
+ight) \quad (	ext{여기서 } \gamma = 1.5)$$
 
 * **게임 이론적 근본적 차단:** 자산 가격이 4슬롯 동안 커밋터에게 $2.0\%$ 불리하게 변동할 경우, 공개를 거부하면 즉각적인 온체인 슬래싱 페널티가 발생합니다:
   $$	ext{페널티} = 	ext{OrderValue} 	imes 2.0\% 	imes 1.5 = 	ext{주문 금액의 } 3.0\%$$
@@ -495,8 +496,11 @@ $$	ext{슬래싱 페널티} = \max\left(	ext{BaseFee}, \quad 	ext{OrderValue} 	i
 ### 5.7. 자율 AI 센티널 감시 프로그램: 밀리초 단위 이상 감지 및 소프트 프리즈
 **인간의 생물학적 반응 시간(200ms - 30초)이 기계의 밀리초 미만 자율 실행 속도에 비해 극도로 뒤처진다**는 점을 인식하여 HAICHAIN은 게이트웨이 에지에 직접 임베딩된 **자율 AI 센티널 감시 프로그램 (Autonomous AI Sentinel Watchdog)**을 배포합니다:
 
-$$	ext{트리거 조건: } \left( rac{\Delta 	ext{호출수}}{\Delta t} > \Theta_{	ext{속도}} ight) \lor \left( 	ext{유사도}(	ext{Token}_t, 	ext{Token}_{t-k}) > \Theta_{	ext{루프}} ight) \lor \left( 	ext{목적지} 
-otin \mathcal{W}_{	ext{화이트리스트}} ight)$$
+$$	ext{트리거 조건: } \left( rac{\Delta 	ext{호출수}}{\Delta t} > \Theta_{	ext{속도}} 
+ight) \lor \left( 	ext{유사도}(	ext{Token}_t, 	ext{Token}_{t-k}) > \Theta_{	ext{루프}} 
+ight) \lor \left( 	ext{목적지} 
+otin \mathcal{W}_{	ext{화이트리스트}} 
+ight)$$
 
 ```
           자율 AI 센티널 감시 프로그램 에지 방어 아키텍처 (< 10ms)
@@ -878,7 +882,8 @@ $$	ext{일일 트랜잭션 허용량} = k \cdot \sqrt{	ext{스테이킹된 } \$H
 #### 탄력적 에너지 쿼터 (E-AEQ) 및 파산 방지 혼잡 회로 차단기
 밈코인 열풍 시 Solana 네트워크 우선 수수료 폭등으로 인해 에이전트 트래픽을 보조하는 프로토콜 국고가 고갈되는 **보조 가스 파산 함정**을 방지하기 위해 HAICHAIN은 **동적 탄력적 에너지 승수**를 강제합니다:
 
-$$	ext{에너지 소비 승수 } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}ight)$$
+$$	ext{에너지 소비 승수 } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}
+ight)$$
 
 ```
            파산 방지 혼잡 회로 차단기 파이프라인
