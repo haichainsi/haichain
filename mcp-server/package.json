@@ -1,5 +1,5 @@
 {
-  "name": "@haichain/mcp-server",
+  "name": "@haichainsi/mcp-server",
   "version": "6.2.0",
   "type": "module",
   "description": "HAICHAIN Model Context Protocol (MCP) Server for Autonomous AI Agents",

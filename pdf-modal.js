@@ -134,6 +134,8 @@
           </div>
 
           <!-- PDF Display iframe: Full 100% height, zero margin offset for complete page 1 logo visibility -->
+          <!-- Protective Corner Mask & Blocker: Completely hides and neutralizes any popout/new-tab button -->
+          <div id="pdf-modal-popout-blocker" class="absolute top-0 right-0 w-[72px] h-[58px] z-20 pointer-events-auto bg-white dark:bg-[#0c0c0e] hidden" style="touch-action: none;"></div>
           <iframe id="pdf-modal-iframe" src="" class="w-full h-full flex-1 border-0" allow="fullscreen"></iframe>
         </div>
 
@@ -156,6 +158,12 @@
         window.closePdfViewerModal();
       }
     });
+
+    const blocker = modal.querySelector('#pdf-modal-popout-blocker');
+    if (blocker) {
+      blocker.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); });
+      blocker.addEventListener('touchstart', (e) => { e.preventDefault(); e.stopPropagation(); }, { passive: false });
+    }
 
     const iframe = modal.querySelector('#pdf-modal-iframe');
     const loader = modal.querySelector('#pdf-modal-loader');
@@ -196,15 +204,18 @@
       iframe.style.marginTop = '0px';
       iframe.style.height = '100%';
 
+      const blocker = document.getElementById('pdf-modal-popout-blocker');
       if (isAndroid) {
         // Android Chrome: Route via Google Docs Viewer for flawless CJK typography, touch scrolling, and zero crash
         const origin = window.location.origin || 'https://haichain.si';
         const absolutePdfUrl = cleanPath.startsWith('http') ? cleanPath : origin + cleanPath;
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
+        if (blocker) blocker.classList.remove('hidden');
         iframe.src = 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(absolutePdfUrl);
       } else {
         // Desktop & iOS Safari: High-speed native vector rendering with hidden toolbars
         iframe.removeAttribute('sandbox');
+        if (blocker) blocker.classList.add('hidden');
         iframe.src = cleanPath + '#toolbar=0&navpanes=0&view=FitH';
       }
 
@@ -236,6 +247,10 @@
       const loader = document.getElementById('pdf-modal-loader');
       if (loader) {
         loader.classList.add('opacity-0', 'hidden');
+      }
+      const blocker = document.getElementById('pdf-modal-popout-blocker');
+      if (blocker) {
+        blocker.classList.add('hidden');
       }
     }
     document.body.style.overflow = '';
