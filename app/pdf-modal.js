@@ -4,10 +4,12 @@
  * Clean & Minimalist:
  *  - Title + Close button ONLY (Zero download buttons, zero open in new tab buttons as requested)
  *  - Responsive: Fullscreen on mobile (94vh), max-w-5xl (88vh) on desktop
- *  - Native High-Performance iframe:
- *      * Android: Google Docs Viewer embedded for 100% CJK & Mobile font rendering fidelity
- *      * Desktop / iOS: Native vector engine with #toolbar=0&navpanes=0&view=FitH
- *  - Multilingual Title Detection: en, vi, zh, ko, es, fr, ru
+ *  - Mobile & Android Optimized:
+ *      * Shifted Google Docs Viewer toolbar off-canvas (-54px) to eliminate Google header and popout button
+ *      * Corner shield + sandbox to strictly prohibit opening new tabs or windows
+ *      * 100% CJK & Asian font fidelity with touch scroll
+ *  - Desktop / iOS: Native vector engine with #toolbar=0&navpanes=0&view=FitH
+ *  - Multilingual Title Detection: en, vi, zh, ko, es, fr, ru, kk
  */
 (function () {
   'use strict';
@@ -72,7 +74,7 @@
             </div>
           </div>
 
-          <!-- Close Button ONLY (No download, no open new tab button as requested) -->
+          <!-- Close Button ONLY (Zero download, zero open new tab buttons) -->
           <button id="pdf-modal-close-btn" type="button" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 shrink-0 cursor-pointer" title="Đóng">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
@@ -81,6 +83,8 @@
         <!-- Viewer Body -->
         <div id="pdf-modal-body" class="relative w-full flex-1 bg-neutral-100 dark:bg-neutral-950 flex flex-col overflow-hidden">
           <iframe id="pdf-modal-iframe" src="" class="w-full flex-1 border-0" allow="fullscreen"></iframe>
+          <!-- Protective shield preventing any popout / new tab interaction -->
+          <div id="pdf-modal-popout-shield" class="absolute top-0 right-0 w-24 h-16 z-30 pointer-events-auto bg-transparent hidden" title=""></div>
         </div>
 
       </div>
@@ -110,6 +114,7 @@
     const modal = ensurePdfModal();
     const iframe = document.getElementById('pdf-modal-iframe');
     const titleEl = document.getElementById('pdf-modal-title');
+    const shield = document.getElementById('pdf-modal-popout-shield');
 
     if (titleEl) titleEl.textContent = docTitle || 'HAICHAIN Document';
 
@@ -118,13 +123,27 @@
       const isAndroid = isAndroidDevice();
 
       if (isAndroid) {
-        // On Android Chrome, native iframe to raw PDF is blocked or forces download.
-        // Google Docs Viewer embeds seamlessly with 100% CJK & Asian font fidelity and touch scroll.
+        // On Android Chrome:
+        // Embed Google Docs Viewer with 100% CJK & Asian font fidelity and touch scroll.
+        // Shift iframe up by 54px so Google's top toolbar (and its popout icon) is pushed out of view.
+        // Apply sandbox (without allow-popups) to prevent any new tabs or windows from ever opening.
         const origin = window.location.origin || 'https://haichain.si';
         const absolutePdfUrl = cleanPath.startsWith('http') ? cleanPath : origin + cleanPath;
+        
+        iframe.style.marginTop = '-54px';
+        iframe.style.height = 'calc(100% + 54px)';
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
+        if (shield) shield.classList.remove('hidden');
+
         iframe.src = 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(absolutePdfUrl);
       } else {
         // Desktop & iOS browsers natively support PDF iframes with vector scaling
+        // #toolbar=0&navpanes=0 hides the PDF toolbar (no download, no print, no new tab)
+        iframe.style.marginTop = '0px';
+        iframe.style.height = '100%';
+        iframe.removeAttribute('sandbox');
+        if (shield) shield.classList.add('hidden');
+
         iframe.src = cleanPath + '#toolbar=0&navpanes=0&view=FitH';
       }
     }
@@ -142,7 +161,13 @@
     if (modal) {
       modal.classList.add('hidden');
       const iframe = document.getElementById('pdf-modal-iframe');
-      if (iframe) iframe.src = '';
+      if (iframe) {
+        iframe.src = '';
+        iframe.style.marginTop = '0px';
+        iframe.style.height = '100%';
+      }
+      const shield = document.getElementById('pdf-modal-popout-shield');
+      if (shield) shield.classList.add('hidden');
     }
     document.body.style.overflow = '';
   };
@@ -172,7 +197,7 @@
 
   // Delegated Click Handler for all Whitepaper links across the app
   document.addEventListener('click', function (e) {
-    const trigger = e.target.closest('a[href="/whitepaper"], a[href="/whitepaper/"], a[href="/whitepaper.pdf"], a[href="/whitepaper-en.pdf"], a[href="/whitepaper-vi.pdf"], a[href="/whitepaper-zh.pdf"], a[href="/whitepaper-ko.pdf"], a[href="/whitepaper-es.pdf"], a[href="/whitepaper-fr.pdf"], a[href="/whitepaper-ru.pdf"], a[href="/whitepaper-vi"], a[href="/whitepaper-zh"], a[href="/whitepaper-ko"], a[href="/whitepaper-es"], a[href="/whitepaper-fr"], a[href="/whitepaper-ru"], [data-open-whitepaper], #nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link');
+    const trigger = e.target.closest('a[href="/whitepaper"], a[href="/whitepaper/"], a[href="/whitepaper.pdf"], a[href="/whitepaper-en.pdf"], a[href="/whitepaper-vi.pdf"], a[href="/whitepaper-zh.pdf"], a[href="/whitepaper-ko.pdf"], a[href="/whitepaper-es.pdf"], a[href="/whitepaper-fr.pdf"], a[href="/whitepaper-ru.pdf"], a[href="/whitepaper-kk.pdf"], a[href="/whitepaper-vi"], a[href="/whitepaper-zh"], a[href="/whitepaper-ko"], a[href="/whitepaper-es"], a[href="/whitepaper-fr"], a[href="/whitepaper-ru"], a[href="/whitepaper-kk"], [data-open-whitepaper], #nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link');
     if (trigger) {
       e.preventDefault();
       if (window.haichainI18n && typeof window.haichainI18n.closeMobileDrawer === 'function') {
