@@ -3191,9 +3191,14 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const autoProvider = urlParams.get('autoConnect');
-        if (autoProvider === 'phantom' || autoProvider === 'solflare') {
+        const autoDeposit = urlParams.get('autoDeposit');
+        const depositAmountParam = urlParams.get('depositAmount');
+
+        if (autoProvider === 'phantom' || autoProvider === 'solflare' || autoDeposit) {
           const cleanUrl = new URL(window.location.href);
           cleanUrl.searchParams.delete('autoConnect');
+          cleanUrl.searchParams.delete('autoDeposit');
+          cleanUrl.searchParams.delete('depositAmount');
           window.history.replaceState({}, document.title, cleanUrl.toString());
 
           let attempts = 0;
@@ -3201,23 +3206,44 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
             attempts++;
             const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
             const solflare = window.solflare?.isSolflare ? window.solflare : null;
-            const targetProvider = autoProvider === 'phantom' ? phantom : solflare;
+            const targetProvider = autoProvider === 'solflare' ? solflare : (phantom || solflare);
 
             if (targetProvider) {
               clearInterval(pollInterval);
               try {
                 if (typeof walletBtnText !== 'undefined' && walletBtnText) {
-                  walletBtnText.textContent = 'Connecting ' + (autoProvider === 'phantom' ? 'Phantom' : 'Solflare') + '...';
+                  walletBtnText.textContent = 'Connecting ' + (autoProvider === 'solflare' ? 'Solflare' : 'Phantom') + '...';
                 }
                 const resp = await targetProvider.connect();
                 const pubKey = resp.publicKey ? resp.publicKey.toString() : targetProvider.publicKey.toString();
-                await setConnectedWallet(pubKey, autoProvider === 'phantom' ? 'Phantom' : 'Solflare');
+                await setConnectedWallet(pubKey, autoProvider === 'solflare' ? 'Solflare' : 'Phantom');
                 if (typeof showToast === 'function') {
                   showToast({
-                    title: (autoProvider === 'phantom' ? 'Phantom' : 'Solflare') + ' Connected',
+                    title: (autoProvider === 'solflare' ? 'Solflare' : 'Phantom') + ' Connected',
                     message: pubKey.slice(0, 4) + '...' + pubKey.slice(-4),
                     icon: 'check-circle'
                   });
+                }
+
+                // If user was redirected from mobile browser for deposit, automatically open deposit modal and trigger on-chain approval!
+                if (autoDeposit === 'web3') {
+                  setTimeout(() => {
+                    const dModal = document.getElementById('dashboard-deposit-modal');
+                    const dAmount = document.getElementById('dash-deposit-amount');
+                    const cBtn = document.getElementById('dash-confirm-deposit-btn');
+                    if (typeof selectDepositTab === 'function') selectDepositTab('web3');
+                    if (dAmount && depositAmountParam) {
+                      dAmount.value = depositAmountParam;
+                    }
+                    if (dModal) dModal.classList.remove('hidden');
+                    if (typeof updateDepositWalletBanner === 'function') updateDepositWalletBanner();
+
+                    setTimeout(() => {
+                      if (cBtn && !cBtn.disabled) {
+                        cBtn.click();
+                      }
+                    }, 400);
+                  }, 350);
                 }
               } catch (connectErr) {
                 console.warn('Mobile auto-connect dismissed:', connectErr);
@@ -4114,6 +4140,8 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           if (isMobileDevice()) {
             const currentUrl = new URL(window.location.href);
             currentUrl.searchParams.set('autoConnect', 'phantom');
+            currentUrl.searchParams.set('autoDeposit', 'web3');
+            if (dashDepositAmount) currentUrl.searchParams.set('depositAmount', dashDepositAmount.value);
             window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
             return;
           }
@@ -4309,6 +4337,8 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
             if (isMobileDevice()) {
               const currentUrl = new URL(window.location.href);
               currentUrl.searchParams.set('autoConnect', 'phantom');
+              currentUrl.searchParams.set('autoDeposit', 'web3');
+              if (dashDepositAmount) currentUrl.searchParams.set('depositAmount', dashDepositAmount.value);
               window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
               return;
             }
@@ -4331,6 +4361,8 @@ Model: gpt-4o hoặc claude-3-5-sonnet</pre>
           if (isMobileDevice()) {
             const currentUrl = new URL(window.location.href);
             currentUrl.searchParams.set('autoConnect', 'phantom');
+            currentUrl.searchParams.set('autoDeposit', 'web3');
+            if (dashDepositAmount) currentUrl.searchParams.set('depositAmount', dashDepositAmount.value);
             window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
             return;
           }
