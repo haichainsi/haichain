@@ -20,11 +20,27 @@
 
 /favicon.png
   Content-Type: image/png
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 
 /favicon.ico
   Content-Type: image/x-icon
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/favicon-16x16.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/favicon-32x32.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/favicon-48x48.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=0, must-revalidate
 
 /assets/icon-512.png
   Content-Type: image/png
