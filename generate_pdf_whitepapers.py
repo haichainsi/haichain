@@ -149,8 +149,16 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         toc_pattern = r'(## 目录[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
     elif lang == "ko":
         toc_pattern = r'(## 목차[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
-    else:
+    elif lang == "es":
+        toc_pattern = r'(## [^\n]*ÍNDICE[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
+    elif lang == "fr":
+        toc_pattern = r'(## TABLE DES MATIÈRES[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
+    elif lang == "ru":
+        toc_pattern = r'(## [^\n]*(?:СОДЕРЖАНИЕ|TABLE OF CONTENTS)[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. |\n- \*\*1\.)'
+    elif lang == "vi":
         toc_pattern = r'(## M[^\n]*L[^\n]*C[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## |\n## T|\n## 1\.)'
+    else:
+        toc_pattern = r'(## [^\n]*TABLE OF CONTENTS[^\n]*\s*\n\n.*?)(?=\n---\s*\n\s*## 1\.|\n## 1\. )'
     
     m = re.search(toc_pattern, text_with_math, re.DOTALL)
     md_converter = markdown.Markdown(extensions=['tables', 'fenced_code', 'attr_list'])
@@ -922,3 +930,6 @@ if __name__ == "__main__":
     build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_VI.md", "HAICHAIN_WHITEPAPER_V1.0_VI.pdf", lang="vi")
     build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_ZH.md", "HAICHAIN_WHITEPAPER_V1.0_ZH.pdf", lang="zh")
     build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_KO.md", "HAICHAIN_WHITEPAPER_V1.0_KO.pdf", lang="ko")
+    build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_ES.md", "HAICHAIN_WHITEPAPER_V1.0_ES.pdf", lang="es")
+    build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_FR.md", "HAICHAIN_WHITEPAPER_V1.0_FR.pdf", lang="fr")
+    build_pdf_from_markdown("HAICHAIN_WHITEPAPER_V1.0_RU.md", "HAICHAIN_WHITEPAPER_V1.0_RU.pdf", lang="ru")

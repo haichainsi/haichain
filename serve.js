@@ -1428,6 +1428,9 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/whitepaper-vi' || reqPath === '/whitepaper-vi.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf';
   if (reqPath === '/whitepaper-zh' || reqPath === '/whitepaper-zh.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf';
   if (reqPath === '/whitepaper-ko' || reqPath === '/whitepaper-ko.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_KO.pdf';
+  if (reqPath === '/whitepaper-es' || reqPath === '/whitepaper-es.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_ES.pdf';
+  if (reqPath === '/whitepaper-fr' || reqPath === '/whitepaper-fr.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_FR.pdf';
+  if (reqPath === '/whitepaper-ru' || reqPath === '/whitepaper-ru.pdf') reqPath = '/HAICHAIN_WHITEPAPER_V1.0_RU.pdf';
   
   let filePath = path.join(__dirname, reqPath);
   let ext = path.extname(filePath).toLowerCase();

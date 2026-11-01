@@ -79,6 +79,57 @@
           saftTitle: 'HAICHAIN 프리시드 SAFT 계약서',
           memoTitle: 'HAICHAIN 1페이지 투자 메모'
         };
+      case 'es':
+        return {
+          readerBadge: 'LECTOR EN LÍNEA',
+          pageSuffix: 'págs',
+          zoomOut: 'Alejar (-)',
+          zoomReset: 'Ajustar (100%)',
+          zoomIn: 'Acercar (+)',
+          openNewTab: 'Abrir en pestaña nueva',
+          download: 'Descargar PDF',
+          close: 'Cerrar',
+          loading: 'Cargando documento en línea...',
+          hintScroll: 'Deslice para desplazarse',
+          hintZoom: 'Doble toque para zoom / ajustar',
+          whitepaperTitle: 'Libro Blanco Técnico de HAICHAIN v1.0 (Español)',
+          saftTitle: 'Acuerdo SAFT Pre-Seed de HAICHAIN (Bilingüe)',
+          memoTitle: 'Memorando de Inversión Pre-Seed de 1 Página'
+        };
+      case 'fr':
+        return {
+          readerBadge: 'LECTEUR EN LIGNE',
+          pageSuffix: 'pages',
+          zoomOut: 'Dézoomer (-)',
+          zoomReset: 'Ajuster (100%)',
+          zoomIn: 'Zoomer (+)',
+          openNewTab: 'Ouvrir dans un nouvel onglet',
+          download: 'Télécharger le PDF',
+          close: 'Fermer',
+          loading: 'Chargement du document en ligne...',
+          hintScroll: 'Faites glisser pour faire défiler',
+          hintZoom: 'Appuyez deux fois pour zoomer / ajuster',
+          whitepaperTitle: 'Livre Blanc Technique HAICHAIN v1.0 (Français)',
+          saftTitle: 'Accord SAFT Pre-Seed HAICHAIN (Bilingue)',
+          memoTitle: 'Mémo d\'Investissement 1-Page Pre-Seed'
+        };
+      case 'ru':
+        return {
+          readerBadge: 'ОНЛАЙН ЧТЕНИЕ',
+          pageSuffix: 'стр.',
+          zoomOut: 'Уменьшить (-)',
+          zoomReset: 'По размеру (100%)',
+          zoomIn: 'Увеличить (+)',
+          openNewTab: 'Открыть в новой вкладке',
+          download: 'Скачать PDF',
+          close: 'Закрыть',
+          loading: 'Загрузка документа онлайн...',
+          hintScroll: 'Прокрутите для просмотра страниц',
+          hintZoom: 'Двойное нажатие для масштабирования',
+          whitepaperTitle: 'Технический White Paper HAICHAIN v1.0 (Русский)',
+          saftTitle: 'Соглашение SAFT Pre-Seed HAICHAIN (Двуязычное)',
+          memoTitle: '1-страничный инвестиционный меморандум Pre-Seed'
+        };
       default:
         return {
           readerBadge: 'ONLINE READER',
@@ -490,6 +541,12 @@
       window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf', i18n.whitepaperTitle);
     } else if (lang === 'ko') {
       window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_KO.pdf', i18n.whitepaperTitle);
+    } else if (lang === 'es') {
+      window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_ES.pdf', i18n.whitepaperTitle);
+    } else if (lang === 'fr') {
+      window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_FR.pdf', i18n.whitepaperTitle);
+    } else if (lang === 'ru') {
+      window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_RU.pdf', i18n.whitepaperTitle);
     } else {
       window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_EN.pdf', i18n.whitepaperTitle);
     }
