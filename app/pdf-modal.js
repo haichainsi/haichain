@@ -825,23 +825,55 @@
     if (container) container.innerHTML = '';
   };
 
-  // Auto-bind triggers across the app
+  // Universal In-App Whitepaper Click Handler (100% Prevents Opening in New Tab)
+  function handleWhitepaperClick(e, trigger) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    // Close mobile nav menu if open
+    if (typeof window.closeMobileMenu === 'function') {
+      try { window.closeMobileMenu(); } catch (_) {}
+    }
+    const mobMenu = document.getElementById('mobile-menu');
+    if (mobMenu) {
+      mobMenu.classList.remove('menu-open', 'opacity-100');
+      mobMenu.classList.add('hidden', 'opacity-0');
+    }
+
+    const explicitHref = trigger ? (trigger.getAttribute('data-pdf-url') || trigger.getAttribute('href')) : '';
+    if (explicitHref && explicitHref.endsWith('.pdf') && !explicitHref.includes('whitepaper') && !explicitHref.includes('WHITEPAPER')) {
+      window.openPdfViewerModal(explicitHref, trigger.getAttribute('title') || 'HAICHAIN Document');
+      return;
+    }
+
+    const lang = getCurrentLang();
+    const pdfUrl = getWhitepaperUrlForLang(lang);
+    const meta = getI18nMeta(lang);
+    window.openPdfViewerModal(pdfUrl, meta.title);
+  }
+
+  // 1. Capture-phase Global Listener: Catches ANY click on any whitepaper link immediately
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest(
+      '#nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]'
+    );
+    if (trigger) {
+      handleWhitepaperClick(e, trigger);
+    }
+  }, true);
+
+  // 2. Direct Element Binding & Prewarming
   function initPdfTriggers() {
-    document.querySelectorAll('[data-pdf-whitepaper]').forEach((btn) => {
+    const selector = '#nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]';
+    document.querySelectorAll(selector).forEach((btn) => {
       if (btn.dataset.pdfBound === 'true') return;
       btn.dataset.pdfBound = 'true';
-
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const lang = getCurrentLang();
-        const pdfUrl = getWhitepaperUrlForLang(lang);
-        const meta = getI18nMeta(lang);
-
-        window.openPdfViewerModal(pdfUrl, meta.title);
-      });
+      btn.addEventListener('click', (e) => handleWhitepaperClick(e, btn));
     });
+
+    checkAutoOpen();
 
     // Idle background pre-warming: parse Whitepaper so opening takes <10ms
     if (typeof requestIdleCallback === 'function') {
@@ -855,6 +887,19 @@
         prewarmDocument(getWhitepaperUrlForLang(lang));
       }, 1500);
     }
+  }
+
+  // Auto-open modal if URL specifies ?open_whitepaper=1 or pathname is /whitepaper
+  function checkAutoOpen() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('open_whitepaper') === '1' || window.location.pathname === '/whitepaper') {
+        const lang = getCurrentLang();
+        const pdfUrl = getWhitepaperUrlForLang(lang);
+        const meta = getI18nMeta(lang);
+        window.openPdfViewerModal(pdfUrl, meta.title);
+      }
+    } catch (_) {}
   }
 
   if (document.readyState === 'loading') {
