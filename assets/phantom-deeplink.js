@@ -166,6 +166,22 @@
       return dest + sep + 'connectedWallet=' + encodeURIComponent(walletAddress) + '&provider=' + encodeURIComponent(provider || 'Phantom');
     },
 
+    connectMetaMask: function(targetRedirectUrl) {
+      var appOrigin = window.location.origin;
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        appOrigin = 'https://haichain.pages.dev';
+      }
+      var appPath = window.location.pathname || '/';
+      var redirectUrl = targetRedirectUrl || (appOrigin + appPath);
+      var sep = redirectUrl.indexOf('?') === -1 ? '?' : '&';
+      var returnUrl = encodeURIComponent(window.location.href);
+      var targetUrlWithParams = redirectUrl + sep + 'auto_connect=metamask&return_url=' + returnUrl;
+      var cleanDest = targetUrlWithParams.replace(/^https?:\/\//, '');
+      var link = 'https://metamask.app.link/dapp/' + cleanDest;
+      console.log('[HaichainMobileWallet] Launching official MetaMask Deeplink:', link);
+      window.location.href = link;
+    },
+
     openInAppBrowser: function(provider, targetUrl) {
       provider = (provider || 'phantom').toLowerCase();
       var appOrigin = window.location.origin;
@@ -173,7 +189,11 @@
         appOrigin = 'https://haichain.pages.dev';
       }
       var dest = targetUrl || (appOrigin + window.location.pathname);
-      if (dest.indexOf('autoConnect=') === -1) {
+      if (provider === 'metamask') {
+        this.connectMetaMask(dest);
+        return;
+      }
+      if (dest.indexOf('autoConnect=') === -1 && dest.indexOf('auto_connect=') === -1) {
         dest += (dest.indexOf('?') === -1 ? '?' : '&') + 'autoConnect=' + encodeURIComponent(provider);
       }
       var link = provider === 'solflare'
@@ -285,14 +305,18 @@
       try {
         var params = this.extractParams();
 
-        // 1. Direct Connected Wallet Handoff (from in-app browser or cross-browser share)
+        // 1. Direct Connected Wallet Handoff (from in-app browser or cross-browser share - supports both Solana and MetaMask EVM)
         var handoffWallet = params['connectedWallet'];
         var handoffProvider = params['provider'] || 'Phantom';
-        if (handoffWallet && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(handoffWallet)) {
+        var isSolanaAddr = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(handoffWallet);
+        var isEvmAddr = /^0x[a-fA-F0-9]{40}$/i.test(handoffWallet);
+        if (handoffWallet && (isSolanaAddr || isEvmAddr)) {
           this.stripParamsAndCleanUrl(['connectedWallet', 'provider']);
+          var finalProvider = isEvmAddr ? (handoffProvider || 'MetaMask') : handoffProvider;
           var handoffResult = {
             publicKey: handoffWallet,
-            provider: handoffProvider,
+            provider: finalProvider,
+            isEVM: isEvmAddr,
             source: 'handoff'
           };
           this.broadcastConnection(handoffResult);

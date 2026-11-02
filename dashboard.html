@@ -3909,8 +3909,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const confirmed = window.haichainDialog?.confirm
         ? await window.haichainDialog.confirm(getDashNotice('resetSimulationConfirm'), {
             danger: true,
-            confirmText: isVi ? 'Đặt lại' : 'Reset',
-            cancelText: isVi ? 'Huỷ' : 'Cancel'
+            confirmText: getDashNotice('confirmResetBtn'),
+            cancelText: getDashNotice('cancelBtn')
           })
         : confirm(getDashNotice('resetSimulationConfirm'));
       if (confirmed) {
@@ -4610,6 +4610,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Vault Балансы Жеткіліксіз"
   },
   "en": {
+    "confirmResetBtn": "Reset",
+    "cancelBtn": "Cancel",
     "cmdCopied": "✓ Command copied!",
     "cmdCopyBtn": "Copy 1-Click Install Command",
     "cmdCopyToastMsg": "Paste into Terminal/PowerShell to install automatically",
@@ -6414,7 +6416,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             promptInput.focus();
           }
         }, 150);
-        showToast({ title: "AI Playground", message: "Trải nghiệm suy luận AI trực tiếp qua Web3", icon: "zap" });
+        showToast({ title: 'AI Playground', message: getDashNotice('aiPlaygroundToast'), icon: 'zap' });
       });
     }
 

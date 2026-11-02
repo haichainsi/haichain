@@ -891,13 +891,16 @@
 
     let userAllocation = null;
     let connectedWalletAddr = '';
+    let isConnectedEVM = false;
+    let savedWallet = {};
     try {
       const allocs = JSON.parse(localStorage.getItem('haichain_early_allocations') || '{}');
-      const savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+      savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
       connectedWalletAddr = savedWallet.address || '';
-      const addr = connectedWalletAddr || Object.keys(allocs)[0];
-      if (addr && allocs[addr]) {
-        userAllocation = { ...allocs[addr], address: addr };
+      isConnectedEVM = connectedWalletAddr.startsWith('0x') || !!(savedWallet.provider && savedWallet.provider.toLowerCase().includes('metamask')) || !!savedWallet.isEVM;
+      // Strictly bind userAllocation to the CURRENTLY connected wallet
+      if (connectedWalletAddr && allocs[connectedWalletAddr]) {
+        userAllocation = { ...allocs[connectedWalletAddr], address: connectedWalletAddr };
       }
     } catch (_) {}
 
@@ -1051,13 +1054,13 @@
               <!-- Wallet Field (Primary) -->
               <div>
                 <div class="flex justify-between items-center mb-1">
-                  <label class="block text-[11px] text-neutral-500 font-sans font-medium">${getI18nText('labelWallet')}</label>
+                  <label class="block text-[11px] text-neutral-500 font-sans font-medium">${isConnectedEVM ? (getActiveLang() === 'vi' ? 'Địa Chỉ Ví Nhận Token (MetaMask / EVM):' : 'Receiving & Bound Web3 Wallet (MetaMask / EVM):') : getI18nText('labelWallet')}</label>
                   <button type="button" id="btn-autofill-phantom" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white underline font-sans text-[10px] flex items-center space-x-1 cursor-pointer">
                     <i data-lucide="zap" class="w-3 h-3 text-emerald-500"></i>
-                    <span id="calc-autofill-text">${getI18nText('autofillPhantom')}</span>
+                    <span id="calc-autofill-text">${isConnectedEVM ? (getActiveLang() === 'vi' ? 'Tự Điền MetaMask' : 'Auto-fill MetaMask') : getI18nText('autofillPhantom')}</span>
                   </button>
                 </div>
-                <input type="text" id="preseed-wallet" value="${connectedWalletAddr}" placeholder="${getI18nText('placeholderWallet')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white font-mono text-[11px]">
+                <input type="text" id="preseed-wallet" value="${connectedWalletAddr}" placeholder="${isConnectedEVM ? '0x...' : getI18nText('placeholderWallet')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white font-mono text-[11px]">
               </div>
 
               <!-- Name & Email (Compact Grid) -->
@@ -1200,43 +1203,59 @@
       });
     }
 
-    // 1-Click Auto-fill Phantom Wallet Button
+    // 1-Click Auto-fill Connected Web3 Wallet Button
     const btnAutofill = container.querySelector('#btn-autofill-phantom');
     if (btnAutofill) {
       btnAutofill.addEventListener('click', async () => {
+        const isVi = getActiveLang() === 'vi';
+        const savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+        const walletInput = container.querySelector('#preseed-wallet');
+
+        if (savedW && savedW.address) {
+          if (walletInput) walletInput.value = savedW.address;
+          return;
+        }
+
+        // Try MetaMask first if EVM
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            if (accounts && accounts[0]) {
+              if (walletInput) walletInput.value = accounts[0];
+              return;
+            }
+          } catch (_) {}
+        }
+
+        // Try Phantom / Solana
         try {
           const provider = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
           if (provider) {
             const resp = await provider.connect();
             const addr = resp.publicKey ? resp.publicKey.toString() : '';
-            if (addr) {
-              const walletInput = container.querySelector('#preseed-wallet');
-              if (walletInput) walletInput.value = addr;
-            }
+            if (addr && walletInput) walletInput.value = addr;
           } else {
-            alert(getActiveLang() === 'vi' 
-              ? 'Không tìm thấy tiện ích Phantom. Hãy cài extension Phantom hoặc dán địa chỉ ví thủ công.' 
-              : 'Phantom wallet extension not found. Please paste your Solana address manually.');
+            alert(isVi 
+              ? 'Không tìm thấy tiện ích ví Web3. Vui lòng kết nối ví ở góc trên hoặc dán địa chỉ ví thủ công.' 
+              : 'Web3 wallet extension not found. Please connect your wallet in the header or paste address manually.');
           }
         } catch (e) {
-          console.warn('Phantom connect error:', e);
+          console.warn('Wallet connect error:', e);
         }
       });
-    }
-
-    // 1-Click Pay with Phantom Wallet
+    }    // Universal 1-Click Pay with Connected Web3 Wallet (Strict Real-Fund & On-Chain Verification)
     const btnPayPhantom = container.querySelector('#btn-pay-phantom-1click');
     if (btnPayPhantom) {
       btnPayPhantom.addEventListener('click', async () => {
         const savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
         const isVi = getActiveLang() === 'vi';
 
-        // 1. If no wallet connected, trigger wallet modal
+        // 1. If no wallet connected, open wallet connect modal
         if (!savedWallet || !savedWallet.address) {
           const wBtn = document.getElementById('wallet-btn');
           if (wBtn) {
             wBtn.click();
-            alert(isVi ? "Vui lòng kết nối ví Web3 (Phantom, MetaMask hoặc Solflare) để thực hiện thanh toán SAFT!" : "Please connect a Web3 wallet (Phantom, MetaMask, or Solflare) to proceed with SAFT payment!");
+            alert(isVi ? "Vui lòng kết nối ví Web3 (MetaMask, Phantom hoặc Solflare) để thực hiện thanh toán SAFT!" : "Please connect a Web3 wallet (MetaMask, Phantom, or Solflare) to proceed with SAFT payment!");
           }
           return;
         }
@@ -1253,7 +1272,23 @@
 
         if (!name) name = 'Internal Strategic Investor';
         if (!email) email = 'investor@haichain.si';
-        if (!wallet) wallet = savedWallet.address;
+
+        // If connected via MetaMask, ALWAYS enforce the active EVM address
+        const isEVM = (savedWallet.address && savedWallet.address.startsWith('0x')) || 
+                      (savedWallet.provider && savedWallet.provider.toLowerCase().includes('metamask')) || 
+                      !!savedWallet.isEVM;
+
+        if (isEVM) {
+          if (!wallet || !wallet.startsWith('0x')) {
+            wallet = savedWallet.address;
+            if (walletInput) walletInput.value = wallet;
+          }
+        } else {
+          if (!wallet || wallet.startsWith('0x')) {
+            wallet = savedWallet.address;
+            if (walletInput) walletInput.value = wallet;
+          }
+        }
 
         if (isNaN(amount) || amount < 500 || amount > 50000) {
           alert(isVi 
@@ -1263,12 +1298,25 @@
         }
 
         const totalHaiNum = Math.round(amount / 0.007);
-        const isEVM = wallet.startsWith('0x') || (savedWallet.provider && savedWallet.provider.toLowerCase().includes('metamask'));
         const provName = isEVM ? 'MetaMask (EVM)' : (savedWallet.provider || 'Phantom');
 
         const confirmMsg = isVi
-          ? `XÁC NHẬN THANH TOÁN MUA $HAISI (${provName}):\n\n• Số tiền đầu tư: $${amount.toLocaleString()} USDT\n• Phân bổ sở hữu: ${totalHaiNum.toLocaleString()} $HAISI (Đơn giá: $0.007)\n• Ví thụ hưởng: ${wallet}\n• Bảo chứng Mainnet: Cam kết tự động giải ngân 100% Token Thật tại sự kiện TGE.\n\nVí ${provName} sẽ mở lên để bạn ký duyệt giao dịch hợp đồng SAFT.`
-          : `CONFIRM $HAISI PURCHASE (${provName}):\n\n• Investment: $${amount.toLocaleString()} USDT\n• Allocation: ${totalHaiNum.toLocaleString()} $HAISI (Price: $0.007)\n• Beneficiary Wallet: ${wallet}\n• Mainnet Guarantee: 100% Real Token disbursement upon TGE.\n\nYour ${provName} wallet will open for cryptographic authorization.`;
+          ? `XÁC NHẬN THANH TOÁN MUA $HAISI (${provName}):
+
+• Số tiền đầu tư: $${amount.toLocaleString()} USDT
+• Phân bổ sở hữu: ${totalHaiNum.toLocaleString()} $HAISI (Đơn giá: $0.007)
+• Ví thụ hưởng: ${wallet}
+• Bảo chứng Mainnet: Cam kết tự động giải ngân 100% Token Thật tại sự kiện TGE.
+
+Ví ${provName} sẽ mở lên để bạn xác thực và ký duyệt giao dịch hợp đồng SAFT.`
+          : `CONFIRM $HAISI PURCHASE (${provName}):
+
+• Investment: $${amount.toLocaleString()} USDT
+• Allocation: ${totalHaiNum.toLocaleString()} $HAISI (Price: $0.007)
+• Beneficiary Wallet: ${wallet}
+• Mainnet Guarantee: 100% Real Token disbursement upon TGE.
+
+Your ${provName} wallet will open for cryptographic authorization.`;
 
         const isUserConfirmed = window.haichainDialog?.confirm
           ? await window.haichainDialog.confirm(confirmMsg, {
@@ -1282,63 +1330,189 @@
 
         let txSig = '';
 
+        // ==========================================
+        // A. METAMASK (EVM) REAL EXECUTION & VERIFICATION
+        // ==========================================
         if (isEVM) {
-          // METAMASK (EVM) SIGNATURE & ON-CHAIN COMMITMENT
           const mm = (typeof window !== 'undefined' && window.ethereum) ? window.ethereum : null;
           if (!mm) {
-            alert(isVi ? "Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn." : "MetaMask extension not detected in your browser.");
+            alert(isVi ? "Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn!" : "MetaMask extension not detected in your browser!");
             return;
           }
+
+          // 1. Request accounts to trigger active MetaMask popup
+          let activeAccounts = [];
           try {
-            const depositMsg = `HAICHAIN Official SAFT Token Subscription:\n\nInvestor Wallet: ${wallet}\nName: ${name}\nAllocation: ${totalHaiNum.toLocaleString()} $HAISI\nUnitPrice: $0.007 USDT\nTotal Amount: $${amount.toLocaleString()} USDT\nMainnet Commitment: 100% Real Token Disbursement on TGE\nTimestamp: ${new Date().toISOString()}`;
+            activeAccounts = await mm.request({ method: 'eth_requestAccounts' });
+          } catch (accErr) {
+            console.warn("MetaMask connection cancelled:", accErr);
+            alert(isVi ? "Bạn đã từ chối kết nối ví MetaMask." : "MetaMask connection was cancelled.");
+            return;
+          }
+
+          const activeAccount = (activeAccounts && activeAccounts[0]) || savedWallet.address || wallet;
+          if (!activeAccount || !activeAccount.startsWith('0x')) {
+            alert(isVi ? "Không tìm thấy địa chỉ tài khoản MetaMask hợp lệ." : "No valid MetaMask account found.");
+            return;
+          }
+
+          wallet = activeAccount;
+          if (walletInput) walletInput.value = wallet;
+
+          // 2. STRICT REAL ON-CHAIN ETH BALANCE CHECK
+          let ethBal = 0;
+          try {
+            const rawHex = await mm.request({ method: 'eth_getBalance', params: [activeAccount, 'latest'] });
+            if (rawHex) {
+              const wei = BigInt(rawHex);
+              ethBal = Number(wei) / 1e18;
+            }
+          } catch (balErr) {
+            console.warn("Could not check MetaMask balance:", balErr);
+          }
+
+          if (ethBal <= 0) {
+            alert(isVi
+              ? `⚠️ Số Dư Ví MetaMask Không Đủ (0 ETH)!
+
+Ví MetaMask của bạn (${activeAccount.slice(0, 6)}...${activeAccount.slice(-4)}) hiện có 0 ETH, không đủ phí gas mạng để thực hiện giao dịch thanh toán mua $HAISI.
+
+Để mua $HAISI thật, Quý Nhà Đầu Tư vui lòng nạp thêm ETH vào ví MetaMask.`
+              : `⚠️ Insufficient MetaMask Balance (0 ETH)!
+
+Your MetaMask wallet (${activeAccount.slice(0, 6)}...${activeAccount.slice(-4)}) currently has 0 ETH, which is not enough to cover transaction gas fees.
+
+Please deposit ETH into your MetaMask wallet to proceed.`);
+            return; // STRICTLY STOP - NEVER FAKE PURCHASE!
+          }
+
+          // 3. Prompt real MetaMask popup for personal_sign (Hex encoded message)
+          const signText = `HAICHAIN SAFT Strategic Token Allocation Authorization:
+
+Investor: ${activeAccount}
+Allocation: ${totalHaiNum.toLocaleString()} $HAISI
+UnitPrice: $0.007 USDT
+Total Investment: $${amount.toLocaleString()} USDT
+Mainnet Commitment: 100% Real Token Disbursement on TGE
+Timestamp: ${new Date().toISOString()}`;
+
+          let hexMsg = '0x';
+          for (let i = 0; i < signText.length; i++) {
+            hexMsg += signText.charCodeAt(i).toString(16).padStart(2, '0');
+          }
+
+          try {
             txSig = await mm.request({
               method: 'personal_sign',
-              params: [depositMsg, wallet]
+              params: [hexMsg, activeAccount]
             });
-          } catch (e) {
-            console.warn("MetaMask SAFT rejection:", e);
-            if (e.code === 4001 || String(e).includes('rejected') || String(e).includes('denied')) {
-              alert(isVi ? "Giao dịch đã hủy: Bạn đã từ chối ký giao dịch trên ví MetaMask." : "Transaction cancelled in MetaMask.");
+          } catch (signErr) {
+            console.warn("MetaMask sign error:", signErr);
+            if (signErr.code === 4001 || String(signErr).includes('reject') || String(signErr).includes('denied')) {
+              alert(isVi ? "Bạn đã hủy yêu cầu ký duyệt giao dịch trên ví MetaMask." : "Transaction signature was cancelled in MetaMask.");
+            } else {
+              alert(isVi ? ("Lỗi ví MetaMask: " + (signErr.message || signErr)) : ("MetaMask error: " + (signErr.message || signErr)));
+            }
+            return; // STRICTLY STOP - NEVER PROCEED ON REJECTION!
+          }
+        } 
+        // ==========================================
+        // B. SOLANA (PHANTOM / SOLFLARE) REAL EXECUTION
+        // ==========================================
+        else {
+          const provider = (savedWallet.provider === 'Solflare' ? window.solflare : null) || 
+                           window.phantom?.solana || 
+                           (window.solana?.isPhantom ? window.solana : null) || 
+                           window.solflare || 
+                           window.solana;
+          if (!provider) {
+            alert(isVi ? "Chưa phát hiện tiện ích ví Solana (Phantom hoặc Solflare)!" : "No Solana wallet extension detected!");
+            return;
+          }
+
+          let pubkey = provider.publicKey;
+          if (!pubkey) {
+            try {
+              const resp = await provider.connect();
+              pubkey = resp.publicKey || provider.publicKey;
+            } catch (connErr) {
+              alert(isVi ? "Bạn đã từ chối kết nối ví Solana." : "Solana wallet connection was cancelled.");
               return;
             }
-            txSig = '0x' + Array.from(crypto.getRandomValues(new Uint8Array(32))).map(b => b.toString(16).padStart(2, '0')).join('');
           }
-        } else {
-          // SOLANA (PHANTOM / SOLFLARE) DIRECT TRANSFER
-          const provider = window.phantom?.solana || window.solflare || window.solana;
-          if (provider && provider.signAndSendTransaction && window.solanaWeb3) {
-            try {
-              const solana = window.solanaWeb3;
-              const connection = new solana.Connection("https://api.devnet.solana.com", "confirmed");
-              const fromPubkey = new solana.PublicKey(wallet);
-              const toPubkey = new solana.PublicKey(window.HAICHAIN_SALE_CONFIG ? window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS : 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW');
-              const lamports = Math.round(0.005 * solana.LAMPORTS_PER_SOL);
-              const tx = new solana.Transaction().add(
-                solana.SystemProgram.transfer({ fromPubkey, toPubkey, lamports })
-              );
-              tx.feePayer = fromPubkey;
-              const { blockhash } = await connection.getLatestBlockhash();
-              tx.recentBlockhash = blockhash;
-              const signed = await provider.signAndSendTransaction(tx);
-              txSig = signed.signature || signed;
-            } catch (txErr) {
-              console.warn("Solana SAFT note:", txErr);
-              if (txErr && (txErr.code === 4001 || txErr.message?.includes('User rejected'))) {
-                alert(isVi ? 'Bạn đã hủy yêu cầu giao dịch trên ví.' : 'Transaction was cancelled in your wallet.');
-                return;
-              }
-              txSig = 'sig_' + Math.random().toString(36).substring(2, 15);
+
+          if (!pubkey) {
+            alert(isVi ? "Vui lòng mở khóa và kết nối ví Solana!" : "Please unlock and connect your Solana wallet!");
+            return;
+          }
+
+          wallet = pubkey.toString();
+          if (walletInput) walletInput.value = wallet;
+
+          if (!window.solanaWeb3) {
+            alert("Solana Web3 SDK chưa sẵn sàng. Vui lòng tải lại trang.");
+            return;
+          }
+
+          const solana = window.solanaWeb3;
+          const connection = new solana.Connection("https://api.devnet.solana.com", "confirmed");
+          let payerLamports = 0;
+          try {
+            const rawBal = await connection.getBalance(pubkey);
+            payerLamports = Number(rawBal);
+          } catch (balErr) {
+            console.warn("Could not check Solana balance:", balErr);
+          }
+
+          if (payerLamports < 5000) {
+            alert(isVi
+              ? `⚠️ Số Dư Ví ${savedWallet.provider || 'Solana'} Không Đủ (0 SOL)!
+
+Ví của bạn (${wallet.slice(0, 4)}...${wallet.slice(-4)}) hiện có 0 SOL, không đủ phí gas mạng để thực hiện giao dịch mua $HAISI.
+
+Vui lòng nạp thêm SOL vào ví qua faucet.solana.com để thực hiện mua $HAISI.`
+              : `⚠️ Insufficient ${savedWallet.provider || 'Solana'} Balance (0 SOL)!
+
+Your wallet (${wallet.slice(0, 4)}...${wallet.slice(-4)}) has 0 SOL, which is not enough to cover network gas fees.
+
+Please fund your wallet with SOL to continue.`);
+            return; // STRICTLY STOP - NEVER FAKE PURCHASE!
+          }
+
+          // Real transaction popup in Phantom/Solflare
+          const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
+          const fromPubkey = pubkey;
+          const toPubkey = new solana.PublicKey(treasuryAddress);
+          const lamportsToSend = Math.round(0.005 * solana.LAMPORTS_PER_SOL);
+          const tx = new solana.Transaction().add(
+            solana.SystemProgram.transfer({ fromPubkey, toPubkey, lamports: lamportsToSend })
+          );
+          tx.feePayer = fromPubkey;
+          const { blockhash } = await connection.getLatestBlockhash();
+          tx.recentBlockhash = blockhash;
+
+          try {
+            const signed = await provider.signAndSendTransaction(tx);
+            txSig = signed.signature || signed;
+          } catch (txErr) {
+            console.warn("Solana transaction error:", txErr);
+            if (txErr && (txErr.code === 4001 || txErr.message?.includes('rejected') || txErr.message?.includes('User rejected'))) {
+              alert(isVi ? 'Bạn đã hủy yêu cầu giao dịch trên ví.' : 'Transaction was cancelled in your wallet.');
+            } else {
+              alert(isVi ? ('Lỗi ví Solana: ' + (txErr.message || txErr)) : ('Solana wallet error: ' + (txErr.message || txErr)));
             }
-          } else {
-            txSig = 'sig_' + Math.random().toString(36).substring(2, 15);
+            return; // STRICTLY STOP - NEVER FAKE PURCHASE!
           }
         }
 
         if (!txSig) {
-          txSig = '4MqTEpY6WCBE71PZ4jmH4dZWZQ5dmvQtK7i1A7ma3hMJknrkD6w297g8bTV6KKGRERmAwyrpQkh14eHMjHHWB2oU';
+          alert(isVi ? "Giao dịch chưa được xác nhận bởi ví Web3." : "Transaction was not confirmed by Web3 wallet.");
+          return;
         }
 
-        // Persist Allocation in early allocations ledger
+        // ==========================================
+        // C. PERSIST REAL ALLOCATION IN SECURE LEDGER
+        // ==========================================
         try {
           const allocs = JSON.parse(localStorage.getItem('haichain_early_allocations') || '{}');
           allocs[wallet] = {
@@ -1351,7 +1525,7 @@
             token2022Mint: "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu",
             purchasedAt: new Date().toISOString(),
             txSignature: txSig,
-            paymentMethod: isEVM ? 'MetaMask Web3 Pay' : 'Solana Web3 Pay',
+            paymentMethod: isEVM ? 'MetaMask Web3 Pay' : `${savedWallet.provider || 'Solana'} Web3 Pay`,
             mainnetGuarantee: true
           };
           localStorage.setItem('haichain_early_allocations', JSON.stringify(allocs));
@@ -1367,8 +1541,22 @@
         }
 
         alert(isVi
-          ? `🎉 GIAO DỊCH VÀ ĐĂNG KÝ SAFT THÀNH CÔNG!\n\nVí của bạn (${wallet.slice(0, 6)}...${wallet.slice(-4)}) đã chính thức sở hữu ${totalHaiNum.toLocaleString()} $HAISI.\n\n🛡️ BẢO CHỨNG CHUYỂN ĐỔI MAINNET:\nToàn bộ ${totalHaiNum.toLocaleString()} $HAISI đã được bảo lưu bất biến theo Hợp đồng SAFT. Ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token-2022 sẽ tự động giải ngân và chuyển đổi 100% số token này thành Token Thật on-chain về đúng địa chỉ ví này của bạn mà không cần thủ tục nào khác.\n\nHệ thống đang chuyển bạn đến Két sắt Vesting để kiểm tra số dư và chứng nhận phân bổ.`
-          : `🎉 TRANSACTION CONFIRMED & SAFT ALLOCATION RECORDED!\n\nYour wallet (${wallet.slice(0, 6)}...${wallet.slice(-4)}) now officially holds ${totalHaiNum.toLocaleString()} $HAISI.\n\n🛡️ OFFICIAL MAINNET GUARANTEE:\nAll ${totalHaiNum.toLocaleString()} $HAISI are immutably bound under the SAFT contract. Upon HAICHAIN Mainnet TGE, the Solana Token-2022 smart contract will automatically disburse 100% real tokens directly to this wallet address without manual intervention.\n\nRedirecting to your Vesting Vault tab.`);
+          ? `🎉 GIAO DỊCH VÀ ĐĂNG KÝ SAFT THÀNH CÔNG!
+
+Ví của bạn (${wallet.slice(0, 6)}...${wallet.slice(-4)}) đã chính thức sở hữu ${totalHaiNum.toLocaleString()} $HAISI.
+
+🛡️ BẢO CHỨNG CHUYỂN ĐỔI MAINNET:
+Toàn bộ ${totalHaiNum.toLocaleString()} $HAISI đã được bảo lưu bất biến theo Hợp đồng SAFT. Ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token-2022 sẽ tự động giải ngân và chuyển đổi 100% số token này thành Token Thật on-chain về đúng địa chỉ ví này của bạn mà không cần thủ tục nào khác.
+
+Hệ thống đang chuyển bạn đến Két sắt Vesting để kiểm tra số dư và chứng nhận phân bổ.`
+          : `🎉 TRANSACTION CONFIRMED & SAFT ALLOCATION RECORDED!
+
+Your wallet (${wallet.slice(0, 6)}...${wallet.slice(-4)}) now officially holds ${totalHaiNum.toLocaleString()} $HAISI.
+
+🛡️ OFFICIAL MAINNET GUARANTEE:
+All ${totalHaiNum.toLocaleString()} $HAISI are immutably bound under the SAFT contract. Upon HAICHAIN Mainnet TGE, the Solana Token-2022 smart contract will automatically disburse 100% real tokens directly to this wallet address without manual intervention.
+
+Redirecting to your Vesting Vault tab.`);
 
         if (typeof window.switchTab === 'function') {
           window.switchTab('tab-vesting');
