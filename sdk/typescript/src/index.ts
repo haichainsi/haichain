@@ -12,6 +12,7 @@ import { Connection, PublicKey, Keypair, Transaction, SystemProgram, SYSVAR_INST
 import { Program, AnchorProvider, Wallet, BN } from "@coral-xyz/anchor";
 import { TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from "@solana/spl-token";
 import * as crypto from "crypto";
+import { keccak_256 } from "@noble/hashes/sha3";
 
 export const SOLANA_USDT_MINT = new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
 // Official Solana Mainnet Circle USD (USDC) SPL Token Mint (EU MiCA & Global Regulatory Compliant)
@@ -162,11 +163,12 @@ export class HaiChainClient {
       expiryBuf,
       nonceBuf,
     ]);
-    const leafCapability = crypto.createHash("sha256").update(capPayload).digest();
+    // Keccak256 strictly matching solana_program::keccak::hashv in haichain-core
+    const leafCapability = Buffer.from(keccak_256(capPayload));
 
-    return crypto.createHash("sha256").update(
-      Buffer.concat([leafCapability, whitelistedMerchantAta.toBuffer()])
-    ).digest();
+    return Buffer.from(
+      keccak_256(Buffer.concat([leafCapability, whitelistedMerchantAta.toBuffer()]))
+    );
   }
 
   /**

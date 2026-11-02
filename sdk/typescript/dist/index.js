@@ -46,6 +46,7 @@ exports.EnterpriseRollupInvoiceGenerator = exports.IdempotencyEngine = exports.A
 const web3_js_1 = require("@solana/web3.js");
 const spl_token_1 = require("@solana/spl-token");
 const crypto = __importStar(require("crypto"));
+const sha3_1 = require("@noble/hashes/sha3");
 exports.SOLANA_USDT_MINT = new web3_js_1.PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
 // Official Solana Mainnet Circle USD (USDC) SPL Token Mint (EU MiCA & Global Regulatory Compliant)
 exports.SOLANA_USDC_MINT = new web3_js_1.PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
@@ -115,8 +116,9 @@ class HaiChainClient {
             expiryBuf,
             nonceBuf,
         ]);
-        const leafCapability = crypto.createHash("sha256").update(capPayload).digest();
-        return crypto.createHash("sha256").update(Buffer.concat([leafCapability, whitelistedMerchantAta.toBuffer()])).digest();
+        // Keccak256 strictly matching solana_program::keccak::hashv in haichain-core
+        const leafCapability = Buffer.from((0, sha3_1.keccak_256)(capPayload));
+        return Buffer.from((0, sha3_1.keccak_256)(Buffer.concat([leafCapability, whitelistedMerchantAta.toBuffer()])));
     }
     /**
      * Generates cryptographic payload for State Channel Micro-Voucher signing with full Domain Separation.
