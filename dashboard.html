@@ -166,7 +166,7 @@
   <script src="/app/i18n.js?v=v39_personalized_vault_mcp_1793648000000"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
-  <script src="/app/pdf-modal.js?v=v44_resend_live_1793654000000"></script>
+  <script src="/app/pdf-modal.js?v=v43_autofill_phantom_mobile_fix_1793643500"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v46_share_x_text_1793641914292"></script>
   <script>
@@ -2913,6 +2913,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         if (parsed && parsed.address) {
           parsed.provider = normalizeProviderName(parsed.provider);
           userWallet = parsed;
+          window.userWallet = userWallet;
+          window.HAICHAIN_CURRENT_WALLET = userWallet.address;
+          window.haichainConnectedWallet = userWallet.address;
+          window.currentConnectedSolanaWallet = userWallet.address;
           updateWalletBtnUI();
         }
       }
@@ -4085,11 +4089,19 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         biometric: providerName.toLowerCase().includes('passkey') || providerName.toLowerCase().includes('faceid')
       };
 
+      window.userWallet = userWallet;
+      window.HAICHAIN_CURRENT_WALLET = userWallet.address;
+      window.haichainConnectedWallet = userWallet.address;
+      window.currentConnectedSolanaWallet = userWallet.address;
       localStorage.setItem('haichain-connected-wallet', JSON.stringify(userWallet));
       updateWalletBtnUI();
       if (typeof updateDepositWalletBanner === 'function') updateDepositWalletBanner();
       if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
+      try {
+        window.dispatchEvent(new CustomEvent('haichain_wallet_connected', { detail: { publicKey: pubkeyStr, address: pubkeyStr, provider: providerName } }));
+      } catch (_) {}
     }
+    window.setConnectedWallet = setConnectedWallet;
 
     // Provider Buttons in Connect Modal (Clean 1-Tap Execution on Mobile & Desktop)
         function closeAllWalletTrays(exceptTrayId) {

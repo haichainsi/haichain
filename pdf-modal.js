@@ -954,7 +954,9 @@
     "errSig": "Vui lòng ký tên của bạn vào khung chữ ký điện tử.",
     "errAgree": "Vui lòng tick vào ô xác nhận đồng ý với các điều khoản Hợp đồng SAFT.",
     "alertProceed": "HỢP ĐỒNG ĐÃ ĐƯỢC KÝ!\n\nVui lòng chuyển {amount} USDT vào Kho Bạc:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nSố token {tokens} $HAISI sẽ được tự động phân bổ về ví của bạn tại TGE.",
-    "noWalletDetected": "Chưa phát hiện ví Web3 (Phantom/Solflare) đang kết nối. Vui lòng dán địa chỉ ví thủ công."
+    "noWalletDetected": "Chưa phát hiện ví Web3 (Phantom/Solflare) đang kết nối. Vui lòng dán địa chỉ ví thủ công.",
+    "evmDetectedNeedSolana": "Ví đang kết nối là ví MetaMask (EVM). Token $HAISI được phân bổ trên mạng Solana, vui lòng nhập địa chỉ ví Solana (Phantom / Solflare).",
+    "walletFilledSuccess": "✓ Đã lấy ví thành công"
   },
   "en": {
     "btnOpenSign": "Sign Agreement Online",
@@ -994,7 +996,9 @@
     "errSig": "Please draw your signature in the signature box.",
     "errAgree": "Please agree to the SAFT Agreement terms to proceed.",
     "alertProceed": "AGREEMENT SIGNED!\n\nPlease transfer {amount} USDT to Treasury:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nYour {tokens} $HAISI allocation will be automatically disbursed at TGE.",
-    "noWalletDetected": "No Web3 wallet (Phantom/Solflare) detected. Please paste your address manually."
+    "noWalletDetected": "No Web3 wallet (Phantom/Solflare) detected. Please paste your address manually.",
+    "evmDetectedNeedSolana": "Connected wallet is MetaMask (EVM). $HAISI tokens are disbursed on Solana Mainnet. Please provide a Solana address (Phantom / Solflare).",
+    "walletFilledSuccess": "✓ Wallet filled successfully"
   },
   "zh": {
     "btnOpenSign": "在线签署协议",
@@ -1034,7 +1038,9 @@
     "errSig": "请在签名区域内绘制您的电子签名。",
     "errAgree": "请勾选同意 SAFT 协议法律条款以继续。",
     "alertProceed": "协议已成功签署！\n\n请向以下多签金库转账 {amount} USDT:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\n您的 {tokens} $HAISI 代币分配将在 TGE 阶段自动结算至您的钱包。",
-    "noWalletDetected": "未检测到已连接的 Web3 钱包 (Phantom/Solflare)，请手动粘贴地址。"
+    "noWalletDetected": "未检测到已连接的 Web3 钱包 (Phantom/Solflare)，请手动粘贴地址。",
+    "evmDetectedNeedSolana": "当前连接的是MetaMask (EVM)钱包。$HAISI代币在Solana主网发放，请输入Solana钱包地址（Phantom / Solflare）。",
+    "walletFilledSuccess": "✓ 已成功填入钱包"
   },
   "ko": {
     "btnOpenSign": "온라인 계약 서명",
@@ -1074,7 +1080,9 @@
     "errSig": "서명란에 전자 서명을 입력해 주세요.",
     "errAgree": "진행하시려면 SAFT 계약 약관에 동의해 주세요.",
     "alertProceed": "계약 서명이 완료되었습니다!\n\n아래 멀티시그 금고로 {amount} USDT를 전송해 주세요:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\n배정된 {tokens} $HAISI 토큰은 TGE 시점에 등록된 지갑으로 자동 지급됩니다.",
-    "noWalletDetected": "연결된 Web3 지갑(Phantom/Solflare)을 찾을 수 없습니다. 지갑 주소를 직접 입력해 주세요."
+    "noWalletDetected": "연결된 Web3 지갑(Phantom/Solflare)을 찾을 수 없습니다. 지갑 주소를 직접 입력해 주세요.",
+    "evmDetectedNeedSolana": "현재 연결된 지갑은 MetaMask (EVM)입니다. $HAISI 토큰은 Solana 메인넷에서 분배되므로 Solana 지갑(Phantom / Solflare) 주소를 입력해 주세요.",
+    "walletFilledSuccess": "✓ 지갑 주소가 입력되었습니다"
   },
   "es": {
     "btnOpenSign": "Firmar Acuerdo Online",
@@ -1114,7 +1122,9 @@
     "errSig": "Por favor dibuje su firma en el recuadro correspondiente.",
     "errAgree": "Debe aceptar los términos del Acuerdo SAFT para continuar.",
     "alertProceed": "¡ACUERDO FIRMADO CON ÉXITO!\n\nPor favor transfiera {amount} USDT a la Tesorería Multi-Firma:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nSu asignación de {tokens} $HAISI será distribuida automáticamente en el TGE.",
-    "noWalletDetected": "No se detectó billetera Web3 (Phantom/Solflare). Por favor pegue la dirección manualmente."
+    "noWalletDetected": "No se detectó billetera Web3 (Phantom/Solflare). Por favor pegue la dirección manualmente.",
+    "evmDetectedNeedSolana": "La billetera conectada es MetaMask (EVM). Los tokens $HAISI se distribuyen en la red Solana. Ingrese una dirección de billetera Solana (Phantom / Solflare).",
+    "walletFilledSuccess": "✓ Billetera completada con éxito"
   },
   "fr": {
     "btnOpenSign": "Signer l’Accord en Ligne",
@@ -1154,7 +1164,9 @@
     "errSig": "Veuillez apposer votre signature dans la zone prévue à cet effet.",
     "errAgree": "Veuillez accepter les termes de l’accord SAFT pour continuer.",
     "alertProceed": "ACCORD SIGNÉ !\n\nVeuillez transférer {amount} USDT vers la Trésorerie:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nVotre allocation de {tokens} $HAISI sera automatiquement distribuée au TGE.",
-    "noWalletDetected": "Aucun portefeuille Web3 (Phantom/Solflare) détecté. Veuillez coller l’adresse manuellement."
+    "noWalletDetected": "Aucun portefeuille Web3 (Phantom/Solflare) détecté. Veuillez coller l’adresse manuellement.",
+    "evmDetectedNeedSolana": "Le portefeuille connecté est MetaMask (EVM). Les jetons $HAISI sont distribués sur Solana. Veuillez fournir une adresse Solana (Phantom / Solflare).",
+    "walletFilledSuccess": "✓ Portefeuille renseigné avec succès"
   },
   "ru": {
     "btnOpenSign": "Подписать договор онлайн",
@@ -1194,7 +1206,9 @@
     "errSig": "Пожалуйста, поставьте подпись в поле для подписи.",
     "errAgree": "Пожалуйста, подтвердите согласие с условиями договора SAFT.",
     "alertProceed": "ДОГОВОР ПОДПИСАН!\n\nПожалуйста, переведите {amount} USDT в Казначейство:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nВаша аллокация в размере {tokens} $HAISI будет автоматически перечислена при TGE.",
-    "noWalletDetected": "Web3 кошелек (Phantom/Solflare) не обнаружен. Пожалуйста, вставьте адрес вручную."
+    "noWalletDetected": "Web3 кошелек (Phantom/Solflare) не обнаружен. Пожалуйста, вставьте адрес вручную.",
+    "evmDetectedNeedSolana": "Подключенный кошелек — MetaMask (EVM). Токены $HAISI распределяются в сети Solana. Пожалуйста, укажите адрес кошелька Solana (Phantom / Solflare).",
+    "walletFilledSuccess": "✓ Кошелек успешно заполнен"
   },
   "kk": {
     "btnOpenSign": "Келісімге онлайн қол қою",
@@ -1234,7 +1248,9 @@
     "errSig": "Қолтаңба өрісіне қол қойыңыз.",
     "errAgree": "Жалғастыру үшін SAFT шарттарымен келісуіңіз керек.",
     "alertProceed": "КЕЛІСІМГЕ ҚОЛ ҚОЙЫЛДЫ!\n\nҚазынашылыққа {amount} USDT аударыңыз:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nСізге бөлінген {tokens} $HAISI токендері TGE кезінде автоматты түрде аударылады.",
-    "noWalletDetected": "Қосылған Web3 әмиян табылмады. Мекенжайды қолмен енгізіңіз."
+    "noWalletDetected": "Қосылған Web3 әмиян табылмады. Мекенжайды қолмен енгізіңіз.",
+    "evmDetectedNeedSolana": "Қосылған әмиян — MetaMask (EVM). $HAISI токендері Solana желісінде таратылады. Solana әмиян мекенжайын (Phantom / Solflare) енгізіңіз.",
+    "walletFilledSuccess": "✓ Әмиян мекенжайы сәтті қойылды"
   },
   "hi": {
     "btnOpenSign": "ऑनलाइन अनुबंध पर हस्ताक्षर करें",
@@ -1274,7 +1290,9 @@
     "errSig": "कृपया हस्ताक्षर बॉक्स में अपना हस्ताक्षर बनाएं।",
     "errAgree": "आगे बढ़ने के लिए कृपया SAFT अनुबंध की शर्तों से सहमत हों।",
     "alertProceed": "अनुबंध हस्ताक्षरित!\n\nकृपया ट्रेजरी में {amount} USDT ट्रांसफर करें:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nआपका {tokens} $HAISI आवंटन TGE पर स्वचालित रूप से वितरित किया जाएगा।",
-    "noWalletDetected": "कोई Web3 वॉलेट नहीं मिला। कृपया अपना पता मैन्युअल रूप से पेस्ट करें।"
+    "noWalletDetected": "कोई Web3 वॉलेट नहीं मिला। कृपया अपना पता मैन्युअल रूप से पेस्ट करें।",
+    "evmDetectedNeedSolana": "जुड़ा हुआ वॉलेट MetaMask (EVM) है। $HAISI टोकन Solana मेननेट पर वितरित किए जाते हैं। कृपया एक Solana वॉलेट पता (Phantom / Solflare) प्रदान करें।",
+    "walletFilledSuccess": "✓ वॉलेट सफलतापूर्वक भर दिया गया"
   },
   "he": {
     "btnOpenSign": "חתימה על ההסכם אונליין",
@@ -1314,7 +1332,9 @@
     "errSig": "נא לחתום בתיבת החתימה.",
     "errAgree": "יש לאשר את תנאי הסכם ה-SAFT כדי להמשיך.",
     "alertProceed": "ההסכם נחתם בהצלחה!\n\nנא להעביר {amount} USDT לחשבון האוצר:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nהקצאת ה-{tokens} $HAISI שלך תחולק אוטומטית ב-TGE.",
-    "noWalletDetected": "לא זוהה ארנק Web3 מחובר. נא להדביק את הכתובת ידנית."
+    "noWalletDetected": "לא זוהה ארנק Web3 מחובר. נא להדביק את הכתובת ידנית.",
+    "evmDetectedNeedSolana": "הארנק המחובר הוא MetaMask (EVM). אסימוני $HAISI מחולקים ברשת Solana. אנא הזן כתובת ארנק Solana (Phantom / Solflare).",
+    "walletFilledSuccess": "✓ הארנק מולא בהצלחה"
   }
 };
 
@@ -1488,26 +1508,224 @@
       inputAmount.addEventListener('input', updateDynamicAlloc);
     }
 
-    // Auto-fill wallet
-    function autoFillConnectedWallet() {
-      const activeW = window.HAICHAIN_CURRENT_WALLET || 
-                      (window.solana && window.solana.publicKey ? window.solana.publicKey.toString() : '') ||
-                      (window.solflare && window.solflare.publicKey ? window.solflare.publicKey.toString() : '');
-      if (activeW && inputWallet && !inputWallet.value) {
-        inputWallet.value = activeW;
+    // Robust Web3 Solana Wallet Resolution across Mobile Chrome, In-App WebViews, Extensions & Storage
+    function resolveConnectedSolanaWallet() {
+      function isValidSolana(addr) {
+        return typeof addr === 'string' && !addr.startsWith('0x') && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(addr.trim());
       }
+      function isValidEVM(addr) {
+        return typeof addr === 'string' && /^0x[a-fA-F0-9]{40}$/i.test(addr.trim());
+      }
+
+      // 1. Direct window globals set by HAICHAIN runtime
+      const directCandidates = [
+        window.HAICHAIN_CURRENT_WALLET,
+        window.currentConnectedSolanaWallet,
+        window.haichainConnectedWallet,
+        window.userWallet && window.userWallet.address,
+        window.connectedWalletAddr
+      ];
+      for (const c of directCandidates) {
+        if (isValidSolana(c)) return { address: c.trim(), provider: 'Global', isEVM: false };
+      }
+
+      // 2. Primary localStorage: 'haichain-connected-wallet'
+      try {
+        const raw = localStorage.getItem('haichain-connected-wallet');
+        if (raw) {
+          const parsed = typeof raw === 'string' && raw.trim().startsWith('{') ? JSON.parse(raw) : { address: raw };
+          const addr = parsed.address || parsed.publicKey || parsed.pubkey || '';
+          const prov = parsed.provider || (parsed.isEVM ? 'MetaMask' : 'Phantom');
+          if (isValidSolana(addr)) {
+            return { address: addr.trim(), provider: prov, isEVM: false };
+          }
+          if (isValidEVM(addr) || parsed.isEVM) {
+            return { address: addr.trim(), provider: prov, isEVM: true };
+          }
+        }
+      } catch (_) {}
+
+      // 3. Fallback localStorage keys used in various components
+      const fallbackKeys = [
+        'haichain_connected_wallet',
+        'haichain_wallet_address',
+        'haichain_wallet',
+        'solana_wallet',
+        'solana_wallet_address',
+        'phantom_pubkey',
+        'connected_wallet',
+        'last_connected_wallet'
+      ];
+      for (const k of fallbackKeys) {
+        try {
+          const val = localStorage.getItem(k);
+          if (val) {
+            let addr = val.trim();
+            if (addr.startsWith('{')) {
+              const p = JSON.parse(addr);
+              addr = p.address || p.publicKey || p.pubkey || '';
+            }
+            if (isValidSolana(addr)) {
+              return { address: addr.trim(), provider: 'Storage', isEVM: false };
+            }
+          }
+        } catch (_) {}
+      }
+
+      // 4. Injected Solana browser providers (Phantom Extension, Phantom Mobile Browser, Solflare)
+      try {
+        const pSol = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+        if (pSol && pSol.publicKey) {
+          const pk = pSol.publicKey.toString();
+          if (isValidSolana(pk)) return { address: pk, provider: 'Phantom', isEVM: false };
+        }
+      } catch (_) {}
+
+      try {
+        if (window.solflare && window.solflare.publicKey) {
+          const pk = window.solflare.publicKey.toString();
+          if (isValidSolana(pk)) return { address: pk, provider: 'Solflare', isEVM: false };
+        }
+      } catch (_) {}
+
+      try {
+        if (window.solana && window.solana.publicKey) {
+          const pk = window.solana.publicKey.toString();
+          if (isValidSolana(pk)) return { address: pk, provider: 'Solana', isEVM: false };
+        }
+      } catch (_) {}
+
+      // 5. DOM Form elements in Dashboard (e.g. #preseed-wallet in sale card)
+      try {
+        const preseedInput = document.getElementById('preseed-wallet');
+        if (preseedInput && isValidSolana(preseedInput.value)) {
+          return { address: preseedInput.value.trim(), provider: 'PreseedForm', isEVM: false };
+        }
+      } catch (_) {}
+
+      // 6. DOM Header elements: [data-wallet-address], #header-wallet-address, #connected-wallet-display
+      try {
+        const headerEl = document.querySelector('[data-wallet-address], #header-wallet-address, #connected-wallet-display');
+        if (headerEl) {
+          const raw = headerEl.getAttribute('data-wallet-address') || headerEl.getAttribute('data-wallet') || headerEl.textContent || '';
+          const match = raw.match(/[1-9A-HJ-NP-Za-km-z]{32,44}/);
+          if (match && isValidSolana(match[0])) {
+            return { address: match[0], provider: 'HeaderPill', isEVM: false };
+          }
+        }
+      } catch (_) {}
+
+      return null;
+    }
+
+    // Auto-fill wallet into input
+    function autoFillConnectedWallet(force) {
+      const resolved = resolveConnectedSolanaWallet();
+      if (resolved && !resolved.isEVM && resolved.address && inputWallet) {
+        if (force || !inputWallet.value) {
+          inputWallet.value = resolved.address;
+          inputWallet.dispatchEvent(new Event('input', { bubbles: true }));
+          inputWallet.dispatchEvent(new Event('change', { bubbles: true }));
+          window.HAICHAIN_CURRENT_WALLET = resolved.address;
+          window.currentConnectedSolanaWallet = resolved.address;
+        }
+        return resolved;
+      }
+      return resolved;
     }
 
     if (btnAutoFill) {
-      btnAutoFill.addEventListener('click', () => {
+      btnAutoFill.addEventListener('click', async () => {
         const lang = getCurrentLang();
         const t = SAFT_DRAWER_I18N[lang] || SAFT_DRAWER_I18N['en'];
-        autoFillConnectedWallet();
-        if (!inputWallet.value) {
-          alert(t.noWalletDetected);
+
+        // 1. Try resolving currently connected wallet
+        let res = autoFillConnectedWallet(true);
+
+        // 2. If no valid Solana wallet found, check if an injected provider exists and can connect on demand
+        if (!res || !res.address || res.isEVM) {
+          if (!res || !res.isEVM) {
+            const solProvider = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null) || window.solflare || window.solana;
+            if (solProvider && typeof solProvider.connect === 'function') {
+              try {
+                const connResp = await solProvider.connect();
+                const pk = connResp?.publicKey?.toString() || solProvider.publicKey?.toString() || '';
+                if (pk && pk.length >= 32 && pk.length <= 44) {
+                  const provName = solProvider.isPhantom ? 'Phantom' : (solProvider.isSolflare ? 'Solflare' : 'Solana');
+                  res = { address: pk, provider: provName, isEVM: false };
+                  inputWallet.value = pk;
+                  inputWallet.dispatchEvent(new Event('input', { bubbles: true }));
+                  inputWallet.dispatchEvent(new Event('change', { bubbles: true }));
+                  window.HAICHAIN_CURRENT_WALLET = pk;
+                  window.currentConnectedSolanaWallet = pk;
+                  try {
+                    localStorage.setItem('haichain-connected-wallet', JSON.stringify({ address: pk, provider: provName }));
+                    if (typeof window.setConnectedWallet === 'function') window.setConnectedWallet(pk, provName);
+                  } catch (_) {}
+                }
+              } catch (connErr) {
+                console.warn('[SAFT] On-demand Web3 connection declined:', connErr);
+              }
+            }
+          }
+        }
+
+        // 3. User feedback
+        if (res && !res.isEVM && res.address && inputWallet && inputWallet.value) {
+          const origText = btnAutoFill.textContent;
+          btnAutoFill.textContent = t.walletFilledSuccess || (lang === 'vi' ? '✓ Đã lấy ví thành công' : '✓ Wallet filled');
+          btnAutoFill.classList.add('text-emerald-500');
+          setTimeout(() => {
+            btnAutoFill.textContent = origText;
+            btnAutoFill.classList.remove('text-emerald-500');
+          }, 2500);
+        } else if (res && res.isEVM) {
+          alert(t.evmDetectedNeedSolana || 'Ví đang kết nối là ví MetaMask (EVM). Token $HAISI được phân bổ trên mạng Solana, vui lòng nhập địa chỉ ví Solana (Phantom / Solflare).');
+          inputWallet.focus();
+        } else {
+          // If no wallet connected, alert and open the connect tray/modal if present
+          const wBtn = document.getElementById('wallet-btn');
+          if (wBtn) {
+            alert(t.noWalletDetected);
+            wBtn.click();
+          } else {
+            alert(t.noWalletDetected);
+          }
         }
       });
     }
+
+    // Dynamic listener: whenever wallet connects in runtime, auto-fill inputWallet if still empty
+    window.addEventListener('haichain_wallet_connected', (e) => {
+      const addr = e.detail && (e.detail.publicKey || e.detail.address);
+      if (addr && typeof addr === 'string' && !addr.startsWith('0x') && addr.length >= 32 && addr.length <= 44) {
+        window.HAICHAIN_CURRENT_WALLET = addr;
+        window.currentConnectedSolanaWallet = addr;
+        if (inputWallet && !inputWallet.value) {
+          inputWallet.value = addr;
+          inputWallet.dispatchEvent(new Event('input', { bubbles: true }));
+          inputWallet.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    });
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'haichain-connected-wallet' && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          const addr = parsed.address || parsed.publicKey || '';
+          if (addr && !addr.startsWith('0x') && addr.length >= 32 && addr.length <= 44) {
+            window.HAICHAIN_CURRENT_WALLET = addr;
+            window.currentConnectedSolanaWallet = addr;
+            if (inputWallet && !inputWallet.value) {
+              inputWallet.value = addr;
+              inputWallet.dispatchEvent(new Event('input', { bubbles: true }));
+              inputWallet.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          }
+        } catch (_) {}
+      }
+    });
 
     // Canvas Drawing Handlers (High-Precision Pointer, Touch & Mouse)
     function getCanvasCoords(e) {

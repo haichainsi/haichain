@@ -1256,6 +1256,12 @@
       if (connectedWalletAddr && allocs[connectedWalletAddr]) {
         userAllocation = { ...allocs[connectedWalletAddr], address: connectedWalletAddr };
       }
+      if (connectedWalletAddr) {
+        window.userWallet = savedWallet;
+        window.HAICHAIN_CURRENT_WALLET = connectedWalletAddr;
+        window.haichainConnectedWallet = connectedWalletAddr;
+        window.currentConnectedSolanaWallet = connectedWalletAddr;
+      }
     } catch (_) {}
 
     // Ensure clean viewport alignment on terminal render
