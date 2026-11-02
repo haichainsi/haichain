@@ -73,8 +73,8 @@
       fixedPriceBadge: '@ $0.007 Fixed',
       tgeValueTitle: 'TGE Value ($0.010)',
       unvestedYield: '+42.8% Unvested Profit',
-      l1ValueTitle: 'L1 Sovereign ($1.00)',
-      projectedMultiple: '142x Projected Multiple',
+      l1ValueTitle: 'Micro-Tx Capacity',
+      projectedMultiple: '~200 Ticks / $HAISI Gas Capacity',
       vestingScheduleTitle: 'Cryptographic Vesting Invariant Breakdown',
       vestingStep1: '1. Initial TGE Claim (20%):',
       vestingStep2: '2. Cliff Period (Months 1 & 2):',
@@ -161,8 +161,8 @@
       fixedPriceBadge: 'Cố định @ $0.007',
       tgeValueTitle: 'Giá Trị Tại TGE ($0.010)',
       unvestedYield: '+42.8% Lợi Nhuận Ban Đầu',
-      l1ValueTitle: 'Định Giá L1 Sovereign ($1.00)',
-      projectedMultiple: 'Kỳ Vọng x142 Lần',
+      l1ValueTitle: 'Hạn Ngạch Giao Dịch Agent',
+      projectedMultiple: '~200 Giao Dịch Vi Mô / $HAISI',
       vestingScheduleTitle: 'Chi Tiết Lịch Mở Khóa Mật Mã Bất Biến',
       vestingStep1: '1. Mở khóa ngày TGE (20%):',
       vestingStep2: '2. Khóa Cliff (Tháng 1 & 2):',
@@ -249,8 +249,8 @@
       fixedPriceBadge: '固定价 @ $0.007',
       tgeValueTitle: 'TGE 价值 ($0.010)',
       unvestedYield: '+42.8% 未解锁账面收益',
-      l1ValueTitle: '主链 Sovereign 预期 ($1.00)',
-      projectedMultiple: '预期 142 倍',
+      l1ValueTitle: '智能体执行配额',
+      projectedMultiple: '约 200 次微交易 / $HAISI 算力',
       vestingScheduleTitle: '链上密码学锁仓明细',
       vestingStep1: '1. TGE 首期解锁 (20%):',
       vestingStep2: '2. 锁仓锁定期 (第1与第2个月):',
@@ -337,8 +337,8 @@
       fixedPriceBadge: '@ $0.007 고정',
       tgeValueTitle: 'TGE 상장 가치 ($0.010)',
       unvestedYield: '+42.8% 미실현 장부 수익',
-      l1ValueTitle: 'Sovereign L1 목표 ($1.00)',
-      projectedMultiple: '142배 예상 수익',
+      l1ValueTitle: '에이전트 실행 한도',
+      projectedMultiple: '$HAISI당 약 200회 마이크로 결제',
       vestingScheduleTitle: '온체인 암호학적 베스팅 일정',
       vestingStep1: '1. TGE 초기 클레임 (20%):',
       vestingStep2: '2. 클리프 락업 (1~2개월차):',
@@ -425,8 +425,8 @@
       fixedPriceBadge: 'Fixé à 0,007 $',
       tgeValueTitle: 'Valeur TGE (0,010 $)',
       unvestedYield: '+42,8% de Gain Initial',
-      l1ValueTitle: 'Objectif L1 Souverain (1,00 $)',
-      projectedMultiple: 'Multiplicateur 142x',
+      l1ValueTitle: 'Capacité de Micro-Tx',
+      projectedMultiple: '~200 Ticks / Puissance Gas $HAISI',
       vestingScheduleTitle: 'Détail Cryptographique du Vesting',
       vestingStep1: '1. Déblocage TGE (20%) :',
       vestingStep2: '2. Période de Cliff (Mois 1 & 2) :',
@@ -513,8 +513,8 @@
       fixedPriceBadge: 'Fijado en $0.007',
       tgeValueTitle: 'Valor en TGE ($0.010)',
       unvestedYield: '+42.8% Ganancia Inicial',
-      l1ValueTitle: 'Proyección L1 Soberano ($1.00)',
-      projectedMultiple: 'Múltiplo Proyectado 142x',
+      l1ValueTitle: 'Capacidad de Micro-Tx',
+      projectedMultiple: '~200 Ticks / Potencia Gas $HAISI',
       vestingScheduleTitle: 'Desglose Criptográfico de Vesting',
       vestingStep1: '1. Desbloqueo Inicial TGE (20%):',
       vestingStep2: '2. Periodo de Cliff (Meses 1 y 2):',
@@ -601,8 +601,8 @@
       fixedPriceBadge: 'Фиксировано @ $0.007',
       tgeValueTitle: 'Стоимость при TGE ($0.010)',
       unvestedYield: '+42.8% Первоначальная Прибыль',
-      l1ValueTitle: 'Цель L1 Sovereign ($1.00)',
-      projectedMultiple: 'Ожидаемый Мультипликатор 142x',
+      l1ValueTitle: 'Квота Микро-Транзакций',
+      projectedMultiple: '~200 Тиков / Газ $HAISI',
       vestingScheduleTitle: 'Ончейн-график Вестинга Токенов',
       vestingStep1: '1. Разблокировка при TGE (20%):',
       vestingStep2: '2. Период Клиффа (1 и 2 месяцы):',
@@ -689,8 +689,8 @@
       fixedPriceBadge: '@ $0.007 निश्चित',
       tgeValueTitle: 'TGE पर मूल्य ($0.010)',
       unvestedYield: '+42.8% प्रारंभिक लाभ',
-      l1ValueTitle: 'L1 सोवरेन लक्ष्य ($1.00)',
-      projectedMultiple: '142x अनुमानित रिटर्न',
+      l1ValueTitle: 'माइक्रो-लेनदेन क्षमता',
+      projectedMultiple: '~200 टिक्स / $HAISI गैस क्षमता',
       vestingScheduleTitle: 'क्रिप्टोग्राफिक वेस्टिंग विवरण',
       vestingStep1: '1. TGE पर अनलॉक (20%):',
       vestingStep2: '2. क्लिफ अवधि (महीने 1 और 2):',
@@ -777,8 +777,8 @@
       fixedPriceBadge: 'קבוע ב-0.007$',
       tgeValueTitle: 'ערך בהשקה (0.010$)',
       unvestedYield: '+42.8% רווח ראשוני',
-      l1ValueTitle: 'יעד L1 ריבוני (1.00$)',
-      projectedMultiple: 'מכפיל חזוי פי 142',
+      l1ValueTitle: 'מכסת מיקרו-עסקאות',
+      projectedMultiple: '~200 עסקאות / כוח גז $HAISI',
       vestingScheduleTitle: 'פירוט לוח זמני שחרור קריפטוגרפי',
       vestingStep1: '1. שחרור בהשקה ראשונית (20%):',
       vestingStep2: '2. תקופת נעילה (חודשים 1 ו-2):',
@@ -865,8 +865,8 @@
       fixedPriceBadge: 'Бекітілген @ $0.007',
       tgeValueTitle: 'TGE Құны ($0.010)',
       unvestedYield: '+42.8% Бастапқы Пайда',
-      l1ValueTitle: 'Sovereign L1 Мақсаты ($1.00)',
-      projectedMultiple: 'Болжамды Мультипликатор 142x',
+      l1ValueTitle: 'Микро-Транзакция Сыйымдылығы',
+      projectedMultiple: '~200 Тик / $HAISI Газ Қуаты',
       vestingScheduleTitle: 'Ончейн Вестинг Кестесінің Мәліметтері',
       vestingStep1: '1. TGE-дегі Бастапқы Бұғатты Ашу (20%):',
       vestingStep2: '2. Клифф Кезеңі (1 және 2 айлар):',
@@ -1253,8 +1253,8 @@
               </div>
               <div class="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-0.5">
                 <span class="text-[9px] uppercase text-neutral-400 font-semibold block">${getI18nText('l1ValueTitle')}</span>
-                <div class="text-lg sm:text-xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-l1-value">$142,857</div>
-                <span class="text-[9px] text-neutral-500 font-medium block">142x Multiple</span>
+                <div class="text-lg sm:text-xl font-black text-black dark:text-white tabular-nums tracking-tight" id="calc-l1-value">28.5M Ticks</div>
+                <span class="text-[9px] text-neutral-500 font-medium block">${getI18nText('projectedMultiple')}</span>
               </div>
             </div>
 
@@ -1423,11 +1423,16 @@
       const tgeTokens = Math.round(totalTokens * 0.20);
       const streamTokens = totalTokens - tgeTokens;
       const tgeValue = (totalTokens * 0.010).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-      const l1Value = (totalTokens * 1.00).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      const executionCapacity = Math.round(totalTokens * 200);
+      const l1Value = executionCapacity >= 1000000 
+        ? (executionCapacity / 1000000).toFixed(1) + 'M Ticks' 
+        : executionCapacity.toLocaleString('en-US') + ' Ticks';
 
       totalHaiEl.textContent = totalTokens.toLocaleString('en-US');
       tgeValEl.textContent = tgeValue;
       l1ValEl.textContent = l1Value;
+      const l1SubEl = container.querySelector('#calc-l1-subtext');
+      if (l1SubEl) l1SubEl.textContent = getI18nText('projectedMultiple');
       tgeTokensEl.textContent = `${tgeTokens.toLocaleString('en-US')} $HAISI (${(tgeTokens * 0.010).toLocaleString('en-US', { style: 'currency', currency: 'USD' })})`;
       streamTokensEl.textContent = `${streamTokens.toLocaleString('en-US')} $HAISI (~${Math.round(streamTokens / 180)} $HAISI/day)`;
 

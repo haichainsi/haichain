@@ -160,12 +160,12 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
-  <script src="/app/i18n.js?v=v28_cloud_mcp_streamable_http_1793591292883"></script>
+  <script src="/app/i18n.js?v=v29_institutional_audit_upgrade_1793593000000"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v22_desktop_web3_autoconnect"></script>
+  <script src="/app/sale-controller.js?v=v23_institutional_calculator_clean_1793593000000"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -1167,7 +1167,7 @@
                 <td class="py-3 px-4 font-semibold text-black dark:text-white">Brave SERP Scraper</td>
                 <td class="py-3 px-4 text-neutral-400">8-Leaf Root</td>
                 <td class="py-3 px-4 text-black dark:text-white font-bold">-$0.0024 USDT</td>
-                <td class="py-3 px-4 text-neutral-400">0.14ms</td>
+                <td class="py-3 px-4 text-neutral-400">0.14ms (Netting)</td>
                 <td class="py-3 px-4 text-right">
                   <span class="text-neutral-400">Internal Netting</span>
                 </td>
@@ -1610,11 +1610,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           </div>
           <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
             <span class="block text-[11px] font-bold text-black dark:text-white" data-i18n="aiHub.webFeature2Title">Protected Spending Vault</span>
-            <span class="text-[10px] text-neutral-500" data-i18n="aiHub.webFeature2Desc">Hard budget limits, 100% capital safety</span>
+            <span class="text-[10px] text-neutral-500" data-i18n="aiHub.webFeature2Desc">Hard budget limits, cryptographic blast-radius capping</span>
           </div>
           <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
             <span class="block text-[11px] font-bold text-black dark:text-white" data-i18n="aiHub.webFeature3Title">Panic Circuit Breaker</span>
-            <span class="text-[10px] text-neutral-500" data-i18n="aiHub.webFeature3Desc">Reclaim 100% funds to wallet in 380ms</span>
+            <span class="text-[10px] text-neutral-500" data-i18n="aiHub.webFeature3Desc">Reclaim unspent funds to wallet in ~380ms</span>
           </div>
         </div>
 
@@ -3427,6 +3427,31 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         }
       } catch (_) {}
 
+      // 2.5. Check URL parameters for direct connectedWallet handoff
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const qWallet = urlParams.get('connectedWallet') || urlParams.get('wallet');
+        const qProvider = urlParams.get('provider') || 'MetaMask';
+        const qEvmBal = urlParams.get('evmBalance');
+        if (qWallet && (/^0x[a-fA-F0-9]{40}$/i.test(qWallet) || /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(qWallet))) {
+          console.log('[MobileWallet] Found connectedWallet in URL query:', qWallet, qProvider);
+          await setConnectedWallet(qWallet, qProvider);
+          if (qEvmBal && userWallet) {
+            userWallet.evmBalance = qEvmBal;
+            userWallet.solBalance = qEvmBal + ' ETH';
+          }
+          updateWalletBtnUI();
+          if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
+          const cleanUrl = new URL(window.location.href);
+          cleanUrl.searchParams.delete('connectedWallet');
+          cleanUrl.searchParams.delete('wallet');
+          cleanUrl.searchParams.delete('provider');
+          cleanUrl.searchParams.delete('evmBalance');
+          window.history.replaceState({}, document.title, cleanUrl.pathname + (cleanUrl.search ? cleanUrl.search : ''));
+          return true;
+        }
+      } catch (_) {}
+
       // 3. Check for official E2EE Redirect Callback or Handoff in URL
       try {
         if (window.HaichainMobileWallet) {
@@ -3602,64 +3627,120 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-                // Prepare return URL and Android Chrome Intent
+                // Prepare clean HTTPS return URL (No blocked intent:// schemes)
                 const baseReturn = returnUrlParam ? decodeURIComponent(returnUrlParam) : (window.location.origin + window.location.pathname);
                 const cleanBase = baseReturn.split('?')[0];
                 const handoffParams = `connectedWallet=${encodeURIComponent(account)}&provider=MetaMask&evmBalance=${encodeURIComponent(ethBal)}`;
                 const finalReturnUrl = `${cleanBase}?${handoffParams}`;
-                const host = window.location.host;
-                const path = cleanBase.replace(/^https?:\/\/[^\/]+/, '') || '/dashboard.html';
 
-                const isAndroid = /Android/i.test(navigator.userAgent);
-                const chromeIntent = `intent://${host}${path}?${handoffParams}#Intent;scheme=https;package=com.android.chrome;end`;
-                const browsableIntent = `intent://${host}${path}?${handoffParams}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;end`;
-
-                // Update prompt sheet to successful return UI with active user gesture button & auto-return
+                // Update prompt sheet with clear, seamless Web3 actions (Eliminating Android intent block)
                 promptSheet.innerHTML = `
-                  <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl text-white">
-                    <div class="w-14 h-14 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-2xl font-bold">✓</div>
-                    <div class="space-y-1">
-                      <h3 class="text-base font-bold text-white">${isVi ? 'Đã Kết Nối Ví MetaMask Thực Tế!' : 'MetaMask Wallet Connected!'}</h3>
-                      <p class="text-xs font-mono text-neutral-300">${account.slice(0, 6)}...${account.slice(-4)} (${ethBal} ETH)</p>
-                      <p class="text-[11px] text-neutral-400 font-sans">${isVi ? 'Đang tự động chuyển về trình duyệt của bạn...' : 'Returning to your browser...'}</p>
+                  <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl text-white animate-scaleUp">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-2xl font-bold shadow-lg">✓</div>
+                    <div class="space-y-1.5">
+                      <h3 class="text-base font-bold text-white uppercase tracking-wider">${isVi ? 'Đã Kết Nối MetaMask Thành Công!' : 'MetaMask Wallet Connected!'}</h3>
+                      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono text-emerald-400">
+                        <span>●</span>
+                        <span>${account.slice(0, 6)}...${account.slice(-4)} (${ethBal} ETH)</span>
+                      </div>
+                      <p class="text-[12px] text-neutral-300 font-sans leading-relaxed pt-1">
+                        ${isVi 
+                          ? 'Ví thật đã kết nối thành công. Bạn có thể sử dụng ngay trong MetaMask hoặc quay về trình duyệt ngoài.' 
+                          : 'Real wallet connected. You can use it directly inside MetaMask or return to your browser.'}
+                      </p>
                     </div>
-                    <button type="button" id="btn-return-external-browser" class="w-full py-3.5 px-4 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow hover:bg-neutral-200 active:scale-95 transition-all cursor-pointer">
-                      <span>${isVi ? 'Quay Về Trình Duyệt Ngay (Chrome/Safari)' : 'Return to Browser (Chrome/Safari)'}</span>
+
+                    <!-- Primary Action: Continue in MetaMask -->
+                    <button type="button" id="btn-continue-in-metamask" class="w-full py-3.5 px-4 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg hover:bg-neutral-200 active:scale-95 transition-all cursor-pointer">
+                      <span>${isVi ? 'Tiếp Tục Sử Dụng Trong MetaMask' : 'Continue Inside MetaMask'}</span>
                       <span>&rarr;</span>
                     </button>
-                    <button type="button" id="btn-stay-in-metamask" class="w-full py-2 text-[11px] text-neutral-400 hover:text-white underline cursor-pointer">
-                      ${isVi ? 'Hoặc tiếp tục sử dụng ngay trong MetaMask (Đã kết nối)' : 'Or continue inside MetaMask browser (Connected)'}
-                    </button>
+
+                    <!-- Secondary Action: Return / Copy Link for Chrome/Safari -->
+                    <div class="pt-2 border-t border-neutral-800/80 space-y-2">
+                      <button type="button" id="btn-copy-return-link" class="w-full py-2.5 px-3 rounded-xl bg-neutral-900 border border-neutral-700/80 text-[11px] font-mono text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span id="btn-copy-return-link-text">${isVi ? 'Sao chép link có ví (để dán vào Chrome)' : 'Copy Link With Wallet (Paste into Chrome)'}</span>
+                      </button>
+                      <a href="${finalReturnUrl}" class="block w-full py-1.5 text-[11px] text-neutral-400 hover:text-white underline transition-colors">
+                        ${isVi ? 'Quay về trình duyệt ngoài (HTTPS)' : 'Return to browser (HTTPS)'}
+                      </a>
+                    </div>
                   </div>
                 `;
 
-                const executeAutoHandoff = () => {
-                  console.log('[MetaMask] Executing handoff to mobile browser...');
-                  if (isAndroid) {
-                    try {
-                      window.location.href = chromeIntent;
-                    } catch (_) {
-                      window.location.href = browsableIntent;
+                let autoCloseTimer = null;
+
+                const handleContinueInMetaMask = () => {
+                  if (autoCloseTimer) clearTimeout(autoCloseTimer);
+                  if (promptSheet && promptSheet.parentNode) {
+                    promptSheet.remove();
+                  }
+                  updateWalletBtnUI();
+                  showMetaMaskMobileHandoffBar(account, returnUrlParam);
+
+                  if (autoDeposit === 'web3') {
+                    const dModal = document.getElementById('dashboard-deposit-modal');
+                    const dAmount = document.getElementById('dash-deposit-amount');
+                    const cBtn = document.getElementById('dash-confirm-deposit-btn');
+                    if (typeof selectDepositTab === 'function') selectDepositTab('web3');
+                    if (dAmount && depositAmountParam) {
+                      dAmount.value = depositAmountParam;
                     }
+                    if (dModal) dModal.classList.remove('hidden');
+                    if (typeof updateDepositWalletBanner === 'function') updateDepositWalletBanner();
+
+                    setTimeout(() => {
+                      if (cBtn && !cBtn.disabled) {
+                        cBtn.click();
+                      }
+                    }, 400);
                   } else {
-                    window.location.href = finalReturnUrl;
+                    if (typeof openAccountModal === 'function') openAccountModal();
                   }
                 };
 
-                const returnBtn = document.getElementById('btn-return-external-browser');
-                if (returnBtn) returnBtn.addEventListener('click', executeAutoHandoff);
+                const continueBtn = document.getElementById('btn-continue-in-metamask');
+                if (continueBtn) continueBtn.addEventListener('click', handleContinueInMetaMask);
 
-                const stayBtn = document.getElementById('btn-stay-in-metamask');
-                if (stayBtn) {
-                  stayBtn.addEventListener('click', () => {
-                    promptSheet.remove();
-                    updateWalletBtnUI();
-                    if (typeof openAccountModal === 'function') openAccountModal();
+                const copyBtn = document.getElementById('btn-copy-return-link');
+                if (copyBtn) {
+                  copyBtn.addEventListener('click', async () => {
+                    const textSpan = document.getElementById('btn-copy-return-link-text');
+                    try {
+                      if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(finalReturnUrl);
+                      } else {
+                        const tArea = document.createElement('textarea');
+                        tArea.value = finalReturnUrl;
+                        document.body.appendChild(tArea);
+                        tArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tArea);
+                      }
+                      if (textSpan) {
+                        textSpan.textContent = isVi ? '✓ Đã sao chép link! Dán vào Chrome/Safari' : '✓ Copied! Paste into Chrome/Safari';
+                        textSpan.className = 'text-emerald-400 font-bold';
+                      }
+                      if (typeof showToast === 'function') {
+                        showToast({
+                          title: isVi ? 'Đã sao chép link ví' : 'Wallet Link Copied',
+                          message: isVi ? 'Mở Chrome hoặc Safari và dán link để tiếp tục phiên ví' : 'Paste into Chrome or Safari to continue',
+                          icon: 'check-circle'
+                        });
+                      }
+                    } catch (e) {
+                      console.warn('Copy failed:', e);
+                    }
                   });
                 }
 
-                // Automatic redirect attempt immediately
-                setTimeout(executeAutoHandoff, 250);
+                // Smooth auto-transition after 3.5s so user is never stuck
+                autoCloseTimer = setTimeout(() => {
+                  if (promptSheet && promptSheet.parentNode) {
+                    handleContinueInMetaMask();
+                  }
+                }, 3500);
 
                 if (autoDeposit === 'web3') {
                   setTimeout(() => {
