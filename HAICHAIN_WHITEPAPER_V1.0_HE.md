@@ -3,7 +3,7 @@
 **תוכנן על ידי:** כוח המשימה העולמי למערכות HAICHAIN וקבוצת העבודה לארכיטקטורת ליבה קריפטוגרפית  
 **תאריך פרסום:** 1 בנובמבר 2026 (מהדורה מוסדית בינלאומית)  
 **סיווג מסמך:** נייר עמדה טכני רשמי v1.0 (מהדורה עברית)  
-**נכס סליקה ראשי:** **USDT (Tether USD ב-Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
+**נכס סליקה ראשי:** **USDT (Tether USD ב-Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB` & USDC (MiCA Compliant: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`))**  
 **נכס גז, משילות והקצאת רוחב פס ריבוני:** **$HAISI (היצע קבוע: 1,000,000,000)**  
 **דומיין יעד:** `haichain.si` *(כאשר `.si` מציין בינה-על מבוזרת - Superintelligence)*  
 **רשת פריסה פעילה:** Solana Mainnet-Beta (תוכנית v6.9.3)  
@@ -786,7 +786,7 @@ $$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 
    [ Smart Contract Validates 3 Independent On-Chain Metrics ]
    ├── 1. Cumulative Gateway Settled Volume >= $50,000,000 USDT ?
    ├── 2. Unique Active Autonomous Agents >= 10,000 Verified Trees ?
-   └── 3. Cumulative Net Protocol Yield Captured >= $500,000 USDT ?
+   └── 3. Cumulative Net Protocol Yield Captured >= $25,000 USDT ?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -803,7 +803,7 @@ $$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 
   2. *מדדי ביצוע אמפיריים מאומתים בשרשרת:*
      * **נפח סליקה מצטבר:** לפחות **$50,000,000 USDT** שנסלקו בהצלחה דרך חוזי הליבה ב-Solana L1.
      * **סוכנים אוטונומיים פעילים:** לפחות **10,000 סוכנים מאומתים** בעלי עצי יכולות פעילים שביצעו עסקאות ב-30 הימים שקדמו לבדיקה.
-     * **תשואת עמלות פרוטוקול נטו:** לפחות **$500,000 USDT** שהופקדו באוצר הפרוטוקול.
+     * **תשואת עמלות פרוטוקול נטו:** לפחות **$25,000 USDT** שהופקדו באוצר הפרוטוקול.
 * **הארכת נעילה אוטומטית להגנת הציבור:** אם היעדים המאומתים בשרשרת לא הושגו בתום 12 חודשים, החוזה החכם מאריך אוטומטית את תקופת הנעילה במקטעים עוקבים של 6 חודשים נוספים, ובכך כופה על בעלי העניין להתמקד באופן מוחלט בהצלחת המוצר.
 
 ### 8.5. רשת ממסרים מבוזרת מבוססת סטייקינג וארכיטקטורת קנסות חיתוך

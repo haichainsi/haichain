@@ -841,7 +841,7 @@ HAICHAIN repose sur une **Économie à Double Actif** fermée sur le plan mathé
 * **Incentives Écosystème et Compensation des Machines (35%):** 350.000.000 \$HAISI - Distribution linéaire sur 48 mois.
 * **Communauté et Vente Échelonnée de Tokens (15%):** 150.000.000 \$HAISI répartis comme suit:
   * *Tour Privé de Développement Pre-Seed (2.5%):* 25.000.000 \$HAISI - Fixé à **\$0.007 USD** (\$7M FDV), 20% débloqués au TGE, 2 mois de blocage (cliff), 6 mois d'acquisition linéaire on-chain.
-  * *Launchpad Communautaire Public (TGE) (10.0%):* 100.000.000 \$HAISI - Fixé à **\$0.010 USD** (\$10M FDV) via Meteora DLMM, modèle linéaire anti-sniping sur 7 jours.
+  * *Launchpad Communautaire Public (TGE) (10.0%):* 100.000.000 \$HAISI - Fixé à **\$0.010 USD** (\$10M FDV) via Meteora DLMM, modèle linéaire anti-sniping sur 90 jours.
   * *Développement Communautaire et Subventions Hackathons (2.5%):* 25.000.000 \$HAISI - Délégués au financement des développeurs et primes d'écosystème.
 * **Équipe Fondatrice et Ingénierie Centrale (18%):** 180.000.000 \$HAISI - Blocage de 12 mois, acquisition linéaire sur 36 mois.
 * **Investisseurs Stratégiques Seed (12%):** 120.000.000 \$HAISI - Blocage de 12 mois, acquisition linéaire sur 18 mois ($7M - $8.5M FDV).
@@ -951,7 +951,7 @@ Afin de dissiper toute crainte quant à une éventuelle pression baissière exer
    [ Le Smart Contract Évalue 3 Métriques On-Chain Indépendantes ]
    ├── 1. Volume total réglé sur la Passerelle >= $50.000.000 USDT?
    ├── 2. Nombre d'agents actifs uniques >= 10.000 arbres audités?
-   └── 3. Revenu net perçu par le protocole >= $500.000 USDT?
+   └── 3. Revenu net perçu par le protocole >= $25.000 USDT?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -969,7 +969,7 @@ Afin de dissiper toute crainte quant à une éventuelle pression baissière exer
   2. *Indicateurs de Performance Réels sur la Chaîne (KPIs):*
      * **Volume d'Affaires Réglé:** Au moins \$50.000.000 USDT liquidés sur Solana L1.
      * **Agents Autonomes en Activité:** Au moins 10.000 agents vérifiés avec arbres de capacité ayant transigé au cours des 30 derniers jours.
-     * **Bénéfices Nets Générés:** Au moins \$500.000 USDT versés à la trésorerie autonome.
+     * **Bénéfices Nets Générés:** Au moins \$25.000 USDT versés à la trésorerie autonome.
 * **Prolongation Automatique Protectrice:**
   Si ces résultats ne sont pas atteints au 12e mois, le smart contract repousse automatiquement le blocage par tranches successives de 6 mois, contraignant les créateurs à concentrer tous leurs efforts sur l'utilité réelle du réseau.
 

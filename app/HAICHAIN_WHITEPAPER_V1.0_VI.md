@@ -143,7 +143,7 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 |                       Tập trung đầu cơ token meme thay vì hạ tầng tiện  Thanh toán tiện ích thực bằng USDT ổn định|
 |                       ích tài chính thực thụ cho doanh nghiệp.          không chịu rủi ro biến động giá.          |
 |                                                                                                                   |
-| Web2 Truyền Thống     Phí sàn cố định $0.30 + 2.9% (đắt gấp 150.000%    Vi tiện ích thực sự ($0.000001 sàn bù trừ);|
+| Web2 Truyền Thống     Phí sàn cố định $0.30 + 2.9% (đắt gấp 150.000%    Vi tiện ích thực sự ($0.000001 sau khi gom lô nén trạng thái / $0.001 phí gốc);|
 | (Stripe / Visa)       giá trị lệnh gọi API $0.0002); Thời gian bù trừ   Tốc độ chốt sổ mật mã dưới 400ms;         |
 |                       2-5 ngày; Rủi ro gian lận bồi hoàn (chargeback).  Triệt tiêu 100% rủi ro bồi hoàn qua Escrow|
 |                                                                                                                   |
@@ -530,6 +530,48 @@ Khi máy chủ MCP được nạp, mô hình ngôn ngữ lớn (LLM) sẽ tự �
 
 ---
 
+
+
+### 4.6. Định Vị Liên Minh: HAICHAIN Là Lớp Quản Trị Chính Sách & Chốt An Toàn Cho Chuẩn HTTP x402 và Solana Pay.sh
+
+Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị trường chứng kiến sự ra đời của các chuẩn giao tiếp thanh toán mở như **HTTP x402** (do Coinbase khởi xướng, được Linux Foundation bảo trợ cùng sự tham gia của Visa & Mastercard) và **Pay.sh** (sáng kiến hợp tác giữa Solana Foundation và Google Cloud ra mắt tháng 5/2026).
+
+```
+         PHÂN TẦNG HẠ TẦNG THANH TOÁN TÁC TỬ TỰ HÀNH TOÀN CẦU
+         
+   [ TÁC TỬ & BẦY ĐÀN AI ] : Claude Desktop, Cursor, ElizaOS, CrewAI
+                                │
+                                ▼
+   [ GIAO TIẾP & BÁO PHÍ ] : Chuẩn HTTP x402 & Solana Pay.sh Middleware
+   (Báo mã 402 Payment Required & Yêu cầu thanh toán theo lượt gọi)
+                                │
+                                ▼
+   [ CHÍNH SÁCH & BẢO VỆ ] : ★ HAICHAIN AGENT POLICY VAULT ★
+   (Cây năng lực Merkle, Hạn mức cứng MaxSpend, Chốt ngắt Panic <1s)
+                                │
+                                ▼
+   [ ĐƯỜNG RAY CHỐT SỔ L1 ] : Solana L1 Ledger (USDC / USDT SPL Settlement)
+```
+
+1. **Phân Định Vai Trò Rõ Ràng (Bổ trợ thay vì đối đầu):**
+   * **x402 và Pay.sh đóng vai trò là "Đường Ống Giao Tiếp" (Communication & Invoicing Protocol):** Định nghĩa cách một máy chủ API trả về mã `402 Payment Required` và cách Client đính kèm Header ủy quyền thanh toán (`X-402-Authorization`).
+   * **HAICHAIN đóng vai trò là "Ngân Hàng Chính Sách & Chốt An Toàn" (Smart Policy & Safe Custody Vault):** Giải quyết câu hỏi sinh tử mà x402 và Pay.sh chưa thể tự giải quyết: *Tác tử lấy tiền từ đâu? Ai cấp quyền? Làm sao ngăn chặn một LLM bị Jailbreak rút cạn ví doanh nghiệp?*
+2. **Khắc Phục Các Lỗ Hổng Thực Tế Của x402:**
+   Báo cáo an ninh tháng 10/2026 từ các chuyên gia kiểm toán chỉ ra nhiều lỗ hổng trong các SDK x402 sơ khai, đặc biệt là việc thiếu trần chi tiêu mặc định và nguy cơ facilitator chấp nhận lệnh approve rỗng. HAICHAIN lấp đầy khoảng trống này bằng **Cây Năng Lực Merkle 4 Thành Phần** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) và **Định Lý Giới Hạn Thiệt Hại (Bounded Loss Theorem)**: Cho dù tác tử AI bị nhiễm độc bộ nhớ (Prompt Injection), thiệt hại tối đa tuyệt đối không bao giờ vượt quá hạn mức cứng đã được khóa mã hóa trong lá Merkle.
+3. **Bộ Chuyển Đổi Tương Thích Hoàn Hảo (Drop-in x402 Adapter):**
+   Gói `@haichain/sdk` cung cấp sẵn hàm `handleX402Challenge`:
+   ```typescript
+   // Tác tử AI xử lý thử thách thanh toán x402 một cách an toàn thông qua HAICHAIN Vault
+   const authHeaders = await haichainClient.handleX402Challenge(
+     x402Headers,
+     agentKeypair.secretKey,
+     whitelistedProviders // Chỉ thanh toán cho nhà cung cấp trong danh sách trắng
+   );
+   ```
+   Nhờ đó, HAICHAIN trở thành chiếc ví quản trị rủi ro tối ưu nhất cho mọi tác tử hoạt động trên mạng lưới x402 và Pay.sh.
+
+---
+
 ## CHƯƠNG 5: CỖ MÁY BÙ TRỪ & NÉN DỮ LIỆU ĐA PHƯƠNG
 
 Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần suất cao giữa hàng ngàn tác tử AI và các nhà cung cấp dịch vụ:
@@ -575,7 +617,7 @@ Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần su�
 ---
 
 ### 5.3. Kênh Trạng Thái Luồng Vi Mô Optimistic (Optimistic Streaming State Channels - Zero-Stall Inference)
-Mặc dù Solana L1 cung cấp tốc độ chốt giao dịch kỷ lục 400ms với mức phí $0.000001, các luồng suy luận AI tần số cực cao (phát token với chu kỳ 10-30ms) vẫn đòi hỏi một cơ chế bù trừ tức thời để triệt tiêu hoàn toàn độ trễ mạng và ngăn chặn nguy cơ tắc nghẽn giao dịch khi mạng Solana có sự đột biến tải (congestion spikes).
+Mặc dù Solana L1 cung cấp tốc độ chốt giao dịch kỷ lục 400ms với mức phí cơ sở ~$0.001 (được nén xuống $0.000001/tick qua gom lô 1.000 micro-voucher), các luồng suy luận AI tần số cực cao (phát token với chu kỳ 10-30ms) vẫn đòi hỏi một cơ chế bù trừ tức thời để triệt tiêu hoàn toàn độ trễ mạng và ngăn chặn nguy cơ tắc nghẽn giao dịch khi mạng Solana có sự đột biến tải (congestion spikes).
 
 HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc **Kênh Trạng Thái Luồng Vi Mô Song Song (Hybrid Optimistic State Channels)**:
 
@@ -596,7 +638,7 @@ HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc
    $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}(\text{SessionID}, k, \text{CumulativeAmount}_k)$$
    Quá trình này diễn ra hoàn toàn ngoài chuỗi qua kết nối WebSocket/gRPC bảo mật, đạt độ trễ dưới 5ms, **hoàn toàn độc lập với trạng thái tải của blockchain và loại bỏ 100% tình trạng giật lag suy luận (zero-stall inference)**.
 3. **Quyết Toán Gom Trên Chuỗi (Batched On-chain Settlement):** Khi kết thúc phiên hội thoại hoặc định kỳ sau mỗi 10-15 phút, AI Provider chỉ cần nộp **duy nhất 1 vé có chỉ số Nonce cao nhất** lên Solana Anchor Program để rút toàn bộ khoản thanh toán tích lũy. Hợp đồng thông minh tự động hoàn trả số dư chưa tiêu về Master Pot của Agent.
-4. **Bất Biến Rút Tiền Hết Hạn (Timeout Retract Invariant):** Nếu nhà cung cấp dịch vụ ngắt kết nối đột ngột hoặc mạng có sự cố bất khả kháng, sau khoảng thời gian khóa ấn định (ví dụ 60 giây), Agent có quyền gọi hàm `close_channel_expired` trên Solana để rút 100% số tiền còn lại về tài khoản chính, đảm bảo tuyệt đối không có rủi ro thất thoát vốn.
+4. **Bất Biến Rút Tiền Hết Hạn (Timeout Retract Invariant):** Nếu nhà cung cấp dịch vụ ngắt kết nối đột ngột hoặc mạng có sự cố bất khả kháng, sau khoảng thời gian ấn định, Agent có quyền gửi yêu cầu đóng kênh `request_channel_close`. Kênh sẽ bước vào Cửa Sổ Thử Thách (Dispute Challenge Window - 300 slots / ~120 giây) cho phép Nhà cung cấp nộp voucher mới nhất có chữ ký để đối soát và quyết toán công bằng. Nếu hết 300 slots mà Nhà cung cấp không phản hồi hoặc xác nhận số dư hợp lệ, số tiền còn lại sẽ được hoàn 100% về ví Agent mà không có bất kỳ rủi ro thất thoát vốn nào.
 
 ---
 
@@ -813,7 +855,8 @@ Thay vì chi trả cổ tức bằng tiền mặt (vốn tạo rủi ro pháp l�
 ### 7.3. Cầu Chì Năng Lượng Đàn Hồi (E-AEQ) & Cơ Chế Chống Vỡ Nợ Do Nghẽn Mạng
 Để hóa giải triệt để **Bẫy Vỡ Nợ Do Phí Gas Tăng Đột Biến** khi mạng Solana có bão nghẽn, Haichain áp dụng **Hệ Số Năng Lượng Đàn Hồi (Dynamic Elastic Energy Multiplier)**:
 
-$$	ext{Hệ Số Tiêu Hao Năng Lượng } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}ight)$$
+$$	ext{Hệ Số Tiêu Hao Năng Lượng } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}
+ight)$$
 
 *Trong đó:*
 * $P_{	ext{baseline}} pprox 5.000	ext{ lamports}$ là phí cơ sở chuẩn của Solana (~$0.001 ở SOL $200).
@@ -974,7 +1017,7 @@ HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai 
 ### 9.2. Giai Đoạn 2: SVM Rollup Chuyên Dụng & Kinh Tế Tri Thức Đồng Sinh (Tháng 18 - 36)
 Khi khối lượng giao dịch vi mô của hàng triệu bot làm đầy block của Solana, HAICHAIN chuyển dịch sang Layer 2 Rollup sử dụng máy ảo SVM kết hợp Celestia/EigenDA làm lớp dữ liệu, đồng thời kích hoạt 2 trụ cột kinh tế cộng sinh:
 * **Kinh Tế Tri Thức Bản Quyền Cộng Sinh (Symbiotic Knowledge Marketplace):** Cho phép con người đóng gói Actual Intelligence (kinh nghiệm thực chiến, chuyên môn ngách) thành Prompt Assets/Skill Modules. AI sử dụng các tài sản này để phục vụ người dùng 24/7 và chia sẻ lợi nhuận tức thời (Streaming Royalties) về ví con người bằng USDT.
-* **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (captcha vật lý, thẩm định đạo đức, phán đoán ngữ cảnh nhạy cảm), AI tự động phát lệnh thanh toán vi mô (\$0.01 - \$0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
+* **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (thẩm định đạo đức, phê duyệt giao dịch tài chính nhạy cảm, phán đoán ngữ cảnh pháp lý chuyên sâu), AI tự động phát lệnh thanh toán vi mô (\$0.01 - \$0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
 
 
 #### Kiến Trúc L1 Neo Sâu & SVM Network Extension (Anchored SVM Rollup): Hóa Giải Bẫy Phân Mảnh Thanh Khoản
@@ -1037,7 +1080,7 @@ HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, b
          ┌─────────────────────┴─────────────────────┐
          ▼                                           ▼
 [ Nhánh 1: Vi Nhận Thức (Micro-PoAI) ]       [ Nhánh 2: Thẩm Định Chuyên Gia (SBT-PoAI) ]
-├── Nhiệm vụ: CAPTCHA, cảm xúc, giao diện    ├── Nhiệm vụ: Soi chuỗi suy luận o1/o3,
+├── Nhiệm vụ: Phê duyệt ủy quyền (Human Sign-off), gán nhãn RLHF, thẩm định giao dịch nhạy cảm    ├── Nhiệm vụ: Soi chuỗi suy luận o1/o3,
 ├── WebAuthn Passkey + ZK-DID xác thực       │   kiểm định mã nguồn y khoa/tài chính
 ├── Rào cản độ trễ sinh học: t >= 250ms      ├── Thẻ Danh Tính Linh Hồn (SBT) + Cọc $HAISI
 └── Bẫy Honeypot: 5% câu hỏi bẫy ngẫu nhiên; └── Thù lao: $10 - $200/phiên từ Quỹ R&D

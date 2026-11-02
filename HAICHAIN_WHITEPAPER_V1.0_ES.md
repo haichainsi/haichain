@@ -841,7 +841,7 @@ HAICHAIN opera una **Economía de Doble Activo** matemáticamente cerrada:
 * **Incentivos para Ecosistema y Compensación de Máquinas (35%):** 350.000.000 \$HAISI - Emisión lineal durante 48 meses.
 * **Comunidad y Venta Escalonada de Tokens (15%):** 150.000.000 \$HAISI comprendiendo:
   * *Ronda Privada de Desarrollo Pre-Seed (2.5%):* 25.000.000 \$HAISI - Precio a **\$0.007 USD** (\$7M FDV), desbloqueo del 20% en TGE, acantilado de 2 meses, consolidación lineal on-chain de 6 meses.
-  * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 \$HAISI - Precio a **\$0.010 USD** (\$10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 7 días.
+  * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 \$HAISI - Precio a **\$0.010 USD** (\$10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 90 días.
   * *Incentivos de Crecimiento Comunitario y Hackathons (2.5%):* 25.000.000 \$HAISI - Reservados para subvenciones y recompensas para desarrolladores.
 * **Equipo Fundador e Ingeniería Central (18%):** 180.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 36 meses.
 * **Inversores Estratégicos Seed (12%):** 120.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 18 meses ($7M - $8.5M FDV).
@@ -951,7 +951,7 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
    [ Smart Contract Valida 3 Métricas On-Chain Independientes ]
    ├── 1. ¿Volumen acumulado liquidado en Gateway >= $50.000.000 USDT?
    ├── 2. ¿Agentes autónomos activos únicos >= 10.000 árboles verificados?
-   └── 3. ¿Rendimiento neto capturado por el protocolo >= $500.000 USDT?
+   └── 3. ¿Rendimiento neto capturado por el protocolo >= $25.000 USDT?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -969,7 +969,7 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
   2. *Criterios Verificables de Rendimiento Real (KPIs On-Chain):*
      * **Volumen Liquidado Acumulado:** Mínimo \$50.000.000 USDT compensados exitosamente en Solana L1.
      * **Agentes Autónomos Activos:** Mínimo 10.000 agentes verificados con árboles de capacidad activos transaccionando en los últimos 30 días.
-     * **Ingresos Netos Acumulados del Protocolo:** Mínimo \$500.000 USDT depositados en la Tesorería.
+     * **Ingresos Netos Acumulados del Protocolo:** Mínimo \$25.000 USDT depositados en la Tesorería.
 * **Salvaguarda de Extensión Autónoma:**
   Si las métricas no se cumplen en el Mes 12, el contrato extiende el bloqueo automáticamente en intervalos consecutivos de 6 meses. Esto fuerza matemáticamente a los fundadores y fondos a mantener un enfoque operativo del 100% en la tracción del producto y los ingresos del protocolo.
 

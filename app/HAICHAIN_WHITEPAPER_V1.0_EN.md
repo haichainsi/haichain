@@ -180,7 +180,7 @@ Autonomous economic agents operating across decentralized networks require three
 +----------------------------------------------------------------------------------------------------+
 |  METRIC                 WEB2 RAILS (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  HAICHAIN PROTOCOL     |
 +----------------------------------------------------------------------------------------------------+
-|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (Netting)   |
+|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (1,000:1 Compressed Netting / $0.001 Base)   |
 |  Settlement Latency     2 - 5 Business Days       2,000 - 15,000ms           < 400ms Wire Finality |
 |  Prompt-Injection Risk  Complete Card Drain       Drain of Master EOA        Mathematically 0 (PDA)|
 |  Onboarding Friction    KYC, Bank Forms, 3 Days   12-Word Seed Phrase, Gas   Passkey FaceID (60s)  |
@@ -284,7 +284,7 @@ To establish why existing infrastructure fundamentally fails to support an auton
 |                       $0.50); Speculative meme bonding curves         compression (771-byte datagram); Real utility|
 |                       rather than enterprise micro-utility rails.     micro-billing settling in stable USDT.      |
 |                                                                                                                   |
-| Legacy Web2 Rails     $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 netting floor);|
+| Legacy Web2 Rails     $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 via 1,000:1 batch compression / $0.001 base);|
 | (Stripe / Visa)       overhead on $0.0002 API calls); T+2 to T+5 day  Sub-400ms cryptographic wire finality;      |
 |                       settlement lag; High chargeback fraud risk.     Zero chargeback risk via PDA escrow.        |
 |                                                                                                                   |
@@ -762,6 +762,47 @@ Once loaded, the Large Language Model automatically inherits three standardized 
 
 ---
 
+### 6.6. Strategic Positioning: HAICHAIN as the Policy & Circuit Breaker Layer for HTTP x402 and Solana Pay.sh
+
+Across the broader landscape of autonomous agent infrastructure, open machine-payment communication protocols have gained rapid institutional adoption, notably **HTTP x402** (originated by Coinbase, transitioned to the Linux Foundation with Visa and Mastercard participation) and **Pay.sh** (jointly launched by the Solana Foundation and Google Cloud in May 2026).
+
+```
+        GLOBAL AUTONOMOUS AGENT FINANCIAL INFRASTRUCTURE STACK
+        
+   [ AGENTS & REASONING SWARMS ] : Claude Desktop, Cursor, ElizaOS, CrewAI
+                                  │
+                                  ▼
+   [ COMMUNICATION & INVOICING ] : HTTP x402 Specification & Pay.sh Proxy
+   (Emits 402 Payment Required & transports cryptographic payment challenges)
+                                  │
+                                  ▼
+   [ POLICY & RISK GOVERNANCE  ] : ★ HAICHAIN AGENT POLICY VAULT ★
+   (Merkle Capability Trees, Hard MaxSpend Caps, Sub-second Panic Kill-Switch)
+                                  │
+                                  ▼
+   [ ON-CHAIN SETTLEMENT RAILS ] : Solana L1 Ledger (USDC / USDT SPL Settlement)
+```
+
+1. **Clear Division of Roles (Complementary Ecosystem Synergy):**
+   * **x402 and Pay.sh serve as the "Communication & Messaging Pipes":** Defining how APIs return `402 Payment Required` and how clients supply standard authorization headers (`X-402-Authorization`).
+   * **HAICHAIN serves as the "Enterprise Risk Bank & Safe Policy Vault":** Solving the mission-critical vulnerabilities that x402 and Pay.sh intentionally leave open: *Where does the agent store capital? Who enforces spending limits? How is a prompt-injected LLM stopped from emptying corporate treasury accounts?*
+2. **Neutralizing Empirical x402 Vulnerabilities:**
+   Security research published in October 2026 revealed 25 vulnerabilities across first-generation x402 client implementations, primarily revolving around the absence of default spending ceilings and facilitators accepting zero-transfer token approvals. HAICHAIN decisively solves this with its **4-Tuple Cryptographic Capability Leaf** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) and the **Bounded Loss Theorem**: Even under adversarial memory poisoning or jailbreaks, total potential loss is mathematically bounded to the unspent allowance of the active capability leaf.
+3. **Drop-in x402 SDK Integration:**
+   The `@haichain/sdk` provides native x402 challenge handlers:
+   ```typescript
+   // Autonomous agent resolves standard HTTP x402 payment challenge via safe HAICHAIN Vault
+   const authHeaders = await haichainClient.handleX402Challenge(
+     x402Headers,
+     agentKeypair.secretKey,
+     whitelistedProviders // Strict destination gating against memory poisoning attacks
+   );
+   ```
+   HAICHAIN does not seek to replace x402 or Pay.sh; it serves as the essential cryptographic safety seatbelt that allows enterprises to confidently deploy high-velocity autonomous agents onto these public payment rails.
+
+---
+
+
 ## 7. MULTILATERAL SYMMETRIC NETTING & WIRE-SPEED CLEARING MATRIX
 
 ```
@@ -826,7 +867,7 @@ To prevent the catastrophic **Liquidity Death Spiral** observed in uncollaterali
 ---
 
 ### 7.3. Optimistic Streaming State Channels: Zero-Stall LLM Inference & Congestion-Immune Settlement
-While Solana L1 achieves 400ms finality with $0.000001 transaction fees, ultra-high-frequency AI token streams (emitting tokens every 10-30ms) necessitate an instantaneous clearing abstraction to eliminate all network round-trip overhead and insulate inference loops from blockchain traffic spikes.
+While Solana L1 achieves 400ms finality with ~$0.001 base transaction fees ($0.000001 per tick via 1,000:1 state channel batch compression), ultra-high-frequency AI token streams (emitting tokens every 10-30ms) necessitate an instantaneous clearing abstraction to eliminate all network round-trip overhead and insulate inference loops from blockchain traffic spikes.
 
 HAICHAIN resolves this through **Hybrid Optimistic State Channels**:
 
@@ -847,22 +888,22 @@ HAICHAIN resolves this through **Hybrid Optimistic State Channels**:
    $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}(\text{SessionID}, k, \text{CumulativeAmount}_k)$$
    This exchange occurs over encrypted WebSocket/gRPC channels with sub-5ms latency, **operating completely independent of blockchain block production and eliminating 100% of LLM reasoning stalls**.
 3. **Batched On-chain Settlement:** Upon session termination or periodic flushing intervals (every 10-15 minutes), the AI Provider submits **only the single voucher bearing the highest nonce** to the Solana Anchor Program. The contract settles the cumulative balance to the provider and instantly refunds remaining funds to the Agent Master Pot.
-4. **Timeout Retract Invariant:** If a provider disconnects unexpectedly or experiences upstream failure, the Agent invokes `close_channel_expired` upon expiry timer expiration (e.g., 60 seconds), retracting 100% of unconsumed collateral with zero capital loss risk.
+4. **Timeout Retract Invariant:** If a provider disconnects unexpectedly or experiences upstream failure, the Agent invokes `request_channel_close`. The channel enters a formal 300-slot (~120s) Dispute Challenge Window allowing the provider to submit the latest signed voucher for equitable settlement. If the provider does not contest or verifies full clearance within 300 slots, 100% of remaining unconsumed collateral is securely unlocked to the Agent with zero capital loss risk.
 
 ---
 
-## 8. DUAL-ASSET CRYPTOECONOMICS, CASH-FLOW FLYWHEEL & $HAISI TOKENOMICS
+## 8. MULTI-ASSET CRYPTOECONOMICS, CASH-FLOW FLYWHEEL & $HAISI TOKENOMICS
 
-HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
-* **USDT (Tether SPL):** The transactional unit of account, ensuring absolute stability for AI computational pricing.
-* **$HAISI Token:** The sovereign protocol asset capturing network volume, governance authority, and future Layer 1 consensus security.
+HAICHAIN operates a mathematically rigorous **Multi-Asset Economy**:
+* **USDC (Circle SPL - EU MiCA Compliant) & USDT (Tether SPL):** The transactional unit of account, ensuring absolute stability for AI computational pricing and uncompromised regulatory alignment across Europe and global markets.
+* **$HAISI Token:** The sovereign protocol asset capturing network volume through programmatic buyback and burning, tiered fee discounts for enterprise swarms, and future Layer 1 consensus security.
 
 ```
                       $HAISI PROTOCOL CASH FLOW ARCHITECTURE
                       
                [ GLOBAL MACHINE NETTING VOLUME: $1.4B / YR ]
                                      │
-                                     ▼ (Protocol Take-Rate: 0.05%)
+                                     ▼ (Protocol Take-Rate: 0.05% ~ 5 bps)
                         [ $700,000 BASE ANNUAL REVENUE ]
                                      │
                     ┌────────────────┴────────────────┐
@@ -873,109 +914,69 @@ HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
 ```
 
 ### 8.1. Token Allocation & Vesting Schedule (1,000,000,000 Fixed Supply)
-* **Ecosystem & Machine Netting Incentives (35%):** 350,000,000 $HAISI -  48-month linear emission.
-* **Community & Tiered Token Sale (15%):** 150,000,000 $HAISI comprising:
-  * *Private Pre-Seed Development Round (2.5%):* 25,000,000 $HAISI -  Priced at **\$0.007 USD** (\$7M FDV), 20% TGE unlock, 2-month cliff, 6-month on-chain linear vesting.
-  * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAISI -  Priced at **\$0.010 USD** (\$10M FDV) via Meteora DLMM, 7-day linear anti-sniping schedule.
-  * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAISI -  Reserved for developer grants and ecosystem bounties.
-* **Core Engineering & Founding Team (18%):** 180,000,000 $HAISI -  12-month cliff, 36-month linear vesting.
-* **Strategic Seed Investors (12%):** 120,000,000 $HAISI -  12-month cliff, 18-month linear vesting ($7M - $8.5M FDV).
-* **Protocol Security Treasury (10%):** 100,000,000 $HAISI -  Multi-sig locked for insurance and audits.
-* **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAISI -  100% LP tokens permanently burned.
+To guarantee structural capital integrity, eliminate valuation inversions, and protect public market participants:
 
-### 8.2. Stake-to-Transact Bandwidth Allocation & Real Yield Buyback/Burn Flywheel
-To permanently neutralize the **Token Velocity Death Spiral (Pfeffer's Theorem)** - wherein tokens utilized solely as transactional fee gas suffer from infinite velocity ($V 	o \infty$) driving equilibrium network value to zero - Haichain transforms $HAISI into a **Mandatory Productive Capital Asset**:
+* **Ecosystem & Machine Netting Incentives (35%):** 350,000,000 $HAISI - 48-month linear emission tied to verifiable development milestones.
+* **Community & Tiered Token Sale (15%):** 150,000,000 $HAISI comprising:
+  * *Private Pre-Seed Development Round (2.5%):* 25,000,000 $HAISI - Priced at **$0.0050 USD** ($5M FDV), 10% TGE unlock, 3-month cliff, 12-month on-chain linear vesting.
+  * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAISI - Priced at **$0.0120 USD** ($12M FDV) via Meteora DLMM / Alpha Vault. 25% TGE unlock, with the remaining 75% distributed linearly over **90 days** (eliminating 7-day sniper dump vectors).
+  * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAISI - Reserved for developer grants and ecosystem bounties.
+* **Core Engineering & Founding Team (18%):** 180,000,000 $HAISI - 12-month chronological cliff strictly bound to MCDV on-chain performance KPIs, followed by 36-month linear vesting.
+* **Strategic Seed Investors (12%):** 120,000,000 $HAISI - Priced at **$0.0075 USD** ($7.5M FDV) - 12-month cliff bound to MCDV KPIs, 18-month linear vesting.
+* **Protocol Security Treasury (CHGB Reserve) (10%):** 100,000,000 $HAISI - Multi-sig locked for emergency insurance and independent audits.
+* **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAISI - 100% LP tokens permanently burned.
+
+### 8.2. Stake-to-Transact Bandwidth Allocation & Value Retention Flywheel
+To permanently neutralize the **Token Velocity Death Spiral (Pfeffer's Theorem)** while completely eliminating US Howey-test and EU MiCA security classification risks, Haichain structures $HAISI as a **Productive Utility Asset**:
 
 ```
-               HAICHAIN REAL YIELD & CAPITAL RETENTION FLYWHEEL
+               HAICHAIN UTILITY STAKING & VALUE RETENTION FLYWHEEL
                
     [ Enterprise Agent Fleets Executing High-Frequency Micro-Calls ]
                                 │
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
-[ Optional veHAISI Staking Tiers ]            [ Pure USDT Netting Fee Revenue ]
+[ Optional veHAISI Staking Tiers ]            [ Pure USDC/USDT Netting Fee Revenue ]
 ├── Bandwidth granted via locked capital         ├── 0.05% netting fee captured
-│   Daily Allowance = k * sqrt(Staked * Time)    │   strictly in pure USDT
-└── More agents -> More $HAISI locked            └── 100% routed to Protocol Treasury
+│   Daily Allowance = k * sqrt(Staked * Time)    │   strictly in verified stablecoins
+└── Tiered fee discounts up to 80%               └── 100% routed to Protocol Treasury
        │                                                 │
        ▼                                                 ▼
 [ Circulating $HAISI Supply Contracted ]        [ Autonomous TWAP Buyback Engine ]
-                                                ├── 50% of Buybacks BURNED FOREVER
+                                                ├── 50% of Revenue: TWAP Buyback & BURN FOREVER
                                                 │   (Net Deflationary Supply)
-                                                └── 50% Allocated to Protocol Reserve
+                                                └── 50% of Revenue: Protocol Reserve
                                                     (CHGB Insurance Fund)
 ```
 
 #### 1. Dual-Rail Architecture & Optional veHAISI Discount Tiers
-Haichain enforces a zero-friction dual-rail system: standard AI agents pay per transaction in pure USDT with zero mandatory token staking. High-volume enterprise fleets may optionally lock $HAISI (veHAISI) for up to 80% fee reductions and bandwidth priority:
-$$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 	ext{Lock Duration}}$$
-To unlock wire-speed sub-millisecond bilateral netting channels and zero-friction execution, enterprise operators must lock $HAISI for 3 to 36 months (`veHAISI`). As agentic economic activity expands, significant portions of circulating supply are structurally removed from the open market.
+Haichain enforces a zero-friction dual-rail system:
+- **Standard Agents & Developers:** Pay per transaction strictly in verified stablecoins (USDC/USDT) with zero mandatory token staking, preserving "Invisible Web3" ergonomics.
+- **Enterprise Swarms & High-Volume Fleets:** May optionally lock $HAISI (`veHAISI`) for infrastructure privileges:
+  $$\text{Daily Transaction Allowance} = k \cdot \sqrt{\text{Staked } \$HAISI \times \text{Lock Duration}}$$
+  * *Tiered Fee Discounts:* Up to 80% reduction in net clearing fees when locking for 3 to 36 months.
+  * *Sub-5ms Dedicated Fast-Path Routing:* Dedicated mempool routing for mission-critical swarms.
+  * *Zero-Gas Background Clearance:* Protocol-sponsored rent-reclamation and nullifier cleanup.
 
-#### 2. The Real Yield Buyback & Burn Engine
-100% of network spread, clearing fees, and enterprise routing markups are collected in **pure USDT**. An autonomous, immutable smart contract executes programmatic TWAP market buys of $HAISI across liquidity pools:
-* **60% of Purchased Tokens:** Burned permanently on-chain, exerting relentless deflationary pressure.
-* **40% of Purchased Tokens:** Distributed directly as **USDT Real Yield dividends** to long-term veHAISI lockers, rewarding capital providers with non-inflationary cash flow.
+#### 2. Programmatic Buyback & Deflation Engine
+Rather than distributing direct cash dividends (which introduces severe security classification risks under SEC and MiCA regulations), 100% of collected protocol fees are programmatically routed via smart contract:
+* **50% of Net Revenue:** Executes automated TWAP market buybacks of `$HAISI` directly across decentralized liquidity pools (Orca/Raydium via Jupiter) and **permanently burns tokens on-chain (`burn_token_instruction`)**, contracting circulating supply in direct lockstep with machine volume.
+* **50% of Net Revenue:** Capitalized into the **Clearing House Guarantee Buffer (CHGB)** to maintain insolvency protection, user reimbursement pools, and external audit funding.
 
+### 8.3. Elastic Energy Quota (E-AEQ) & Anti-Insolvency Circuit Breaker
+To prevent the **Subsidized Gas Insolvency Trap** when Solana priority fees spike during meme-coin volatility:
 
-#### Elastic Energy Quota (E-AEQ) & Anti-Insolvency Congestion Circuit Breaker
-To prevent the catastrophic **Subsidized Gas Insolvency Trap** - where Solana network priority fee spikes during meme-coin manias drain Protocol Treasury reserves subsidizing high-frequency agent traffic - Haichain enforces the **Dynamic Elastic Energy Multiplier**:
-
-$$\text{Energy Consumption Multiplier } M = 1 + \alpha \cdot \max\left(0, \quad \frac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}\right)$$
-
-```
-           ANTI-INSOLVENCY CONGESTION CIRCUIT BREAKER PIPELINE
-           
-   [ Solana Network at Baseline ($0.0002 Priority Fee) ]
-   └── 1 Agentic Transaction consumes exactly 1 AEQ Energy Unit (M = 1.0)
-   
-   [ SOLANA PRIORITY FEE SPIKES (e.g. 50x Surge during Mania) ]
-                               │
-                               ▼
-   [ Automated Two-Speed Queue Isolation ]
-   ├── Route 1: Critical Invariants (Panic Kill-Switch, Immediate Liquidation)
-   │   └── Guaranteed immediate inclusion backed by emergency Treasury reserves
-   └── Route 2: Routine High-Frequency Micro-Netting Cycles
-       ├── Dynamically scales energy consumption via Multiplier M
-       └── OR automatically DEFERS execution by a few slots until priority fees cool
-           --> TREASURY CAPITAL PRESERVED 100% • ZERO INSOLVENCY EXPOSURE!
-```
-
-* **Complete Insolvency Protection:** The protocol never unconditionally subsidizes arbitrary network spikes out of its balance sheet. When congestion exceeds the 95th percentile baseline, non-critical background netting batches dynamically adjust consumption or defer execution across brief slot windows, preserving 100% of Treasury capital while guaranteeing deterministic unit economics for enterprise operators.
-
-### 8.3. Programmatic Settlement-Batch Value Sink (`OP_402_BURN`) & Token Velocity Neutralization
-To permanently eliminate the systemic threat posed by **John Pfeffer's Velocity Dilemma** - where transactional tokens deployed exclusively as fee gas experience infinite monetary velocity ($V \to \infty$), causing rational market cap to converge to zero - Haichain implements a compulsory **Batch-Level Value Sink Protocol (`OP_402_BURN`)**:
-
-$$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$$
+$$\text{Energy Multiplier } M = 1 + \alpha \cdot \max\left(0, \quad \frac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}\right)$$
 
 *Where:*
-* $V_{\text{settled}}^{(i)}$ represents the verified nominal USDT clearing volume of the $i$-th micro-escrow batch.
-* $\gamma = 0.05\%$ denotes the unalterable programmatic burn coefficient hardcoded into the Gateway Kernel.
-
-```
-          PROGRAMMATIC VALUE SINK ARCHITECTURE (OP_402_BURN)
-          
-   [ Millions of Autonomous API & Swarm Calls Flowing Through Gateway ]
-                                  │
-                                  ▼
-      [ Gateway Clearing Node Aggregates Batch & Captures USDT Spread ]
-                                  │
-         ┌────────────────────────┴────────────────────────┐
-         ▼                                                 ▼
-[ 50% Net Margin: Instant TWAP Buyback & Burn ]   [ 50% Net Margin: USDT Cashflow Yield ]
-├── Algorithmic TWAP market buys of $HAISI        ├── Distributed 100% in native USDT
-└── Programmatic on-chain `burn_token_instruction`└── Directly credited to veHAISI lockers
-    --> NET CIRCULATING SUPPLY DIRECTLY REDUCED WITH ON-CHAIN VOLUME!
-```
-
-1. **Non-Discretionary TWAP Buyback & Deflationary Burn:** Upon on-chain confirmation of each micro-escrow settlement batch, the Gateway Relayer automatically allocates 50% of net margin to execute TWAP buyback orders of $HAISI directly on decentralized liquidity pools (Orca/Raydium via Jupiter routing) and triggers the atomic `burn_token_instruction`. As machine economic velocity expands, the net circulating supply of $HAISI decreases deterministically.
-2. **Proof-of-Agentic-Stake (PoAS) for Sub-Millisecond Priority Queues:**
-   High-frequency arbitrageurs, enterprise swarm orchestrators, and automated AI market makers must bond a minimum balance of $HAISI within the on-chain `StakeRegistry` to secure:
-   * **Sub-5ms Dedicated Fast-Path Routing:** Bypassing the standard 50ms FIFO mempool queue.
-   * **Automated 0-SOL Relayer Sponsorship:** Unconditional zero-gas transaction execution sponsored directly by network relayers without maintaining local SOL balances.
-   * **Volume Rebates:** Tiered discounts of up to 40% on gross clearing spreads when staking $> 180\text{ days}$.
+* $P_{\text{baseline}} \approx 5,000\text{ lamports}$ (~$0.001 at SOL $200).
+* $P_{\text{priority}}$ is real-time market priority fee.
+* During extreme congestion (>50x surge):
+  - **Emergency Panic Stops:** Processed immediately with top priority from emergency reserves.
+  - **Routine Netting Batches:** Dynamically defer execution across brief slot windows until fees normalize, guaranteeing 100% balance-sheet protection.
 
 ### 8.4. Milestone-Coupled Dynamic Vesting (MCDV) & Retail Investor Protection
-To decisively resolve market apprehension surrounding potential secondary-market sell pressure from the Core Engineering Team (18%) and Strategic Seed Allocations (12%) following their initial 12-month lockup, Haichain establishes an immutable **Milestone-Coupled Dynamic Vesting (MCDV)** framework:
+To protect public investors and enforce long-term accountability, all insider allocations (Core Team 18%, Strategic Seed 12%) remain locked behind an immutable **Dual-Gate Invariant**:
 
 ```
         MILESTONE-COUPLED DYNAMIC VESTING PIPELINE (MCDV)
@@ -984,9 +985,9 @@ To decisively resolve market apprehension surrounding potential secondary-market
                            │
                            ▼
    [ Smart Contract Validates 3 Independent On-Chain Metrics ]
-   ├── 1. Cumulative Gateway Settled Volume >= $50,000,000 USDT ?
+   ├── 1. Cumulative Gateway Settled Volume >= $50,000,000 USD ?
    ├── 2. Unique Active Autonomous Agents >= 10,000 Verified Trees ?
-   └── 3. Cumulative Net Protocol Yield Captured >= $500,000 USDT ?
+   └── 3. Cumulative Net Protocol Yield Captured >= $25,000 USD (at 0.05% fee) ?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -998,23 +999,20 @@ To decisively resolve market apprehension surrounding potential secondary-market
 - Fully auditable on Solana L1     - Complete protection for retail & TGE
 ```
 
-* **Dual-Gate Invariant Formulation:**
-  The `haichain_vesting_kernel` stipulates that linear tranche distribution from Month 13 onward **unlocks if and only if both conditions are simultaneously satisfied**:
-  1. *Temporal Condition:* Completion of the mandatory 12-month chronological cliff.
-  2. *Verifiable Real-World Performance Criteria (On-Chain KPIs):*
-     * **Cumulative Settled Volume:** Minimum $\$50,000,000\text{ USDT}$ successfully cleared and settled through the Solana L1 contracts.
-     * **Active On-Chain Autonomous Agents:** Minimum $10,000\text{ verified agents}$ with active Capability Trees transacting within the preceding 30-day window.
-     * **Cumulative Protocol Net Fee Yield:** Minimum $\$500,000\text{ USDT}$ deposited into the Autonomous Treasury.
+* **Verifiable On-Chain Performance Criteria:**
+  1. **Cumulative Settled Volume:** Minimum **$\$50,000,000\text{ USD}$** cleared through the Solana L1 contracts.
+  2. **Active Verified Agents:** Minimum **$10,000\text{ agents}$** maintaining active Capability Trees with verified micro-transactions in the preceding 30 days.
+  3. **Cumulative Protocol Net Fee Yield:** Minimum **$\$25,000\text{ USD}$** (matching $\gamma = 0.05\%$ on $\$50,000,000\text{ USD}$ volume; or $\$50,000\text{ USD}$ at $0.10\%$) deposited into the Autonomous Treasury.
 * **Autonomous Extension Safeguard:**
-  If the verifiable on-chain metrics are not achieved at Month 12, the smart contract automatically extends the vesting lockup in consecutive 6-month intervals. This mathematically forces insiders and institutional investors to maintain 100% operational focus on product-market fit and protocol revenue generation, eliminating exit-liquidity dumping.
+  If metrics are unmet at Month 12, vesting locks automatically extend in consecutive 6-month cycles, mathematically preventing insider dumping without product-market fit.
 
 ### 8.5. Decentralized Staked Relayer Mesh & Slashing Security Architecture
-To eliminate centralization dependencies during hyper-scale adoption, Haichain transitions from its initial Canary Relayers to a permissionless **Decentralized Staked Relayer Mesh**:
-* **Mandatory Capital Bonding:** External node operators wishing to route micro-escrow batches and earn clearing spreads must deposit a minimum bond of $100,000\text{ } \$HAISI$ into the `RelayerRegistryPDA`.
+To eliminate centralization dependencies as adoption scales:
+* **Mandatory Capital Bonding:** External node operators must deposit a minimum bond of $100,000\text{ } \$HAISI$ into the `RelayerRegistryPDA`.
 * **Deterministic Slashing Enforcements:**
-  * *Latency Censorship Penalties:* Failure to relay committed capability spending authorizations within the guaranteed execution SLA ($> 3\text{ slots}$) triggers an immediate 5% bond slash credited to the affected user's insurance pot.
-  * *Equivocation & Double-Spend Attempts:* Any detected double-relay or conflicting root publication results in an immediate **100% bond slash**, followed by permanent exclusion from the registry.
-* **Stake-Weighted Batch Auctions:** Micro-clearing batch allocation operates via dynamic pseudo-random auctions weighted by $HAISI stake and historical latency uptime scores, guaranteeing censorship-resistant routing for global agent swarms.
+  * *Latency Censorship Penalties (> 3 slots):* 5% bond slash credited to the affected user's compensation pot.
+  * *Equivocation & Double-Spend Attempts:* **100% bond slash** and permanent ban from the relayer mesh.
+* **Stake-Weighted Batch Auctions:** Micro-clearing batch allocation operates via dynamic pseudo-random auctions weighted by $HAISI stake and historical latency uptime scores, guaranteeing censorship resistance for global agent swarms.
 
 ---
 
@@ -1157,7 +1155,7 @@ To solve the **Expertise Hierarchy Paradox** and prevent cheap click-farming bot
          ┌───────────────────────┴───────────────────────┐
          ▼                                               ▼
 [ Track 1: Micro-PoAI (Perceptual Tasks) ]       [ Track 2: Institutional Expert PoAI ]
-├── Sentiment, CAPTCHA, UI validation            ├── Complex o1/o3 trace verification,
+├── Sentiment, RLHF, Human Sign-Off validation            ├── Complex o1/o3 trace verification,
 ├── WebAuthn Passkey + ZK-DID verification       │   medical/legal/financial code audits
 ├── Neurological Latency Barrier: t >= 250ms     ├── Soulbound Token (SBT) Professional Bond
 └── Algorithmic Honeypots: 5% covert traps;      └── Bounties: $10 - $200 per audit session

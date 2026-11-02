@@ -3,7 +3,7 @@
 ### (ONE-PAGER STRATEGIC MEMO: EARLY BACKER & ANGEL ALLOCATION)
 
 * **Dự án:** HAICHAIN (The Universal Autonomous Machine Financial Operating System)
-* **Quy mô vòng nội bộ:** Tối đa \$140.000 &ndash; \$210.000 USD (Chỉ mở cho 20 &ndash; 30 triệu $HAISISI, tương đương 2% &ndash; 3% tổng cung)
+* **Quy mô vòng nội bộ:** Tối đa \$140.000 &ndash; \$210.000 USD (Chỉ mở cho 20 &ndash; 30 triệu $HAISISISI, tương đương 2% &ndash; 3% tổng cung)
 * **Mức giá ưu đãi nội bộ:** **\$0.007 USD / $HAISI** (Định giá FDV: **\$7.000.000 USD**)
 * **Mức giá mở bán công khai dự kiến (TGE):** **\$0.010 USD / $HAISI** (Định giá FDV: **\$10.000.000 USD**)
 * **Lợi thế người mua sớm:** **Chiết khấu 30%** (Lợi nhuận tiềm năng ngay khi niêm yết: **+42.8%**)
