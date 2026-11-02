@@ -388,7 +388,7 @@ El núcleo de contratos inteligentes (`haichain-core v6.9.3`) está verificado f
 +---------------------------------------------------------------------------------+
 | 1. DEFENSA ANTE WORMHOLE (CORRECCIÓN DE $320M):                                 |
 |   - Clave pública de Sysvar Instructions codificada en duro:                     |
-|     Sysvar1nstruction5111111111111111111                                        |
+|     Sysvar1nstructions1111111111111111111111111                                        |
 |   - Rechaza direcciones de sysvar falsificadas pasadas por cuentas arbitrarias. |
 |                                                                                 |
 | 2. DEFENSA ANTE NOMAD BRIDGE (CORRECCIÓN DE $190M):                             |
@@ -827,7 +827,7 @@ HAICHAIN opera una **Economía de Doble Activo** matemáticamente cerrada:
                     
               [ VOLUMEN DE NETTING GLOBAL DE MÁQUINAS: $1.400M / AÑO ]
                                     │
-                                    ▼ (Take-Rate del Protocolo: 0.10%)
+                                    ▼ (Take-Rate del Protocolo: 0.05%)
                         [ $1.400.000 DE INGRESO ANUAL ]
                                     │
                    ┌────────────────┴────────────────┐
@@ -844,7 +844,7 @@ HAICHAIN opera una **Economía de Doble Activo** matemáticamente cerrada:
   * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 \$HAISI - Precio a **\$0.010 USD** (\$10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 7 días.
   * *Incentivos de Crecimiento Comunitario y Hackathons (2.5%):* 25.000.000 \$HAISI - Reservados para subvenciones y recompensas para desarrolladores.
 * **Equipo Fundador e Ingeniería Central (18%):** 180.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 36 meses.
-* **Inversores Estratégicos Seed (12%):** 120.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 18 meses (\$15M FDV).
+* **Inversores Estratégicos Seed (12%):** 120.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 18 meses ($7M - $8.5M FDV).
 * **Tesorería de Seguridad del Protocolo (10%):** 100.000.000 \$HAISI - Bloqueo multi-firma para seguros y auditorías continuas.
 * **Liquidez Inicial en DEX (Raydium/Orca) (10%):** 100.000.000 \$HAISI - 100% de tokens LP quemados permanentemente.
 
@@ -997,7 +997,7 @@ Para eliminar dependencias centralizadas, Haichain hace una transición de sus R
    | - Seguridad TVL $30B+  |  ========>  | - DA: Celestia/EigenDA |  ========>  |   PoAW + PoAI (Sabiduría)|
    | - Red de micro-netting |             | - Secuenciador HAICHAIN|             | - Opcode nativo OP_402 |
    | - 100k agentes / PMF   |             | - Token de Gas: $HAISI |             | - DIDs Nativos y Crédito|
-   | - Ingresos: $15.9M ARR |             | - 50.000+ TPS Máquinas |             | - Verdadera ASI Descen.|
+   | - Proyección: $700k-1.4M ARR |             | - 50.000+ TPS Máquinas |             | - Verdadera ASI Descen.|
    +------------------------+             +------------------------+             +------------------------+
 ```
 
@@ -1275,7 +1275,7 @@ Cada métrica arquitectónica, cifra de exploits históricos, restricción físi
 * `[3]` **Especificación Central de Red de Solana Foundation:** `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1.280 - 40	ext{ bytes de cabecera IPv6} - 8	ext{ bytes de cabecera UDP} = 1.232	ext{ bytes}$). Valida que la carga de compensación simétrica de 771 bytes de HAICHAIN cabe dentro de un datagrama único no fragmentado.
 
 ### II. Auditorías Forenses de Exploits de DeFi Defendidos por Invariantes de HAICHAIN ($821M Total)
-* `[4]` **Exploit del Puente Wormhole ($320.000.000) - 2 de febrero de 2022:** El atacante falsificó la verificación de firma suplantando la dirección de la cuenta `sysvar::instructions` de Solana en la instrucción `complete_wrapped`. Defendido en HAICHAIN mediante la coincidencia estricta de la dirección sysvar codificada en duro (`Sysvar1nstruction5111111111111111111`). Fuente: Informes de Incidentes de Seguridad de CertiK y Neodyme.
+* `[4]` **Exploit del Puente Wormhole ($320.000.000) - 2 de febrero de 2022:** El atacante falsificó la verificación de firma suplantando la dirección de la cuenta `sysvar::instructions` de Solana en la instrucción `complete_wrapped`. Defendido en HAICHAIN mediante la coincidencia estricta de la dirección sysvar codificada en duro (`Sysvar1nstructions1111111111111111111111111`). Fuente: Informes de Incidentes de Seguridad de CertiK y Neodyme.
 * `[5]` **Exploit de Réplica del Puente Nomad ($190.000.000) - 1 de agosto de 2022:** El atacante aprovechó un error de raíz no inicializada donde `0x00` fue marcado como confiable en `Replica.sol`. Defendido en HAICHAIN vía `require!(composite_root != [0u8; 32], EmptyNomadRootForbidden)`. Fuente: Paradigm Research (samczsun).
 * `[6]` **Exploit de Préstamo Flash de Euler Finance ($197.000.000) - 13 de marzo de 2023:** El atacante explotó `donateToReserves` para inflar artificialmente la tasa de conversión sin verificar el factor de salud. Defendido en HAICHAIN mediante recargas estrictas de saldo ATA en cadena (`EulerDriftBalanceMismatch`). Fuente: Auditorías de Seguridad de Sherlock y SlowMist.
 * `[7]` **Manipulación de Precios con Préstamos Flash de Mango Markets ($114.000.000) - 11 de octubre de 2022:** El atacante ejecutó un depósito multimillonario y un drenaje total de colateral dentro del mismo slot de bloque. Defendido en HAICHAIN vía `FLASH_LOAN_QUARANTINE_SLOTS = 2` (barrera de 800ms). Fuente: Publicación de Litigio de la SEC de EE. UU. No. 25625; Post-Mortem de Mango Markets.

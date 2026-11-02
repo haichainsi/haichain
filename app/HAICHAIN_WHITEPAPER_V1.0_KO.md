@@ -386,7 +386,7 @@ HAICHAIN은 **"엄마 테스트 공리" (The Mom-Test Axiom)**를 엄격히 공�
 |                  HAICHAIN v6.9.3 6대 불변성 해킹 방어 매트릭스                  |
 +---------------------------------------------------------------------------------+
 | 1. WORMHOLE 브릿지 취약점 방어 (3억 2천만 달러 패치):                            |
-|   - 하드코딩된 읽기 전용 시스템 인스트럭션 공개키: Sysvar1nstruction5111111111111111111 |
+|   - 하드코딩된 읽기 전용 시스템 인스트럭션 공개키: Sysvar1nstructions1111111111111111111111111 |
 |   - 임의 계정 컨텍스트를 전달하여 서명 검증을 우회하는 공격면 완전 차단.         |
 |                                                                                 |
 | 2. NOMAD 브릿지 제로 루트 취약점 방어 (1억 9천만 달러 패치):                     |
@@ -825,7 +825,7 @@ HAICHAIN은 수학적으로 닫힌 **이중 자산 경제 (Dual-Asset Economy)**
                      
               [ 글로벌 머신 순액 정산 규모: 연간 14억 달러 ]
                                     │
-                                    ▼ (프로토콜 테이크레이트 수수료: 0.10%)
+                                    ▼ (프로토콜 테이크레이트 수수료: 0.05%)
                       [ 연간 1,400,000 달러 순수익 ]
                                     │
                    ┌────────────────┴────────────────┐
@@ -1274,7 +1274,7 @@ $	ext{CommitHash} = 	ext{Blake3}(	ext{Payload} \parallel 	ext{Salt} \parallel 	e
 * `[3]` **Solana 공식 코어 유선 규격:** `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1,280 - 40	ext{바이트 IPv6 헤더} - 8	ext{바이트 UDP 헤더} = 1,232	ext{바이트}$). HAICHAIN의 771바이트 대칭 순액 정산 페이로드가 단일 비단편화 데이터그램 내에 정확히 수용됨을 검증합니다.
 
 ### II. HAICHAIN 불변성이 방어하는 유명 DeFi 해킹 포렌식 감사 (총 8억 2,100만 달러 규모)
-* `[4]` **Wormhole 브릿지 해킹 사건 ($320,000,000) - 2022년 2월 2일:** 공격자가 `complete_wrapped` 명령어에서 Solana의 `sysvar::instructions` 계정 주소를 위조하여 서명 검증을 우회했습니다. HAICHAIN은 하드코딩된 읽기 전용 시스템 주소(`Sysvar1nstruction5111111111111111111`)를 통해 이를 원천 방어합니다. 출처: CertiK 및 Neodyme 보안 인시던트 보고서.
+* `[4]` **Wormhole 브릿지 해킹 사건 ($320,000,000) - 2022년 2월 2일:** 공격자가 `complete_wrapped` 명령어에서 Solana의 `sysvar::instructions` 계정 주소를 위조하여 서명 검증을 우회했습니다. HAICHAIN은 하드코딩된 읽기 전용 시스템 주소(`Sysvar1nstructions1111111111111111111111111`)를 통해 이를 원천 방어합니다. 출처: CertiK 및 Neodyme 보안 인시던트 보고서.
 * `[5]` **Nomad 브릿지 레플리카 해킹 사건 ($190,000,000) - 2022년 8월 1일:** 초기화되지 않은 루트 버그로 인해 `0x00`이 신뢰할 수 있는 루트로 처리되었습니다. HAICHAIN은 `require!(composite_root != [0u8; 32])` 불변성을 통해 이를 차단합니다. 출처: Paradigm Research (samczsun).
 * `[6]` **Euler Finance 플래시론 공격 ($197,000,000) - 2023년 3월 13일:** 공격자가 `donateToReserves`를 악용하여 담보 평가액을 왜곡했습니다. HAICHAIN은 엄격한 온체인 실제 ATA 잔액 재확인(`EulerDriftBalanceMismatch`)을 통해 방어합니다. 출처: Sherlock 및 SlowMist 보안 감사.
 * `[7]` **Mango Markets 플래시론 가격 조작 사건 ($114,000,000) - 2022년 10월 11일:** 동일 블록 내에서 대규모 자금을 예치하고 오라클을 조작하여 유동성을 고갈시켰습니다. HAICHAIN은 `FLASH_LOAN_QUARANTINE_SLOTS = 2` (800ms 쿨다운 장벽)를 통해 동일 블록 공격을 차단합니다. 출처: 미국 증권거래위원회 SEC 소송 공시 제25625호.

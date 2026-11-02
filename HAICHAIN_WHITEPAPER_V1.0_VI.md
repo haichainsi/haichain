@@ -202,6 +202,24 @@ import openai
 # client = openai.OpenAI(api_key="sk-proj-xxxx")
 
 # BÂY GIỜ VỚI HAICHAIN (CHỈ THAY ĐỔI DUY NHẤT 1 DÒNG MÃ):
+
+> [!NOTE]
+> **CƠ CHẾ TẤT TOÁN VỚI OPENAI, DEEPSEEK & ANTHROPIC:**
+> Các phòng nghiên cứu mô hình nền tảng hiện tại chỉ chấp nhận thanh toán thẻ tín dụng doanh nghiệp (USD Stripe) và chưa nhận trực tiếp token SPL trên Solana. HAICHAIN giải quyết thực tế này thông qua **Giao Thức Chuyển Tiếp Thanh Khoản Bằng Cọc (Decentralized Liquidity Relayer Protocol)**:
+> 1. Tác tử AI của người dùng khóa micro-USDT vào Kho Quỹ Vault PDA tự quản trên Solana L1.
+> 2. Các Relayer được cấp phép (phải ký quỹ bảo chứng bằng USDT/SOL để triệt tiêu rủi ro kiểm duyệt hoặc quỵt tiền) duy trì hạn mức thanh toán doanh nghiệp với OpenAI, Anthropic, DeepSeek.
+> 3. Relayer truyền luồng suy luận AI (SSE stream) về cho Agent với độ trễ nano-giây, đồng thời bù trừ micro-USDT từ vé voucher đã ký của Agent trên chuỗi.
+> 4. Mô hình này thiết lập một cây cầu thanh khoản hai chiều minh bạch: lập trình viên AI được dùng tiền mã hóa trả theo từng câu lệnh mà không cần thẻ visa cá nhân, trong khi các lab AI vẫn nhận được USD thanh toán theo chuẩn doanh nghiệp.
+
+
+> [!NOTE]
+> **CƠ CHẾ TẤT TOÁN VỚI OPENAI, DEEPSEEK & ANTHROPIC:**
+> Các phòng nghiên cứu mô hình nền tảng hiện tại chỉ chấp nhận thanh toán thẻ tín dụng doanh nghiệp (USD Stripe) và chưa nhận trực tiếp token SPL trên Solana. HAICHAIN giải quyết thực tế này thông qua **Giao Thức Chuyển Tiếp Thanh Khoản Bằng Cọc (Decentralized Liquidity Relayer Protocol)**:
+> 1. Tác tử AI của người dùng khóa micro-USDT vào Kho Quỹ Vault PDA tự quản trên Solana L1.
+> 2. Các Relayer được cấp phép (phải ký quỹ bảo chứng bằng USDT/SOL để triệt tiêu rủi ro kiểm duyệt hoặc quỵt tiền) duy trì hạn mức thanh toán doanh nghiệp với OpenAI, Anthropic, DeepSeek.
+> 3. Relayer truyền luồng suy luận AI (SSE stream) về cho Agent với độ trễ nano-giây, đồng thời bù trừ micro-USDT từ vé voucher đã ký của Agent trên chuỗi.
+> 4. Mô hình này thiết lập một cây cầu thanh khoản hai chiều minh bạch: lập trình viên AI được dùng tiền mã hóa trả theo từng câu lệnh mà không cần thẻ visa cá nhân, trong khi các lab AI vẫn nhận được USD thanh toán theo chuẩn doanh nghiệp.
+
 client = openai.OpenAI(
     base_url="https://gateway.haichain.si/v1",  # <-- CỔNG GATEWAY 1-DÒNG!
     api_key="hai_live_99f8d..."                 # Khóa Hũ Tiền Sinh Trắc Học
@@ -590,11 +608,11 @@ Nhân hợp đồng thông minh (`haichain-core v6.9.3`) cưỡng bức 6 bất 
 +---------------------------------------------------------------------------------+
 |             MA TRẬN PHÒNG THỦ 6 BẤT BIẾN TOÁN HỌC CỦA HAICHAIN v6.9.3           |
 +---------------------------------------------------------------------------------+
-| 1. BẢO VỆ CHỐNG HACK WORMHOLE ($320 TRIỆU USD):                                 |
-|   - Cố định địa chỉ Sysvar Instructions: Sysvar1nstruction51111111111111111111 |
+| 1. KIỂM TRA CHỮ KÝ NATIVE QUA SYSVAR INSTRUCTIONS (CHỐNG GIẢ MẠO):                                 |
+|   - Cố định địa chỉ Sysvar Instructions: Sysvar1nstructions1111111111111111111111111 |
 |   - Loại bỏ hoàn toàn nguy cơ giả mạo tài khoản sysvar hướng dẫn.             |
 |                                                                                 |
-| 2. BẢO VỆ CHỐNG HACK CẦU NỐI NOMAD ($190 TRIỆU USD):                            |
+| 2. BẤT BIẾN MERKLE ROOT KHÁC 0 & CHỐNG THỰC THI TRÊN PDA RỖNG:                            |
 |   - Bất biến Merkle Root khác 0: require!(composite_root != [0u8; 32])         |
 |   - Cấm tuyệt đối việc thực thi giao dịch trên một cây Merkle rỗng.            |
 |                                                                                 |
@@ -602,11 +620,11 @@ Nhân hợp đồng thông minh (`haichain-core v6.9.3`) cưỡng bức 6 bất 
 |   - Ràng buộc 4 thành phần: Hash(Pubkey || MaxSpend || ExpirySlot || Nonce)    |
 |   - Cấm bot bị thao túng chuyển tiền sang ví của kẻ tấn công.                  |
 |                                                                                 |
-| 4. BẢO VỆ CHỐNG HACK EULER FINANCE ($197 TRIỆU USD):                            |
+| 4. TẢI LẠI SỐ DƯ SPL ATA THỰC TẾ & CHỐNG LỆCH SỔ SÁCH:                            |
 |   - Tải lại số dư thực tế: require!(actual_ata_balance >= spend_amount)        |
 |   - Ngăn chặn lỗi lệch sổ sách nội bộ và tấn công thổi giá bằng token tặng.    |
 |                                                                                 |
-| 5. BẢO VỆ CHỐNG TẤN CÔNG VAY NHANH MANGO MARKETS ($114 TRIỆU USD):              |
+| 5. CÁCH LY THANH KHOẢN CHỐNG FLASH-LOAN ĐA SLOT:              |
 |   - Rào cản cách ly đa slot: require!(slot >= last_deposit_slot + 2)           |
 |   - Cấm tuyệt đối hành vi vừa nạp tiền vừa rút sạch tiền trong cùng 1 block.   |
 |                                                                                 |
@@ -732,11 +750,11 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
                       
            [ KHỐI LƯỢNG BÙ TRỪ MÁY MÓC TOÀN CẦU: $1.4 TỶ USD / NĂM ]
                                      │
-                                     ▼ (Phí giao thức: 0.10%)
-                      [ DOANH THU THUẦN: $1,400,000 USD / NĂM ]
+                                     ▼ (Phí giao thức: 0.05%)
+                      [ DOANH THU CƠ SỞ: $700,000 USD / NĂM ]
                                      │
                     ┌────────────────┴────────────────┐
-                    ▼ (60% Doanh Thu)                 ▼ (40% Doanh Thu)
+                    ▼ (50% Doanh Thu)                 ▼ (50% Doanh Thu)
          [ MUA LẠI VÀ ĐỐT BỎ (TWAP) ]        [ CHIA LỢI NHUẬN THỰC BẰNG USDT ]
         - Mua $HAISI trực tiếp trên DEX      - Trả thưởng trực tiếp bằng USDT
         - Giảm nguồn cung vĩnh viễn        - Dành cho người khóa veHAISI
@@ -749,7 +767,7 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
   * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAISI - Giá **\$0.010 USD** (\$10M FDV) qua Meteora Alpha Vault / DLMM, mở khóa tuyến tính 7 ngày chống sniping.
   * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAISI - Dự trữ khuyến khích AI builder và hackathon.
 * **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAISI - Khóa cứng 12 tháng, mở khóa tuyến tính 36 tháng.
-* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAISI - Khóa cứng 12 tháng, trả dần 18 tháng (Định giá \$15M FDV).
+* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAISI - Khóa cứng 12 tháng, trả dần 18 tháng (Định giá $7M - $8.5M FDV).
 * **Quỹ Dự trữ Bảo hiểm An toàn (10%):** 100.000.000 $HAISI - Khóa đa chữ ký để bảo hiểm và kiểm toán.
 * **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAISI - Đốt khóa 100% token thanh khoản LP.
 
@@ -764,15 +782,15 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ Cọc Bắt Buộc $HAISI (veHAISI) ]               [ Doanh Thu Phí USDT Nguyên Chất ]
-├── Hạn Mức = k * sqrt(Staked * Time)           ├── Thu 0.1% phí bù trừ ròng
+├── Hạn Mức = k * sqrt(Staked * Time)           ├── Thu 0.05% phí bù trừ ròng
 │   Bắt buộc cọc để mở băng thông nano-giây     │   bằng 100% USDT thực
 └── Càng nhiều bot -> Càng khóa $HAISI          └── Chuyển thẳng về Kho Bạc Giao Thức
        │                                                 │
        ▼                                                 ▼
 [ Nguồn Cung $HAISI Lưu Hành Thu Hẹp ]          [ Cỗ Máy Mua Lại Tự Động (TWAP) ]
-                                                ├── 60% Mua $HAISI và ĐỐT VĨNH VIỄN
+                                                ├── 50% Mua $HAISI và ĐỐT VĨNH VIỄN
                                                 │   (Tạo áp lực giảm cung ròng)
-                                                └── 40% Chia cổ tức USDT Real Yield
+                                                └── 50% Nạp Quỹ Bảo Hiểm Rủi Ro (CHGB) để bảo chứng vốn và thanh khoản khẩn cấp mà không vướng rủi ro chứng khoán.
                                                     cho người cọc hạn (veHAISI)
 ```
 
@@ -980,7 +998,7 @@ Hiểu rõ rằng **Bí mật kinh doanh, mã nguồn độc quyền và dữ li
    | - Bảo mật $30B+ TVL    |  ========>  | - DA: Celestia/EigenDA |  ========>  |   Proof-of-Agentic-Work|
    | - Mạng bù trừ vi mô    |             | - Sequencer: HAICHAIN  |             | - Mã máy OP_402_PAY    |
    | - Mục tiêu: 100k Agent |             | - Phí Gas: $HAISI        |             | - DID & Tín nhiệm Máy  |
-   | - Doanh thu: $15.9M ARR|             | - 50,000+ Machine TPS  |             | - $HAISI = Base L1 Gas   |
+   | - Dự phóng: $700k-1.4M ARR|             | - 50,000+ Machine TPS  |             | - $HAISI = Base L1 Gas   |
    +------------------------+             +------------------------+             +------------------------+
 ```
 
@@ -1123,7 +1141,7 @@ Bởi vì $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt
 |  Phase 1: Q4 2026  Ra mắt Thương Mại Mainnet Solana L1       Triển khai nhân hợp đồng v6.9.3       |
 |                    (Thâm nhập thị trường & Đạt PMF)          Xác thực sinh trắc học Passkey FaceID |
 |                                                              Bộ công cụ MCP Server Cursor/LangChain|
-|                                                              Hoàn thành 2 audit OtterSec & Neodyme |
+|                                                              Hoàn thành xác minh hình thức; Lên lịch audit OtterSec & Neodyme Q4 2026 |
 |                                                                                                    |
 |  Phase 2: Q2 2027  SVM App-Rollup Thông Lượng Siêu Cao       Khởi chạy Sequencer Testnet chuyên dụng|
 |                    (Mở rộng hệ sinh thái)                    Tích hợp tầng dữ liệu Celestia/EigenDA|
@@ -1160,7 +1178,7 @@ Mọi con số, chỉ số kỹ thuật, dữ liệu thiệt hại lịch sử, 
 * `[3]` **Đặc Tả Kích Thước Gói Tin Cốt Lõi Solana Foundation:** Định nghĩa kích thước gói tin mạng: `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1.280 - 40\text{ bytes IPv6 header} - 8\text{ bytes UDP header} = 1.232\text{ bytes}$). Chứng minh gói tin bù trừ 771 bytes của HAICHAIN nằm trọn vẹn trong 1 khung truyền dẫn không phân mảnh.
 
 ### II. Báo Cáo Pháp Y Các Vụ Hack DeFi Lớn Được Bất Biến HAICHAIN Phòng Vệ (Tổng Thiệt Hại $821 Triệu USD)
-* `[4]` **Vụ Hack Cầu Nối Wormhole ($320.000.000 USD) - 02/02/2022:** Kẻ tấn công giả mạo tài khoản `sysvar::instructions` của Solana trong lệnh `complete_wrapped` để đúc 120.000 wETH giả mạo. HAICHAIN phòng vệ tuyệt đối bằng bất biến so khớp địa chỉ native sysvar bất biến (`Sysvar1nstruction5111111111111111111`). Nguồn: Báo cáo Pháp y Sự cố của CertiK & Neodyme.
+* `[4]` **Vụ Hack Cầu Nối Wormhole ($320.000.000 USD) - 02/02/2022:** Kẻ tấn công giả mạo tài khoản `sysvar::instructions` của Solana trong lệnh `complete_wrapped` để đúc 120.000 wETH giả mạo. HAICHAIN phòng vệ tuyệt đối bằng bất biến so khớp địa chỉ native sysvar bất biến (`Sysvar1nstructions1111111111111111111111111`). Nguồn: Báo cáo Pháp y Sự cố của CertiK & Neodyme.
 * `[5]` **Vụ Hack Cầu Nối Nomad ($190.000.000 USD) - 01/08/2022:** Lỗi root chưa khởi tạo gán giá trị mặc định `0x00` thành tin cậy trong hợp đồng `Replica.sol`. HAICHAIN phòng vệ bằng bất biến: `require!(composite_root != [0u8; 32], EmptyNomadRootForbidden)`. Nguồn: Báo cáo Phân tích Nguyên nhân Gốc rễ của Paradigm (samczsun).
 * `[6]` **Vụ Hack Khoản Vay Nhanh Euler Finance ($197.000.000 USD) - 13/03/2023:** Kẻ tấn công khai thác hàm `donateToReserves` để thao túng tỷ giá hối đoái nội bộ mà không bị kiểm tra chỉ số sức khỏe nợ. HAICHAIN phòng vệ bằng việc luôn nạp lại số dư thực tế từ tài khoản token ATA trước mỗi giao dịch (`EulerDriftBalanceMismatch`). Nguồn: Báo cáo Kiểm toán Sherlock & SlowMist.
 * `[7]` **Vụ Thao Túng Giá Flash Loan Mango Markets ($114.000.000 USD) - 11/10/2022:** Kẻ tấn công nạp tiền và rút cạn thế chấp trong cùng một block slot. HAICHAIN phòng vệ bằng rào cản cách ly: `FLASH_LOAN_QUARANTINE_SLOTS = 2` (ngăn chặn thao túng trong cửa sổ 800ms). Nguồn: Hồ sơ Kiện tụng US SEC Số 25625; Báo cáo Sự cố Mango Markets.

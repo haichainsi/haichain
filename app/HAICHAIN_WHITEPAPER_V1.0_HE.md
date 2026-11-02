@@ -411,11 +411,11 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
 +---------------------------------------------------------------------------------+
 |               HAICHAIN v6.9.3 SIX INVARIANTS EXPLOIT DEFENSE MATRIX             |
 +---------------------------------------------------------------------------------+
-| 1. WORMHOLE DEFENSE ($320M FIX):                                                |
-|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstruction5111111111111111111 |
+| 1. INSTRUCTION SYSVAR INTROSPECTION (CVE-2022-24300 PREVENTION):                                                |
+|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstructions1111111111111111111111111 |
 |   - דחיית כתובות sysvar מזויפות המועברות דרך חשבונות הקשר שרירותיים.             |
 |                                                                                 |
-| 2. NOMAD BRIDGE DEFENSE ($190M FIX):                                            |
+| 2. NON-ZERO MERKLE ROOT & UNINITIALIZED PDA DEFENSE:                                            |
 |   - Non-Zero Root Invariant: require!(composite_root != [0u8; 32])            |
 |   - מניעת פגיעויות המאפשרות ביצוע עסקאות כנגד שורשי מרקל לא מאותחלים.          |
 |                                                                                 |
@@ -423,11 +423,11 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
 |   - 4-Tuple Bound Capability Leaf: Hash(Pubkey || MaxSpend || Expiry || Nonce) |
 |   - איסור מוחלט על סוכנים מורעלים להפנות כספים לארנקי תוקפים.                   |
 |                                                                                 |
-| 4. EULER FINANCE DEFENSE ($197M FIX):                                           |
+| 4. LIVE SPL ATA BALANCE INTROSPECTION & ANTI-DRIFT GUARD:                                           |
 |   - Strict ATA Balance Reload: require!(actual_ata_balance >= spend_amount)    |
 |   - מניעת סטיות הנהלת חשבונות פנימיות ושגיאות שערי חליפין מבוססות תרומות.      |
 |                                                                                 |
-| 5. MANGO MARKETS DEFENSE ($114M FLASH LOAN FIX):                                |
+| 5. MULTI-SLOT FLASH-LOAN LIQUIDITY QUARANTINE:                                |
 |   - Multi-Slot Quarantine: require!(slot >= last_deposit_slot + 2)             |
 |   - מניעת מניפולציות הפקדה-ומיד-ריקון של הלוואות בזק (Flash Loan) באותו בלוק.    |
 |                                                                                 |
@@ -712,11 +712,11 @@ HAICHAIN פותרת זאת באמצעות **ערוצי מצב אופטימיים
                       
                [ GLOBAL MACHINE NETTING VOLUME: $1.4B / YR ]
                                      │
-                                     ▼ (Protocol Take-Rate: 0.10%)
-                        [ $1,400,000 ANNUAL REVENUE ]
+                                     ▼ (Protocol Take-Rate: 0.05%)
+                        [ $700,000 BASE ANNUAL REVENUE ]
                                      │
                     ┌────────────────┴────────────────┐
-                    ▼ (60% Revenue)                   ▼ (40% Revenue)
+                    ▼ (50% Revenue)                   ▼ (50% Revenue)
          [ TWAP BUYBACK & BURN ]             [ REAL YIELD STREAMING ]
         - Market purchases on DEX          - Distributed in pure USDT
         - Permanent supply deflation       - Rewarded to veHAISI stakers
@@ -744,7 +744,7 @@ HAICHAIN פותרת זאת באמצעות **ערוצי מצב אופטימיים
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ Compulsory $HAISI Staking (veHAISI) ]         [ Pure USDT Netting Fee Revenue ]
-├── Bandwidth granted via locked capital         ├── 0.1% netting fee captured
+├── Bandwidth granted via locked capital         ├── 0.05% netting fee captured
 │   Daily Allowance = k * sqrt(Staked * Time)    │   strictly in pure USDT
 └── More agents -> More $HAISI locked            └── 100% routed to Protocol Treasury
        │                                                 │
@@ -829,7 +829,7 @@ $$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 
    | - $30B+ TVL Security   |  ========>  | - DA: Celestia/EigenDA |  ========>  |   PoAW + PoAI (Wisdom) |
    | - Micro-settlement Net |             | - Sequencer: HAICHAIN  |             | - Native OP_402_PAY    |
    | - 100k Agents / PMF    |             | - Gas Fee: $HAISI        |             | - Native DID & Credit  |
-   | - Revenue: $15.9M ARR  |             | - 50,000+ Machine TPS  |             | - True Decentralized SI|
+   | - Projected: $700k-1.4M ARR  |             | - 50,000+ Machine TPS  |             | - True Decentralized SI|
    +------------------------+             +------------------------+             +------------------------+
 ```
 

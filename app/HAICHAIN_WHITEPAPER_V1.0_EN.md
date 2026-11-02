@@ -225,6 +225,24 @@ import openai
 # client = openai.OpenAI(api_key="sk-proj-xxxx")
 
 # INSTANT HAICHAIN ACTIVATION (EXACTLY 1 LINE REPLACEMENT):
+
+> [!NOTE]
+> **HOW HAICHAIN SETTLES WITH OPENAI, DEEPSEEK & ANTHROPIC:**
+> Foundational model labs currently require traditional corporate fiat billing (Stripe / Corporate Cards) and do not natively receive Solana SPL tokens. Haichain resolves this via the **Decentralized Liquidity Relayer Protocol**:
+> 1. The user's AI Agent locks micro-USDT into the non-custodial On-Chain Vault PDA on Solana.
+> 2. Bonded Relayers (who stake collateral in USDT/SOL to eliminate front-running and default risks) maintain high-tier enterprise billing agreements with OpenAI, Anthropic, and DeepSeek.
+> 3. The Relayer streams LLM inference responses to the agent in sub-second timeframes via HTTP/SSE while netting micro-USDT from the agent's signed voucher tickets.
+> 4. This delivers a seamless, non-custodial fiat-to-crypto bridge: developers enjoy pure on-chain pay-as-you-go micro-escrow without managing credit cards, while foundational AI labs receive their required fiat settlement.
+
+
+> [!NOTE]
+> **HOW HAICHAIN SETTLES WITH OPENAI, DEEPSEEK & ANTHROPIC:**
+> Foundational model labs currently require traditional corporate fiat billing (Stripe / Corporate Cards) and do not natively receive Solana SPL tokens. Haichain resolves this via the **Decentralized Liquidity Relayer Protocol**:
+> 1. The user's AI Agent locks micro-USDT into the non-custodial On-Chain Vault PDA on Solana.
+> 2. Bonded Relayers (who stake collateral in USDT/SOL to eliminate front-running and default risks) maintain high-tier enterprise billing agreements with OpenAI, Anthropic, and DeepSeek.
+> 3. The Relayer streams LLM inference responses to the agent in sub-second timeframes via HTTP/SSE while netting micro-USDT from the agent's signed voucher tickets.
+> 4. This delivers a seamless, non-custodial fiat-to-crypto bridge: developers enjoy pure on-chain pay-as-you-go micro-escrow without managing credit cards, while foundational AI labs receive their required fiat settlement.
+
 client = openai.OpenAI(
     base_url="https://gateway.haichain.si/v1",  # <-- 1-Line Drop-in Gateway!
     api_key="hai_live_99f8d..."                 # Haichain Vault Security Key
@@ -401,11 +419,11 @@ The smart contract kernel (`haichain-core v6.9.3`) is formally verified and hard
 +---------------------------------------------------------------------------------+
 |               HAICHAIN v6.9.3 SIX INVARIANTS EXPLOIT DEFENSE MATRIX             |
 +---------------------------------------------------------------------------------+
-| 1. WORMHOLE DEFENSE ($320M FIX):                                                |
-|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstruction5111111111111111111 |
+| 1. INSTRUCTION SYSVAR INTROSPECTION (CVE-2022-24300 PREVENTION):                                                |
+|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstructions1111111111111111111111111 |
 |   - Rejects spoofed sysvar addresses passed via arbitrary context accounts.    |
 |                                                                                 |
-| 2. NOMAD BRIDGE DEFENSE ($190M FIX):                                            |
+| 2. NON-ZERO MERKLE ROOT & UNINITIALIZED PDA DEFENSE:                                            |
 |   - Non-Zero Root Invariant: require!(composite_root != [0u8; 32])            |
 |   - Eliminates vulnerabilities allowing execution against uninitialized roots. |
 |                                                                                 |
@@ -413,11 +431,11 @@ The smart contract kernel (`haichain-core v6.9.3`) is formally verified and hard
 |   - 4-Tuple Bound Capability Leaf: Hash(Pubkey || MaxSpend || Expiry || Nonce) |
 |   - Forbids poisoned agents from diverting funds to attacker wallets.          |
 |                                                                                 |
-| 4. EULER FINANCE DEFENSE ($197M FIX):                                           |
+| 4. LIVE SPL ATA BALANCE INTROSPECTION & ANTI-DRIFT GUARD:                                           |
 |   - Strict ATA Balance Reload: require!(actual_ata_balance >= spend_amount)    |
 |   - Prevents internal accounting drift and donation-based exchange rate bugs.  |
 |                                                                                 |
-| 5. MANGO MARKETS DEFENSE ($114M FLASH LOAN FIX):                                |
+| 5. MULTI-SLOT FLASH-LOAN LIQUIDITY QUARANTINE:                                |
 |   - Multi-Slot Quarantine: require!(slot >= last_deposit_slot + 2)             |
 |   - Prevents flash-loan deposit-and-drain manipulation in the same block.     |
 |                                                                                 |
@@ -844,11 +862,11 @@ HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
                       
                [ GLOBAL MACHINE NETTING VOLUME: $1.4B / YR ]
                                      │
-                                     ▼ (Protocol Take-Rate: 0.10%)
-                        [ $1,400,000 ANNUAL REVENUE ]
+                                     ▼ (Protocol Take-Rate: 0.05%)
+                        [ $700,000 BASE ANNUAL REVENUE ]
                                      │
                     ┌────────────────┴────────────────┐
-                    ▼ (60% Revenue)                   ▼ (40% Revenue)
+                    ▼ (50% Revenue)                   ▼ (50% Revenue)
          [ TWAP BUYBACK & BURN ]             [ REAL YIELD STREAMING ]
         - Market purchases on DEX          - Distributed in pure USDT
         - Permanent supply deflation       - Rewarded to veHAISI stakers
@@ -861,7 +879,7 @@ HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
   * *Public Community Launchpad (TGE) (10.0%):* 100,000,000 $HAISI -  Priced at **\$0.010 USD** (\$10M FDV) via Meteora DLMM, 7-day linear anti-sniping schedule.
   * *Community Growth & Hackathon Incentives (2.5%):* 25,000,000 $HAISI -  Reserved for developer grants and ecosystem bounties.
 * **Core Engineering & Founding Team (18%):** 180,000,000 $HAISI -  12-month cliff, 36-month linear vesting.
-* **Strategic Seed Investors (12%):** 120,000,000 $HAISI -  12-month cliff, 18-month linear vesting (\$15M FDV).
+* **Strategic Seed Investors (12%):** 120,000,000 $HAISI -  12-month cliff, 18-month linear vesting ($7M - $8.5M FDV).
 * **Protocol Security Treasury (10%):** 100,000,000 $HAISI -  Multi-sig locked for insurance and audits.
 * **Initial DEX Liquidity (Raydium/Orca) (10%):** 100,000,000 $HAISI -  100% LP tokens permanently burned.
 
@@ -876,7 +894,7 @@ To permanently neutralize the **Token Velocity Death Spiral (Pfeffer's Theorem)*
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ Compulsory $HAISI Staking (veHAISI) ]         [ Pure USDT Netting Fee Revenue ]
-├── Bandwidth granted via locked capital         ├── 0.1% netting fee captured
+├── Bandwidth granted via locked capital         ├── 0.05% netting fee captured
 │   Daily Allowance = k * sqrt(Staked * Time)    │   strictly in pure USDT
 └── More agents -> More $HAISI locked            └── 100% routed to Protocol Treasury
        │                                                 │
@@ -1014,7 +1032,7 @@ To eliminate centralization dependencies during hyper-scale adoption, Haichain t
    | - $30B+ TVL Security   |  ========>  | - DA: Celestia/EigenDA |  ========>  |   PoAW + PoAI (Wisdom) |
    | - Micro-settlement Net |             | - Sequencer: HAICHAIN  |             | - Native OP_402_PAY    |
    | - 100k Agents / PMF    |             | - Gas Fee: $HAISI        |             | - Native DID & Credit  |
-   | - Revenue: $15.9M ARR  |             | - 50,000+ Machine TPS  |             | - True Decentralized SI|
+   | - Projected: $700k-1.4M ARR  |             | - 50,000+ Machine TPS  |             | - True Decentralized SI|
    +------------------------+             +------------------------+             +------------------------+
 ```
 
@@ -1260,7 +1278,7 @@ Since $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \p
 |  Phase 1: Q4 2026  Solana L1 Mainnet Commercial Launch       v6.9.3 Hardened Kernel Deployment     |
 |                    (Market Penetration & PMF)                Biometric WebAuthn Passkeys & On-Ramp |
 |                                                              MCP Server for Cursor, Claude, LangChain|
-|                                                              Audits by OtterSec & Neodyme Completed|
+|                                                              Formal Verification Completed; OtterSec & Neodyme Audits Scheduled Q4 2026|
 |                                                                                                    |
 |  Phase 2: Q2 2027  High-Throughput SVM App-Rollup            Dedicated SVM Sequencer Testnet       |
 |                    (Ecosystem Expansion)                     Celestia / EigenDA DA Integration     |
@@ -1298,7 +1316,7 @@ Every architectural metric, historical exploit figure, physical constraint, and 
 * `[3]` **Solana Foundation Core Wire Specification:** `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1,280 - 40\text{ bytes IPv6 header} - 8\text{ bytes UDP header} = 1,232\text{ bytes}$). Validates that HAICHAIN's 771-byte symmetric netting payload fits strictly within a single non-fragmented datagram.
 
 ### II. Forensic Post-Mortems of DeFi Exploits Defended by HAICHAIN Invariants ($821M Total)
-* `[4]` **Wormhole Bridge Exploit ($320,000,000) -  Feb 2, 2022:** Attacker forged signature verification by spoofing the Solana `sysvar::instructions` account address in the `complete_wrapped` instruction. Defended on HAICHAIN via hardcoded sysvar address matching (`Sysvar1nstruction5111111111111111111`). Source: CertiK & Neodyme Security Incident Reports.
+* `[4]` **Wormhole Bridge Exploit ($320,000,000) -  Feb 2, 2022:** Attacker forged signature verification by spoofing the Solana `sysvar::instructions` account address in the `complete_wrapped` instruction. Defended on HAICHAIN via hardcoded sysvar address matching (`Sysvar1nstructions1111111111111111111111111`). Source: CertiK & Neodyme Security Incident Reports.
 * `[5]` **Nomad Bridge Replica Exploit ($190,000,000) -  Aug 1, 2022:** Attacker exploited an uninitialized root bug where `0x00` was marked as trusted in `Replica.sol`. Defended on HAICHAIN via `require!(composite_root != [0u8; 32], EmptyNomadRootForbidden)`. Source: Paradigm Research (samczsun).
 * `[6]` **Euler Finance Flash Loan Exploit ($197,000,000) -  Mar 13, 2023:** Attacker exploited `donateToReserves` to artificially inflate the conversion rate without health factor verification. Defended on HAICHAIN via strict on-chain ATA balance reloads (`EulerDriftBalanceMismatch`). Source: Sherlock & SlowMist Security Audits.
 * `[7]` **Mango Markets Flash Loan Price Manipulation ($114,000,000) -  Oct 11, 2022:** Attacker executed multi-million dollar deposit and full collateral drain within the same block slot. Defended on HAICHAIN via `FLASH_LOAN_QUARANTINE_SLOTS = 2` (800ms barrier). Source: US SEC Litigation Release No. 25625; Mango Markets Post-Mortem.
