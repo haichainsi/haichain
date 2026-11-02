@@ -1088,11 +1088,6 @@
               <span>${getI18nText('unlockBtn')}</span>
             </button>
             <p id="vip-gatekeeper-err" class="text-xs font-mono text-rose-500 hidden pt-1"></p>
-            <div class="pt-2">
-              <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
-                Key ví dụ: <code class="text-black dark:text-white underline cursor-pointer" onclick="document.getElementById('vip-gatekeeper-input').value='vip';document.getElementById('vip-gatekeeper-submit').click();">vip</code> | <code class="text-black dark:text-white underline cursor-pointer" onclick="document.getElementById('vip-gatekeeper-input').value='haichain2026';document.getElementById('vip-gatekeeper-submit').click();">haichain2026</code>
-              </p>
-            </div>
           </div>
         </div>
       `;
