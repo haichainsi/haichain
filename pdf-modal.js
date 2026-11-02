@@ -242,8 +242,14 @@
           
           <!-- Document Icon, Title & Page Count Badge -->
           <div class="flex items-center space-x-1.5 sm:space-x-2.5 min-w-0">
-            <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 flex items-center justify-center shrink-0 shadow-xs">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
             </div>
             <div class="min-w-0">
               <div class="flex items-center space-x-1.5 sm:space-x-2">
@@ -257,9 +263,7 @@
           <!-- Header Controls: Zoom Out / 1-Tap Comfort Zoom / Zoom In + Close (✕) -->
           <div class="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
             <!-- Zoom Out (-) -->
-            <button id="pdf-modal-zoom-out" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Thu nhỏ (-)">
-              <i data-lucide="zoom-out" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-            </button>
+            <button id="pdf-modal-zoom-out" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Thu nhỏ (-)"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></button>
             
             <!-- 1-Tap Toggle: 100% Fit vs 140% Comfort Read -->
             <button id="pdf-modal-zoom-fit" type="button" class="px-2 h-7 sm:h-8 rounded-lg flex items-center justify-center text-[10px] sm:text-[11px] font-mono font-medium text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white bg-neutral-200/60 dark:bg-neutral-800/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Nhấn để đổi: Vừa trang (100%) / To rõ (140%)">
@@ -267,9 +271,7 @@
             </button>
 
             <!-- Zoom In (+) -->
-            <button id="pdf-modal-zoom-in" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Phóng to (+)">
-              <i data-lucide="zoom-in" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-            </button>
+            <button id="pdf-modal-zoom-in" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 cursor-pointer" title="Phóng to (+)"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></button>
 
             <div class="h-4 w-px bg-neutral-300 dark:bg-neutral-700 mx-0.5 sm:mx-1"></div>
 
@@ -279,9 +281,7 @@
             </button>
 
             <!-- Close Button (✕) ONLY -->
-            <button id="pdf-modal-close-btn" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 shrink-0 cursor-pointer" title="Đóng">
-              <i data-lucide="x" class="w-4 h-4 sm:w-4.5 sm:h-4.5"></i>
-            </button>
+            <button id="pdf-modal-close-btn" type="button" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors active:scale-95 shrink-0 cursor-pointer" title="Đóng"><svg class="w-4 h-4 sm:w-4.5 sm:h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
           </div>
         </div>
 
@@ -310,11 +310,11 @@
           <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-neutral-800 shrink-0">
             <div>
               <h3 id="saft-drawer-title" class="text-sm sm:text-base font-bold text-white tracking-tight" style="color: #ffffff !important;">Pre-Seed SAFT Digital E-Signature ($0.007)</h3>
-              <p id="saft-drawer-sub" class="text-xs font-mono mt-0.5" style="color: #a1a1aa !important;">Online legal verification compliant with US ESIGN Act &amp; UETA standards</p>
+              <p id="saft-drawer-sub" class="text-xs font-mono mt-0.5" style="color: #d4d4d8 !important;">Online legal verification compliant with US ESIGN Act &amp; UETA standards</p>
             </div>
             
-            <button id="saft-drawer-close-btn" type="button" class="w-8 h-8 rounded-xl flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors cursor-pointer text-sm font-mono" title="Close" style="color: #a1a1aa !important;">
-              ✕
+            <button id="saft-drawer-close-btn" type="button" class="w-8 h-8 rounded-xl flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors cursor-pointer" title="Close" style="color: #d4d4d8 !important;">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
 
@@ -341,7 +341,7 @@
                   <span class="absolute left-3.5 top-2.5 text-xs font-mono" style="color: #71717a !important;">$</span>
                   <input id="saft-input-amount" type="number" min="500" max="50000" step="100" value="1000" class="w-full pl-8 pr-3.5 py-2.5 text-xs sm:text-sm font-mono rounded-xl focus:outline-none transition-all" style="background-color: #18181b !important; color: #ffffff !important; border: 1px solid #3f3f46 !important;">
                 </div>
-                <p id="saft-txt-amount-note" class="text-[11px] font-mono mt-1" style="color: #a1a1aa !important;">Ticket limit: $500 – $15,000 USD</p>
+                <p id="saft-txt-amount-note" class="text-[11px] font-mono mt-1" style="color: #d4d4d8 !important;">Ticket limit: $500 – $15,000 USD</p>
               </div>
 
               <div>
@@ -456,13 +456,9 @@
 
         <!-- Floating Sticky Bottom Pill: Current Page & Jump Controls -->
         <div id="pdf-modal-pill" class="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 px-3 sm:px-4 py-1.5 rounded-full bg-black/85 dark:bg-white/95 text-white dark:text-black shadow-2xl backdrop-blur-md flex items-center space-x-2 text-xs font-mono select-none pointer-events-auto transition-transform duration-200">
-          <button id="pdf-modal-prev-page" type="button" class="hover:opacity-70 active:scale-90 transition-transform cursor-pointer px-1 py-0.5" title="Trang trước (▲)">
-            <i data-lucide="chevron-up" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-          </button>
+          <button id="pdf-modal-prev-page" type="button" class="hover:opacity-70 active:scale-90 transition-transform cursor-pointer px-1 py-0.5" title="Trang trước (▲)"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
           <span id="pdf-modal-page-indicator" class="font-bold tracking-wide text-[11px] sm:text-xs">Trang 1 / --</span>
-          <button id="pdf-modal-next-page" type="button" class="hover:opacity-70 active:scale-90 transition-transform cursor-pointer px-1 py-0.5" title="Trang sau (▼)">
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-          </button>
+          <button id="pdf-modal-next-page" type="button" class="hover:opacity-70 active:scale-90 transition-transform cursor-pointer px-1 py-0.5" title="Trang sau (▼)"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
         </div>
 
       </div>
