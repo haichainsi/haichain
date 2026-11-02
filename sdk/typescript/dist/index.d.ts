@@ -2,6 +2,14 @@ import { Connection, PublicKey, Keypair, TransactionInstruction } from "@solana/
 import { AnchorProvider } from "@coral-xyz/anchor";
 export declare const SOLANA_USDT_MINT: PublicKey;
 export declare const SOLANA_USDC_MINT: PublicKey;
+export declare const PROTOCOL_CONSTANTS: {
+    FLASH_LOAN_QUARANTINE_SLOTS: bigint;
+    MIN_QUARANTINE_TRIGGER_DEPOSIT: bigint;
+    ROOT_ROTATION_GRACE_SLOTS: bigint;
+    MAX_SAFE_MICRO_TICK_PAYMENT: bigint;
+    MIN_PROVIDER_BOND_AMOUNT: bigint;
+    MAX_SLASH_PER_INCIDENT: bigint;
+};
 export type SupportedFiatCurrency = "USD" | "EUR" | "GBP" | "JPY" | "CAD" | "AUD" | "BRL" | "INR" | "SGD";
 export type SupportedCrossChainNetwork = "solana_spl" | "tron_trc20" | "ethereum_erc20" | "arbitrum" | "base_erc20" | "binance_smart_chain";
 export type SupportedPaymentRail = "apple_pay" | "google_pay" | "stripe_link" | "card_international" | "sepa_instant" | "fednow_ach" | "crypto_usdt_deposit";
@@ -84,6 +92,22 @@ export declare class HaiChainClient {
      * Can be executed by providers and gateway proxies in sub-millisecond latency (<0.1ms).
      */
     static verifyMicroVoucherSignature(signerPubkey: PublicKey, payloadHash: Uint8Array | Buffer, signature: Uint8Array | Buffer): boolean;
+    /**
+     * Builds the instruction for initializing an Agent Vault on Solana.
+     * Anchor Discriminator: sha256("global:initialize_agent_vault")[0..8] = [230, 71, 53, 169, 238, 108, 169, 111]
+     */
+    buildInitializeVaultInstruction(masterOwner: PublicKey, tokenMint: PublicKey, compositeRoot: Uint8Array | Buffer): TransactionInstruction;
+    /**
+     * Builds the instruction for depositing funds into the vault.
+     * Supports decoupled depositors (e.g. background fiat relayers, Stripe/Apple Pay, or master owner).
+     * Anchor Discriminator: sha256("global:deposit_funds")[0..8] = [202, 39, 52, 211, 53, 20, 250, 88]
+     */
+    buildDepositFundsInstruction(masterOwner: PublicKey, depositor: PublicKey, userSourceAta: PublicKey, amountMicroUnits: number | bigint, tokenMint?: PublicKey): TransactionInstruction;
+    /**
+     * Builds the instruction for executing a micro-payment on Solana L1 with Merkle proof verification.
+     * Anchor Discriminator: sha256("global:execute_master_payment")[0..8] = [164, 225, 64, 108, 234, 236, 177, 124]
+     */
+    buildExecuteMasterPaymentInstruction(masterOwner: PublicKey, subAgentSigner: PublicKey, payer: PublicKey, serviceProviderAta: PublicKey, spendAmount: number | bigint, maxAuthorizedAmount: number | bigint, expirySlot: number | bigint, nonce: number | bigint, compositeProof: (Uint8Array | Buffer)[], tokenMint?: PublicKey): TransactionInstruction;
     getAgentVaultPda(owner: PublicKey): [PublicKey, number];
     getNullifierPda(vaultPda: PublicKey, nonce: number | bigint): [PublicKey, number];
     getProviderBondPda(providerAuthority: PublicKey): [PublicKey, number];
