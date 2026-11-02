@@ -1557,17 +1557,19 @@
                 </button>
               </div>
 
-              <!-- Social Quick Share Action Bar -->
-              <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                <span class="text-neutral-400 font-sans text-[11px]">${getActiveLang() === 'vi' ? 'Chia sẻ nhanh:' : 'Quick Share:'}</span>
-                <button type="button" id="btn-share-ref-x" class="min-h-[34px] px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs flex items-center space-x-1.5 cursor-pointer transition-colors active:scale-95">
-                  <i data-lucide="twitter" class="w-3.5 h-3.5"></i>
-                  <span>${getI18nText('refShareX')}</span>
-                </button>
-                <button type="button" id="btn-share-ref-tg" class="min-h-[34px] px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs flex items-center space-x-1.5 cursor-pointer transition-colors active:scale-95">
-                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                  <span>${getI18nText('refShareTelegram')}</span>
-                </button>
+              <!-- Social Quick Share Action Bar (Always 1 Row, Balanced 2-Col Grid) -->
+              <div class="space-y-1.5 pt-1.5">
+                <span class="text-neutral-400 font-sans text-[11px] block">${getActiveLang() === 'vi' ? 'Chia sẻ nhanh qua mạng xã hội:' : 'Quick Share:'}</span>
+                <div class="grid grid-cols-2 gap-2 w-full">
+                  <button type="button" id="btn-share-ref-x" class="min-h-[40px] w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-semibold text-xs flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 bg-white dark:bg-neutral-900 shadow-2xs">
+                    <i data-lucide="twitter" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span class="truncate">${getI18nText('refShareX')}</span>
+                  </button>
+                  <button type="button" id="btn-share-ref-tg" class="min-h-[40px] w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-semibold text-xs flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 bg-white dark:bg-neutral-900 shadow-2xs">
+                    <i data-lucide="send" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span class="truncate">${getI18nText('refShareTelegram')}</span>
+                  </button>
+                </div>
               </div>
               ` : `
               <div class="p-4 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-center space-y-2.5">
