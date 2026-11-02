@@ -42,6 +42,8 @@
 
   const TRANSLATIONS = {
   "kk": {
+    "aiHub.close": "Жабу",
+    "account.syncBrowser": "Chrome браузеріне синхрондау",
     "nav.aiConnect": "AI Қосу",
     "nav.aiConnectTitle": "HAICHAIN-ді AI-мен байланыстыру",
     "overview.connectAiNow": "AI-ді Қазір Қосу",
@@ -492,6 +494,8 @@
     "toast.configCopiedMsg": "Алмасу буферіне сақталды"
   },
   "en": {
+    "aiHub.close": "Close",
+    "account.syncBrowser": "Sync to Chrome Browser",
     "nav.aiConnect": "AI Connect",
     "nav.aiConnectTitle": "Connect HAICHAIN with AI",
     "overview.connectAiNow": "Connect AI Now",
@@ -942,6 +946,8 @@
     "toast.configCopiedMsg": "Saved to clipboard"
   },
   "zh": {
+    "aiHub.close": "关闭",
+    "account.syncBrowser": "同步至 Chrome 浏览器",
     "nav.aiConnect": "连接 AI",
     "nav.aiConnectTitle": "将 HAICHAIN 与 AI 深度连接",
     "overview.connectAiNow": "立即连接 AI",
@@ -1392,6 +1398,8 @@
     "toast.configCopiedMsg": "已保存至剪贴板"
   },
   "fr": {
+    "aiHub.close": "Fermer",
+    "account.syncBrowser": "Synchroniser vers Chrome",
     "nav.aiConnect": "Connexion AI",
     "nav.aiConnectTitle": "Connecter HAICHAIN avec l'IA",
     "overview.connectAiNow": "Connecter l'IA Maintenant",
@@ -1842,6 +1850,8 @@
     "toast.configCopiedMsg": "Enregistré dans le presse-papiers"
   },
   "ko": {
+    "aiHub.close": "닫기",
+    "account.syncBrowser": "Chrome 브라우저로 동기화",
     "nav.aiConnect": "AI 연결",
     "nav.aiConnectTitle": "HAICHAIN을 AI에 연결",
     "overview.connectAiNow": "지금 AI 연결하기",
@@ -2292,6 +2302,8 @@
     "toast.configCopiedMsg": "클립보드에 저장되었습니다"
   },
   "es": {
+    "aiHub.close": "Cerrar",
+    "account.syncBrowser": "Sincronizar con navegador Chrome",
     "nav.aiConnect": "Conectar IA",
     "nav.aiConnectTitle": "Conectar HAICHAIN con IA",
     "overview.connectAiNow": "Conectar IA Ahora",
@@ -2742,6 +2754,8 @@
     "toast.configCopiedMsg": "Guardado en el portapapeles"
   },
   "ru": {
+    "aiHub.close": "Закрыть",
+    "account.syncBrowser": "Синхронизировать с браузером Chrome",
     "nav.aiConnect": "Подключить ИИ",
     "nav.aiConnectTitle": "Подключить HAICHAIN к ИИ",
     "overview.connectAiNow": "Подключить ИИ Сейчас",
@@ -3192,6 +3206,8 @@
     "toast.configCopiedMsg": "Сохранено в буфер обмена"
   },
   "vi": {
+    "aiHub.close": "Đóng",
+    "account.syncBrowser": "Đồng bộ sang trình duyệt Chrome",
     "nav.aiConnect": "Kết Nối AI",
     "nav.aiConnectTitle": "Kết nối HAICHAIN với AI",
     "overview.connectAiNow": "Kết Nối AI Ngay",
@@ -3642,6 +3658,8 @@
     "toast.configCopiedMsg": "Đã lưu vào bộ nhớ tạm"
   },
   "hi": {
+    "aiHub.close": "बंद करें",
+    "account.syncBrowser": "Chrome ब्राउज़र में सिंक करें",
     "nav.aiConnect": "AI कनेक्ट",
     "nav.aiConnectTitle": "HAICHAIN को AI से कनेक्ट करें",
     "overview.connectAiNow": "अभी AI कनेक्ट करें",
@@ -4092,6 +4110,8 @@
     "toast.configCopiedMsg": "क्लिपबोर्ड पर सहेजा गया"
   },
   "he": {
+    "aiHub.close": "סגור",
+    "account.syncBrowser": "סנכרן לדפדפן Chrome",
     "nav.aiConnect": "חיבור AI",
     "nav.aiConnectTitle": "חיבור HAICHAIN עם AI",
     "overview.connectAiNow": "חבר AI עכשיו",

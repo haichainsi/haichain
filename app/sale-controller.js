@@ -1270,7 +1270,15 @@
           ? `XÁC NHẬN THANH TOÁN MUA $HAISI (${provName}):\n\n• Số tiền đầu tư: $${amount.toLocaleString()} USDT\n• Phân bổ sở hữu: ${totalHaiNum.toLocaleString()} $HAISI (Đơn giá: $0.007)\n• Ví thụ hưởng: ${wallet}\n• Bảo chứng Mainnet: Cam kết tự động giải ngân 100% Token Thật tại sự kiện TGE.\n\nVí ${provName} sẽ mở lên để bạn ký duyệt giao dịch hợp đồng SAFT.`
           : `CONFIRM $HAISI PURCHASE (${provName}):\n\n• Investment: $${amount.toLocaleString()} USDT\n• Allocation: ${totalHaiNum.toLocaleString()} $HAISI (Price: $0.007)\n• Beneficiary Wallet: ${wallet}\n• Mainnet Guarantee: 100% Real Token disbursement upon TGE.\n\nYour ${provName} wallet will open for cryptographic authorization.`;
 
-        if (!confirm(confirmMsg)) return;
+        const isUserConfirmed = window.haichainDialog?.confirm
+          ? await window.haichainDialog.confirm(confirmMsg, {
+              title: isVi ? `XÁC NHẬN THANH TOÁN MUA $HAISI (${provName})` : `CONFIRM $HAISI PURCHASE (${provName})`,
+              confirmText: isVi ? 'Ký Duyệt & Mở Ví' : 'Authorize & Open Wallet',
+              cancelText: isVi ? 'Huỷ Bỏ' : 'Cancel'
+            })
+          : confirm(confirmMsg);
+
+        if (!isUserConfirmed) return;
 
         let txSig = '';
 

@@ -159,7 +159,7 @@
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
-  <script src="/app/dialog.js?v=v3_modal"></script>
+  <script src="/app/dialog.js?v=v4_luxury_popup"></script>
   <script src="/app/i18n.js?v=v25_back_to_home"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
@@ -1432,7 +1432,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             <p class="text-[10.5px] sm:text-[11.5px] text-neutral-500 truncate" data-i18n="aiHub.modalSubtitle">Choose the best connection mode for your experience</p>
           </div>
         </div>
-        <button id="close-ai-hub-modal" type="button" class="w-9 h-9 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0" title="Đóng">
+        <button id="close-ai-hub-modal" type="button" class="w-9 h-9 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer shrink-0" title="Close" data-i18n-title="aiHub.close">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -1463,8 +1463,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             </span>
             <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.desktopBadge">100% Automated</span>
           </div>
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
-            Dành cho máy tính đã cài <strong>Claude Desktop</strong> hoặc <strong>Cursor IDE</strong>. Tự động cấu hình MCP server và kết nối két chi tiêu on-chain.
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed" data-i18n="aiHub.desktopDesc">
+            For computers with Claude Desktop or Cursor IDE installed. Automatically configures MCP server and binds to on-chain spending vault.
           </p>
         </div>
 
@@ -1473,7 +1473,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="flex items-center justify-between text-[11px] text-neutral-400">
             <span class="flex items-center space-x-1.5 font-sans">
               <i data-lucide="terminal" class="w-3.5 h-3.5 text-neutral-300"></i>
-              <span>Mở Terminal / PowerShell và chạy:</span>
+              <span data-i18n="aiHub.desktopCmdLabel">Run in Terminal / PowerShell / Command Prompt:</span>
             </span>
             <span class="text-[10px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-400 font-mono">v6.2.1</span>
           </div>
@@ -1529,8 +1529,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             </span>
             <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">Cloud</span>
           </div>
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
-            Dành cho người dùng chat trên web <strong>claude.ai</strong> trên trình duyệt (Chrome, Safari, Brave, Edge). Kết nối trực tiếp qua giao thức đám mây.
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed" data-i18n="aiHub.onlineDesc">
+            For users chatting on claude.ai in browser (Chrome, Safari, Brave, Edge). Connects directly via cloud protocol.
           </p>
         </div>
 
@@ -2065,7 +2065,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <div id="account-sync-browser-container" class="hidden pt-1">
           <a id="account-sync-browser-link" href="#" target="_blank" class="w-full py-2.5 px-3 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs font-semibold flex items-center justify-center space-x-2 transition-all cursor-pointer">
             <i data-lucide="share-2" class="w-3.5 h-3.5 text-emerald-500"></i>
-            <span id="account-sync-browser-text">Đồng bộ sang trình duyệt Chrome</span>
+            <span id="account-sync-browser-text" data-i18n="account.syncBrowser">Sync to Chrome Browser</span>
           </a>
         </div>
 
@@ -2969,8 +2969,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       walletAccountModal.classList.add('hidden');
       if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
       showToast({
-        title: window.haichainI18n?.currentLang === 'vi' ? 'Đã Ngắt Kết Nối' : 'Wallet Disconnected',
-        message: window.haichainI18n?.currentLang === 'vi' ? 'Đã thoát phiên làm việc an toàn' : 'Session terminated successfully',
+        title: getDashNotice('walletDisconnectedTitle'),
+        message: getDashNotice('sessionTerminatedMsg'),
         icon: 'log-out'
       });
     });
@@ -3121,7 +3121,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       manualAddressPanel.classList.add('hidden');
       walletConnectModal.classList.add('hidden');
       showToast({
-        title: window.haichainI18n?.currentLang === 'vi' ? 'Đã Kết Nối Ví Custom' : 'Custom Wallet Connected',
+        title: getDashNotice('customWalletConnectedTitle'),
         message: `${address.slice(0, 4)}...${address.slice(-4)}`,
         icon: 'check-circle'
       });
@@ -3265,9 +3265,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         } catch (decryptErr) {
           console.error("Critical: Decryption of existing biometric vault failed:", decryptErr);
           // ANTI-ORPHAN INVARIANT: Never silently overwrite an existing vault with funds!
-          throw new Error(window.haichainI18n?.currentLang === 'vi'
-            ? "Không thể giải mã Vault sinh trắc học hiện tại. Hệ thống từ chối tạo khóa mới để bảo vệ an toàn số dư đang có trong Vault của bạn. Vui lòng quét lại FaceID trên đúng thiết bị ban đầu."
-            : "Could not decrypt existing biometric vault. The system refused to overwrite your key to protect existing vault funds. Please re-authenticate on the original device.");
+          throw new Error(getDashNotice('biometricDecryptError'));
         }
       }
 
@@ -3414,7 +3412,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             if (typeof showToast === 'function') {
               showToast({
                 title: 'Phantom',
-                message: err || 'Không thể kết nối ví',
+                message: err || getDashNotice('connectWalletFailed'),
                 icon: 'alert-triangle'
               });
             }
@@ -3905,10 +3903,17 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       if (privateSaleTab) privateSaleTab.click();
     };
 
-    window.clearUserAllocation = function() {
+    window.clearUserAllocation = async function() {
       if (!userWallet) return;
       const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
-      if (confirm(getDashNotice('resetSimulationConfirm'))) {
+      const confirmed = window.haichainDialog?.confirm
+        ? await window.haichainDialog.confirm(getDashNotice('resetSimulationConfirm'), {
+            danger: true,
+            confirmText: isVi ? 'Đặt lại' : 'Reset',
+            cancelText: isVi ? 'Huỷ' : 'Cancel'
+          })
+        : confirm(getDashNotice('resetSimulationConfirm'));
+      if (confirmed) {
         const allocs = getStoredAllocations();
         delete allocs[userWallet.address];
         saveStoredAllocations(allocs);
@@ -3992,6 +3997,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     // 10-Language Official Vesting Vault Internationalization Matrix
     const VESTING_VAULT_I18N = {
   "kk": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% Сызықтық 6 Ай",
       "guaranteeTitle": "ИНВЕСТОРЛАР ҮШІН 100% MAINNET РЕСМИ КЕПІЛДІК СЕРТИФИКАТЫ",
       "guaranteeBadge": "КЕЛІСІМШАРТПЕН РЕСМИ КЕПІЛДЕНДІРІЛГЕН",
       "guaranteeCommitment": "Стратегиялық инвестордың барлық {tokens} SAFT келісіміне сәйкес өзгермейтін заңды кепілдікке ие. HAICHAIN Mainnet ресми іске қосылған кезде (TGE оқиғасы) Solana Token-2022 смарт-келісімшарты 100% нақты ончейн токендерін сіздің тіркелген әмиян мекенжайыңызға {address} автоматты түрде аударады.",
@@ -4045,6 +4051,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Phantom-ға қосу үшін:\n1. Phantom ашыңыз -> 'Manage token list' басыңыз.\n2. Mint мекенжайын іздеу жолағына қойыңыз.\n3. $HAISI (Haichain SI) балансы мен таңбасын қосыңыз."
   },
   "en": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% Linear 6M",
       "guaranteeTitle": "OFFICIAL 100% MAINNET ALLOCATION GUARANTEE FOR INVESTORS",
       "guaranteeBadge": "OFFICIALLY GUARANTEED & BOUND",
       "guaranteeCommitment": "All {tokens} held by the Strategic Investor are immutably secured under the SAFT Agreement. While currently held as an allocated ledger reserve during the Pre-Seed phase, upon HAICHAIN Mainnet TGE, the Solana Token-2022 smart contract will automatically disburse 100% real on-chain tokens directly to this bound wallet address {address} with zero additional fees or manual intervention.",
@@ -4098,6 +4105,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "To view in Phantom:\n1. Open Phantom -> Click 'Manage token list'.\n2. Paste the Mint Address into search.\n3. Toggle ON to view your official $HAISI (Haichain SI) balance."
   },
   "zh": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% 6个月线性释放",
       "guaranteeTitle": "投资者 100% 主网代币兑换官方保函",
       "guaranteeBadge": "已完成合约保函认证",
       "guaranteeCommitment": "战略投资者的全部 {tokens} 均受 SAFT 协议不可篡改的法律保障。虽然在当前 Pre-Seed 阶段以锁定分配形式记录，但一旦 HAICHAIN 正式上线主网（TGE 事件），Solana Token-2022 智能合约将自动将 100% 真实链上代币直接分发至您绑定的钱包地址 {address}，无需任何额外费用或繁琐手续。",
@@ -4151,6 +4159,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "添加至 Phantom 方法：\n1. 打开 Phantom -> 点击 'Manage token list'。\n2. 将 Mint 地址粘贴至搜索框。\n3. 开启 $HAISI (Haichain SI) 显示开关即可查看到账余额与图标。"
   },
   "vi": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% Tuyến Tính 6T",
       "guaranteeTitle": "BẢO CHỨNG CHUYỂN ĐỔI TOKEN MAINNET 100% CHO NHÀ ĐẦU TƯ",
       "guaranteeBadge": "ĐÃ XÁC THỰC BẢO CHỨNG HỢP ĐỒNG",
       "guaranteeCommitment": "Toàn bộ số lượng {tokens} của Quý Nhà Đầu Tư được bảo đảm pháp lý bất biến theo Thỏa Thuận SAFT. Mặc dù trên môi trường Pre-Seed hiện tại số dư được ghi nhận dưới dạng phân bổ bảo lưu, ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token-2022 sẽ tự động chuyển đổi và giải ngân 100% số token này thành Token Thật on-chain trực tiếp về địa chỉ ví {address} của Quý Nhà Đầu Tư mà không phát sinh thêm bất kỳ chi phí hay thủ tục nào.",
@@ -4204,6 +4213,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Cách thêm vào ví Phantom:\n1. Mở ví Phantom -> Bấm nút 'Manage token list'.\n2. Dán địa chỉ Mint trên vào ô tìm kiếm.\n3. Bật hiển thị token $HAISI (Haichain SI) để xem số dư và biểu tượng của bạn."
   },
   "ko": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% 6개월 선형 분배",
       "guaranteeTitle": "투자자를 위한 공식 100% 메인넷 토큰 전환 보증서",
       "guaranteeBadge": "계약 보증 인증 완료",
       "guaranteeCommitment": "전략적 투자자의 {tokens} 전량은 SAFT 계약에 의해 불변으로 법적 보증됩니다. 현재 프리시드 단계에서는 락업 배분으로 기록되지만, HAICHAIN 메인넷 공식 출시(TGE) 즉시 Solana Token-2022 스마트 컨트랙트가 100% 온체인 실제 토큰으로 자동 전환하여 귀하의 지갑 주소 {address}(으)로 직분배합니다.",
@@ -4257,6 +4267,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Phantom 지갑에 추가하는 방법:\n1. Phantom 열기 -> 'Manage token list' 클릭.\n2. 검색창에 Mint 주소 붙여넣기.\n3. $HAISI (Haichain SI) 토큰 활성화."
   },
   "fr": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% Linéaire 6 Mois",
       "guaranteeTitle": "GARANTIE OFFICIELLE DE CONVERSION MAINNET À 100 % POUR LES INVESTISSEURS",
       "guaranteeBadge": "OFFICIELLEMENT GARANTI & LIÉ",
       "guaranteeCommitment": "L'intégralité des {tokens} détenus par l'investisseur stratégique est protégée de manière immuable en vertu de l'accord SAFT. Dès le lancement officiel du Mainnet HAICHAIN (événement TGE), le contrat intelligent Solana Token-2022 distribuera automatiquement 100 % de vrais jetons on-chain directement sur votre adresse de portefeuille liée {address}.",
@@ -4310,6 +4321,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Pour afficher dans Phantom :\n1. Ouvrez Phantom -> Cliquez sur 'Manage token list'.\n2. Collez l'adresse Mint dans la recherche.\n3. Activez $HAISI (Haichain SI)."
   },
   "es": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% Lineal 6 Meses",
       "guaranteeTitle": "CERTIFICADO OFICIAL DE CONVERSIÓN MAINNET AL 100% PARA INVERSORES",
       "guaranteeBadge": "OFICIALMENTE GARANTIZADO Y VINCULADO",
       "guaranteeCommitment": "Todos los {tokens} del Inversor Estratégico están legalmente respaldados de forma inmutable bajo el Acuerdo SAFT. Tan pronto como HAICHAIN active su red Mainnet (evento TGE), el contrato inteligente Solana Token-2022 desembolsará automáticamente el 100% en tokens reales on-chain a su dirección de billetera {address} sin trámites adicionales.",
@@ -4363,6 +4375,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Para ver en Phantom:\n1. Abra Phantom -> Haga clic en 'Manage token list'.\n2. Pegue la dirección Mint en la búsqueda.\n3. Active $HAISI (Haichain SI)."
   },
   "ru": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% Линейный 6 Мес",
       "guaranteeTitle": "ОФИЦИАЛЬНАЯ 100% ГАРАНТИЯ КОНВЕРТАЦИИ В MAINNET ДЛЯ ИНВЕСТОРОВ",
       "guaranteeBadge": "ОФИЦИАЛЬНО ГАРАНТИРОВАНО И ЗАКРЕПЛЕНО",
       "guaranteeCommitment": "Все {tokens} стратегического инвестора юридически защищены соглашением SAFT. В момент запуска Mainnet HAICHAIN (событие TGE) смарт-контракт Solana Token-2022 автоматически конвертирует и переведет 100% реальных ончейн-токенов прямо на ваш привязанный адрес кошелька {address}.",
@@ -4416,6 +4429,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Для добавления в Phantom:\n1. Откройте Phantom -> Нажмите 'Manage token list'.\n2. Вставьте адрес Mint в поиск.\n3. Включите токен $HAISI (Haichain SI)."
   },
   "hi": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% रैखिक 6 माह",
       "guaranteeTitle": "निवेशकों के लिए आधिकारिक 100% मेननेट आवंटन गारंटी प्रमाणपत्र",
       "guaranteeBadge": "अनुबंध द्वारा आधिकारिक रूप से सुरक्षित",
       "guaranteeCommitment": "रणनीतिक निवेशक के सभी {tokens} SAFT समझौते के तहत कानूनी रूप से सुरक्षित हैं। HAICHAIN मेननेट सक्रिय होते ही Solana Token-2022 स्मार्ट अनुबंध 100% वास्तविक ऑन-चेन टोकन स्वचालित रूप से आपके वॉलेट पते {address} पर वितरित करेगा।",
@@ -4469,6 +4483,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "copyMintGuide": "Phantom में देखने के लिए:\n1. Phantom खोलें -> 'Manage token list' पर क्लिक करें।\n2. खोज में Mint पता चिपकाएँ।\n3. $HAISI (Haichain SI) टॉगल चालू करें।"
   },
   "he": {
+    "guaranteeVestingBreakdown": "20% TGE + 80% לינארי 6 חודשים",
       "guaranteeTitle": "תעודת אחריות רשמית להמרת 100% אסימונים ברשת ראשית (Mainnet)",
       "guaranteeBadge": "מאושר ומובטח חוזית",
       "guaranteeCommitment": "כל {tokens} של המשקיע האסטרטגי מובטחים משפטית תחת הסכם SAFT. עם השקת ה-Mainnet של HAICHAIN, החוזה החכם של Solana Token-2022 ימיר ויעביר באופן אוטומטי 100% אסימוני on-chain אמיתיים ישירות לכתובת הארנק המקושרת {address} ללא כל פעולה נוספת.",
@@ -4526,6 +4541,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     
     const DASH_NOTICES_I18N = {
   "kk": {
+    "cmdCopied": "✓ Пәрмен көшірілді!",
+    "cmdCopyBtn": "1-Click Орнату Пәрменін Көшіру",
+    "cmdCopyToastMsg": "Автоматты орнату үшін Terminal/PowerShell-ге қойыңыз",
+    "linkCopied": "✓ Сілтеме көшірілді!",
+    "linkCopyBtn": "Қашықтағы MCP URL Көшіру",
+    "linkCopyToastMsg": "claude.ai сайтындағы Параметрлер -> Қосқыштар бөліміне қойыңыз",
+    "aiPlaygroundToast": "Web3 арқылы тікелей AI қорытындысы",
+    "copiedToastTitle": "Көшірілді!",
+    "installCmdToastTitle": "Орнату пәрмені:",
+    "connectWalletFailed": "Әмиянды қосу мүмкін болмады",
+    "signedAuthPrefix": "Қол қойылған аутентификация:",
+    "walletDisconnectedTitle": "Әмиян ажыратылды",
+    "sessionTerminatedMsg": "Сессия сәтті аяқталды",
+    "customWalletConnectedTitle": "Арнайы әмиян қосылды",
+    "biometricDecryptError": "Бар биометриялық сейфтің шифрын ашу мүмкін болмады. Жүйе сейфтегі қаражатты қорғау үшін кілтіңізді қайта жазудан бас тартты. Бастапқы құрылғыда қайта растаңыз.",
     "tabStrategic": "Стратегиялық VIP Бөлініс",
     "passkeyTitle": "Биометриялық Passkey Әмияны",
     "passkeySubtitle": "WebAuthn аппараттық растауы • Абсолютті қауіпсіздік",
@@ -4580,6 +4610,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Vault Балансы Жеткіліксіз"
   },
   "en": {
+    "cmdCopied": "✓ Command copied!",
+    "cmdCopyBtn": "Copy 1-Click Install Command",
+    "cmdCopyToastMsg": "Paste into Terminal/PowerShell to install automatically",
+    "linkCopied": "✓ Link copied!",
+    "linkCopyBtn": "Copy Remote MCP URL",
+    "linkCopyToastMsg": "Paste into Settings -> Connectors on claude.ai",
+    "aiPlaygroundToast": "Direct AI inference via Web3 smart contract",
+    "copiedToastTitle": "Copied!",
+    "installCmdToastTitle": "Install Command:",
+    "connectWalletFailed": "Could not connect wallet",
+    "signedAuthPrefix": "Signed Auth:",
+    "walletDisconnectedTitle": "Wallet Disconnected",
+    "sessionTerminatedMsg": "Session terminated successfully",
+    "customWalletConnectedTitle": "Custom Wallet Connected",
+    "biometricDecryptError": "Could not decrypt existing biometric vault. The system refused to overwrite your key to protect existing vault funds. Please re-authenticate on the original device.",
     "tabStrategic": "Private Strategic Allocation",
     "passkeyTitle": "Passkey Biometric Wallet",
     "passkeySubtitle": "Hardware-Bound WebAuthn • Zero Key Risk",
@@ -4634,6 +4679,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Insufficient Vault Balance"
   },
   "zh": {
+    "cmdCopied": "✓ 命令已复制！",
+    "cmdCopyBtn": "复制 1-Click 安装命令",
+    "cmdCopyToastMsg": "粘贴到 Terminal/PowerShell 即可自动安装",
+    "linkCopied": "✓ 链接已复制！",
+    "linkCopyBtn": "复制 Remote MCP 链接",
+    "linkCopyToastMsg": "粘贴到 claude.ai 的 Settings -> Connectors",
+    "aiPlaygroundToast": "通过 Web3 直接体验 AI 推理",
+    "copiedToastTitle": "已复制！",
+    "installCmdToastTitle": "安装命令：",
+    "connectWalletFailed": "无法连接钱包",
+    "signedAuthPrefix": "签名验证：",
+    "walletDisconnectedTitle": "钱包已断开",
+    "sessionTerminatedMsg": "会话已安全退出",
+    "customWalletConnectedTitle": "自定义钱包已连接",
+    "biometricDecryptError": "无法解密现有的生物识别 Vault。系统已拒绝覆盖您的密钥以保护金库中的现有资金。请在原始设备上重新进行身份验证。",
     "tabStrategic": "机密战略分配",
     "passkeyTitle": "生物识别 Passkey 钱包",
     "passkeySubtitle": "WebAuthn 硬件级加密验证 • 零私钥泄露风险",
@@ -4688,6 +4748,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "金库可用余额不足"
   },
   "vi": {
+    "cmdCopied": "✓ Đã sao chép lệnh!",
+    "cmdCopyBtn": "Sao chép lệnh cài đặt 1-Click",
+    "cmdCopyToastMsg": "Dán vào Terminal/PowerShell để cài đặt tự động",
+    "linkCopied": "✓ Đã sao chép link!",
+    "linkCopyBtn": "Sao chép đường dẫn Remote MCP",
+    "linkCopyToastMsg": "Dán vào Settings -> Connectors trên claude.ai",
+    "aiPlaygroundToast": "Trải nghiệm suy luận AI trực tiếp qua Web3",
+    "copiedToastTitle": "Đã sao chép!",
+    "installCmdToastTitle": "Lệnh cài đặt:",
+    "connectWalletFailed": "Không thể kết nối ví",
+    "signedAuthPrefix": "Ký xác thực:",
+    "walletDisconnectedTitle": "Đã Ngắt Kết Nối",
+    "sessionTerminatedMsg": "Đã thoát phiên làm việc an toàn",
+    "customWalletConnectedTitle": "Đã Kết Nối Ví Custom",
+    "biometricDecryptError": "Không thể giải mã Vault sinh trắc học hiện tại. Hệ thống từ chối tạo khóa mới để bảo vệ an toàn số dư đang có trong Vault của bạn. Vui lòng quét lại FaceID trên đúng thiết bị ban đầu.",
     "tabStrategic": "Phân Bổ Chiến Lược VIP",
     "passkeyTitle": "Ví Sinh Trắc Học Passkey",
     "passkeySubtitle": "Xác thực phần cứng WebAuthn • An toàn tuyệt đối",
@@ -4742,6 +4817,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Số dư không đủ"
   },
   "ko": {
+    "cmdCopied": "✓ 명령어가 복사되었습니다!",
+    "cmdCopyBtn": "1-Click 설치 명령어 복사",
+    "cmdCopyToastMsg": "터미널/PowerShell에 붙여넣어 자동 설치하세요",
+    "linkCopied": "✓ 링크가 복사되었습니다!",
+    "linkCopyBtn": "Remote MCP URL 복사",
+    "linkCopyToastMsg": "claude.ai의 Settings -> Connectors에 붙여넣으세요",
+    "aiPlaygroundToast": "Web3를 통한 실시간 AI 추론 경험",
+    "copiedToastTitle": "복사 완료!",
+    "installCmdToastTitle": "설치 명령어:",
+    "connectWalletFailed": "지갑을 연결할 수 없습니다",
+    "signedAuthPrefix": "서명 인증:",
+    "walletDisconnectedTitle": "지갑 연결 해제됨",
+    "sessionTerminatedMsg": "세션이 안전하게 종료되었습니다",
+    "customWalletConnectedTitle": "커스텀 지갑 연결됨",
+    "biometricDecryptError": "기존 생체 인식 Vault를 복호화할 수 없습니다. 금고의 기존 자금을 보호하기 위해 키 덮어쓰기가 거부되었습니다. 원래 기기에서 다시 인증해 주세요.",
     "tabStrategic": "프라이빗 전략 배분",
     "passkeyTitle": "생체 인식 Passkey 지갑",
     "passkeySubtitle": "WebAuthn 하드웨어 인증 • 제로 키 리스크",
@@ -4796,6 +4886,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Vault 잔액 부족"
   },
   "fr": {
+    "cmdCopied": "✓ Commande copiée !",
+    "cmdCopyBtn": "Copier la commande d'installation 1-Click",
+    "cmdCopyToastMsg": "Collez dans le Terminal/PowerShell pour installer automatiquement",
+    "linkCopied": "✓ Lien copié !",
+    "linkCopyBtn": "Copier l'URL Remote MCP",
+    "linkCopyToastMsg": "Collez dans Paramètres -> Connecteurs sur claude.ai",
+    "aiPlaygroundToast": "Inférence IA directe via Web3",
+    "copiedToastTitle": "Copié !",
+    "installCmdToastTitle": "Commande d'installation :",
+    "connectWalletFailed": "Impossible de connecter le portefeuille",
+    "signedAuthPrefix": "Auth signée :",
+    "walletDisconnectedTitle": "Portefeuille Déconnecté",
+    "sessionTerminatedMsg": "Session terminée avec succès",
+    "customWalletConnectedTitle": "Portefeuille Personnalisé Connecté",
+    "biometricDecryptError": "Impossible de déchiffrer le coffre biométrique existant. Le système a refusé d'écraser votre clé pour protéger les fonds existants. Veuillez vous réauthentifier sur l'appareil d'origine.",
     "tabStrategic": "Allocation Stratégique Privée",
     "passkeyTitle": "Portefeuille Biométrique Passkey",
     "passkeySubtitle": "Authentification WebAuthn • Sécurité Matérielle Absolue",
@@ -4850,6 +4955,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Solde insuffisant dans le Vault"
   },
   "es": {
+    "cmdCopied": "✓ ¡Comando copiado!",
+    "cmdCopyBtn": "Copiar comando de instalación 1-Click",
+    "cmdCopyToastMsg": "Pegue en Terminal/PowerShell para instalar automáticamente",
+    "linkCopied": "✓ ¡Enlace copiado!",
+    "linkCopyBtn": "Copiar URL de Remote MCP",
+    "linkCopyToastMsg": "Pegue en Configuración -> Conectores en claude.ai",
+    "aiPlaygroundToast": "Inferencia de IA directa a través de Web3",
+    "copiedToastTitle": "¡Copiado!",
+    "installCmdToastTitle": "Comando de instalación:",
+    "connectWalletFailed": "No se pudo conectar la billetera",
+    "signedAuthPrefix": "Autenticación firmada:",
+    "walletDisconnectedTitle": "Billetera Desconectada",
+    "sessionTerminatedMsg": "Sesión finalizada de forma segura",
+    "customWalletConnectedTitle": "Billetera Personalizada Conectada",
+    "biometricDecryptError": "No se pudo descifrar la bóveda biométrica existente. El sistema rechazó sobrescribir su clave para proteger los fondos existentes. Vuelva a autenticarse en el dispositivo original.",
     "tabStrategic": "Asignación Estratégica Privada",
     "passkeyTitle": "Billetera Biométrica Passkey",
     "passkeySubtitle": "Autenticación WebAuthn por hardware • Cero riesgo de claves",
@@ -4904,6 +5024,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Saldo insuficiente en la Bóveda"
   },
   "ru": {
+    "cmdCopied": "✓ Команда скопирована!",
+    "cmdCopyBtn": "Скопировать команду установки 1-Click",
+    "cmdCopyToastMsg": "Вставьте в Terminal/PowerShell для автоматической установки",
+    "linkCopied": "✓ Ссылка скопирована!",
+    "linkCopyBtn": "Скопировать URL Remote MCP",
+    "linkCopyToastMsg": "Вставьте в Настройки -> Коннекторы на claude.ai",
+    "aiPlaygroundToast": "Прямой вывод ИИ через Web3",
+    "copiedToastTitle": "Скопировано!",
+    "installCmdToastTitle": "Команда установки:",
+    "connectWalletFailed": "Не удалось подключить кошелек",
+    "signedAuthPrefix": "Подписанная аутентификация:",
+    "walletDisconnectedTitle": "Кошелек Отключен",
+    "sessionTerminatedMsg": "Сессия успешно завершена",
+    "customWalletConnectedTitle": "Пользовательский Кошелек Подключен",
+    "biometricDecryptError": "Не удалось расшифровать существующее биометрическое хранилище. Система отказалась перезаписывать ваш ключ для защиты средств в хранилище. Повторите аутентификацию на исходном устройстве.",
     "tabStrategic": "Приватная Стратегическая Аллокация",
     "passkeyTitle": "Биометрический Passkey Кошелек",
     "passkeySubtitle": "Аппаратная аутентификация WebAuthn • Абсолютная безопасность",
@@ -4958,6 +5093,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Недостаточно средств в Сейфе"
   },
   "hi": {
+    "cmdCopied": "✓ कमांड कॉपी हो गई!",
+    "cmdCopyBtn": "1-Click इंस्टॉल कमांड कॉपी करें",
+    "cmdCopyToastMsg": "स्वचालित रूप से इंस्टॉल करने के लिए Terminal/PowerShell में पेस्ट करें",
+    "linkCopied": "✓ लिंक कॉपी हो गया!",
+    "linkCopyBtn": "रिमोट MCP URL कॉपी करें",
+    "linkCopyToastMsg": "claude.ai पर सेटिंग्स -> कनेक्टर्स में पेस्ट करें",
+    "aiPlaygroundToast": "Web3 के माध्यम से प्रत्यक्ष AI अनुमान",
+    "copiedToastTitle": "कॉपी हो गया!",
+    "installCmdToastTitle": "इंस्टॉल कमांड:",
+    "connectWalletFailed": "वॉलेट कनेक्ट नहीं हो सका",
+    "signedAuthPrefix": "हस्ताक्षरित प्रमाणीकरण:",
+    "walletDisconnectedTitle": "वॉलेट डिस्कनेक्ट हो गया",
+    "sessionTerminatedMsg": "सत्र सफलतापूर्वक समाप्त हुआ",
+    "customWalletConnectedTitle": "कस्टम वॉलेट कनेक्ट हो गया",
+    "biometricDecryptError": "मौजूदा बायोमेट्रिक वॉल्ट को डिक्रिप्ट नहीं किया जा सका। सिस्टम ने वॉल्ट फंड की सुरक्षा के लिए कुंजी को ओवरराइट करने से मना कर दिया। कृपया मूल डिवाइस पर पुनः प्रमाणीकरण करें।",
     "tabStrategic": "प्राइवेट रणनीतिक आवंटन",
     "passkeyTitle": "बायोमेट्रिक पासकी वॉलेट",
     "passkeySubtitle": "हार्डवेयर-आधारित WebAuthn • शून्य की-जोखिम",
@@ -5012,6 +5162,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "वॉल्ट में अपर्याप्त शेष"
   },
   "he": {
+    "cmdCopied": "✓ הפקודה הועתקה!",
+    "cmdCopyBtn": "העתק פקודת התקנה בלחיצה אחת",
+    "cmdCopyToastMsg": "הדבק ב-Terminal/PowerShell להתקנה אוטומטית",
+    "linkCopied": "✓ הקישור הועתק!",
+    "linkCopyBtn": "העתק כתובת Remote MCP",
+    "linkCopyToastMsg": "הדבק בהגדרות -> מחברים ב-claude.ai",
+    "aiPlaygroundToast": "הסקת בינה מלאכותית ישירה דרך Web3",
+    "copiedToastTitle": "הועתק!",
+    "installCmdToastTitle": "פקודת התקנה:",
+    "connectWalletFailed": "לא ניתן לחבר את הארנק",
+    "signedAuthPrefix": "אימות חתום:",
+    "walletDisconnectedTitle": "הארנק נותק",
+    "sessionTerminatedMsg": "ההפעלה הסתיימה בהצלחה",
+    "customWalletConnectedTitle": "ארנק מותאם אישית מחובר",
+    "biometricDecryptError": "לא ניתן לפענח את הכספת הביומטרית הקיימת. המערכת סירבה לדרוס את המפתח שלך כדי להגן על הכספים הקיימים. אנא בצע אימות מחדש במכשיר המקורי.",
     "tabStrategic": "הקצאה אסטרטגית פרטית",
     "passkeyTitle": "ארנק ביומטרי Passkey",
     "passkeySubtitle": "אימות חומרה WebAuthn • אפס סיכון למפתחות",
@@ -5316,7 +5481,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   <i data-lucide="zap" class="w-3.5 h-3.5 text-white"></i>
                   <span>100% On-Chain TGE</span>
                 </div>
-                <div class="text-[10px] text-neutral-400 font-sans">20% TGE + 80% Tuyến Tính 6T</div>
+                <div class="text-[10px] text-neutral-400 font-sans">${getVestingText('guaranteeVestingBreakdown', lang)}</div>
               </div>
             </div>
 
@@ -5811,7 +5976,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             if (typeof showToast === 'function') {
               showToast({
                 title: getDashNotice('metaMaskDepositSuccess'),
-                message: `+$${added.toFixed(2)} USDT • Ký xác thực: ${signature.slice(0, 6)}...`,
+                message: `+$${added.toFixed(2)} USDT • ${getDashNotice('signedAuthPrefix')} ${signature.slice(0, 6)}...`,
                 icon: 'check-circle'
               });
             }
@@ -6200,13 +6365,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const cmd = "npx -y @haichainsi/mcp-server --install";
         try {
           await navigator.clipboard.writeText(cmd);
-          if (copyDesktopInstallText) copyDesktopInstallText.textContent = "✓ Đã sao chép lệnh!";
-          showToast({ title: "Đã sao chép!", message: "Dán vào Terminal/PowerShell để cài đặt tự động", icon: "check" });
+          if (copyDesktopInstallText) copyDesktopInstallText.textContent = getDashNotice('cmdCopied');
+          showToast({ title: getDashNotice('copiedToastTitle'), message: getDashNotice('cmdCopyToastMsg'), icon: 'check' });
           setTimeout(() => {
-            if (copyDesktopInstallText) copyDesktopInstallText.textContent = "Sao chép lệnh cài đặt 1-Click";
+            if (copyDesktopInstallText) copyDesktopInstallText.textContent = getDashNotice('cmdCopyBtn');
           }, 2500);
         } catch (_) {
-          showToast({ title: "Lệnh cài đặt:", message: cmd, icon: "terminal" });
+          showToast({ title: getDashNotice('installCmdToastTitle'), message: cmd, icon: 'terminal' });
         }
       });
     }
@@ -6217,10 +6382,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const url = "https://mcp.haichain.si/sse";
         try {
           await navigator.clipboard.writeText(url);
-          if (copyOnlineMcpText) copyOnlineMcpText.textContent = "✓ Đã sao chép link!";
-          showToast({ title: "Đã sao chép!", message: "Dán vào Settings -> Connectors trên claude.ai", icon: "check" });
+          if (copyOnlineMcpText) copyOnlineMcpText.textContent = getDashNotice('linkCopied');
+          showToast({ title: getDashNotice('copiedToastTitle'), message: getDashNotice('linkCopyToastMsg'), icon: 'check' });
           setTimeout(() => {
-            if (copyOnlineMcpText) copyOnlineMcpText.textContent = "Sao chép đường dẫn Remote MCP";
+            if (copyOnlineMcpText) copyOnlineMcpText.textContent = getDashNotice('linkCopyBtn');
           }, 2500);
         } catch (_) {
           showToast({ title: "Remote MCP URL:", message: url, icon: "link" });
