@@ -174,11 +174,18 @@
       var appPath = window.location.pathname || '/';
       var redirectUrl = targetRedirectUrl || (appOrigin + appPath);
       var sep = redirectUrl.indexOf('?') === -1 ? '?' : '&';
+      
+      var sessId = 'mm_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8);
+      window.__currentMetaMaskSessionId = sessId;
+      try {
+        localStorage.setItem('haichain_metamask_pending_session', sessId);
+      } catch (_) {}
+
       var returnUrl = encodeURIComponent(window.location.href);
-      var targetUrlWithParams = redirectUrl + sep + 'auto_connect=metamask&return_url=' + returnUrl;
+      var targetUrlWithParams = redirectUrl + sep + 'auto_connect=metamask&sess_id=' + sessId + '&return_url=' + returnUrl;
       var cleanDest = targetUrlWithParams.replace(/^https?:\/\//, '');
       var link = 'https://metamask.app.link/dapp/' + cleanDest;
-      console.log('[HaichainMobileWallet] Launching official MetaMask Deeplink:', link);
+      console.log('[HaichainMobileWallet] Launching official MetaMask Deeplink with Session Relay:', link);
       window.location.href = link;
     },
 

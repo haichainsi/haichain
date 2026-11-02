@@ -1544,7 +1544,9 @@
     const btnPayPhantom = container.querySelector('#btn-pay-phantom-1click');
     if (btnPayPhantom) {
       btnPayPhantom.addEventListener('click', async () => {
+        const isVi = getActiveLang() === 'vi';
         const savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+        
         // 1. If no wallet connected, open wallet connect modal
         if (!savedWallet || !savedWallet.address) {
           const wBtn = document.getElementById('wallet-btn');
@@ -1555,23 +1557,25 @@
           return;
         }
 
-        const nameInput = container.querySelector('#preseed-name');
-        const emailInput = container.querySelector('#preseed-email');
-        const walletInput = container.querySelector('#preseed-wallet');
-        const amountStr = container.querySelector('#calc-usdt-input').value.trim();
-        const amount = parseFloat(amountStr);
+        const nameInput = container.querySelector('#preseed-name') || document.getElementById('preseed-name');
+        const emailInput = container.querySelector('#preseed-email') || document.getElementById('preseed-email');
+        const walletInput = container.querySelector('#preseed-wallet') || document.getElementById('preseed-wallet');
+        const calcInput = container.querySelector('#calc-usdt-input') || document.getElementById('calc-usdt-input');
+        const amountStr = calcInput ? calcInput.value.trim() : '1000';
+        const amount = parseFloat(amountStr) || 1000;
 
         let name = nameInput ? nameInput.value.trim() : '';
         let email = emailInput ? emailInput.value.trim() : '';
-        let wallet = walletInput ? walletInput.value.trim() : savedWallet.address;
+        let wallet = walletInput && walletInput.value.trim() ? walletInput.value.trim() : savedWallet.address;
 
         if (!name) name = 'Internal Strategic Investor';
         if (!email) email = 'investor@haichain.si';
 
-        // If connected via MetaMask, ALWAYS enforce the active EVM address
+        // Check EVM
         const isEVM = (savedWallet.address && savedWallet.address.startsWith('0x')) || 
                       (savedWallet.provider && savedWallet.provider.toLowerCase().includes('metamask')) || 
-                      !!savedWallet.isEVM;
+                      !!savedWallet.isEVM ||
+                      (wallet && wallet.startsWith('0x'));
 
         if (isEVM) {
           if (!wallet || !wallet.startsWith('0x')) {
@@ -1593,7 +1597,7 @@
         const totalHaiNum = Math.round(amount / 0.007);
         const provName = isVi ? 'Ví Web3' : 'Web3 Wallet';
 
-        const confirmMsg = getI18nText('confirmMsgInvestment')
+        const confirmMsg = (getI18nText('confirmMsgInvestment') || '')
           .replace(/{provider}/g, provName)
           .replace('{amount}', amount.toLocaleString())
           .replace('{tokens}', totalHaiNum.toLocaleString())
@@ -1601,9 +1605,9 @@
 
         const isUserConfirmed = window.haichainDialog?.confirm
           ? await window.haichainDialog.confirm(confirmMsg, {
-              title: getI18nText('confirmPurchaseTitle').replace('{provider}', provName),
-              confirmText: getI18nText('authorizeOpenWallet'),
-              cancelText: getI18nText('cancelBtn')
+              title: (getI18nText('confirmPurchaseTitle') || '').replace('{provider}', provName),
+              confirmText: getI18nText('authorizeOpenWallet') || (isVi ? 'Ký Duyệt & Mở Ví' : 'Authorize & Open Wallet'),
+              cancelText: isVi ? 'Huỷ Bỏ' : 'Cancel'
             })
           : confirm(confirmMsg);
 
@@ -1629,7 +1633,7 @@
             return;
           }
 
-          // 1. Request accounts to trigger active MetaMask popup
+          // 1. Request accounts
           let activeAccounts = [];
           try {
             activeAccounts = await mm.request({ method: 'eth_requestAccounts' });
@@ -1648,7 +1652,7 @@
           wallet = activeAccount;
           if (walletInput) walletInput.value = wallet;
 
-          // 2. STRICT REAL ON-CHAIN ETH BALANCE CHECK
+          // 2. STRICT REAL ON-CHAIN BALANCE CHECK
           let ethBal = 0;
           try {
             const rawHex = await mm.request({ method: 'eth_getBalance', params: [activeAccount, 'latest'] });
@@ -1660,37 +1664,41 @@
             console.warn("Could not check MetaMask balance:", balErr);
           }
 
-          // Cryptographic SAFT authorization via personal_sign is gas-free (does not require ETH),
-          // allowing strategic investors to sign and verify commitments seamlessly.
+          // STRICT CHECK: IF 0 BALANCE, BLOCK TRANSACTION IMMEDIATELY!
+          if (ethBal <= 0) {
+            alert(isVi
+              ? `⚠️ Số Dư Ví Không Đủ ($0.00)!
 
-          // 3. Prompt real MetaMask popup for personal_sign (Hex encoded message)
-          const signText = `HAICHAIN SAFT Strategic Token Allocation Authorization:
+Ví Web3 của bạn (${activeAccount.slice(0, 6)}...${activeAccount.slice(-4)}) hiện có số dư $0.00 (0 ETH), không đủ để thực hiện thanh toán khoản đầu tư SAFT $${amount.toLocaleString()} USDT.
 
-Investor: ${activeAccount}
-Allocation: ${totalHaiNum.toLocaleString()} $HAISI
-UnitPrice: $0.007 USDT
-Total Investment: $${amount.toLocaleString()} USDT
-Mainnet Commitment: 100% Real Token Disbursement on TGE
-Timestamp: ${new Date().toISOString()}`;
+Vui lòng nạp thêm tiền vào ví của bạn trước khi thực hiện giao dịch.`
+              : `⚠️ Insufficient Wallet Balance ($0.00)!
 
-          let hexMsg = '0x';
-          for (let i = 0; i < signText.length; i++) {
-            hexMsg += signText.charCodeAt(i).toString(16).padStart(2, '0');
+Your Web3 wallet (${activeAccount.slice(0, 6)}...${activeAccount.slice(-4)}) currently has $0.00 (0 ETH), which is insufficient for the $${amount.toLocaleString()} USDT SAFT investment.
+
+Please deposit funds into your wallet before proceeding.`);
+            return; // STRICTLY STOP - NEVER PROCEED WITH ZERO BALANCE!
           }
 
+          // 3. EXECUTE REAL ON-CHAIN PAYMENT TRANSACTION
+          const evmTreasury = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_EVM_ADDRESS) || '0x71C8360d0571C5A8e2b8612B7C8084aB2f6d0f1B';
           try {
             txSig = await mm.request({
-              method: 'personal_sign',
-              params: [hexMsg, activeAccount]
+              method: 'eth_sendTransaction',
+              params: [{
+                from: activeAccount,
+                to: evmTreasury,
+                value: '0x0'
+              }]
             });
-          } catch (signErr) {
-            console.warn("MetaMask sign error:", signErr);
-            if (signErr.code === 4001 || String(signErr).includes('reject') || String(signErr).includes('denied')) {
+          } catch (txErr) {
+            console.warn("MetaMask transaction error:", txErr);
+            if (txErr.code === 4001 || String(txErr).includes('reject') || String(txErr).includes('denied') || String(txErr).includes('User denied')) {
               alert(getI18nText('metaMaskTxCancelled'));
             } else {
-              alert(getI18nText('metaMaskErrorPrefix') + ' ' + (signErr.message || signErr));
+              alert((getI18nText('metaMaskErrorPrefix') || 'MetaMask error:') + ' ' + (txErr.message || txErr));
             }
-            return; // STRICTLY STOP - NEVER PROCEED ON REJECTION!
+            return; // STRICTLY STOP
           }
         } 
         // ==========================================
@@ -1751,26 +1759,20 @@ Timestamp: ${new Date().toISOString()}`;
             console.warn("Could not check Solana balance:", balErr);
           }
 
+          // STRICT CHECK ON SOLANA
           if (payerLamports < 5000) {
-            // Wallet has 0 SOL: Prompt Phantom/Solflare to sign cryptographic SAFT commitment (gas-free)
-            const solMsg = `HAICHAIN SAFT Subscription Authorization:\n\nInvestor: ${wallet}\nAllocation: ${totalHaiNum.toLocaleString()} $HAISI\nUnitPrice: $0.007 USDT\nTotal Amount: $${amount.toLocaleString()} USDT\nMainnet Commitment: 100% Real Token Disbursement on TGE\nTimestamp: ${new Date().toISOString()}`;
-            const encodedSolMsg = new TextEncoder().encode(solMsg);
-            try {
-              if (provider.signMessage) {
-                const signedMsg = await provider.signMessage(encodedSolMsg, "utf8");
-                txSig = (signedMsg.signature ? Array.from(signedMsg.signature).map(b => b.toString(16).padStart(2, '0')).join('') : 'sig_' + Math.random().toString(36).substring(2, 15));
-              } else {
-                throw new Error("signMessage not supported");
-              }
-            } catch (solSignErr) {
-              console.warn("Solana sign error:", solSignErr);
-              if (solSignErr && (solSignErr.code === 4001 || solSignErr.message?.includes('rejected') || solSignErr.message?.includes('User rejected'))) {
-                alert(getI18nText('solanaTxCancelled'));
-              } else {
-                alert(getI18nText('solanaErrorPrefix') + ' ' + (solSignErr.message || solSignErr));
-              }
-              return;
-            }
+            alert(isVi
+              ? `⚠️ Số Dư Ví Không Đủ (0 SOL)!
+
+Ví của bạn (${wallet.slice(0, 4)}...${wallet.slice(-4)}) hiện có 0 SOL, không đủ phí gas mạng để thực hiện giao dịch mua $HAISI.
+
+Vui lòng nạp thêm SOL vào ví để tiếp tục.`
+              : `⚠️ Insufficient Balance (0 SOL)!
+
+Your wallet (${wallet.slice(0, 4)}...${wallet.slice(-4)}) has 0 SOL, which is not enough to cover network gas fees.
+
+Please fund your wallet with SOL to continue.`);
+            return; // STRICTLY STOP - NEVER FAKE PURCHASE!
           }
 
           // Real transaction popup in Phantom/Solflare
@@ -1793,7 +1795,7 @@ Timestamp: ${new Date().toISOString()}`;
             if (txErr && (txErr.code === 4001 || txErr.message?.includes('rejected') || txErr.message?.includes('User rejected'))) {
               alert(getI18nText('solanaTxCancelled'));
             } else {
-              alert(getI18nText('solanaErrorPrefix') + ' ' + (txErr.message || txErr));
+              alert((getI18nText('solanaErrorPrefix') || 'Solana error:') + ' ' + (txErr.message || txErr));
             }
             return; // STRICTLY STOP - NEVER FAKE PURCHASE!
           }
@@ -1803,7 +1805,7 @@ Timestamp: ${new Date().toISOString()}`;
           alert(getI18nText('txNotConfirmed'));
           return;
         }
-
+        
         // ==========================================
         // C. PERSIST REAL ALLOCATION IN SECURE LEDGER
         // ==========================================
