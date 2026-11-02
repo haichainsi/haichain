@@ -163,7 +163,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
-  <script src="/app/i18n.js?v=v44_soft_green_mcp_ui"></script>
+  <script src="/app/i18n.js?v=v43_luxury_bw_hub_1793643197944"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v43_autofill_phantom_mobile_fix_1793643500"></script>
@@ -1585,38 +1585,33 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               <i data-lucide="link" class="w-3.5 h-3.5 text-neutral-300 shrink-0"></i>
               <span class="text-neutral-300 font-medium" data-i18n="aiHub.onlineUrlLabel">MCP Server URL (For Claude Mobile):</span>
             </span>
-            <span id="online-mcp-badge" class="text-[9px] bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full text-amber-400 font-mono shrink-0 whitespace-nowrap flex items-center space-x-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
-              <span data-i18n="aiHub.badgeGeneric">⚡ URL CHUNG (CHƯA GẮN VÍ)</span>
+            <span id="online-mcp-badge" class="text-[9.5px] bg-neutral-900 border border-neutral-800 px-2.5 py-0.5 rounded-full text-neutral-400 font-mono shrink-0 whitespace-nowrap flex items-center font-medium">
+              <span data-i18n="aiHub.badgeGeneric">URL CHUNG (CHƯA GẮN VÍ)</span>
             </span>
           </div>
-          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-emerald-300/80 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
+          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-neutral-200 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
             <code id="online-mcp-url-snippet">https://mcp.haichain.si/api/mcp</code>
           </div>
 
           <!-- Vault Binding Dynamic Status Card -->
-          <div id="online-mcp-connected-box" class="hidden p-3 rounded-xl bg-emerald-950/20 border border-emerald-900/35 flex items-start space-x-2.5 text-[11px] font-sans min-w-0">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400/70 shrink-0 mt-0.5"></i>
+          <div id="online-mcp-connected-box" class="hidden p-3 rounded-xl bg-white/[0.02] border border-white/[0.08] flex items-start space-x-2.5 text-[11px] font-sans min-w-0">
+            <i data-lucide="check" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
             <div class="min-w-0 flex-1">
-              <div class="font-semibold text-neutral-200 text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</div>
-              <div class="mt-1.5 p-1.5 px-2 rounded-lg bg-black/50 border border-emerald-900/30 font-mono text-[10.5px] text-emerald-300/80 break-all select-all font-medium leading-relaxed">
+              <div class="font-semibold text-white text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</div>
+              <div class="mt-1.5 p-1.5 px-2 rounded-lg bg-black border border-neutral-800 font-mono text-[10.5px] text-white break-all select-all font-medium leading-relaxed">
                 <span id="online-mcp-bound-addr"></span>
               </div>
               <p class="text-[10px] text-neutral-400 mt-1.5 leading-relaxed" data-i18n="aiHub.connectedDesc">AI Claude Mobile sẽ tự động liên kết thẳng vào két chi tiêu của ví này mà không cần nhập thủ công địa chỉ trong khung chat.</p>
             </div>
           </div>
 
-          <div id="online-mcp-unconnected-box" class="p-2.5 rounded-xl bg-amber-950/20 border border-amber-800/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-sans">
-            <div class="flex items-start space-x-2 text-amber-200">
-              <i data-lucide="wallet" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-              <div>
-                <span class="font-semibold text-white" data-i18n="aiHub.unconnectedTitle">Bạn muốn AI cá nhân hóa theo ví riêng?</span>
-                <p class="text-[10px] text-neutral-400" data-i18n="aiHub.unconnectedDesc">Kết nối ví ngay để hệ thống tự động sinh Server URL độc quyền gắn mã két của bạn.</p>
-              </div>
+          <div id="online-mcp-unconnected-box" class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] font-sans">
+            <div class="space-y-0.5">
+              <span class="font-semibold text-white block" data-i18n="aiHub.unconnectedTitle">Bạn muốn AI cá nhân hóa theo ví riêng?</span>
+              <p class="text-[10.5px] text-neutral-400 leading-relaxed" data-i18n="aiHub.unconnectedDesc">Kết nối ví ngay để hệ thống tự động sinh Server URL độc quyền gắn mã két của bạn.</p>
             </div>
-            <button id="online-mcp-trigger-connect-btn" type="button" class="shrink-0 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-neutral-200 font-bold text-[11px] flex items-center justify-center space-x-1.5 transition-all cursor-pointer shadow-xs active:scale-98">
-              <i data-lucide="zap" class="w-3.5 h-3.5 text-black"></i>
-              <span data-i18n="aiHub.btnConnectForLink">⚡ Kết nối ví để nhận link riêng</span>
+            <button id="online-mcp-trigger-connect-btn" type="button" class="shrink-0 px-3.5 py-2 rounded-lg bg-white text-black hover:bg-neutral-200 font-semibold text-xs flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-98">
+              <span data-i18n="aiHub.btnConnectForLink">Kết nối ví để nhận link riêng</span>
             </button>
           </div>
         </div>
@@ -7452,7 +7447,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
         if (codeSnippet) codeSnippet.textContent = personalizedUrl;
         if (badgeEl) {
-          badgeEl.className = "text-[9px] bg-emerald-950/30 border border-emerald-900/40 px-2.5 py-0.5 rounded-full text-emerald-300/80 font-mono shrink-0 whitespace-nowrap font-medium";
+          badgeEl.className = "text-[9.5px] bg-neutral-900 border border-neutral-700 px-2.5 py-0.5 rounded-full text-white font-mono shrink-0 whitespace-nowrap font-semibold";
           const shortAddr = activeAddr.length > 10 ? `${activeAddr.slice(0, 4)}...${activeAddr.slice(-4)}` : activeAddr;
           const badgeText = window.haichainI18n ? window.haichainI18n.t('aiHub.badgeDedicated', 'DEDICATED VAULT BOUND') : 'DEDICATED VAULT BOUND';
           badgeEl.innerHTML = `<span>${badgeText} (${shortAddr})</span>`;
@@ -7464,9 +7459,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const genericUrl = "https://mcp.haichain.si/api/mcp";
         if (codeSnippet) codeSnippet.textContent = genericUrl;
         if (badgeEl) {
-          badgeEl.className = "text-[9px] bg-amber-950/80 border border-amber-800/80 px-2 py-0.5 rounded-full text-amber-400 font-mono shrink-0 whitespace-nowrap flex items-center space-x-1";
-          const genericText = window.haichainI18n ? window.haichainI18n.t('aiHub.badgeGeneric', '⚡ GENERIC URL (UNBOUND)') : '⚡ GENERIC URL (UNBOUND)';
-          badgeEl.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span><span>${genericText}</span>`;
+          badgeEl.className = "text-[9.5px] bg-neutral-900 border border-neutral-800 px-2.5 py-0.5 rounded-full text-neutral-400 font-mono shrink-0 whitespace-nowrap font-medium";
+          const genericText = window.haichainI18n ? window.haichainI18n.t('aiHub.badgeGeneric', 'GENERIC URL (UNBOUND)') : 'GENERIC URL (UNBOUND)';
+          badgeEl.innerHTML = `<span>${genericText}</span>`;
         }
         if (connectedBox) connectedBox.classList.add('hidden');
         if (unconnectedBox) unconnectedBox.classList.remove('hidden');
