@@ -168,7 +168,7 @@
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v40_fluid_signature_validated_1793646000000"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v43_mobile_header_viewport_lock_1793640487252"></script>
+  <script src="/app/sale-controller.js?v=v44_referral_click_telemetry_1793640775173"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -4655,7 +4655,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "Giao dịch đã hủy: Bạn đã từ chối duyệt giao dịch trên ví MetaMask.",
       "metaMaskError": "Lỗi giao dịch MetaMask:",
 
-    "vaultTitle": "Két Vesting & Phân Bổ Token-2022",
+    "vaultTitle": "Két Vesting & Phân Bổ Token\u20112022",
     "vaultSubtitle": "Sổ cái phân bổ token $HAISI (Haichain SI) và hợp đồng Vesting on-chain được bảo vệ bằng Transfer-Hook mật mã.",
     "authRequired": "Yêu Cầu Kết Nối Ví Solana",
     "authDesc": "Hãy kết nối ví Phantom, Solflare, Passkey sinh trắc học hoặc nhập địa chỉ ví Solana cá nhân để xác thực và mở khóa két phân bổ vesting của bạn.",
@@ -6083,18 +6083,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       // STATE 1: Wallet not connected
       if (!currentAddress) {
         container.innerHTML = `
-          <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900 gap-4">
+          <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0a0a0a] shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 dark:border-white/[0.04] gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex items-start space-x-3">
-                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-sm p-1.5 mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                  <div class="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200/60 dark:border-white/[0.08] flex items-center justify-center shrink-0 overflow-hidden shadow-sm p-1.5 mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                   </div>
                   <div class="flex-1 min-w-0 space-y-1.5">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
                       <h2 class="font-bold text-base sm:text-xl text-black dark:text-white leading-snug">
                         ${getVestingText('vaultTitle', lang)}
                       </h2>
-                      <span class="self-start sm:self-center shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+                      <span class="self-start sm:self-center shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-mono bg-neutral-100/70 dark:bg-white/[0.03] text-neutral-600 dark:text-neutral-400 border border-neutral-200/50 dark:border-white/[0.06]">
                         Solana L1
                       </span>
                     </div>
@@ -6108,8 +6108,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             </div>
 
             <!-- Lock Box Prompt -->
-            <div class="p-8 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-center max-w-xl mx-auto space-y-4">
-              <div class="w-12 h-12 rounded-2xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center mx-auto text-black dark:text-white">
+            <div class="p-6 sm:p-8 rounded-2xl bg-neutral-50/50 dark:bg-white/[0.015] border border-neutral-100 dark:border-white/[0.04] text-center max-w-xl mx-auto space-y-4">
+              <div class="w-12 h-12 rounded-2xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/50 dark:border-white/[0.06] flex items-center justify-center mx-auto text-black dark:text-white">
                 <i data-lucide="shield-alert" class="w-6 h-6"></i>
               </div>
               <div>
@@ -6124,7 +6124,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-semibold text-xs transition-all shadow-sm">
                   ${getVestingText('connectWalletBtn', lang)}
                 </button>
-                <button onclick="window.switchTab('tab-preseed')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
+                <button onclick="window.switchTab('tab-preseed')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-white/[0.08] hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-50 dark:hover:bg-white/[0.02] font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
                   <i data-lucide="key" class="w-3.5 h-3.5 shrink-0"></i>
                   <span>${getVestingText('subscribeSaftBtn', lang)}</span>
                 </button>
@@ -6140,18 +6140,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       if (!alloc) {
         const shortAddr = `${currentAddress.slice(0, 4)}...${currentAddress.slice(-4)}`;
         container.innerHTML = `
-          <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900 gap-4">
+          <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0a0a0a] shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 dark:border-white/[0.04] gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex items-start space-x-3">
-                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-sm p-1.5 mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                  <div class="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200/60 dark:border-white/[0.08] flex items-center justify-center shrink-0 overflow-hidden shadow-sm p-1.5 mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
                   </div>
                   <div class="flex-1 min-w-0 space-y-1.5">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
                       <h2 class="font-bold text-base sm:text-xl text-black dark:text-white leading-snug">
                         ${getVestingText('vaultTitle', lang)}
                       </h2>
-                      <span class="self-start sm:self-center shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+                      <span class="self-start sm:self-center shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100/70 dark:bg-white/[0.03] text-neutral-600 dark:text-neutral-400 border border-neutral-200/50 dark:border-white/[0.06]">
                         ${shortAddr}
                       </span>
                     </div>
@@ -6164,8 +6164,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               <div class="flex items-center space-x-2 shrink-0"></div>
             </div>
 
-            <div class="p-8 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-center max-w-xl mx-auto space-y-4">
-              <div class="w-12 h-12 rounded-2xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center mx-auto text-neutral-500">
+            <div class="p-6 sm:p-8 rounded-2xl bg-neutral-50/50 dark:bg-white/[0.015] border border-neutral-100 dark:border-white/[0.04] text-center max-w-xl mx-auto space-y-4">
+              <div class="w-12 h-12 rounded-2xl bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200/50 dark:border-white/[0.06] flex items-center justify-center mx-auto text-neutral-400 dark:text-neutral-500">
                 <i data-lucide="inbox" class="w-6 h-6"></i>
               </div>
               <div>
@@ -6181,7 +6181,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   <i data-lucide="shield-check" class="w-3.5 h-3.5 shrink-0"></i>
                   <span>${getVestingText('subscribeDiscountBtn', lang)}</span>
                 </button>
-                <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
+                <button onclick="document.getElementById('wallet-btn').click()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-white/[0.08] hover:border-neutral-300 dark:hover:border-white/20 hover:bg-neutral-50 dark:hover:bg-white/[0.02] font-mono text-xs text-neutral-700 dark:text-neutral-300 transition-all">
                   ${getVestingText('switchWalletBtn', lang)}
                 </button>
               </div>
@@ -6203,10 +6203,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const shortAddr = `${currentAddress.slice(0, 4)}...${currentAddress.slice(-4)}`;
 
       container.innerHTML = `
-        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm space-y-6">
+        <div class="p-6 sm:p-8 rounded-3xl border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0a0a0a] shadow-sm space-y-6">
           
           <!-- Section Header -->
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-neutral-100 dark:border-neutral-900 gap-4">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-neutral-100 dark:border-white/[0.04] gap-4">
             <div class="flex items-start space-x-3.5 min-w-0 flex-1">
               <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-black border border-neutral-800 flex items-center justify-center shadow-sm shrink-0 overflow-hidden p-1.5 mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_symbol_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
               </div>
@@ -6237,7 +6237,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 </div>
                 <span>${getVestingText('addToPhantomBtn', lang)}</span>
               </button>
-              <button onclick="window.clearUserAllocation()" class="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-black dark:hover:text-white transition-colors" title="${getVestingText('resetSimTitle', lang)}">
+              <button onclick="window.clearUserAllocation()" class="p-2.5 rounded-xl border border-neutral-200/50 dark:border-white/[0.08] text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-white/[0.02] transition-colors" title="${getVestingText('resetSimTitle', lang)}">
                 <i data-lucide="refresh-cw" class="w-4 h-4"></i>
               </button>
             </div>
@@ -6245,7 +6245,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
           
           <!-- Official Mainnet Allocation Guarantee Certificate (Bảo Chứng Chuyển Đổi Token Mainnet 100%) -->
-          <div class="p-5 sm:p-6 rounded-2xl bg-neutral-900 border border-neutral-700/80 text-white font-mono text-xs space-y-4 shadow-sm relative overflow-hidden">
+          <div class="p-5 sm:p-6 rounded-2xl bg-neutral-950/70 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/[0.08] text-white font-mono text-xs space-y-4 shadow-sm relative overflow-hidden">
             <div class="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none -mr-10 -mt-10"></div>
             
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-neutral-800 gap-2 relative z-10">
@@ -6270,7 +6270,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 relative z-10 font-mono text-[11px]">
-              <div class="p-3 rounded-xl bg-neutral-950/80 border border-neutral-800 space-y-1">
+              <div class="p-3 rounded-xl bg-black/40 dark:bg-white/[0.02] border border-neutral-200/30 dark:border-white/[0.05] space-y-1">
                 <span class="text-[9.5px] text-neutral-400 uppercase font-sans">${getVestingText('guaranteeProofType', lang)}</span>
                 <div class="text-white font-bold flex items-center space-x-1.5">
                   <i data-lucide="file-check" class="w-3.5 h-3.5 text-white"></i>
@@ -6279,7 +6279,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 <div class="text-[10px] text-neutral-400 truncate font-mono">Tx: ${alloc.txSignature ? alloc.txSignature.slice(0, 16) + '...' : 'ON-CHAIN-VERIFIED'}</div>
               </div>
 
-              <div class="p-3 rounded-xl bg-neutral-950/80 border border-neutral-800 space-y-1">
+              <div class="p-3 rounded-xl bg-black/40 dark:bg-white/[0.02] border border-neutral-200/30 dark:border-white/[0.05] space-y-1">
                 <span class="text-[9.5px] text-neutral-400 uppercase font-sans">${getVestingText('guaranteeMintStandard', lang)}</span>
                 <div class="text-white font-bold flex items-center space-x-1.5">
                   <i data-lucide="cpu" class="w-3.5 h-3.5 text-white"></i>
@@ -6288,7 +6288,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 <div class="text-[10px] text-neutral-400 font-mono">Transfer-Hook Enforced</div>
               </div>
 
-              <div class="p-3 rounded-xl bg-neutral-950/80 border border-neutral-800 space-y-1">
+              <div class="p-3 rounded-xl bg-black/40 dark:bg-white/[0.02] border border-neutral-200/30 dark:border-white/[0.05] space-y-1">
                 <span class="text-[9.5px] text-neutral-400 uppercase font-sans">${getVestingText('guaranteeDisbursement', lang)}</span>
                 <div class="text-white font-bold flex items-center space-x-1.5">
                   <i data-lucide="zap" class="w-3.5 h-3.5 text-white"></i>
@@ -6420,6 +6420,27 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 ${lang === 'vi' ? 'Sao Chép Link Ref' : 'Copy Ref Link'}
               </button>
             </div>
+
+            <!-- Referral Click Telemetry Quick Bar in Vesting -->
+            ${(() => {
+              const localClicks = JSON.parse(localStorage.getItem('haichain_referral_clicks') || '[]')
+                .filter(c => c.ref && c.ref.toLowerCase() === currentAddress.toLowerCase());
+              const totalClicks = localClicks.length;
+              const uniqueClicks = localClicks.filter(c => c.isUnique).length || totalClicks;
+              return `
+              <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-[11px] font-mono">
+                <div class="flex items-center space-x-2">
+                  <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-emerald-500"></i>
+                  <span class="text-neutral-500 font-sans">${lang === 'vi' ? 'Lượt click link:' : 'Link Clicks:'}</span>
+                  <strong class="text-black dark:text-white font-bold">${totalClicks}</strong>
+                  <span class="text-neutral-400 font-sans">(${uniqueClicks} ${lang === 'vi' ? 'khách độc nhất' : 'unique'})</span>
+                </div>
+                <button onclick="window.switchTab('tab-preseed')" class="text-[10px] text-neutral-400 hover:text-black dark:hover:text-white underline font-sans cursor-pointer">
+                  ${lang === 'vi' ? 'Xem báo cáo chi tiết →' : 'View full analytics →'}
+                </button>
+              </div>
+              `;
+            })()}
 
             <!-- Commission Summary -->
             ${(() => {
