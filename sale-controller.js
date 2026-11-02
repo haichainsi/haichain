@@ -1136,7 +1136,7 @@
           </div>
           <div class="space-y-3 pt-2">
             <div class="relative">
-              <input type="text" id="vip-gatekeeper-input" placeholder="${getI18nText('accessPlaceholder')}" class="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white placeholder-neutral-400 text-xs sm:text-sm font-mono focus:outline-hidden focus:border-black dark:focus:border-white transition-all text-center tracking-wider font-semibold">
+              <input type="text" id="vip-gatekeeper-input" placeholder="${getI18nText('accessPlaceholder')}" class="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white placeholder-neutral-400 text-base sm:text-sm font-mono focus:outline-hidden focus:border-black dark:focus:border-white transition-all text-center tracking-wider font-semibold" style="font-size: 16px !important;">
             </div>
             <button type="button" id="vip-gatekeeper-submit" class="w-full py-3.5 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs sm:text-sm font-mono transition-all hover:opacity-90 active:scale-98 shadow-sm cursor-pointer flex items-center justify-center space-x-2">
               <i data-lucide="key" class="w-4 h-4"></i>
@@ -1177,8 +1177,35 @@
           try {
             localStorage.setItem('haichain_vip_access', val);
           } catch (_) {}
+
+          // 1. Force blur active element and input to immediately collapse mobile virtual keyboard
+          if (document.activeElement && typeof document.activeElement.blur === 'function') {
+            document.activeElement.blur();
+          }
+          gateInput.blur();
+
+          // 2. Immediate scroll reset to ensure header remains pinned cleanly at top
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+          const mainCanvas = document.querySelector('main');
+          if (mainCanvas) mainCanvas.scrollTop = 0;
+
+          // 3. Render authenticated VIP terminal
           injectNavigationTabs(true);
           renderTerminalContent(container, true);
+
+          // 4. Multi-frame scroll enforcement as mobile virtual keyboard collapses
+          const resetScroll = () => {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            if (mainCanvas) mainCanvas.scrollTop = 0;
+          };
+          requestAnimationFrame(resetScroll);
+          setTimeout(resetScroll, 50);
+          setTimeout(resetScroll, 150);
+          setTimeout(resetScroll, 350);
         } else {
           if (gateErr) {
             gateErr.textContent = getActiveLang() === 'vi' ? 'Khóa truy cập không hợp lệ. Vui lòng kiểm tra lại.' : 'Invalid VIP Access Key. Please try again.';
@@ -1210,6 +1237,13 @@
         userAllocation = { ...allocs[connectedWalletAddr], address: connectedWalletAddr };
       }
     } catch (_) {}
+
+    // Ensure clean viewport alignment on terminal render
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const mainCanvas = document.querySelector('main');
+    if (mainCanvas) mainCanvas.scrollTop = 0;
 
     container.innerHTML = `
       <!-- 1. TOP DEAL OVERVIEW & ALLOCATION PROGRESS CARD (COMPACT APPLE TITANIUM LUXURY) -->
