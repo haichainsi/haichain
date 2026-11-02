@@ -11,11 +11,15 @@
   // 1. COMPREHENSIVE 10-LANGUAGE DICTIONARY
   const SALE_I18N = {
     en: {
-      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Buy $HAISI',
-      btnPayMetaMask: '🦊 Pay for $HAISI with MetaMask',
-      btnPaySolflare: '🔥 Pay for $HAISI with Solflare',
-      btnPayPhantom: '👻 Pay with Phantom (1-Click)',
-      connectWeb3Required: 'Please connect your Web3 wallet (MetaMask, Phantom, or Solflare) to proceed with SAFT payment.',
+      confirmMsgInvestment: 'CONFIRM $HAISI PURCHASE ({provider}):\n\n• Investment Amount: ${amount} USDT\n• Token Allocation: {tokens} $HAISI (Price: $0.007)\n• Beneficiary Wallet: {wallet}\n• Mainnet Guarantee: 100% real on-chain conversion disbursed at TGE.\n\nYour {provider} wallet will open for cryptographic authorization.',
+      saftSuccessAlert: '🎉 SAFT SUBSCRIPTION & ALLOCATION CONFIRMED!\n\nYour wallet ({shortWallet}) now officially holds {tokens} $HAISI.\n\n🛡️ MAINNET CONVERSION GUARANTEE:\nAll {tokens} $HAISI are immutably secured under the SAFT Agreement. Upon HAICHAIN Mainnet launch (TGE), the Solana Token-2022 smart contract will automatically disburse 100% real on-chain tokens directly to this wallet.\n\nRedirecting to your Vesting Vault to inspect allocation...',
+      saftLimitsError: 'SAFT allocation amount must be between 500 USDT and 50,000 USDT.',
+      web3WalletNotFound: 'Web3 wallet extension not found. Please connect your wallet in the header or paste address manually.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
+      connectWeb3Required: 'Please connect your Web3 wallet to proceed with SAFT payment.',
       confirmPurchaseTitle: 'CONFIRM $HAISI PURCHASE ({provider})',
       authorizeOpenWallet: 'Authorize & Open Wallet',
       metaMaskConnCancelled: 'MetaMask connection was cancelled.',
@@ -34,7 +38,7 @@
     vestingCliffCard: '2. Cliff (2 Months)',
     vestingCliffDesc: '0% Unlock (Anti-dump)',
     vestingLinearCard: '3. Linear (6 Months)',
-    autofillPhantom: 'Auto-fill Phantom',
+    autofillPhantom: 'Auto-fill Web3 Wallet',
     saftDocTitle: 'HAICHAIN Pre-Seed SAFT Agreement (Standard English Edition)',
     memoDocTitle: 'HAICHAIN Pre-Seed 1-Pager Memo',
     saftAlertTitle: 'SAFT SUBSCRIPTION & TOKEN-2022 ALLOCATION RECORDED!',
@@ -42,7 +46,7 @@
     saftAlertAlloc: 'Allocation',
     saftAlertAmount: 'Amount',
     saftAlertWallet: 'Solana Wallet',
-    saftAlertHookActive: '✓ Token-2022 Transfer-Hook: Active for your Phantom wallet',
+    saftAlertHookActive: '✓ Token-2022 Transfer-Hook: Active for your Web3 wallet',
     saftAlertSchedule: '✓ Vesting Schedule: 20% TGE, 2-Mo Cliff, 6-Mo Linear Stream',
     saftAlertTransferPrompt: 'Please transfer funds to the Multi-Sig Treasury:',
     saftAlertRedirect: 'Redirecting to your dedicated Vesting Vault tab.',
@@ -83,7 +87,7 @@
       labelEmail: 'Official Contact Email:',
       placeholderEmail: 'angel@firm.com',
       labelWallet: 'Receiving Solana Wallet (Ed25519 Pubkey):',
-      placeholderWallet: 'Connect Phantom or paste Solana address',
+      placeholderWallet: 'Connect Web3 wallet or paste address',
       treasuryTitle: 'Multi-Sig Treasury Vault (USDT / SOL)',
       copyBtn: 'Copy',
       copiedBtn: 'Copied!',
@@ -95,11 +99,15 @@
       unlockBtn: 'Unlock'
     },
     vi: {
-      btnConnectWeb3ToBuy: 'Kết Nối Ví Web3 Để Mua $HAISI',
-      btnPayMetaMask: '🦊 Thanh Toán $HAISI Bằng MetaMask (EVM)',
-      btnPaySolflare: '🔥 Thanh Toán $HAISI Bằng Solflare',
-      btnPayPhantom: '👻 Thanh Toán 1-Click Ví Phantom',
-      connectWeb3Required: 'Vui lòng kết nối ví Web3 (MetaMask, Phantom hoặc Solflare) để thực hiện thanh toán SAFT.',
+      confirmMsgInvestment: 'XÁC NHẬN THANH TOÁN MUA $HAISI ({provider}):\n\n• Số tiền đầu tư: ${amount} USDT\n• Phân bổ sở hữu: {tokens} $HAISI (Đơn giá: $0.007)\n• Ví thụ hưởng: {wallet}\n• Bảo chứng Mainnet: Cam kết tự động giải ngân 100% Token Thật tại sự kiện TGE.\n\nVí {provider} của bạn sẽ mở ra để xác thực mật mã.',
+      saftSuccessAlert: '🎉 ĐÃ GHI NHẬN ĐĂNG KÝ VÀ BẢO CHỨNG PHÂN BỔ SAFT!\n\nVí của bạn ({shortWallet}) đã chính thức sở hữu {tokens} $HAISI.\n\n🛡️ BẢO CHỨNG CHUYỂN ĐỔI MAINNET:\nToàn bộ {tokens} $HAISI đã được bảo lưu bất biến theo Hợp đồng SAFT. Ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token-2022 sẽ tự động giải ngân và chuyển đổi 100% số token này thành Token Thật on-chain về đúng địa chỉ ví này của bạn mà không cần thủ tục nào khác.\n\nHệ thống đang chuyển bạn đến Két sắt Vesting để kiểm tra số dư và chứng nhận phân bổ.',
+      saftLimitsError: 'Hạn mức đăng ký phân bổ SAFT từ 500 USDT đến 50.000 USDT.',
+      web3WalletNotFound: 'Không tìm thấy tiện ích ví Web3. Vui lòng kết nối ví ở góc trên hoặc dán địa chỉ ví thủ công.',
+      btnConnectWeb3ToBuy: 'Kết Nối Ví Web3 Để Thanh Toán',
+      btnPayMetaMask: 'Thanh Toán 1-Click Qua Ví Web3',
+      btnPaySolflare: 'Thanh Toán 1-Click Qua Ví Web3',
+      btnPayPhantom: 'Thanh Toán 1-Click Qua Ví Web3',
+      connectWeb3Required: 'Vui lòng kết nối ví Web3 để thực hiện thanh toán SAFT.',
       confirmPurchaseTitle: 'XÁC NHẬN THANH TOÁN MUA $HAISI ({provider})',
       authorizeOpenWallet: 'Ký Duyệt & Mở Ví',
       metaMaskConnCancelled: 'Bạn đã từ chối kết nối ví MetaMask.',
@@ -118,7 +126,7 @@
     vestingCliffCard: '2. Cliff (2 Tháng)',
     vestingCliffDesc: 'Khóa 0% (Anti-dump)',
     vestingLinearCard: '3. Tuyến Tính (6 Tháng)',
-    autofillPhantom: 'Lấy ví Phantom',
+    autofillPhantom: 'Tự điền ví Web3',
     saftDocTitle: 'Hợp Đồng SAFT Pre-Seed HAICHAIN (Standard English Edition)',
     memoDocTitle: 'Bản Tóm Tắt 1 Trang Pre-Seed HAICHAIN',
     saftAlertTitle: 'ĐÃ GHI NHẬN ĐĂNG KÝ SAFT VÀ PHÂN BỔ TOKEN-2022!',
@@ -126,7 +134,7 @@
     saftAlertAlloc: 'Phân bổ',
     saftAlertAmount: 'Giá trị',
     saftAlertWallet: 'Ví thụ hưởng',
-    saftAlertHookActive: '✓ Token-2022 Transfer-Hook: Đã kích hoạt cho ví Phantom của bạn',
+    saftAlertHookActive: '✓ Token-2022 Transfer-Hook: Đã kích hoạt cho ví Web3 của bạn',
     saftAlertSchedule: '✓ Lịch Vesting: 20% TGE, Cliff 2 tháng, Linear Stream 6 tháng',
     saftAlertTransferPrompt: 'Vui lòng chuyển USDT/SOL vào Ví Kho Bạc Multi-Sig:',
     saftAlertRedirect: 'Hệ thống sẽ tự động chuyển bạn đến Két Vesting để kiểm tra số dư.',
@@ -167,7 +175,7 @@
       labelEmail: 'Email Liên Hệ Chính Thức:',
       placeholderEmail: 'backer@example.com',
       labelWallet: 'Ví Solana Nhận Token (Ed25519 Pubkey):',
-      placeholderWallet: 'Kết nối Phantom hoặc dán địa chỉ ví Solana',
+      placeholderWallet: 'Kết nối ví Web3 hoặc dán địa chỉ',
       treasuryTitle: 'Ví Kho Bạc Multi-Sig (USDT / SOL)',
       copyBtn: 'Sao chép',
       copiedBtn: 'Đã chép!',
@@ -179,10 +187,14 @@
       unlockBtn: 'Mở Khóa'
     },
     zh: {
-      btnConnectWeb3ToBuy: '连接 Web3 钱包以认购 $HAISI',
-      btnPayMetaMask: '🦊 使用 MetaMask 支付 $HAISI (EVM)',
-      btnPaySolflare: '🔥 使用 Solflare 支付 $HAISI',
-      btnPayPhantom: '👻 使用 Phantom 1-Click 快捷支付',
+      confirmMsgInvestment: '确认认购 $HAISI 代币 ({provider})：\n\n• 投资金额：${amount} USDT\n• 代币额度：{tokens} $HAISI（单价：$0.007）\n• 受益人钱包：{wallet}\n• 主网保函：在 TGE 时自动 100% 兑换链上代币。\n\n您的 {provider} 钱包将打开进行密码学授权。',
+      saftSuccessAlert: '🎉 SAFT 认购与额度保函已确认！\n\n您的钱包 ({shortWallet}) 已正式持有 {tokens} $HAISI。\n\n🛡️ 主网兑换官方保函：\n所有 {tokens} $HAISI 均受到 SAFT 协议的不可变法律保护。HAICHAIN 主网启动 (TGE) 时，Solana Token-2022 智能合约将自动将 100% 真实链上代币划转至该钱包。\n\n正在跳转至您的 Vesting 金库查看额度...',
+      saftLimitsError: 'SAFT 认购金额必须在 500 USDT 至 50,000 USDT 之间。',
+      web3WalletNotFound: '未检测到 Web3 钱包插件。请在顶部连接钱包或手动粘贴地址。',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: '请连接您的 Web3 钱包（MetaMask、Phantom 或 Solflare）以完成 SAFT 认购支付。',
       confirmPurchaseTitle: '确认认购 $HAISI 代币 ({provider})',
       authorizeOpenWallet: '授权并打开钱包',
@@ -263,10 +275,14 @@
       unlockBtn: '解锁'
     },
     ko: {
-      btnConnectWeb3ToBuy: '$HAISI 구매를 위해 Web3 지갑 연결',
-      btnPayMetaMask: '🦊 MetaMask로 $HAISI 결제 (EVM)',
-      btnPaySolflare: '🔥 Solflare로 $HAISI 결제',
-      btnPayPhantom: '👻 Phantom 1-Click 결제',
+      confirmMsgInvestment: '$HAISI 구매 승인 및 결제 확인 ({provider}):\n\n• 투자 금액: ${amount} USDT\n• 토큰 배분: {tokens} $HAISI (단가: $0.007)\n• 수령 지갑: {wallet}\n• 메인넷 보증: TGE 시 100% 온체인 실제 토큰 자동 지급.\n\n암호학적 서명을 위해 {provider} 지갑이 열립니다.',
+      saftSuccessAlert: '🎉 SAFT 청약 및 토큰 할당이 승인되었습니다!\n\n귀하의 지갑({shortWallet})이 이제 공식적으로 {tokens} $HAISI를 보유합니다.\n\n🛡️ 메인넷 전환 보증:\n모든 {tokens} $HAISI는 SAFT 계약에 따라 불변으로 보호됩니다. HAICHAIN 메인넷 출시(TGE) 시 Solana Token-2022 스마트 계약이 100% 온체인 실제 토큰을 이 지갑으로 자동 지급합니다.\n\n배분 증명서 확인을 위해 Vesting 금고로 이동합니다...',
+      saftLimitsError: 'SAFT 할당 금액은 500 USDT에서 50,000 USDT 사이여야 합니다.',
+      web3WalletNotFound: 'Web3 지갑 확장 프로그램을 찾을 수 없습니다. 헤더에서 지갑을 연결하거나 주소를 수동으로 입력하세요.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'SAFT 결제를 진행하려면 Web3 지갑(MetaMask, Phantom 또는 Solflare)을 연결하세요.',
       confirmPurchaseTitle: '$HAISI 구매 승인 및 결제 확인 ({provider})',
       authorizeOpenWallet: '승인 및 지갑 열기',
@@ -286,7 +302,7 @@
     vestingCliffCard: '2. 클리프 (2개월)',
     vestingCliffDesc: '0% 락업 (덤핑 방지)',
     vestingLinearCard: '3. 선형 스트리밍 (6개월)',
-    autofillPhantom: 'Phantom 지갑 자동 입력',
+    autofillPhantom: 'Web3 지갑 자동 입력',
     saftDocTitle: 'HAICHAIN 프리시드 SAFT 계약서 (표준 영문판)',
     memoDocTitle: 'HAICHAIN 프리시드 1페이지 요약',
     saftAlertTitle: 'SAFT 청약 및 Token-2022 배분이 등록되었습니다!',
@@ -347,10 +363,14 @@
       unlockBtn: '잠금 해제'
     },
     fr: {
-      btnConnectWeb3ToBuy: 'Connecter le portefeuille Web3 pour acheter $HAISI',
-      btnPayMetaMask: '🦊 Payer $HAISI avec MetaMask (EVM)',
-      btnPaySolflare: '🔥 Payer $HAISI avec Solflare',
-      btnPayPhantom: '👻 Payer en 1 Clic avec Phantom',
+      confirmMsgInvestment: 'CONFIRMER L\'ACHAT DE $HAISI ({provider}) :\n\n• Montant d\'investissement : ${amount} USDT\n• Allocation : {tokens} $HAISI (Prix : $0.007)\n• Portefeuille bénéficiaire : {wallet}\n• Garantie Mainnet : Conversion 100% on-chain déboursée au TGE.\n\nVotre portefeuille {provider} va s\'ouvrir pour l\'autorisation.',
+      saftSuccessAlert: '🎉 SOUSCRIPTION SAFT & ALLOCATION CONFIRMÉES !\n\nVotre portefeuille ({shortWallet}) détient désormais {tokens} $HAISI.\n\n🛡️ GARANTIE DE CONVERSION MAINNET :\nTous les {tokens} $HAISI sont légalement garantis sous l\'Accord SAFT. Dès le lancement du Mainnet HAICHAIN (TGE), le contrat intelligent Solana Token-2022 déboursera automatiquement 100% des tokens réels sur ce portefeuille.\n\nRedirection vers votre coffre de Vesting...',
+      saftLimitsError: 'Le montant de l\'allocation SAFT doit être compris entre 500 USDT et 50 000 USDT.',
+      web3WalletNotFound: 'Extension de portefeuille Web3 non trouvée. Veuillez connecter votre portefeuille ou coller l\'adresse manuellement.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'Veuillez connecter votre portefeuille Web3 (MetaMask, Phantom ou Solflare) pour procéder au paiement SAFT.',
       confirmPurchaseTitle: 'CONFIRMER L\'ACHAT DE $HAISI ({provider})',
       authorizeOpenWallet: 'Autoriser et ouvrir le portefeuille',
@@ -370,7 +390,7 @@
     vestingCliffCard: '2. Cliff (2 Mois)',
     vestingCliffDesc: '0% Déblocage (Anti-dump)',
     vestingLinearCard: '3. Linéaire (6 Mois)',
-    autofillPhantom: 'Remplissage auto Phantom',
+    autofillPhantom: 'Remplissage auto portefeuille Web3',
     saftDocTitle: 'Accord SAFT Pre-Seed HAICHAIN (Édition Anglaise Standard)',
     memoDocTitle: 'Mémo 1 Page Pre-Seed HAICHAIN',
     saftAlertTitle: 'SOUSCRIPTION SAFT ET ALLOCATION TOKEN-2022 ENREGISTRÉES !',
@@ -431,10 +451,14 @@
       unlockBtn: 'Déverrouiller'
     },
     es: {
-      btnConnectWeb3ToBuy: 'Conectar billetera Web3 para comprar $HAISI',
-      btnPayMetaMask: '🦊 Pagar $HAISI con MetaMask (EVM)',
-      btnPaySolflare: '🔥 Pagar $HAISI con Solflare',
-      btnPayPhantom: '👻 Pagar en 1 Clic con Phantom',
+      confirmMsgInvestment: 'CONFIRMAR COMPRA DE $HAISI ({provider}):\n\n• Monto de inversión: ${amount} USDT\n• Asignación: {tokens} $HAISI (Precio: $0.007)\n• Billetera beneficiaria: {wallet}\n• Garantía Mainnet: Conversión 100% on-chain desembolsada en TGE.\n\nSu billetera {provider} se abrirá para la autorización.',
+      saftSuccessAlert: '🎉 ¡SUSCRIPCIÓN SAFT Y ASIGNACIÓN CONFIRMADAS!\n\nSu billetera ({shortWallet}) ahora posee oficialmente {tokens} $HAISI.\n\n🛡️ GARANTÍA DE CONVERSIÓN MAINNET:\nTodos los {tokens} $HAISI están legalmente respaldados bajo el Acuerdo SAFT. En el lanzamiento de la Mainnet de HAICHAIN (TGE), el contrato inteligente Solana Token-2022 desembolsará automáticamente el 100% de los tokens reales a esta billetera.\n\nRedirigiendo a su Bóveda de Vesting...',
+      saftLimitsError: 'El monto de la asignación SAFT debe estar entre 500 USDT y 50.000 USDT.',
+      web3WalletNotFound: 'No se encontró la extensión de billetera Web3. Conecte su billetera arriba o pegue la dirección manualmente.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'Conecte su billetera Web3 (MetaMask, Phantom o Solflare) para proceder con el pago SAFT.',
       confirmPurchaseTitle: 'CONFIRMAR COMPRA DE $HAISI ({provider})',
       authorizeOpenWallet: 'Autorizar y abrir billetera',
@@ -454,7 +478,7 @@
     vestingCliffCard: '2. Cliff (2 Meses)',
     vestingCliffDesc: '0% Desbloqueo (Anti-dump)',
     vestingLinearCard: '3. Lineal (6 Meses)',
-    autofillPhantom: 'Autocompletar Phantom',
+    autofillPhantom: 'Autocompletar billetera Web3',
     saftDocTitle: 'Acuerdo SAFT Pre-Seed HAICHAIN (Edición Estándar en Inglés)',
     memoDocTitle: 'Memorando de 1 Página Pre-Seed HAICHAIN',
     saftAlertTitle: '¡SUSCRIPCIÓN SAFT Y ASIGNACIÓN TOKEN-2022 REGISTRADAS!',
@@ -515,10 +539,14 @@
       unlockBtn: 'Desbloquear'
     },
     ru: {
-      btnConnectWeb3ToBuy: 'Подключить Web3-кошелек для покупки $HAISI',
-      btnPayMetaMask: '🦊 Оплатить $HAISI через MetaMask (EVM)',
-      btnPaySolflare: '🔥 Оплатить $HAISI через Solflare',
-      btnPayPhantom: '👻 Оплатить в 1 Клик через Phantom',
+      confirmMsgInvestment: 'ПОДТВЕРЖДЕНИЕ ПОКУПКИ $HAISI ({provider}):\n\n• Сумма инвестиций: ${amount} USDT\n• Выделение токенов: {tokens} $HAISI (Цена: $0.007)\n• Кошелек получателя: {wallet}\n• Гарантия Mainnet: 100% ончейн-конвертация при TGE.\n\nВаш кошелек {provider} откроется для подписи.',
+      saftSuccessAlert: '🎉 ПОДПИСКА SAFT И ВЫДЕЛЕНИЕ ТОКЕНОВ ПОДТВЕРЖДЕНЫ!\n\nВаш кошелек ({shortWallet}) теперь официально владеет {tokens} $HAISI.\n\n🛡️ ГАРАНТИЯ КОНВЕРТАЦИИ В MAINNET:\nВсе {tokens} $HAISI юридически защищены соглашением SAFT. При запуске Mainnet HAICHAIN (TGE) смарт-контракт Solana Token-2022 автоматически переведет 100% реальных ончейн-токенов на этот кошелек.\n\nПеренаправление в Сейф Вестинга...',
+      saftLimitsError: 'Сумма выделения SAFT должна составлять от 500 USDT до 50 000 USDT.',
+      web3WalletNotFound: 'Расширение Web3-кошелька не найдено. Подключите кошелек в шапке или вставьте адрес вручную.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'Пожалуйста, подключите Web3-кошелек (MetaMask, Phantom или Solflare) для оплаты SAFT.',
       confirmPurchaseTitle: 'ПОДТВЕРЖДЕНИЕ ПОКУПКИ $HAISI ({provider})',
       authorizeOpenWallet: 'Авторизовать и открыть кошелек',
@@ -538,7 +566,7 @@
     vestingCliffCard: '2. Клифф (2 Месяца)',
     vestingCliffDesc: '0% Разблокировки (Анти-дамп)',
     vestingLinearCard: '3. Линейный (6 Месяцев)',
-    autofillPhantom: 'Автозаполнение Phantom',
+    autofillPhantom: 'Автозаполнение Web3 кошелька',
     saftDocTitle: 'Соглашение SAFT Pre-Seed HAICHAIN (Стандартная англ. версия)',
     memoDocTitle: '1-страничный меморандум Pre-Seed HAICHAIN',
     saftAlertTitle: 'ПОДПИСКА SAFT И АЛЛОКАЦИЯ TOKEN-2022 УСПЕШНО ЗАРЕГИСТРИРОВАНЫ!',
@@ -599,10 +627,14 @@
       unlockBtn: 'Открыть'
     },
     hi: {
-      btnConnectWeb3ToBuy: '$HAISI खरीदने के लिए Web3 वॉलेट कनेक्ट करें',
-      btnPayMetaMask: '🦊 मेटामास्क के साथ $HAISI भुगतान करें',
-      btnPaySolflare: '🔥 सोलफ्लेयर के साथ $HAISI भुगतान करें',
-      btnPayPhantom: '👻 फैंटम के साथ 1-क्लिक भुगतान',
+      confirmMsgInvestment: '$HAISI खरीद की पुष्टि करें ({provider}):\n\n• निवेश राशि: ${amount} USDT\n• टोकन आवंटन: {tokens} $HAISI (मूल्य: $0.007)\n• लाभार्थी वॉलेट: {wallet}\n• मेननेट गारंटी: TGE पर 100% वास्तविक ऑन-चेन रूपांतरण।\n\nहस्ताक्षर के लिए आपका {provider} वॉलेट खुलेगा।',
+      saftSuccessAlert: '🎉 SAFT सदस्यता और आवंटन की पुष्टि हो गई!\n\nआपका वॉलेट ({shortWallet}) अब आधिकारिक तौर पर {tokens} $HAISI रखता है।\n\n🛡️ मेननेट रूपांतरण गारंटी:\nसभी {tokens} $HAISI SAFT समझौते के तहत सुरक्षित हैं। मेननेट लॉन्च (TGE) पर, सोलाना टोकन-2022 स्मार्ट अनुबंध स्वचालित रूप से इस वॉलेट में 100% वास्तविक टोकन वितरित करेगा।\n\nआवंटन देखने के लिए वेस्टिंग वॉल्ट पर पुनर्निर्देशित किया जा रहा है...',
+      saftLimitsError: 'SAFT आवंटन राशि 500 USDT और 50,000 USDT के बीच होनी चाहिए।',
+      web3WalletNotFound: 'Web3 वॉलेट एक्सटेंशन नहीं मिला। कृपया शीर्ष पर वॉलेट कनेक्ट करें या मैन्युअल रूप से पता पेस्ट करें।',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'SAFT भुगतान जारी रखने के लिए कृपया अपना Web3 वॉलेट (मेटामास्क, फैंटम या सोलफ्लेयर) कनेक्ट करें।',
       confirmPurchaseTitle: '$HAISI खरीद की पुष्टि करें ({provider})',
       authorizeOpenWallet: 'अधिकृत करें और वॉलेट खोलें',
@@ -683,10 +715,14 @@
       unlockBtn: 'अनलॉक'
     },
     he: {
-      btnConnectWeb3ToBuy: 'חבר ארנק Web3 כדי לרכוש את $HAISI',
-      btnPayMetaMask: '🦊 שלם עבור $HAISI עם MetaMask',
-      btnPaySolflare: '🔥 שלם עבור $HAISI עם Solflare',
-      btnPayPhantom: '👻 שלם בלחיצה אחת עם Phantom',
+      confirmMsgInvestment: 'אישור רכישת $HAISI ({provider}):\n\n• סכום השקעה: ${amount} USDT\n• הקצאת אסימונים: {tokens} $HAISI (מחיר: $0.007)\n• ארנק מוטב: {wallet}\n• ערבות רשת ראשית: 100% המרה אמיתית ב-TGE.\n\nארנק ה-{provider} שלך ייפתח לאישור חתימה.',
+      saftSuccessAlert: '🎉 מנוי והקצאת SAFT אושרו!\n\nהארנק שלך ({shortWallet}) מחזיק כעת באופן רשמי ב-{tokens} $HAISI.\n\n🛡️ ערבות המרה לרשת הראשית:\nכל {tokens} $HAISI מאובטחים ללא שינוי תחת הסכם SAFT. עם השקת רשת Mainnet של HAICHAIN (אירוע TGE), החוזה החכם Solana Token-2022 ישחרר אוטומטית 100% אסימוני רשת אמיתיים לארנק זה.\n\nמעביר אותך לכספת הווסטינג...',
+      saftLimitsError: 'סכום הקצאת ה-SAFT חייב להיות בין 500 USDT ל-50,000 USDT.',
+      web3WalletNotFound: 'תוסף ארנק Web3 לא נמצא. אנא חבר את הארנק בחלק העליון או הדבק את הכתובת ידנית.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'אנא חבר את ארנק ה-Web3 שלך (MetaMask, Phantom או Solflare) כדי להמשיך בתשלום ה-SAFT.',
       confirmPurchaseTitle: 'אישור רכישת $HAISI ({provider})',
       authorizeOpenWallet: 'אשר ופתח את הארנק',
@@ -767,10 +803,14 @@
       unlockBtn: 'שחרר נעילה'
     },
     kk: {
-      btnConnectWeb3ToBuy: '$HAISI сатып алу үшін Web3 әмиянын қосыңыз',
-      btnPayMetaMask: '🦊 MetaMask арқылы $HAISI төлеу (EVM)',
-      btnPaySolflare: '🔥 Solflare арқылы $HAISI төлеу',
-      btnPayPhantom: '👻 Phantom арқылы 1-Click төлеу',
+      confirmMsgInvestment: '$HAISI САТЫП АЛУДЫ РАСТАУ ({provider}):\n\n• Инвестиция көлемі: ${amount} USDT\n• Бөлінген үлес: {tokens} $HAISI (Бағасы: $0.007)\n• Алушы әмиян: {wallet}\n• Mainnet кепілдігі: TGE кезінде 100% нақты ончейн токендер автоматты түрде беріледі.\n\nКриптографиялық растау үшін {provider} әмияныңыз ашылады.',
+      saftSuccessAlert: '🎉 SAFT ЖАЗЫЛУЫ МЕН БӨЛІНГЕН ҮЛЕС РАСТАЛДЫ!\n\nСіздің әмияныңыз ({shortWallet}) енді ресми түрде {tokens} $HAISI иеленеді.\n\n🛡️ MAINNET РЕСМИ КЕПІЛДІГІ:\nБарлық {tokens} $HAISI SAFT келісімшартымен өзгермейтін түрде қорғалған. HAICHAIN Mainnet іске қосылғанда (TGE), Solana Token-2022 смарт-келісімшарты 100% нақты ончейн токендерді осы әмиянға автоматты түрде аударады.\n\nVesting сейфіне бағытталуда...',
+      saftLimitsError: 'SAFT бөлінген үлес сомасы 500 USDT мен 50 000 USDT арасында болуы керек.',
+      web3WalletNotFound: 'Web3 әмиян кеңейтімі табылмады. Жоғарғы жағындағы әмиянды қосыңыз немесе мекенжайды қолмен қойыңыз.',
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Pay',
+      btnPayMetaMask: '1-Click Pay with Web3 Wallet',
+      btnPaySolflare: '1-Click Pay with Web3 Wallet',
+      btnPayPhantom: '1-Click Pay with Web3 Wallet',
       connectWeb3Required: 'SAFT төлемін жалғастыру үшін Web3 әмияныңызды (MetaMask, Phantom немесе Solflare) қосыңыз.',
       confirmPurchaseTitle: '$HAISI САТЫП АЛУДЫ РАСТАУ ({provider})',
       authorizeOpenWallet: 'Растау және әмиянды ашу',
@@ -1242,80 +1282,111 @@
         <!-- STEP 2: SAFT TERMINAL & DEPOSIT (COL 5) -->
         <div class="lg:col-span-5 p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-4 shadow-xs flex flex-col justify-between">
           <div class="space-y-3.5">
-            <div class="flex items-center space-x-2">
-              <span class="w-5 h-5 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-[11px] font-mono font-bold shrink-0">2</span>
-              <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono">
-                ${getI18nText('terminalTitle')}
-              </h2>
-            </div>
-
-            <!-- Form Fields -->
-            <div class="space-y-2.5 font-mono text-xs">
-              <!-- Wallet Field (Primary) -->
-              <div>
-                <div class="flex justify-between items-center mb-1">
-                  <label class="block text-[11px] text-neutral-500 font-sans font-medium">${isConnectedEVM ? (getActiveLang() === 'vi' ? 'Địa Chỉ Ví Nhận Token (MetaMask / EVM):' : 'Receiving & Bound Web3 Wallet (MetaMask / EVM):') : getI18nText('labelWallet')}</label>
-                  <button type="button" id="btn-autofill-phantom" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white underline font-sans text-[10px] flex items-center space-x-1 cursor-pointer">
-                    <i data-lucide="zap" class="w-3 h-3 text-emerald-500"></i>
-                    <span id="calc-autofill-text">${isConnectedEVM ? (getActiveLang() === 'vi' ? 'Tự Điền MetaMask' : 'Auto-fill MetaMask') : getI18nText('autofillPhantom')}</span>
-                  </button>
-                </div>
-                <input type="text" id="preseed-wallet" value="${connectedWalletAddr}" placeholder="${isConnectedEVM ? '0x...' : getI18nText('placeholderWallet')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white font-mono text-[11px]">
-              </div>
-
-              <!-- Name & Email (Compact Grid) -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <div>
-                  <label class="block text-[10px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelName')}</label>
-                  <input type="text" id="preseed-name" placeholder="${getI18nText('placeholderName')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none text-[11px]">
-                </div>
-                <div>
-                  <label class="block text-[10px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelEmail')}</label>
-                  <input type="email" id="preseed-email" placeholder="${getI18nText('placeholderEmail')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none text-[11px]">
-                </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-[11px] font-mono font-bold shrink-0">2</span>
+                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white font-mono">
+                  ${getI18nText('terminalTitle')}
+                </h2>
               </div>
             </div>
 
-            <!-- Multi-Sig Treasury & Payment Actions -->
-            <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-2">
-              <!-- Primary: Universal 1-Click Web3 Pay (Phantom, Solflare, MetaMask) -->
-              <button type="button" id="btn-pay-phantom-1click" class="w-full py-3 px-4 rounded-xl bg-black hover:bg-neutral-900 text-white font-bold text-xs font-mono flex items-center justify-center space-x-2 transition-all shadow-sm cursor-pointer active:scale-98 border border-neutral-700/80 hover:border-neutral-400">
-                <i data-lucide="wallet" class="w-3.5 h-3.5 shrink-0"></i>
-                <span>${(() => {
+            <!-- Segmented Method Switcher (2 Tabs - Mobile Optimized) -->
+            <div class="grid grid-cols-2 p-1 bg-neutral-100 dark:bg-neutral-900 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 text-[11px] font-mono">
+              <button type="button" id="tab-saft-1click" class="min-h-[36px] py-2 px-2 rounded-xl text-center font-bold transition-all cursor-pointer bg-white dark:bg-black text-black dark:text-white shadow-xs flex items-center justify-center space-x-1.5 active:scale-98">
+                <i data-lucide="zap" class="w-3.5 h-3.5 shrink-0"></i>
+                <span class="truncate">${getActiveLang() === 'vi' ? 'Ví Web3 (1-Click)' : '1-Click Web3 Pay'}</span>
+              </button>
+              <button type="button" id="tab-saft-manual" class="min-h-[36px] py-2 px-2 rounded-xl text-center font-medium transition-all cursor-pointer text-neutral-500 hover:text-black dark:hover:text-white flex items-center justify-center space-x-1.5 active:scale-98">
+                <i data-lucide="landmark" class="w-3.5 h-3.5 shrink-0"></i>
+                <span class="truncate">${getActiveLang() === 'vi' ? 'Chuyển Kho Bạc' : 'Manual Treasury'}</span>
+              </button>
+            </div>
+
+            <!-- TAB 1: 1-Click Web3 Pay (Primary & Streamlined) -->
+            <div id="panel-saft-1click" class="space-y-3 pt-0.5">
+              <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2.5 font-mono text-xs">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-neutral-500 font-sans">${getActiveLang() === 'vi' ? 'Ví Web3 liên kết:' : 'Bound Web3 Wallet:'}</span>
+                  <div class="flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full ${connectedWalletAddr ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}"></span>
+                    <span class="font-bold text-black dark:text-white truncate max-w-[150px] sm:max-w-[200px]">${connectedWalletAddr ? `${connectedWalletAddr.slice(0, 4)}...${connectedWalletAddr.slice(-4)}` : (getActiveLang() === 'vi' ? 'Chưa kết nối' : 'Not Connected')}</span>
+                  </div>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between text-xs font-mono">
+                  <span class="text-neutral-500 text-[11px] font-sans">${getActiveLang() === 'vi' ? 'Phân bổ nhận được:' : 'Allocation to bind:'}</span>
+                  <span class="font-bold text-black dark:text-white text-xs sm:text-sm"><span id="saft-preview-allocation">142,857</span> $HAISI</span>
+                </div>
+              </div>
+
+              <!-- Primary Web3 Action Button (NO branded icons, NO MetaMask/Phantom logos) -->
+              <button type="button" id="btn-pay-phantom-1click" class="w-full min-h-[48px] py-3.5 px-4 rounded-2xl bg-black dark:bg-white hover:opacity-90 text-white dark:text-black font-extrabold text-xs sm:text-sm font-mono flex items-center justify-center space-x-2 transition-all shadow-sm cursor-pointer active:scale-[0.98]">
+                <i data-lucide="zap" class="w-4 h-4 shrink-0"></i>
+                <span id="label-pay-1click-text">${(() => {
                   const saved = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
-                  const isVi = getActiveLang() === 'vi';
                   if (!saved.address) return getI18nText('btnConnectWeb3ToBuy');
-                  if (saved.address.startsWith('0x') || (saved.provider && saved.provider.toLowerCase().includes('metamask'))) {
-                    return getI18nText('btnPayMetaMask');
-                  }
-                  if (saved.provider && saved.provider.toLowerCase().includes('solflare')) {
-                    return getI18nText('btnPaySolflare');
-                  }
                   return getI18nText('btnPayPhantom');
                 })()}</span>
               </button>
 
-              <div class="flex items-center justify-between text-[10px] text-neutral-400 font-sans py-0.5">
-                <span class="uppercase tracking-wider font-semibold">${getActiveLang() === 'vi' ? 'Hoặc chuyển ví kho bạc:' : 'Or manual treasury transfer:'}</span>
-                <button type="button" id="btn-copy-treasury" class="text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white underline font-mono text-[10px]">${getI18nText('copyBtn')}</button>
+              <p class="text-[10px] text-neutral-500 dark:text-neutral-400 text-center font-sans flex items-center justify-center space-x-1.5 px-1">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
+                <span>${getActiveLang() === 'vi' ? 'Phân bổ $HAISI được bảo chứng và xác thực trực tiếp vào ví Web3 của bạn.' : 'Token allocation will be cryptographically bound to your Web3 wallet.'}</span>
+              </p>
+            </div>
+
+            <!-- TAB 2: Manual Treasury Transfer (For Institutional / Cold Storage) -->
+            <div id="panel-saft-manual" class="space-y-3 pt-0.5 hidden">
+              <!-- Treasury Pubkey Copy Box -->
+              <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-1.5">
+                <div class="flex items-center justify-between text-[10px] text-neutral-500 dark:text-neutral-400 font-sans">
+                  <span class="uppercase tracking-wider font-semibold">${getActiveLang() === 'vi' ? 'Địa chỉ ví kho bạc nhận vốn:' : 'Treasury receiving address:'}</span>
+                  <button type="button" id="btn-copy-treasury" class="text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white underline font-mono text-[10px] cursor-pointer">${getI18nText('copyBtn')}</button>
+                </div>
+                <div class="p-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-1 text-[10px]">
+                  <span class="truncate select-all font-mono font-bold text-black dark:text-white break-all" id="treasury-pubkey">${config.TREASURY_ADDRESS}</span>
+                </div>
               </div>
 
-              <div class="p-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-1 text-[10px]">
-                <span class="truncate select-all font-mono font-bold text-black dark:text-white" id="treasury-pubkey">${config.TREASURY_ADDRESS}</span>
+              <!-- Form Fields -->
+              <div class="space-y-2.5 font-mono text-xs">
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <label class="block text-[10px] text-neutral-500 font-sans font-medium">${getActiveLang() === 'vi' ? 'Địa Chỉ Ví Web3 Nhận Token:' : 'Receiving Web3 Wallet Address:'}</label>
+                    <button type="button" id="btn-autofill-phantom" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white underline font-sans text-[10px] flex items-center space-x-1 cursor-pointer">
+                      <i data-lucide="zap" class="w-3 h-3 text-emerald-500"></i>
+                      <span id="calc-autofill-text">${getI18nText('autofillPhantom')}</span>
+                    </button>
+                  </div>
+                  <input type="text" id="preseed-wallet" value="${connectedWalletAddr}" placeholder="${getI18nText('placeholderWallet')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white font-mono text-[11px]">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div>
+                    <label class="block text-[10px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelName')}</label>
+                    <input type="text" id="preseed-name" placeholder="${getI18nText('placeholderName')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none text-[11px]">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-neutral-500 mb-1 font-sans font-medium">${getI18nText('labelEmail')}</label>
+                    <input type="email" id="preseed-email" placeholder="${getI18nText('placeholderEmail')}" class="w-full px-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white focus:outline-none text-[11px]">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit CTA Button -->
+              <div class="pt-1">
+                <button type="button" id="btn-submit-saft-reservation" class="w-full min-h-[48px] py-3 px-4 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-extrabold text-xs sm:text-sm font-mono transition-all flex items-center justify-center space-x-2 shadow-sm cursor-pointer hover:opacity-90 active:scale-[0.98]">
+                  <i data-lucide="send" class="w-3.5 h-3.5 shrink-0"></i>
+                  <span>${getI18nText('submitBtn')}</span>
+                </button>
+                <p class="text-[9px] text-neutral-400 text-center font-mono mt-1.5 flex items-center justify-center space-x-1">
+                  <i data-lucide="shield" class="w-2.5 h-2.5 text-neutral-400"></i>
+                  <span>${getI18nText('protectedFooter')}</span>
+                </p>
               </div>
             </div>
-          </div>
 
-          <!-- Submit CTA Button -->
-          <div class="pt-1">
-            <button id="btn-submit-saft-reservation" class="w-full py-2.5 sm:py-3 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-extrabold text-xs font-mono transition-all flex items-center justify-center space-x-2 shadow-sm cursor-pointer hover:opacity-90 active:scale-[0.98]">
-              <i data-lucide="send" class="w-3.5 h-3.5 shrink-0"></i>
-              <span>${getI18nText('submitBtn')}</span>
-            </button>
-            <p class="text-[9px] text-neutral-400 text-center font-mono mt-1.5 flex items-center justify-center space-x-1">
-              <i data-lucide="shield" class="w-2.5 h-2.5 text-neutral-400"></i>
-              <span>${getI18nText('protectedFooter')}</span>
-            </p>
           </div>
         </div>
 
@@ -1359,6 +1430,11 @@
       l1ValEl.textContent = l1Value;
       tgeTokensEl.textContent = `${tgeTokens.toLocaleString('en-US')} $HAISI (${(tgeTokens * 0.010).toLocaleString('en-US', { style: 'currency', currency: 'USD' })})`;
       streamTokensEl.textContent = `${streamTokens.toLocaleString('en-US')} $HAISI (~${Math.round(streamTokens / 180)} $HAISI/day)`;
+
+      const previewAllocEl = container.querySelector('#saft-preview-allocation');
+      if (previewAllocEl) {
+        previewAllocEl.textContent = totalTokens.toLocaleString('en-US');
+      }
     }
 
     // Document PDF Online Viewer Triggers
@@ -1403,11 +1479,34 @@
       });
     }
 
+    // Segmented SAFT Terminal Tab Switching (1-Click vs Manual Treasury)
+    const tab1Click = container.querySelector('#tab-saft-1click');
+    const tabManual = container.querySelector('#tab-saft-manual');
+    const panel1Click = container.querySelector('#panel-saft-1click');
+    const panelManual = container.querySelector('#panel-saft-manual');
+
+    if (tab1Click && tabManual && panel1Click && panelManual) {
+      tab1Click.addEventListener('click', () => {
+        panel1Click.classList.remove('hidden');
+        panelManual.classList.add('hidden');
+        tab1Click.className = 'min-h-[36px] py-2 px-2 rounded-xl text-center font-bold transition-all cursor-pointer bg-white dark:bg-black text-black dark:text-white shadow-xs flex items-center justify-center space-x-1.5 active:scale-98';
+        tabManual.className = 'min-h-[36px] py-2 px-2 rounded-xl text-center font-medium transition-all cursor-pointer text-neutral-500 hover:text-black dark:hover:text-white flex items-center justify-center space-x-1.5 active:scale-98';
+        if (window.lucide) window.lucide.createIcons();
+      });
+
+      tabManual.addEventListener('click', () => {
+        panelManual.classList.remove('hidden');
+        panel1Click.classList.add('hidden');
+        tabManual.className = 'min-h-[36px] py-2 px-2 rounded-xl text-center font-bold transition-all cursor-pointer bg-white dark:bg-black text-black dark:text-white shadow-xs flex items-center justify-center space-x-1.5 active:scale-98';
+        tab1Click.className = 'min-h-[36px] py-2 px-2 rounded-xl text-center font-medium transition-all cursor-pointer text-neutral-500 hover:text-black dark:hover:text-white flex items-center justify-center space-x-1.5 active:scale-98';
+        if (window.lucide) window.lucide.createIcons();
+      });
+    }
+
     // 1-Click Auto-fill Connected Web3 Wallet Button
     const btnAutofill = container.querySelector('#btn-autofill-phantom');
     if (btnAutofill) {
       btnAutofill.addEventListener('click', async () => {
-        const isVi = getActiveLang() === 'vi';
         const savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
         const walletInput = container.querySelector('#preseed-wallet');
 
@@ -1435,9 +1534,7 @@
             const addr = resp.publicKey ? resp.publicKey.toString() : '';
             if (addr && walletInput) walletInput.value = addr;
           } else {
-            alert(isVi 
-              ? 'Không tìm thấy tiện ích ví Web3. Vui lòng kết nối ví ở góc trên hoặc dán địa chỉ ví thủ công.' 
-              : 'Web3 wallet extension not found. Please connect your wallet in the header or paste address manually.');
+            alert(getI18nText('web3WalletNotFound'));
           }
         } catch (e) {
           console.warn('Wallet connect error:', e);
@@ -1448,8 +1545,6 @@
     if (btnPayPhantom) {
       btnPayPhantom.addEventListener('click', async () => {
         const savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
-        const isVi = getActiveLang() === 'vi';
-
         // 1. If no wallet connected, open wallet connect modal
         if (!savedWallet || !savedWallet.address) {
           const wBtn = document.getElementById('wallet-btn');
@@ -1491,32 +1586,18 @@
         }
 
         if (isNaN(amount) || amount < 500 || amount > 50000) {
-          alert(isVi 
-            ? 'Hạn mức đăng ký phân bổ SAFT từ 500 USDT đến 50,000 USDT.' 
-            : 'SAFT allocation amount must be between 500 USDT and 50,000 USDT.');
+          alert(getI18nText('saftLimitsError'));
           return;
         }
 
         const totalHaiNum = Math.round(amount / 0.007);
-        const provName = isEVM ? 'MetaMask (EVM)' : (savedWallet.provider || 'Phantom');
+        const provName = isVi ? 'Ví Web3' : 'Web3 Wallet';
 
-        const confirmMsg = isVi
-          ? `XÁC NHẬN THANH TOÁN MUA $HAISI (${provName}):
-
-• Số tiền đầu tư: $${amount.toLocaleString()} USDT
-• Phân bổ sở hữu: ${totalHaiNum.toLocaleString()} $HAISI (Đơn giá: $0.007)
-• Ví thụ hưởng: ${wallet}
-• Bảo chứng Mainnet: Cam kết tự động giải ngân 100% Token Thật tại sự kiện TGE.
-
-Ví ${provName} sẽ mở lên để bạn xác thực và ký duyệt giao dịch hợp đồng SAFT.`
-          : `CONFIRM $HAISI PURCHASE (${provName}):
-
-• Investment: $${amount.toLocaleString()} USDT
-• Allocation: ${totalHaiNum.toLocaleString()} $HAISI (Price: $0.007)
-• Beneficiary Wallet: ${wallet}
-• Mainnet Guarantee: 100% Real Token disbursement upon TGE.
-
-Your ${provName} wallet will open for cryptographic authorization.`;
+        const confirmMsg = getI18nText('confirmMsgInvestment')
+          .replace(/{provider}/g, provName)
+          .replace('{amount}', amount.toLocaleString())
+          .replace('{tokens}', totalHaiNum.toLocaleString())
+          .replace('{wallet}', wallet);
 
         const isUserConfirmed = window.haichainDialog?.confirm
           ? await window.haichainDialog.confirm(confirmMsg, {
@@ -1684,9 +1765,9 @@ Timestamp: ${new Date().toISOString()}`;
             } catch (solSignErr) {
               console.warn("Solana sign error:", solSignErr);
               if (solSignErr && (solSignErr.code === 4001 || solSignErr.message?.includes('rejected') || solSignErr.message?.includes('User rejected'))) {
-                alert(isVi ? 'Bạn đã hủy yêu cầu ký duyệt trên ví.' : 'Transaction was cancelled in your wallet.');
+                alert(getI18nText('solanaTxCancelled'));
               } else {
-                alert(isVi ? ('Lỗi ví: ' + (solSignErr.message || solSignErr)) : ('Wallet error: ' + (solSignErr.message || solSignErr)));
+                alert(getI18nText('solanaErrorPrefix') + ' ' + (solSignErr.message || solSignErr));
               }
               return;
             }
@@ -1753,23 +1834,9 @@ Timestamp: ${new Date().toISOString()}`;
           console.warn('Could not persist allocation:', e);
         }
 
-        alert(isVi
-          ? `🎉 GIAO DỊCH VÀ ĐĂNG KÝ SAFT THÀNH CÔNG!
-
-Ví của bạn (${wallet.slice(0, 6)}...${wallet.slice(-4)}) đã chính thức sở hữu ${totalHaiNum.toLocaleString()} $HAISI.
-
-🛡️ BẢO CHỨNG CHUYỂN ĐỔI MAINNET:
-Toàn bộ ${totalHaiNum.toLocaleString()} $HAISI đã được bảo lưu bất biến theo Hợp đồng SAFT. Ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token-2022 sẽ tự động giải ngân và chuyển đổi 100% số token này thành Token Thật on-chain về đúng địa chỉ ví này của bạn mà không cần thủ tục nào khác.
-
-Hệ thống đang chuyển bạn đến Két sắt Vesting để kiểm tra số dư và chứng nhận phân bổ.`
-          : `🎉 TRANSACTION CONFIRMED & SAFT ALLOCATION RECORDED!
-
-Your wallet (${wallet.slice(0, 6)}...${wallet.slice(-4)}) now officially holds ${totalHaiNum.toLocaleString()} $HAISI.
-
-🛡️ OFFICIAL MAINNET GUARANTEE:
-All ${totalHaiNum.toLocaleString()} $HAISI are immutably bound under the SAFT contract. Upon HAICHAIN Mainnet TGE, the Solana Token-2022 smart contract will automatically disburse 100% real tokens directly to this wallet address without manual intervention.
-
-Redirecting to your Vesting Vault tab.`);
+        alert(getI18nText('saftSuccessAlert')
+          .replace('{shortWallet}', `${wallet.slice(0, 6)}...${wallet.slice(-4)}`)
+          .replace(/{tokens}/g, totalHaiNum.toLocaleString()));
 
         if (typeof window.switchTab === 'function') {
           window.switchTab('tab-vesting');

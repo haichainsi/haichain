@@ -3469,13 +3469,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <div class="flex items-center space-x-2 min-w-0 pr-2">
           <span class="text-sm shrink-0">🦊</span>
           <div class="truncate">
-            <span class="font-bold text-white">${isVi ? 'Đã kết nối ví MetaMask' : 'MetaMask Wallet Connected'}</span>: 
+            <span class="font-bold text-white">${getDashNotice('metaMaskConnectedBanner')}</span>: 
             <span class="text-neutral-300 font-mono text-[11px]">${shortAddr} (${balText})</span>
           </div>
         </div>
         <div class="flex items-center space-x-2 shrink-0">
           <a href="${returnHref}" class="py-1 px-2.5 rounded-lg bg-white text-black font-bold text-[10px] sm:text-xs hover:bg-neutral-200 transition-colors shadow flex items-center space-x-1 whitespace-nowrap">
-            <span>${isVi ? 'Quay về Safari / Chrome' : 'Return to Safari / Chrome'}</span>
+            <span>${getDashNotice('returnToBrowser')}</span>
             <span>&rarr;</span>
           </a>
           <button type="button" onclick="document.getElementById('metamask-mobile-handoff-bar').remove()" class="text-neutral-400 hover:text-white p-1 text-sm font-bold leading-none cursor-pointer">&times;</button>
@@ -3527,7 +3527,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                   const isVi = window.haichainI18n?.currentLang === 'vi';
                   if (typeof showToast === 'function') {
                     showToast({
-                      title: isVi ? '✓ MetaMask Đã Kết Nối Thực Tế!' : '✓ MetaMask Real Wallet Connected!',
+                      title: getDashNotice('metaMaskRealConnectedTitle'),
                       message: account.slice(0, 6) + '...' + account.slice(-4) + (userWallet.evmBalance ? ` (${userWallet.evmBalance} ETH)` : ''),
                       icon: 'check-circle'
                     });
@@ -3868,11 +3868,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             // MOBILE 1-CLICK DEEPLINK (Mirroring Phantom UX: Direct native app launch & seamless auto-return)
             walletConnectModal.classList.add('hidden');
             const isVi = window.haichainI18n?.currentLang === 'vi';
-            walletBtnText.textContent = getDashNotice('connectingMetaMask') || (isVi ? 'Đang mở MetaMask...' : 'Opening MetaMask...');
+            walletBtnText.textContent = getDashNotice('connectingMetaMask');
             armWalletConnectRevert(4500);
             showToast({
-              title: isVi ? 'Ví MetaMask Mobile' : 'MetaMask Mobile',
-              message: isVi ? 'Đang kết nối tới ứng dụng MetaMask...' : 'Launching MetaMask App...',
+              title: getDashNotice('metaMaskMobileTitle'),
+              message: getDashNotice('launchingMetaMaskApp'),
               icon: 'arrow-right'
             });
             setTimeout(() => {
@@ -4657,6 +4657,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     
     const DASH_NOTICES_I18N = {
   "kk": {
+    "metaMaskConnectedBanner": "MetaMask әмияны қосылды",
+    "returnToBrowser": "Safari / Chrome браузеріне оралу",
+    "metaMaskRealConnectedTitle": "✓ Нақты MetaMask әмияны қосылды!",
+    "metaMaskMobileTitle": "MetaMask Мобильді",
+    "launchingMetaMaskApp": "MetaMask қолданбасын іске қосу...",
+    "redirectMetaMaskRealTx": "Нақты қаражатпен транзакцияны растау үшін MetaMask қолданбасына бағытталуда...",
     "confirmResetBtn": "Қалпына келтіру",
     "cancelBtn": "Бас тарту",
     "cmdCopied": "✓ Пәрмен көшірілді!",
@@ -4728,6 +4734,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Vault Балансы Жеткіліксіз"
   },
   "en": {
+    "metaMaskConnectedBanner": "MetaMask Wallet Connected",
+    "returnToBrowser": "Return to Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ MetaMask Real Wallet Connected!",
+    "metaMaskMobileTitle": "MetaMask Mobile",
+    "launchingMetaMaskApp": "Launching MetaMask App...",
+    "redirectMetaMaskRealTx": "Redirecting to MetaMask app to confirm transaction with real funds...",
     "confirmResetBtn": "Reset",
     "cancelBtn": "Cancel",
     "cmdCopied": "✓ Command copied!",
@@ -4799,6 +4811,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Insufficient Vault Balance"
   },
   "zh": {
+    "metaMaskConnectedBanner": "已连接 MetaMask 钱包",
+    "returnToBrowser": "返回 Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ MetaMask 真实钱包已连接！",
+    "metaMaskMobileTitle": "MetaMask 移动端",
+    "launchingMetaMaskApp": "正在启动 MetaMask 应用程序...",
+    "redirectMetaMaskRealTx": "正在跳转至 MetaMask 应用程序以使用真实资金确认交易...",
     "confirmResetBtn": "重置",
     "cancelBtn": "取消",
     "cmdCopied": "✓ 命令已复制！",
@@ -4870,6 +4888,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "金库可用余额不足"
   },
   "vi": {
+    "metaMaskConnectedBanner": "Đã kết nối ví MetaMask",
+    "returnToBrowser": "Quay về Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ MetaMask Đã Kết Nối Thực Tế!",
+    "metaMaskMobileTitle": "Ví MetaMask Mobile",
+    "launchingMetaMaskApp": "Đang kết nối tới ứng dụng MetaMask...",
+    "redirectMetaMaskRealTx": "Đang chuyển sang ứng dụng MetaMask để bạn xác nhận giao dịch bằng tiền thật...",
     "confirmResetBtn": "Đặt lại",
     "cancelBtn": "Huỷ",
     "cmdCopied": "✓ Đã sao chép lệnh!",
@@ -4941,6 +4965,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Số dư không đủ"
   },
   "ko": {
+    "metaMaskConnectedBanner": "MetaMask 지갑 연결됨",
+    "returnToBrowser": "Safari / Chrome으로 돌아가기",
+    "metaMaskRealConnectedTitle": "✓ MetaMask 실제 지갑 연결됨!",
+    "metaMaskMobileTitle": "MetaMask 모바일",
+    "launchingMetaMaskApp": "MetaMask 앱을 실행하는 중...",
+    "redirectMetaMaskRealTx": "실제 자금으로 거래를 확인하기 위해 MetaMask 앱으로 이동하는 중...",
     "confirmResetBtn": "재설정",
     "cancelBtn": "취소",
     "cmdCopied": "✓ 명령어가 복사되었습니다!",
@@ -5012,6 +5042,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Vault 잔액 부족"
   },
   "fr": {
+    "metaMaskConnectedBanner": "Portefeuille MetaMask Connecté",
+    "returnToBrowser": "Retourner à Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ Vrai Portefeuille MetaMask Connecté !",
+    "metaMaskMobileTitle": "MetaMask Mobile",
+    "launchingMetaMaskApp": "Lancement de l'application MetaMask...",
+    "redirectMetaMaskRealTx": "Redirection vers l'application MetaMask pour confirmer la transaction...",
     "confirmResetBtn": "Réinitialiser",
     "cancelBtn": "Annuler",
     "cmdCopied": "✓ Commande copiée !",
@@ -5083,6 +5119,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Solde insuffisant dans le Vault"
   },
   "es": {
+    "metaMaskConnectedBanner": "Billetera MetaMask Conectada",
+    "returnToBrowser": "Volver a Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ ¡Billetera Real MetaMask Conectada!",
+    "metaMaskMobileTitle": "MetaMask Móvil",
+    "launchingMetaMaskApp": "Iniciando la aplicación MetaMask...",
+    "redirectMetaMaskRealTx": "Redirigiendo a la aplicación MetaMask para confirmar la transacción con fondos reales...",
     "confirmResetBtn": "Restablecer",
     "cancelBtn": "Cancelar",
     "cmdCopied": "✓ ¡Comando copiado!",
@@ -5154,6 +5196,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Saldo insuficiente en la Bóveda"
   },
   "ru": {
+    "metaMaskConnectedBanner": "Кошелек MetaMask Подключен",
+    "returnToBrowser": "Вернуться в Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ Реальный Кошелек MetaMask Подключен!",
+    "metaMaskMobileTitle": "MetaMask Мобильный",
+    "launchingMetaMaskApp": "Запуск приложения MetaMask...",
+    "redirectMetaMaskRealTx": "Перенаправление в приложение MetaMask для подтверждения транзакции реальными средствами...",
     "confirmResetBtn": "Сброс",
     "cancelBtn": "Отмена",
     "cmdCopied": "✓ Команда скопирована!",
@@ -5225,6 +5273,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "Недостаточно средств в Сейфе"
   },
   "hi": {
+    "metaMaskConnectedBanner": "मेटामास्क वॉलेट कनेक्ट हो गया",
+    "returnToBrowser": "Safari / Chrome पर लौटें",
+    "metaMaskRealConnectedTitle": "✓ मेटामास्क असली वॉलेट कनेक्ट हो गया!",
+    "metaMaskMobileTitle": "मेटामास्क मोबाइल",
+    "launchingMetaMaskApp": "मेटामास्क ऐप लॉन्च किया जा रहा है...",
+    "redirectMetaMaskRealTx": "वास्तविक फंड के साथ लेनदेन की पुष्टि करने के लिए मेटामास्क ऐप पर पुनर्निर्देशित किया जा रहा है...",
     "confirmResetBtn": "रीसेट करें",
     "cancelBtn": "रद्द करें",
     "cmdCopied": "✓ कमांड कॉपी हो गई!",
@@ -5296,6 +5350,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "insufficientVaultBalance": "वॉल्ट में अपर्याप्त शेष"
   },
   "he": {
+    "metaMaskConnectedBanner": "ארנק MetaMask מחובר",
+    "returnToBrowser": "חזור ל-Safari / Chrome",
+    "metaMaskRealConnectedTitle": "✓ ארנק אמיתי של MetaMask מחובר!",
+    "metaMaskMobileTitle": "MetaMask מובייל",
+    "launchingMetaMaskApp": "מפעיל את אפליקציית MetaMask...",
+    "redirectMetaMaskRealTx": "מפנה לאפליקציית MetaMask כדי לאשר את העסקה עם כספים אמיתיים...",
     "confirmResetBtn": "איפוס",
     "cancelBtn": "ביטול",
     "cmdCopied": "✓ הפקודה הועתקה!",
@@ -6066,7 +6126,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               if (dashDepositAmount) currentUrl.searchParams.set('depositAmount', dashDepositAmount.value);
               const appOrigin = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'https://haichain.pages.dev' : window.location.origin;
               const targetUrl = appOrigin + currentUrl.pathname + currentUrl.search;
-              alert(isVi ? "Đang chuyển sang ứng dụng MetaMask để bạn xác nhận giao dịch bằng tiền thật..." : "Redirecting to MetaMask App to approve transaction with real funds...");
+              alert(getDashNotice('redirectMetaMaskRealTx'));
               window.location.href = 'https://metamask.app.link/dapp/' + targetUrl.replace(/^https?:\/\//, '');
               return;
             }
