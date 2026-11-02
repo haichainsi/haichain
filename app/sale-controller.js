@@ -228,7 +228,7 @@
       refYourLink: 'Link Giới Thiệu Riêng Của Bạn:',
       refCopyLink: 'Sao Chép Link',
       refCopied: 'Đã Sao Chép! ✓',
-      refShareX: 'Chia sẻ lên X',
+      refShareX: 'Chia sẻ X',
       refShareTelegram: 'Telegram',
       refConnectToGenerate: 'Kết nối ví Web3 để tạo link giới thiệu và bắt đầu nhận 6% hoa hồng $HAISI.',
       refActiveBadge: '✓ Đang Áp Dụng Mã Giới Thiệu: Nhận Thêm +5% Bonus Token',
