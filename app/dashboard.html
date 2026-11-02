@@ -7444,7 +7444,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const activeAddr = hasWallet ? String(userWallet.address).trim() : '';
 
       if (hasWallet && activeAddr) {
-        const personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
+        let personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
+        if (typeof balance === 'number' && balance > 0) {
+          personalizedUrl += `&bal=${balance.toFixed(2)}`;
+        }
         if (codeSnippet) codeSnippet.textContent = personalizedUrl;
         if (badgeEl) {
           badgeEl.className = "text-[9.5px] bg-neutral-900 border border-neutral-700 px-2.5 py-0.5 rounded-full text-white font-mono shrink-0 whitespace-nowrap font-semibold";
@@ -7481,9 +7484,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       copyOnlineMcpBtn.addEventListener('click', async () => {
         const hasWallet = !!(userWallet && userWallet.address);
         const activeAddr = hasWallet ? String(userWallet.address).trim() : '';
-        const url = hasWallet && activeAddr 
-          ? `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`
-          : "https://mcp.haichain.si/api/mcp";
+        let url = "https://mcp.haichain.si/api/mcp";
+        if (hasWallet && activeAddr) {
+          url = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
+          if (typeof balance === 'number' && balance > 0) {
+            url += `&bal=${balance.toFixed(2)}`;
+          }
+        }
 
         try {
           await navigator.clipboard.writeText(url);
