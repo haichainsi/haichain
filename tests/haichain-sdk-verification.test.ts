@@ -80,4 +80,95 @@ describe("HAICHAIN Phase 1 Audit: Cryptographic Leaf & Voucher Payload Verificat
     expect(payloadDevnet.equals(payloadMainnet)).to.be.false;
     expect(payloadDevnet.length).to.equal(32);
   });
+
+  it("4. [OFF-CHAIN PROOF VERIFICATION PARITY]: verifyCompositeProof accurately validates Merkle proof matching on-chain Anchor logic", () => {
+    // Construct a 2-leaf Merkle tree with sorted pair hashing
+    const subAgent = Keypair.generate().publicKey;
+    const merchantAta = Keypair.generate().publicKey;
+    const leafA = HaiChainClient.computeCompositeCapabilityLeaf(subAgent, merchantAta, 1000n, 200n, 1n);
+    const leafB = HaiChainClient.computeCompositeCapabilityLeaf(subAgent, merchantAta, 2000n, 300n, 2n);
+
+    // Compute root with sorted pair logic
+    let root: Buffer;
+    if (Buffer.compare(leafA, leafB) <= 0) {
+      root = Buffer.from(keccak_256(Buffer.concat([leafA, leafB])));
+    } else {
+      root = Buffer.from(keccak_256(Buffer.concat([leafB, leafA])));
+    }
+
+    // Proof for leafA is [leafB]
+    const proofForA = [leafB];
+    const isValid = HaiChainClient.verifyCompositeProof(leafA, proofForA, root);
+    expect(isValid).to.be.true;
+
+    // Proof for leafB is [leafA]
+    const proofForB = [leafA];
+    const isValidB = HaiChainClient.verifyCompositeProof(leafB, proofForB, root);
+    expect(isValidB).to.be.true;
+
+    // Tampered leaf or proof fails
+    const tamperedLeaf = Buffer.from(leafA);
+    tamperedLeaf[0] ^= 0xff;
+    const isTamperedValid = HaiChainClient.verifyCompositeProof(tamperedLeaf, proofForA, root);
+    expect(isTamperedValid).to.be.false;
+  });
+
+  it("5. [ED25519 VOUCHER SIGNING & VERIFICATION]: Produces valid cryptographic signature and blocks tampering", () => {
+    const agentKeypair = Keypair.generate();
+    const programId = Keypair.generate().publicKey;
+    const vaultPda = Keypair.generate().publicKey;
+    const providerPubkey = Keypair.generate().publicKey;
+
+    const voucherArgs = {
+      clusterId: "mainnet-beta" as const,
+      programId,
+      vaultPda,
+      providerPubkey,
+      sessionId: "session_agent_99",
+      nonce: 1n,
+      cumulativeAmount: 50_000n,
+    };
+
+    const { payloadHash, signature, signatureBase64 } = HaiChainClient.signMicroVoucher(
+      agentKeypair,
+      voucherArgs
+    );
+
+    expect(signature.length).to.equal(64); // Standard Ed25519 64-byte signature
+    expect(signatureBase64).to.be.a("string");
+
+    // Verification succeeds with correct signer
+    const isValid = HaiChainClient.verifyMicroVoucherSignature(
+      agentKeypair.publicKey,
+      payloadHash,
+      signature
+    );
+    expect(isValid).to.be.true;
+
+    // Verification fails if signer is substituted (imposter attack)
+    const attackerKeypair = Keypair.generate();
+    const isAttackerValid = HaiChainClient.verifyMicroVoucherSignature(
+      attackerKeypair.publicKey,
+      payloadHash,
+      signature
+    );
+    expect(isAttackerValid).to.be.false;
+
+    // Verification fails if amount is altered by malicious provider (inflation attack)
+    const alteredPayloadHash = HaiChainClient.buildVoucherSigningPayload(
+      "mainnet-beta",
+      programId,
+      vaultPda,
+      providerPubkey,
+      "session_agent_99",
+      1n,
+      100_000n // altered amount!
+    );
+    const isAlteredValid = HaiChainClient.verifyMicroVoucherSignature(
+      agentKeypair.publicKey,
+      alteredPayloadHash,
+      signature
+    );
+    expect(isAlteredValid).to.be.false;
+  });
 });

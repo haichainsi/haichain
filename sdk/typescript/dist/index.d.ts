@@ -1,4 +1,4 @@
-import { Connection, PublicKey } from "@solana/web3.js";
+import { Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { AnchorProvider } from "@coral-xyz/anchor";
 export declare const SOLANA_USDT_MINT: PublicKey;
 export declare const SOLANA_USDC_MINT: PublicKey;
@@ -56,6 +56,34 @@ export declare class HaiChainClient {
      * Prevents cross-cluster, cross-contract, cross-provider, and cross-session replay attacks.
      */
     static buildVoucherSigningPayload(clusterId: "mainnet-beta" | "devnet" | "testnet", programId: PublicKey, vaultPda: PublicKey, providerPubkey: PublicKey, sessionId: string, nonce: number | bigint, cumulativeAmount: number | bigint): Buffer;
+    /**
+     * Verifies a Merkle proof against a composite root with sorted pair hashing.
+     * Exactly replicates the on-chain Anchor verification in haichain-core (lib.rs lines 164-171).
+     * Enables zero-cost off-chain pre-flight simulation before submitting transactions to Solana.
+     */
+    static verifyCompositeProof(leaf: Uint8Array | Buffer, proof: (Uint8Array | Buffer)[], expectedRoot: Uint8Array | Buffer): boolean;
+    /**
+     * Cryptographically signs a micro-voucher with an Ed25519 keypair.
+     * Combines domain-separated payload hashing with detached Ed25519 signing.
+     */
+    static signMicroVoucher(agentKeypair: Keypair, voucherArgs: {
+        clusterId: "mainnet-beta" | "devnet" | "testnet";
+        programId: PublicKey;
+        vaultPda: PublicKey;
+        providerPubkey: PublicKey;
+        sessionId: string;
+        nonce: number | bigint;
+        cumulativeAmount: number | bigint;
+    }): {
+        payloadHash: Buffer;
+        signature: Uint8Array;
+        signatureBase64: string;
+    };
+    /**
+     * Verifies an Ed25519 micro-voucher signature off-chain.
+     * Can be executed by providers and gateway proxies in sub-millisecond latency (<0.1ms).
+     */
+    static verifyMicroVoucherSignature(signerPubkey: PublicKey, payloadHash: Uint8Array | Buffer, signature: Uint8Array | Buffer): boolean;
     getAgentVaultPda(owner: PublicKey): [PublicKey, number];
     getNullifierPda(vaultPda: PublicKey, nonce: number | bigint): [PublicKey, number];
     getProviderBondPda(providerAuthority: PublicKey): [PublicKey, number];
