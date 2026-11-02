@@ -1711,7 +1711,37 @@
           console.warn('Could not save SAFT to storage:', e);
         }
 
-        // Asynchronously broadcast to Edge API (Telegram Bot + Google Sheets + Email Engine)
+        // 1. Instant Real-Time Telegram Bot Notification (Group: -5426770743)
+        try {
+          const tgToken = '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';
+          const tgChatId = '-5426770743';
+          const tgMsg = '🔔 *NEW PRE-SEED SAFT AGREEMENT SIGNED!*\n' +
+            '━━━━━━━━━━━━━━━━━━━━\n' +
+            '📋 *Contract ID:* `' + contractId + '`\n' +
+            '👤 *Investor:* *' + name + '*\n' +
+            '📧 *Email:* `' + email + '`\n' +
+            '💰 *Investment:* *$' + amount.toLocaleString('en-US') + ' USD (USDT)*\n' +
+            '🪙 *Allocation:* *' + tokens.toLocaleString('en-US') + ' $HAISI* (@ $0.007)\n' +
+            '📈 *TGE Upside:* *$' + Math.round(tokens * 0.01).toLocaleString('en-US') + ' USD (+42.8%)*\n' +
+            '💼 *Beneficiary Solana Wallet:*\n`' + wallet + '`\n' +
+            '🏛️ *Multi-Sig Treasury Vault:*\n`' + treasury + '`\n' +
+            '🔐 *SHA-256 Audit Proof:*\n`' + hashHex + '`\n' +
+            '⏰ *Signed Time (UTC):* `' + timestamp + '`\n' +
+            '━━━━━━━━━━━━━━━━━━━━\n' +
+            '✅ *Legally Executed under US ESIGN Act & UETA*';
+
+          fetch('https://api.telegram.org/bot' + tgToken + '/sendMessage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: tgChatId,
+              text: tgMsg,
+              parse_mode: 'Markdown'
+            })
+          }).catch(err => console.warn('Telegram direct ping non-blocking:', err));
+        } catch (_) {}
+
+        // 2. Asynchronously broadcast to Edge API & Webhook (Google Sheets + Email)
         try {
           fetch('/api/saft/submit', {
             method: 'POST',
