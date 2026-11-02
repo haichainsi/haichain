@@ -1014,6 +1014,12 @@
       return true;
     }
 
+    // 1. Referral Invitation Clearance: An active referral link is an authorized VIP invitation!
+    const activeRef = (typeof getActiveReferral === 'function') ? getActiveReferral() : localStorage.getItem('haichain_ref');
+    if (activeRef && String(activeRef).trim().length >= 4) {
+      return true;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const candidateKey = (urlParams.get('access') || urlParams.get('key') || urlParams.get('code') || '').toLowerCase().trim();
 
@@ -2572,8 +2578,9 @@ Please fund your wallet with SOL to continue.`);
     const urlParams = new URLSearchParams(window.location.search);
     const hasAccessKey = Boolean(urlParams.get('access') || urlParams.get('key') || urlParams.get('code'));
     const isPreseedTab = ['preseed', 'presale', 'private', 'sale', 'vip'].includes((urlParams.get('tab') || '').toLowerCase());
+    const hasRef = Boolean(urlParams.get('ref') || urlParams.get('referrer') || urlParams.get('inviter'));
 
-    if (hasAccessKey || isPreseedTab) {
+    if (hasAccessKey || isPreseedTab || hasRef) {
       let attempts = 0;
       const autoSwitchInterval = setInterval(() => {
         attempts++;

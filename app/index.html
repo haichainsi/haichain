@@ -174,7 +174,7 @@
 
   <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
 
-  <script src="/app/i18n.js?v=v39_exact_small_text_1793638573636"></script>
+  <script src="/app/i18n.js?v=v31_mobile_top_banner_1793638784"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v40_fluid_signature_validated_1793646000000"></script>
@@ -471,16 +471,39 @@
 
   </style>
 
-  <!-- HAICHAIN Genesis Referral Tracker -->
+    <!-- HAICHAIN Genesis Referral Tracker & Dynamic Welcome Banner -->
   <script>
     (function() {
       try {
         var p = new URLSearchParams(window.location.search);
         var ref = p.get('ref') || p.get('referrer') || p.get('inviter');
         if (ref && ref.trim().length >= 4) {
-          localStorage.setItem('haichain_ref', ref.trim());
+          var cleanRef = ref.trim();
+          localStorage.setItem('haichain_ref', cleanRef);
           localStorage.setItem('haichain_ref_captured_at', new Date().toISOString());
         }
+
+        // Show welcome banner if referral exists
+        document.addEventListener('DOMContentLoaded', function() {
+          var activeRef = ref || localStorage.getItem('haichain_ref');
+          var banner = document.getElementById('referral-welcome-banner');
+          var textEl = document.getElementById('referral-welcome-text');
+          var ctaEl = document.getElementById('referral-welcome-cta');
+          var ctaText = document.getElementById('referral-welcome-cta-text');
+          if (activeRef && banner && textEl) {
+            var shortRef = activeRef.slice(0, 6) + '...' + activeRef.slice(-4);
+            var isVi = (localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang') || '').toLowerCase() === 'vi';
+            if (isVi) {
+              textEl.textContent = '🎉 Bạn nhận được lời mời từ ' + shortRef + '! Nhận thêm +5% Bonus $HAISI khi nạp.';
+              if (ctaText) ctaText.textContent = 'Nhận +5% Bonus Ngay →';
+            } else {
+              textEl.textContent = '🎉 Invited by Genesis Backer ' + shortRef + '! Claim +5% Bonus $HAISI on your deposit.';
+              if (ctaText) ctaText.textContent = 'Claim +5% Bonus →';
+            }
+            if (ctaEl) ctaEl.href = '/dashboard?tab=preseed&ref=' + encodeURIComponent(activeRef);
+            banner.classList.remove('hidden');
+          }
+        });
       } catch (_) {}
     })();
   </script>
@@ -491,35 +514,35 @@
 
 
 
-  <!-- TOP STATUS BANNER: LIVE SOLANA DEVNET CLUSTER -->
+    <!-- TOP STATUS BANNER: LIVE SOLANA DEVNET CLUSTER -->
 
-  <div class="border-b border-brand-lightBorder dark:border-brand-border bg-neutral-100/90 dark:bg-neutral-950/90 backdrop-blur-md text-xs py-2 px-4">
+  <div class="border-b border-brand-lightBorder dark:border-brand-border bg-neutral-100/90 dark:bg-neutral-950/90 backdrop-blur-md text-[11px] sm:text-xs py-1.5 sm:py-2 px-2.5 sm:px-4">
 
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-1.5 sm:gap-2">
 
-      <div class="flex items-center space-x-2">
+      <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0 min-w-0">
 
-        <span class="inline-block w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse"></span>
+        <span class="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-black dark:bg-white animate-pulse shrink-0"></span>
 
-        <span class="text-neutral-700 dark:text-neutral-300 font-medium" data-i18n="cluster.devnetLive">Solana Devnet Live</span>
+        <span class="text-neutral-700 dark:text-neutral-300 font-medium whitespace-nowrap" data-i18n="cluster.devnetLive">Solana Devnet Live</span>
 
-        <span class="text-neutral-400 dark:text-neutral-600">|</span>
+        <span class="text-neutral-400 dark:text-neutral-600 hidden sm:inline">|</span>
 
         <span class="text-neutral-500 dark:text-neutral-400 font-mono hidden sm:inline"><span data-i18n="cluster.programLabel">Program:</span> <a href="https://explorer.solana.com/address/DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">DK4Q...w4xk</a></span>
 
         <span class="hidden md:inline text-neutral-400 dark:text-neutral-600">|</span>
 
-        <span class="hidden md:inline text-black dark:text-white font-mono font-semibold" data-i18n="cluster.auditsPassed">15/15 Test Vectors Verified</span>
+        <span class="hidden md:inline text-black dark:text-white font-mono font-semibold whitespace-nowrap" data-i18n="cluster.auditsPassed">15/15 Test Vectors Verified</span>
 
       </div>
 
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-2 sm:space-x-4 shrink-0">
 
-        <a href="https://explorer.solana.com/tx/4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA?cluster=devnet" target="_blank" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1">
+        <a href="https://explorer.solana.com/tx/4946birjjYz3DHxjNuq1D9gviny1xoGvYWxQop2gNzD1APykHJXUQZbNAhqeBS9oXEL6D1YMyZUNgKD1ikjrGcdA?cluster=devnet" target="_blank" class="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1 whitespace-nowrap">
 
           <span data-i18n="cluster.genesisTx">Verified Genesis Tx</span>
 
-          <i data-lucide="external-link" class="w-3 h-3"></i>
+          <i data-lucide="external-link" class="w-3 h-3 shrink-0"></i>
 
         </a>
 
