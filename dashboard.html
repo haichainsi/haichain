@@ -159,8 +159,8 @@
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
-  <script src="/app/dialog.js?v=v22_hub_transparency_1793594250362"></script>
-  <script src="/app/i18n.js?v=v32_mobile_hub_clean_1793615000000"></script>
+  <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
+  <script src="/app/i18n.js?v=v22_hub_transparency_1793616812695"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v32_mobile_hub_clean_1793615000000"></script>
@@ -1532,49 +1532,67 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         </div>
       </div>
 
-            <!-- ================= TAB 2: CLAUDE MOBILE MCP GATEWAY (MOBILE OPTIMIZED) ================= -->
+                  <!-- ================= TAB 2: CLAUDE MOBILE MCP GATEWAY (24/7 ACTIVE) ================= -->
       <div id="hub-section-online" class="hidden space-y-3 font-mono text-xs">
         <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 space-y-1.5">
           <div class="flex items-center justify-between">
             <span class="text-black dark:text-white font-sans font-bold text-xs flex items-center space-x-1.5">
               <i data-lucide="smartphone" class="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300"></i>
-              <span data-i18n="aiHub.onlineTitle">MCP Gateway (Claude Mobile)</span>
+              <span data-i18n="aiHub.onlineTitle">Claude Mobile MCP Gateway</span>
             </span>
-            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">Under Deployment</span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">ONLINE (24/7)</span>
           </div>
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed" data-i18n="aiHub.onlineDesc">
-            Direct remote integration for Claude Mobile requires a dedicated 24/7 Gateway server. For immediate verified testing, choose one of the two active options below:
+            Direct 24/7 cloud integration for the Claude app on iOS & Android. Connects directly to the global HAICHAIN Cloud MCP Gateway via Streamable HTTP with zero desktop software required.
           </p>
         </div>
 
-        <!-- Infrastructure Status Card & Immediate Action -->
-        <div class="p-3.5 sm:p-4 rounded-2xl bg-neutral-100/60 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-3 font-sans">
-          <div class="flex items-start space-x-2.5 text-xs text-neutral-700 dark:text-neutral-300">
-            <div class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse mt-1 shrink-0"></div>
-            <div class="space-y-1 flex-1">
-              <div class="font-bold text-black dark:text-white text-xs sm:text-[13px]" data-i18n="aiHub.onlineNoticeTitle">24/7 Gateway Server Under Deployment</div>
-              <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="aiHub.onlineNoticeText">
-                The site is currently hosted on a Static CDN, so remote requests return 404. We recommend using AI Playground directly on mobile or Claude Desktop on PC.
-              </p>
-            </div>
+        <!-- Official Server URL Box -->
+        <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-950 border border-neutral-800 space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-1.5 text-[11px] text-neutral-400">
+            <span class="flex items-center space-x-1.5 font-sans">
+              <i data-lucide="link" class="w-3.5 h-3.5 text-neutral-300 shrink-0"></i>
+              <span class="text-neutral-300 font-medium" data-i18n="aiHub.onlineUrlLabel">MCP Server URL (For Claude Mobile):</span>
+            </span>
+            <span class="text-[9px] bg-emerald-950/80 border border-emerald-800/80 px-2 py-0.5 rounded-full text-emerald-400 font-mono shrink-0 whitespace-nowrap">Streamable HTTP / SSL</span>
           </div>
-
-          <!-- Pure text buttons with zero duplicate icons, optimized for mobile finger taps -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-            <button type="button" id="online-switch-playground-btn" class="w-full py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-bold text-xs flex items-center justify-center hover:opacity-90 active:scale-98 transition-all cursor-pointer shadow-sm text-center">
-              <span data-i18n="aiHub.onlinePlaygroundBtn">Open AI Playground (Mobile)</span>
-            </button>
-            <button type="button" id="online-switch-desktop-btn" class="w-full py-2.5 px-3 rounded-xl bg-neutral-200/80 dark:bg-neutral-800 text-black dark:text-white font-semibold text-xs border border-neutral-300 dark:border-neutral-700 flex items-center justify-center hover:bg-neutral-300 dark:hover:bg-neutral-700 active:scale-98 transition-all cursor-pointer text-center">
-              <span data-i18n="aiHub.onlineDesktopBtn">Claude Desktop (PC/Mac)</span>
-            </button>
+          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-emerald-400 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
+            <code id="online-mcp-url-snippet">https://mcp.haichain.si/api/mcp</code>
           </div>
         </div>
 
-        <!-- On-Chain Ready Tools Card (Mobile Responsive Text wrapping) -->
+        <button id="copy-online-mcp-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-sm transition-all active:scale-98 cursor-pointer">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span id="copy-online-mcp-text" data-i18n="aiHub.onlineCopyBtn">Copy Server URL</span>
+        </button>
+
+        <!-- 3 Step Mobile Connection Guide -->
+        <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-2 font-sans">
+          <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-neutral-400 shrink-0"></i>
+            <span data-i18n="aiHub.onlineStepsTitle">3 Steps to Connect on Claude Mobile:</span>
+          </div>
+          <div class="space-y-1.5 text-[10.5px] sm:text-[11px]">
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+              <span data-i18n="aiHub.onlineStep1">Open Claude app on phone -> Settings -> Connectors -> Add custom connector.</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+              <span data-i18n="aiHub.onlineStep2">Set Name to 'HAICHAIN' and paste the Server URL https://mcp.haichain.si/api/mcp into the URL field.</span>
+            </div>
+            <div class="flex items-start space-x-2">
+              <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+              <span data-i18n="aiHub.onlineStep3">Click Connect -> Select 'No authentication' (or click 'Continue anyway') -> Done!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 On-Chain Ready Tools Card -->
         <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-1.5 font-sans">
           <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
             <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
-            <span data-i18n="aiHub.onlineReadyToolsTitle">4 On-Chain MCP Tools Ready on Kernel:</span>
+            <span data-i18n="aiHub.onlineReadyToolsTitle">4 On-Chain MCP Tools Ready:</span>
           </div>
           <div class="space-y-1 font-mono text-[10px] sm:text-[10.5px] text-neutral-500 dark:text-neutral-400 pl-2 sm:pl-4 break-words">
             <div>• <strong class="text-neutral-800 dark:text-neutral-200">get_spending_pot_balance</strong>: On-chain vault balance query</div>
@@ -7230,7 +7248,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     // Copy Online MCP SSE URL
     if (copyOnlineMcpBtn) {
       copyOnlineMcpBtn.addEventListener('click', async () => {
-        const url = "https://haichain.si/api/mcp";
+        const url = "https://mcp.haichain.si/api/mcp";
         try {
           await navigator.clipboard.writeText(url);
           if (copyOnlineMcpText) copyOnlineMcpText.textContent = getDashNotice('linkCopied');
