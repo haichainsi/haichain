@@ -1711,6 +1711,17 @@
           console.warn('Could not save SAFT to storage:', e);
         }
 
+        // Asynchronously broadcast to Edge API (Telegram Bot + Google Sheets + Email Engine)
+        try {
+          fetch('/api/saft/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(signedRecord)
+          }).catch(err => console.warn('Edge SAFT sync non-blocking error:', err));
+        } catch (err) {
+          console.warn('Edge SAFT dispatch error:', err);
+        }
+
         // Display Success View
         modal.querySelector('#saft-rec-id').textContent = contractId;
         modal.querySelector('#saft-rec-name').textContent = name;

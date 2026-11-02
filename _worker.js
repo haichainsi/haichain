@@ -754,9 +754,155 @@ async function handleReferralStats(request, env, ctx) {
   });
 }
 
+
+// ==============================================================================
+// HAICHAIN PRE-SEED SAFT SUBMISSION, AUDIT & NOTIFICATION EDGE ENGINE
+// ==============================================================================
+const globalSaftRecords = [];
+
+async function handleSaftSubmit(request, env, ctx) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+  if (request.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405, headers: corsHeaders });
+  }
+
+  try {
+    const data = await request.json();
+    const contractId = data.contractId || ('SAFT-HAI-' + Math.random().toString(36).substring(2, 7).toUpperCase());
+    const name = data.name || 'Anonymous Investor';
+    const email = data.email || 'haichain.si@gmail.com';
+    const amount = Number(data.amount) || 0;
+    const tokens = Number(data.tokens) || Math.floor(amount / 0.007);
+    const wallet = data.wallet || 'N/A';
+    const treasury = data.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
+    const timestamp = data.timestamp || new Date().toISOString();
+    const hashHex = data.hashHex || 'N/A';
+    const signatureData = data.signatureData || '';
+
+    const saftRecord = {
+      contractId,
+      name,
+      email,
+      amount,
+      tokens,
+      wallet,
+      treasury,
+      timestamp,
+      hashHex,
+      signatureData
+    };
+
+    // 1. Keep in edge memory & KV if available
+    globalSaftRecords.unshift(saftRecord);
+    if (globalSaftRecords.length > 500) globalSaftRecords.pop();
+
+    if (env && env.SAFT_KV) {
+      try {
+        await env.SAFT_KV.put('saft:' + contractId, JSON.stringify(saftRecord));
+      } catch (_) {}
+    }
+
+    // 2. Dispatch to Telegram Bot (Haichain Group: -5426770743)
+    const tgToken = (env && env.TELEGRAM_BOT_TOKEN) || '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';
+    const tgChatId = (env && env.TELEGRAM_CHAT_ID) || '-5426770743';
+
+    const tgMessage = `🔔 *NEW PRE-SEED SAFT AGREEMENT SIGNED!*
+━━━━━━━━━━━━━━━━━━━━
+📋 *Contract ID:* \`${contractId}\`
+👤 *Investor:* *${name}*
+📧 *Email:* \`${email}\`
+💰 *Investment:* *$${amount.toLocaleString('en-US')} USD (USDT)*
+🪙 *Allocation:* *${tokens.toLocaleString('en-US')} $HAISI* (@ $0.007)
+📈 *TGE Upside:* *$${Math.round(tokens * 0.01).toLocaleString('en-US')} USD (+42.8%)*
+💼 *Beneficiary Solana Wallet:*
+\`${wallet}\`
+🏛️ *Multi-Sig Treasury Vault:*
+\`${treasury}\`
+🔐 *SHA-256 Audit Proof:*
+\`${hashHex}\`
+⏰ *Signed Time (UTC):* \`${timestamp}\`
+━━━━━━━━━━━━━━━━━━━━
+✅ *Legally Executed under US ESIGN Act & UETA*`;
+
+    let tgSuccess = false;
+    try {
+      const tgRes = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: tgChatId,
+          text: tgMessage,
+          parse_mode: 'Markdown'
+        })
+      });
+      tgSuccess = tgRes.ok;
+    } catch (e) {
+      console.warn('Telegram bot send failed:', e);
+    }
+
+    // 3. Dispatch to Google Sheets Webhook (if configured)
+    const googleWebhookUrl = (env && env.GOOGLE_SHEETS_WEBHOOK_URL) || '';
+    let webhookSuccess = false;
+    if (googleWebhookUrl) {
+      try {
+        const ghRes = await fetch(googleWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(saftRecord)
+        });
+        webhookSuccess = ghRes.ok;
+      } catch (e) {
+        console.warn('Google Sheets Webhook dispatch failed:', e);
+      }
+    }
+
+    return new Response(JSON.stringify({
+      success: true,
+      contractId,
+      telegramNotified: tgSuccess,
+      googleWebhookDispatched: webhookSuccess
+    }), {
+      status: 200,
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json'
+      }
+    });
+
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message || 'Internal Server Error' }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
+}
+
+async function handleSaftList(request, env, ctx) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+  return new Response(JSON.stringify({
+    total: globalSaftRecords.length,
+    records: globalSaftRecords
+  }), {
+    status: 200,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+  });
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+
+    // SAFT Contract Execution & Audit API
+    if (url.pathname === '/api/saft/submit') {
+      return await handleSaftSubmit(request, env, ctx);
+    }
+    if (url.pathname === '/api/saft/list') {
+      return await handleSaftList(request, env, ctx);
+    }
 
     // Referral Click Telemetry & Analytics API
     if (url.pathname === '/api/referral/click') {
