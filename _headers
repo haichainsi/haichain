@@ -2,6 +2,10 @@
   Content-Type: application/javascript; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate, no-cache
 
+/index.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
+
 /dashboard
   Content-Type: text/html; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate, no-cache
@@ -10,27 +14,20 @@
   Content-Type: text/html; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate, no-cache
 
-/app/dashboard.html
-  Content-Type: text/html; charset=utf-8
+/app/*
   Cache-Control: public, max-age=0, must-revalidate, no-cache
 
-/api/*
-  Access-Control-Allow-Origin: *
-  Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
-  Access-Control-Allow-Headers: *
-  Cache-Control: no-cache, no-store, must-revalidate
+/sale-controller.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
 
-/mcp
-  Access-Control-Allow-Origin: *
-  Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
-  Access-Control-Allow-Headers: *
-  Cache-Control: no-cache, no-store, must-revalidate
+/i18n.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
 
-/sse
-  Access-Control-Allow-Origin: *
-  Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
-  Access-Control-Allow-Headers: *
-  Cache-Control: no-cache, no-store, must-revalidate
+/dialog.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
 
 /*
   Access-Control-Allow-Origin: *
@@ -59,62 +56,6 @@
 
 /favicon.ico
   Content-Type: image/x-icon
-  Cache-Control: public, max-age=0, must-revalidate
-
-/assets/favicon-16x16.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=0, must-revalidate
-
-/assets/favicon-32x32.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=0, must-revalidate
-
-/assets/favicon-48x48.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=0, must-revalidate
-
-/assets/favicon.ico
-  Content-Type: image/x-icon
-  Cache-Control: public, max-age=0, must-revalidate
-
-/assets/icon-512.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/icon-192.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/icon-maskable-512.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/icon-maskable-192.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/haisi-icon.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/haisi-icon-v2.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/haisi-token.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/haisi-token-v2.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=86400
-
-/assets/haisi-metadata.json
-  Content-Type: application/json; charset=utf-8
-  Cache-Control: public, max-age=0, must-revalidate
-
-/assets/haisi-metadata-v2.json
-  Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate
 
 /assets/*
