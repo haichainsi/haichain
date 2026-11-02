@@ -42,11 +42,13 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EnterpriseRollupInvoiceGenerator = exports.IdempotencyEngine = exports.ActionCreditsConverter = exports.DynamicSpotTicketEngine = exports.CrossChainIntentSolver = exports.DePinProviderRouter = exports.ProbabilisticSlaAuditor = exports.HaiChainClient = exports.SOLANA_USDT_MINT = void 0;
+exports.EnterpriseRollupInvoiceGenerator = exports.IdempotencyEngine = exports.ActionCreditsConverter = exports.DynamicSpotTicketEngine = exports.CrossChainIntentSolver = exports.DePinProviderRouter = exports.ProbabilisticSlaAuditor = exports.HaiChainClient = exports.SOLANA_USDC_MINT = exports.SOLANA_USDT_MINT = void 0;
 const web3_js_1 = require("@solana/web3.js");
 const spl_token_1 = require("@solana/spl-token");
 const crypto = __importStar(require("crypto"));
 exports.SOLANA_USDT_MINT = new web3_js_1.PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
+// Official Solana Mainnet Circle USD (USDC) SPL Token Mint (EU MiCA & Global Regulatory Compliant)
+exports.SOLANA_USDC_MINT = new web3_js_1.PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 class HaiChainClient {
     connection;
     programId;
@@ -69,18 +71,61 @@ class HaiChainClient {
             expiresAtIso: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
         };
     }
-    async handleX402Challenge(headers, agentPrivateKey, whitelistedProviders) {
+    /**
+     * Handles HTTP x402 Payment Challenge with strict destination whitelist verification
+     * and dynamically derived Payer Vault PDA.
+     */
+    async handleX402Challenge(headers, agentPrivateKey, whitelistedProviders, vaultOwner) {
         const payTo = new web3_js_1.PublicKey(headers["X-402-PayTo"]);
         const isWhitelisted = whitelistedProviders.some(p => p.equals(payTo));
         if (!isWhitelisted) {
             throw new Error("SECURITY ALERT: Destination provider is not whitelisted. ElizaOS Memory Poisoning blocked!");
         }
         const authSignature = `x402_sig_${Buffer.from(agentPrivateKey.slice(0, 16)).toString("hex")}_${headers["X-402-Nonce"]}`;
+        // Derive canonical Agent Vault PDA from vaultOwner, or fallback to Keypair public key
+        let payerVaultStr;
+        if (vaultOwner) {
+            payerVaultStr = this.getAgentVaultPda(vaultOwner)[0].toBase58();
+        }
+        else {
+            const derivedPubkey = web3_js_1.Keypair.fromSecretKey(agentPrivateKey).publicKey;
+            payerVaultStr = this.getAgentVaultPda(derivedPubkey)[0].toBase58();
+        }
         return {
             "X-402-Authorization": authSignature,
-            "X-402-Payer-Vault": "AgentVaultPda11111111111111111111111111111111",
+            "X-402-Payer-Vault": payerVaultStr,
             "X-402-Timestamp": new Date().toISOString(),
         };
+    }
+    /**
+     * Computes the 5-Tuple Cryptographic Composite Capability Leaf.
+     * Cryptographically binds the authorized Sub-Agent to a specific Whitelisted Merchant Token Account (ATA).
+     * Enforced on-chain by haichain-core Anchor smart contract to eliminate prompt injection / memory poisoning theft.
+     */
+    static computeCompositeCapabilityLeaf(subAgentSigner, whitelistedMerchantAta, maxAuthorizedAmount, expirySlot, nonce) {
+        const amountBuf = Buffer.alloc(8);
+        const expiryBuf = Buffer.alloc(8);
+        const nonceBuf = Buffer.alloc(8);
+        amountBuf.writeBigUInt64LE(BigInt(maxAuthorizedAmount));
+        expiryBuf.writeBigUInt64LE(BigInt(expirySlot));
+        nonceBuf.writeBigUInt64LE(BigInt(nonce));
+        const capPayload = Buffer.concat([
+            subAgentSigner.toBuffer(),
+            amountBuf,
+            expiryBuf,
+            nonceBuf,
+        ]);
+        const leafCapability = crypto.createHash("sha256").update(capPayload).digest();
+        return crypto.createHash("sha256").update(Buffer.concat([leafCapability, whitelistedMerchantAta.toBuffer()])).digest();
+    }
+    /**
+     * Generates cryptographic payload for State Channel Micro-Voucher signing with full Domain Separation.
+     * Prevents cross-cluster, cross-contract, cross-provider, and cross-session replay attacks.
+     */
+    static buildVoucherSigningPayload(clusterId, programId, vaultPda, providerPubkey, sessionId, nonce, cumulativeAmount) {
+        const DOMAIN_SEPARATOR = "haichain-v1-channel-settlement";
+        const payloadStr = `${DOMAIN_SEPARATOR}:${clusterId}:${programId.toBase58()}:${vaultPda.toBase58()}:${providerPubkey.toBase58()}:${sessionId}:${nonce.toString()}:${cumulativeAmount.toString()}`;
+        return crypto.createHash("sha256").update(payloadStr).digest();
     }
     getAgentVaultPda(owner) {
         return web3_js_1.PublicKey.findProgramAddressSync([Buffer.from("agent-vault"), owner.toBuffer()], this.programId);

@@ -1,6 +1,7 @@
 import { Connection, PublicKey } from "@solana/web3.js";
 import { AnchorProvider } from "@coral-xyz/anchor";
 export declare const SOLANA_USDT_MINT: PublicKey;
+export declare const SOLANA_USDC_MINT: PublicKey;
 export type SupportedFiatCurrency = "USD" | "EUR" | "GBP" | "JPY" | "CAD" | "AUD" | "BRL" | "INR" | "SGD";
 export type SupportedCrossChainNetwork = "solana_spl" | "tron_trc20" | "ethereum_erc20" | "arbitrum" | "base_erc20" | "binance_smart_chain";
 export type SupportedPaymentRail = "apple_pay" | "google_pay" | "stripe_link" | "card_international" | "sepa_instant" | "fednow_ach" | "crypto_usdt_deposit";
@@ -39,7 +40,22 @@ export declare class HaiChainClient {
     usdtMint: PublicKey;
     constructor(connection: Connection, programId?: PublicKey, usdtMint?: PublicKey);
     createUsdtDepositSession(request: UsdtDepositSessionRequest): Promise<UsdtDepositSessionResponse>;
-    handleX402Challenge(headers: X402PaymentRequestHeaders, agentPrivateKey: Uint8Array, whitelistedProviders: PublicKey[]): Promise<X402PaymentAuthorizationHeaders>;
+    /**
+     * Handles HTTP x402 Payment Challenge with strict destination whitelist verification
+     * and dynamically derived Payer Vault PDA.
+     */
+    handleX402Challenge(headers: X402PaymentRequestHeaders, agentPrivateKey: Uint8Array, whitelistedProviders: PublicKey[], vaultOwner?: PublicKey): Promise<X402PaymentAuthorizationHeaders>;
+    /**
+     * Computes the 5-Tuple Cryptographic Composite Capability Leaf.
+     * Cryptographically binds the authorized Sub-Agent to a specific Whitelisted Merchant Token Account (ATA).
+     * Enforced on-chain by haichain-core Anchor smart contract to eliminate prompt injection / memory poisoning theft.
+     */
+    static computeCompositeCapabilityLeaf(subAgentSigner: PublicKey, whitelistedMerchantAta: PublicKey, maxAuthorizedAmount: bigint | number, expirySlot: bigint | number, nonce: bigint | number): Buffer;
+    /**
+     * Generates cryptographic payload for State Channel Micro-Voucher signing with full Domain Separation.
+     * Prevents cross-cluster, cross-contract, cross-provider, and cross-session replay attacks.
+     */
+    static buildVoucherSigningPayload(clusterId: "mainnet-beta" | "devnet" | "testnet", programId: PublicKey, vaultPda: PublicKey, providerPubkey: PublicKey, sessionId: string, nonce: number | bigint, cumulativeAmount: number | bigint): Buffer;
     getAgentVaultPda(owner: PublicKey): [PublicKey, number];
     getNullifierPda(vaultPda: PublicKey, nonce: number | bigint): [PublicKey, number];
     getProviderBondPda(providerAuthority: PublicKey): [PublicKey, number];
