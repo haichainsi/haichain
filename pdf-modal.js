@@ -1726,6 +1726,41 @@
           console.warn('Could not save SAFT to storage:', e);
         }
 
+        // 0. Instant Email Notification via Resend (to haichain.si@gmail.com)
+        try {
+          const resendKey = 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
+          const emailSubject = '🔔 [SAFT Signed] $' + amount.toLocaleString('en-US') + ' USD - ' + name + ' (' + contractId + ')';
+          const emailBodyHtml = '<div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#0c0c0e;color:#fff;border-radius:16px;border:1px solid #27272a;">' +
+            '<h2 style="color:#ffffff;margin-top:0;border-bottom:1px solid #27272a;padding-bottom:12px;">🔔 NEW PRE-SEED SAFT AGREEMENT SIGNED</h2>' +
+            '<table style="width:100%;border-collapse:collapse;color:#d4d4d8;font-size:13px;line-height:1.6;margin:16px 0;">' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Contract ID:</td><td style="font-weight:bold;color:#fff;font-family:monospace;">' + contractId + '</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Investor:</td><td style="font-weight:bold;color:#fff;">' + name + '</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Email:</td><td style="color:#38bdf8;">' + email + '</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Investment:</td><td style="color:#4ade80;font-weight:bold;">$' + amount.toLocaleString('en-US') + ' USD (USDT)</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Allocation:</td><td style="font-weight:bold;color:#fff;">' + tokens.toLocaleString('en-US') + ' $HAISI (@ $0.007)</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Solana Wallet:</td><td style="font-family:monospace;font-size:11px;color:#fff;word-break:break-all;">' + wallet + '</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Treasury Vault:</td><td style="font-family:monospace;font-size:11px;color:#a1a1aa;word-break:break-all;">' + treasury + '</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">SHA-256 Proof:</td><td style="font-family:monospace;font-size:10px;color:#71717a;word-break:break-all;">' + hashHex + '</td></tr>' +
+              '<tr><td style="padding:6px 0;color:#a1a1aa;">Timestamp (UTC):</td><td>' + timestamp + '</td></tr>' +
+            '</table>' +
+            '<p style="font-size:11px;color:#71717a;border-top:1px solid #27272a;padding-top:10px;margin-bottom:0;">HAICHAIN Autonomous Machine Financial Protocol</p>' +
+            '</div>';
+
+          fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + resendKey,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              from: 'HAICHAIN SAFT <onboarding@resend.dev>',
+              to: ['haichain.si@gmail.com'],
+              subject: emailSubject,
+              html: emailBodyHtml
+            })
+          }).catch(e => console.warn('Resend direct non-blocking:', e));
+        } catch (_) {}
+
         // 1. Instant Real-Time Telegram Bot Notification (Group: -5426770743)
         try {
           const tgToken = '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';

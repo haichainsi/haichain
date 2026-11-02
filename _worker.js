@@ -842,7 +842,55 @@ async function handleSaftSubmit(request, env, ctx) {
       console.warn('Telegram bot send failed:', e);
     }
 
-    // 3. Dispatch to Google Sheets Webhook (if configured)
+    // 3. Instant Email Notification to Admin (haichain.si@gmail.com) via Resend
+    const resendKey = (env && env.RESEND_API_KEY) || 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
+    let resendSuccess = false;
+    try {
+      const emailHtml = `
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; padding: 32px 24px; background-color: #0c0c0e; color: #ffffff; border-radius: 16px; border: 1px solid #27272a;">
+  <div style="border-bottom: 1px solid #27272a; padding-bottom: 20px; margin-bottom: 24px;">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">🔔 NEW PRE-SEED SAFT AGREEMENT SIGNED</h2>
+    <p style="margin: 6px 0 0 0; font-size: 13px; color: #a1a1aa;">HAICHAIN Autonomous Machine Financial Protocol • Universal SAFT Engine</p>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6;">
+    <tr><td style="padding: 10px 0; color: #a1a1aa; width: 40%;">Contract ID:</td><td style="padding: 10px 0; font-weight: bold; font-family: monospace; color: #ffffff;">${contractId}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Signatory / Entity:</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff;">${name}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Contact Email:</td><td style="padding: 10px 0; color: #38bdf8;">${email}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Investment Amount:</td><td style="padding: 10px 0; font-weight: bold; color: #4ade80; font-size: 15px;">$${amount.toLocaleString('en-US')} USD (USDT)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Token Entitlement:</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff;">${tokens.toLocaleString('en-US')} $HAISI (@ $0.007)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Projected TGE Value:</td><td style="padding: 10px 0; color: #a1a1aa;">$${Math.round(tokens * 0.01).toLocaleString('en-US')} USD (+42.8%)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Beneficiary Solana Wallet:</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #ffffff; word-break: break-all;">${wallet}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Treasury Vault:</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #a1a1aa; word-break: break-all;">${treasury}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Cryptographic SHA-256:</td><td style="padding: 10px 0; font-family: monospace; font-size: 10px; color: #71717a; word-break: break-all;">${hashHex}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Execution Time (UTC):</td><td style="padding: 10px 0; color: #ffffff;">${timestamp}</td></tr>
+  </table>
+
+  <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #27272a; text-align: center;">
+    <a href="https://haichain.si/dashboard" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 13px; padding: 10px 24px; border-radius: 9999px; text-decoration: none;">View Dashboard</a>
+  </div>
+</div>
+`;
+
+      const resendRes = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${resendKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: 'HAICHAIN SAFT <onboarding@resend.dev>',
+          to: ['haichain.si@gmail.com'],
+          subject: `🔔 [SAFT Signed] $${amount.toLocaleString('en-US')} USD - ${name} (${contractId})`,
+          html: emailHtml
+        })
+      });
+      resendSuccess = resendRes.ok;
+    } catch (e) {
+      console.warn('Resend email dispatch error:', e);
+    }
+
+    // 4. Dispatch to Google Sheets Webhook (if configured)
     const googleWebhookUrl = (env && env.GOOGLE_SHEETS_WEBHOOK_URL) || '';
     let webhookSuccess = false;
     if (googleWebhookUrl) {
