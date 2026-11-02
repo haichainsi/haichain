@@ -173,7 +173,7 @@ Los agentes económicos autónomos que operan en redes descentralizadas requiere
 +----------------------------------------------------------------------------------------------------+
 |  MÉTRICA                RIELES WEB2 (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  PROTOCOLO HAICHAIN   |
 +----------------------------------------------------------------------------------------------------+
-|  Tarifa Mínima Práctica Tarifa fija de $0.30       $0.02 - $0.50 pico de gas  $0.000001 (Netting)  |
+|  Tarifa Mínima Práctica Tarifa fija de $0.30       $0.02 - $0.50 pico de gas  $0.000001 (Compresión 1,000:1 / $0.001 Base)  |
 |  Latencia de Liquidación2 - 5 Días Hábiles         2.000 - 15.000ms           < 400ms en Cable     |
 |  Riesgo Prompt InjectionVaciado Total de Tarjeta   Vaciado de EOA Maestra     Matemáticamente 0    |
 |  Fricción de Entrada    KYC, Formularios, 3 Días   12 Palabras Semilla, Gas   Passkey FaceID (60s) |
@@ -812,7 +812,7 @@ HAICHAIN resuelve esto mediante **Canales de Estado Optimistas Híbridos**:
    $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
    Este intercambio ocurre sobre canales WebSocket/gRPC cifrados con menos de 5ms de latencia, **operando de forma totalmente independiente de los bloques de la cadena y eliminando el 100% de las pausas en el razonamiento del LLM**.
 3. **Liquidación Agrupada en Cadena:** Al finalizar la sesión o en intervalos periódicos (cada 10-15 minutos), el Proveedor presenta **únicamente el vale con el nonce más alto** al programa Anchor de Solana. El contrato liquida el saldo acumulado al proveedor y reembolsa de inmediato los fondos restantes al Fondo Maestro del Agente.
-4. **Invariante de Retracción por Expiración:** Si un proveedor se desconecta inesperadamente, el Agente invoca `close_channel_expired` al expirar el temporizador (ej. 60 segundos), recuperando el 100% de los fondos no consumidos sin riesgo de pérdida.
+4. **Invariante de Retracción por Expiración:** El Agente invoca `request_channel_close`. El canal entra en una Ventana de Desafío de Disputa de 300 slots (~120s) que permite al proveedor presentar el último comprobante firmado para liquidación equitativa. Sin disputa en 300 slots, el 100% del colateral no consumido se desbloquea con cero riesgo de pérdida; fraudes se castigan con Slashing.
 
 ---
 

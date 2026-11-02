@@ -173,7 +173,7 @@ Les agents économiques autonomes opérant sur des réseaux décentralisés néc
 +----------------------------------------------------------------------------------------------------+
 |  MÉTRIQUE               RAILS WEB2 (STRIPE/VISA)   EVM L1/L2 (BASE/ARBITRUM)  PROTOCOLE HAICHAIN   |
 +----------------------------------------------------------------------------------------------------+
-|  Frais Minimum Pratique Frais fixes de $0.30       $0.02 - $0.50 pic de gas   $0.000001 (Netting)  |
+|  Frais Minimum Pratique Frais fixes de $0.30       $0.02 - $0.50 pic de gas   $0.000001 (Compression 1 000:1 / $0,001 Base)  |
 |  Latence de Règlement  2 - 5 Jours Ouvrables       2.000 - 15.000ms           < 400ms sur Fil      |
 |  Risque Prompt InjectionVidage Total de Carte      Vidage de l'EOA Maître     Mathématiquement 0   |
 |  Friction d'Onboarding  KYC, Formulaires, 3 Jours  12 Mots Semence, Gas       Passkey FaceID (60s) |
@@ -812,7 +812,7 @@ HAICHAIN y parvient via des **Canaux d'État Optimistes Hybrides**:
    $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
    Cette transmission transite via WebSocket/gRPC chiffré en moins de 5ms, **en totale indépendance du rythme des blocs de la blockchain, éliminant 100% des interruptions d'inférence**.
 3. **Règlement On-Chain Global:** En clôture de session ou à intervalle régulier (toutes les 10-15 minutes), le Fournisseur transmet **l'unique bon doté du numéro de séquence (nonce) le plus élevé** au programme Anchor de Solana. Le contrat transfère le montant dû au prestataire et reverse le reliquat au Fonds Maître de l'Agent.
-4. **Invariant de Rétraction par Expiration:** Si le prestataire s'interrompt brutalement, l'Agent appelle `close_channel_expired` après l'écoulement d'un délai (ex: 60 secondes), récupérant l'intégralité de son capital sans la moindre perte.
+4. **Invariant de Rétraction par Expiration:** L'Agent appelle `request_channel_close`. Le canal entre dans une Fenêtre de Défi de Litige de 300 slots (~120s) permettant au prestataire de soumettre le dernier bon signé pour un règlement équitable. En l'absence de litige sous 300 slots, 100% du capital non consommé est débloqué sans risque; toute tentative frauduleuse entraîne un Slashing.
 
 ---
 
@@ -841,7 +841,7 @@ HAICHAIN repose sur une **Économie à Double Actif** fermée sur le plan mathé
 * **Incentives Écosystème et Compensation des Machines (35%):** 350.000.000 \$HAISI - Distribution linéaire sur 48 mois.
 * **Communauté et Vente Échelonnée de Tokens (15%):** 150.000.000 \$HAISI répartis comme suit:
   * *Tour Privé de Développement Pre-Seed (2.5%):* 25.000.000 \$HAISI - Fixé à **\$0.007 USD** (\$7M FDV), 20% débloqués au TGE, 2 mois de blocage (cliff), 6 mois d'acquisition linéaire on-chain.
-  * *Launchpad Communautaire Public (TGE) (10.0%):* 100.000.000 \$HAISI - Fixé à **\$0.010 USD** (\$10M FDV) via Meteora DLMM, modèle linéaire anti-sniping sur 7 jours.
+  * *Launchpad Communautaire Public (TGE) (10.0%):* 100.000.000 \$HAISI - Fixé à **\$0.010 USD** (\$10M FDV) via Meteora DLMM, modèle linéaire anti-sniping sur 90 jours.
   * *Développement Communautaire et Subventions Hackathons (2.5%):* 25.000.000 \$HAISI - Délégués au financement des développeurs et primes d'écosystème.
 * **Équipe Fondatrice et Ingénierie Centrale (18%):** 180.000.000 \$HAISI - Blocage de 12 mois, acquisition linéaire sur 36 mois.
 * **Investisseurs Stratégiques Seed (12%):** 120.000.000 \$HAISI - Blocage de 12 mois, acquisition linéaire sur 18 mois ($7M - $8.5M FDV).
@@ -951,7 +951,7 @@ Afin de dissiper toute crainte quant à une éventuelle pression baissière exer
    [ Le Smart Contract Évalue 3 Métriques On-Chain Indépendantes ]
    ├── 1. Volume total réglé sur la Passerelle >= $50.000.000 USDT?
    ├── 2. Nombre d'agents actifs uniques >= 10.000 arbres audités?
-   └── 3. Revenu net perçu par le protocole >= $500.000 USDT?
+   └── 3. Revenu net perçu par le protocole >= $25.000 USDT?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -969,7 +969,7 @@ Afin de dissiper toute crainte quant à une éventuelle pression baissière exer
   2. *Indicateurs de Performance Réels sur la Chaîne (KPIs):*
      * **Volume d'Affaires Réglé:** Au moins \$50.000.000 USDT liquidés sur Solana L1.
      * **Agents Autonomes en Activité:** Au moins 10.000 agents vérifiés avec arbres de capacité ayant transigé au cours des 30 derniers jours.
-     * **Bénéfices Nets Générés:** Au moins \$500.000 USDT versés à la trésorerie autonome.
+     * **Bénéfices Nets Générés:** Au moins \$25.000 USDT versés à la trésorerie autonome.
 * **Prolongation Automatique Protectrice:**
   Si ces résultats ne sont pas atteints au 12e mois, le smart contract repousse automatiquement le blocage par tranches successives de 6 mois, contraignant les créateurs à concentrer tous leurs efforts sur l'utilité réelle du réseau.
 

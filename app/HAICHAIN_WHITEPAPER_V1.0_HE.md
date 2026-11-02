@@ -3,7 +3,7 @@
 **תוכנן על ידי:** כוח המשימה העולמי למערכות HAICHAIN וקבוצת העבודה לארכיטקטורת ליבה קריפטוגרפית  
 **תאריך פרסום:** 1 בנובמבר 2026 (מהדורה מוסדית בינלאומית)  
 **סיווג מסמך:** נייר עמדה טכני רשמי v1.0 (מהדורה עברית)  
-**נכס סליקה ראשי:** **USDT (Tether USD ב-Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
+**נכס סליקה ראשי:** **USDT (Tether USD ב-Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB` & USDC (MiCA Compliant: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`))**  
 **נכס גז, משילות והקצאת רוחב פס ריבוני:** **$HAISI (היצע קבוע: 1,000,000,000)**  
 **דומיין יעד:** `haichain.si` *(כאשר `.si` מציין בינה-על מבוזרת - Superintelligence)*  
 **רשת פריסה פעילה:** Solana Mainnet-Beta (תוכנית v6.9.3)  
@@ -192,7 +192,7 @@ ight) = 0$$
 +----------------------------------------------------------------------------------------------------+
 |  METRIC                 WEB2 RAILS (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  HAICHAIN PROTOCOL     |
 +----------------------------------------------------------------------------------------------------+
-|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (Netting)   |
+|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (דחיסת 1,000:1 / $0.001 בסיס)   |
 |  Settlement Latency     2 - 5 Business Days       2,000 - 15,000ms           < 400ms Wire Finality |
 |  Prompt-Injection Risk  Complete Card Drain       Drain of Master EOA        Mathematically 0 (PDA)|
 |  Onboarding Friction    KYC, Bank Forms, 3 Days   12-Word Seed Phrase, Gas   Passkey FaceID (60s)  |
@@ -696,7 +696,7 @@ HAICHAIN פותרת זאת באמצעות **ערוצי מצב אופטימיים
    $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}(\text{SessionID}, k, \text{CumulativeAmount}_k)$$
    החלפה זו מתרחשת מעל ערוצי WebSocket/gRPC מוצפנים בשיהוי תת-5ms, **ופועלת באופן עצמאי לחלוטין מייצור בלוקים בבלוקצ'יין, תוך ביטול 100% מעצירות ההסקה של מודלי השפה**.
 3. **סליקה מקובצת בשרשרת:** עם סיום ההפעלה או במרווחי שטיפה תקופתיים (כל 10-15 דקות), ספק ה-AI שולח **אך ורק את השובר הבודד הנושא את ה-Nonce הגבוה ביותר** לתוכנית ה-Anchor ב-Solana. החוזה סולק את היתרה המצטברת לספק ומחזיר מיידית את הכספים הנותרים לקופת המאסטר של הסוכן.
-4. **אינווריאנט ביטול בזמן קצוב:** אם ספק מתנתק באופן בלתי צפוי או חווה כשל במעלה הזרם, הסוכן מפעיל את `close_channel_expired` עם פקיעת טיימר התפוגה (למשל 60 שניות), ומחזיר 100% מהבטוחות שלא נצרכו ללא שום סיכון לאובדן הון.
+4. **אינווריאנט ביטול בזמן קצוב:** אם ספק מתנתק באופן בלתי צפוי או חווה כשל במעלה הזרם, הסוכן מפעיל `request_channel_close`. הערוץ נכנס לחלון ערעור ומחלוקת של 300 סלוטים (~120 שניות) המאפשר לספק להגיש את השובר החתום העדכני ביותר להסדר הוגן. בהיעדר מחלוקת תוך 300 סלוטים, 100% מהביטחונות משוחררים בבטחה; ניסיון משיכה זדוני נענש בסלשינג (Slashing).
 
 
 ---
@@ -786,7 +786,7 @@ $$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 
    [ Smart Contract Validates 3 Independent On-Chain Metrics ]
    ├── 1. Cumulative Gateway Settled Volume >= $50,000,000 USDT ?
    ├── 2. Unique Active Autonomous Agents >= 10,000 Verified Trees ?
-   └── 3. Cumulative Net Protocol Yield Captured >= $500,000 USDT ?
+   └── 3. Cumulative Net Protocol Yield Captured >= $25,000 USDT ?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -803,7 +803,7 @@ $$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 
   2. *מדדי ביצוע אמפיריים מאומתים בשרשרת:*
      * **נפח סליקה מצטבר:** לפחות **$50,000,000 USDT** שנסלקו בהצלחה דרך חוזי הליבה ב-Solana L1.
      * **סוכנים אוטונומיים פעילים:** לפחות **10,000 סוכנים מאומתים** בעלי עצי יכולות פעילים שביצעו עסקאות ב-30 הימים שקדמו לבדיקה.
-     * **תשואת עמלות פרוטוקול נטו:** לפחות **$500,000 USDT** שהופקדו באוצר הפרוטוקול.
+     * **תשואת עמלות פרוטוקול נטו:** לפחות **$25,000 USDT** שהופקדו באוצר הפרוטוקול.
 * **הארכת נעילה אוטומטית להגנת הציבור:** אם היעדים המאומתים בשרשרת לא הושגו בתום 12 חודשים, החוזה החכם מאריך אוטומטית את תקופת הנעילה במקטעים עוקבים של 6 חודשים נוספים, ובכך כופה על בעלי העניין להתמקד באופן מוחלט בהצלחת המוצר.
 
 ### 8.5. רשת ממסרים מבוזרת מבוססת סטייקינג וארכיטקטורת קנסות חיתוך

@@ -173,7 +173,7 @@ Los agentes económicos autónomos que operan en redes descentralizadas requiere
 +----------------------------------------------------------------------------------------------------+
 |  MÉTRICA                RIELES WEB2 (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  PROTOCOLO HAICHAIN   |
 +----------------------------------------------------------------------------------------------------+
-|  Tarifa Mínima Práctica Tarifa fija de $0.30       $0.02 - $0.50 pico de gas  $0.000001 (Netting)  |
+|  Tarifa Mínima Práctica Tarifa fija de $0.30       $0.02 - $0.50 pico de gas  $0.000001 (Compresión 1,000:1 / $0.001 Base)  |
 |  Latencia de Liquidación2 - 5 Días Hábiles         2.000 - 15.000ms           < 400ms en Cable     |
 |  Riesgo Prompt InjectionVaciado Total de Tarjeta   Vaciado de EOA Maestra     Matemáticamente 0    |
 |  Fricción de Entrada    KYC, Formularios, 3 Días   12 Palabras Semilla, Gas   Passkey FaceID (60s) |
@@ -812,7 +812,7 @@ HAICHAIN resuelve esto mediante **Canales de Estado Optimistas Híbridos**:
    $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
    Este intercambio ocurre sobre canales WebSocket/gRPC cifrados con menos de 5ms de latencia, **operando de forma totalmente independiente de los bloques de la cadena y eliminando el 100% de las pausas en el razonamiento del LLM**.
 3. **Liquidación Agrupada en Cadena:** Al finalizar la sesión o en intervalos periódicos (cada 10-15 minutos), el Proveedor presenta **únicamente el vale con el nonce más alto** al programa Anchor de Solana. El contrato liquida el saldo acumulado al proveedor y reembolsa de inmediato los fondos restantes al Fondo Maestro del Agente.
-4. **Invariante de Retracción por Expiración:** Si un proveedor se desconecta inesperadamente, el Agente invoca `close_channel_expired` al expirar el temporizador (ej. 60 segundos), recuperando el 100% de los fondos no consumidos sin riesgo de pérdida.
+4. **Invariante de Retracción por Expiración:** El Agente invoca `request_channel_close`. El canal entra en una Ventana de Desafío de Disputa de 300 slots (~120s) que permite al proveedor presentar el último comprobante firmado para liquidación equitativa. Sin disputa en 300 slots, el 100% del colateral no consumido se desbloquea con cero riesgo de pérdida; fraudes se castigan con Slashing.
 
 ---
 
@@ -841,7 +841,7 @@ HAICHAIN opera una **Economía de Doble Activo** matemáticamente cerrada:
 * **Incentivos para Ecosistema y Compensación de Máquinas (35%):** 350.000.000 \$HAISI - Emisión lineal durante 48 meses.
 * **Comunidad y Venta Escalonada de Tokens (15%):** 150.000.000 \$HAISI comprendiendo:
   * *Ronda Privada de Desarrollo Pre-Seed (2.5%):* 25.000.000 \$HAISI - Precio a **\$0.007 USD** (\$7M FDV), desbloqueo del 20% en TGE, acantilado de 2 meses, consolidación lineal on-chain de 6 meses.
-  * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 \$HAISI - Precio a **\$0.010 USD** (\$10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 7 días.
+  * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 \$HAISI - Precio a **\$0.010 USD** (\$10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 90 días.
   * *Incentivos de Crecimiento Comunitario y Hackathons (2.5%):* 25.000.000 \$HAISI - Reservados para subvenciones y recompensas para desarrolladores.
 * **Equipo Fundador e Ingeniería Central (18%):** 180.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 36 meses.
 * **Inversores Estratégicos Seed (12%):** 120.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 18 meses ($7M - $8.5M FDV).
@@ -951,7 +951,7 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
    [ Smart Contract Valida 3 Métricas On-Chain Independientes ]
    ├── 1. ¿Volumen acumulado liquidado en Gateway >= $50.000.000 USDT?
    ├── 2. ¿Agentes autónomos activos únicos >= 10.000 árboles verificados?
-   └── 3. ¿Rendimiento neto capturado por el protocolo >= $500.000 USDT?
+   └── 3. ¿Rendimiento neto capturado por el protocolo >= $25.000 USDT?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -969,7 +969,7 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
   2. *Criterios Verificables de Rendimiento Real (KPIs On-Chain):*
      * **Volumen Liquidado Acumulado:** Mínimo \$50.000.000 USDT compensados exitosamente en Solana L1.
      * **Agentes Autónomos Activos:** Mínimo 10.000 agentes verificados con árboles de capacidad activos transaccionando en los últimos 30 días.
-     * **Ingresos Netos Acumulados del Protocolo:** Mínimo \$500.000 USDT depositados en la Tesorería.
+     * **Ingresos Netos Acumulados del Protocolo:** Mínimo \$25.000 USDT depositados en la Tesorería.
 * **Salvaguarda de Extensión Autónoma:**
   Si las métricas no se cumplen en el Mes 12, el contrato extiende el bloqueo automáticamente en intervalos consecutivos de 6 meses. Esto fuerza matemáticamente a los fundadores y fondos a mantener un enfoque operativo del 100% en la tracción del producto y los ingresos del protocolo.
 

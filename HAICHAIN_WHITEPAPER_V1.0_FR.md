@@ -173,7 +173,7 @@ Les agents économiques autonomes opérant sur des réseaux décentralisés néc
 +----------------------------------------------------------------------------------------------------+
 |  MÉTRIQUE               RAILS WEB2 (STRIPE/VISA)   EVM L1/L2 (BASE/ARBITRUM)  PROTOCOLE HAICHAIN   |
 +----------------------------------------------------------------------------------------------------+
-|  Frais Minimum Pratique Frais fixes de $0.30       $0.02 - $0.50 pic de gas   $0.000001 (Netting)  |
+|  Frais Minimum Pratique Frais fixes de $0.30       $0.02 - $0.50 pic de gas   $0.000001 (Compression 1 000:1 / $0,001 Base)  |
 |  Latence de Règlement  2 - 5 Jours Ouvrables       2.000 - 15.000ms           < 400ms sur Fil      |
 |  Risque Prompt InjectionVidage Total de Carte      Vidage de l'EOA Maître     Mathématiquement 0   |
 |  Friction d'Onboarding  KYC, Formulaires, 3 Jours  12 Mots Semence, Gas       Passkey FaceID (60s) |
@@ -812,7 +812,7 @@ HAICHAIN y parvient via des **Canaux d'État Optimistes Hybrides**:
    $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
    Cette transmission transite via WebSocket/gRPC chiffré en moins de 5ms, **en totale indépendance du rythme des blocs de la blockchain, éliminant 100% des interruptions d'inférence**.
 3. **Règlement On-Chain Global:** En clôture de session ou à intervalle régulier (toutes les 10-15 minutes), le Fournisseur transmet **l'unique bon doté du numéro de séquence (nonce) le plus élevé** au programme Anchor de Solana. Le contrat transfère le montant dû au prestataire et reverse le reliquat au Fonds Maître de l'Agent.
-4. **Invariant de Rétraction par Expiration:** Si le prestataire s'interrompt brutalement, l'Agent appelle `close_channel_expired` après l'écoulement d'un délai (ex: 60 secondes), récupérant l'intégralité de son capital sans la moindre perte.
+4. **Invariant de Rétraction par Expiration:** L'Agent appelle `request_channel_close`. Le canal entre dans une Fenêtre de Défi de Litige de 300 slots (~120s) permettant au prestataire de soumettre le dernier bon signé pour un règlement équitable. En l'absence de litige sous 300 slots, 100% du capital non consommé est débloqué sans risque; toute tentative frauduleuse entraîne un Slashing.
 
 ---
 
