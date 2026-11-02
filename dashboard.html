@@ -163,7 +163,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
-  <script src="/app/i18n.js?v=v41_realtime_sync_1793655000000"></script>
+  <script src="/app/i18n.js?v=v42_sync_1793660000000"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v47_en_email_brand_1793663000000"></script>
@@ -2702,8 +2702,37 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     }
     let isPanic = false;
 
+
+    async function syncVaultToMcpServer(vaultAddr, balAmount) {
+      if (!vaultAddr) return;
+      try {
+        const payload = JSON.stringify({
+          vault: vaultAddr,
+          balance: typeof balAmount === 'number' ? balAmount : parseFloat(balAmount) || 0
+        });
+        const endpoints = [
+          'https://mcp.haichain.si/api/vault/sync',
+          '/api/vault/sync',
+          'http://127.0.0.1:3600/api/vault/sync'
+        ];
+        endpoints.forEach(ep => {
+          try {
+            fetch(ep, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: payload,
+              mode: 'cors'
+            }).catch(() => {});
+          } catch (_) {}
+        });
+      } catch (_) {}
+    }
+    window.syncVaultToMcpServer = syncVaultToMcpServer;
     function saveBalance() {
       localStorage.setItem('haichain-vault-balance', balance.toFixed(4));
+      if (userWallet && userWallet.address && typeof syncVaultToMcpServer === 'function') {
+        syncVaultToMcpServer(userWallet.address, balance);
+      }
     }
 
     const overviewBalance = document.getElementById('overview-balance');

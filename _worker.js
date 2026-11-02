@@ -103,7 +103,7 @@ async function querySolanaRpc(method, params = []) {
 }
 
 // Tool Implementation: get_spending_pot_balance
-async function handleGetSpendingPotBalance(args = {}, boundVault = '', allocatedBal = 0) {
+async function handleGetSpendingPotBalance(args = {}, boundVault = '', allocatedBal = 0, env = null) {
   let rawAddr = (args.vaultAddress || args.vault_address || args.walletAddress || args.wallet_address || args.address || args.account || '').trim();
 
   let targetAddress = '';
@@ -122,10 +122,23 @@ async function handleGetSpendingPotBalance(args = {}, boundVault = '', allocated
     isMasterVault = (targetAddress === MASTER_VAULT_PDA);
   }
 
-  // Check live synced balance from dashboard first
+  // Check live synced balance from dashboard (memory cache + global KV)
   let registryBal = null;
-  if (targetAddress && vaultBalanceRegistry.has(targetAddress)) {
-    registryBal = vaultBalanceRegistry.get(targetAddress);
+  if (targetAddress) {
+    if (vaultBalanceRegistry.has(targetAddress)) {
+      registryBal = vaultBalanceRegistry.get(targetAddress);
+    } else {
+      const kv = (env && (env.REFERRAL_KV || env.SAFT_KV || env.VAULT_KV));
+      if (kv) {
+        try {
+          const val = await kv.get('vault_bal:' + targetAddress);
+          if (val !== null && !isNaN(parseFloat(val))) {
+            registryBal = parseFloat(val);
+            vaultBalanceRegistry.set(targetAddress, registryBal);
+          }
+        } catch (_) {}
+      }
+    }
   }
 
   let lamports = 0;
@@ -423,7 +436,7 @@ async function handleJsonRpc(req, boundVault = '', allocatedBal = 0) {
 }
 
 // Primary Dispatcher for Cloudflare Pages / Workers & Node Tunnel
-export async function handleMcpRequest(request) {
+export async function handleMcpRequest(request, env = null, ctx = null) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get('sessionId') || request.headers.get('mcp-session-id') || '';
 
@@ -462,6 +475,16 @@ export async function handleMcpRequest(request) {
     const b = parseFloat(body.balance || url.searchParams.get('balance') || url.searchParams.get('bal') || '0');
     if (v) {
       vaultBalanceRegistry.set(v, b);
+      const kv = (env && (env.REFERRAL_KV || env.SAFT_KV || env.VAULT_KV));
+      if (kv) {
+        try {
+          if (ctx && ctx.waitUntil) {
+            ctx.waitUntil(kv.put('vault_bal:' + v, String(b)));
+          } else {
+            await kv.put('vault_bal:' + v, String(b));
+          }
+        } catch (_) {}
+      }
       return new Response(JSON.stringify({ status: 'SYNCHRONIZED', vault: v, balance: b, timestamp: Date.now() }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -630,23 +653,7 @@ export async function handleMcpRequest(request) {
   });
 }
 
-export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-
-    // Only handle MCP API and SSE protocol endpoints
-    if (url.pathname === '/api/mcp' || url.pathname.startsWith('/api/mcp/') || url.pathname === '/sse') {
-      return await handleMcpRequest(request);
-    }
-
-    // Pass all web traffic directly to static assets (index.html, dashboard.html, assets, etc.)
-    if (env && env.ASSETS) {
-      return await env.ASSETS.fetch(request);
-    }
-
-    return await fetch(request);
-  }
-};
+// End of MCP Gateway module
 
 
 // ==============================================================================
@@ -1071,9 +1078,9 @@ export default {
       return await handleReferralStats(request, env, ctx);
     }
 
-    // Only handle MCP API and SSE protocol endpoints
-    if (url.pathname === '/api/mcp' || url.pathname.startsWith('/api/mcp/') || url.pathname === '/sse') {
-      return await handleMcpRequest(request);
+    // Handle MCP API, SSE, and real-time Vault Balance Sync endpoints
+    if (url.pathname === '/api/mcp' || url.pathname.startsWith('/api/mcp/') || url.pathname === '/sse' || url.pathname === '/api/vault/sync' || url.pathname === '/api/vault/balance') {
+      return await handleMcpRequest(request, env, ctx);
     }
 
     // Pass all web traffic directly to static assets (index.html, dashboard.html, assets, etc.)
