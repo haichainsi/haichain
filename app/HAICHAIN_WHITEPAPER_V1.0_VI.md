@@ -3,7 +3,7 @@
 **Đơn vị chủ trì:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN  
 **Ngày phát hành:** 31 tháng 10 năm 2026  
 **Phân loại tài liệu:** Sách Trắng Chính Thức v1.0 (Phiên bản Tiếng Việt)  
-**Tài sản thanh toán chính:** **USDT (Tether USD trên Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
+**Tài sản thanh toán chính:** **USDC (Circle USD chuẩn MiCA: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`) & USDT (Tether SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
 **Token quản trị & hệ sinh thái:** **$HAISI (Tổng cung cố định: 1.000.000.000 Token)**  
 
 ---
@@ -741,16 +741,16 @@ $$\text{Trigger Condition: } \left( \frac{\Delta \text{Calls}}{\Delta t} > \Thet
 
 ## CHƯƠNG 7: KINH TẾ HỌC TÀI SẢN KÉP & TOKENOMICS $HAISI
 
-HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Economy)**:
-* **USDT (Tether SPL):** Đồng tiền thanh toán giao dịch ổn định, bảo đảm các cuộc gọi API không bị biến động giá.
-* **Token $HAISI:** Tài sản tối cao của giao thức, thu giữ 100% giá trị lưu chuyển mạng lưới, quyền biểu quyết quản trị, và tương lai là đồng coin bảo mật mạng lưới Blockchain L1.
+HAICHAIN vận hành mô hình **Kinh tế học Đa Tài sản Tuân thủ Chuẩn mực (Compliant Multi-Asset Economy)**:
+* **USDC (Circle SPL chuẩn MiCA) & USDT (Tether SPL):** Đồng tiền định lượng thanh toán ổn định, loại bỏ rủi ro biến động giá cho các cuộc gọi API và tác vụ đại lý máy móc. Trong đó USDC được ưu tiên cho thị trường EU tuân thủ toàn diện khung pháp lý MiCA.
+* **Token $HAISI:** Tài sản tiện ích và vốn hạ tầng tối cao của giao thức, thu giữ giá trị lưu chuyển mạng lưới qua cơ chế Giảm cung ròng (Buyback & Burn), giảm phí dịch vụ bậc thang (Tiered Fee Discount) và tương lai là đồng coin bảo mật mạng lưới Blockchain L1.
 
 ```
                       MÔ HÌNH DÒNG TIỀN VÀ GIÁ TRỊ CỦA TOKEN $HAISI
                       
            [ KHỐI LƯỢNG BÙ TRỪ MÁY MÓC TOÀN CẦU: $1.4 TỶ USD / NĂM ]
                                      │
-                                     ▼ (Phí giao thức: 0.05%)
+                                     ▼ (Phí giao thức: 0.05% ~ 5 bps)
                       [ DOANH THU CƠ SỞ: $700,000 USD / NĂM ]
                                      │
                     ┌────────────────┴────────────────┐
@@ -760,31 +760,33 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
         - Giảm nguồn cung vĩnh viễn        - Bảo chứng thanh khoản ví    
 ```
 
-### 7.1. Phân Bổ Token & Lịch Mở Khóa (Tổng Cung Cố Định: 1.000.000.000 $HAISI)
-* **Khuyến khích Hệ sinh thái & Bù trừ Máy (35%):** 350.000.000 $HAISI - Mở khóa tuyến tính trong 48 tháng.
-* **Cộng đồng & Mở bán Phân tầng (15%):** 150.000.000 $HAISI gồm:
-  * *Vòng Bán Nội Bộ (Pre-Seed) (2,5%):* 25.000.000 $HAISI - Giá **\$0.007 USD** (\$7M FDV), mở khóa 20% tại TGE, khóa cliff 2 tháng, trả dần 6 tháng on-chain.
-  * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAISI - Giá **\$0.010 USD** (\$10M FDV) qua Meteora Alpha Vault / DLMM, mở khóa tuyến tính 7 ngày chống sniping.
-  * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAISI - Dự trữ khuyến khích AI builder và hackathon.
-* **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAISI - Khóa cứng 12 tháng, mở khóa tuyến tính 36 tháng.
-* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAISI - Khóa cứng 12 tháng, trả dần 18 tháng (Định giá $7M - $8.5M FDV).
-* **Quỹ Dự trữ Bảo hiểm An toàn (10%):** 100.000.000 $HAISI - Khóa đa chữ ký để bảo hiểm và kiểm toán.
-* **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAISI - Đốt khóa 100% token thanh khoản LP.
+### 7.1. Phân Bổ Token & Lịch Mở Khóa Chuẩn Mực (Tổng Cung Cố Định: 1.000.000.000 $HAISI)
+Để đảm bảo cấu trúc vốn lành mạnh, triệt tiêu nghịch lý định giá và bảo vệ nhà đầu tư công chúng, bảng định giá các vòng gọi vốn được thiết lập theo quy luật tăng dần minh bạch:
 
-### 7.2. Cơ Chế Phân Bổ Băng Thông Theo Cọc (Stake-to-Transact) & Vòng Xoáy Dòng Tiền Thật (Real Yield Flywheel)
-Để triệt tiêu hoàn toàn **Bẫy Vận Tốc Token (Định lý John Pfeffer)** - hiện tượng token tiện ích thuần túy bị xả ngay sau khi dùng khiến vốn hóa tiệm cận 0 - Haichain biến `$HAISI` thành **Tài Sản Vốn Bắt Buộc Để Được Khai Thác Hạ Tầng (Productive Capital Asset)**:
+* **Khuyến khích Hệ sinh thái & Bù trừ Máy (35%):** 350.000.000 $HAISI - Mở khóa tuyến tính trong 48 tháng theo các cột mốc phát triển.
+* **Cộng đồng & Mở bán Phân tầng (15%):** 150.000.000 $HAISI gồm:
+  * *Vòng Bán Nội Bộ (Pre-Seed) (2,5%):* 25.000.000 $HAISI - Giá **$0.0050 USD** ($5M FDV), mở khóa 10% tại TGE, khóa cliff 3 tháng, trả dần 12 tháng on-chain.
+  * *Mở bán Công khai Cộng đồng (TGE) (10,0%):* 100.000.000 $HAISI - Giá **$0.0120 USD** ($12M FDV) qua Meteora Alpha Vault / DLMM. Mở khóa 25% tại TGE, 75% còn lại mở khóa tuyến tính đều đặn trong **90 ngày** nhằm triệt tiêu hoàn toàn rủi ro xả bán đột ngột và bot sniping.
+  * *Quỹ Thưởng & Tăng trưởng Cộng đồng (2,5%):* 25.000.000 $HAISI - Dự trữ khuyến khích AI builder và hackathon toàn cầu.
+* **Đội ngũ Kỹ sư Cốt lõi & Sáng lập (18%):** 180.000.000 $HAISI - Khóa cứng 12 tháng cliff (ràng buộc KPI hợp đồng MCDV), mở khóa tuyến tính trong 36 tháng tiếp theo.
+* **Nhà đầu tư Chiến lược Vòng Hạt Giống (12%):** 120.000.000 $HAISI - Giá **$0.0075 USD** ($7.5M FDV) - Khóa cứng 12 tháng cliff (ràng buộc KPI hợp đồng MCDV), trả dần trong 18 tháng on-chain.
+* **Quỹ Dự trữ Bảo hiểm An toàn (CHGB Reserve) (10%):** 100.000.000 $HAISI - Khóa đa chữ ký (Multisig 4/7) bảo chứng thanh khoản khẩn cấp và tài trợ kiểm toán độc lập.
+* **Thanh khoản Ban đầu trên DEX (Raydium/Orca) (10%):** 100.000.000 $HAISI - Đốt khóa 100% token thanh khoản LP vĩnh viễn.
+
+### 7.2. Cơ Chế Phân Bổ Băng Thông Theo Cọc (Stake-to-Transact) & Vòng Xoáy Giá Trị Bền Vững
+Để triệt tiêu hoàn toàn **Bẫy Vận Tốc Token (Định lý John Pfeffer)** mà không vướng phải rủi ro phân loại chứng khoán (Howey Test), Haichain cấu trúc `$HAISI` thành **Tài Sản Tiện Ích Vốn Hóa (Productive Utility Asset)**:
 
 ```
-               HAICHAIN REAL YIELD & VÒNG XOÁY GIÁ TRỊ THỰC
+               HAICHAIN UTILITY STAKING & VÒNG XOÁY GIÁ TRỊ THỰC
                
     [ Doanh Nghiệp & Bầy Đàn Tác Tử Hoạt Động Hàng Triệu Tx/Ngày ]
                                 │
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
-[ Cọc veHAISI Tùy Chọn & Phân Tầng ]               [ Doanh Thu Phí USDT Nguyên Chất ]
+[ Cọc veHAISI Tùy Chọn & Phân Tầng ]               [ Doanh Thu Phí USDC/USDT ]
 ├── Hạn Mức = k * sqrt(Staked * Time)           ├── Thu 0.05% phí bù trừ ròng
-│   Bắt buộc cọc để mở băng thông nano-giây     │   bằng 100% USDT thực
-└── Càng nhiều bot -> Càng khóa $HAISI          └── Chuyển thẳng về Kho Bạc Giao Thức
+│   Nhận ưu đãi giảm tới 80% phí giao dịch      │   bằng stablecoin thực
+└── Ưu tiên băng thông độ trễ nano-giây         └── Chuyển về Kho Bạc Giao Thức
        │                                                 │
        ▼                                                 ▼
 [ Nguồn Cung $HAISI Lưu Hành Thu Hẹp ]          [ Cỗ Máy Mua Lại Tự Động (TWAP) ]
@@ -795,75 +797,33 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
 ```
 
 #### 1. Kiến Trúc Đường Ray Kép & Phân Tầng Giảm Phí veHAISI Tùy Chọn
-HAICHAIN vận hành cơ chế đường ray kép không rào cản: người dùng phổ thông trả phí từng câu lệnh bằng 100% USDT mà không bắt buộc phải mua hay cọc token $HAISI. Các doanh nghiệp vận hành bầy đàn quy mô lớn có thể tùy chọn khóa $HAISI (veHAISI) để nhận ưu đãi giảm tới 80% phí giao dịch và ưu tiên băng thông:
-$$	ext{Hạn Mức Giao Dịch Ngày} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 	ext{Thời Gian Khóa}}$$
-Để mở các kênh bù trừ đối xứng với độ trễ nano-giây và miễn phí gas vi mô, doanh nghiệp bắt buộc phải mua và khóa `$HAISI` từ 3 đến 36 tháng (`veHAISI`). Càng nhiều tác tử gia nhập hệ sinh thái, lượng `$HAISI` bị rút khỏi lưu thông trên thị trường mở càng lớn.
+HAICHAIN vận hành cơ chế đường ray kép không rào cản:
+- **Người dùng phổ thông & Nhà phát triển nhỏ:** Trả phí từng câu lệnh bằng 100% USDC/USDT mà không bắt buộc phải mua hay cọc token $HAISI, giữ trọn vẹn trải nghiệm "Web3 vô hình".
+- **Doanh nghiệp & Cụm bầy đàn AI quy mô lớn:** Tùy chọn cọc $HAISI (`veHAISI`) để nhận các đặc quyền hạ tầng vượt trội:
+  $$	ext{Hạn Mức Băng Thông} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 	ext{Thời Gian Khóa}}$$
+  * *Giảm phí bậc thang:* Chiết khấu từ 20% đến 80% phí bù trừ ròng khi khóa từ 3 đến 36 tháng.
+  * *Làn ưu tiên độ trễ cực thấp (Low-Latency Fast Path):* Độ trễ định tuyến micro-escrow $< 5	ext{ms}$.
+  * *Bảo cấp phí giao dịch nền:* Miễn phí hoàn toàn các giao dịch dọn dẹp trạng thái nullifier rác.
 
-#### 2. Cỗ Máy Mua Lại & Đốt Bằng Dòng Tiền Thật (Real Yield Buyback & Burn)
-100% doanh thu phí bù trừ và phí dịch vụ của Haichain được thu bằng **USDT thực tế**. Kho bạc Tự trị của giao thức tự động thực thi các lệnh mua lại (TWAP Buyback) `$HAISI` trên sàn giao dịch:
-* **60% lượng token mua lại:** Đốt bỏ vĩnh viễn trên chuỗi (Deflationary Burning).
-* **40% lượng token mua lại:** Phân phối trực tiếp dưới dạng **Cổ tức USDT Thực (Real Yield)** cho các nhà đầu tư cọc dài hạn (veHAISI), gắn chặt lợi ích của người nắm giữ token với sự bùng nổ của nền kinh tế máy móc.
+#### 2. Cỗ Máy Giảm Cung Ròng Bằng Dòng Tiền Thật (Programmatic Buyback & Deflation)
+Thay vì chi trả cổ tức bằng tiền mặt (vốn tạo rủi ro pháp lý chứng khoán theo luật tài sản số của Mỹ và EU), 100% doanh thu phí bù trừ thu được bằng stablecoin (USDC/USDT) được tự động phân bổ theo tỷ lệ cố định qua hợp đồng thông minh:
+* **50% Doanh thu:** Thực hiện mua lại (TWAP Buyback) token `$HAISI` trực tiếp trên các sàn giao dịch phi tập trung (Raydium / Orca qua Jupiter routing) và **đốt bỏ vĩnh viễn trên chuỗi (Permanent Deflationary Burn)**, tạo lực cầu tự nhiên và thu hẹp tổng cung lưu hành theo mức độ tăng trưởng của nền kinh tế máy móc.
+* **50% Doanh thu:** Chuyển vào **Quỹ Bảo Hiểm An Toàn CHGB (Clearing House Guarantee Buffer)** để phòng vệ thanh khoản, bồi thường người dùng khi có sự cố hạ tầng và tài trợ cho các đợt kiểm toán an ninh định kỳ.
 
+### 7.3. Cầu Chì Năng Lượng Đàn Hồi (E-AEQ) & Cơ Chế Chống Vỡ Nợ Do Nghẽn Mạng
+Để hóa giải triệt để **Bẫy Vỡ Nợ Do Phí Gas Tăng Đột Biến** khi mạng Solana có bão nghẽn, Haichain áp dụng **Hệ Số Năng Lượng Đàn Hồi (Dynamic Elastic Energy Multiplier)**:
 
-#### Cầu Chì Năng Lượng Đàn Hồi (E-AEQ) & Cơ Chế Chống Vỡ Nợ Do Nghẽn Mạng
-Để hóa giải triệt để **Bẫy Vỡ Nợ Do Bao Cấp Gas** - nguy cơ các đợt sốt meme coin trên Solana làm phí ưu tiên tăng 50-100 lần, hút cạn ngân sách Kho Bạc đang bao cấp cho hàng triệu bot AI - Haichain áp dụng **Hệ Số Năng Lượng Đàn Hồi (Dynamic Elastic Energy Multiplier)**:
-
-$$\text{Hệ Số Tiêu Hao Năng Lượng } M = 1 + \alpha \cdot \max\left(0, \quad \frac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}\right)$$
-
-```
-           CƠ CHẾ CẦU CHÌ BẢO VỆ KHO BẠC TRƯỚC BÃO NGHẼN MẠNG
-           
-   [ Mạng Solana Ở Trạng Thái Cơ Sở (Phí ưu tiên $0.0002) ]
-   └── 1 Giao dịch vi mô tiêu hao đúng 1 Đơn vị Năng lượng AEQ (Hệ số M = 1.0)
-   
-   [ SOLANA SỐT MEME COIN (Phí ưu tiên tăng vọt 50 lần) ]
-                               │
-                               ▼
-   [ Phân Luồng Hai Tốc Độ Tự Động ]
-   ├── Tuyến 1: Tác Vụ Sống Còn (Nút Dừng Khẩn Cấp, Thanh Lý Tức Thì)
-   │   └── Được bảo đảm thực thi ngay lập tức từ quỹ dự phòng khẩn cấp
-   └── Tuyến 2: Chu Kỳ Bù Trừ Vi Mô Định Kỳ Của Bot
-       ├── Tự động nâng mức tiêu hao năng lượng AEQ theo hệ số M
-       └── Hoặc TỰ ĐỘNG GIÃN CHU KỲ (Defer) thêm vài slot chờ phí hạ nhiệt
-           --> BẢO TOÀN 100% KHO BẠC • TRIỆT TIÊU NGUY CƠ VỠ NỢ!
-```
-
-* **Bảo Toàn Kho Bạc Tuyệt Đối:** Giao thức không bao cấp mù quáng bằng tiền túi. Khi độ nghẽn mạng vượt ngưỡng 95%, các chu kỳ bù trừ vi mô không khẩn cấp tự động co giãn chu kỳ thanh toán trong vài slot ngắn để né đỉnh phí, giữ vững sự an toàn 100% cho bảng cân đối tài chính của Haichain.
-
-### 7.3. Cơ Chế Tiêu Hủy Token Lô Giao Dịch Bắt Buộc (Programmatic Value Sink & Fee Burn) & Giải Mã Triệt Để Bẫy Lưu Tốc
-Nhằm triệt tiêu hoàn toàn **Định lý John Pfeffer về Bẫy Lưu Tốc Tiền Tệ** (nơi token tiện ích đơn thuần bị bán tháo ngay lập tức khi cuộc gọi API kết thúc, khiến giá trị tích lũy mạng lưới tiệm cận 0), Haichain thiết lập cơ chế **Tiêu Hủy Giá Trị Bắt Buộc Theo Lô Giao Dịch (`OP_402_BURN`)**:
-
-$$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$$
+$$	ext{Hệ Số Tiêu Hao Năng Lượng } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{priority}} - P_{	ext{baseline}}}{P_{	ext{baseline}}}ight)$$
 
 *Trong đó:*
-* $V_{\text{settled}}^{(i)}$ là giá trị danh nghĩa bằng USDT thực tế của gói giao dịch bù trừ thứ $i$.
-* $\gamma = 0.05\%$ là hệ số đốt token cưỡng bức được lập trình trực tiếp vào bộ điều phối Gateway Kernel.
+* $P_{	ext{baseline}} pprox 5.000	ext{ lamports}$ là phí cơ sở chuẩn của Solana (~$0.001 ở SOL $200).
+* $P_{	ext{priority}}$ là mức phí ưu tiên thị trường theo thời gian thực.
+* Khi mạng lưới nghẽn quá mức (phí ưu tiên tăng > 50 lần), hệ thống tự động phân luồng:
+  - **Tác vụ khẩn cấp (Panic Kill-Switch):** Luôn được ưu tiên xử lý lập tức từ Quỹ khẩn cấp.
+  - **Chu kỳ bù trừ định kỳ thông thường:** Tự động giãn slot (Defer) trong vài giây để né đỉnh nghẽn mạng, bảo toàn an toàn tài chính tuyệt đối cho giao thức.
 
-```
-            CƠ CHẾ TIÊU HỦY LÔ GIAO DỊCH BẮT BUỘC (OP_402_BURN)
-            
-   [ Hàng Triệu Cuộc Gọi API & Giao Dịch Bầy Đàn Thực Thi Qua Gateway ]
-                                  │
-                                  ▼
-      [ Cổng Bù Trừ Nén Lô Giao Dịch & Trích Phí Dịch Vụ USDT ]
-                                  │
-         ┌────────────────────────┴────────────────────────┐
-         ▼                                                 ▼
-[ 50% Biên Phí: Mua Lại & Đốt $HAISI ]           [ 50% Biên Phí: Cổ Tức Real Yield USDT ]
-├── Lệnh TWAP tự động mua $HAISI trên DEX        ├── Phân phối trực tiếp bằng USDT
-└── Thực thi lệnh `burn_token_instruction`       └── Chuyển về ví stakers (veHAISI)
-    --> NGUỒN CUNG GIẢM RÒNG THEO KHỐI LƯỢNG MẠNG!
-```
-
-1. **Mua Lại Tự Động & Đốt Vĩnh Viễn Không Phụ Thuộc Quyết Định Chủ Quan:** Mỗi khi một lô giao dịch micro-escrow được xác nhận bù trừ on-chain, Gateway Relayer tự động trích 50% biên lợi nhuận phí bù trừ để kích hoạt lệnh mua lại $HAISI trực tiếp từ các pool thanh khoản (Raydium/Orca qua Jupiter routing) và gọi lệnh tiêu hủy vĩnh viễn (`burn_token_instruction`). Khối lượng giao dịch của nền kinh tế máy móc càng lớn, áp lực giảm cung ròng của $HAISI càng mạnh mẽ và liên tục.
-2. **Cơ Chế Proof-of-Agentic-Stake (PoAS) Cho Làn Ưu Tiên Nano-Giây:**
-   Các nhà vận hành bầy đàn AI, bot giao dịch chênh lệch giá (arbitrage) và tác tử tần số cao bắt buộc phải cọc (bond) một lượng tối thiểu $HAISI vào hợp đồng `StakeRegistry` để được cấp quyền:
-   * **Làn Ưu Tiên Cực Thấp (Low-Latency Fast Path):** Độ trễ khớp lệnh $< 5\text{ms}$ (so với $50\text{ms}$ của hàng đợi thông thường).
-   * **Hạn Mức Bao Cấp Gas 0-SOL Tự Động:** Được mạng lưới tài trợ toàn bộ phí gas Solana mà không cần duy trì số dư SOL cục bộ.
-   * **Chiết Khấu Bù Trừ:** Giảm tới 40% phí thanh toán ròng khi duy trì trạng thái staking liên tục $> 180\text{ ngày}$.
-
-### 7.4. Lịch Mở Khóa Động Gắn Liền Cột Mốc On-Chain (Milestone-Coupled Dynamic Vesting - MCDV) & Bảo Vệ Nhà Đầu Tư TGE
-Để xóa bỏ hoàn toàn tâm lý lo ngại của cộng đồng Web3 và các nhà đầu tư TGE về áp lực bán tháo ("cliff dump") của Đội ngũ Kỹ sư Cốt lõi (18%) và Nhà đầu tư Hạt giống (12%) sau 12 tháng khóa cứng, Haichain tiên phong áp dụng cơ chế **Lịch Mở Khóa Động Gắn Liền Cột Mốc On-Chain (MCDV)**:
+### 7.4. Lịch Mở Khóa Động Gắn Liền Cột Mốc On-Chain (Milestone-Coupled Dynamic Vesting - MCDV)
+Để bảo vệ quyền lợi tối đa cho nhà đầu tư công chúng và cộng đồng, toàn bộ token của Đội ngũ Sáng lập (18%) và Nhà đầu tư Hạt giống (12%) sau 12 tháng khóa cứng (cliff) **chỉ được kích hoạt mở khóa khi thỏa mãn đồng thời cả 2 điều kiện thời gian và chỉ số vận hành thực tế**:
 
 ```
           LỊCH MỞ KHÓA ĐỘNG GẮN LIỀN CỘT MỐC ON-CHAIN (MCDV)
@@ -872,9 +832,9 @@ $$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$
                            │
                            ▼
    [ Hợp Đồng Vesting Tự Động Kiểm Tra 3 Chỉ Số On-Chain ]
-   ├── 1. Khối lượng bù trừ lũy kế qua Gateway >= $50,000,000 USDT ?
-   ├── 2. Số lượng Tác tử AI hoạt động thực tế >= 10,000 Agents ?
-   └── 3. Doanh thu phí giao thức ròng lũy kế >= $500,000 USDT ?
+   ├── 1. Khối lượng bù trừ lũy kế qua Vault >= $50,000,000 USD ?
+   ├── 2. Số lượng Tác tử AI hoạt động thực tế >= 10,000 Verified Agents ?
+   └── 3. Doanh thu phí giao thức ròng lũy kế >= $25,000 USD (ở mức phí 0.05%) ?
                            │
              ┌─────────────┴─────────────┐
              ▼                           ▼
@@ -882,27 +842,24 @@ $$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$
              │                           │
              ▼                           ▼
 [ Mở Khóa Tuyến Tính Hàng Tháng ] [ TỰ ĐỘNG GIA HẠN KHÓA +6 THÁNG ]
-- Quyền lợi gắn liền thành công    - Không mở khóa token cho Team/Seed
-- Minh bạch 100% trên Solana L1    - Bảo vệ tuyệt đối nhà đầu tư TGE/DEX
+- Quyền lợi gắn liền thành công    - Đóng băng token tuyệt đối
+- Minh bạch 100% trên Solana L1    - Bảo vệ người nắm giữ TGE/DEX
 ```
 
-* **Điều Kiện Mở Khóa Hai Cấp (Dual-Gate Invariant):**
-  Hợp đồng thông minh `haichain_vesting_kernel` quy định rằng việc mở khóa tuyến tính từ tháng thứ 13 trở đi **chỉ được kích hoạt khi và chỉ khi thỏa mãn đồng thời cả 2 điều kiện**:
-  1. *Điều kiện thời gian:* Đã hoàn tất 12 tháng cliff.
-  2. *Điều kiện hiệu quả vận hành thực tế (Verifiable On-Chain KPIs):*
-     * **Tổng Khối Lượng Giao Dịch Tích Lũy (Cumulative Settled Volume):** Đạt tối thiểu $\$50,000,000\text{ USDT}$ được bù trừ qua hợp đồng Solana L1.
-     * **Tác Tử Hoạt Động Định Danh (Active Verified Agents):** Có tối thiểu $10,000\text{ tác tử}$ đã khởi tạo Cây Năng Lực (Capability Tree) và phát sinh giao dịch trong 30 ngày gần nhất.
-     * **Doanh Thu Phí Ròng Giao Thức (Net Protocol Fee Yield):** Đạt tối thiểu $\$500,000\text{ USDT}$ đã nạp vào Kho bạc Giao thức.
+* **Các Chỉ Số Hiệu Quả On-Chain Được Xác Minh:**
+  1. **Tổng Khối Lượng Bù Trừ Tích Lũy (Cumulative Settled Volume):** Đạt tối thiểu **$\$50,000,000	ext{ USD}$** được bù trừ thực tế qua các hợp đồng Vault trên Solana.
+  2. **Tác Tử Hoạt Động Định Danh (Active Verified Agents):** Có tối thiểu **$10,000	ext{ tác tử}$** duy trì Cây Năng Lực và có phát sinh giao dịch vi mô trong 30 ngày gần nhất.
+  3. **Doanh Thu Phí Ròng Giao Thức (Net Protocol Fee Yield):** Đạt tối thiểu **$\$25,000	ext{ USD}$** (đối ứng chính xác với tỷ lệ phí $\gamma = 0.05\%$ trên $\$50.000.000	ext{ USD}$ khối lượng, hoặc $\$50,000	ext{ USD}$ ở mức phí $0,10\%$) đã nạp vào Kho bạc Giao thức.
 * **Cơ Chế Tự Động Gia Hạn Khóa (Automatic Lock Extension):**
-  Nếu đến tháng thứ 12 mà các chỉ số on-chain chưa đạt ngưỡng cam kết, toàn bộ token của Team và Seed Investors sẽ tự động bị đóng băng thêm từng chu kỳ 6 tháng cho đến khi sản phẩm đạt đầy đủ các cột mốc thực chứng. Cơ chế này buộc đội ngũ sáng lập và các quỹ đầu tư phải toàn tâm toàn ý xây dựng sản phẩm và tạo doanh thu thật, triệt tiêu 100% rủi ro xả token khi chưa có sự chấp nhận thực tế của thị trường.
+  Nếu đến tháng thứ 12 mà 1 trong 3 chỉ số trên chưa đạt, hợp đồng thông minh tự động đóng băng toàn bộ token thêm từng chu kỳ 6 tháng. Cơ chế này loại bỏ 100% khả năng đội ngũ rút token khi sản phẩm chưa có người dùng thật.
 
 ### 7.5. Mạng Lưới Relayer Phi Tập Trung Ký Quỹ & Cơ Chế Cắt Phạt (Decentralized Staked Relayer Mesh & Slashing Security)
-Để xóa bỏ mối lo ngại về điểm nghẽn tập trung khi mạng lưới mở rộng quy mô, Haichain thiết lập lộ trình chuyển đổi từ Relayer Canary (Giai đoạn 1) sang **Mạng Lưới Chuyển Tiếp Phi Tập Trung Có Ký Quỹ (Decentralized Staked Relayer Mesh)**:
-* **Yêu Cầu Ký Quỹ Tối Thiểu (Relayer Bonding):** Bất kỳ thực thể nào muốn tham gia vận hành node Relayer để chuyển tiếp gói tin bù trừ và thu phí vi mô đều phải ký quỹ tối thiểu $100,000\text{ } \$HAISI$ vào hợp đồng `RelayerRegistryPDA`.
-* **Cơ Chế Chém Phạt Toán Học (Deterministic Slashing):**
-  * *Làm trễ gói tin (Latency Censorship):* Nếu một Relayer nhận lệnh ký quỹ capability nhưng không chuyển tiếp lên chuỗi trong thời hạn cam kết ($> 3\text{ slots}$), 5% số token ký quỹ sẽ bị tịch thu và chuyển vào quỹ bồi thường cho người dùng.
-  * *Gian lận hoặc phát tán trạng thái mâu thuẫn (Equivocation / Invalid Batch):* Hợp đồng Solana L1 phát hiện chữ ký kép hoặc trạng thái mâu thuẫn sẽ lập tức chém phạt **100% số token ký quỹ** của Relayer đó và loại bỏ vĩnh viễn khỏi danh sách vận hành.
-* **Đấu Thầu Xử Lý Đơn Hàng Phi Tập Trung (Decentralized Batch Auction):** Quyền nén và chuyển tiếp các lô bù trừ vi mô được phân bổ ngẫu nhiên dựa trên tỷ trọng cọc ($HAISI$ Stake Weight) kết hợp với điểm uy tín lịch sử (Uptime & Low-Latency Score), đảm bảo không một thực thể đơn lẻ nào có thể kiểm duyệt giao dịch của các tác tử AI.
+Để xóa bỏ điểm nghẽn tập trung khi mạng lưới mở rộng quy mô:
+* **Ký Quỹ Tối Thiểu (Relayer Bonding):** Bất kỳ thực thể nào muốn tham gia nén lô giao dịch và thu phí chuyển tiếp đều phải ký quỹ tối thiểu $100,000	ext{ } \$HAISI$ vào hợp đồng `RelayerRegistryPDA`.
+* **Cắt Phạt Tức Thì (Deterministic Slashing):**
+  * *Làm trễ gói tin (> 3 slots):* Cắt phạt 5% số token ký quỹ để bồi thường cho người dùng.
+  * *Gian lận hoặc phát tán chữ ký kép (Equivocation):* Cắt phạt **100% số token ký quỹ** và loại bỏ vĩnh viễn khỏi danh sách vận hành.
+* **Đấu Thầu Lô Bù Trừ (Decentralized Batch Auction):** Quyền nén lô bù trừ được phân bổ dựa trên tỷ trọng cọc ($HAISI$ Stake Weight) kết hợp với điểm uy tín lịch sử (Uptime & Low-Latency Score), đảm bảo tính phi tập trung và kháng kiểm duyệt.
 
 ---
 

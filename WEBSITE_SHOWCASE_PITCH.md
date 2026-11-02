@@ -475,8 +475,8 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 
 ### 1. Quyết Định Đầu Tư Của Hội Đồng (Investment Verdict)
 * **Quyết Định Đầu Tư:** **PHÊ DUYỆT ĐẦU TƯ MỨC ĐỘ TIN CẬY CAO NHẤT (STRONG CONVICTION BUY)**.
-* **Quy Mô Vòng Hạt Giống:** Dẫn dắt vòng Seed với **$1,200,000 USD** tại mức định giá **$15,000,000 USD FDV** (giá $0.015/token, sở hữu 8.00% tổng cung, khóa cứng 12 tháng).
-* **Luận Điểm Cốt Lõi:** Hạ tầng tài chính độc quyền cho nền kinh tế tác tử AI trị giá $1.3 Nghìn Tỷ USD; mô hình kinh doanh có EBITDA dương ngay từ Năm 1 ($280,000 USD) và đạt $15.9 Triệu USD vào Năm 3; công nghệ chuẩn quân sự v6.9.3 Zero-Griefing với 15 Test Cases tự động đạt 100%.
+* **Quy Mô Vòng Hạt Giống:** Dẫn dắt vòng Seed với **$700,000 - $850,000 USD** tại mức định giá ưu đãi **$7,000,000 - $8,500,000 USD FDV** (giá $0.007 - $0.0085/token, chiết khấu 15-30% so với Public Launchpad $10M FDV, khóa cứng 12 tháng).
+* **Luận Điểm Cốt Lõi:** Hạ tầng tài chính độc quyền cho nền kinh tế tác tử AI trị giá $1.3 Nghìn Tỷ USD; mô hình kinh doanh có Mô hình kinh doanh đạt dòng tiền dương ngay từ Năm 1 ($700,000 USD doanh thu cơ sở từ $1.4 Tỷ volume) và mở rộng bền vững theo tăng trưởng của nền kinh tế tác tử; lõi bảo mật v6.9.5 với 15 bộ bất biến mật mã được kiểm thử tự động toàn diện.
 
 ### 2. Mô Phỏng 3 Kịch Bản Lợi Nhuận (3-Year ROI Scenarios)
 * **Kịch Bản Thận Trọng (Bear Case):** 80k bot, khối lượng bù trừ $300M, EBITDA $450K -> Định giá $40M FDV -> **2.67x Lợi nhuận (IRR 38.7%/năm)**.

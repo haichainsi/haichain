@@ -30,6 +30,9 @@ pub const MAX_SLASH_PER_INCIDENT: u64 = 10_000_000; // 10.00 USDT max slash pena
 /// Official Solana Mainnet Tether USD SPL Token Mint
 pub const USDT_SPL_MINT: Pubkey = pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
 
+/// Official Solana Mainnet Circle USD (USDC) SPL Token Mint (EU MiCA & Global Regulatory Compliant)
+pub const USDC_SPL_MINT: Pubkey = pubkey!("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
+
 #[program]
 pub mod haichain_core {
     use super::*;
@@ -44,11 +47,10 @@ pub mod haichain_core {
         // NOMAD BRIDGE DEFENSE: Strictly forbid uninitialized 0x0 Merkle root
         require!(composite_root != [0u8; 32], HaiChainMasterError::EmptyNomadRootForbidden);
 
-        // ENFORCE TETHER USDT SPL MINT (Strict on mainnet, flexible on devnet/testnet)
+        // ENFORCE COMPLIANT STABLECOIN SPL MINT (Tether USDT or MiCA-compliant Circle USDC)
         #[cfg(feature = "mainnet")]
-        require_keys_eq!(
-            ctx.accounts.token_mint.key(),
-            USDT_SPL_MINT,
+        require!(
+            ctx.accounts.token_mint.key() == USDT_SPL_MINT || ctx.accounts.token_mint.key() == USDC_SPL_MINT,
             HaiChainMasterError::InvalidTokenMint
         );
         #[cfg(not(feature = "mainnet"))]
