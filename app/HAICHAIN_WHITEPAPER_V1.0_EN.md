@@ -867,9 +867,9 @@ HAICHAIN operates a mathematically closed **Dual-Asset Economy**:
                                      │
                     ┌────────────────┴────────────────┐
                     ▼ (50% Revenue)                   ▼ (50% Revenue)
-         [ TWAP BUYBACK & BURN ]             [ REAL YIELD STREAMING ]
-        - Market purchases on DEX          - Distributed in pure USDT
-        - Permanent supply deflation       - Rewarded to veHAISI stakers
+         [ TWAP BUYBACK & BURN ]             [ PROTOCOL SECURITY & CHGB ]
+        - Market purchases on DEX          - Capitalized to CHGB Fund
+        - Permanent supply deflation       - Protects network solvency 
 ```
 
 ### 8.1. Token Allocation & Vesting Schedule (1,000,000,000 Fixed Supply)
@@ -893,21 +893,21 @@ To permanently neutralize the **Token Velocity Death Spiral (Pfeffer's Theorem)*
                                 │
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
-[ Compulsory $HAISI Staking (veHAISI) ]         [ Pure USDT Netting Fee Revenue ]
+[ Optional veHAISI Staking Tiers ]            [ Pure USDT Netting Fee Revenue ]
 ├── Bandwidth granted via locked capital         ├── 0.05% netting fee captured
 │   Daily Allowance = k * sqrt(Staked * Time)    │   strictly in pure USDT
 └── More agents -> More $HAISI locked            └── 100% routed to Protocol Treasury
        │                                                 │
        ▼                                                 ▼
 [ Circulating $HAISI Supply Contracted ]        [ Autonomous TWAP Buyback Engine ]
-                                                ├── 60% of Buybacks BURNED FOREVER
+                                                ├── 50% of Buybacks BURNED FOREVER
                                                 │   (Net Deflationary Supply)
-                                                └── 40% Distributed as USDT Yield
-                                                    to long-term veHAISI Stakers
+                                                └── 50% Allocated to Protocol Reserve
+                                                    (CHGB Insurance Fund)
 ```
 
-#### 1. The Stake-to-Transact Bandwidth Invariant
-Autonomous swarms and enterprise clients cannot simply consume network throughput with transient gas. The kernel enforces a bandwidth allocation constraint:
+#### 1. Dual-Rail Architecture & Optional veHAISI Discount Tiers
+Haichain enforces a zero-friction dual-rail system: standard AI agents pay per transaction in pure USDT with zero mandatory token staking. High-volume enterprise fleets may optionally lock $HAISI (veHAISI) for up to 80% fee reductions and bandwidth priority:
 $$	ext{Daily Transaction Allowance} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 	ext{Lock Duration}}$$
 To unlock wire-speed sub-millisecond bilateral netting channels and zero-friction execution, enterprise operators must lock $HAISI for 3 to 36 months (`veHAISI`). As agentic economic activity expands, significant portions of circulating supply are structurally removed from the open market.
 

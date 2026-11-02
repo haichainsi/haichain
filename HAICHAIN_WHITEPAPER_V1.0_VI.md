@@ -755,9 +755,9 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
                                      │
                     ┌────────────────┴────────────────┐
                     ▼ (50% Doanh Thu)                 ▼ (50% Doanh Thu)
-         [ MUA LẠI VÀ ĐỐT BỎ (TWAP) ]        [ CHIA LỢI NHUẬN THỰC BẰNG USDT ]
-        - Mua $HAISI trực tiếp trên DEX      - Trả thưởng trực tiếp bằng USDT
-        - Giảm nguồn cung vĩnh viễn        - Dành cho người khóa veHAISI
+         [ MUA LẠI VÀ ĐỐT BỎ (TWAP) ]        [ QUỸ BẢO HIỂM AN TOÀN CHGB ]   
+        - Mua $HAISI trực tiếp trên DEX      - Nạp Quỹ Dự Trữ Rủi Ro    
+        - Giảm nguồn cung vĩnh viễn        - Bảo chứng thanh khoản ví    
 ```
 
 ### 7.1. Phân Bổ Token & Lịch Mở Khóa (Tổng Cung Cố Định: 1.000.000.000 $HAISI)
@@ -781,7 +781,7 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
                                 │
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
-[ Cọc Bắt Buộc $HAISI (veHAISI) ]               [ Doanh Thu Phí USDT Nguyên Chất ]
+[ Cọc veHAISI Tùy Chọn & Phân Tầng ]               [ Doanh Thu Phí USDT Nguyên Chất ]
 ├── Hạn Mức = k * sqrt(Staked * Time)           ├── Thu 0.05% phí bù trừ ròng
 │   Bắt buộc cọc để mở băng thông nano-giây     │   bằng 100% USDT thực
 └── Càng nhiều bot -> Càng khóa $HAISI          └── Chuyển thẳng về Kho Bạc Giao Thức
@@ -790,12 +790,12 @@ HAICHAIN vận hành mô hình **Kinh tế học Tài sản Kép (Dual-Asset Eco
 [ Nguồn Cung $HAISI Lưu Hành Thu Hẹp ]          [ Cỗ Máy Mua Lại Tự Động (TWAP) ]
                                                 ├── 50% Mua $HAISI và ĐỐT VĨNH VIỄN
                                                 │   (Tạo áp lực giảm cung ròng)
-                                                └── 50% Nạp Quỹ Bảo Hiểm Rủi Ro (CHGB) để bảo chứng vốn và thanh khoản khẩn cấp mà không vướng rủi ro chứng khoán.
-                                                    cho người cọc hạn (veHAISI)
+                                                └── 50% Nạp Quỹ Bảo Hiểm Rủi Ro CHGB
+                                                    (Bảo vệ thanh khoản khẩn cấp)
 ```
 
-#### 1. Bất Biến Phân Bổ Băng Thông (Stake-to-Transact)
-Doanh nghiệp và các nhà phát triển bầy đàn tác tử không thể chỉ nạp USDT để gọi bot vô hạn định. Hợp đồng thông minh cưỡng bức bất biến hạn mức:
+#### 1. Kiến Trúc Đường Ray Kép & Phân Tầng Giảm Phí veHAISI Tùy Chọn
+HAICHAIN vận hành cơ chế đường ray kép không rào cản: người dùng phổ thông trả phí từng câu lệnh bằng 100% USDT mà không bắt buộc phải mua hay cọc token $HAISI. Các doanh nghiệp vận hành bầy đàn quy mô lớn có thể tùy chọn khóa $HAISI (veHAISI) để nhận ưu đãi giảm tới 80% phí giao dịch và ưu tiên băng thông:
 $$	ext{Hạn Mức Giao Dịch Ngày} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 	ext{Thời Gian Khóa}}$$
 Để mở các kênh bù trừ đối xứng với độ trễ nano-giây và miễn phí gas vi mô, doanh nghiệp bắt buộc phải mua và khóa `$HAISI` từ 3 đến 36 tháng (`veHAISI`). Càng nhiều tác tử gia nhập hệ sinh thái, lượng `$HAISI` bị rút khỏi lưu thông trên thị trường mở càng lớn.
 

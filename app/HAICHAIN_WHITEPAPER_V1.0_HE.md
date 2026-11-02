@@ -717,9 +717,9 @@ HAICHAIN פותרת זאת באמצעות **ערוצי מצב אופטימיים
                                      │
                     ┌────────────────┴────────────────┐
                     ▼ (50% Revenue)                   ▼ (50% Revenue)
-         [ TWAP BUYBACK & BURN ]             [ REAL YIELD STREAMING ]
-        - Market purchases on DEX          - Distributed in pure USDT
-        - Permanent supply deflation       - Rewarded to veHAISI stakers
+         [ TWAP BUYBACK & BURN ]             [ PROTOCOL SECURITY & CHGB ]
+        - Market purchases on DEX          - Capitalized to CHGB Fund
+        - Permanent supply deflation       - Protects network solvency 
 ```
 
 ### 8.1. הקצאת טוקנים ולוח זמנים להבשלה (היצע קבוע: 1,000,000,000 טוקנים)
@@ -743,17 +743,17 @@ HAICHAIN פותרת זאת באמצעות **ערוצי מצב אופטימיים
                                 │
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
-[ Compulsory $HAISI Staking (veHAISI) ]         [ Pure USDT Netting Fee Revenue ]
+[ Optional veHAISI Staking Tiers ]            [ Pure USDT Netting Fee Revenue ]
 ├── Bandwidth granted via locked capital         ├── 0.05% netting fee captured
 │   Daily Allowance = k * sqrt(Staked * Time)    │   strictly in pure USDT
 └── More agents -> More $HAISI locked            └── 100% routed to Protocol Treasury
        │                                                 │
        ▼                                                 ▼
 [ Circulating $HAISI Supply Contracted ]        [ Autonomous TWAP Buyback Engine ]
-                                                ├── 60% of Buybacks BURNED FOREVER
+                                                ├── 50% of Buybacks BURNED FOREVER
                                                 │   (Net Deflationary Supply)
-                                                └── 40% Distributed as USDT Yield
-                                                    to long-term veHAISI Stakers
+                                                └── 50% Allocated to Protocol Reserve
+                                                    (CHGB Insurance Fund)
 ```
 
 #### 1. אינווריאנט רוחב הפס של Stake-to-Transact:

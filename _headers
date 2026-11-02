@@ -29,6 +29,12 @@
   Content-Type: application/javascript; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate, no-cache
 
+/api/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
+  Access-Control-Allow-Headers: *
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /*
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
