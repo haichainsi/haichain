@@ -417,9 +417,9 @@
                 <label id="saft-lbl-canvas" class="text-xs font-semibold" style="color: #ffffff !important;">Your Digital Signature *</label>
                 <button id="saft-btn-clear-sig" type="button" class="text-xs font-mono underline hover:opacity-80 cursor-pointer transition-colors" style="color: #f87171 !important;">Clear Signature</button>
               </div>
-              <div class="relative w-full rounded-xl overflow-hidden shadow-sm" style="background-color: #000000 !important; border: 1px solid #3f3f46 !important;">
+              <div class="relative w-full rounded-xl overflow-hidden shadow-sm" style="background-color: #ffffff !important; border: 1px solid #d4d4d8 !important;">
                 <canvas id="saft-sig-canvas" width="600" height="150" class="w-full h-32 sm:h-36 block touch-none cursor-crosshair"></canvas>
-                <div id="saft-sig-placeholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-xs font-mono select-none" style="color: #71717a !important;">
+                <div id="saft-sig-placeholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-xs font-mono select-none" style="color: #9ca3af !important;">
                   (Use mouse or touch screen to sign here)
                 </div>
               </div>
@@ -1451,7 +1451,7 @@
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.lineWidth = 2.5;
-      ctx.strokeStyle = '#ffffff';
+      ctx.strokeStyle = '#000000';
     }
 
     // Toggle Overlay
@@ -1537,7 +1537,7 @@
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.lineWidth = 2.5;
-      ctx.strokeStyle = '#ffffff';
+      ctx.strokeStyle = '#000000';
 
       const coords = getCanvasCoords(e);
       lastX = coords.x;
@@ -1600,6 +1600,7 @@
         strokeCount = 0;
         pointsDrawn = 0;
         hasSigned = false;
+        ctx.strokeStyle = '#000000';
         if (placeholder) placeholder.classList.remove('hidden');
       });
     }
@@ -1676,6 +1677,20 @@
         const contractId = 'SAFT-HAI-2026-' + Math.random().toString(36).substring(2, 7).toUpperCase();
         const tokens = Math.floor(amount / 0.007);
         const treasury = '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
+                // Ensure signature strokes are black on transparent canvas
+        try {
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const d = imgData.data;
+          for (let i = 0; i < d.length; i += 4) {
+            if (d[i + 3] > 0) {
+              d[i] = 0;
+              d[i + 1] = 0;
+              d[i + 2] = 0;
+            }
+          }
+          ctx.putImageData(imgData, 0, 0);
+        } catch (_) {}
+
         const signatureData = canvas.toDataURL('image/png');
 
         const rawProof = contractId + '|' + name + '|' + email + '|' + amount + '|' + tokens + '|' + wallet + '|' + treasury + '|' + timestamp;
@@ -1832,7 +1847,7 @@
 '      <div class="label">' + (isVi ? 'CHỮ KÝ ĐIỆN TỬ CỦA NHÀ ĐẦU TƯ:' : 'INVESTOR DIGITAL SIGNATURE:') + '</div>' +
 '      <div style="font-size: 12px; color:#444; margin-top: 4px;">' + (isVi ? 'Đã ký số trực tuyến theo chuẩn ESIGN Act &amp; Luật GDĐT' : 'Executed digitally pursuant to US ESIGN Act &amp; UETA standards') + '</div>' +
 '    </div>' +
-'    <img src="' + signedRecord.signatureData + '" style="max-height: 70px; border-bottom: 1px solid #000;" alt="Signature">' +
+'    <img src="' + signedRecord.signatureData + '" style="max-height: 70px; border-bottom: 1px solid #000; filter: brightness(0); -webkit-filter: brightness(0);" alt="Signature">' +
 '  </div>' +
 '  <div class="proof">' +
 '    <strong>CRYPTOGRAPHIC AUDIT PROOF (SHA-256):</strong><br>' +
