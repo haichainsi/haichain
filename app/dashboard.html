@@ -159,13 +159,13 @@
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
-  <script src="/app/dialog.js?v=v4_luxury_popup"></script>
+  <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
   <script src="/app/i18n.js?v=v27_text_only_quickdemos"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v14_real_metamask_mobile"></script>
+  <script src="/app/sale-controller.js?v=v21_fix_alert_body_1793580832459"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -5840,8 +5840,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
     function getDashNotice(key) {
       const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
-      const dict = DASH_NOTICES_I18N[lang] || DASH_NOTICES_I18N['en'];
-      return dict[key] || DASH_NOTICES_I18N['en'][key] || '';
+      const dict = DASH_NOTICES_I18N[lang] || DASH_NOTICES_I18N['en'] || {};
+      const enDict = DASH_NOTICES_I18N['en'] || {};
+      const viDict = DASH_NOTICES_I18N['vi'] || {};
+      return dict[key] || enDict[key] || viDict[key] || key;
     }
   
     function getVestingText(key, lang) {
@@ -6353,8 +6355,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
             return;
           }
-          dashboardDepositModal.classList.add('hidden');
-          walletConnectModal.classList.remove('hidden');
+          alert(getDashNotice('noWeb3DetectedFaucetGuide'));
+          if (dashPayTabFaucet) dashPayTabFaucet.click();
         }
       });
     }
@@ -6644,6 +6646,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               return;
             }
             alert(getDashNotice('noWeb3DetectedFaucetGuide'));
+            if (dashPayTabFaucet) dashPayTabFaucet.click();
             return;
           }
         }
@@ -6665,7 +6668,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
             return;
           }
-          alert(getDashNotice('web3Disconnected'));
+          alert(getDashNotice('noWeb3DetectedFaucetGuide'));
+          if (dashPayTabFaucet) dashPayTabFaucet.click();
           updateDepositWalletBanner();
           return;
         }
