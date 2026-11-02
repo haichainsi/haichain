@@ -83,11 +83,17 @@ const MCP_TOOLS = [
 ];
 
 // Helper: Query Solana RPC
+let lastRpcDebug = 'INIT';
+
 async function querySolanaRpc(method, params = []) {
   try {
     const res = await fetch(SOLANA_DEVNET_RPC, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      },
       body: JSON.stringify({
         jsonrpc: '2.0',
         id: 'haichain-mcp-' + Date.now(),
@@ -95,11 +101,19 @@ async function querySolanaRpc(method, params = []) {
         params: params
       })
     });
-    if (!res.ok) throw new Error(`RPC HTTP ${res.status}`);
+    if (!res.ok) {
+      lastRpcDebug = 'HTTP_' + res.status;
+      return null;
+    }
     const json = await res.json();
-    return json.result;
+    if (json && json.result) {
+      lastRpcDebug = 'OK_val_' + (typeof json.result.value !== 'undefined' ? json.result.value : JSON.stringify(json.result));
+      return json.result;
+    }
+    lastRpcDebug = 'NO_RESULT_' + JSON.stringify(json);
+    return null;
   } catch (err) {
-    console.warn(`Solana RPC ${method} failed:`, err);
+    lastRpcDebug = 'ERR_' + (err.message || String(err));
     return null;
   }
 }
