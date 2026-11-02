@@ -106,8 +106,9 @@ async function querySolanaRpc(method, params = []) {
 
 // Tool Implementation: get_spending_pot_balance
 async function handleGetSpendingPotBalance(args = {}) {
-  const isMasterVault = !args.vaultAddress || args.vaultAddress === MASTER_VAULT_PDA;
-  const targetAddress = args.vaultAddress || MASTER_VAULT_PDA;
+  const rawAddr = (args.vaultAddress || args.vault_address || args.walletAddress || args.wallet_address || args.address || args.account || '').trim();
+  const isMasterVault = !rawAddr || rawAddr === MASTER_VAULT_PDA;
+  const targetAddress = isMasterVault ? MASTER_VAULT_PDA : rawAddr;
   let lamports = 0;
   let slot = 517830000;
 
