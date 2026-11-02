@@ -165,7 +165,7 @@
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v32_mobile_hub_clean_1793615000000"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v26_vip_gatekeeper_shield_1793606000000"></script>
+  <script src="/app/sale-controller.js?v=v27_multilingual_saft_memo_1793616000000"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -6345,25 +6345,57 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     }
 
     window.renderVestingVaultPage = renderVestingVaultPage;
-    window.openSaftPdfModal = function() {
-      const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en').toLowerCase();
-      const pdfUrl = (lang === 'vi') ? '/HAICHAIN_PRESEED_SAFT_AGREEMENT_VI_EN.pdf' : '/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf';
-      const title = (lang === 'vi') ? 'Thỏa Thuận Pháp Lý SAFT HAICHAIN (Bảo Lãnh Mainnet)' : 'HAICHAIN Official SAFT Agreement (Mainnet Guaranteed)';
+    const SAFT_PDF_MAP = {
+      vi: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_VI.pdf', title: 'Thỏa Thuận Pháp Lý SAFT HAICHAIN (Bảo Lãnh Mainnet)' },
+      zh: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_ZH.pdf', title: 'HAICHAIN 种子轮前未来代币简单协议 (SAFT 机构版)' },
+      ko: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_KO.pdf', title: 'HAICHAIN 프리시드 SAFT 법적 계약서 (메인넷 보증)' },
+      es: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_ES.pdf', title: 'Acuerdo Legal SAFT Pre-Seed de HAICHAIN (Garantía Mainnet)' },
+      fr: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_FR.pdf', title: 'Accord Juridique SAFT Pre-Seed HAICHAIN (Garantie Mainnet)' },
+      ru: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_RU.pdf', title: 'Юридическое соглашение SAFT Pre-Seed HAICHAIN (Гарантия Mainnet)' },
+      kk: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_KK.pdf', title: 'HAICHAIN Pre-Seed SAFT Заңды Келісімі (Mainnet Кепілдігі)' },
+      hi: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_HI.pdf', title: 'HAICHAIN आधिकारिक प्री-सीड SAFT कानूनी समझौता (मेननेट गारंटी)' },
+      he: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_HE.pdf', title: 'הסכם משפטי SAFT Pre-Seed של HAICHAIN (ערבות רשת ראשית)' },
+      en: { url: '/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', title: 'HAICHAIN Official SAFT Agreement (Mainnet Guaranteed)' }
+    };
+
+    const MEMO_PDF_MAP = {
+      vi: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_VI.pdf', title: 'Bản Tóm Tắt Đầu Tư Pre-Seed (1-Pager Executive Memo)' },
+      zh: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_ZH.pdf', title: 'HAICHAIN 种子轮前战略投资备忘录 (1页执行简报)' },
+      ko: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_KO.pdf', title: 'HAICHAIN 프리시드 전략적 투자 요약 (1페이지 핵심 메모)' },
+      es: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_ES.pdf', title: 'Memorándum de Inversión Estratégica Pre-Seed HAICHAIN (Resumen 1 Página)' },
+      fr: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_FR.pdf', title: 'Mémoire d\'Investissement Stratégique Pre-Seed HAICHAIN (Synthèse 1 Page)' },
+      ru: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_RU.pdf', title: 'Меморандум о стратегических инвестициях Pre-Seed HAICHAIN (1-страничный бриф)' },
+      kk: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_KK.pdf', title: 'HAICHAIN Pre-Seed Стратегиялық Инвестициялық Меморандумы (1-Беттік Түйін)' },
+      hi: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_HI.pdf', title: 'HAICHAIN प्री-सीड रणनीतिक निवेश मेमो (1-पृष्ठ कार्यकारी सारांश)' },
+      he: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_HE.pdf', title: 'מזכר השקעה אסטרטגי Pre-Seed של HAICHAIN (תקציר מנהלים בעמוד אחד)' },
+      en: { url: '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_EN.pdf', title: 'HAICHAIN Pre-Seed Strategic Investment Memo (1-Pager)' }
+    };
+
+    window.getSaftPdfForLang = function(lang) {
+      const l = (lang || (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang') || 'en')).toLowerCase();
+      return SAFT_PDF_MAP[l] || SAFT_PDF_MAP['en'];
+    };
+
+    window.getPreseedMemoPdfForLang = function(lang) {
+      const l = (lang || (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang') || 'en')).toLowerCase();
+      return MEMO_PDF_MAP[l] || MEMO_PDF_MAP['en'];
+    };
+
+    window.openSaftPdfModal = function(overrideLang) {
+      const doc = window.getSaftPdfForLang(overrideLang);
       if (typeof window.openPdfViewerModal === 'function') {
-        window.openPdfViewerModal(pdfUrl, title);
+        window.openPdfViewerModal(doc.url, doc.title);
       } else {
-        window.open(pdfUrl, '_blank');
+        window.open(doc.url, '_blank');
       }
     };
 
-    window.openPreseedMemoModal = function() {
-      const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en').toLowerCase();
-      const pdfUrl = (lang === 'vi') ? '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_VI_EN.pdf' : '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_EN.pdf';
-      const title = (lang === 'vi') ? 'Bản Tóm Tắt Đầu Tư Pre-Seed (1-Pager Executive Memo)' : 'HAICHAIN Pre-Seed Strategic Investment Memo';
+    window.openPreseedMemoModal = function(overrideLang) {
+      const doc = window.getPreseedMemoPdfForLang(overrideLang);
       if (typeof window.openPdfViewerModal === 'function') {
-        window.openPdfViewerModal(pdfUrl, title);
+        window.openPdfViewerModal(doc.url, doc.title);
       } else {
-        window.open(pdfUrl, '_blank');
+        window.open(doc.url, '_blank');
       }
     };
 

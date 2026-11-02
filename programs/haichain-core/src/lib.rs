@@ -9,7 +9,7 @@
 // 6. Canonical Associated Token Account (ATA) derivation enforcement
 // 7. Double-Spend Replay Defense: Ephemeral Nullifier PDA tracking per nonce
 // 8. CPI PDA Signer Seeds Fix: Direct Vault PDA Authority (zero-mismatch)
-// 9. Sub-Agent Identity Hijacking Fix: Cryptographically bound 4-tuple capability leaf (Pubkey, MaxAmount, ExpirySlot, Nonce)
+// 9. Sub-Agent Identity Hijacking & Memory Poisoning Defense: Cryptographically bound 5-tuple composite capability leaf (SubAgentPubkey, ServiceProviderATA, MaxAmount, ExpirySlot, Nonce)
 // 10. Fiat On-Ramp Relayer Fix: Decoupled depositor Signer (gasless background top-ups)
 // 11. Enforced Official Tether USDT SPL Mint (`Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)
 // 12. 4 Historic Exploit Invariants ($800M+ Immunity: Wormhole, Nomad, Euler, Mango)
@@ -144,8 +144,10 @@ pub mod haichain_core {
         require!(!composite_proof.is_empty(), HaiChainMasterError::EmptyMerkleProofForbidden);
 
         // ====================================================================
-        // INVARIANT 3: BOUND CAPABILITY + COMPOSITE PROOF (ELIZAOS & MEV DEFENSE)
-        // 4-Tuple Bound Capability: Pubkey || MaxSpend || ExpirySlot || Nonce
+        // INVARIANT 3: BOUND 5-TUPLE COMPOSITE CAPABILITY (ELIZAOS & PROMPT INJECTION DEFENSE)
+        // Bound Capability: (SubAgentPubkey || MaxSpend || ExpirySlot || Nonce)
+        // Composite Leaf: Hash(LeafCapability || WhitelistedMerchantATA)
+        // MATHEMATICALLY GUARANTEES: A hijacked agent CANNOT send funds to an unauthorized attacker's wallet!
         // ====================================================================
         let leaf_capability = anchor_lang::solana_program::keccak::hashv(&[
             ctx.accounts.sub_agent_signer.key().as_ref(),

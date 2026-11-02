@@ -1455,13 +1455,21 @@
       }
     }
 
-    // Document PDF Online Viewer Triggers
+    // Document PDF Online Viewer Triggers (Fully Multilingual & Responsive to Current Language)
     const btnSaft = container.querySelector('#btn-open-saft-pdf');
     if (btnSaft) {
       btnSaft.addEventListener('click', (e) => {
         e.preventDefault();
-        const title = getI18nText('saftDocTitle');
-        window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', title);
+        const activeLang = getActiveLang();
+        if (typeof window.openSaftPdfModal === 'function') {
+          window.openSaftPdfModal(activeLang);
+        } else if (typeof window.getSaftPdfForLang === 'function') {
+          const doc = window.getSaftPdfForLang(activeLang);
+          window.openPdfViewerModal(doc.url, doc.title);
+        } else {
+          const title = getI18nText('saftDocTitle') || 'HAICHAIN SAFT Agreement';
+          window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_' + activeLang.toUpperCase() + '.pdf', title);
+        }
       });
     }
 
@@ -1469,8 +1477,16 @@
     if (btnMemo) {
       btnMemo.addEventListener('click', (e) => {
         e.preventDefault();
-        const title = getI18nText('saftDocTitle');
-        window.openPdfViewerModal('/HAICHAIN_PRESEED_ONE_PAGER_MEMO_EN.pdf', title);
+        const activeLang = getActiveLang();
+        if (typeof window.openPreseedMemoModal === 'function') {
+          window.openPreseedMemoModal(activeLang);
+        } else if (typeof window.getPreseedMemoPdfForLang === 'function') {
+          const doc = window.getPreseedMemoPdfForLang(activeLang);
+          window.openPdfViewerModal(doc.url, doc.title);
+        } else {
+          const title = getI18nText('memoDocTitle') || 'HAICHAIN Pre-Seed 1-Pager Memo';
+          window.openPdfViewerModal('/HAICHAIN_PRESEED_ONE_PAGER_MEMO_' + activeLang.toUpperCase() + '.pdf', title);
+        }
       });
     }
 
