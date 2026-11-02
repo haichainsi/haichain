@@ -1138,12 +1138,12 @@
     // VIP GATEKEEPER LOCK SCREEN (LUXURY APPLE TITANIUM THEME)
     if (!isAuthorized && !phase.isPublic) {
       container.innerHTML = `
-        <div class="max-w-lg mx-auto my-8 sm:my-14 p-6 sm:p-9 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-lg text-center space-y-6 animate-fadeIn">
-          <div class="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex items-center justify-center mx-auto text-black dark:text-white shadow-xs">
+        <div class="max-w-lg mx-auto my-8 sm:my-14 p-6 sm:p-9 rounded-3xl bg-white dark:bg-black text-center space-y-6 animate-fadeIn">
+          <div class="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center mx-auto text-black dark:text-white">
             <i data-lucide="shield-check" class="w-8 h-8"></i>
           </div>
           <div class="space-y-2">
-            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[11px] font-mono font-semibold text-neutral-700 dark:text-neutral-300">
+            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 text-[11px] font-mono font-semibold text-neutral-700 dark:text-neutral-300">
               <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
               <span>HAICHAIN VIP GATEKEEPER</span>
             </div>
@@ -1164,7 +1164,7 @@
             </button>
             <p id="vip-gatekeeper-err" class="text-xs font-mono text-rose-500 hidden pt-1"></p>
           </div>
-          <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800/80 space-y-3">
+          <div class="pt-4 space-y-3">
             <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans">
               ${getActiveLang() === 'vi' 
                 ? 'Bạn là Quỹ đầu tư hoặc Đối tác chiến lược chưa có mã mời?' 
