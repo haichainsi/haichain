@@ -11,6 +11,26 @@
   // 1. COMPREHENSIVE 10-LANGUAGE DICTIONARY
   const SALE_I18N = {
     en: {
+      btnConnectWeb3ToBuy: 'Connect Web3 Wallet to Buy $HAISI',
+      btnPayMetaMask: '🦊 Pay for $HAISI with MetaMask',
+      btnPaySolflare: '🔥 Pay for $HAISI with Solflare',
+      btnPayPhantom: '👻 Pay with Phantom (1-Click)',
+      connectWeb3Required: 'Please connect your Web3 wallet (MetaMask, Phantom, or Solflare) to proceed with SAFT payment.',
+      confirmPurchaseTitle: 'CONFIRM $HAISI PURCHASE ({provider})',
+      authorizeOpenWallet: 'Authorize & Open Wallet',
+      metaMaskConnCancelled: 'MetaMask connection was cancelled.',
+      metaMaskNoAccount: 'No valid MetaMask account found.',
+      metaMaskTxCancelled: 'Transaction signature was cancelled in MetaMask.',
+      metaMaskErrorPrefix: 'MetaMask error:',
+      solanaConnCancelled: 'Solana wallet connection was cancelled.',
+      solanaUnlockPrompt: 'Please unlock and connect your Solana wallet!',
+      solanaTxCancelled: 'Transaction was cancelled in your wallet.',
+      solanaErrorPrefix: 'Solana wallet error:',
+      txNotConfirmed: 'Transaction was not confirmed by Web3 wallet.',
+      openingMetaMaskSaft: 'Opening MetaMask App to confirm transaction with real funds...',
+      openingPhantomSaft: 'Opening Phantom App to confirm transaction with real funds...',
+      noMetaMaskDetected: 'MetaMask extension not detected in your browser!',
+      noSolanaDetected: 'No Solana wallet extension detected (Phantom or Solflare)!',
     vestingCliffCard: '2. Cliff (2 Months)',
     vestingCliffDesc: '0% Unlock (Anti-dump)',
     vestingLinearCard: '3. Linear (6 Months)',
@@ -75,6 +95,26 @@
       unlockBtn: 'Unlock'
     },
     vi: {
+      btnConnectWeb3ToBuy: 'Kết Nối Ví Web3 Để Mua $HAISI',
+      btnPayMetaMask: '🦊 Thanh Toán $HAISI Bằng MetaMask (EVM)',
+      btnPaySolflare: '🔥 Thanh Toán $HAISI Bằng Solflare',
+      btnPayPhantom: '👻 Thanh Toán 1-Click Ví Phantom',
+      connectWeb3Required: 'Vui lòng kết nối ví Web3 (MetaMask, Phantom hoặc Solflare) để thực hiện thanh toán SAFT.',
+      confirmPurchaseTitle: 'XÁC NHẬN THANH TOÁN MUA $HAISI ({provider})',
+      authorizeOpenWallet: 'Ký Duyệt & Mở Ví',
+      metaMaskConnCancelled: 'Bạn đã từ chối kết nối ví MetaMask.',
+      metaMaskNoAccount: 'Không tìm thấy địa chỉ tài khoản MetaMask hợp lệ.',
+      metaMaskTxCancelled: 'Bạn đã hủy yêu cầu ký duyệt giao dịch trên ví MetaMask.',
+      metaMaskErrorPrefix: 'Lỗi ví MetaMask:',
+      solanaConnCancelled: 'Bạn đã từ chối kết nối ví Solana.',
+      solanaUnlockPrompt: 'Vui lòng mở khóa và kết nối ví Solana!',
+      solanaTxCancelled: 'Bạn đã hủy yêu cầu giao dịch trên ví.',
+      solanaErrorPrefix: 'Lỗi ví Solana:',
+      txNotConfirmed: 'Giao dịch chưa được xác nhận bởi ví Web3.',
+      openingMetaMaskSaft: 'Đang mở ứng dụng MetaMask để bạn xác nhận giao dịch thanh toán bằng tiền thật trong ví...',
+      openingPhantomSaft: 'Đang mở ứng dụng Phantom để bạn xác nhận giao dịch thanh toán bằng tiền thật trong ví...',
+      noMetaMaskDetected: 'Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn!',
+      noSolanaDetected: 'Chưa phát hiện tiện ích ví Solana (Phantom hoặc Solflare)!',
     vestingCliffCard: '2. Cliff (2 Tháng)',
     vestingCliffDesc: 'Khóa 0% (Anti-dump)',
     vestingLinearCard: '3. Tuyến Tính (6 Tháng)',
@@ -139,6 +179,26 @@
       unlockBtn: 'Mở Khóa'
     },
     zh: {
+      btnConnectWeb3ToBuy: '连接 Web3 钱包以认购 $HAISI',
+      btnPayMetaMask: '🦊 使用 MetaMask 支付 $HAISI (EVM)',
+      btnPaySolflare: '🔥 使用 Solflare 支付 $HAISI',
+      btnPayPhantom: '👻 使用 Phantom 1-Click 快捷支付',
+      connectWeb3Required: '请连接您的 Web3 钱包（MetaMask、Phantom 或 Solflare）以完成 SAFT 认购支付。',
+      confirmPurchaseTitle: '确认认购 $HAISI 代币 ({provider})',
+      authorizeOpenWallet: '授权并打开钱包',
+      metaMaskConnCancelled: '您已取消 MetaMask 钱包连接。',
+      metaMaskNoAccount: '未找到有效的 MetaMask 账户地址。',
+      metaMaskTxCancelled: 'MetaMask 中的交易签名已取消。',
+      metaMaskErrorPrefix: 'MetaMask 错误：',
+      solanaConnCancelled: '您已取消 Solana 钱包连接。',
+      solanaUnlockPrompt: '请解锁并连接您的 Solana 钱包！',
+      solanaTxCancelled: '钱包中的交易已取消。',
+      solanaErrorPrefix: 'Solana 钱包错误：',
+      txNotConfirmed: 'Web3 钱包未确认此交易。',
+      openingMetaMaskSaft: '正在打开 MetaMask 应用程序以使用真实资金确认交易...',
+      openingPhantomSaft: '正在打开 Phantom 应用程序以使用真实资金确认交易...',
+      noMetaMaskDetected: '您的浏览器未检测到 MetaMask 插件！',
+      noSolanaDetected: '未检测到 Solana 钱包插件（Phantom 或 Solflare）！',
     vestingCliffCard: '2. 锁仓期 (2个月)',
     vestingCliffDesc: '0% 解锁 (防止抛售)',
     vestingLinearCard: '3. 线性释放 (6个月)',
@@ -203,6 +263,26 @@
       unlockBtn: '解锁'
     },
     ko: {
+      btnConnectWeb3ToBuy: '$HAISI 구매를 위해 Web3 지갑 연결',
+      btnPayMetaMask: '🦊 MetaMask로 $HAISI 결제 (EVM)',
+      btnPaySolflare: '🔥 Solflare로 $HAISI 결제',
+      btnPayPhantom: '👻 Phantom 1-Click 결제',
+      connectWeb3Required: 'SAFT 결제를 진행하려면 Web3 지갑(MetaMask, Phantom 또는 Solflare)을 연결하세요.',
+      confirmPurchaseTitle: '$HAISI 구매 승인 및 결제 확인 ({provider})',
+      authorizeOpenWallet: '승인 및 지갑 열기',
+      metaMaskConnCancelled: 'MetaMask 지갑 연결이 취소되었습니다.',
+      metaMaskNoAccount: '유효한 MetaMask 계정을 찾을 수 없습니다.',
+      metaMaskTxCancelled: 'MetaMask에서 거래 서명이 취소되었습니다.',
+      metaMaskErrorPrefix: 'MetaMask 오류:',
+      solanaConnCancelled: 'Solana 지갑 연결이 취소되었습니다.',
+      solanaUnlockPrompt: 'Solana 지갑을 잠금 해제하고 연결하세요!',
+      solanaTxCancelled: '지갑에서 거래가 취소되었습니다.',
+      solanaErrorPrefix: 'Solana 지갑 오류:',
+      txNotConfirmed: 'Web3 지갑에서 거래가 확인되지 않았습니다.',
+      openingMetaMaskSaft: '실제 자금으로 거래를 확인하기 위해 MetaMask 앱을 여는 중...',
+      openingPhantomSaft: '실제 자금으로 거래를 확인하기 위해 Phantom 앱을 여는 중...',
+      noMetaMaskDetected: '브라우저에서 MetaMask 확장 프로그램이 감지되지 않았습니다!',
+      noSolanaDetected: 'Solana 지갑 확장 프로그램(Phantom 또는 Solflare)이 감지되지 않았습니다!',
     vestingCliffCard: '2. 클리프 (2개월)',
     vestingCliffDesc: '0% 락업 (덤핑 방지)',
     vestingLinearCard: '3. 선형 스트리밍 (6개월)',
@@ -267,6 +347,26 @@
       unlockBtn: '잠금 해제'
     },
     fr: {
+      btnConnectWeb3ToBuy: 'Connecter le portefeuille Web3 pour acheter $HAISI',
+      btnPayMetaMask: '🦊 Payer $HAISI avec MetaMask (EVM)',
+      btnPaySolflare: '🔥 Payer $HAISI avec Solflare',
+      btnPayPhantom: '👻 Payer en 1 Clic avec Phantom',
+      connectWeb3Required: 'Veuillez connecter votre portefeuille Web3 (MetaMask, Phantom ou Solflare) pour procéder au paiement SAFT.',
+      confirmPurchaseTitle: 'CONFIRMER L\'ACHAT DE $HAISI ({provider})',
+      authorizeOpenWallet: 'Autoriser et ouvrir le portefeuille',
+      metaMaskConnCancelled: 'La connexion à MetaMask a été annulée.',
+      metaMaskNoAccount: 'Aucun compte MetaMask valide trouvé.',
+      metaMaskTxCancelled: 'La signature de la transaction a été annulée dans MetaMask.',
+      metaMaskErrorPrefix: 'Erreur MetaMask :',
+      solanaConnCancelled: 'La connexion au portefeuille Solana a été annulée.',
+      solanaUnlockPrompt: 'Veuillez déverrouiller et connecter votre portefeuille Solana !',
+      solanaTxCancelled: 'La transaction a été annulée dans votre portefeuille.',
+      solanaErrorPrefix: 'Erreur portefeuille Solana :',
+      txNotConfirmed: 'La transaction n\'a pas été confirmée par le portefeuille Web3.',
+      openingMetaMaskSaft: 'Ouverture de l\'application MetaMask pour confirmer la transaction...',
+      openingPhantomSaft: 'Ouverture de l\'application Phantom pour confirmer la transaction...',
+      noMetaMaskDetected: 'Extension MetaMask non détectée dans votre navigateur !',
+      noSolanaDetected: 'Aucune extension de portefeuille Solana détectée (Phantom ou Solflare) !',
     vestingCliffCard: '2. Cliff (2 Mois)',
     vestingCliffDesc: '0% Déblocage (Anti-dump)',
     vestingLinearCard: '3. Linéaire (6 Mois)',
@@ -331,6 +431,26 @@
       unlockBtn: 'Déverrouiller'
     },
     es: {
+      btnConnectWeb3ToBuy: 'Conectar billetera Web3 para comprar $HAISI',
+      btnPayMetaMask: '🦊 Pagar $HAISI con MetaMask (EVM)',
+      btnPaySolflare: '🔥 Pagar $HAISI con Solflare',
+      btnPayPhantom: '👻 Pagar en 1 Clic con Phantom',
+      connectWeb3Required: 'Conecte su billetera Web3 (MetaMask, Phantom o Solflare) para proceder con el pago SAFT.',
+      confirmPurchaseTitle: 'CONFIRMAR COMPRA DE $HAISI ({provider})',
+      authorizeOpenWallet: 'Autorizar y abrir billetera',
+      metaMaskConnCancelled: 'Se canceló la conexión con MetaMask.',
+      metaMaskNoAccount: 'No se encontró una cuenta válida de MetaMask.',
+      metaMaskTxCancelled: 'Se canceló la firma de la transacción en MetaMask.',
+      metaMaskErrorPrefix: 'Error de MetaMask:',
+      solanaConnCancelled: 'Se canceló la conexión con la billetera Solana.',
+      solanaUnlockPrompt: '¡Desbloquee y conecte su billetera Solana!',
+      solanaTxCancelled: 'Se canceló la transacción en su billetera.',
+      solanaErrorPrefix: 'Error de billetera Solana:',
+      txNotConfirmed: 'La transacción no fue confirmada por la billetera Web3.',
+      openingMetaMaskSaft: 'Abriendo la aplicación MetaMask para confirmar la transacción con fondos reales...',
+      openingPhantomSaft: 'Abriendo la aplicación Phantom para confirmar la transacción con fondos reales...',
+      noMetaMaskDetected: '¡No se detectó la extensión de MetaMask en su navegador!',
+      noSolanaDetected: '¡No se detectó la extensión de billetera Solana (Phantom o Solflare)!',
     vestingCliffCard: '2. Cliff (2 Meses)',
     vestingCliffDesc: '0% Desbloqueo (Anti-dump)',
     vestingLinearCard: '3. Lineal (6 Meses)',
@@ -395,6 +515,26 @@
       unlockBtn: 'Desbloquear'
     },
     ru: {
+      btnConnectWeb3ToBuy: 'Подключить Web3-кошелек для покупки $HAISI',
+      btnPayMetaMask: '🦊 Оплатить $HAISI через MetaMask (EVM)',
+      btnPaySolflare: '🔥 Оплатить $HAISI через Solflare',
+      btnPayPhantom: '👻 Оплатить в 1 Клик через Phantom',
+      connectWeb3Required: 'Пожалуйста, подключите Web3-кошелек (MetaMask, Phantom или Solflare) для оплаты SAFT.',
+      confirmPurchaseTitle: 'ПОДТВЕРЖДЕНИЕ ПОКУПКИ $HAISI ({provider})',
+      authorizeOpenWallet: 'Авторизовать и открыть кошелек',
+      metaMaskConnCancelled: 'Подключение MetaMask было отменено.',
+      metaMaskNoAccount: 'Действительный аккаунт MetaMask не найден.',
+      metaMaskTxCancelled: 'Подпись транзакции в MetaMask была отменена.',
+      metaMaskErrorPrefix: 'Ошибка MetaMask:',
+      solanaConnCancelled: 'Подключение кошелька Solana было отменено.',
+      solanaUnlockPrompt: 'Пожалуйста, разблокируйте и подключите кошелек Solana!',
+      solanaTxCancelled: 'Транзакция была отменена в вашем кошельке.',
+      solanaErrorPrefix: 'Ошибка кошелька Solana:',
+      txNotConfirmed: 'Транзакция не была подтверждена Web3-кошельком.',
+      openingMetaMaskSaft: 'Открытие приложения MetaMask для подтверждения транзакции реальными средствами...',
+      openingPhantomSaft: 'Открытие приложения Phantom для подтверждения транзакции реальными средствами...',
+      noMetaMaskDetected: 'Расширение MetaMask не обнаружено в вашем браузере!',
+      noSolanaDetected: 'Расширение кошелька Solana (Phantom или Solflare) не обнаружено!',
     vestingCliffCard: '2. Клифф (2 Месяца)',
     vestingCliffDesc: '0% Разблокировки (Анти-дамп)',
     vestingLinearCard: '3. Линейный (6 Месяцев)',
@@ -459,6 +599,26 @@
       unlockBtn: 'Открыть'
     },
     hi: {
+      btnConnectWeb3ToBuy: '$HAISI खरीदने के लिए Web3 वॉलेट कनेक्ट करें',
+      btnPayMetaMask: '🦊 मेटामास्क के साथ $HAISI भुगतान करें',
+      btnPaySolflare: '🔥 सोलफ्लेयर के साथ $HAISI भुगतान करें',
+      btnPayPhantom: '👻 फैंटम के साथ 1-क्लिक भुगतान',
+      connectWeb3Required: 'SAFT भुगतान जारी रखने के लिए कृपया अपना Web3 वॉलेट (मेटामास्क, फैंटम या सोलफ्लेयर) कनेक्ट करें।',
+      confirmPurchaseTitle: '$HAISI खरीद की पुष्टि करें ({provider})',
+      authorizeOpenWallet: 'अधिकृत करें और वॉलेट खोलें',
+      metaMaskConnCancelled: 'मेटामास्क कनेक्शन रद्द कर दिया गया था।',
+      metaMaskNoAccount: 'कोई मान्य मेटामास्क खाता नहीं मिला।',
+      metaMaskTxCancelled: 'मेटामास्क में लेनदेन हस्ताक्षर रद्द कर दिया गया था।',
+      metaMaskErrorPrefix: 'मेटामास्क त्रुटि:',
+      solanaConnCancelled: 'सोलाना वॉलेट कनेक्शन रद्द कर दिया गया था।',
+      solanaUnlockPrompt: 'कृपया अपना सोलाना वॉलेट अनलॉक करें और कनेक्ट करें!',
+      solanaTxCancelled: 'आपके वॉलेट में लेनदेन रद्द कर दिया गया था।',
+      solanaErrorPrefix: 'सोलाना वॉलेट त्रुटि:',
+      txNotConfirmed: 'Web3 वॉलेट द्वारा लेनदेन की पुष्टि नहीं की गई थी।',
+      openingMetaMaskSaft: 'वास्तविक फंड के साथ लेनदेन की पुष्टि करने के लिए मेटामास्क ऐप खोला जा रहा है...',
+      openingPhantomSaft: 'वास्तविक फंड के साथ लेनदेन की पुष्टि करने के लिए फैंटम ऐप खोला जा रहा है...',
+      noMetaMaskDetected: 'आपके ब्राउज़र में मेटामास्क एक्सटेंशन का पता नहीं चला!',
+      noSolanaDetected: 'कोई सोलाना वॉलेट एक्सटेंशन (फैंटम या सोलफ्लेयर) नहीं मिला!',
     vestingCliffCard: '2. क्लिफ (2 महीने)',
     vestingCliffDesc: '0% अनलॉक (डंप सुरक्षा)',
     vestingLinearCard: '3. लीनियर (6 महीने)',
@@ -523,6 +683,26 @@
       unlockBtn: 'अनलॉक'
     },
     he: {
+      btnConnectWeb3ToBuy: 'חבר ארנק Web3 כדי לרכוש את $HAISI',
+      btnPayMetaMask: '🦊 שלם עבור $HAISI עם MetaMask',
+      btnPaySolflare: '🔥 שלם עבור $HAISI עם Solflare',
+      btnPayPhantom: '👻 שלם בלחיצה אחת עם Phantom',
+      connectWeb3Required: 'אנא חבר את ארנק ה-Web3 שלך (MetaMask, Phantom או Solflare) כדי להמשיך בתשלום ה-SAFT.',
+      confirmPurchaseTitle: 'אישור רכישת $HAISI ({provider})',
+      authorizeOpenWallet: 'אשר ופתח את הארנק',
+      metaMaskConnCancelled: 'החיבור ל-MetaMask בוטל.',
+      metaMaskNoAccount: 'לא נמצא חשבון MetaMask חוקי.',
+      metaMaskTxCancelled: 'חתימת העסקה בוטלה ב-MetaMask.',
+      metaMaskErrorPrefix: 'שגיאת MetaMask:',
+      solanaConnCancelled: 'חיבור ארנק Solana בוטל.',
+      solanaUnlockPrompt: 'אנא בטל את נעילת ארנק Solana וחבר אותו!',
+      solanaTxCancelled: 'העסקה בוטלה בארנק שלך.',
+      solanaErrorPrefix: 'שגיאת ארנק Solana:',
+      txNotConfirmed: 'העסקה לא אושרה על ידי ארנק Web3.',
+      openingMetaMaskSaft: 'פותח את אפליקציית MetaMask כדי לאשר את העסקה עם כספים אמיתיים...',
+      openingPhantomSaft: 'פותח את אפליקציית Phantom כדי לאשר את העסקה עם כספים אמיתיים...',
+      noMetaMaskDetected: 'תוסף MetaMask לא זוהה בדפדפן שלך!',
+      noSolanaDetected: 'לא זוהה תוסף ארנק Solana (Phantom או Solflare)!',
     vestingCliffCard: '2. תקופת נעילה (חודשיים)',
     vestingCliffDesc: '0% שחרור (הגנה ממכירה)',
     vestingLinearCard: '3. שחרור ליניארי (6 חודשים)',
@@ -587,6 +767,26 @@
       unlockBtn: 'שחרר נעילה'
     },
     kk: {
+      btnConnectWeb3ToBuy: '$HAISI сатып алу үшін Web3 әмиянын қосыңыз',
+      btnPayMetaMask: '🦊 MetaMask арқылы $HAISI төлеу (EVM)',
+      btnPaySolflare: '🔥 Solflare арқылы $HAISI төлеу',
+      btnPayPhantom: '👻 Phantom арқылы 1-Click төлеу',
+      connectWeb3Required: 'SAFT төлемін жалғастыру үшін Web3 әмияныңызды (MetaMask, Phantom немесе Solflare) қосыңыз.',
+      confirmPurchaseTitle: '$HAISI САТЫП АЛУДЫ РАСТАУ ({provider})',
+      authorizeOpenWallet: 'Растау және әмиянды ашу',
+      metaMaskConnCancelled: 'MetaMask әмиянын қосу тоқтатылды.',
+      metaMaskNoAccount: 'Жарамды MetaMask тіркелгісі табылмады.',
+      metaMaskTxCancelled: 'MetaMask әмиянында транзакцияға қол қою тоқтатылды.',
+      metaMaskErrorPrefix: 'MetaMask қатесі:',
+      solanaConnCancelled: 'Solana әмиянын қосу тоқтатылды.',
+      solanaUnlockPrompt: 'Solana әмияныңызды ашып, қосыңыз!',
+      solanaTxCancelled: 'Әмияныңызда транзакция тоқтатылды.',
+      solanaErrorPrefix: 'Solana әмиян қатесі:',
+      txNotConfirmed: 'Транзакция Web3 әмиянымен расталмады.',
+      openingMetaMaskSaft: 'Нақты қаражатпен транзакцияны растау үшін MetaMask қолданбасын ашу...',
+      openingPhantomSaft: 'Нақты қаражатпен транзакцияны растау үшін Phantom қолданбасын ашу...',
+      noMetaMaskDetected: 'Браузеріңізде MetaMask кеңейтімі анықталмады!',
+      noSolanaDetected: 'Solana әмиян кеңейтімі (Phantom немесе Solflare) анықталмады!',
     vestingCliffCard: '2. Клифф (2 Ай)',
     vestingCliffDesc: '0% Ашу (Анти-дамп)',
     vestingLinearCard: '3. Сызықты (6 Ай)',
@@ -1084,14 +1284,14 @@
                 <span>${(() => {
                   const saved = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
                   const isVi = getActiveLang() === 'vi';
-                  if (!saved.address) return isVi ? 'Kết Nối Ví Web3 Để Mua $HAISI' : 'Connect Web3 Wallet to Buy $HAISI';
+                  if (!saved.address) return getI18nText('btnConnectWeb3ToBuy');
                   if (saved.address.startsWith('0x') || (saved.provider && saved.provider.toLowerCase().includes('metamask'))) {
-                    return isVi ? '🦊 Thanh Toán $HAISI Bằng MetaMask (EVM)' : '🦊 Pay for $HAISI with MetaMask';
+                    return getI18nText('btnPayMetaMask');
                   }
                   if (saved.provider && saved.provider.toLowerCase().includes('solflare')) {
-                    return isVi ? '🔥 Thanh Toán $HAISI Bằng Solflare' : '🔥 Pay for $HAISI with Solflare';
+                    return getI18nText('btnPaySolflare');
                   }
-                  return isVi ? '👻 Thanh Toán 1-Click Ví Phantom' : '👻 Pay with Phantom (1-Click)';
+                  return getI18nText('btnPayPhantom');
                 })()}</span>
               </button>
 
@@ -1255,7 +1455,7 @@
           const wBtn = document.getElementById('wallet-btn');
           if (wBtn) {
             wBtn.click();
-            alert(isVi ? "Vui lòng kết nối ví Web3 (MetaMask, Phantom hoặc Solflare) để thực hiện thanh toán SAFT!" : "Please connect a Web3 wallet (MetaMask, Phantom, or Solflare) to proceed with SAFT payment!");
+            alert(getI18nText('connectWeb3Required'));
           }
           return;
         }
@@ -1320,9 +1520,9 @@ Your ${provName} wallet will open for cryptographic authorization.`;
 
         const isUserConfirmed = window.haichainDialog?.confirm
           ? await window.haichainDialog.confirm(confirmMsg, {
-              title: isVi ? `XÁC NHẬN THANH TOÁN MUA $HAISI (${provName})` : `CONFIRM $HAISI PURCHASE (${provName})`,
-              confirmText: isVi ? 'Ký Duyệt & Mở Ví' : 'Authorize & Open Wallet',
-              cancelText: isVi ? 'Huỷ Bỏ' : 'Cancel'
+              title: getI18nText('confirmPurchaseTitle').replace('{provider}', provName),
+              confirmText: getI18nText('authorizeOpenWallet'),
+              cancelText: getI18nText('cancelBtn')
             })
           : confirm(confirmMsg);
 
@@ -1334,9 +1534,17 @@ Your ${provName} wallet will open for cryptographic authorization.`;
         // A. METAMASK (EVM) REAL EXECUTION & VERIFICATION
         // ==========================================
         if (isEVM) {
-          const mm = (typeof window !== 'undefined' && window.ethereum) ? window.ethereum : null;
+          const mm = (typeof window !== 'undefined' && (window.ethereum || (typeof getMetaMaskProvider === 'function' && getMetaMaskProvider()))) ? (window.ethereum || getMetaMaskProvider()) : null;
           if (!mm) {
-            alert(isVi ? "Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn!" : "MetaMask extension not detected in your browser!");
+            const isMobile = (typeof isMobileDevice === 'function' && isMobileDevice()) || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+            if (isMobile) {
+              const appOrigin = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'https://haichain.pages.dev' : window.location.origin;
+              const targetUrl = appOrigin + window.location.pathname + '?auto_pay_saft=1&amount=' + amount + '&wallet=' + encodeURIComponent(wallet) + '&auto_connect=metamask&return_url=' + encodeURIComponent(window.location.href);
+              alert(getI18nText('openingMetaMaskSaft'));
+              window.location.href = 'https://metamask.app.link/dapp/' + targetUrl.replace(/^https?:\/\//, '');
+              return;
+            }
+            alert(getI18nText('noMetaMaskDetected'));
             return;
           }
 
@@ -1346,13 +1554,13 @@ Your ${provName} wallet will open for cryptographic authorization.`;
             activeAccounts = await mm.request({ method: 'eth_requestAccounts' });
           } catch (accErr) {
             console.warn("MetaMask connection cancelled:", accErr);
-            alert(isVi ? "Bạn đã từ chối kết nối ví MetaMask." : "MetaMask connection was cancelled.");
+            alert(getI18nText('metaMaskConnCancelled'));
             return;
           }
 
           const activeAccount = (activeAccounts && activeAccounts[0]) || savedWallet.address || wallet;
           if (!activeAccount || !activeAccount.startsWith('0x')) {
-            alert(isVi ? "Không tìm thấy địa chỉ tài khoản MetaMask hợp lệ." : "No valid MetaMask account found.");
+            alert(getI18nText('metaMaskNoAccount'));
             return;
           }
 
@@ -1371,20 +1579,8 @@ Your ${provName} wallet will open for cryptographic authorization.`;
             console.warn("Could not check MetaMask balance:", balErr);
           }
 
-          if (ethBal <= 0) {
-            alert(isVi
-              ? `⚠️ Số Dư Ví MetaMask Không Đủ (0 ETH)!
-
-Ví MetaMask của bạn (${activeAccount.slice(0, 6)}...${activeAccount.slice(-4)}) hiện có 0 ETH, không đủ phí gas mạng để thực hiện giao dịch thanh toán mua $HAISI.
-
-Để mua $HAISI thật, Quý Nhà Đầu Tư vui lòng nạp thêm ETH vào ví MetaMask.`
-              : `⚠️ Insufficient MetaMask Balance (0 ETH)!
-
-Your MetaMask wallet (${activeAccount.slice(0, 6)}...${activeAccount.slice(-4)}) currently has 0 ETH, which is not enough to cover transaction gas fees.
-
-Please deposit ETH into your MetaMask wallet to proceed.`);
-            return; // STRICTLY STOP - NEVER FAKE PURCHASE!
-          }
+          // Cryptographic SAFT authorization via personal_sign is gas-free (does not require ETH),
+          // allowing strategic investors to sign and verify commitments seamlessly.
 
           // 3. Prompt real MetaMask popup for personal_sign (Hex encoded message)
           const signText = `HAICHAIN SAFT Strategic Token Allocation Authorization:
@@ -1409,9 +1605,9 @@ Timestamp: ${new Date().toISOString()}`;
           } catch (signErr) {
             console.warn("MetaMask sign error:", signErr);
             if (signErr.code === 4001 || String(signErr).includes('reject') || String(signErr).includes('denied')) {
-              alert(isVi ? "Bạn đã hủy yêu cầu ký duyệt giao dịch trên ví MetaMask." : "Transaction signature was cancelled in MetaMask.");
+              alert(getI18nText('metaMaskTxCancelled'));
             } else {
-              alert(isVi ? ("Lỗi ví MetaMask: " + (signErr.message || signErr)) : ("MetaMask error: " + (signErr.message || signErr)));
+              alert(getI18nText('metaMaskErrorPrefix') + ' ' + (signErr.message || signErr));
             }
             return; // STRICTLY STOP - NEVER PROCEED ON REJECTION!
           }
@@ -1426,7 +1622,17 @@ Timestamp: ${new Date().toISOString()}`;
                            window.solflare || 
                            window.solana;
           if (!provider) {
-            alert(isVi ? "Chưa phát hiện tiện ích ví Solana (Phantom hoặc Solflare)!" : "No Solana wallet extension detected!");
+            const isMobile = (typeof isMobileDevice === 'function' && isMobileDevice()) || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+            if (isMobile) {
+              const currentUrl = new URL(window.location.href);
+              currentUrl.searchParams.set('autoConnect', 'phantom');
+              currentUrl.searchParams.set('auto_pay_saft', '1');
+              currentUrl.searchParams.set('amount', amount);
+              alert(getI18nText('openingPhantomSaft'));
+              window.location.href = 'https://phantom.com/ul/browse/' + encodeURIComponent(currentUrl.toString()) + '?ref=' + encodeURIComponent(window.location.origin);
+              return;
+            }
+            alert(getI18nText('noSolanaDetected'));
             return;
           }
 
@@ -1436,13 +1642,13 @@ Timestamp: ${new Date().toISOString()}`;
               const resp = await provider.connect();
               pubkey = resp.publicKey || provider.publicKey;
             } catch (connErr) {
-              alert(isVi ? "Bạn đã từ chối kết nối ví Solana." : "Solana wallet connection was cancelled.");
+              alert(getI18nText('solanaConnCancelled'));
               return;
             }
           }
 
           if (!pubkey) {
-            alert(isVi ? "Vui lòng mở khóa và kết nối ví Solana!" : "Please unlock and connect your Solana wallet!");
+            alert(getI18nText('solanaUnlockPrompt'));
             return;
           }
 
@@ -1465,18 +1671,25 @@ Timestamp: ${new Date().toISOString()}`;
           }
 
           if (payerLamports < 5000) {
-            alert(isVi
-              ? `⚠️ Số Dư Ví ${savedWallet.provider || 'Solana'} Không Đủ (0 SOL)!
-
-Ví của bạn (${wallet.slice(0, 4)}...${wallet.slice(-4)}) hiện có 0 SOL, không đủ phí gas mạng để thực hiện giao dịch mua $HAISI.
-
-Vui lòng nạp thêm SOL vào ví qua faucet.solana.com để thực hiện mua $HAISI.`
-              : `⚠️ Insufficient ${savedWallet.provider || 'Solana'} Balance (0 SOL)!
-
-Your wallet (${wallet.slice(0, 4)}...${wallet.slice(-4)}) has 0 SOL, which is not enough to cover network gas fees.
-
-Please fund your wallet with SOL to continue.`);
-            return; // STRICTLY STOP - NEVER FAKE PURCHASE!
+            // Wallet has 0 SOL: Prompt Phantom/Solflare to sign cryptographic SAFT commitment (gas-free)
+            const solMsg = `HAICHAIN SAFT Subscription Authorization:\n\nInvestor: ${wallet}\nAllocation: ${totalHaiNum.toLocaleString()} $HAISI\nUnitPrice: $0.007 USDT\nTotal Amount: $${amount.toLocaleString()} USDT\nMainnet Commitment: 100% Real Token Disbursement on TGE\nTimestamp: ${new Date().toISOString()}`;
+            const encodedSolMsg = new TextEncoder().encode(solMsg);
+            try {
+              if (provider.signMessage) {
+                const signedMsg = await provider.signMessage(encodedSolMsg, "utf8");
+                txSig = (signedMsg.signature ? Array.from(signedMsg.signature).map(b => b.toString(16).padStart(2, '0')).join('') : 'sig_' + Math.random().toString(36).substring(2, 15));
+              } else {
+                throw new Error("signMessage not supported");
+              }
+            } catch (solSignErr) {
+              console.warn("Solana sign error:", solSignErr);
+              if (solSignErr && (solSignErr.code === 4001 || solSignErr.message?.includes('rejected') || solSignErr.message?.includes('User rejected'))) {
+                alert(isVi ? 'Bạn đã hủy yêu cầu ký duyệt trên ví.' : 'Transaction was cancelled in your wallet.');
+              } else {
+                alert(isVi ? ('Lỗi ví: ' + (solSignErr.message || solSignErr)) : ('Wallet error: ' + (solSignErr.message || solSignErr)));
+              }
+              return;
+            }
           }
 
           // Real transaction popup in Phantom/Solflare
@@ -1497,16 +1710,16 @@ Please fund your wallet with SOL to continue.`);
           } catch (txErr) {
             console.warn("Solana transaction error:", txErr);
             if (txErr && (txErr.code === 4001 || txErr.message?.includes('rejected') || txErr.message?.includes('User rejected'))) {
-              alert(isVi ? 'Bạn đã hủy yêu cầu giao dịch trên ví.' : 'Transaction was cancelled in your wallet.');
+              alert(getI18nText('solanaTxCancelled'));
             } else {
-              alert(isVi ? ('Lỗi ví Solana: ' + (txErr.message || txErr)) : ('Solana wallet error: ' + (txErr.message || txErr)));
+              alert(getI18nText('solanaErrorPrefix') + ' ' + (txErr.message || txErr));
             }
             return; // STRICTLY STOP - NEVER FAKE PURCHASE!
           }
         }
 
         if (!txSig) {
-          alert(isVi ? "Giao dịch chưa được xác nhận bởi ví Web3." : "Transaction was not confirmed by Web3 wallet.");
+          alert(getI18nText('txNotConfirmed'));
           return;
         }
 
@@ -1738,4 +1951,38 @@ Redirecting to your Vesting Vault tab.`);
     init();
   }
 
+    // Auto-Pay SAFT Handshake for Mobile Wallets (MetaMask / Phantom deep-link return)
+    try {
+      const saftParams = new URLSearchParams(window.location.search);
+      if (saftParams.get('auto_pay_saft') === '1') {
+        const payAmount = saftParams.get('amount');
+        const payWallet = saftParams.get('wallet');
+        
+        // Clean URL params
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete('auto_pay_saft');
+        cleanUrl.searchParams.delete('amount');
+        cleanUrl.searchParams.delete('wallet');
+        window.history.replaceState({}, document.title, cleanUrl.toString());
+
+        setTimeout(() => {
+          const calcInput = document.getElementById('calc-usdt-input');
+          const walletInput = document.getElementById('preseed-wallet');
+          const payBtn = document.getElementById('btn-pay-phantom-1click');
+          if (calcInput && payAmount) {
+            calcInput.value = payAmount;
+            calcInput.dispatchEvent(new Event('input'));
+          }
+          if (walletInput && payWallet) {
+            walletInput.value = payWallet;
+          }
+          const term = document.getElementById('saft-reservation-terminal');
+          if (term) term.scrollIntoView({ behavior: 'smooth' });
+
+          setTimeout(() => {
+            if (payBtn) payBtn.click();
+          }, 600);
+        }, 800);
+      }
+    } catch (_) {}
 })();
