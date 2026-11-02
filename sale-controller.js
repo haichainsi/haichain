@@ -1081,7 +1081,7 @@
                 <span>${(() => {
                   const saved = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
                   const isVi = getActiveLang() === 'vi';
-                  if (!saved.address) return isVi ? '⚡ Kết Nối Ví Web3 Để Mua $HAISI' : '⚡ Connect Web3 Wallet to Buy $HAISI';
+                  if (!saved.address) return isVi ? 'Kết Nối Ví Web3 Để Mua $HAISI' : 'Connect Web3 Wallet to Buy $HAISI';
                   if (saved.address.startsWith('0x') || (saved.provider && saved.provider.toLowerCase().includes('metamask'))) {
                     return isVi ? '🦊 Thanh Toán $HAISI Bằng MetaMask (EVM)' : '🦊 Pay for $HAISI with MetaMask';
                   }

@@ -1020,7 +1020,7 @@
 
 
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 hidden" style="display: none !important;">
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
@@ -2268,32 +2268,13 @@
 
       <!-- Payment Tabs -->
 
-      <div class="flex space-x-2 my-4 p-1 rounded-2xl bg-neutral-100 dark:bg-neutral-900 text-xs font-medium">
-
-        <button id="index-pay-apple" type="button" class="flex-1 py-2 rounded-xl bg-white dark:bg-black text-black dark:text-white shadow-xs font-semibold flex items-center justify-center space-x-1.5 transition-all">
-
-          <svg class="w-3.5 h-3.5" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.07-7.7-7.93-12-14.58-6.19-9.5-11.08-20.08-14.67-31.75-3.59-11.66-5.38-22.92-5.38-33.77 0-14.38 3.73-26.35 11.19-35.9 7.46-9.56 16.73-14.43 27.81-14.63 5.43 0 11.39 1.49 17.88 4.47 6.5 2.97 10.45 4.54 11.87 4.72 2.07-.36 6.38-2.03 12.92-5 6.54-2.98 12.44-4.36 17.71-4.14 9.87.5 18.23 4.12 25.07 10.87 6.84 6.75 11.21 14.88 13.12 24.39-8.7 5.25-13.08 12.73-13.13 22.45-.06 7.6 2.76 14.28 8.46 20.04 5.7 5.76 12.63 9.07 20.8 9.94-1.96 6.13-4.59 12.45-7.89 18.96zM119.22 33.15c0-6.93 2.53-13.62 7.6-20.08 5.07-6.45 11.53-10.84 19.38-13.17.65 6.74-1.57 13.43-6.66 20.06-5.09 6.63-11.87 11.03-20.32 13.19z"/></svg>
-
-          <span data-i18n="modal.depositApplePay">Apple Pay</span>
-
+      <div class="my-4 p-1 rounded-2xl bg-neutral-100 dark:bg-neutral-900 text-xs font-medium">
+        <button id="index-pay-apple" type="button" class="hidden" style="display: none !important;"></button>
+        <button id="index-pay-card" type="button" class="hidden" style="display: none !important;"></button>
+        <button id="index-pay-web3" type="button" class="w-full py-2.5 rounded-xl bg-white dark:bg-black text-black dark:text-white shadow-xs font-semibold flex items-center justify-center space-x-2 transition-all">
+          <span class="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse"></span>
+          <span data-i18n="modal.depositWeb3">Web3 Wallet (Solana / EVM)</span>
         </button>
-
-        <button id="index-pay-card" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white font-semibold flex items-center justify-center space-x-1.5 transition-all">
-
-          <i data-lucide="credit-card" class="w-3.5 h-3.5"></i>
-
-          <span data-i18n="modal.depositCard">Card</span>
-
-        </button>
-
-        <button id="index-pay-web3" type="button" class="flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white font-semibold flex items-center justify-center space-x-1.5 transition-all">
-
-          <span class="w-2 h-2 rounded-full bg-black dark:bg-white"></span>
-
-          <span data-i18n="modal.depositWeb3">Web3 Wallet</span>
-
-        </button>
-
       </div>
 
 
@@ -3000,7 +2981,7 @@ From the financial operating system for the autonomous machine era to the "Econo
 
 
 
-    let indexDepositMethod = 'apple';
+    let indexDepositMethod = 'web3';
     const indexPayApple = document.getElementById('index-pay-apple');
     const indexPayCard = document.getElementById('index-pay-card');
     const indexPayWeb3 = document.getElementById('index-pay-web3');
