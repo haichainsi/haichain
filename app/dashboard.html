@@ -163,7 +163,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
-  <script src="/app/i18n.js?v=v39_personalized_vault_mcp_1793648000000"></script>
+  <script src="/app/i18n.js?v=v44_soft_green_mcp_ui"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v43_autofill_phantom_mobile_fix_1793643500"></script>
@@ -1571,7 +1571,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               <i data-lucide="smartphone" class="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300"></i>
               <span data-i18n="aiHub.onlineTitle">Claude Mobile MCP Gateway</span>
             </span>
-            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">ONLINE (24/7)</span>
+            <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-300/80 border border-emerald-500/15 font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">ONLINE (24/7)</span>
           </div>
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed" data-i18n="aiHub.onlineDesc">
             Direct 24/7 cloud integration for the Claude app on iOS & Android. Connects directly to the global HAICHAIN Cloud MCP Gateway via Streamable HTTP with zero desktop software required.
@@ -1590,17 +1590,19 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               <span data-i18n="aiHub.badgeGeneric">⚡ URL CHUNG (CHƯA GẮN VÍ)</span>
             </span>
           </div>
-          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-emerald-400 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
+          <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-emerald-300/80 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
             <code id="online-mcp-url-snippet">https://mcp.haichain.si/api/mcp</code>
           </div>
 
           <!-- Vault Binding Dynamic Status Card -->
-          <div id="online-mcp-connected-box" class="hidden p-2.5 rounded-xl bg-emerald-950/30 border border-emerald-800/40 flex items-start space-x-2 text-[11px] text-emerald-300 font-sans">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-            <div>
-              <span class="font-bold text-white" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</span> 
-              <span id="online-mcp-bound-addr" class="font-mono text-emerald-400 underline font-semibold"></span>
-              <p class="text-[10px] text-neutral-400 mt-0.5" data-i18n="aiHub.connectedDesc">AI Claude Mobile sẽ tự động liên kết thẳng vào két chi tiêu của ví này mà không cần nhập thủ công địa chỉ trong khung chat.</p>
+          <div id="online-mcp-connected-box" class="hidden p-3 rounded-xl bg-emerald-950/20 border border-emerald-900/35 flex items-start space-x-2.5 text-[11px] font-sans min-w-0">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400/70 shrink-0 mt-0.5"></i>
+            <div class="min-w-0 flex-1">
+              <div class="font-semibold text-neutral-200 text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</div>
+              <div class="mt-1.5 p-1.5 px-2 rounded-lg bg-black/50 border border-emerald-900/30 font-mono text-[10.5px] text-emerald-300/80 break-all select-all font-medium leading-relaxed">
+                <span id="online-mcp-bound-addr"></span>
+              </div>
+              <p class="text-[10px] text-neutral-400 mt-1.5 leading-relaxed" data-i18n="aiHub.connectedDesc">AI Claude Mobile sẽ tự động liên kết thẳng vào két chi tiêu của ví này mà không cần nhập thủ công địa chỉ trong khung chat.</p>
             </div>
           </div>
 
@@ -7450,10 +7452,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
         if (codeSnippet) codeSnippet.textContent = personalizedUrl;
         if (badgeEl) {
-          badgeEl.className = "text-[9px] bg-emerald-950/80 border border-emerald-800/80 px-2 py-0.5 rounded-full text-emerald-400 font-mono shrink-0 whitespace-nowrap flex items-center space-x-1 font-semibold";
+          badgeEl.className = "text-[9px] bg-emerald-950/30 border border-emerald-900/40 px-2.5 py-0.5 rounded-full text-emerald-300/80 font-mono shrink-0 whitespace-nowrap font-medium";
           const shortAddr = activeAddr.length > 10 ? `${activeAddr.slice(0, 4)}...${activeAddr.slice(-4)}` : activeAddr;
-          const badgeText = window.haichainI18n ? window.haichainI18n.t('aiHub.badgeDedicated', '🔒 DEDICATED VAULT BOUND') : '🔒 DEDICATED VAULT BOUND';
-          badgeEl.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span><span>${badgeText} (${shortAddr})</span>`;
+          const badgeText = window.haichainI18n ? window.haichainI18n.t('aiHub.badgeDedicated', 'DEDICATED VAULT BOUND') : 'DEDICATED VAULT BOUND';
+          badgeEl.innerHTML = `<span>${badgeText} (${shortAddr})</span>`;
         }
         if (connectedBox) connectedBox.classList.remove('hidden');
         if (unconnectedBox) unconnectedBox.classList.add('hidden');
