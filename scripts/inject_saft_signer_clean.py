@@ -7,24 +7,24 @@ TARGET_FILES = [
 ]
 
 SIGN_BUTTON_HTML = '''            <!-- Digital E-Signature Action Button (Zero Icons, Pure Typography) -->
-            <button id="pdf-modal-sign-btn" type="button" class="hidden items-center justify-center px-3 sm:px-4 h-7 sm:h-8 rounded-lg sm:rounded-xl bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black transition-all active:scale-95 text-[11px] sm:text-xs font-semibold shadow-xs shrink-0 cursor-pointer">
+            <button id="pdf-modal-sign-btn" type="button" class="hidden items-center justify-center px-3.5 sm:px-4 h-7 sm:h-8 rounded-lg sm:rounded-xl bg-white hover:bg-neutral-200 text-black font-semibold text-xs tracking-tight shadow-sm active:scale-95 transition-all shrink-0 cursor-pointer" style="background-color: #ffffff !important; color: #000000 !important;">
               <span id="pdf-modal-sign-btn-text">Sign Agreement Online</span>
             </button>
 '''
 
 SIGN_DRAWER_HTML = '''        <!-- ========================================================================= -->
-        <!-- LUXURY IN-APP DIGITAL E-SIGNATURE OVERLAY (PURE MONOCHROME, ZERO ICONS)     -->
+        <!-- LUXURY IN-APP DIGITAL E-SIGNATURE OVERLAY (SOLID OPAQUE, ULTRA-HIGH CONTRAST) -->
         <!-- ========================================================================= -->
-        <div id="saft-sign-overlay" class="absolute inset-0 z-50 bg-white/98 dark:bg-[#0c0c0e]/98 backdrop-blur-md hidden flex flex-col overflow-y-auto p-4 sm:p-6 md:p-8 transition-all duration-200 select-none">
+        <div id="saft-sign-overlay" class="absolute inset-0 z-50 hidden flex flex-col overflow-y-auto p-4 sm:p-6 md:p-8 transition-all duration-200 select-none" style="background-color: #0c0c0e !important; color: #ffffff !important;">
           
-          <!-- Drawer Header (Clean Apple Minimalist, Zero Icons) -->
-          <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-neutral-200 dark:border-neutral-800 shrink-0">
+          <!-- Drawer Header (Clean Apple Minimalist, Solid Background) -->
+          <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-neutral-800 shrink-0">
             <div>
-              <h3 id="saft-drawer-title" class="text-sm sm:text-base font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">Pre-Seed SAFT Digital E-Signature ($0.007)</h3>
-              <p id="saft-drawer-sub" class="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-mono mt-0.5">Online legal verification compliant with US ESIGN Act &amp; UETA standards</p>
+              <h3 id="saft-drawer-title" class="text-sm sm:text-base font-bold text-white tracking-tight" style="color: #ffffff !important;">Pre-Seed SAFT Digital E-Signature ($0.007)</h3>
+              <p id="saft-drawer-sub" class="text-xs font-mono mt-0.5" style="color: #a1a1aa !important;">Online legal verification compliant with US ESIGN Act &amp; UETA standards</p>
             </div>
             
-            <button id="saft-drawer-close-btn" type="button" class="w-8 h-8 rounded-xl flex items-center justify-center text-neutral-500 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer text-sm font-mono" title="Close">
+            <button id="saft-drawer-close-btn" type="button" class="w-8 h-8 rounded-xl flex items-center justify-center text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors cursor-pointer text-sm font-mono" title="Close" style="color: #a1a1aa !important;">
               ✕
             </button>
           </div>
@@ -35,36 +35,36 @@ SIGN_DRAWER_HTML = '''        <!-- =============================================
             <!-- Dual Column Fields: Name & Email -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label id="saft-lbl-name" class="block text-xs font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Full Legal Name / Entity *</label>
-                <input id="saft-input-name" type="text" placeholder="John Doe / Apex Capital LLC" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all">
+                <label id="saft-lbl-name" class="block text-xs font-semibold mb-1" style="color: #ffffff !important;">Full Legal Name / Entity *</label>
+                <input id="saft-input-name" type="text" placeholder="John Doe / Apex Capital LLC" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl focus:outline-none transition-all" style="background-color: #18181b !important; color: #ffffff !important; border: 1px solid #3f3f46 !important;">
               </div>
               <div>
-                <label id="saft-lbl-email" class="block text-xs font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Contact Email *</label>
-                <input id="saft-input-email" type="email" placeholder="investor@example.com" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all">
+                <label id="saft-lbl-email" class="block text-xs font-semibold mb-1" style="color: #ffffff !important;">Contact Email *</label>
+                <input id="saft-input-email" type="email" placeholder="investor@example.com" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl focus:outline-none transition-all" style="background-color: #18181b !important; color: #ffffff !important; border: 1px solid #3f3f46 !important;">
               </div>
             </div>
 
             <!-- Dual Column Fields: Amount & Real-time Allocation Calculation -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label id="saft-lbl-amount" class="block text-xs font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Subscription Investment Amount (USD / USDT) *</label>
+                <label id="saft-lbl-amount" class="block text-xs font-semibold mb-1" style="color: #ffffff !important;">Subscription Investment Amount (USD / USDT) *</label>
                 <div class="relative">
-                  <span class="absolute left-3.5 top-2.5 text-xs font-mono text-neutral-400">$</span>
-                  <input id="saft-input-amount" type="number" min="500" max="50000" step="100" value="1000" class="w-full pl-8 pr-3.5 py-2.5 text-xs sm:text-sm font-mono rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all">
+                  <span class="absolute left-3.5 top-2.5 text-xs font-mono" style="color: #71717a !important;">$</span>
+                  <input id="saft-input-amount" type="number" min="500" max="50000" step="100" value="1000" class="w-full pl-8 pr-3.5 py-2.5 text-xs sm:text-sm font-mono rounded-xl focus:outline-none transition-all" style="background-color: #18181b !important; color: #ffffff !important; border: 1px solid #3f3f46 !important;">
                 </div>
-                <p id="saft-txt-amount-note" class="text-[10px] text-neutral-500 dark:text-neutral-400 mt-1">Ticket limit: $500 – $15,000 USD</p>
+                <p id="saft-txt-amount-note" class="text-[11px] font-mono mt-1" style="color: #a1a1aa !important;">Ticket limit: $500 – $15,000 USD</p>
               </div>
 
               <div>
-                <label id="saft-lbl-alloc" class="block text-xs font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Token Entitlement $HAISI (@ $0.007)</label>
-                <div class="p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/70 flex flex-col justify-center">
+                <label id="saft-lbl-alloc" class="block text-xs font-semibold mb-1" style="color: #ffffff !important;">Token Entitlement $HAISI (@ $0.007)</label>
+                <div class="p-3 rounded-xl flex flex-col justify-center" style="background-color: #18181b !important; border: 1px solid #27272a !important;">
                   <div class="flex items-baseline justify-between">
-                    <span id="saft-calc-tokens" class="text-sm sm:text-base font-bold font-mono text-neutral-900 dark:text-neutral-100">142,857</span>
-                    <span class="text-xs font-mono text-neutral-500">$HAISI</span>
+                    <span id="saft-calc-tokens" class="text-sm sm:text-base font-bold font-mono" style="color: #ffffff !important;">142,857</span>
+                    <span class="text-xs font-mono" style="color: #a1a1aa !important;">$HAISI</span>
                   </div>
-                  <div class="text-[11px] font-mono text-neutral-600 dark:text-neutral-300 flex items-center justify-between mt-1 pt-1 border-t border-neutral-200 dark:border-neutral-800">
-                    <span id="saft-lbl-tge-val">TGE Value ($0.010):</span>
-                    <span id="saft-calc-tge" class="font-bold text-neutral-900 dark:text-neutral-100">$1,428 USD (+42.8%)</span>
+                  <div class="text-[11px] font-mono flex items-center justify-between mt-1 pt-1 border-t border-neutral-800">
+                    <span id="saft-lbl-tge-val" style="color: #a1a1aa !important;">TGE Value ($0.010):</span>
+                    <span id="saft-calc-tge" class="font-bold" style="color: #4ade80 !important;">$1,428 USD (+42.8%)</span>
                   </div>
                 </div>
               </div>
@@ -73,91 +73,91 @@ SIGN_DRAWER_HTML = '''        <!-- =============================================
             <!-- Beneficiary Wallet Address -->
             <div>
               <div class="flex items-center justify-between mb-1">
-                <label id="saft-lbl-wallet" class="text-xs font-semibold text-neutral-900 dark:text-neutral-100">Beneficiary Solana Wallet Address for TGE *</label>
-                <button id="saft-btn-autofill-wallet" type="button" class="text-xs font-mono text-neutral-500 hover:text-black dark:hover:text-white underline cursor-pointer">Use Connected Wallet</button>
+                <label id="saft-lbl-wallet" class="text-xs font-semibold" style="color: #ffffff !important;">Beneficiary Solana Wallet Address for TGE *</label>
+                <button id="saft-btn-autofill-wallet" type="button" class="text-xs font-mono underline hover:opacity-80 cursor-pointer transition-colors" style="color: #38bdf8 !important;">Use Connected Wallet</button>
               </div>
-              <input id="saft-input-wallet" type="text" placeholder="Solana wallet address (Base58 32-44 characters)..." class="w-full px-3.5 py-2.5 text-xs font-mono rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white transition-all">
+              <input id="saft-input-wallet" type="text" placeholder="Solana wallet address (Base58 32-44 characters)..." class="w-full px-3.5 py-2.5 text-xs font-mono rounded-xl focus:outline-none transition-all" style="background-color: #18181b !important; color: #ffffff !important; border: 1px solid #3f3f46 !important;">
             </div>
 
             <!-- Treasury Vault Display (Immutably Bound) -->
-            <div class="p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 text-[11px] font-mono">
+            <div class="p-3 rounded-xl text-[11px] font-mono" style="background-color: #18181b !important; border: 1px solid #27272a !important;">
               <div class="flex items-center justify-between">
-                <span id="saft-lbl-treasury" class="font-semibold text-neutral-700 dark:text-neutral-300">Multi-Sig Treasury Vault (Solana Mainnet):</span>
-                <span class="text-neutral-900 dark:text-neutral-100 font-bold">Squads 2-of-3</span>
+                <span id="saft-lbl-treasury" class="font-semibold" style="color: #d4d4d8 !important;">Multi-Sig Treasury Vault (Solana Mainnet):</span>
+                <span class="font-bold" style="color: #4ade80 !important;">Squads 2-of-3</span>
               </div>
-              <div class="truncate mt-1 text-neutral-900 dark:text-neutral-100 font-mono font-medium">5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3</div>
+              <div class="truncate mt-1 font-mono font-medium" style="color: #ffffff !important;">5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3</div>
             </div>
 
             <!-- Digital Signature Pad Canvas -->
             <div>
               <div class="flex items-center justify-between mb-1.5">
-                <label id="saft-lbl-canvas" class="text-xs font-semibold text-neutral-900 dark:text-neutral-100">Your Digital Signature *</label>
-                <button id="saft-btn-clear-sig" type="button" class="text-xs font-mono text-neutral-500 hover:text-red-500 underline cursor-pointer">Clear Signature</button>
+                <label id="saft-lbl-canvas" class="text-xs font-semibold" style="color: #ffffff !important;">Your Digital Signature *</label>
+                <button id="saft-btn-clear-sig" type="button" class="text-xs font-mono underline hover:opacity-80 cursor-pointer transition-colors" style="color: #f87171 !important;">Clear Signature</button>
               </div>
-              <div class="relative w-full rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-black shadow-xs">
+              <div class="relative w-full rounded-xl overflow-hidden shadow-sm" style="background-color: #000000 !important; border: 1px solid #3f3f46 !important;">
                 <canvas id="saft-sig-canvas" width="600" height="150" class="w-full h-32 sm:h-36 block touch-none cursor-crosshair"></canvas>
-                <div id="saft-sig-placeholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-xs text-neutral-400 font-mono select-none">
+                <div id="saft-sig-placeholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-xs font-mono select-none" style="color: #71717a !important;">
                   (Use mouse or touch screen to sign here)
                 </div>
               </div>
             </div>
 
             <!-- Legal Declaration Checkbox -->
-            <label class="flex items-start space-x-3 text-xs text-neutral-700 dark:text-neutral-300 cursor-pointer select-none pt-1">
-              <input id="saft-input-agree" type="checkbox" class="mt-0.5 rounded border-neutral-300 dark:border-neutral-700 text-black dark:text-white cursor-pointer w-4 h-4">
+            <label class="flex items-start space-x-3 text-xs cursor-pointer select-none pt-1" style="color: #e4e4e7 !important;">
+              <input id="saft-input-agree" type="checkbox" class="mt-0.5 rounded cursor-pointer w-4 h-4 accent-white">
               <span id="saft-lbl-agree" class="leading-relaxed">I confirm that I have read, understood, and agreed to all terms of the HAICHAIN Pre-Seed SAFT Agreement. I understand that investment funds are secured in the Squads Multi-Sig Treasury and tokens are distributed at TGE.</span>
             </label>
 
             <!-- Submit Sign Button -->
-            <button id="saft-btn-submit-sign" type="button" class="w-full py-3 sm:py-3.5 rounded-xl bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black font-bold text-xs sm:text-sm tracking-wide shadow-md active:scale-[0.99] transition-all cursor-pointer">
+            <button id="saft-btn-submit-sign" type="button" class="w-full py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide shadow-lg active:scale-[0.99] transition-all cursor-pointer" style="background-color: #ffffff !important; color: #000000 !important;">
               SIGN &amp; FINALIZE LEGAL AGREEMENT
             </button>
           </div>
 
           <!-- Drawer Success View (Shown after signing) -->
           <div id="saft-drawer-success-view" class="hidden py-8 sm:py-12 max-w-lg mx-auto w-full text-center space-y-6 pb-28 sm:pb-20 select-text animate-scaleUp">
-            <div class="w-12 h-12 mx-auto rounded-full border border-neutral-400 dark:border-neutral-600 flex items-center justify-center text-sm font-bold font-mono text-neutral-900 dark:text-neutral-100">
+            <div class="w-12 h-12 mx-auto rounded-full border border-neutral-600 flex items-center justify-center text-sm font-bold font-mono text-white" style="border-color: #52525b !important; color: #ffffff !important;">
               OK
             </div>
             <div>
-              <h4 id="saft-success-title" class="text-base sm:text-xl font-bold text-neutral-900 dark:text-neutral-100">AGREEMENT SIGNED SUCCESSFULLY</h4>
-              <p id="saft-success-sub" class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">Digital SAFT agreement recorded with cryptographic audit trail.</p>
+              <h4 id="saft-success-title" class="text-base sm:text-xl font-bold" style="color: #ffffff !important;">AGREEMENT SIGNED SUCCESSFULLY</h4>
+              <p id="saft-success-sub" class="text-xs sm:text-sm mt-1" style="color: #a1a1aa !important;">Digital SAFT agreement recorded with cryptographic audit trail.</p>
             </div>
 
             <!-- Receipt Card -->
-            <div class="p-4 sm:p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/60 text-left text-xs font-mono space-y-2.5">
+            <div class="p-4 sm:p-5 rounded-2xl text-left text-xs font-mono space-y-2.5" style="background-color: #18181b !important; border: 1px solid #27272a !important;">
               <div class="flex justify-between">
-                <span id="saft-rec-lbl-id" class="text-neutral-500">Contract ID:</span>
-                <span id="saft-rec-id" class="font-bold text-neutral-900 dark:text-neutral-100">SAFT-HAI-2026-XXXXX</span>
+                <span id="saft-rec-lbl-id" style="color: #a1a1aa !important;">Contract ID:</span>
+                <span id="saft-rec-id" class="font-bold" style="color: #ffffff !important;">SAFT-HAI-2026-XXXXX</span>
               </div>
               <div class="flex justify-between">
-                <span id="saft-rec-lbl-investor" class="text-neutral-500">Investor:</span>
-                <span id="saft-rec-name" class="font-semibold text-neutral-900 dark:text-neutral-100 truncate max-w-[200px]">--</span>
+                <span id="saft-rec-lbl-investor" style="color: #a1a1aa !important;">Investor:</span>
+                <span id="saft-rec-name" class="font-semibold truncate max-w-[200px]" style="color: #ffffff !important;">--</span>
               </div>
               <div class="flex justify-between">
-                <span id="saft-rec-lbl-alloc" class="text-neutral-500">Allocation:</span>
-                <span id="saft-rec-alloc" class="font-bold text-neutral-900 dark:text-neutral-100">-- $HAISI</span>
+                <span id="saft-rec-lbl-alloc" style="color: #a1a1aa !important;">Allocation:</span>
+                <span id="saft-rec-alloc" class="font-bold" style="color: #4ade80 !important;">-- $HAISI</span>
               </div>
               <div class="flex justify-between">
-                <span id="saft-rec-lbl-wallet" class="text-neutral-500">Receiving Wallet:</span>
-                <span id="saft-rec-wallet" class="font-mono text-[11px] truncate max-w-[200px]">--</span>
+                <span id="saft-rec-lbl-wallet" style="color: #a1a1aa !important;">Receiving Wallet:</span>
+                <span id="saft-rec-wallet" class="font-mono text-[11px] truncate max-w-[200px]" style="color: #d4d4d8 !important;">--</span>
               </div>
               <div class="flex justify-between">
-                <span id="saft-rec-lbl-time" class="text-neutral-500">Timestamp:</span>
-                <span id="saft-rec-time" class="text-[11px] text-neutral-400">--</span>
+                <span id="saft-rec-lbl-time" style="color: #a1a1aa !important;">Timestamp:</span>
+                <span id="saft-rec-time" class="text-[11px]" style="color: #a1a1aa !important;">--</span>
               </div>
-              <div class="pt-2 border-t border-neutral-200 dark:border-neutral-800 text-[10px] text-neutral-400 break-all">
-                <span id="saft-rec-lbl-hash" class="text-neutral-500 block mb-0.5">SHA-256 Audit Hash:</span>
+              <div class="pt-2 border-t border-neutral-800 text-[10px] break-all" style="color: #71717a !important;">
+                <span id="saft-rec-lbl-hash" class="block mb-0.5" style="color: #a1a1aa !important;">SHA-256 Audit Hash:</span>
                 <span id="saft-rec-hash">--</span>
               </div>
             </div>
 
             <!-- Dual Action Buttons: Download PDF & Proceed to Deposit -->
             <div class="space-y-3 pt-2">
-              <button id="saft-btn-download-cert" type="button" class="w-full py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium text-xs sm:text-sm transition-all cursor-pointer">
+              <button id="saft-btn-download-cert" type="button" class="w-full py-3 rounded-xl font-medium text-xs sm:text-sm transition-all cursor-pointer" style="background-color: #18181b !important; color: #ffffff !important; border: 1px solid #3f3f46 !important;">
                 Download Signed Agreement Certificate (HTML / PDF)
               </button>
-              <button id="saft-btn-proceed-pay" type="button" class="w-full py-3 sm:py-3.5 rounded-xl bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black font-bold text-xs sm:text-sm tracking-wide shadow-md active:scale-[0.99] transition-all cursor-pointer">
+              <button id="saft-btn-proceed-pay" type="button" class="w-full py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide shadow-lg active:scale-[0.99] transition-all cursor-pointer" style="background-color: #ffffff !important; color: #000000 !important;">
                 Proceed to Deposit to Treasury
               </button>
             </div>
@@ -366,7 +366,7 @@ SIGN_HANDLER_CODE = r'''  // ===================================================
       if (btnProceedPay) btnProceedPay.textContent = t.proceedBtn;
     }
 
-    // Canvas Retina Scaling
+    // Canvas Retina Scaling with crisp white stroke on solid black
     function setupCanvasDpi() {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
@@ -376,7 +376,7 @@ SIGN_HANDLER_CODE = r'''  // ===================================================
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.lineWidth = 2.5;
-      ctx.strokeStyle = document.documentElement.classList.contains('dark') ? '#ffffff' : '#000000';
+      ctx.strokeStyle = '#ffffff'; // Pure white ink on solid black
     }
 
     // Toggle Overlay
@@ -702,7 +702,7 @@ SIGN_HANDLER_CODE = r'''  // ===================================================
 '''
 
 SIGN_VISIBILITY_LOGIC = '''
-    // Dynamic SAFT E-Signature Button Visibility & i18n (Zero Icons)
+    // Dynamic SAFT E-Signature Button Visibility & i18n (Zero Icons, Ultra-High Contrast)
     const saftSignBtn = document.getElementById('pdf-modal-sign-btn');
     const isSaftDoc = String(pdfUrl || '').toUpperCase().includes('SAFT') || String(docTitle || '').toUpperCase().includes('SAFT');
     if (saftSignBtn) {
@@ -737,18 +737,13 @@ for filepath in TARGET_FILES:
             end_idx = code.find('</button>', start_idx) + 9
             code = code[:start_idx] + SIGN_BUTTON_HTML.strip() + code[end_idx:]
             print("[+] Cleaned button in", filepath)
-    else:
-        anchor = "<!-- Close Button (✕) ONLY -->"
-        if anchor in code:
-            code = code.replace(anchor, SIGN_BUTTON_HTML + "\n            " + anchor)
-            print("[+] Injected button into", filepath)
 
-    # 2. Replace drawer with zero-icon version
+    # 2. Replace drawer with solid opaque & ultra-high contrast version
     old_drawer_start = code.find('<!-- ========================================================================= -->\n        <!-- LUXURY IN-APP DIGITAL E-SIGNATURE OVERLAY')
     if old_drawer_start != -1:
         old_drawer_end = code.find('<!-- Floating Sticky Bottom Pill: Current Page & Jump Controls -->', old_drawer_start)
         code = code[:old_drawer_start] + SIGN_DRAWER_HTML.strip() + "\n\n        " + code[old_drawer_end:]
-        print("[+] Cleaned drawer in", filepath)
+        print("[+] Replaced drawer with solid opaque version in", filepath)
 
     # 3. Replace handler code
     old_handler_start = code.find('// =========================================================================\n  // SAFT DIGITAL E-SIGNATURE LOGIC')
