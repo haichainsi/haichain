@@ -110,6 +110,10 @@ Originating as a military-hardened, zero-griefing settlement kernel on Solana L1
 4. **Sub-Second Emergency Panic Kill-Switch:** Hardware-enforced balance retraction returning 100% of unspent user funds to cold custody in **< 400ms**.
 5. **Decentralized Artificial Superintelligence (ASI) Architecture:** A mathematically grounded L1 framework solving the physical interconnect limits of distributed computing via Asynchronous Cognitive Coordination (ACCE), Optimistic zkML Fraud Proofs, and Proof of Actual Intelligence (PoAI) consensus.
 
+5. **HTTP x402 & Solana Pay.sh (Raw Transport Pipes vs. Programmable Risk Policy Vault):**
+   * *Architectural Scope:* Both the HTTP x402 specification (Coinbase / Linux Foundation) and Pay.sh (Solana Foundation / Google Cloud) provide crucial transport-layer payment middleware and zero-subscription proxy gating. However, their security domain ends at the network protocol layer: standard Solana SPL token delegates are strictly constrained to a single delegate per account, and security disclosures in October 2026 (V12 vulnerability report) demonstrated that without default client-side budget caps, malicious APIs could extract entire account balances.
+   * *The HAICHAIN Strategic Synergy:* HAICHAIN does not compete with x402 or Pay.sh; it operates as the **Programmable Policy & Vault Governance Layer** sitting directly atop them. By enforcing 4-tuple Merkle capability trees (`Pubkey || MaxSpend || ExpirySlot || Nonce`) and sub-400ms panic circuit breakers, HAICHAIN guarantees that even when autonomous agents transact over x402 or Pay.sh rails, total loss exposure is mathematically bounded to the pre-authorized per-task allowance.
+
 ---
 
 ## 2. THE FOUNDATIONAL $AI^2$ EPISTEMOLOGY: HUMAN SOVEREIGNTY & MACHINE VELOCITY
@@ -292,6 +296,11 @@ To establish why existing infrastructure fundamentally fails to support an auton
 | (Tools for Humanity)  passive UBI token distribution; Zero machine    integrated directly into the economic loop   |
 |                       execution runtime; Zero capability bounding;    (Reverse Micro-Tasking), turning human minds|
 |                       Zero AI cognitive coprocessor integration.      into an active, compensated ASI coprocessor.|
+|                                                                                                                   |
+| HTTP x402 & Pay.sh    Raw HTTP/proxy transport pipes; Single-delegate Programmable Policy & Vault Layer (drop-in  |
+| (Coinbase / Linux Fdn/token limitation on Solana; Unconstrained client companion); Multi-delegate Merkle capability;|
+| Solana x Google Cloud)spending limits (V12 audit CVEs); Lacks on-chain Isolated PDA spending pots; Panic Circuit    |
+|                       circuit breakers & provider slashing mechanisms.Breaker sweeping in < 400ms; Bounded Loss.   |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 

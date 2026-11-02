@@ -110,6 +110,10 @@ Originado como un núcleo de liquidación de grado militar y cero ataques en Sol
 4. **Disyuntor de Emergencia de Pánico en Sub-Segundos (Panic Kill-Switch):** Retracción de balance forzada por hardware que devuelve el 100% de los fondos no gastados del usuario a custodia fría en **menos de 400ms**.
 5. **Arquitectura de Superinteligencia Artificial Descentralizada (ASI):** Un marco matemático L1 que resuelve los límites físicos de interconexión de la computación distribuida mediante Coordinación Cognitiva Asíncrona (ACCE), Pruebas de Fraude Optimistas de zkML y consenso de Prueba de Inteligencia Real (PoAI).
 
+5. **HTTP x402 y Solana Pay.sh (Tuberías de Transporte Brutas vs. Bóveda de Políticas de Riesgo Programables):**
+   * *Alcance Arquitectónico:* Tanto la especificación HTTP x402 (Coinbase / Fundación Linux) como Pay.sh (Fundación Solana / Google Cloud) proporcionan un middleware de pago crucial a nivel de transporte y pasarelas proxy sin suscripción. Sin embargo, su dominio de seguridad termina en la capa de protocolo: los delegados de tokens SPL estándar de Solana están estrictamente limitados a un solo delegado por cuenta, y las auditorías de seguridad de octubre de 2026 (informe de vulnerabilidad V12) demostraron que, sin límites presupuestarios predeterminados del lado del cliente, las API maliciosas podían extraer saldos completos.
+   * *La Sinergia Estratégica de HAICHAIN:* HAICHAIN no compite con x402 ni con Pay.sh; opera como la **Capa de Gobernanza de Políticas y Bóvedas Programables** situada directamente sobre ellos. Al hacer cumplir árboles de capacidad Merkle de 4 tuplas (`Pubkey || MaxSpend || ExpirySlot || Nonce`) y disyuntores de pánico en menos de 400 ms, HAICHAIN garantiza que incluso si los agentes autónomos operan sobre x402 o Pay.sh, la exposición total a pérdidas esté matemáticamente acotada a la asignación autorizada por tarea.
+
 ---
 
 ## 2. LA EPISTEMOLOGÍA FUNDACIONAL $AI^2$: SOBERANÍA HUMANA Y VELOCIDAD DE MÁQUINA (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
@@ -261,6 +265,11 @@ Para establecer por qué la infraestructura existente falla fundamentalmente en 
 | Worldcoin             Biometría de iris de propósito único (The Orb)  Estándares biométricos abiertos (WebAuthn)  |
 | (Tools for Humanity)  para distribución pasiva; Cero tiempo de        integrados al circuito económico (Micro-    |
 |                       ejecución; Cero coprocesamiento cognitivo.      Tareas Inversas), remunerando mentes humanas.|
+|                                                                                                                   |
+| HTTP x402 y Pay.sh    Tuberías de transporte HTTP/proxy brutas; Límite Capa de Políticas y Bóvedas Programables (capa   |
+| (Coinbase / Linux Fdn/de 1 delegado SPL; Falta de topes de gasto en    compatible); Capacidad Merkle multidelegada; Fondos|
+| Solana x Google Cloud)clientes (auditoría V12); Sin disyuntores        PDA aislados; Disyuntor de pánico en < 400ms;     |
+|                       autónomos on-chain ni slashing a proveedores.    Teorema de Pérdida Acotada (sin riesgo de quiebra).|
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -728,7 +737,37 @@ Una vez cargado, el Modelo de Lenguaje hereda automáticamente tres herramientas
 2. `pay_for_resource`: Permite ejecutar micro-liquidaciones de nanocentavos por APIs propietarias, clústeres GPU o flujos de datos autenticados.
 3. `emergency_freeze_pot`: Permite a los agentes guardianes activar una congelación por hardware si se detectan anomalías o violaciones de políticas.
 
+### 6.6. Posicionamiento Estratégico: HAICHAIN como Capa de Políticas y Disyuntores para HTTP x402 y Solana Pay.sh
+
+En el panorama de la infraestructura de agentes autónomos, los protocolos abiertos de comunicación de pagos han ganado una rápida adopción institucional, especialmente **HTTP x402** (iniciado por Coinbase, transferido a la Fundación Linux con participación de Visa y Mastercard) y **Pay.sh** (lanzado conjuntamente por la Fundación Solana y Google Cloud en mayo de 2026).
+
+```
+         PILA GLOBAL DE INFRAESTRUCTURA FINANCIERA PARA AGENTES
+         
+    [ AGENTES Y ENJAMBRES DE IA ] : Claude Desktop, Cursor, ElizaOS, CrewAI
+                                   │
+                                   ▼
+    [ COMUNICACIÓN Y FACTURACIÓN] : Protocolo HTTP x402 y Proxy Pay.sh
+    (Emite código 402 Payment Required y transporta desafíos de pago)
+                                   │
+                                   ▼
+    [ POLÍTICA Y GESTIÓN DE RIESGO] : ★ HAICHAIN AGENT POLICY VAULT ★
+    (Árboles Merkle, Topes estrictos MaxSpend, Disyuntor de pánico < 1s)
+                                   │
+                                   ▼
+    [ CARRILES DE LIQUIDACIÓN L1] : Registro Solana L1 (Liquidación USDC / USDT SPL)
+```
+
+1. **División Clara de Roles (Sinergia de Ecosistema Complementaria):**
+   * **x402 y Pay.sh actúan como 'Tuberías de Comunicación':** Definen cómo las API devuelven `402 Payment Required` y cómo los clientes envían encabezados estándar (`X-402-Authorization`).
+   * **HAICHAIN actúa como 'Banco de Riesgo y Bóveda Segura de Políticas':** Resuelve preguntas críticas: *¿De dónde obtiene fondos el agente? ¿Quién controla los límites? ¿Cómo se frena un LLM comprometido?*
+2. **Neutralización de Vulnerabilidades Empíricas de x402:**
+   Las investigaciones de seguridad de octubre de 2026 revelaron 25 vulnerabilidades en clientes tempranos de x402. HAICHAIN lo soluciona con su **Hoja de Capacidad Merkle de 4 Componentes** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) y el **Teorema de Pérdida Acotada**.
+3. **Integración Directa con SDK x402:**
+   El paquete `@haichain/sdk` incluye controladores nativos para resolver desafíos x402 de forma segura.
+
 ---
+
 
 ## 7. COMPENSACIÓN SIMÉTRICA MULTILATERAL Y MATRIZ DE LIQUIDACIÓN A VELOCIDAD DE CABLE (MULTILATERAL NETTING)
 

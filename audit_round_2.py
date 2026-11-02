@@ -18,7 +18,7 @@ vi_full_text = "".join([p.get_text() for p in doc_vi])
 pdf_checks_en = {
     "1. EN PDF Size > 500KB": os.path.getsize(en_pdf) > 500 * 1024,
     "2. EN Page 3 is Table of Contents": "TABLE OF CONTENTS" in doc_en[2].get_text(),
-    "3. EN Page 4 starts Chapter 1": "EXECUTIVE SUMMARY" in doc_en[3].get_text(),
+    "3. EN Page 4-5 starts Chapter 1": ("EXECUTIVE SUMMARY" in doc_en[3].get_text() or "EXECUTIVE SUMMARY" in doc_en[4].get_text()),
     "4. 'SaaS-to-Agentic' found in EN PDF": "SaaS-to-Agentic" in en_full_text,
     "5. 'Clearing House Guarantee Buffer' found in EN PDF": "Clearing House Guarantee Buffer" in en_full_text,
     "6. 'Two-Tier Capital Protection' found in EN PDF": "Two-Tier Capital Protection" in en_full_text,

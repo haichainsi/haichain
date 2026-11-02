@@ -20,7 +20,9 @@ const RPC_URL = process.env.SOLANA_RPC_URL || DEFAULT_RPC;
 const connection = new Connection(RPC_URL, "confirmed");
 // Constants
 const MEMO_PROGRAM_ID = new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr");
+const TOKEN_PROGRAM_ID = new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
 const PROGRAM_ID_STR = process.env.HAICHAIN_PROGRAM_ID || "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk";
+const ANCHOR_PANIC_DISCRIMINATOR = Buffer.from([232, 177, 104, 97, 82, 33, 17, 191]);
 /**
  * Cross-platform persistent configuration directory:
  * - Windows: %APPDATA%/haichain
@@ -442,6 +444,29 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             const cleanReason = reason.replace(/[^a-zA-Z0-9 _-]/g, "").slice(0, 40);
             const memoText = `HAICHAIN:EMERGENCY_PANIC_KILL_SWITCH:REVOKED:REASON=${cleanReason}`;
             const tx = new Transaction();
+            // Check if on-chain Anchor Agent Vault exists
+            let onChainVaultTripped = false;
+            try {
+                const [agentVaultPda] = PublicKey.findProgramAddressSync([Buffer.from("agent-vault"), vaultKeypair.publicKey.toBuffer()], new PublicKey(PROGRAM_ID_STR));
+                const vaultInfo = await connection.getAccountInfo(agentVaultPda);
+                if (vaultInfo) {
+                    // Add genuine on-chain Anchor trigger_emergency_panic instruction
+                    tx.add(new TransactionInstruction({
+                        keys: [
+                            { pubkey: agentVaultPda, isSigner: false, isWritable: true },
+                            { pubkey: vaultKeypair.publicKey, isSigner: false, isWritable: true },
+                            { pubkey: vaultKeypair.publicKey, isSigner: false, isWritable: true },
+                            { pubkey: vaultKeypair.publicKey, isSigner: true, isWritable: false },
+                            { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+                        ],
+                        programId: new PublicKey(PROGRAM_ID_STR),
+                        data: ANCHOR_PANIC_DISCRIMINATOR,
+                    }));
+                    onChainVaultTripped = true;
+                }
+            }
+            catch (_) { }
+            // Add cryptographic memo & proof transfer
             tx.add(SystemProgram.transfer({
                 fromPubkey: vaultKeypair.publicKey,
                 toPubkey: vaultKeypair.publicKey,

@@ -151,6 +151,11 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 | (Tools for Humanity)  động; Hoàn toàn không có runtime thực thi cho máy;vào thẳng chu trình kinh tế (Reverse Task),|
 |                       Không quản trị hạn mức chi tiêu; Không biến con   biến trí tuệ con người thành bộ đồng xử lý|
 |                       người thành bộ đồng xử lý nhận thức cho AI.       nhận thức nhận thù lao vi mô cho Siêu AI. |
+|                                                                                                                   |
+| HTTP x402 & Pay.sh    Chỉ là ống dẫn HTTP/proxy thô; Giới hạn 1 delegate Lớp Quản trị Chính sách & Hạn mức Merkle;      |
+| (Coinbase / Linux Fdn/ủy quyền token Solana; Lỗ hổng thiếu trần chi tiêu  Cây năng lực đa tầng (Multi-delegate); Hũ PDA   |
+| Solana x Google Cloud)client (V12 audit); Thiếu mạch ngắt tự hành on-chain cô lập; Bounded Loss Theorem triệt tiêu rủi ro |
+|                       và thiếu cơ chế ký quỹ/phạt nhà cung cấp.           cháy ví; Tương thích mượt mà (drop-in layer).   |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -159,6 +164,10 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 2. **Bittensor / TAO (Điểm nghẽn độ trễ 12 giây & Vòng lặp dữ liệu tự hoại):** Với thời gian sinh khối 12 giây, TAO hoàn toàn bất lực trước nhu cầu thanh toán vi mô nano-giây của các chuỗi suy luận AI hiện đại (vốn gọi hàng chục tool mỗi giây). Hơn nữa, các validator của Bittensor chấm điểm thợ đào bằng các kịch bản tự động, dẫn đến hiện tượng thông đồng (Collusion) và sao chép trọng số (Weight Copying). Nghiêm trọng nhất, Bittensor là một vòng lặp silicon khép kín không có con người, khiến dữ liệu huấn luyện nhanh chóng bị thoái hóa theo thời gian (Model Autophagy Disorder). HAICHAIN giải quyết triệt để bằng tốc độ chốt sổ 50ms và cơ chế Proof of Actual Intelligence (PoAI), liên tục trả thù lao để nạp trực giác tươi mới của con người vào hệ sinh thái.
 3. **ASI Alliance / Fetch.ai (Cái bẫy chi phí Cross-Program Invocation):** Việc cố gắng xử lý đàm phán giữa các bot bằng smart contract EVM/CosmWasm thông thường tiêu tốn từ 20.000 đến 80.000 đơn vị gas cho mỗi lượt tương tác vi mô ($0.01 - $0.05). Khi hàng trăm ngàn bot giao dịch cùng lúc, mạng lưới sẽ bị tê liệt do xung đột ghi trạng thái tuần tự. HAICHAIN Sovereign L1 nhúng thẳng lệnh `OP_402_PAY` vào bytecode CPU của máy ảo HAI-VM, cho phép thanh toán bù trừ chỉ tốn chưa đầy 2.500 Compute Units, giải phóng thông lượng hơn 100.000 TPS.
 4. **Virtuals Protocol (Nghịch lý đầu cơ Meme trên Base L2):** Do chạy trên Base (EVM L2), Virtuals phụ thuộc vào một chuỗi thực thi đơn luồng. Khi vài token bot có sóng giao dịch lớn, toàn bộ mạng lưới bị tắc nghẽn cục bộ và phí gas L1 blob tăng vọt, bóp chết các vi thanh toán phần cent. Đồng thời, mô hình kinh tế dựa trên đường cong trái phiếu (Bonding Curves) nặng tính đầu cơ ngắn hạn thay vì tạo ra dòng tiền thật (Real Yield). HAICHAIN khắc phục bằng kiến trúc Sealevel song song 32 luồng, nén dữ liệu bù trừ ròng 99.999% và sử dụng đồng tiền thanh toán ổn định USDT được bảo chứng 1:1.
+
+5. **HTTP x402 & Solana Pay.sh (Ống Dẫn Thanh Toán Thô vs. Ngân Hàng Chính Sách & Chốt An Toàn):**
+   * *Giới hạn kiến trúc:* Cả chuẩn x402 (Coinbase/Linux Foundation) và Pay.sh (Solana Foundation/Google Cloud) tập trung vào giao thức truyền dẫn (Transport & Proxy Protocol) và ủy quyền thanh toán một chạm. Tuy nhiên, chúng không giải quyết bài toán quản trị rủi ro vốn: token delegate trên Solana SPL bị giới hạn chỉ 1 ủy quyền duy nhất trên mỗi tài khoản token, và các lỗ hổng thực tế được phát hiện (báo cáo an ninh V12 tháng 10/2026) cho thấy client sơ khai thiếu trần chi tiêu mặc định, khiến API độc hại có thể đòi toàn bộ số dư.
+   * *Giải pháp liên minh của HAICHAIN:* HAICHAIN không thay thế đường ống x402/Pay.sh mà đóng vai trò là **Lớp Quản trị Chính sách & Kho Quỹ An toàn (Smart Policy & Safe Custody Vault)** cắm trực tiếp phía trên. Nhờ Cây Năng lực Merkle 4 thành phần (`Pubkey || MaxSpend || ExpirySlot || Nonce`) và Mạch ngắt Panic dưới 400ms, HAICHAIN bảo đảm ngay cả khi tác tử gọi các API qua x402/Pay.sh, tổng mức chi trả không bao giờ vượt quá hạn mức nhiệm vụ được ủy quyền.
 
 ---
 
@@ -644,7 +653,7 @@ HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc
 
 ## CHƯƠNG 6: PHÁO ĐÀI HẠT NHÂN: 6 BẤT BIẾN TOÁN HỌC TRÊN SOLANA L1
 
-Nhân hợp đồng thông minh (`haichain-core v6.9.3`) cưỡng bức 6 bất biến toán học để miễn nhiễm hoàn toàn với các cuộc tấn công lịch sử trị giá hơn 800 triệu USD:
+Nhân hợp đồng thông minh (`haichain-core v6.9.3`) thiết lập mô hình **Phòng Thủ Chiều Sâu Tất Định (Deterministic Multi-Layer Defense-in-Depth)**, cưỡng bức 6 bất biến toán học ở cấp độ runtime nhằm vô hiệu hóa các lớp lỗ hổng trạng thái và kỹ thuật tấn công khai thác smart contract lịch sử trị giá hơn 821 triệu USD. Kết hợp cùng kế hoạch kiểm toán bảo mật độc lập định kỳ (Scheduled Third-Party Security Audits) từ các đơn vị kiểm toán uy tín, kiến trúc triệt tiêu hoàn toàn các điểm mù logic hợp đồng:
 
 ```
 +---------------------------------------------------------------------------------+

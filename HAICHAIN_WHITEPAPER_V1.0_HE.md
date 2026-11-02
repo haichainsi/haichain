@@ -124,6 +124,10 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = 	ext{ARTIFICIAL INTELLIGENCE} 	imes 	ex
 5. **ארכיטקטורת בינה-על מלאכותית מבוזרת (ASI Architecture):** מסגרת שכבה 1 מבוססת מתמטית הפותרת את מגבלות רוחב הפס הפיזיקליות של מחשוב מבוזר באמצעות תיאום קוגניטיבי אסינכרוני (ACCE), הוכחות הונאה אופטימיות ב-zkML, וקונצנזוס הוכחת תבונה ממשית (PoAI).
 
 
+5. **HTTP x402 ו-Solana Pay.sh (צינורות תעבורה גולמיים לעומת כספת מדיניות סיכונים ניתנת לתכנות):**
+   * *גבולות הארכיטקטורה:* מפרט HTTP x402 (Coinbase / Linux Foundation) ו-Pay.sh (קרן Solana / Google Cloud) מספקים תשתית תשלומים קריטית ברמת התעבורה וללא מנויים. עם זאת, תחום האבטחה שלהם מסתיים בפרוטוקול הרשת: האצלת אסימוני SPL ב-Solana מוגבלת אך ורק לנציג יחיד לכל חשבון, ודוחות אבטחה מאוקטובר 2026 (דוח V12) הוכיחו כי ללא תקרת הוצאה כברירת מחדל בלקוח, ממשקי API זדוניים עלולים לדרוש את מלוא היתרה.
+   * *הסינרגיה האסטרטגית של HAICHAIN:* HAICHAIN אינה מתחרה ב-x402 או ב-Pay.sh, אלא פועלת כ**שכבת מדיניות וכספת מאובטחת ניתנת לתכנות** ישירות מעליהם. באמצעות אכיפת עץ יכולות Merkle בעל 4 רכיבים (`Pubkey || MaxSpend || ExpirySlot || Nonce`) ומפסק פאניקה של פחות מ-400ms, HAICHAIN מבטיחה שגם כאשר סוכנים פועלים דרך x402 או Pay.sh, סך החשיפה להפסד חסום מתמטית להקצאת המשימה המורשית בלבד.
+
 ---
 
 ## 2. אפיסטמולוגיית $AI^2$ יסודית: ריבונות אנושית ומהירות מכונה (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
@@ -284,6 +288,10 @@ client = openai.OpenAI(
 | (Tools for Humanity)  passive UBI token distribution; Zero machine    integrated directly into the economic loop   |
 |                       execution runtime; Zero capability bounding;    (Reverse Micro-Tasking), turning human minds|
 |                       Zero AI cognitive coprocessor integration.      into an active, compensated ASI coprocessor.|
+|                                                                                                                   |
+| HTTP x402 & Pay.sh    צינורות תעבורה ופרוקסי גולמיים; מגבלת נציג בודד  שכבת מדיניות וכספות ניתנת לתכנות (שכבה תואמת); עץ   |
+| (Coinbase / Linux Fdn/ב-SPL; היעדר תקרות הוצאה בלקוח (ביקורת V12);     יכולות Merkle מרובה-נציגים; קופות PDA מבודדות;      |
+| Solana x Google Cloud)ללא מפסקי זרם בשרשרת וללא מנגנון חילוט לספקים.   מפסק פאניקה < 400ms; משפט ההפסד החסום ללא ריקון.   |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
