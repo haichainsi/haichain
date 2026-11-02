@@ -75,7 +75,7 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 
 1. **Phân loại Tài sản (Utility Commodity):**
    * Token `$HAISI` được định nghĩa là **Tài nguyên Tiện ích & Quản trị Mạng lưới (Network Utility & Governance Commodity)**.
-   * `$HAISI` được dùng để: Giảm 50% phí giao dịch vi mô cho AI, stake (veHAI) nhận chia sẻ dòng tiền bù trừ thực tế bằng USDT, vote quản trị thông số giao thức, và làm phí Gas cho mạng lưới Sovereign L1 trong tương lai.
+   * `$HAISI` được dùng để: Giảm 50% phí giao dịch vi mô cho AI, stake quản trị veHAI nhận ưu đãi giảm phí và bảo hiểm rủi ro relayer, vote thông số giao thức (100% không chia cổ tức thụ động), và làm phí Gas cho mạng lưới Sovereign L1 trong tương lai.
 2. **Không Cam Kết Lợi Nhuận Tài Chính (No Investment Advice):**
    * Thỏa thuận này không cấu thành một hợp đồng góp vốn cổ phần, trái phiếu hay chứng khoán có bảo đảm lợi nhuận. Bên Mua hiểu rõ rủi ro của thị trường công nghệ cao và tự chịu trách nhiệm về quyết định của mình.
 3. **Cam Kết Không Bán Tháo Phá Giá (Anti-Flipping & Non-Circumvention):**
@@ -130,7 +130,7 @@ To ensure market integrity and prevent secondary liquidity dilution, 100% of Tok
 ---
 
 ### 3. ASSET CLASSIFICATION & REGULATORY REPRESENTATIONS
-1. **Network Utility Commodity:** The $HAISI Token is structured as a functional programmatic utility commodity utilized for protocol fee abatements (50% reduction on machine micro-payments), real yield settlement distribution (USDT streaming via veHAI staking), and sovereign L1 gas consensus.
+1. **Network Utility Commodity:** The $HAISI Token is structured as a functional programmatic utility commodity utilized for protocol fee abatements (50% reduction on machine micro-payments), veHAI governance staking, relayer insurance bonding, programmatic Buyback & Burn, and sovereign L1 gas consensus. Zero passive cash dividends are distributed.
 2. **No Equity or Security Classification:** This Agreement does not grant Purchaser equity shares, dividends, or voting shares in any corporate entity. Acquisition is based on the utility demand of the protocol.
 3. **Anti-Sybil & Anti-Dumping Covenant:** Purchaser covenants not to execute off-market OTC synthetic hedging or dumping operations designed to manipulate open market discovery during the Public Launch phase.
 

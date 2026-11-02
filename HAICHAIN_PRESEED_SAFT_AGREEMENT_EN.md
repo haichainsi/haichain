@@ -63,7 +63,7 @@ To protect secondary market stability, open liquidity discovery, and community p
 1. **Functional Utility Commodity:**
    * The `$HAISI` Token is structured as a functional cryptographic network commodity. It is utilized to:
      * Provide a 50% discount on autonomous machine micro-settlement fees.
-     * Enable veHAI staking for real yield cash flow sharing in pure USDT.
+     * Enable veHAI governance staking, tiered protocol micro-fee discounts, and relayer insurance bonding alongside continuous 50% programmatic Buyback & Burn and 50% Protocol Reserves (CHGB), with zero passive dividend distributions (non-security utility architecture).
      * Serve as the native Gas and consensus asset upon activation of HAICHAIN Sovereign L1.
 2. **No Equity or Security Classification:**
    * This Agreement does not represent shares, stock, equity, or dividend rights in any legal entity. Token utility is tied to protocol execution.

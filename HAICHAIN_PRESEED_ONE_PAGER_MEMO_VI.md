@@ -67,13 +67,13 @@
   * **Master Authority:** The human sets cryptographically enforced spending budgets via Merkle Capability Leaves and holds a **Sub-second Panic Kill-Switch** returning 100% of funds in < 400ms.
   * **Economic Symbiosis:** AI agents stream continuous royalties to human creators and **hire humans directly (Reverse Micro-Tasking)** for high-stakes RLHF validation and sign-offs ($1.50 - $25.00/task).
 
-### 3. TIERED REVENUE ENGINE ($15.9M ARR) & REAL YIELD CASH FLOW
+### 3. TIERED MICRO-FEE CAPACITY & DEFENSIBLE TOKENOMICS ($0.7M - $1.4M PROTOCOL TAKE-RATE)
 * **Blended 3-Tier Settlement Engine:**
   * **Tier 1 (Consumer AI):** 100,000 lightweight agents @ $3.40/mo = $4.1M volume ($4.1k protocol fee @ 0.10%).
   * **Tier 2 (B2B Agent Swarms):** 15,000 enterprise agent workflows ($350/mo average volume) = $63M volume ($63k fee).
   * **Tier 3 (Institutional GPU & API Clearing):** 1,200 enterprise pipelines ($50,000/mo volume) = $720M volume ($1.44M - $3.6M fee @ 0.20-0.50%).
-  * **Ecosystem Services:** zkTLS Verification Fees ($0.001/proof) + Priority State Channel Liquidity Spreads generate robust blended $15.9M ARR.
-* **Token Value Accrual:** 50% of all global settlement fees fund automated continuous **Buyback & Burn**; 50% distributed as **Real Yield (USDC/USDT)** to veHAI governance stakers.
+  * **Protocol Take-Rate Economics:** At a conservative 0.05% - 0.10% protocol take-rate on $1.4B annualized network micro-settlement capacity, HAICHAIN generates a sustainable **$700,000 - $1,400,000 USD/year** in protocol reserves (strictly matching Whitepaper Section 7).
+* **Token Value Accrual (Howey Test Compliant Utility):** 50% of protocol fees fund automated continuous **Buyback & Burn**; 50% allocated to Protocol Reserves & CHGB. Zero passive dividend distributions (non-security utility architecture).
 * **Specialized SVM App-Chain Endgame:** When off-chain state channel settlements surpass 100k tx/sec, $HAISI converts 1:1 into the native gas and staking asset of the dedicated **HAICHAIN SVM App-Chain** ($1B to $5B+ FDV).
 
 ```

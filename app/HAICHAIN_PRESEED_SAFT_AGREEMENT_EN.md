@@ -9,7 +9,7 @@
 * **Pre-Seed Offering Price:** **$0.007 USD / $HAISI** (Implied FDV: **$7,000,000 USD**)
 * **Target Public Listing Price (TGE):** **$0.010 USD / $HAISI** (Implied FDV: **$10,000,000 USD**)
 * **Preferential Discount:** **30% Discount** relative to Public TGE (+42.8% immediate unvested listing upside)
-* **Settlement Currency:** USDT (Tether SPL / ERC-20 / TRC-20) or SOL at verified market conversion
+* **Settlement Currency:** USDC / EURC (Circle MiCA Compliant), USDT, or SOL at verified market conversion
 
 ---
 
@@ -22,7 +22,7 @@ THIS SIMPLE AGREEMENT FOR FUTURE TOKENS (this "**Agreement**" or "**SAFT**") cer
 1. **Purchase Amount:**
    * The Purchaser agrees to contribute: `________________________` **USD** (payable in USDT or SOL equivalent to the Multi-Sig Treasury).
 2. **Token Calculation & Allocation:**
-   $$\text{Allocated Tokens (\$HAISI)} = \frac{\text{Purchase Amount (USD)}}{\$0.007 \text{ USD}}$$
+   $$\text{Allocated Tokens ($HAISI)} = \frac{\text{Purchase Amount (USD)}}{\$0.007 \text{ USD}}$$
    * Total $HAISI Tokens allocated to Purchaser: `________________________` **$HAISI**.
 3. **Aggregate Pre-Seed Tranche Ceiling:**
    * This Private Round is strictly capped at **25,000,000 to 30,000,000 $HAISI (maximum 3.0% of Total Fixed Supply)**, representing a hard ceiling of \$210,000 USD total capital formation.
@@ -63,7 +63,7 @@ To protect secondary market stability, open liquidity discovery, and community p
 1. **Functional Utility Commodity:**
    * The `$HAISI` Token is structured as a functional cryptographic network commodity. It is utilized to:
      * Provide a 50% discount on autonomous machine micro-settlement fees.
-     * Enable veHAI staking for real yield cash flow sharing in pure USDT.
+     * Enable veHAI governance staking, tiered protocol micro-fee discounts, and relayer insurance bonding alongside continuous 50% programmatic Buyback & Burn and 50% Protocol Reserves (CHGB), with zero passive dividend distributions (non-security utility architecture).
      * Serve as the native Gas and consensus asset upon activation of HAICHAIN Sovereign L1.
 2. **No Equity or Security Classification:**
    * This Agreement does not represent shares, stock, equity, or dividend rights in any legal entity. Token utility is tied to protocol execution.
@@ -83,8 +83,8 @@ The Purchaser agrees to maintain strict confidentiality regarding the preferenti
 * **Purchaser Full Legal Name / Corporate Entity:** `________________________________________________`
 * **Passport / National Registration ID No:** `________________________________________________`
 * **Primary Contact Email Address:** `________________________________________________`
-* **Purchase Amount (USD Equivalent):** `\$________________________`
-* **Allocated $HAISI Tokens:** `________________________ \$HAISI`
+* **Purchase Amount (USD Equivalent):** `$________________________`
+* **Allocated $HAISI Tokens:** `________________________ $HAISI`
 * **Purchaser Solana Receiving Wallet (Ed25519 Pubkey):**  
   `____________________________________________________________________`
 

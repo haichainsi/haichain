@@ -40,7 +40,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 
 ### SECTION 3: ENGAGEMENTS JURIDIQUES ET SOUVERAINETÉ
 
-1. **Actif d'Utilité Réseau:** Le Token `$HAISI` offre 50% de réduction sur les micro-paiements, permet le staking veHAI pour percevoir des revenus réels en USDT et sert de gas natif sur le réseau L1 HAICHAIN.
+1. **Actif d'Utilité Réseau:** Le Token `$HAISI` offre 50% de réduction sur les micro-paiements, permet le staking de gouvernance veHAI, des réductions échelonnées sur les micro-frais de protocole, des garanties d'assurance pour les relayeurs et une allocation programmatique de 50% au Rachat et Brûlage + 50% aux Réserves de Protocole (CHGB), sans aucune distribution passive de dividendes (architecture d'utilité non-titre financier).
 2. **Absence de Droits Sociaux:** Cet accord ne confère aucune action ni droit à dividende dans une quelconque entité morale.
 3. **Engagement de Non-Manipulation:** L'Acheteur s'interdit toute vente prédatrice sous la parité de cotation.
 

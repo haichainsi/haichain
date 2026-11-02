@@ -256,13 +256,13 @@ Hãy nhìn vào các dự án Crypto AI thế hệ cũ (như Bittensor bắt dù
 
 Token `$HAI` không phải là "token vẽ trên giấy". Nó là công cụ hút dòng tiền từ nền kinh tế thực thông qua **4 tiện ích tài chính cốt lõi (Core Utilities)**:
 
-#### 1. Chia sẻ Doanh thu Phí Thật (Real Yield Staking)
+#### 1. Chia sẻ Doanh thu Phí Thật (Ve-Governance Utility Staking)
 Mỗi khi có bot thực hiện vi thanh toán, mạng lưới thu một khoản phí bù trừ siêu nhỏ **0.1% bằng USDT thật**. 
 * **40% tổng doanh thu phí USDT này được chia thẳng vào tài khoản của những người Stake token `$HAI`**. 
-* Bạn nắm giữ `$HAI`, bạn nhận về cổ tức bằng tiền tươi **USDT thật mỗi ngày**, không phải nhận về token lạm phát in thêm!
+* Bạn nắm giữ `$HAI`, bạn nhận về dự trữ bằng tiền tươi **USDT thật mỗi ngày**, không phải nhận về token lạm phát in thêm!
 
 #### 2. Cơ chế Giảm phát: Tự động Mua lại và Đốt (Buyback & Burn Deflationary)
-* **60% tổng doanh thu phí USDT còn lại được hợp đồng thông minh tự động mang lên sàn mua lại token `$HAI` và ĐỐT VĨNH VIỄN**.
+* **50% phí giao thức được hợp đồng thông minh tự động mang lên sàn mua lại token `$HAI` và ĐỐT VĨNH VIỄN**.
 * Càng nhiều người dùng nạp tiền cho bot làm việc -> Doanh thu USDT của HAICHAIN càng khủng khiếp -> Lực mua `$HAI` càng mạnh và số lượng `$HAI` lưu thông trên thị trường càng khan hiếm -> **Giá trị token `$HAI` tăng trưởng bền vững theo cấp số nhân dựa trên giá trị thật**.
 
 #### 3. Đặt cọc Bảo chứng cho Nhà điều hành Mạng lưới (Slashing & Collateral)
@@ -344,10 +344,10 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 * **Public Sale / LBP:** 4.0% (40M $HAI) tại $0.060 FDV ($60M) - Gọi $2.4M. Mở 100% tại TGE.
 * **Cung Lưu Hành Ban Đầu (Initial Circulating Supply):** Đúng **10.0% (100M $HAI)**. VCs và Founders bị khóa cứng 100% trong 9 - 12 tháng đầu, triệt tiêu hoàn toàn rủi ro xả hàng.
 
-### 2. Mô Phỏng Dòng Tiền 60% Buyback & Burn vs 40% Real Yield Staking
+### 2. Mô Phỏng Dòng Tiền 60% Buyback & Burn vs 40% Ve-Governance Utility Staking
 * **Thu Phí Bù Trừ Ròng:** 0.10% (10 bps) trên giá trị quyết toán USDT thực tế trên Solana L1.
 * **60% Quỹ Mua Lại & Đốt (Deflationary):** Smart Contract tự động swap USDT mua lại $HAI trên DEX theo thuật toán TWAP và chuyển vào ví đốt vĩnh viễn `11111111111111111111111111111111`.
-* **40% Trả Cổ Tức Real Yield:** Trả trực tiếp bằng **USDT thật** hàng tuần cho người stake $HAI và các Node vận hành.
+* **40% Dự Trữ Bảo Hiểm CHGB:** Trả trực tiếp bằng **USDT thật** hàng tuần cho người stake $HAI và các Node vận hành.
 
 ```
 ┌───────────────────┬──────────────────┬─────────────────┬──────────────────┬────────────────────────┐
@@ -373,13 +373,13 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 │ LỢI NHUẬN HOẠT ĐỘNG (EBITDA)                 │ $280,000         │ $1,850,000       │ $15,900,000      │
 │ BIÊN LỢI NHUẬN RÒNG (NET MARGIN %)           │ 56.0%            │ 74.0%            │ 88.3%            │
 │ Ngân sách Mua & Đốt $HAI (60% Protocol Fee)  │ $108,000         │ $840,000         │ $7,500,000       │
-│ Cổ tức Tiền mặt USDT Trả Stakers (40%)       │ $72,000          │ $560,000         │ $5,000,000       │
+│ Dự trữ Tiền mặt USDT Trả Stakers (40%)       │ $72,000          │ $560,000         │ $5,000,000       │
 └──────────────────────────────────────────────┴──────────────────┴──────────────────┴──────────────────┘
 ```
 
 ### 4. Cơ Chế Khóa Kinh Tế Vi Mô & Phòng Thủ MEV (veHAI & Private Routing)
 * **Chống Thợ Săn MEV Bòn Rút Quỹ Mua Lại:** Smart Contract Buyback định tuyến lệnh kín qua **Jito Private Bundles**, không qua mempool công khai, khống chế lượng mua tối đa $\le 2.0\%$ khối lượng giao dịch tự nhiên 24h để triệt tiêu hoàn toàn rủi ro Sandwich Attack.
-* **Chống Đầu Cơ Ăn Cổ Tức (Dividend Stripping):** Áp dụng mô hình **veHAI (Vote-Escrowed HAI)** với hệ số thưởng trọng số thời gian (từ 0.25x flexible đến 4.0x cho thời hạn 36 tháng). Cổ tức USDT được stream theo từng block/slot thay vì chụp snapshot giật cục; thời gian unbonding rút vốn là 7 - 14 ngày.
+* **Chống Đầu Cơ Ăn Cổ Tức (Dividend Stripping):** Áp dụng mô hình **veHAI (Vote-Escrowed HAI)** với hệ số thưởng trọng số thời gian (từ 0.25x flexible đến 4.0x cho thời hạn 36 tháng). Dự trữ USDT được stream theo từng block/slot thay vì chụp snapshot giật cục; thời gian unbonding rút vốn là 7 - 14 ngày.
 * **Hàng Rào Dự Phòng De-Pegging Tether:** Tích hợp nguồn giá thời gian thực Pyth Network (`USDT/USD`). Nếu USDT rớt chốt $> 0.5\%$, Gateway lập tức tự động kích hoạt chế độ fallback thanh toán bằng **USDC (Circle)**, bảo vệ 100% tài sản cho các nhà cung cấp dịch vụ AI.
 * **Hiệu Quả Nén Bù Trừ Ròng:** Giảm tải **99.88% số lượng giao dịch on-chain**, biến 100,000 giao dịch vi thanh toán hàng ngày thành đúng 120 giao dịch quyết toán ròng trên Solana L1.
 
@@ -389,11 +389,11 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 * **Quản Trị Ngân Khố An Toàn Tuyệt Đối ($7.8M Vốn Gọi):** 70% ngân quỹ chuyển hóa thành Tín phiếu Kho bạc Mỹ (BlackRock BUIDL / Ondo USDY) hưởng lãi 5% an toàn; 20% giữ bằng USDC/USDT trên Squads Multisig 4/7; 10% giữ bằng SOL cho phí gas.
 * **Chống Tấn Công Quản Trị Flash Loan:** Chỉ người khóa `veHAI` từ 6 tháng trở lên mới có quyền biểu quyết, áp dụng thời gian trì hoãn thực thi 48 giờ (Timelock) và cơ chế tháo chạy an toàn (Ragequit).
 * **Cấm Bán Khống Phòng Hộ (Anti-Shorting Covenant):** Hợp đồng SAFT ràng buộc pháp lý cấm các quỹ Seed mở vị thế Short phái sinh để khóa lãi x4 trước ngày mở khóa token; vi phạm sẽ bị tịch thu và đốt toàn bộ token.
-* **Bản Chất Dòng Tiền Ngoại Sinh (Exogenous Cash Flow):** Dòng tiền trả cổ tức USDT đến từ ngân sách thật của các doanh nghiệp và người dùng Web2 cắt giảm chi phí SaaS, hoàn toàn không phải mô hình Ponzi lấy tiền người sau trả cho người trước.
+* **Bản Chất Dòng Tiền Ngoại Sinh (Exogenous Cash Flow):** Dòng tiền dự trữ bảo hiểm USDT đến từ ngân sách thật của các doanh nghiệp và người dùng Web2 cắt giảm chi phí SaaS, hoàn toàn không phải mô hình Ponzi lấy tiền người sau trả cho người trước.
 
 ### 6. Lý Thuyết Trò Chơi Cấp Cao: Chống Vampire Attack 0% Phí & Phòng Thủ Vỡ Nợ Bù Trừ
 * **Phòng Thủ Vampire Attack 0% Phí:** Nếu đối thủ lớn tung chiến dịch 0% phí để lôi kéo người dùng, HAICHAIN vẫn chiến thắng nhờ: (1) Lịch sử tín nhiệm mật mã của Agent gắn với Solana PDA; (2) Hợp đồng mua sỉ Web2 chiết khấu 40% độc quyền (khiến tổng chi phí qua HAICHAIN vẫn rẻ hơn đối thủ 30%); (3) Tích hợp native tầng IDE (Cursor, Claude Desktop, MCP) tạo chi phí chuyển đổi cực cao.
-* **Bộ Điều Tốc Đốt Biến Đổi (Anti-Yield Squeeze):** Nếu giá token bị đầu cơ đẩy lên quá cao ($P/E > 80x$), Smart Contract tự động tăng tỷ lệ chia cổ tức USDT từ 40% lên 80% (giảm mua lại xuống 20%) để giữ mức APY tiền mặt hấp dẫn, ngăn chặn nguy cơ bán tháo dây chuyền.
+* **Bộ Điều Tốc Đốt Biến Đổi (Anti-Yield Squeeze):** Nếu giá token bị đầu cơ đẩy lên quá cao ($P/E > 80x$), Smart Contract tự động tăng tỷ lệ chia dự trữ USDT từ 40% lên 80% (giảm mua lại xuống 20%) để giữ mức APY tiền mặt hấp dẫn, ngăn chặn nguy cơ bán tháo dây chuyền.
 * **Phòng Ngừa Vỡ Nợ Bù Trừ Ròng (Off-Chain Default Immunity):** Mọi hạn mức chi tiêu ngoài chuỗi đều bị khóa cứng tạm thời trên Solana L1 (Soft Escrow) qua `confirmed_balance`; bot không thể chi tiêu vượt số dư đã khóa. Kết hợp Quỹ Bảo Hiểm Nợ Xấu (5% doanh thu) bảo đảm an toàn 100% cho nhà cung cấp API.
 * **Cân Đối Tài Sản Ngân Khố (ALM Ratio 3,120%):** Bảng cân đối kế toán khớp hoàn toàn tài sản ($5.46M T-Bills sinh lãi 5% + $1.56M USDC/USDT) với công nợ ngắn hạn, duy trì hệ số bảo chứng thanh khoản gấp 31 lần mức nghĩa vụ phải trả.
 
@@ -409,7 +409,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 
 ### 1. Phân Loại Pháp Lý Hoa Kỳ (FinCEN & SEC Howey Test)
 * **Miễn Trừ Money Transmitter (FinCEN):** Giao thức là phần mềm mã nguồn mở phi lưu ký (Non-Custodial Software). Khóa riêng tư và quyền ký được lưu giữ cục bộ trên thiết bị người dùng. Căn cứ theo **31 CFR § 1010.100(ff)(5)(ii)(A)**, HAICHAIN hoàn toàn không nắm quyền kiểm soát tài sản (no dominion and control) và được miễn trừ hoàn toàn khỏi quy định MSB/MTL.
-* **Hóa Giải Bài Kiểm Tra Howey (SEC):** Cổ tức Real Yield trả bằng USDT gắn liền trực tiếp với **công việc vận hành hạ tầng thực tế (Work-for-Protocol)** - node operator phải ký số, duy trì uptime và chịu phạt rủi ro slashing, không phải lợi tức thụ động từ nỗ lực của người khác.
+* **Hóa Giải Bài Kiểm Tra Howey (SEC):** Dự trữ Real Yield trả bằng USDT gắn liền trực tiếp với **công việc vận hành hạ tầng thực tế (Work-for-Protocol)** - node operator phải ký số, duy trì uptime và chịu phạt rủi ro slashing, không phải lợi tức thụ động từ nỗ lực của người khác.
 
 ### 2. Tuân Thủ Quy Chế Châu Âu (EU MiCA) & Cơ Chế Modular Mint
 * **Miễn Trừ CASP (MiCA Recital 22):** Hợp đồng thông minh phi tập trung hoàn toàn, không có trung gian điều hành con người.
@@ -481,7 +481,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 ### 2. Mô Phỏng 3 Kịch Bản Lợi Nhuận (3-Year ROI Scenarios)
 * **Kịch Bản Thận Trọng (Bear Case):** 80k bot, khối lượng bù trừ $300M, EBITDA $450K -> Định giá $40M FDV -> **2.67x Lợi nhuận (IRR 38.7%/năm)**.
 * **Kịch Bản Cơ Sở (Base Case):** 350k bot, khối lượng bù trừ $1.4 Tỷ, EBITDA $1.85M -> Định giá $250M FDV -> **16.6x Lợi nhuận (IRR 155.2%/năm)**.
-* **Kịch Bản Bùng Nổ (Bull Case):** 2.5M bot & robotics, khối lượng bù trừ $12.5 Tỷ, EBITDA $15.9M -> Định giá $1.2 Tỷ FDV -> **80.0x Lợi nhuận (IRR 336.8%/năm)**.
+* **Kịch Bản Bùng Nổ (Bull Case):** 2.5M bot & robotics, khối lượng bù trừ $12.5 Tỷ, Protocol Take-Rate $0.7M - $1.4M -> Định giá $1.2 Tỷ FDV -> **80.0x Lợi nhuận (IRR 336.8%/năm)**.
 
 ### 3. Lộ Trình 90 Ngày Triển Khai Mainnet (90-Day Execution Roadmap)
 * **Tháng 1 (Ngày 1 - 30):** Đóng băng mã nguồn v6.9.3, bàn giao cho OtterSec & Neodyme kiểm toán độc lập, chạy stress-test 1,000,000 micro-ticks trên Solana Devnet, hoàn tất pháp nhân Swiss Foundation & Cayman.

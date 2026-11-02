@@ -51,7 +51,7 @@
   - [7.3. Canales de Estado de Transmisión Optimistas: Inferencia LLM sin Paradas y Liquidación Inmune a la Congestión](#73-canales-de-estado-de-transmisión-optimistas-inferencia-llm-sin-paradas)
 8. [Criptoeconomía de Doble Activo, Volante de Flujo de Caja y Tokenomía de $HAISI (Dual-Asset Cryptoeconomics)](#8-criptoeconomía-de-doble-activo-volante-de-flujo-de-caja-y-tokenomía-de-haisi)
   - [8.1. Asignación de Tokens y Cronograma de Consolidación (Suministro Fijo Total de 1.000.000.000)](#81-asignación-de-tokens-y-cronograma-de-consolidación-suministro-fijo-1000000000)
-  - [8.2. Asignación de Ancho de Banda por Staking y Volante de Recompra/Quema de Rendimiento Real](#82-asignación-de-ancho-de-banda-por-staking-y-volante-de-recomproquema-de-rendimiento-real)
+  - [8.2. Asignación de Ancho de Banda por Staking y Volante de Recompra/Quema de Retención de Valor](#82-asignación-de-ancho-de-banda-por-staking-y-volante-de-recomproquema-de-rendimiento-real)
   - [8.3. Sumidero de Valor Programático por Lote de Liquidación (OP_402_BURN) y Neutralización de Velocidad](#83-sumidero-de-valor-programático-por-lote-de-liquidación-op_402_burn)
   - [8.4. Consolidación Dinámica Vinculada a Hitos (MCDV) y Protección para Inversionistas Minoristas](#84-consolidación-dinámica-vinculada-a-hitos-mcdv-y-protección-minorista)
   - [8.5. Red de Retransmisores Descentralizados con Staking y Arquitectura de Seguridad por Slashing](#85-red-de-retransmisores-descentralizados-con-staking-y-arquitectura-de-slashing)
@@ -87,7 +87,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = 	ext{ARTIFICIAL INTELLIGENCE} 	imes 	ex
 Donde la **Inteligencia Artificial ($	ext{AI}_1$)** proporciona un rendimiento computacional infinito a escala de nanosegundos, búsqueda algorítmica y escalabilidad horizontal ilimitada; y la **Inteligencia Real ($	ext{AI}_2$)** aporta la intuición moral biológica, razonamiento fuera de distribución (OOD), verdad epistémica fundamental y la intención soberana humana definitiva.
 
 > **Una Nota para Asignadores Institucionales y Desarrolladores:**  
-> *La Etapa 1 en Solana L1 (Capítulos 4-7) establece nuestra fortaleza comercial inmediata - capturando millones en flujos de efectivo de rendimiento real mediante micro-liquidaciones de máquinas en fracciones de segundo y bóvedas biométricas inhackeables. Pero para los inversores con visión de futuro que buscan la frontera generacional de la civilización humana, el **Capítulo 9: El Fin de Juego de la IA L1 Soberana** revela la verdadera joya de la corona: cómo HAICHAIN rompe las barreras físicas y computacionales de la computación distribuida para dar a luz al primer **Superorganismo Cognitivo Descentralizado** del mundo - una Superinteligencia inmortal y autosoberana vinculada para siempre a proteger y preservar la libertad humana.*
+> *La Etapa 1 en Solana L1 (Capítulos 4-7) establece nuestra fortaleza comercial inmediata - capturando millones en flujos de compensación de alta frecuencia mediante micro-liquidaciones de máquinas en fracciones de segundo y bóvedas biométricas inhackeables. Pero para los inversores con visión de futuro que buscan la frontera generacional de la civilización humana, el **Capítulo 9: El Fin de Juego de la IA L1 Soberana** revela la verdadera joya de la corona: cómo HAICHAIN rompe las barreras físicas y computacionales de la computación distribuida para dar a luz al primer **Superorganismo Cognitivo Descentralizado** del mundo - una Superinteligencia inmortal y autosoberana vinculada para siempre a proteger y preservar la libertad humana.*
 
 ```
                            EL CAMBIO DE PARADIGMA DE HAICHAIN
@@ -868,18 +868,18 @@ HAICHAIN opera una **Economía de Doble Activo** matemáticamente cerrada:
 * **Token $HAISI:** El activo soberano del protocolo que captura el volumen de red, autoridad de gobernanza y la futura seguridad de consenso de Layer 1.
 
 ```
-                    ARQUITECTURA DE FLUJO DE CAJA DE $HAISI
-                    
-              [ VOLUMEN DE NETTING GLOBAL DE MÁQUINAS: $1.400M / AÑO ]
-                                    │
-                                    ▼ (Take-Rate del Protocolo: 0.05%)
-                        [ $1.400.000 DE INGRESO ANUAL ]
-                                    │
-                   ┌────────────────┴────────────────┐
-                   ▼ (60% del Ingreso)               ▼ (40% del Ingreso)
-        [ RECOMPRA TWAP Y QUEMA ]           [ RENDIMIENTO REAL (REAL YIELD) ]
-       - Compras en DEX en mercado         - Distribuido en USDT puro
-       - Deflación permanente de oferta    - Recompensa para stakers veHAISI
+ARQUITECTURA DE FLUJO DE CAJA DEL PROTOCOLO $HAISI
+
+[ VOLUMEN GLOBAL DE NETTING DE MÁQUINAS: $1.400M / AÑO ]
+│
+▼ (Take-Rate del Protocolo: 0.05% ~ 5 bps)
+[ $700.000 DE INGRESO BASE ANUAL ]
+│
+┌────────────────┴────────────────┐
+▼ (50% del Ingreso)               ▼ (50% del Ingreso)
+[ RECOMPRA TWAP Y QUEMA ]           [ SEGURIDAD DEL PROTOCOLO Y CHGB ]
+- Compras de mercado en DEX         - Capitalizado al Fondo CHGB
+- Deflación permanente de oferta    - Protege la solvencia de la red
 ```
 
 ### 8.1. Asignación de Tokens y Cronograma de Consolidación (Suministro Fijo Total de 1.000.000.000)
@@ -893,64 +893,42 @@ HAICHAIN opera una **Economía de Doble Activo** matemáticamente cerrada:
 * **Tesorería de Seguridad del Protocolo (10%):** 100.000.000 \$HAISI - Bloqueo multi-firma para seguros y auditorías continuas.
 * **Liquidez Inicial en DEX (Raydium/Orca) (10%):** 100.000.000 \$HAISI - 100% de tokens LP quemados permanentemente.
 
-### 8.2. Asignación de Ancho de Banda por Staking y Volante de Recompra/Quema de Rendimiento Real
-Para neutralizar la **Espiral de Muerte por Velocidad de Token (Teorema de Pfeffer)** - donde los tokens usados solo como gas sufren una velocidad infinita ($V 	o \infty$) reduciendo a cero el valor de la red - Haichain convierte a \$HAISI en un **Activo de Capital Productivo Obligatorio**:
+### 8.2. Asignación de Ancho de Banda por Staking y Volante de Retención de Valor
+Para neutralizar permanentemente la **Espiral de Muerte de Velocidad del Token (Teorema de Pfeffer)** y eliminar por completo los riesgos de clasificación como valor bajo la prueba Howey de EE. UU. y el reglamento MiCA de la UE, Haichain estructura $HAISI como un **Activo de Utilidad Productiva**:
 
 ```
-               VOLANTE DE RENDIMIENTO REAL Y RETENCIÓN DE CAPITAL
-               
-    [ Flotas de Agentes Empresariales Ejecutando Micro-Llamadas Continuas ]
-                                │
-       ┌────────────────────────┴────────────────────────┐
-       ▼                                                 ▼
-[ Staking Obligatorio de $HAISI (veHAISI) ]     [ Ingresos por Tarifas en USDT Puro ]
-├── Ancho de banda otorgado por capital bloqueado├── Comisión del 0.05% capturada
-│   Cuota Diaria = k * sqrt(Staked * Tiempo)     │   estrictamente en USDT nativo
-└── Más agentes -> Más $HAISI bloqueado          └── 100% canalizado a la Tesorería
-       │                                                 │
-       ▼                                                 ▼
-[ Oferta Circulante de $HAISI Contraída ]       [ Motor de Recompra TWAP Autónomo ]
-                                                ├── 60% de Recompras QUEMADAS PARA SIEMPRE
-                                                │   (Oferta Neta Deflacionaria)
-                                                └── 40% Distribuido como Rendimiento USDT
-                                                    a stakers a largo plazo de veHAISI
-```
-
-#### 1. Invariante de Ancho de Banda por Staking (Stake-to-Transact)
-Los enjambres autónomos y clientes empresariales no pueden consumir el rendimiento de la red simplemente quemando gas pasajero. El núcleo impone una restricción de ancho de banda:
-$$	ext{Límite Diario de Transacciones} = k \cdot \sqrt{	ext{Staked } \$HAISI 	imes 	ext{Duración de Bloqueo}}$$
-Para desbloquear canales de compensación bilateral sub-milisegundo y ejecución sin fricciones, los operadores deben bloquear \$HAISI de 3 a 36 meses (`veHAISI`). Con la expansión de la actividad económica, porciones sustanciales del suministro circulante se retiran estructuralmente del mercado.
-
-#### 2. Motor de Recompra y Quema de Rendimiento Real
-El 100% del margen de red y tarifas de compensación se recauda en **USDT puro**. Un contrato inteligente inmutable ejecuta recompras programáticas TWAP de \$HAISI en pools de liquidez:
-* **El 60% de los Tokens Comprados:** Se queman permanentemente en cadena, ejerciendo una presión deflacionaria continua.
-* **El 40% de los Tokens Comprados:** Se distribuyen directamente como **dividendos de Rendimiento Real en USDT** a los titulares de veHAISI, recompensando al capital con flujo de caja sin inflación.
-
-#### Cuota Elástica de Energía (E-AEQ) y Disyuntor de Congestión Anti-Insolvencia
-Para prevenir la **Trampa de Insolvencia por Gas Subvencionado** - donde picos de tarifas prioritarias en Solana durante euforias de memecoins agotan las reservas de la Tesorería - Haichain aplica el **Multiplicador Dinámico de Energía Elástica**:
-
-$$	ext{Multiplicador de Consumo } M = 1 + lpha \cdot \max\left(0, \quad rac{P_{	ext{prioridad}} - P_{	ext{base}}}{P_{	ext{base}}}
-ight)$$
-
-```
-           PIPELINE DE DISYUNTOR DE CONGESTIÓN ANTI-INSOLVENCIA
+           VOLANTE DE STAKING DE UTILIDAD Y RETENCIÓN DE VALOR DE HAICHAIN
            
-   [ Red Solana en Nivel Base ($0.0002 Tarifa Prioritaria) ]
-   └── 1 Transacción de Agente consume exactamente 1 Unidad AEQ (M = 1.0)
-   
-   [ PICOS DE TARIFAS DE SOLANA (ej. 50x Durante Euforias) ]
-                               │
-                               ▼
-   [ Aislamiento Automatizado de Colas de Dos Velocidades ]
-   ├── Ruta 1: Invariantes Críticos (Pánico de Emergencia, Liquidación Inmediata)
-   │   └── Inclusión inmediata garantizada respaldada por reservas de Tesorería
-   └── Ruta 2: Ciclos de Compensación Rutinarios de Alta Frecuencia
-       ├── Ajusta dinámicamente el consumo de energía vía Multiplicador M
-       └── O DIFIEre automáticamente la ejecución unos slots hasta que baje la tarifa
-           --> CAPITAL DE TESORERÍA 100% PRESERVADO • ¡CERO RIESGO DE INSOLVENCIA!
+       [ Flotas de Agentes Empresariales Ejecutando Micro-Llamadas de Alta Frecuencia ]
+                                    │
+           ┌────────────────────────┴────────────────────────┐
+           ▼                                                 ▼
+[ Niveles Opcionales de Staking veHAISI ]       [ Ingresos de Comisiones en USDC/USDT Puro ]
+├── Ancho de banda otorgado por capital bloqueado  ├── Comisión de compensación del 0.05%
+│   Asignación Diaria = k * sqrt(Staked * Tiempo)  │   estrictamente en stablecoins verificadas
+└── Descuentos escalonados de tarifas hasta el 80% └── 100% canalizado a la Tesorería del Protocolo
+           │                                                 │
+           ▼                                                 ▼
+[ Oferta Circulante de $HAISI Contraída ]       [ Motor Autónomo de Recompra TWAP ]
+                                                ├── 50% de Ingresos: Recompra TWAP y QUEMA PERMANENTE
+                                                │   (Oferta Deflacionaria Neta)
+                                                └── 50% de Ingresos: Reserva del Protocolo
+                                                    (Fondo de Seguro CHGB)
 ```
 
-* **Protección Total contra la Insolvencia:** El protocolo nunca subsidia picos de red incondicionalmente desde su balance. Cuando la congestión supera el percentil 95, los lotes secundarios ajustan el consumo o difieren su ejecución brevemente, preservando la Tesorería y garantizando costos unitarios deterministas para las empresas.
+#### 1. Arquitectura de Doble Riel y Niveles Opcionales de Descuento veHAISI
+Haichain implementa un sistema de doble riel sin fricción:
+- **Agentes Estándar y Desarrolladores:** Pagan por transacción estrictamente en stablecoins verificadas (USDC/USDT) sin staking obligatorio de tokens, preservando la ergonomía "Invisible Web3".
+- **Enjambres Empresariales y Flotas de Alto Volumen:** Pueden bloquear opcionalmente $HAISI (`veHAISI`) para privilegios de infraestructura:
+  $$\text{Asignación Diaria de Transacciones} = k \cdot \sqrt{\text{Staked } \$HAISI \times \text{Duración del Bloqueo}}$$
+  * *Descuentos Escalonados de Tarifas:* Hasta un 80% de reducción en comisiones netas de compensación al bloquear de 3 a 36 meses.
+  * *Enrutamiento de Vía Rápida Dedicado Sub-5ms:* Enrutamiento de mempool dedicado para enjambres de misión crítica.
+  * *Compensación de Fondo sin Gas:* Reclamación de alquiler patrocinada por el protocolo y limpieza de anuladores.
+
+#### 2. Motor Programático de Recompra y Deflación
+En lugar de distribuir dividendos directos en efectivo (lo que introduce graves riesgos de clasificación como valor bajo las regulaciones de la SEC y MiCA), el 100% de las comisiones del protocolo recaudadas se enrutan mediante contrato inteligente:
+- **50% Recompra y Quema Autónoma TWAP:** Recompra diaria programática en los DEX de Solana (Raydium, Meteora) y destrucción criptográfica inmediata (`burn`), contrayendo continuamente la oferta circulante sin generar expectativas de ganancias por dividendos.
+- **50% Reservas del Protocolo y Bono de Gas de Hardware Criptográfico (CHGB):** Colateralización directa del fondo automatizado de resolución de disputas, amortiguador de seguros de relayers y respaldo de liquidación cross-chain.
 
 ### 8.3. Sumidero de Valor Programático por Lote de Liquidación (`OP_402_BURN`) y Neutralización de Velocidad
 Para neutralizar la amenaza del dilema de la velocidad monetaria, Haichain implementa el **Protocolo de Sumidero de Valor a Nivel de Lote (`OP_402_BURN`)**:
@@ -1011,7 +989,7 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
 * **Formulación del Invariante de Doble Compuerta:**
   El `haichain_vesting_kernel` estipula que la distribución lineal a partir del Mes 13 **se desbloquea si y solo si se satisfacen ambas condiciones simultáneamente**:
   1. *Condición Temporal:* Cumplimiento del acantilado cronológico de 12 meses.
-  2. *Criterios Verificables de Rendimiento Real (KPIs On-Chain):*
+  2. *Criterios Verificables de Compensación On-Chain (KPIs):*
      * **Volumen Liquidado Acumulado:** Mínimo \$50.000.000 USDT compensados exitosamente en Solana L1.
      * **Agentes Autónomos Activos:** Mínimo 10.000 agentes verificados con árboles de capacidad activos transaccionando en los últimos 30 días.
      * **Ingresos Netos Acumulados del Protocolo:** Mínimo \$25.000 USDT depositados en la Tesorería.

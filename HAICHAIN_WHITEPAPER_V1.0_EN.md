@@ -45,7 +45,7 @@
 7. [Multilateral Symmetric Netting & Wire-Speed Clearing Matrix](#7-multilateral-symmetric-netting--wire-speed-clearing-matrix)
 8. [Dual-Asset Cryptoeconomics, Cash-Flow Flywheel & $HAISI Tokenomics](#8-dual-asset-cryptoeconomics-cash-flow-flywheel--haisi-tokenomics)
   - [8.1. Token Allocation & Vesting Schedule](#81-token-allocation--vesting-schedule-total-fixed-supply-1000000000-haisi)
-  - [8.2. Stake-to-Transact Bandwidth Allocation & Real Yield Buyback/Burn Flywheel](#82-stake-to-transact-bandwidth-allocation--real-yield-buybackburn-flywheel)
+  - [8.2. Stake-to-Transact Bandwidth Allocation & Value Retention Flywheel](#82-stake-to-transact-bandwidth-allocation--value-retention-flywheel)
   - [8.3. Programmatic Settlement-Batch Value Sink (OP_402_BURN) & Velocity Neutralization](#83-programmatic-settlement-batch-value-sink-op_402_burn--token-velocity-neutralization)
   - [8.4. Milestone-Coupled Dynamic Vesting (MCDV) & Retail Investor Protection](#84-milestone-coupled-dynamic-vesting-mcdv--retail-investor-protection)
   - [8.5. Decentralized Staked Relayer Mesh & Slashing Security Architecture](#85-decentralized-staked-relayer-mesh--slashing-security-architecture)

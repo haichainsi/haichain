@@ -40,7 +40,7 @@ EL PRESENTE ACUERDO SIMPLE PARA FUTUROS TOKENS (este "**Acuerdo**" o "**SAFT**")
 
 ### SECCIÓN 3: CLASIFICACIÓN DEL ACTIVO Y COMPROMISOS
 
-1. **Mercancía de Utilidad:** El Token `$HAISI` otorga un 50% de descuento en micropagos de máquinas, permite staking en veHAI para recibir rendimientos reales en USDT y funciona como gas en la red L1 de HAICHAIN.
+1. **Mercancía de Utilidad:** El Token `$HAISI` otorga un 50% de descuento en micropagos de máquinas, habilita staking de gobernanza veHAI, descuentos escalonados en microtarifas del protocolo, fianzas de seguros para relayers y asignación programática del 50% a Recompra y Quema + 50% a Reservas de Protocolo (CHGB), sin distribución de dividendos pasivos (arquitectura de utilidad que no constituye valor).
 2. **Sin Derechos Accionarios:** Este acuerdo no representa acciones, propiedad ni derechos a dividendos de ninguna entidad jurídica.
 3. **Compromiso Antidumping:** El Comprador se compromete a no realizar ventas masivas ni manipulaciones de liquidez.
 
