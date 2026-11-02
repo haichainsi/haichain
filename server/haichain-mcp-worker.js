@@ -542,15 +542,17 @@ async function handleMcpRequest(request) {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    if (url.pathname === '/api/mcp' || url.pathname.startsWith('/api/mcp/') || url.pathname === '/') {
+
+    // Only handle MCP API and SSE protocol endpoints
+    if (url.pathname === '/api/mcp' || url.pathname.startsWith('/api/mcp/') || url.pathname === '/sse') {
       return await handleMcpRequest(request);
     }
+
+    // Pass all web traffic directly to static assets (index.html, dashboard.html, assets, etc.)
     if (env && env.ASSETS) {
-      try {
-        const res = await env.ASSETS.fetch(request);
-        if (res.status !== 404) return res;
-      } catch (_) {}
+      return await env.ASSETS.fetch(request);
     }
-    return await handleMcpRequest(request);
+
+    return new Response('Not Found', { status: 404 });
   }
 };
