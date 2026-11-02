@@ -1,7 +1,7 @@
 {
-  "name": "HAICHAIN - Decentralized Superintelligence OS",
+  "name": "HAICHAIN - The Economic Bedrock for the Symbiotic Superintelligence Era AI²",
   "short_name": "HAICHAIN",
-  "description": "Universal Autonomous Machine Financial & Cognitive Operating System - The Bedrock for Decentralized Superintelligence",
+  "description": "The Economic Bedrock for the Symbiotic Superintelligence Era AI². Empowering billions of autonomous AI agents and robots to co-create wealth under sovereign human ownership.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -40,5 +40,9 @@
       "purpose": "any"
     }
   ],
-  "categories": ["finance", "utilities", "productivity"]
+  "categories": [
+    "finance",
+    "utilities",
+    "productivity"
+  ]
 }
