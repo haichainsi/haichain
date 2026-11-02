@@ -315,14 +315,16 @@
         // 1. Direct Connected Wallet Handoff (from in-app browser or cross-browser share - supports both Solana and MetaMask EVM)
         var handoffWallet = params['connectedWallet'];
         var handoffProvider = params['provider'] || 'Phantom';
+        var handoffBalance = params['evmBalance'] || params['balance'] || null;
         var isSolanaAddr = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(handoffWallet);
         var isEvmAddr = /^0x[a-fA-F0-9]{40}$/i.test(handoffWallet);
         if (handoffWallet && (isSolanaAddr || isEvmAddr)) {
-          this.stripParamsAndCleanUrl(['connectedWallet', 'provider']);
+          this.stripParamsAndCleanUrl(['connectedWallet', 'provider', 'evmBalance', 'balance']);
           var finalProvider = isEvmAddr ? (handoffProvider || 'MetaMask') : handoffProvider;
           var handoffResult = {
             publicKey: handoffWallet,
             provider: finalProvider,
+            balance: handoffBalance,
             isEVM: isEvmAddr,
             source: 'handoff'
           };

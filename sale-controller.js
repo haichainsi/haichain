@@ -2110,6 +2110,21 @@ Please fund your wallet with SOL to continue.`);
       }
     });
 
+    // Listen for wallet connection from header modal or anywhere
+    window.addEventListener('haichain_wallet_connected', (e) => {
+      const w = e.detail;
+      if (w && w.address) {
+        const walletInput = document.getElementById('preseed-wallet');
+        if (walletInput) walletInput.value = w.address;
+        const payBtnText = document.getElementById('label-pay-1click-text');
+        if (payBtnText) payBtnText.textContent = getI18nText('btnPayPhantom');
+        const boundDot = document.querySelector('#panel-saft-1click .w-2.h-2.rounded-full');
+        if (boundDot) boundDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+        const boundAddr = document.querySelector('#panel-saft-1click .font-bold.text-black');
+        if (boundAddr) boundAddr.textContent = `${w.address.slice(0, 4)}...${w.address.slice(-4)}`;
+      }
+    });
+
     // Auto switch to pre-seed tab if access key or preseed tab in query
     const urlParams = new URLSearchParams(window.location.search);
     const hasAccessKey = Boolean(urlParams.get('access') || urlParams.get('key') || urlParams.get('code'));

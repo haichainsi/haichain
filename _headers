@@ -1,3 +1,7 @@
+/assets/phantom-deeplink.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
+
 /dashboard.html
   Content-Type: text/html; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate, no-cache

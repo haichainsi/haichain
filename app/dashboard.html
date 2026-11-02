@@ -155,7 +155,7 @@
   <!-- TweetNaCl & BS58 Mobile E2EE Wallet Bridge -->
   <script src="/assets/tweetnacl.min.js"></script>
   <script src="/assets/bs58.min.js"></script>
-  <script src="/assets/phantom-deeplink.js?v=v4_metamask_relay_sync"></script>
+  <script src="/assets/phantom-deeplink.js?v=v5_metamask_auto_return_intent"></script>
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
@@ -1549,12 +1549,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
         <!-- Remote MCP URL Box -->
         <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-950 border border-neutral-800 space-y-2">
-          <div class="flex items-center justify-between gap-2 text-[11px] text-neutral-400">
-            <span class="flex items-center space-x-1.5 font-sans truncate min-w-0">
+          <div class="flex flex-wrap items-center justify-between gap-1.5 text-[11px] text-neutral-400">
+            <span class="flex items-center space-x-1.5 font-sans">
               <i data-lucide="link" class="w-3.5 h-3.5 text-neutral-300 shrink-0"></i>
-              <span class="truncate">Remote MCP Connector URL:</span>
+              <span class="text-neutral-300 font-medium">Remote MCP Connector URL:</span>
             </span>
-            <span class="text-[9.5px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-300 font-mono shrink-0 whitespace-nowrap">SSE / HTTPS</span>
+            <span class="text-[9px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-400 font-mono shrink-0 whitespace-nowrap">SSE / HTTPS</span>
           </div>
           <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-neutral-100 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
             <code id="online-mcp-url-snippet">https://mcp.haichain.si/sse</code>
@@ -3607,36 +3607,59 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 const cleanBase = baseReturn.split('?')[0];
                 const handoffParams = `connectedWallet=${encodeURIComponent(account)}&provider=MetaMask&evmBalance=${encodeURIComponent(ethBal)}`;
                 const finalReturnUrl = `${cleanBase}?${handoffParams}`;
+                const host = window.location.host;
+                const path = cleanBase.replace(/^https?:\/\/[^\/]+/, '') || '/dashboard.html';
 
-                // Update prompt sheet to successful return UI with 1-click button
+                const isAndroid = /Android/i.test(navigator.userAgent);
+                const chromeIntent = `intent://${host}${path}?${handoffParams}#Intent;scheme=https;package=com.android.chrome;end`;
+                const browsableIntent = `intent://${host}${path}?${handoffParams}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;end`;
+
+                // Update prompt sheet to successful return UI with active user gesture button & auto-return
                 promptSheet.innerHTML = `
                   <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl text-white">
                     <div class="w-14 h-14 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-2xl font-bold">✓</div>
                     <div class="space-y-1">
                       <h3 class="text-base font-bold text-white">${isVi ? 'Đã Kết Nối Ví MetaMask Thực Tế!' : 'MetaMask Wallet Connected!'}</h3>
                       <p class="text-xs font-mono text-neutral-300">${account.slice(0, 6)}...${account.slice(-4)} (${ethBal} ETH)</p>
+                      <p class="text-[11px] text-neutral-400 font-sans">${isVi ? 'Đang tự động chuyển về trình duyệt của bạn...' : 'Returning to your browser...'}</p>
                     </div>
-                    <a href="${finalReturnUrl}" id="btn-return-external-browser" class="w-full py-3.5 px-4 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow hover:bg-neutral-200 transition-all cursor-pointer">
-                      <span>${isVi ? 'Quay về Safari / Chrome Ngay' : 'Return to Safari / Chrome'}</span>
+                    <button type="button" id="btn-return-external-browser" class="w-full py-3.5 px-4 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow hover:bg-neutral-200 active:scale-95 transition-all cursor-pointer">
+                      <span>${isVi ? 'Quay Về Trình Duyệt Ngay (Chrome/Safari)' : 'Return to Browser (Chrome/Safari)'}</span>
                       <span>&rarr;</span>
-                    </a>
-                    <button type="button" onclick="document.getElementById('metamask-inapp-prompt-sheet').remove()" class="w-full py-2 text-[11px] text-neutral-400 hover:text-white underline cursor-pointer">
-                      ${isVi ? 'Hoặc tiếp tục sử dụng ngay trong MetaMask' : 'Or continue inside MetaMask browser'}
+                    </button>
+                    <button type="button" id="btn-stay-in-metamask" class="w-full py-2 text-[11px] text-neutral-400 hover:text-white underline cursor-pointer">
+                      ${isVi ? 'Hoặc tiếp tục sử dụng ngay trong MetaMask (Đã kết nối)' : 'Or continue inside MetaMask browser (Connected)'}
                     </button>
                   </div>
                 `;
 
-                // Auto-redirect via Android Intent or direct URL
-                const isAndroid = /Android/i.test(navigator.userAgent);
-                if (isAndroid) {
-                  const host = window.location.host;
-                  const path = cleanBase.replace(/^https?:\/\/[^\/]+/, '');
-                  window.location.href = `intent://${host}${path}?${handoffParams}#Intent;scheme=https;package=com.android.chrome;end`;
-                } else {
-                  setTimeout(() => {
+                const executeAutoHandoff = () => {
+                  console.log('[MetaMask] Executing handoff to mobile browser...');
+                  if (isAndroid) {
+                    try {
+                      window.location.href = chromeIntent;
+                    } catch (_) {
+                      window.location.href = browsableIntent;
+                    }
+                  } else {
                     window.location.href = finalReturnUrl;
-                  }, 400);
+                  }
+                };
+
+                const returnBtn = document.getElementById('btn-return-external-browser');
+                if (returnBtn) returnBtn.addEventListener('click', executeAutoHandoff);
+
+                const stayBtn = document.getElementById('btn-stay-in-metamask');
+                if (stayBtn) {
+                  stayBtn.addEventListener('click', () => {
+                    promptSheet.remove();
+                    updateWalletBtnUI();
+                    if (typeof openAccountModal === 'function') openAccountModal();
+                  });
                 }
+
+                // Automatic redirect attempt immediately
+                setTimeout(executeAutoHandoff, 250);
 
                 if (autoDeposit === 'web3') {
                   setTimeout(() => {
@@ -3791,7 +3814,31 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               evmBalStr = eth.toFixed(4);
             }
           } catch (e) {
-            console.warn("Could not fetch EVM balance:", e);
+            console.warn("Could not fetch EVM balance via provider:", e);
+          }
+        }
+        // Fallback to fast public Cloudflare Ethereum RPC if provider not present or failed
+        if (!evmBalStr) {
+          try {
+            const rpcRes = await fetch('https://cloudflare-eth.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                jsonrpc: '2.0',
+                method: 'eth_getBalance',
+                params: [pubkeyStr, 'latest'],
+                id: 1
+              })
+            });
+            if (rpcRes.ok) {
+              const rpcData = await rpcRes.json();
+              if (rpcData && rpcData.result) {
+                const wei = BigInt(rpcData.result);
+                evmBalStr = (Number(wei) / 1e18).toFixed(4);
+              }
+            }
+          } catch (rpcErr) {
+            console.warn("Could not fetch EVM balance via public RPC:", rpcErr);
           }
         }
       } else if (solanaConnection && window.solanaWeb3) {
