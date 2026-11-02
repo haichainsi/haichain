@@ -27,21 +27,50 @@ def get_logo_base64():
     return ""
 
 def format_math(text):
-    """Convert common LaTeX math expressions to clean semantic HTML."""
+    """Convert common LaTeX math expressions to clean semantic HTML.
+    Guarantees:
+    - Never modifies text inside code blocks ``` ... ``` or inline code `...`
+    - Never treats escaped dollars \$ as math delimiters
+    - Never treats currency amounts (e.g. $5.00, $0.007, $100) or token tickers ($HAISI) as inline math
+    - Only processes genuine LaTeX math formulas: display math $$ ... $$ and explicit inline math $...$
+    """
+    code_blocks = []
+    def save_cb(m):
+        idx = len(code_blocks)
+        code_blocks.append(m.group(0))
+        return f"__MATH_CB_PLACEHOLDER_{idx}__"
+
+    # 1. Protect code blocks ``` ... ``` and inline code `...`
+    text = re.sub(r'```.*?```', save_cb, text, flags=re.DOTALL)
+    text = re.sub(r'`[^`\n]+`', save_cb, text)
+
+    # 2. Display math $$ ... $$
     def replace_display_math(match):
         expr = match.group(1).strip()
         expr_html = latex_to_html(expr)
         return f'<div class="math-display">{expr_html}</div>'
 
+    text = re.sub(r'\$\$(.*?)\$\$', replace_display_math, text, flags=re.DOTALL)
+
+    # 3. Inline math $ ... $
     def replace_inline_math(match):
         expr = match.group(1).strip()
+        # Exclude currency or numbers or tickers (e.g. $100, $0.007, $HAISI, $USDT, $SOL, etc.)
+        if re.match(r'^\d', expr) or expr.startswith('HAISI') or expr.startswith('USDT') or expr.startswith('USDC') or expr.startswith('SOL'):
+            return match.group(0)
         expr_html = latex_to_html(expr)
         return f'<span class="math-inline">{expr_html}</span>'
 
-    # Display math $$ ... $$
-    text = re.sub(r'\$\$(.*?)\$\$', replace_display_math, text, flags=re.DOTALL)
-    # Inline math $ ... $
-    text = re.sub(r'(?<!\$)\$(?!\$)(.*?)(?<!\$)\$(?!\$)', replace_inline_math, text)
+    text = re.sub(r'(?<!\\)\$(?![\s\d])(.*?)(?<![\s\\\$])\$', replace_inline_math, text)
+
+    # 4. Clean escaped \$ to regular $
+    text = text.replace(r'\$', '$')
+
+    # 5. Restore code blocks
+    for idx, cb in enumerate(code_blocks):
+        cleaned_cb = cb.replace(r'\$', '$')
+        text = text.replace(f"__MATH_CB_PLACEHOLDER_{idx}__", cleaned_cb)
+
     return text
 
 def latex_to_html(tex):

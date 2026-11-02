@@ -22,7 +22,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 1. **Montant d'Achat:**
    * L'Acheteur s'engage à verser: `________________________` **USD** (payable en USDT, USDC ou SOL vers la Trésorerie Multi-Sig).
 2. **Calcul de l'Allocation:**
-   $$	ext{Tokens Alloués (\$HAISI)} = rac{	ext{Montant d'Achat (USD)}}{\$0.007 	ext{ USD}}$$
+   $$	ext{Tokens Alloués ($HAISI)} = rac{	ext{Montant d'Achat (USD)}}{\$0.007 	ext{ USD}}$$
    * Total des Tokens $HAISI attribués: `________________________` **$HAISI**.
 3. **Plafond du Tour Privé:**
    * Ce tour est strictement plafonné à **25 000 000 à 30 000 000 $HAISI (3,0% max de l'offre totale)**, soit un plafond de \$210 000 USD.
@@ -51,8 +51,8 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 * **Nom Légal / Entité de l'Acheteur:** `________________________________________________`
 * **Passeport / Numéro d'Enregistrement:** `________________________________________________`
 * **Courriel de Contact:** `________________________________________________`
-* **Montant d'Achat (USD):** `\$________________________`
-* **Tokens $HAISI Alloués:** `________________________ \$HAISI`
+* **Montant d'Achat (USD):** `$________________________`
+* **Tokens $HAISI Alloués:** `________________________ $HAISI`
 * **Portefeuille Solana de Réception:** `________________________________________________`
 
 | POUR LA SOCIÉTÉ (CONSEIL HAICHAIN) | POUR L'ACHETEUR (INVESTISSEUR STRATÉGIQUE) |

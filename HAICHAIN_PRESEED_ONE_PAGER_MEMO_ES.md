@@ -25,11 +25,11 @@
 
 ---
 
-### 3. MOTOR DE INGRESOS ESCALONADO ($15.9M ARR) Y TOKENÓMICA
+### 3. TIERED MICRO-FEE CAPACITY & DEFENSIBLE TOKENOMICS ($0.7M - $1.4M PROTOCOL TAKE-RATE)
 * **Motor de Liquidación Mixto de 3 Niveles:**
   * **Nivel 1 (IA de Consumo):** 100,000 agentes ligeros @ $3.40/mes = $4.1M volumen (tarifa 0.10%, $4.1k anual).
   * **Nivel 2 (Enjambres B2B):** 15,000 flujos de agentes corporativos ($350/mes) = $63M volumen ($63k tarifa).
-  * **Nivel 3 (GPU Institucional y Compensación API):** 1,200 pipelines corporativos ($50,000/mes) = $720M volumen (tarifa 0.20-0.50%, $1.44M - $3.6M). Tarifas zkTLS y diferenciales de liquidez generan un sólido ARR de $15.9M.
+  * **Nivel 3 (GPU Institucional y Compensación API):** 1,200 pipelines corporativos ($50,000/mes) = $720M volumen (tarifa 0.20-0.50%, $1.44M - $3.6M). Tarifas zkTLS y diferenciales de liquidez generan un sólido ARR de $0.7M - $1.4M Protocol Take-Rate.
 * **Captura de Valor del Token:** El 50% de las tarifas globales financia la **Recompra y Quema Continua (Buyback & Burn)**; el 50% se distribuye como **Rendimiento Real (USDC/USDT)** a los stakers de gobernanza veHAI.
 * **App-Chain Soberana SVM Final:** Cuando las liquidaciones de canal superen 100k tx/s, $HAISI se convierte 1:1 en el activo nativo de gas y staking de la **App-Chain SVM HAICHAIN** dedicada ($1B a $5B+ FDV).
 

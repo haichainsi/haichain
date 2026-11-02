@@ -37,7 +37,7 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 1. **Số Tiền Đóng Góp (Purchase Amount):**
    * Bên Mua đồng ý thanh toán số tiền: `_____________` **USD** (bằng USDT Tether SPL/ERC-20/TRC-20 hoặc SOL theo tỷ giá quy đổi tại thời điểm chuyển tiền).
 2. **Số Lượng Token Phân Bổ (Allocated Tokens):**
-   $$\text{Số Lượng Token (\$HAISI)} = \frac{\text{Số Tiền Đóng Góp (USD)}}{\$0.007 \text{ USD}}$$
+   $$\text{Số Lượng Token ($HAISI)} = \frac{\text{Số Tiền Đóng Góp (USD)}}{\$0.007 \text{ USD}}$$
    * Tổng số token Bên Mua được quyền nhận: `_____________` **$HAISI**.
 3. **Giới Hạn Hạn Mức Toàn Vòng:**
    * Vòng bán nội bộ Pre-Seed bị khóa trần cứng ở mức **25.000.000 đến 30.000.000 $HAISI (tối đa 3.0% tổng cung)**, tương đương tổng vốn huy động tối đa \$210.000 USD.
@@ -146,8 +146,8 @@ Purchaser agrees to maintain strict confidentiality regarding the preferential \
 * **Purchaser Full Name / Entity:** `________________________________________________`
 * **Passport / National ID No:** `________________________________________________`
 * **Contact Email:** `________________________________________________`
-* **Purchase Amount (USD equivalent):** `\$________________________`
-* **Allocated $HAISI Tokens:** `________________________ \$HAISI`
+* **Purchase Amount (USD equivalent):** `$________________________`
+* **Allocated $HAISI Tokens:** `________________________ $HAISI`
 * **Purchaser Solana Receiving Wallet (Ed25519 Pubkey):**  
   `____________________________________________________________________`
 

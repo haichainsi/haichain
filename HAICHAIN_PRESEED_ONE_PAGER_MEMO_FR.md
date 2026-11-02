@@ -25,11 +25,11 @@
 
 ---
 
-### 3. MOTEUR DE REVENUS ÉTAGÉ ($15.9M ARR) ET TOKENOMICS
+### 3. TIERED MICRO-FEE CAPACITY & DEFENSIBLE TOKENOMICS ($0.7M - $1.4M PROTOCOL TAKE-RATE)
 * **Moteur de Règlement Mixte à 3 Niveaux:**
   * **Niveau 1 (IA Grand Public):** 100 000 agents légers @ $3.40/mois = $4.1M de volume (frais de 0.10%, soit $4.1k).
   * **Niveau 2 (Essaims d'Agents B2B):** 15 000 flux d'agents d'entreprise ($350/mois) = $63M de volume ($63k de frais).
-  * **Niveau 3 (GPU Institutionnel & Compensation API):** 1 200 pipelines d'entreprises ($50 000/mois) = $720M de volume (frais de 0.20-0.50%, soit $1.44M - $3.6M). Les frais de vérification zkTLS et les écarts de liquidité génèrent un ARR solide de $15.9M.
+  * **Niveau 3 (GPU Institutionnel & Compensation API):** 1 200 pipelines d'entreprises ($50 000/mois) = $720M de volume (frais de 0.20-0.50%, soit $1.44M - $3.6M). Les frais de vérification zkTLS et les écarts de liquidité génèrent un ARR solide de $0.7M - $1.4M Protocol Take-Rate.
 * **Accumulation de Valeur du Token:** 50% de l'ensemble des frais mondiaux financent le **Rachat & Destruction Automatique (Buyback & Burn)**; 50% sont distribués sous forme de **Rendement Réel (USDC/USDT)** aux stakers de gouvernance veHAI.
 * **App-Chain SVM Souveraine:** Lorsque les règlements dépassent 100k tx/sec, $HAISI se convertit à 1:1 en actif natif de gas et de staking de l'**App-Chain SVM HAICHAIN** dédiée ($1 Md à $5 Mds+ FDV).
 

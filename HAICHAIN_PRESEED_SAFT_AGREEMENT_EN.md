@@ -22,7 +22,7 @@ THIS SIMPLE AGREEMENT FOR FUTURE TOKENS (this "**Agreement**" or "**SAFT**") cer
 1. **Purchase Amount:**
    * The Purchaser agrees to contribute: `________________________` **USD** (payable in USDT or SOL equivalent to the Multi-Sig Treasury).
 2. **Token Calculation & Allocation:**
-   $$\text{Allocated Tokens (\$HAISI)} = \frac{\text{Purchase Amount (USD)}}{\$0.007 \text{ USD}}$$
+   $$\text{Allocated Tokens ($HAISI)} = \frac{\text{Purchase Amount (USD)}}{\$0.007 \text{ USD}}$$
    * Total $HAISI Tokens allocated to Purchaser: `________________________` **$HAISI**.
 3. **Aggregate Pre-Seed Tranche Ceiling:**
    * This Private Round is strictly capped at **25,000,000 to 30,000,000 $HAISI (maximum 3.0% of Total Fixed Supply)**, representing a hard ceiling of \$210,000 USD total capital formation.
@@ -83,8 +83,8 @@ The Purchaser agrees to maintain strict confidentiality regarding the preferenti
 * **Purchaser Full Legal Name / Corporate Entity:** `________________________________________________`
 * **Passport / National Registration ID No:** `________________________________________________`
 * **Primary Contact Email Address:** `________________________________________________`
-* **Purchase Amount (USD Equivalent):** `\$________________________`
-* **Allocated $HAISI Tokens:** `________________________ \$HAISI`
+* **Purchase Amount (USD Equivalent):** `$________________________`
+* **Allocated $HAISI Tokens:** `________________________ $HAISI`
 * **Purchaser Solana Receiving Wallet (Ed25519 Pubkey):**  
   `____________________________________________________________________`
 

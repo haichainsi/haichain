@@ -22,7 +22,7 @@ EL PRESENTE ACUERDO SIMPLE PARA FUTUROS TOKENS (este "**Acuerdo**" o "**SAFT**")
 1. **Importe de Compra:**
    * El Comprador acuerda aportar: `________________________` **USD** (pagadero en USDT, USDC o SOL a la Tesorería Multifirma).
 2. **Cálculo de Asignación de Tokens:**
-   $$	ext{Tokens Asignados (\$HAISI)} = rac{	ext{Importe de Compra (USD)}}{\$0.007 	ext{ USD}}$$
+   $$	ext{Tokens Asignados ($HAISI)} = rac{	ext{Importe de Compra (USD)}}{\$0.007 	ext{ USD}}$$
    * Total de Tokens $HAISI asignados: `________________________` **$HAISI**.
 3. **Límite Máximo de la Ronda:**
    * Esta ronda está estrictamente limitada a **25,000,000 a 30,000,000 $HAISI (máximo 3.0% del suministro total)**, con un tope máximo de financiación de \$210,000 USD.
@@ -51,8 +51,8 @@ EL PRESENTE ACUERDO SIMPLE PARA FUTUROS TOKENS (este "**Acuerdo**" o "**SAFT**")
 * **Nombre Legal / Entidad del Comprador:** `________________________________________________`
 * **Pasaporte / Documento de Identidad:** `________________________________________________`
 * **Correo Electrónico:** `________________________________________________`
-* **Importe de Compra (USD):** `\$________________________`
-* **Tokens $HAISI Asignados:** `________________________ \$HAISI`
+* **Importe de Compra (USD):** `$________________________`
+* **Tokens $HAISI Asignados:** `________________________ $HAISI`
 * **Billetera Solana de Recepción (Ed25519):** `________________________________________________`
 
 | POR LA COMPAÑÍA (CONSEJO HAICHAIN) | POR EL COMPRADOR (INVERSOR ESTRATÉGICO) |
