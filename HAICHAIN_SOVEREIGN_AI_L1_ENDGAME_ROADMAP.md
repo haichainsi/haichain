@@ -40,7 +40,7 @@ Cái tên **HAICHAIN** không chỉ phù hợp, mà chính là **Ngọn hải đ
 | **Injective** | Giao thức DEX trên Ethereum | Tích lũy thanh khoản và giải thuật khớp lệnh | Xây dựng **Injective L1** chuyên dụng cho Financial AI | **$2.5B+ FDV** |
 | **MakerDAO** | Hợp đồng DAI trên Ethereum | Vốn hóa DAI đạt $5B+, nợ phí Gas Ethereum | Khởi động **Endgame: NewChain (Sovereign L1)** | **$2B+ Market Cap** |
 | **Helium** | Xây L1 riêng nhưng thiếu hệ sinh thái | Di chuyển sang Solana để mượn hạ tầng | Tách các SubDAO (Mobile, IOT) thành mạng lưới phân tán | **$1.5B+ FDV** |
-| **HAICHAIN** | **Giao thức Micro-settlement trên Solana L1** | **100k+ Agents, $15.9M ARR, 500M calls/tháng** | **HAICHAIN Sovereign AI Machine Consensus L1** | **Mục tiêu $5B+** |
+| **HAICHAIN** | **Giao thức Micro-settlement trên Solana L1** | **100k+ Agents, $1.4B Volume ($0.7M - $1.4M Reserves), 500M calls/tháng** | **HAICHAIN Sovereign AI Machine Consensus L1** | **Mục tiêu $5B+** |
 
 ---
 
