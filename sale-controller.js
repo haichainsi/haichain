@@ -925,7 +925,7 @@
   // 3. MASTER STATE CONFIGURATION (THE FSM BRAIN)
   window.HAICHAIN_SALE_CONFIG = {
     CURRENT_PHASE: 'PRE_SEED_PRIVATE', // 'PRE_SEED_PRIVATE' | 'PUBLIC_TGE'
-    ACCESS_KEYS: ['haichainsi2030st'],
+    ACCESS_KEYS: ['haichainsi2030st', 'early-backer-2026', 'haichain2026', 'hai-angel', 'vip', 'preseed', 'angel', 'investor'],
     TREASURY_ADDRESS: 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW',
 
     PHASES: {
@@ -1088,6 +1088,24 @@
               <span>${getI18nText('unlockBtn')}</span>
             </button>
             <p id="vip-gatekeeper-err" class="text-xs font-mono text-rose-500 hidden pt-1"></p>
+          </div>
+          <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800/80 space-y-3">
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans">
+              ${getActiveLang() === 'vi' 
+                ? 'Bạn là Quỹ đầu tư hoặc Đối tác chiến lược chưa có mã mời?' 
+                : 'Are you an Institutional VC or Strategic Partner without an invitation key?'}
+              <br>
+              <a href="mailto:investor@haichain.si?subject=HAICHAIN%20Institutional%20Allocation%20Request" class="font-medium text-black dark:text-white underline underline-offset-4 hover:opacity-80 inline-flex items-center space-x-1 mt-1.5">
+                <span>${getActiveLang() === 'vi' ? 'Gửi yêu cầu thẩm định cấp quyền đối tác' : 'Request Institutional Clearance'}</span>
+                <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+              </a>
+            </p>
+            <div class="pt-1">
+              <button type="button" onclick="window.switchTab('tab-vesting')" class="text-xs font-mono text-neutral-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer inline-flex items-center space-x-1.5">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>${getActiveLang() === 'vi' ? 'Quay lại Vesting Vault' : 'Back to Vesting Vault'}</span>
+              </button>
+            </div>
           </div>
         </div>
       `;
@@ -2057,7 +2075,8 @@ Please fund your wallet with SOL to continue.`);
     window.renderPreseedSalePage = function() {
       let c = document.getElementById('tab-preseed');
       if (c) {
-        renderTerminalContent(c, true);
+        const isAuth = checkAccessPermission();
+        renderTerminalContent(c, isAuth);
       }
     };
   }
@@ -2085,7 +2104,8 @@ Please fund your wallet with SOL to continue.`);
     window.renderPreseedSalePage = function() {
       let c = document.getElementById('tab-preseed');
       if (c) {
-        renderTerminalContent(c, true);
+        const isAuth = checkAccessPermission();
+        renderTerminalContent(c, isAuth);
       }
     };
 
