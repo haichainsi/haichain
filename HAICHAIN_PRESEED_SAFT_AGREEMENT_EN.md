@@ -9,7 +9,7 @@
 * **Pre-Seed Offering Price:** **$0.007 USD / $HAISI** (Implied FDV: **$7,000,000 USD**)
 * **Target Public Listing Price (TGE):** **$0.010 USD / $HAISI** (Implied FDV: **$10,000,000 USD**)
 * **Preferential Discount:** **30% Discount** relative to Public TGE (+42.8% immediate unvested listing upside)
-* **Settlement Currency:** USDT (Tether SPL / ERC-20 / TRC-20) or SOL at verified market conversion
+* **Settlement Currency:** USDC / EURC (Circle MiCA Compliant), USDT, or SOL at verified market conversion
 
 ---
 

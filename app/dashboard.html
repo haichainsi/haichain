@@ -163,7 +163,7 @@
   <script src="/app/i18n.js?v=v29_institutional_audit_upgrade_1793593000000"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
-  <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
+  <script src="/app/pdf-modal.js?v=v19_cachebust_institutional_1793600000"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v23_institutional_calculator_clean_1793593000000"></script>
   <script>
@@ -6247,6 +6247,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
                 <span>${getVestingText('viewLegalSaftBtn', lang)}</span>
               </button>
+              <button type="button" onclick="if(window.openPreseedMemoModal){window.openPreseedMemoModal();}" class="py-2 px-3.5 rounded-xl border border-neutral-700 bg-neutral-900/60 text-white hover:border-white font-medium text-xs font-mono transition-all flex items-center space-x-1.5 active:scale-95 cursor-pointer">
+                <i data-lucide="file-check" class="w-3.5 h-3.5"></i>
+                <span>${lang === 'vi' ? 'Xem 1-Pager Memo' : 'View 1-Pager Memo'}</span>
+              </button>
               <button type="button" onclick="window.copyToken2022Mint()" class="py-2 px-3.5 rounded-xl border border-neutral-700 text-white hover:border-white font-medium text-xs font-mono transition-all flex items-center space-x-1.5 active:scale-95 cursor-pointer">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                 <span>${getVestingText('copyContractBtn', lang)}</span>
@@ -6341,10 +6345,24 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
     window.renderVestingVaultPage = renderVestingVaultPage;
     window.openSaftPdfModal = function() {
+      const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en').toLowerCase();
+      const pdfUrl = (lang === 'vi') ? '/HAICHAIN_PRESEED_SAFT_AGREEMENT_VI_EN.pdf' : '/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf';
+      const title = (lang === 'vi') ? 'Thỏa Thuận Pháp Lý SAFT HAICHAIN (Bảo Lãnh Mainnet)' : 'HAICHAIN Official SAFT Agreement (Mainnet Guaranteed)';
       if (typeof window.openPdfViewerModal === 'function') {
-        window.openPdfViewerModal('/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', 'HAICHAIN Official SAFT Agreement (Mainnet Guaranteed)');
+        window.openPdfViewerModal(pdfUrl, title);
       } else {
-        window.open('/HAICHAIN_PRESEED_SAFT_AGREEMENT_EN.pdf', '_blank');
+        window.open(pdfUrl, '_blank');
+      }
+    };
+
+    window.openPreseedMemoModal = function() {
+      const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en').toLowerCase();
+      const pdfUrl = (lang === 'vi') ? '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_VI_EN.pdf' : '/HAICHAIN_PRESEED_ONE_PAGER_MEMO_EN.pdf';
+      const title = (lang === 'vi') ? 'Bản Tóm Tắt Đầu Tư Pre-Seed (1-Pager Executive Memo)' : 'HAICHAIN Pre-Seed Strategic Investment Memo';
+      if (typeof window.openPdfViewerModal === 'function') {
+        window.openPdfViewerModal(pdfUrl, title);
+      } else {
+        window.open(pdfUrl, '_blank');
       }
     };
 

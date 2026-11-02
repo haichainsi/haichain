@@ -738,8 +738,15 @@
       let doc = window.__HAICHAIN_PDF_CACHE__[pdfUrl];
       if (!doc) {
         const pdfjs = await ensurePdfJs();
+        let fetchUrl = pdfUrl;
+        const bust = 'v=v1.2_inst_1793593000000';
+        if (!fetchUrl.includes('?')) {
+          fetchUrl += '?' + bust;
+        } else if (!fetchUrl.includes('v=')) {
+          fetchUrl += '&' + bust;
+        }
         const loadingTask = pdfjs.getDocument({
-          url: pdfUrl,
+          url: fetchUrl,
           cMapPacked: true
         });
         doc = await loadingTask.promise;
@@ -795,7 +802,10 @@
       console.error('PDF.js reader error, falling back to embedded frame:', err);
       if (loader) loader.classList.add('hidden');
       if (fallbackIframe) {
-        fallbackIframe.src = pdfUrl;
+        let fetchUrl = pdfUrl;
+        const bust = 'v=v1.2_inst_1793593000000';
+        if (!fetchUrl.includes('?')) fetchUrl += '?' + bust;
+        fallbackIframe.src = fetchUrl;
         fallbackIframe.classList.remove('hidden');
       }
     }

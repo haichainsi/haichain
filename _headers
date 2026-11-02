@@ -66,3 +66,11 @@
 
 /assets/*
   Cache-Control: public, max-age=86400
+
+/*.pdf
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
+  Access-Control-Allow-Origin: *
+
+/app/*.pdf
+  Cache-Control: public, max-age=0, must-revalidate, no-cache
+  Access-Control-Allow-Origin: *
