@@ -160,7 +160,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
-  <script src="/app/i18n.js?v=v27_text_only_quickdemos"></script>
+  <script src="/app/i18n.js?v=v28_cloud_mcp_streamable_http_1793591292883"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
@@ -1557,7 +1557,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             <span class="text-[9px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-400 font-mono shrink-0 whitespace-nowrap">SSE / HTTPS</span>
           </div>
           <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-neutral-100 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
-            <code id="online-mcp-url-snippet">https://mcp.haichain.si/sse</code>
+            <code id="online-mcp-url-snippet">https://haichain.si/api/mcp</code>
           </div>
         </div>
 
@@ -1583,7 +1583,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             </div>
             <div class="flex items-start space-x-2">
               <span class="w-4 h-4 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
-              <span data-i18n="aiHub.onlineStep3">Paste https://mcp.haichain.si/sse into Server URL and click Connect.</span>
+              <span data-i18n="aiHub.onlineStep3">Paste https://haichain.si/api/mcp into Server URL and click Connect.</span>
             </div>
           </div>
         </div>
@@ -7024,7 +7024,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     // Copy Online MCP SSE URL
     if (copyOnlineMcpBtn) {
       copyOnlineMcpBtn.addEventListener('click', async () => {
-        const url = "https://mcp.haichain.si/sse";
+        const url = "https://haichain.si/api/mcp";
         try {
           await navigator.clipboard.writeText(url);
           if (copyOnlineMcpText) copyOnlineMcpText.textContent = getDashNotice('linkCopied');
