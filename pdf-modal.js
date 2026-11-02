@@ -1343,6 +1343,8 @@
 
     let isDrawing = false;
     let strokeCount = 0;
+    let pointsDrawn = 0;
+    let hasSigned = false;
     let lastX = 0;
     let lastY = 0;
     let signedRecord = null;
@@ -1435,14 +1437,21 @@
     // Canvas Retina Scaling with crisp white stroke on solid black
     function setupCanvasDpi() {
       const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      const dpr = Math.max(window.devicePixelRatio || 1, 1);
+      const cssW = (rect.width > 20) ? rect.width : (canvas.parentElement ? canvas.parentElement.clientWidth : 540);
+      const cssH = (rect.height > 20) ? rect.height : 140;
+
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      canvas.style.width = cssW + 'px';
+      canvas.style.height = cssH + 'px';
+
+      ctx.resetTransform ? ctx.resetTransform() : ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.lineWidth = 2.5;
-      ctx.strokeStyle = '#ffffff'; // Pure white ink on solid black
+      ctx.strokeStyle = '#ffffff';
     }
 
     // Toggle Overlay
@@ -1500,21 +1509,36 @@
       });
     }
 
-    // Canvas Drawing Handlers (Touch & Mouse)
+    // Canvas Drawing Handlers (High-Precision Pointer, Touch & Mouse)
     function getCanvasCoords(e) {
       const rect = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      let clientX = e.clientX;
+      let clientY = e.clientY;
+      if ((clientX === undefined || clientY === undefined) && e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else if ((clientX === undefined || clientY === undefined) && e.changedTouches && e.changedTouches.length > 0) {
+        clientX = e.changedTouches[0].clientX;
+        clientY = e.changedTouches[0].clientY;
+      }
       return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
+        x: (clientX !== undefined ? clientX : 0) - rect.left,
+        y: (clientY !== undefined ? clientY : 0) - rect.top
       };
     }
 
     function startDraw(e) {
       isDrawing = true;
       strokeCount++;
+      pointsDrawn++;
+      hasSigned = true;
       if (placeholder) placeholder.classList.add('hidden');
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = '#ffffff';
+
       const coords = getCanvasCoords(e);
       lastX = coords.x;
       lastY = coords.y;
@@ -1524,7 +1548,11 @@
 
     function draw(e) {
       if (!isDrawing) return;
-      e.preventDefault();
+      if (e.cancelable && (e.type.startsWith('touch') || e.type.startsWith('pointer'))) {
+        e.preventDefault();
+      }
+      pointsDrawn++;
+      hasSigned = true;
       const coords = getCanvasCoords(e);
       ctx.lineTo(coords.x, coords.y);
       ctx.stroke();
@@ -1539,22 +1567,39 @@
       }
     }
 
-    canvas.addEventListener('mousedown', startDraw);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', stopDraw);
-    canvas.addEventListener('mouseleave', stopDraw);
+    if (window.PointerEvent) {
+      canvas.addEventListener('pointerdown', (e) => {
+        try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+        startDraw(e);
+      });
+      canvas.addEventListener('pointermove', draw);
+      canvas.addEventListener('pointerup', (e) => {
+        try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        stopDraw();
+      });
+      canvas.addEventListener('pointercancel', stopDraw);
+      canvas.addEventListener('pointerleave', stopDraw);
+    } else {
+      canvas.addEventListener('mousedown', startDraw);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDraw);
+      canvas.addEventListener('mouseleave', stopDraw);
 
-    canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      startDraw(e);
-    }, { passive: false });
-    canvas.addEventListener('touchmove', draw, { passive: false });
-    canvas.addEventListener('touchend', stopDraw);
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.cancelable) e.preventDefault();
+        startDraw(e);
+      }, { passive: false });
+      canvas.addEventListener('touchmove', draw, { passive: false });
+      canvas.addEventListener('touchend', stopDraw);
+      canvas.addEventListener('touchcancel', stopDraw);
+    }
 
     if (btnClearSig) {
       btnClearSig.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         strokeCount = 0;
+        pointsDrawn = 0;
+        hasSigned = false;
         if (placeholder) placeholder.classList.remove('hidden');
       });
     }
@@ -1595,7 +1640,28 @@
           return;
         }
 
-        if (strokeCount < 3) {
+        // Validate digital signature (accepts 1 or more strokes with genuine drawn points/pixels)
+        let isSigValid = false;
+        if (hasSigned && (pointsDrawn >= 1 || strokeCount >= 1)) {
+          try {
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const d = imgData.data;
+            let nonZero = 0;
+            for (let i = 3; i < d.length; i += 16) {
+              if (d[i] > 10) {
+                nonZero++;
+                if (nonZero >= 5) {
+                  isSigValid = true;
+                  break;
+                }
+              }
+            }
+          } catch (_) {
+            isSigValid = (hasSigned && (pointsDrawn >= 1 || strokeCount >= 1));
+          }
+        }
+
+        if (!isSigValid) {
           alert(t.errSig);
           return;
         }
