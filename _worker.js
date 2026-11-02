@@ -859,11 +859,15 @@ async function handleSaftSubmit(request, env, ctx) {
       console.warn('Telegram bot send failed:', e);
     }
 
-    // 3. Instant Email Notification to Admin (haichain.si@gmail.com) via Resend
+    // 3. Dual Email Notifications via Resend from no-reply@mail.haichain.si
     const resendKey = (env && env.RESEND_API_KEY) || 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
-    let resendSuccess = false;
+    const senderFrom = 'HAICHAIN Official <no-reply@mail.haichain.si>';
+    let resendAdminSuccess = false;
+    let resendInvestorSuccess = false;
+
+    // (A) Email to Admin: haichain.si@gmail.com
     try {
-      const emailHtml = `
+      const adminEmailHtml = `
 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; padding: 32px 24px; background-color: #0c0c0e; color: #ffffff; border-radius: 16px; border: 1px solid #27272a;">
   <div style="border-bottom: 1px solid #27272a; padding-bottom: 20px; margin-bottom: 24px;">
     <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">🔔 NEW PRE-SEED SAFT AGREEMENT SIGNED</h2>
@@ -889,22 +893,79 @@ async function handleSaftSubmit(request, env, ctx) {
 </div>
 `;
 
-      const resendRes = await fetch('https://api.resend.com/emails', {
+      const adminRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${resendKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          from: 'HAICHAIN SAFT <onboarding@resend.dev>',
+          from: senderFrom,
           to: ['haichain.si@gmail.com'],
           subject: `🔔 [SAFT Signed] $${amount.toLocaleString('en-US')} USD - ${name} (${contractId})`,
-          html: emailHtml
+          html: adminEmailHtml
         })
       });
-      resendSuccess = resendRes.ok;
+      resendAdminSuccess = adminRes.ok;
     } catch (e) {
-      console.warn('Resend email dispatch error:', e);
+      console.warn('Resend admin email dispatch error:', e);
+    }
+
+    // (B) Email to Investor: Official SAFT Execution Confirmation
+    if (email && email.includes('@')) {
+      try {
+        const investorEmailHtml = `
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; padding: 32px 24px; background-color: #0c0c0e; color: #ffffff; border-radius: 16px; border: 1px solid #27272a;">
+  <div style="border-bottom: 1px solid #27272a; padding-bottom: 20px; margin-bottom: 24px;">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">HAICHAIN PRE-SEED SAFT EXECUTION CONFIRMATION</h2>
+    <p style="margin: 6px 0 0 0; font-size: 13px; color: #a1a1aa;">Simple Agreement for Future Tokens • Cryptographic Proof of Execution</p>
+  </div>
+
+  <p style="font-size: 14px; line-height: 1.6; color: #e4e4e7;">Dear <strong>${name}</strong>,</p>
+  <p style="font-size: 14px; line-height: 1.6; color: #d4d4d8;">Thank you for participating in the <strong>HAICHAIN Pre-Seed Strategic Round</strong>. Your Simple Agreement for Future Tokens (SAFT) has been cryptographically signed and officially recorded pursuant to the US Electronic Signatures in Global and National Commerce Act (ESIGN Act) &amp; UETA standards.</p>
+
+  <div style="background-color: #18181b; border: 1px solid #27272a; border-radius: 12px; padding: 18px; margin: 24px 0;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6;">
+      <tr><td style="padding: 6px 0; color: #a1a1aa; width: 40%;">Contract ID:</td><td style="font-weight: bold; color: #ffffff; font-family: monospace;">${contractId}</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Signatory Entity:</td><td style="font-weight: bold; color: #ffffff;">${name}</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Registered Email:</td><td style="color: #38bdf8;">${email}</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Subscription Investment:</td><td style="color: #4ade80; font-weight: bold; font-size: 14px;">$${amount.toLocaleString('en-US')} USD (USDT)</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Token Entitlement:</td><td style="font-weight: bold; color: #ffffff;">${tokens.toLocaleString('en-US')} $HAISI (@ $0.007)</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Projected TGE Value:</td><td style="color: #a1a1aa;">$${Math.round(tokens * 0.01).toLocaleString('en-US')} USD (+42.8%)</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Beneficiary Solana Wallet:</td><td style="font-family: monospace; font-size: 11px; color: #ffffff; word-break: break-all;">${wallet}</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Multi-Sig Treasury Vault:</td><td style="font-family: monospace; font-size: 11px; color: #a1a1aa; word-break: break-all;">${treasury}</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">SHA-256 Audit Proof:</td><td style="font-family: monospace; font-size: 10px; color: #71717a; word-break: break-all;">${hashHex}</td></tr>
+      <tr><td style="padding: 6px 0; color: #a1a1aa;">Execution Timestamp:</td><td style="color: #ffffff;">${timestamp}</td></tr>
+    </table>
+  </div>
+
+  <p style="font-size: 13px; line-height: 1.6; color: #a1a1aa;">Your investment allocation is secured in the Squads Multi-Sig Treasury on Solana Mainnet, and your $HAISI tokens will be minted and transferred directly to your beneficiary wallet at Token Generation Event (TGE).</p>
+
+  <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #27272a; text-align: center;">
+    <a href="https://haichain.si/dashboard" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 13px; padding: 12px 28px; border-radius: 9999px; text-decoration: none;">Access HAICHAIN Dashboard</a>
+  </div>
+
+  <p style="margin-top: 24px; font-size: 11px; color: #52525b; text-align: center;">HAICHAIN Autonomous Machine Financial &amp; Cognitive Operating System • <a href="https://haichain.si" style="color: #71717a; text-decoration: none;">haichain.si</a></p>
+</div>
+`;
+
+        const investorRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${resendKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: senderFrom,
+            to: [email],
+            subject: `HAICHAIN Official SAFT Agreement - Signed Confirmation (${contractId})`,
+            html: investorEmailHtml
+          })
+        });
+        resendInvestorSuccess = investorRes.ok;
+      } catch (e) {
+        console.warn('Resend investor email dispatch error:', e);
+      }
     }
 
     // 4. Dispatch to Google Sheets Webhook (if configured)
