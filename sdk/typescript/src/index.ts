@@ -8,7 +8,7 @@
 // 5. Enterprise Rollup VAT/GST Invoicing (SAP/Oracle ERP Merkle Audit Compliance)
 // + Action Credits Natural Abstraction & Idempotency Key 4G Replay Protection
 
-import { Connection, PublicKey, Keypair, Transaction, SystemProgram, SYSVAR_INSTRUCTIONS_PUBKEY } from "@solana/web3.js";
+import { Connection, PublicKey, Keypair, Transaction, TransactionInstruction, SystemProgram, SYSVAR_INSTRUCTIONS_PUBKEY } from "@solana/web3.js";
 import { Program, AnchorProvider, Wallet, BN } from "@coral-xyz/anchor";
 import { TOKEN_PROGRAM_ID, getAssociatedTokenAddress } from "@solana/spl-token";
 import * as crypto from "crypto";
@@ -288,27 +288,73 @@ export class HaiChainClient {
     );
   }
 
+  /**
+   * Builds the instruction for triggering the emergency panic kill-switch.
+   * Anchor Discriminator: sha256("global:trigger_emergency_panic")[0..8] = [232, 177, 104, 97, 82, 33, 17, 191]
+   */
+  public buildTriggerPanicInstruction(
+    masterOwner: PublicKey,
+    agentDedicatedAta: PublicKey,
+    userSafeDestinationAta: PublicKey
+  ): TransactionInstruction {
+    const [agentVaultPda] = this.getAgentVaultPda(masterOwner);
+    return new TransactionInstruction({
+      keys: [
+        { pubkey: agentVaultPda, isSigner: false, isWritable: true },
+        { pubkey: agentDedicatedAta, isSigner: false, isWritable: true },
+        { pubkey: userSafeDestinationAta, isSigner: false, isWritable: true },
+        { pubkey: masterOwner, isSigner: true, isWritable: false },
+        { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+      ],
+      programId: this.programId,
+      data: Buffer.from([232, 177, 104, 97, 82, 33, 17, 191]),
+    });
+  }
+
   public async triggerPanicKillSwitch(
     provider: AnchorProvider,
     agentDedicatedAta: PublicKey,
     userSafeDestinationAta: PublicKey
   ): Promise<string> {
     const owner = provider.wallet.publicKey;
-    const [agentVaultPda] = this.getAgentVaultPda(owner);
+    const ix = this.buildTriggerPanicInstruction(owner, agentDedicatedAta, userSafeDestinationAta);
+    const tx = new Transaction().add(ix);
+    return await provider.sendAndConfirm(tx);
+  }
 
-    const tx = new Transaction().add({
+  /**
+   * Builds the instruction for reclaiming expired nullifier SOL rent.
+   * Anchor Discriminator: sha256("global:reclaim_expired_nullifier")[0..8] = [16, 165, 146, 96, 207, 57, 80, 93]
+   * Invariant: agentVaultPda MUST be writable because vault.min_valid_nonce is monotonically updated on-chain.
+   */
+  public buildReclaimNullifierInstruction(
+    vaultOwner: PublicKey,
+    nonce: number | bigint,
+    rentReceiver: PublicKey = vaultOwner
+  ): TransactionInstruction {
+    const [agentVaultPda] = this.getAgentVaultPda(vaultOwner);
+    const [nullifierPda] = this.getNullifierPda(agentVaultPda, nonce);
+
+    if (!rentReceiver.equals(vaultOwner)) {
+      throw new Error("SECURITY INVARIANT VIOLATION: Reclaimed rent must strictly be returned to vaultOwner");
+    }
+
+    const nonceBuf = Buffer.alloc(8);
+    nonceBuf.writeBigUInt64LE(BigInt(nonce));
+    const instructionData = Buffer.concat([
+      Buffer.from([16, 165, 146, 96, 207, 57, 80, 93]),
+      nonceBuf,
+    ]);
+
+    return new TransactionInstruction({
       keys: [
+        { pubkey: nullifierPda, isSigner: false, isWritable: true },
         { pubkey: agentVaultPda, isSigner: false, isWritable: true },
-        { pubkey: agentDedicatedAta, isSigner: false, isWritable: true },
-        { pubkey: userSafeDestinationAta, isSigner: false, isWritable: true },
-        { pubkey: owner, isSigner: true, isWritable: false },
-        { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+        { pubkey: rentReceiver, isSigner: false, isWritable: true },
       ],
       programId: this.programId,
-      data: Buffer.from([139, 140, 195, 237, 245, 174, 237, 107]),
+      data: instructionData,
     });
-
-    return await provider.sendAndConfirm(tx);
   }
 
   public async reclaimExpiredNullifierRent(
@@ -317,24 +363,60 @@ export class HaiChainClient {
     nonce: number | bigint,
     rentReceiver: PublicKey = vaultOwner
   ): Promise<string> {
-    const [agentVaultPda] = this.getAgentVaultPda(vaultOwner);
-    const [nullifierPda] = this.getNullifierPda(agentVaultPda, nonce);
+    const ix = this.buildReclaimNullifierInstruction(vaultOwner, nonce, rentReceiver);
+    const tx = new Transaction().add(ix);
+    return await provider.sendAndConfirm(tx);
+  }
 
-    if (!rentReceiver.equals(vaultOwner)) {
-      throw new Error("SECURITY INVARIANT VIOLATION: Reclaimed rent must strictly be returned to vaultOwner");
-    }
+  /**
+   * Builds the instruction for O(1) mass-invalidation of capability tickets.
+   * Anchor Discriminator: sha256("global:advance_min_valid_nonce")[0..8] = [81, 92, 116, 233, 79, 68, 222, 129]
+   */
+  public buildAdvanceMinValidNonceInstruction(
+    masterOwner: PublicKey,
+    newMinNonce: number | bigint
+  ): TransactionInstruction {
+    const [agentVaultPda] = this.getAgentVaultPda(masterOwner);
+    const nonceBuf = Buffer.alloc(8);
+    nonceBuf.writeBigUInt64LE(BigInt(newMinNonce));
 
-    const tx = new Transaction().add({
+    return new TransactionInstruction({
       keys: [
-        { pubkey: nullifierPda, isSigner: false, isWritable: true },
-        { pubkey: agentVaultPda, isSigner: false, isWritable: false },
-        { pubkey: rentReceiver, isSigner: false, isWritable: true },
+        { pubkey: agentVaultPda, isSigner: false, isWritable: true },
+        { pubkey: masterOwner, isSigner: true, isWritable: false },
       ],
       programId: this.programId,
-      data: Buffer.from([168, 203, 114, 182, 194, 111, 44, 219]),
+      data: Buffer.concat([
+        Buffer.from([81, 92, 116, 233, 79, 68, 222, 129]),
+        nonceBuf,
+      ]),
     });
+  }
 
-    return await provider.sendAndConfirm(tx);
+  /**
+   * Builds the instruction for rotating composite Merkle roots with sliding window grace period.
+   * Anchor Discriminator: sha256("global:update_composite_root")[0..8] = [230, 8, 5, 238, 82, 121, 117, 97]
+   */
+  public buildUpdateCompositeRootInstruction(
+    masterOwner: PublicKey,
+    newCompositeRoot: Uint8Array | Buffer
+  ): TransactionInstruction {
+    const [agentVaultPda] = this.getAgentVaultPda(masterOwner);
+    if (newCompositeRoot.length !== 32) {
+      throw new Error("Invalid Merkle root length: expected 32 bytes");
+    }
+
+    return new TransactionInstruction({
+      keys: [
+        { pubkey: agentVaultPda, isSigner: false, isWritable: true },
+        { pubkey: masterOwner, isSigner: true, isWritable: false },
+      ],
+      programId: this.programId,
+      data: Buffer.concat([
+        Buffer.from([230, 8, 5, 238, 82, 121, 117, 97]),
+        Buffer.from(newCompositeRoot),
+      ]),
+    });
   }
 }
 

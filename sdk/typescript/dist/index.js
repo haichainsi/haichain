@@ -187,38 +187,102 @@ class HaiChainClient {
     getProviderBondPda(providerAuthority) {
         return web3_js_1.PublicKey.findProgramAddressSync([Buffer.from("provider-bond"), providerAuthority.toBuffer()], this.programId);
     }
-    async triggerPanicKillSwitch(provider, agentDedicatedAta, userSafeDestinationAta) {
-        const owner = provider.wallet.publicKey;
-        const [agentVaultPda] = this.getAgentVaultPda(owner);
-        const tx = new web3_js_1.Transaction().add({
+    /**
+     * Builds the instruction for triggering the emergency panic kill-switch.
+     * Anchor Discriminator: sha256("global:trigger_emergency_panic")[0..8] = [232, 177, 104, 97, 82, 33, 17, 191]
+     */
+    buildTriggerPanicInstruction(masterOwner, agentDedicatedAta, userSafeDestinationAta) {
+        const [agentVaultPda] = this.getAgentVaultPda(masterOwner);
+        return new web3_js_1.TransactionInstruction({
             keys: [
                 { pubkey: agentVaultPda, isSigner: false, isWritable: true },
                 { pubkey: agentDedicatedAta, isSigner: false, isWritable: true },
                 { pubkey: userSafeDestinationAta, isSigner: false, isWritable: true },
-                { pubkey: owner, isSigner: true, isWritable: false },
+                { pubkey: masterOwner, isSigner: true, isWritable: false },
                 { pubkey: spl_token_1.TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
             ],
             programId: this.programId,
-            data: Buffer.from([139, 140, 195, 237, 245, 174, 237, 107]),
+            data: Buffer.from([232, 177, 104, 97, 82, 33, 17, 191]),
         });
+    }
+    async triggerPanicKillSwitch(provider, agentDedicatedAta, userSafeDestinationAta) {
+        const owner = provider.wallet.publicKey;
+        const ix = this.buildTriggerPanicInstruction(owner, agentDedicatedAta, userSafeDestinationAta);
+        const tx = new web3_js_1.Transaction().add(ix);
         return await provider.sendAndConfirm(tx);
     }
-    async reclaimExpiredNullifierRent(provider, vaultOwner, nonce, rentReceiver = vaultOwner) {
+    /**
+     * Builds the instruction for reclaiming expired nullifier SOL rent.
+     * Anchor Discriminator: sha256("global:reclaim_expired_nullifier")[0..8] = [16, 165, 146, 96, 207, 57, 80, 93]
+     * Invariant: agentVaultPda MUST be writable because vault.min_valid_nonce is monotonically updated on-chain.
+     */
+    buildReclaimNullifierInstruction(vaultOwner, nonce, rentReceiver = vaultOwner) {
         const [agentVaultPda] = this.getAgentVaultPda(vaultOwner);
         const [nullifierPda] = this.getNullifierPda(agentVaultPda, nonce);
         if (!rentReceiver.equals(vaultOwner)) {
             throw new Error("SECURITY INVARIANT VIOLATION: Reclaimed rent must strictly be returned to vaultOwner");
         }
-        const tx = new web3_js_1.Transaction().add({
+        const nonceBuf = Buffer.alloc(8);
+        nonceBuf.writeBigUInt64LE(BigInt(nonce));
+        const instructionData = Buffer.concat([
+            Buffer.from([16, 165, 146, 96, 207, 57, 80, 93]),
+            nonceBuf,
+        ]);
+        return new web3_js_1.TransactionInstruction({
             keys: [
                 { pubkey: nullifierPda, isSigner: false, isWritable: true },
-                { pubkey: agentVaultPda, isSigner: false, isWritable: false },
+                { pubkey: agentVaultPda, isSigner: false, isWritable: true },
                 { pubkey: rentReceiver, isSigner: false, isWritable: true },
             ],
             programId: this.programId,
-            data: Buffer.from([168, 203, 114, 182, 194, 111, 44, 219]),
+            data: instructionData,
         });
+    }
+    async reclaimExpiredNullifierRent(provider, vaultOwner, nonce, rentReceiver = vaultOwner) {
+        const ix = this.buildReclaimNullifierInstruction(vaultOwner, nonce, rentReceiver);
+        const tx = new web3_js_1.Transaction().add(ix);
         return await provider.sendAndConfirm(tx);
+    }
+    /**
+     * Builds the instruction for O(1) mass-invalidation of capability tickets.
+     * Anchor Discriminator: sha256("global:advance_min_valid_nonce")[0..8] = [81, 92, 116, 233, 79, 68, 222, 129]
+     */
+    buildAdvanceMinValidNonceInstruction(masterOwner, newMinNonce) {
+        const [agentVaultPda] = this.getAgentVaultPda(masterOwner);
+        const nonceBuf = Buffer.alloc(8);
+        nonceBuf.writeBigUInt64LE(BigInt(newMinNonce));
+        return new web3_js_1.TransactionInstruction({
+            keys: [
+                { pubkey: agentVaultPda, isSigner: false, isWritable: true },
+                { pubkey: masterOwner, isSigner: true, isWritable: false },
+            ],
+            programId: this.programId,
+            data: Buffer.concat([
+                Buffer.from([81, 92, 116, 233, 79, 68, 222, 129]),
+                nonceBuf,
+            ]),
+        });
+    }
+    /**
+     * Builds the instruction for rotating composite Merkle roots with sliding window grace period.
+     * Anchor Discriminator: sha256("global:update_composite_root")[0..8] = [230, 8, 5, 238, 82, 121, 117, 97]
+     */
+    buildUpdateCompositeRootInstruction(masterOwner, newCompositeRoot) {
+        const [agentVaultPda] = this.getAgentVaultPda(masterOwner);
+        if (newCompositeRoot.length !== 32) {
+            throw new Error("Invalid Merkle root length: expected 32 bytes");
+        }
+        return new web3_js_1.TransactionInstruction({
+            keys: [
+                { pubkey: agentVaultPda, isSigner: false, isWritable: true },
+                { pubkey: masterOwner, isSigner: true, isWritable: false },
+            ],
+            programId: this.programId,
+            data: Buffer.concat([
+                Buffer.from([230, 8, 5, 238, 82, 121, 117, 97]),
+                Buffer.from(newCompositeRoot),
+            ]),
+        });
     }
 }
 exports.HaiChainClient = HaiChainClient;

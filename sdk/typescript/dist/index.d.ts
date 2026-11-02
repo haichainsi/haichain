@@ -1,4 +1,4 @@
-import { Connection, PublicKey, Keypair } from "@solana/web3.js";
+import { Connection, PublicKey, Keypair, TransactionInstruction } from "@solana/web3.js";
 import { AnchorProvider } from "@coral-xyz/anchor";
 export declare const SOLANA_USDT_MINT: PublicKey;
 export declare const SOLANA_USDC_MINT: PublicKey;
@@ -87,8 +87,29 @@ export declare class HaiChainClient {
     getAgentVaultPda(owner: PublicKey): [PublicKey, number];
     getNullifierPda(vaultPda: PublicKey, nonce: number | bigint): [PublicKey, number];
     getProviderBondPda(providerAuthority: PublicKey): [PublicKey, number];
+    /**
+     * Builds the instruction for triggering the emergency panic kill-switch.
+     * Anchor Discriminator: sha256("global:trigger_emergency_panic")[0..8] = [232, 177, 104, 97, 82, 33, 17, 191]
+     */
+    buildTriggerPanicInstruction(masterOwner: PublicKey, agentDedicatedAta: PublicKey, userSafeDestinationAta: PublicKey): TransactionInstruction;
     triggerPanicKillSwitch(provider: AnchorProvider, agentDedicatedAta: PublicKey, userSafeDestinationAta: PublicKey): Promise<string>;
+    /**
+     * Builds the instruction for reclaiming expired nullifier SOL rent.
+     * Anchor Discriminator: sha256("global:reclaim_expired_nullifier")[0..8] = [16, 165, 146, 96, 207, 57, 80, 93]
+     * Invariant: agentVaultPda MUST be writable because vault.min_valid_nonce is monotonically updated on-chain.
+     */
+    buildReclaimNullifierInstruction(vaultOwner: PublicKey, nonce: number | bigint, rentReceiver?: PublicKey): TransactionInstruction;
     reclaimExpiredNullifierRent(provider: AnchorProvider, vaultOwner: PublicKey, nonce: number | bigint, rentReceiver?: PublicKey): Promise<string>;
+    /**
+     * Builds the instruction for O(1) mass-invalidation of capability tickets.
+     * Anchor Discriminator: sha256("global:advance_min_valid_nonce")[0..8] = [81, 92, 116, 233, 79, 68, 222, 129]
+     */
+    buildAdvanceMinValidNonceInstruction(masterOwner: PublicKey, newMinNonce: number | bigint): TransactionInstruction;
+    /**
+     * Builds the instruction for rotating composite Merkle roots with sliding window grace period.
+     * Anchor Discriminator: sha256("global:update_composite_root")[0..8] = [230, 8, 5, 238, 82, 121, 117, 97]
+     */
+    buildUpdateCompositeRootInstruction(masterOwner: PublicKey, newCompositeRoot: Uint8Array | Buffer): TransactionInstruction;
 }
 export interface SlaExecutionReceipt {
     providerAuthority: string;
