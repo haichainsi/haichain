@@ -163,7 +163,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
-  <script src="/app/i18n.js?v=v43_luxury_bw_hub_1793643197944"></script>
+  <script src="/app/i18n.js?v=v41_realtime_sync_1793655000000"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v47_en_email_brand_1793663000000"></script>
@@ -2275,6 +2275,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       safeCreateIcons();
       if (typeof updateAiHubUrls === 'function') {
         updateAiHubUrls();
+      }
+      if (userWallet && userWallet.address && typeof syncVaultToMcpServer === 'function') {
+        syncVaultToMcpServer(userWallet.address, balance);
       }
     }
     window.addEventListener('resize', updateWalletBtnUI);
@@ -7444,10 +7447,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const activeAddr = hasWallet ? String(userWallet.address).trim() : '';
 
       if (hasWallet && activeAddr) {
-        let personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
-        if (typeof balance === 'number' && balance > 0) {
-          personalizedUrl += `&bal=${balance.toFixed(2)}`;
-        }
+        const personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
         if (codeSnippet) codeSnippet.textContent = personalizedUrl;
         if (badgeEl) {
           badgeEl.className = "text-[9.5px] bg-neutral-900 border border-neutral-700 px-2.5 py-0.5 rounded-full text-white font-mono shrink-0 whitespace-nowrap font-semibold";
@@ -7484,13 +7484,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       copyOnlineMcpBtn.addEventListener('click', async () => {
         const hasWallet = !!(userWallet && userWallet.address);
         const activeAddr = hasWallet ? String(userWallet.address).trim() : '';
-        let url = "https://mcp.haichain.si/api/mcp";
-        if (hasWallet && activeAddr) {
-          url = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
-          if (typeof balance === 'number' && balance > 0) {
-            url += `&bal=${balance.toFixed(2)}`;
-          }
-        }
+        const url = hasWallet && activeAddr 
+          ? `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`
+          : "https://mcp.haichain.si/api/mcp";
 
         try {
           await navigator.clipboard.writeText(url);
