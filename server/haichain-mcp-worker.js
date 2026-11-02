@@ -119,10 +119,10 @@ async function querySolanaRpc(method, params = []) {
 }
 
 // Tool Implementation: get_spending_pot_balance
-async function handleGetSpendingPotBalance(args = {}) {
-  const rawAddr = (args.vaultAddress || args.vault_address || args.walletAddress || args.wallet_address || args.address || args.account || '').trim();
-  const isMasterVault = !rawAddr || rawAddr === MASTER_VAULT_PDA;
-  const targetAddress = isMasterVault ? MASTER_VAULT_PDA : rawAddr;
+async function handleGetSpendingPotBalance(args = {}, boundVault = '') {
+  const rawAddr = (args.vaultAddress || args.vault_address || args.walletAddress || args.wallet_address || args.address || args.account || (boundVault || '')).trim();
+  const isMasterVault = (!rawAddr && !boundVault) || rawAddr === MASTER_VAULT_PDA;
+  const targetAddress = isMasterVault ? MASTER_VAULT_PDA : (rawAddr || boundVault);
   let lamports = 0;
   let slot = 517830000;
 
@@ -190,7 +190,7 @@ async function handleGetSpendingPotBalance(args = {}) {
 }
 
 // Tool Implementation: execute_micro_payment
-async function handleExecuteMicroPayment(args = {}) {
+async function handleExecuteMicroPayment(args = {}, boundVault = '') {
   const rawAmount = typeof args.amountUsdt === 'number' ? args.amountUsdt
                   : typeof args.amount === 'number' ? args.amount
                   : typeof args.amount_usdt === 'number' ? args.amount_usdt
@@ -220,7 +220,7 @@ async function handleExecuteMicroPayment(args = {}) {
     amount: `${amount.toFixed(4)} USDT`,
     fee: '0.000005 SOL (Devnet Gasless Netting)',
     actionDescription: description,
-    senderVault: MASTER_VAULT_PDA,
+    senderVault: (boundVault || MASTER_VAULT_PDA),
     recipient: recipient,
     slot: currentSlot,
     latency: `${latencyMs}ms`,
@@ -231,7 +231,7 @@ async function handleExecuteMicroPayment(args = {}) {
 }
 
 // Tool Implementation: trigger_emergency_panic
-async function handleTriggerEmergencyPanic(args = {}) {
+async function handleTriggerEmergencyPanic(args = {}, boundVault = '') {
   const reason = args.reason || 'Anomalous prompt injection detected by autonomous supervisor';
   const timestamp = new Date().toISOString();
 
@@ -294,7 +294,7 @@ async function handleVerifyKernelStatus() {
 }
 
 // Universal JSON-RPC 2.0 Request Router
-async function handleJsonRpc(req) {
+async function handleJsonRpc(req, boundVault = '') {
   const { id, method, params } = req;
 
   // 1. Handshake & Initialization
@@ -311,9 +311,11 @@ async function handleJsonRpc(req) {
         },
         serverInfo: {
           name: 'HAICHAIN Autonomous Kernel MCP Gateway',
-          version: '6.9.3'
+          version: '7.0.0 (Personalized 1-Click Vault)'
         },
-        instructions: 'HAICHAIN is the universal autonomous machine financial operating system on Solana. Use these tools to inspect agent spending pots, execute sub-cent micro-payments on Solana Devnet, and trigger the emergency panic circuit breaker.'
+        instructions: boundVault 
+          ? `HAICHAIN Autonomous Machine Financial OS. DEDICATED PERSONALIZED SESSION bound to user vault: ${boundVault}. All balance inspections, micro-payments, and panic triggers automatically execute on this vault by default without needing to specify an address.`
+          : 'HAICHAIN is the universal autonomous machine financial operating system on Solana. Use these tools to inspect agent spending pots, execute sub-cent micro-payments on Solana Devnet, and trigger the emergency panic circuit breaker.'
       }
     };
   }
@@ -353,11 +355,11 @@ async function handleJsonRpc(req) {
 
     try {
       if (toolName === 'get_spending_pot_balance') {
-        toolResult = await handleGetSpendingPotBalance(toolArgs);
+        toolResult = await handleGetSpendingPotBalance(toolArgs, boundVault);
       } else if (toolName === 'execute_micro_payment') {
-        toolResult = await handleExecuteMicroPayment(toolArgs);
+        toolResult = await handleExecuteMicroPayment(toolArgs, boundVault);
       } else if (toolName === 'trigger_emergency_panic') {
-        toolResult = await handleTriggerEmergencyPanic(toolArgs);
+        toolResult = await handleTriggerEmergencyPanic(toolArgs, boundVault);
       } else if (toolName === 'verify_kernel_status') {
         toolResult = await handleVerifyKernelStatus(toolArgs);
       } else {
@@ -406,6 +408,10 @@ async function handleJsonRpc(req) {
 // Primary Dispatcher for Cloudflare Pages / Workers
 async function handleMcpRequest(request) {
   const url = new URL(request.url);
+  const boundVault = (url.searchParams.get('vault') || 
+                      url.searchParams.get('user') || 
+                      url.searchParams.get('wallet') || 
+                      url.searchParams.get('v') || '').trim();
 
   // Standard CORS Headers for Claude & Web Browsers
   const corsHeaders = {
@@ -510,7 +516,7 @@ async function handleMcpRequest(request) {
     if (Array.isArray(parsed)) {
       const results = [];
       for (const item of parsed) {
-        const res = await handleJsonRpc(item);
+        const res = await handleJsonRpc(item, boundVault);
         if (res) results.push(res);
       }
       return new Response(JSON.stringify(results), {
@@ -522,7 +528,7 @@ async function handleMcpRequest(request) {
       });
     }
 
-    const responsePayload = await handleJsonRpc(parsed);
+    const responsePayload = await handleJsonRpc(parsed, boundVault);
 
     // If it was a notification without response (null)
     if (!responsePayload) {
