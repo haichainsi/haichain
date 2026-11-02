@@ -385,7 +385,22 @@
     .haichain-action-btn * {
       pointer-events: none !important;
     }
-    @media (min-width: 640px) {
+    @media (max-width: 767px) {
+      .haichain-action-btn span,
+      #header-panic-btn span,
+      #ai-hub-btn span {
+        display: none !important;
+      }
+      .haichain-action-btn {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        padding: 0 !important;
+        border-radius: 9999px !important;
+        overflow: hidden !important;
+      }
+    }
+    @media (min-width: 768px) {
       .haichain-action-btn.has-label {
         width: auto !important;
         height: auto !important;
@@ -603,11 +618,10 @@
         <button id="claude-mcp-btn" class="hidden" aria-hidden="true"></button>
         <button id="ai-gateway-btn" class="hidden" aria-hidden="true"></button>
 
-        <!-- Emergency Panic Button -->
-        <button id="header-panic-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-400" title="Emergency Stop">
-          <i data-lucide="alert-octagon" class="w-3.5 h-3.5 shrink-0 pointer-events-none"></i>
-          <span class="hidden md:inline text-xs font-semibold" data-i18n="btn.panicStop">Emergency Stop</span>
-          <span class="hidden sm:inline md:hidden text-[10px] font-bold uppercase" data-i18n="btn.panicStopMobile">Panic</span>
+        <!-- Emergency Panic Button (Clean Icon-Only on Mobile, Label on Desktop) -->
+        <button id="header-panic-btn" type="button" class="haichain-action-btn has-label text-neutral-700 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-400" title="Emergency Stop" aria-label="Emergency Stop">
+          <i data-lucide="alert-octagon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none"></i>
+          <span class="hidden md:inline text-xs font-semibold ml-1.5" data-i18n="btn.panicStop">Emergency Stop</span>
         </button>
 
         <!-- Desktop Multi-Language Switcher Dropdown Mount -->
@@ -2215,7 +2229,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white dark:bg-black animate-ping"></span><span data-i18n="vault.status.active">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
         }
         if (headerPanicBtn) {
-          headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5"></i><span class="hidden sm:inline" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span><span class="sm:hidden" data-i18n="btn.panicStopMobile">${window.haichainI18n ? window.haichainI18n.t('btn.panicStopMobile') : 'Panic'}</span>`;
+          headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none"></i><span class="hidden md:inline text-xs font-semibold ml-1.5" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop');
         }
         safeCreateIcons();
         return;
@@ -2236,7 +2250,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white"></span><span data-i18n="vault.status.frozen">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen (Panic Tripped)'}</span>`;
         }
         if (headerPanicBtn) {
-          headerPanicBtn.innerHTML = `<i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i><span data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`;
+          headerPanicBtn.innerHTML = `<i data-lucide="rotate-ccw" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none text-amber-500 animate-spin-slow"></i><span class="hidden md:inline text-xs font-semibold ml-1.5 text-amber-500" data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault');
         }
         safeCreateIcons();
       }
@@ -2639,7 +2653,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         updateVaultUI();
         vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium bg-black text-white dark:bg-white dark:text-black flex items-center space-x-1.5 font-mono shadow-xs";
         vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white dark:bg-black animate-ping"></span><span data-i18n="vault.status.active">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
-        headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5"></i><span class="hidden sm:inline" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span><span class="sm:hidden" data-i18n="btn.panicStopMobile">${window.haichainI18n ? window.haichainI18n.t('btn.panicStopMobile') : 'Panic'}</span>`;
+        headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none"></i><span class="hidden md:inline text-xs font-semibold ml-1.5" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop');
         safeCreateIcons();
         return;
       }
@@ -2653,7 +2667,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         updateVaultUI();
         vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium border-2 border-black dark:border-white text-black dark:text-white bg-neutral-100 dark:bg-neutral-900 flex items-center space-x-1.5 font-mono";
         vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white"></span><span data-i18n="vault.status.frozen">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen (Panic Tripped)'}</span>`;
-        headerPanicBtn.innerHTML = `<i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i><span data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`;
+        headerPanicBtn.innerHTML = `<i data-lucide="rotate-ccw" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none text-amber-500 animate-spin-slow"></i><span class="hidden md:inline text-xs font-semibold ml-1.5 text-amber-500" data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault');
         safeCreateIcons();
       }
     });
