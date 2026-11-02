@@ -925,7 +925,7 @@
   // 3. MASTER STATE CONFIGURATION (THE FSM BRAIN)
   window.HAICHAIN_SALE_CONFIG = {
     CURRENT_PHASE: 'PRE_SEED_PRIVATE', // 'PRE_SEED_PRIVATE' | 'PUBLIC_TGE'
-    ACCESS_KEYS: ['early-backer-2026', 'hai-angel', 'haichain2026', 'vip', 'preseed', 'angel', 'investor'],
+    ACCESS_KEYS: ['haichainsi2030st'],
     TREASURY_ADDRESS: 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW',
 
     PHASES: {
