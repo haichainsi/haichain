@@ -1507,7 +1507,7 @@
     const btnAutofill = container.querySelector('#btn-autofill-phantom');
     if (btnAutofill) {
       btnAutofill.addEventListener('click', async () => {
-        const savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+        let savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
         const walletInput = container.querySelector('#preseed-wallet');
 
         if (savedW && savedW.address) {
@@ -1515,45 +1515,145 @@
           return;
         }
 
-        // Try MetaMask first if EVM
-        if (window.ethereum) {
+        const solProvider = (typeof window.getSolanaProvider === 'function' ? window.getSolanaProvider() : null) || window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null) || window.solflare || window.solana;
+        const evmProvider = (typeof window.getMetaMaskProvider === 'function' ? window.getMetaMaskProvider() : null) || window.ethereum;
+
+        if (solProvider) {
           try {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            if (accounts && accounts[0]) {
-              if (walletInput) walletInput.value = accounts[0];
+            const resp = await solProvider.connect();
+            const addr = resp.publicKey ? resp.publicKey.toString() : (solProvider.publicKey ? solProvider.publicKey.toString() : '');
+            if (addr) {
+              const provName = solProvider.isPhantom ? 'Phantom' : (solProvider.isSolflare ? 'Solflare' : 'Solana');
+              if (walletInput) walletInput.value = addr;
+              savedW = { address: addr, provider: provName };
+              localStorage.setItem('haichain-connected-wallet', JSON.stringify(savedW));
+              if (typeof setConnectedWallet === 'function') await setConnectedWallet(addr, provName);
+              if (typeof window.userWallet !== 'undefined') window.userWallet = savedW;
+              if (typeof updateWalletBtnUI === 'function') updateWalletBtnUI();
+              const payBtnText = container.querySelector('#label-pay-1click-text');
+              if (payBtnText) payBtnText.textContent = getI18nText('btnPayPhantom');
               return;
             }
           } catch (_) {}
         }
 
-        // Try Phantom / Solana
-        try {
-          const provider = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
-          if (provider) {
-            const resp = await provider.connect();
-            const addr = resp.publicKey ? resp.publicKey.toString() : '';
-            if (addr && walletInput) walletInput.value = addr;
-          } else {
-            alert(getI18nText('web3WalletNotFound'));
-          }
-        } catch (e) {
-          console.warn('Wallet connect error:', e);
+        if (evmProvider) {
+          try {
+            const accounts = await evmProvider.request({ method: 'eth_requestAccounts' });
+            if (accounts && accounts[0]) {
+              const addr = accounts[0];
+              if (walletInput) walletInput.value = addr;
+              savedW = { address: addr, provider: 'MetaMask', isEVM: true };
+              localStorage.setItem('haichain-connected-wallet', JSON.stringify(savedW));
+              if (typeof setConnectedWallet === 'function') await setConnectedWallet(addr, 'MetaMask');
+              if (typeof window.userWallet !== 'undefined') window.userWallet = savedW;
+              if (typeof updateWalletBtnUI === 'function') updateWalletBtnUI();
+              const payBtnText = container.querySelector('#label-pay-1click-text');
+              if (payBtnText) payBtnText.textContent = getI18nText('btnPayPhantom');
+              return;
+            }
+          } catch (_) {}
         }
+
+        const wBtn = document.getElementById('wallet-btn');
+        if (wBtn) wBtn.click();
       });
-    }    // Universal 1-Click Pay with Connected Web3 Wallet (Strict Real-Fund & On-Chain Verification)
+    }
+
+    // Universal 1-Click Pay with Connected Web3 Wallet (Strict Real-Fund & On-Chain Verification)
     const btnPayPhantom = container.querySelector('#btn-pay-phantom-1click');
     if (btnPayPhantom) {
       btnPayPhantom.addEventListener('click', async () => {
         const isVi = getActiveLang() === 'vi';
-        const savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+        let savedWallet = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
         
-        // 1. If no wallet connected, open wallet connect modal
+        // 1. If no wallet connected, auto-detect & auto-open extension!
         if (!savedWallet || !savedWallet.address) {
-          const wBtn = document.getElementById('wallet-btn');
-          if (wBtn) {
-            wBtn.click();
-            alert(getI18nText('connectWeb3Required'));
+          const solProvider = (typeof window.getSolanaProvider === 'function' ? window.getSolanaProvider() : null) || window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null) || window.solflare || window.solana;
+          const evmProvider = (typeof window.getMetaMaskProvider === 'function' ? window.getMetaMaskProvider() : null) || window.ethereum;
+
+          if (solProvider) {
+            try {
+              const resp = await solProvider.connect();
+              const pubKey = resp.publicKey ? resp.publicKey.toString() : (solProvider.publicKey ? solProvider.publicKey.toString() : '');
+              if (pubKey) {
+                const provName = solProvider.isPhantom ? 'Phantom' : (solProvider.isSolflare ? 'Solflare' : 'Solana');
+                savedWallet = { address: pubKey, provider: provName };
+                localStorage.setItem('haichain-connected-wallet', JSON.stringify(savedWallet));
+                if (typeof setConnectedWallet === 'function') {
+                  await setConnectedWallet(pubKey, provName);
+                } else if (typeof updateWalletBtnUI === 'function') {
+                  window.userWallet = savedWallet;
+                  updateWalletBtnUI();
+                }
+                const walletInput = container.querySelector('#preseed-wallet') || document.getElementById('preseed-wallet');
+                if (walletInput) walletInput.value = pubKey;
+                const payBtnText = container.querySelector('#label-pay-1click-text') || document.getElementById('label-pay-1click-text');
+                if (payBtnText) payBtnText.textContent = getI18nText('btnPayPhantom');
+                
+                const boundDot = container.querySelector('.bg-amber-500');
+                if (boundDot) boundDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+                const boundAddr = container.querySelector('#panel-saft-1click .font-bold.text-black');
+                if (boundAddr) boundAddr.textContent = `${pubKey.slice(0, 4)}...${pubKey.slice(-4)}`;
+
+                if (typeof showToast === 'function') {
+                  showToast({
+                    title: 'Web3 Wallet Connected',
+                    message: `${provName}: ${pubKey.slice(0, 4)}...${pubKey.slice(-4)}`,
+                    icon: 'check-circle'
+                  });
+                }
+                return; // Auto-connected! User can now click to execute
+              }
+            } catch (err) {
+              console.warn("Solana auto-connect error:", err);
+              const wBtn = document.getElementById('wallet-btn');
+              if (wBtn) wBtn.click();
+              return;
+            }
+          } else if (evmProvider) {
+            try {
+              const accounts = await evmProvider.request({ method: 'eth_requestAccounts' });
+              if (accounts && accounts[0]) {
+                const acc = accounts[0];
+                savedWallet = { address: acc, provider: 'MetaMask', isEVM: true };
+                localStorage.setItem('haichain-connected-wallet', JSON.stringify(savedWallet));
+                if (typeof setConnectedWallet === 'function') {
+                  await setConnectedWallet(acc, 'MetaMask');
+                } else if (typeof updateWalletBtnUI === 'function') {
+                  window.userWallet = savedWallet;
+                  updateWalletBtnUI();
+                }
+                const walletInput = container.querySelector('#preseed-wallet') || document.getElementById('preseed-wallet');
+                if (walletInput) walletInput.value = acc;
+                const payBtnText = container.querySelector('#label-pay-1click-text') || document.getElementById('label-pay-1click-text');
+                if (payBtnText) payBtnText.textContent = getI18nText('btnPayPhantom');
+
+                const boundDot = container.querySelector('.bg-amber-500');
+                if (boundDot) boundDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+                const boundAddr = container.querySelector('#panel-saft-1click .font-bold.text-black');
+                if (boundAddr) boundAddr.textContent = `${acc.slice(0, 6)}...${acc.slice(-4)}`;
+
+                if (typeof showToast === 'function') {
+                  showToast({
+                    title: 'MetaMask Connected',
+                    message: `${acc.slice(0, 6)}...${acc.slice(-4)}`,
+                    icon: 'check-circle'
+                  });
+                }
+                return;
+              }
+            } catch (err) {
+              console.warn("MetaMask auto-connect error:", err);
+              const wBtn = document.getElementById('wallet-btn');
+              if (wBtn) wBtn.click();
+              return;
+            }
           }
+
+          // Neither detected directly, open modal cleanly without blocking alert
+          const wBtn = document.getElementById('wallet-btn');
+          if (wBtn) wBtn.click();
           return;
         }
 
@@ -1993,6 +2093,21 @@ Please fund your wallet with SOL to continue.`);
     window.addEventListener('haichain:languageChanged', (e) => {
       const code = e.detail && (e.detail.lang || e.detail.language);
       updateLanguage(code);
+    });
+
+    // Listen for wallet connection from header modal or anywhere
+    window.addEventListener('haichain_wallet_connected', (e) => {
+      const w = e.detail;
+      if (w && w.address) {
+        const walletInput = document.getElementById('preseed-wallet');
+        if (walletInput) walletInput.value = w.address;
+        const payBtnText = document.getElementById('label-pay-1click-text');
+        if (payBtnText) payBtnText.textContent = getI18nText('btnPayPhantom');
+        const boundDot = document.querySelector('#panel-saft-1click .w-2.h-2.rounded-full');
+        if (boundDot) boundDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+        const boundAddr = document.querySelector('#panel-saft-1click .font-bold.text-black');
+        if (boundAddr) boundAddr.textContent = `${w.address.slice(0, 4)}...${w.address.slice(-4)}`;
+      }
     });
 
     // Auto switch to pre-seed tab if access key or preseed tab in query

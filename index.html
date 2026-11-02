@@ -174,7 +174,7 @@
 
   <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
 
-  <script src="/app/i18n.js?v=v27_text_only_quickdemos"></script>
+  <script src="/app/i18n.js?v=v27_ai2_human_intelligence_upgrade"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
@@ -819,7 +819,7 @@
         </h2>
 
         <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="ai2.subtitle">
-          Hai = Human + AI. AI² = Actual Intelligence (Human purpose, ethics & risk judgment) &times; Artificial Intelligence (Infinite computation & sub-cent velocity) - establishing sovereign machine cognition.
+          Hai = Human + AI. AI² = Actual Intelligence (Human wisdom, ethics & blind spot appraisal) × Artificial Intelligence (Infinite computation & sub-cent velocity) — empowering humans to guide, audit, and validate autonomous systems.
         </p>
 
       </div>
@@ -842,13 +842,13 @@
 
           <h3 class="text-lg font-bold text-black dark:text-white tracking-tight" data-i18n="ai2.card1Title">
 
-            Actual Intelligence: Human Sovereign Command
+            Actual Intelligence: Human Sovereign Command & Blind Spot Oversight
 
           </h3>
 
           <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="ai2.card1Desc">
 
-            Humans maintain absolute control via Biometric Passkeys (FaceID/TouchID), set mathematically bounded spending allowances via Merkle trees, and hold a sub-second Panic Kill-Switch (<400ms).
+            Humans maintain sovereign control and contribute critical intelligence: when AI models face cognitive blind spots, hallucinations, or edge cases, human domain experts step in for appraisal, censorship, and validation — backed by Biometric Passkeys, Merkle spending caps, and a < 400ms Panic Kill-Switch.
 
           </p>
 
@@ -894,13 +894,13 @@
 
           <h3 class="text-lg font-bold text-black dark:text-white tracking-tight" data-i18n="ai2.card3Title">
 
-            Two-Way Economic Symbiosis
+            Two-Way Economic Symbiosis: AI Hires Human Intelligence
 
           </h3>
 
           <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed" data-i18n="ai2.card3Desc">
 
-            AI streams continuous passive royalties in USDT to human knowledge creators, while autonomously hiring humans for real-world verification (Reverse Micro-Tasking via HTTP x402).
+            A closed-loop symbiotic economy: AI streams continuous USDT royalties to human knowledge creators, while autonomously escrowing sub-cent bounties to hire humans for real-world verification, ground-truth labeling, and blind spot resolution (Reverse Micro-Tasking via HTTP x402).
 
           </p>
 
@@ -1608,7 +1608,7 @@
 
                 <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row1Name">Core Strategic Focus</td>
 
-                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row1Hai">Sub-cent micro-payment OS & military-hardened agent wallet bounds</td>
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row1Hai">Sub-cent micro-payment OS, military-hardened agent wallet bounds & native Human-in-the-Loop AI blind spot arbitration</td>
 
                 <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row1Tao">Decentralized AI model ranking & subnet evaluation network</td>
 
@@ -1695,6 +1695,22 @@
                 <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Render">Utility token burns/payments for compute cycles</td>
 
                 <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row6Eliza">Speculative token trading on individual agent bonding curves</td>
+
+              </tr>
+
+              <!-- Row 7: Human-in-the-Loop & Blind Spot Arbitration -->
+
+              <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors border-t border-neutral-100 dark:border-neutral-900">
+
+                <td class="py-4 px-5 font-semibold text-neutral-800 dark:text-neutral-200" data-i18n="comp.row7Name">Human-in-the-Loop & Blind Spot Arbitration</td>
+
+                <td class="py-4 px-5 font-semibold text-black dark:text-white bg-neutral-50/80 dark:bg-neutral-900/40" data-i18n="comp.row7Hai">Native Reverse Micro-Tasking via HTTP x402. When AI hits cognitive blind spots, ambiguity, or edge cases, agents autonomously escrow USDT to hire verified human experts for sub-second appraisal, auditing, and ground-truth validation.</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row7Tao">Zero human involvement. Pure machine-weighted subnet validation; incapable of resolving AI hallucinations or blind spots with human domain experts.</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row7Render">Raw compute renting only. No cognitive intelligence layer, human moderation, or blind spot auditing mechanism.</td>
+
+                <td class="py-4 px-5 text-neutral-600 dark:text-neutral-400" data-i18n="comp.row7Eliza">Unsupervised autonomous bot loops. No programmatic escrow to hire human oversight, leading to unchecked bot hallucinations and manipulation risks.</td>
 
               </tr>
 
@@ -2590,14 +2606,17 @@ From the financial operating system for the autonomous machine era to the "Econo
 
       // Helper to detect Mobile Device
       function isMobileDevice() {
-        const ua = navigator.userAgent || '';
-        const isTouch = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || ('ontouchstart' in window);
-        const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
-        const isTablet = /(iPad|Tablet|(Android(?!.*Mobile))|(Silk(?!.*Mobile)))/i.test(ua);
-        const isMacTouch = /Macintosh/i.test(ua) && isTouch;
-        const isNarrow = window.innerWidth <= 1024;
-        return isMobileUA || isTablet || isMacTouch || (isTouch && isNarrow);
+      const ua = navigator.userAgent || '';
+      // Windows, Mac, and Linux desktop PCs (including Surface, touchscreen laptops) must NEVER be treated as mobile app platforms!
+      if (/Windows NT|Macintosh|Linux/i.test(ua) && !/Android/i.test(ua)) {
+        return false;
       }
+      const isTouch = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || ('ontouchstart' in window);
+      const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+      const isTablet = /(iPad|Tablet|(Android(?!.*Mobile))|(Silk(?!.*Mobile)))/i.test(ua);
+      const isMacTouch = /Macintosh/i.test(ua) && isTouch && !window.MSStream; // iPadOS 13+
+      return isMobileUA || isTablet || isMacTouch;
+    }
 
       function getMobilePhantomDeepLink() {
         let appOrigin = window.location.origin;

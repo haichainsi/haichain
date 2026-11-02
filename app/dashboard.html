@@ -165,7 +165,7 @@
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v18_inapp_modal_menu_sync"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v21_fix_alert_body_1793580832459"></script>
+  <script src="/app/sale-controller.js?v=v22_desktop_web3_autoconnect"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -665,21 +665,24 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <!-- Main Balance Card (Spans 2 Cols - Mobile Optimized) -->
           <div class="md:col-span-2 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm relative overflow-hidden">
-            <div class="flex justify-between items-start gap-2">
-              <div class="min-w-0">
-                <span class="text-xs uppercase tracking-wider text-neutral-400 font-mono font-medium truncate block" data-i18n="vault.activePot">Active Spending Pot</span>
-                <div class="text-3xl sm:text-5xl font-extrabold tracking-tight font-mono text-black dark:text-white tabular-nums mt-1.5 sm:mt-2 flex items-baseline">
-                  <span>$</span>
-                  <span id="overview-balance">0.0000</span>
-                  <span class="text-xs font-mono text-neutral-500 ml-1.5 sm:ml-2">USDT</span>
-                </div>
-                <p class="text-xs text-neutral-500 font-mono mt-0.5 sm:mt-1 truncate" id="overview-credits" data-i18n="vault.actionCredits">&asymp; 0 Action Credits Available</p>
-              </div>
-              <span id="vault-status-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center space-x-1.5 shrink-0 shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span data-i18n="vault.status.active">Active</span>
+            <!-- Top Line: Label & Status Badge (Clean Space Allocation, Zero Collision) -->
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] sm:text-xs uppercase tracking-wider text-neutral-400 font-mono font-medium truncate" data-i18n="vault.activePot">Active Spending Pot</span>
+              <span id="vault-status-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center space-x-1.5 shrink-0 whitespace-nowrap shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+                <span data-i18n="vault.status.active" class="whitespace-nowrap">Active</span>
               </span>
             </div>
+
+            <!-- Value Row: Prominent Balance Display -->
+            <div class="text-3xl sm:text-5xl font-extrabold tracking-tight font-mono text-black dark:text-white tabular-nums mt-1.5 sm:mt-2 flex items-baseline">
+              <span>$</span>
+              <span id="overview-balance">0.0000</span>
+              <span class="text-xs font-mono text-neutral-500 ml-1.5 sm:ml-2">USDT</span>
+            </div>
+
+            <!-- Subtitle Row: Credits (Never Truncated by Badge) -->
+            <p class="text-xs text-neutral-500 font-mono mt-0.5 sm:mt-1 truncate" id="overview-credits" data-i18n="vault.actionCredits">&asymp; 0 Action Credits Available</p>
 
             <div class="mt-5 flex gap-2 sm:gap-3">
               <button id="open-deposit-modal" class="flex-1 py-2.5 px-2.5 sm:px-3 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center justify-center space-x-1.5 shadow-sm active:scale-95 transition-all cursor-pointer">
@@ -2225,8 +2228,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         if (typeof saveBalance === 'function') saveBalance();
         if (typeof updateVaultUI === 'function') updateVaultUI();
         if (vaultStatusBadge) {
-          vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium bg-black text-white dark:bg-white dark:text-black flex items-center space-x-1.5 font-mono shadow-xs";
-          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white dark:bg-black animate-ping"></span><span data-i18n="vault.status.active">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
+          vaultStatusBadge.className = "px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center space-x-1.5 shrink-0 whitespace-nowrap shadow-xs";
+          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span><span data-i18n="vault.status.active" class="whitespace-nowrap">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
         }
         if (headerPanicBtn) {
           headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none"></i><span class="hidden md:inline text-xs font-semibold ml-1.5" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop');
@@ -2246,8 +2249,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         if (typeof saveBalance === 'function') saveBalance();
         if (typeof updateVaultUI === 'function') updateVaultUI();
         if (vaultStatusBadge) {
-          vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium border-2 border-black dark:border-white text-black dark:text-white bg-neutral-100 dark:bg-neutral-900 flex items-center space-x-1.5 font-mono";
-          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white"></span><span data-i18n="vault.status.frozen">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen (Panic Tripped)'}</span>`;
+          vaultStatusBadge.className = "px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 inline-flex items-center space-x-1.5 shrink-0 whitespace-nowrap shadow-xs";
+          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping shrink-0"></span><span data-i18n="vault.status.frozen" class="whitespace-nowrap">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen'}</span>`;
         }
         if (headerPanicBtn) {
           headerPanicBtn.innerHTML = `<i data-lucide="rotate-ccw" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none text-amber-500 animate-spin-slow"></i><span class="hidden md:inline text-xs font-semibold ml-1.5 text-amber-500" data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault');
@@ -2651,8 +2654,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         balance = backupBal ? parseFloat(backupBal) : 0.0000;
         saveBalance();
         updateVaultUI();
-        vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium bg-black text-white dark:bg-white dark:text-black flex items-center space-x-1.5 font-mono shadow-xs";
-        vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white dark:bg-black animate-ping"></span><span data-i18n="vault.status.active">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
+        vaultStatusBadge.className = "px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center space-x-1.5 shrink-0 whitespace-nowrap shadow-xs";
+        vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span><span data-i18n="vault.status.active" class="whitespace-nowrap">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
         headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none"></i><span class="hidden md:inline text-xs font-semibold ml-1.5" data-i18n="btn.panicStop">${window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicStop') : 'Emergency Stop');
         safeCreateIcons();
         return;
@@ -2665,8 +2668,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         isPanic = true;
         saveBalance();
         updateVaultUI();
-        vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium border-2 border-black dark:border-white text-black dark:text-white bg-neutral-100 dark:bg-neutral-900 flex items-center space-x-1.5 font-mono";
-        vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-black dark:bg-white"></span><span data-i18n="vault.status.frozen">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen (Panic Tripped)'}</span>`;
+        vaultStatusBadge.className = "px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 inline-flex items-center space-x-1.5 shrink-0 whitespace-nowrap shadow-xs";
+        vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping shrink-0"></span><span data-i18n="vault.status.frozen" class="whitespace-nowrap">${window.haichainI18n ? window.haichainI18n.t('vault.status.frozen') : 'Frozen'}</span>`;
         headerPanicBtn.innerHTML = `<i data-lucide="rotate-ccw" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 pointer-events-none text-amber-500 animate-spin-slow"></i><span class="hidden md:inline text-xs font-semibold ml-1.5 text-amber-500" data-i18n="btn.panicReset">${window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault'}</span>`; headerPanicBtn.setAttribute('title', window.haichainI18n ? window.haichainI18n.t('btn.panicReset') : 'Reset Vault');
         safeCreateIcons();
       }
@@ -2721,10 +2724,28 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
     // Centralized UI Synchronizer for Top Header Wallet Button
         // Helper: Detect MetaMask provider safely across desktop extensions & mobile
+    function getSolanaProvider(preferred = 'any') {
+      if (typeof window === 'undefined') return null;
+      if (preferred === 'phantom') {
+        if (window.phantom?.solana) return window.phantom.solana;
+        if (window.solana?.isPhantom) return window.solana;
+      }
+      if (preferred === 'solflare') {
+        if (window.solflare?.isSolflare || window.solflare) return window.solflare;
+        if (window.solana?.isSolflare) return window.solana;
+      }
+      // Any detected Solana provider
+      if (window.phantom?.solana) return window.phantom.solana;
+      if (window.solflare) return window.solflare;
+      if (window.solana) return window.solana;
+      return null;
+    }
+    window.getSolanaProvider = getSolanaProvider;
+
     function getMetaMaskProvider() {
       if (typeof window === 'undefined') return null;
       if (window.ethereum?.providers && Array.isArray(window.ethereum.providers)) {
-        return window.ethereum.providers.find(p => p.isMetaMask && !p.isPhantom) || window.ethereum.providers.find(p => p.isMetaMask) || window.ethereum;
+        return window.ethereum.providers.find(p => p.isMetaMask && !p.isPhantom) || window.ethereum.providers.find(p => p.isMetaMask) || window.ethereum.providers[0];
       }
       if (window.ethereum?.isMetaMask) {
         return window.ethereum;
@@ -2734,6 +2755,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       }
       return null;
     }
+    window.getMetaMaskProvider = getMetaMaskProvider;
 
     function updateWalletBtnUI() {
       const wBtnText = document.getElementById('wallet-btn-text');
@@ -3354,12 +3376,15 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     // Detect Mobile Device (Phone/Tablet) with iPadOS & touch desktop fallback
     function isMobileDevice() {
       const ua = navigator.userAgent || '';
+      // Windows, Mac, and Linux desktop PCs (including Surface, touchscreen laptops) must NEVER be treated as mobile app platforms!
+      if (/Windows NT|Macintosh|Linux/i.test(ua) && !/Android/i.test(ua)) {
+        return false;
+      }
       const isTouch = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || ('ontouchstart' in window);
       const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
       const isTablet = /(iPad|Tablet|(Android(?!.*Mobile))|(Silk(?!.*Mobile)))/i.test(ua);
-      const isMacTouch = /Macintosh/i.test(ua) && isTouch; // iPadOS 13+ desktop agent
-      const isNarrow = window.innerWidth <= 1024;
-      return isMobileUA || isTablet || isMacTouch || (isTouch && isNarrow);
+      const isMacTouch = /Macintosh/i.test(ua) && isTouch && !window.MSStream; // iPadOS 13+
+      return isMobileUA || isTablet || isMacTouch;
     }
 
     function getMobileWalletDeepLink(provider) {
@@ -3846,13 +3871,14 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
                 // 2. PHANTOM WALLET
         if (provider === 'phantom') {
-          const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+          const phantom = getSolanaProvider('phantom') || window.solana;
           if (phantom) {
             try {
               walletBtnText.textContent = getDashNotice('connectingPhantom');
               const resp = await phantom.connect();
-              const pubKey = resp.publicKey ? resp.publicKey.toString() : phantom.publicKey.toString();
-              await setConnectedWallet(pubKey, 'Phantom');
+              const pubKey = resp.publicKey ? resp.publicKey.toString() : (phantom.publicKey ? phantom.publicKey.toString() : '');
+              if (!pubKey) throw new Error("No public key returned by Phantom");
+              await setConnectedWallet(pubKey, phantom.isPhantom ? 'Phantom' : 'Solana');
               walletConnectModal.classList.add('hidden');
               showToast({
                 title: 'Phantom Connected',
@@ -3860,6 +3886,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 icon: 'check-circle'
               });
               openAccountModal();
+              window.dispatchEvent(new CustomEvent('haichain_wallet_connected', { detail: { address: pubKey, provider: 'Phantom' } }));
             } catch (err) {
               console.error("Phantom connection rejected:", err);
               updateWalletBtnUI();
@@ -3885,7 +3912,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else {
-            walletNoticeText.innerHTML = getVestingText('phantomNotDetected');
+            walletNoticeText.innerHTML = getDashNotice('phantomNotDetected');
             walletInstallLink.href = "https://phantom.app/";
             walletInstallLink.parentElement.classList.remove('hidden');
             walletNoticeBox.classList.remove('hidden');
@@ -3894,9 +3921,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           return;
         }
 
-                // METAMASK WALLET (EVM & Solana Snap Support)
+        // METAMASK WALLET (EVM & Solana Snap Support)
         if (provider === 'metamask') {
-          const mm = getMetaMaskProvider();
+          const mm = getMetaMaskProvider() || window.ethereum;
           if (mm) {
             try {
               walletBtnText.textContent = getDashNotice('connectingMetaMask');
@@ -3919,6 +3946,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 icon: 'check-circle'
               });
               openAccountModal();
+              window.dispatchEvent(new CustomEvent('haichain_wallet_connected', { detail: { address: account, provider: 'MetaMask', isEVM: true } }));
 
               if (mm.on && !mm._haichainListenersBound) {
                 mm._haichainListenersBound = true;
@@ -3953,9 +3981,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else if (isMobileDevice()) {
-            // MOBILE 1-CLICK DEEPLINK (Mirroring Phantom UX: Direct native app launch & seamless auto-return)
             walletConnectModal.classList.add('hidden');
-            const isVi = window.haichainI18n?.currentLang === 'vi';
             walletBtnText.textContent = getDashNotice('connectingMetaMask');
             
             const sessId = 'mm_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8);
@@ -3978,7 +4004,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }, 150);
           } else {
-            walletNoticeText.innerHTML = getVestingText('metaMaskNotDetectedFull');
+            walletNoticeText.innerHTML = getDashNotice('metaMaskNotDetectedFull');
             walletInstallLink.href = "https://metamask.io/download/";
             walletInstallLink.parentElement.classList.remove('hidden');
             walletNoticeBox.classList.remove('hidden');
@@ -3989,12 +4015,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
         // 3. SOLFLARE WALLET
         if (provider === 'solflare') {
-          const solflare = window.solflare?.isSolflare ? window.solflare : null;
+          const solflare = getSolanaProvider('solflare') || window.solflare;
           if (solflare) {
             try {
               walletBtnText.textContent = getDashNotice('connectingSolflare');
-              await window.solflare.connect();
-              const pubKey = window.solflare.publicKey.toString();
+              await solflare.connect();
+              const pubKey = solflare.publicKey ? solflare.publicKey.toString() : '';
+              if (!pubKey) throw new Error("No public key returned by Solflare");
               await setConnectedWallet(pubKey, 'Solflare');
               walletConnectModal.classList.add('hidden');
               showToast({
@@ -4003,6 +4030,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 icon: 'check-circle'
               });
               openAccountModal();
+              window.dispatchEvent(new CustomEvent('haichain_wallet_connected', { detail: { address: pubKey, provider: 'Solflare' } }));
             } catch (err) {
               console.error("Solflare error:", err);
               updateWalletBtnUI();
@@ -4028,7 +4056,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               }
             }
           } else {
-            walletNoticeText.innerHTML = getVestingText('solflareNotDetected');
+            walletNoticeText.innerHTML = getDashNotice('solflareNotDetected');
             walletInstallLink.href = "https://solflare.com/";
             walletInstallLink.parentElement.classList.remove('hidden');
             walletNoticeBox.classList.remove('hidden');
@@ -6257,13 +6285,16 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     if (depositConnectBtn) {
       depositConnectBtn.addEventListener('click', async () => {
         const isVi = window.haichainI18n?.currentLang === 'vi';
-        const phantom = window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
-        const solflare = window.solflare?.isSolflare ? window.solflare : null;
+        const phantom = getSolanaProvider('phantom') || window.solana;
+        const solflare = getSolanaProvider('solflare') || window.solflare;
+        const mm = getMetaMaskProvider() || window.ethereum;
+
         if (phantom) {
           try {
             depositConnectBtn.textContent = getDashNotice('connectingBtn');
             const resp = await phantom.connect();
-            await setConnectedWallet(resp.publicKey ? resp.publicKey.toString() : phantom.publicKey.toString(), 'Phantom');
+            const pk = resp.publicKey ? resp.publicKey.toString() : (phantom.publicKey ? phantom.publicKey.toString() : '');
+            await setConnectedWallet(pk, phantom.isPhantom ? 'Phantom' : 'Solana');
             updateDepositWalletBanner();
           } catch (err) {
             console.warn("Phantom connection rejected:", err);
@@ -6273,10 +6304,23 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           try {
             depositConnectBtn.textContent = getDashNotice('connectingBtn');
             await solflare.connect();
-            await setConnectedWallet(solflare.publicKey.toString(), 'Solflare');
+            const pk = solflare.publicKey ? solflare.publicKey.toString() : '';
+            await setConnectedWallet(pk, 'Solflare');
             updateDepositWalletBanner();
           } catch (err) {
             console.warn("Solflare connection rejected:", err);
+            updateDepositWalletBanner();
+          }
+        } else if (mm) {
+          try {
+            depositConnectBtn.textContent = getDashNotice('connectingBtn');
+            const accounts = await mm.request({ method: 'eth_requestAccounts' });
+            if (accounts && accounts[0]) {
+              await setConnectedWallet(accounts[0], 'MetaMask');
+              updateDepositWalletBanner();
+            }
+          } catch (err) {
+            console.warn("MetaMask connection rejected:", err);
             updateDepositWalletBanner();
           }
         } else {
