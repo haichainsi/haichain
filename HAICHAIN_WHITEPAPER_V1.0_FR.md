@@ -389,7 +389,7 @@ Le principal frein à l'adoption de systèmes non dépositaires réside dans la 
 
 ## 5. LE NOYAU DE RÈGLEMENT ON-CHAIN: FORTERESSE D'IMMUNITÉ NUCLÉAIRE (SOLANA v6.9.3)
 
-Le noyau de contrats intelligents (`haichain-core v6.9.3`) est formellement vérifié et immunisé contre les attaques historiques ayant coûté plus de \$800.000.000 dans la finance décentralisée:
+Le noyau de contrats intelligents (`haichain-core v6.9.3`) met en œuvre une architecture de **Défense en Profondeur Déterministe Multicouche (Deterministic Multi-Layer Defense-in-Depth)**, appliquant 6 invariants mathématiques d'exécution pour neutraliser les vulnérabilités d'état et les exploits historiques totalisant plus de \$821 millions. Associée à un programme d'audits de sécurité indépendants tiers réguliers, elle garantit l'intégrité absolue des flux:
 
 ```
 +---------------------------------------------------------------------------------+
@@ -848,7 +848,13 @@ HAICHAIN y parvient via des **Canaux d'État Optimistes Hybrides**:
 
 1. **Dépôt Initial sur la Chaîne:** Dès la session ouverte, l'Agent dépose une fraction de son budget (ex: \$1.00 USDT) de son Fonds de Dépense vers une PDA de Canal d'État sur Solana L1.
 2. **Micro-Paiements en Mémoire Hors Chaîne (< 5ms):** À mesure que les tokens sont générés, l'Agent signe continuellement des Micro-Bons en mémoire vive via des paires de clés Ed25519 éphémères:
-   $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+   Où:
+   * $\text{DOMAIN\_SEPARATOR}$: Balise cryptographique de séparation de domaine du protocole (`"haichain-v1-channel-settlement"`).
+   * $\text{ClusterID}$: Identifiant de cluster Solana (Devnet, Testnet, Mainnet-Beta), éliminant tout rejeu trans-réseau.
+   * $\text{ProgramID} \text{ \& } \text{VaultPDA}$: Lie le bon au programme précis et au coffre PDA isolé de l'agent.
+   * $\text{ProviderPubkey}$: Clé publique du prestataire autorisé pour la session, empêchant tout transfert illicite du bon.
+   * $(\text{SessionID}, k, \text{CumulativeAmount}_k)$: Compteur monotone ($k$) et montant cumulé assurant un règlement unique sous 5ms.
    Cette transmission transite via WebSocket/gRPC chiffré en moins de 5ms, **en totale indépendance du rythme des blocs de la blockchain, éliminant 100% des interruptions d'inférence**.
 3. **Règlement On-Chain Global:** En clôture de session ou à intervalle régulier (toutes les 10-15 minutes), le Fournisseur transmet **l'unique bon doté du numéro de séquence (nonce) le plus élevé** au programme Anchor de Solana. Le contrat transfère le montant dû au prestataire et reverse le reliquat au Fonds Maître de l'Agent.
 4. **Invariant de Rétraction par Expiration:** L'Agent appelle `request_channel_close`. Le canal entre dans une Fenêtre de Défi de Litige de 300 slots (~120s) permettant au prestataire de soumettre le dernier bon signé pour un règlement équitable. En l'absence de litige sous 300 slots, 100% du capital non consommé est débloqué sans risque; toute tentative frauduleuse entraîne un Slashing.
@@ -898,7 +904,7 @@ Afin d'annihiler la **Spirale Mortelle de la Vélocité des Tokens (Théorème d
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ Staking Obligatoire de $HAISI (veHAISI) ]     [ Recettes de Commissions en USDT Pur ]
-├── Bande passante indexée sur le capital bloqué├── Prélèvement de 0.1% capturé
+├── Bande passante indexée sur le capital bloqué├── Prélèvement de 0.05% capturé
 │   Quota Journalier = k * sqrt(Staked * Temps) │   strictement en USDT natif
 └── Plus d'agents -> Plus de $HAISI immobilisé   └── 100% dirigé vers la Trésorerie
        │                                                 │

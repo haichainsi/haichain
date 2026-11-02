@@ -389,7 +389,7 @@ El principal factor disuasorio para que los consumidores adopten sistemas sin cu
 
 ## 5. EL NÚCLEO DE LIQUIDACIÓN EN CADENA: FORTALEZA DE INMUNIDAD NUCLEAR (SOLANA v6.9.3)
 
-El núcleo de contratos inteligentes (`haichain-core v6.9.3`) está verificado formalmente y blindado contra exploits históricos que superan los \$800.000.000 en finanzas descentralizadas:
+El núcleo de contratos inteligentes (`haichain-core v6.9.3`) implementa una arquitectura de **Defensa en Profundidad Determinista Multicapa (Deterministic Multi-Layer Defense-in-Depth)**, aplicando 6 invariantes matemáticas en tiempo de ejecución para neutralizar vulnerabilidades de estado y vectores de ataque históricos por más de \$821 millones. Combinado con auditorías de seguridad independientes programadas de primer nivel, elimina cualquier brecha de ejecución:
 
 ```
 +---------------------------------------------------------------------------------+
@@ -848,7 +848,13 @@ HAICHAIN resuelve esto mediante **Canales de Estado Optimistas Híbridos**:
 
 1. **Bloqueo Escrow en Cadena:** Al iniciar la sesión, el Agente bloquea un presupuesto fraccionario (ej. \$1.00 USDT) de su Fondo de Gasto en una PDA de Canal de Estado dedicada en Solana L1.
 2. **Micro-Ticks en Memoria Fuera de Cadena (< 5ms):** A medida que los tokens fluyen desde el Proveedor de IA, el Agente firma Micro-Vales criptográficos continuamente en RAM con pares de claves efímeras Ed25519:
-   $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+   Donde:
+   * $\text{DOMAIN\_SEPARATOR}$: Etiqueta criptográfica de separación de dominio del protocolo (`"haichain-v1-channel-settlement"`).
+   * $\text{ClusterID}$: Identificador del clúster de Solana (Devnet, Testnet, Mainnet-Beta), eliminando repeticiones entre redes.
+   * $\text{ProgramID} \text{ \& } \text{VaultPDA}$: Vincula la firma al programa exacto y a la bóveda aislada del agente.
+   * $\text{ProviderPubkey}$: Clave pública del proveedor autorizado para la sesión activa, impidiendo transferencias no autorizadas.
+   * $(\text{SessionID}, k, \text{CumulativeAmount}_k)$: Contador monótono ($k$) y gasto acumulado con liquidación única en menos de 5ms.
    Este intercambio ocurre sobre canales WebSocket/gRPC cifrados con menos de 5ms de latencia, **operando de forma totalmente independiente de los bloques de la cadena y eliminando el 100% de las pausas en el razonamiento del LLM**.
 3. **Liquidación Agrupada en Cadena:** Al finalizar la sesión o en intervalos periódicos (cada 10-15 minutos), el Proveedor presenta **únicamente el vale con el nonce más alto** al programa Anchor de Solana. El contrato liquida el saldo acumulado al proveedor y reembolsa de inmediato los fondos restantes al Fondo Maestro del Agente.
 4. **Invariante de Retracción por Expiración:** El Agente invoca `request_channel_close`. El canal entra en una Ventana de Desafío de Disputa de 300 slots (~120s) que permite al proveedor presentar el último comprobante firmado para liquidación equitativa. Sin disputa en 300 slots, el 100% del colateral no consumido se desbloquea con cero riesgo de pérdida; fraudes se castigan con Slashing.
@@ -898,7 +904,7 @@ Para neutralizar la **Espiral de Muerte por Velocidad de Token (Teorema de Pfeff
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ Staking Obligatorio de $HAISI (veHAISI) ]     [ Ingresos por Tarifas en USDT Puro ]
-├── Ancho de banda otorgado por capital bloqueado├── Comisión del 0.1% capturada
+├── Ancho de banda otorgado por capital bloqueado├── Comisión del 0.05% capturada
 │   Cuota Diaria = k * sqrt(Staked * Tiempo)     │   estrictamente en USDT nativo
 └── Más agentes -> Más $HAISI bloqueado          └── 100% canalizado a la Tesorería
        │                                                 │

@@ -422,7 +422,7 @@ The primary deterrent for Web2 consumers adopting non-custodial systems is the a
 
 ## 5. THE ON-CHAIN SETTLEMENT KERNEL: NUCLEAR IMMUNITY FORTRESS (SOLANA v6.9.3)
 
-The smart contract kernel (`haichain-core v6.9.3`) is formally verified and hardened against historic exploits exceeding \$800,000,000 across decentralized finance:
+The smart contract kernel (`haichain-core v6.9.3`) implements a **Deterministic Multi-Layer Defense-in-Depth** architecture, enforcing 6 mathematical runtime invariants designed to neutralize critical state vulnerabilities and historic exploit vectors totaling over \$821 million in losses. Combined with scheduled independent third-party security audits from premier Web3 auditing firms, this deterministic boundary guarantees zero unvetted contract execution:
 
 ```
 +---------------------------------------------------------------------------------+
@@ -894,7 +894,13 @@ HAICHAIN resolves this through **Hybrid Optimistic State Channels**:
 
 1. **On-chain Escrow Lock:** At session initialization, the Agent locks a fractional budget allocation (e.g., $1.00 USDT) from its Spending Pot into a dedicated State Channel PDA on Solana L1.
 2. **In-Memory Off-chain Micro-Ticks (< 5ms):** As tokens stream from the AI Provider, the Agent continuously signs cryptographic Micro-Vouchers using ephemeral Ed25519 keypairs in RAM:
-   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}(\text{SessionID}, k, \text{CumulativeAmount}_k)$$
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+   Where:
+   * $\text{DOMAIN\_SEPARATOR}$: Protocol-level cryptographic domain tag (`"haichain-v1-channel-settlement"`).
+   * $\text{ClusterID}$: Solana cluster identifier (Devnet, Testnet, Mainnet-Beta), mathematically eliminating cross-network signature replay vulnerabilities.
+   * $\text{ProgramID} \text{ \& } \text{VaultPDA}$: Cryptographically anchors the voucher to the specific deployed program and the agent's isolated vault account.
+   * $\text{ProviderPubkey}$: Public key of the whitelisted service provider for the active session, preventing unauthorized secondary transfer of payment vouchers.
+   * $(\text{SessionID}, k, \text{CumulativeAmount}_k)$: Monotonically increasing tick counter ($k$) and cumulative spend under a unique session ID, enabling single-voucher settlement with sub-5ms latency and zero reasoning stalls.
    This exchange occurs over encrypted WebSocket/gRPC channels with sub-5ms latency, **operating completely independent of blockchain block production and eliminating 100% of LLM reasoning stalls**.
 3. **Batched On-chain Settlement:** Upon session termination or periodic flushing intervals (every 10-15 minutes), the AI Provider submits **only the single voucher bearing the highest nonce** to the Solana Anchor Program. The contract settles the cumulative balance to the provider and instantly refunds remaining funds to the Agent Master Pot.
 4. **Timeout Retract Invariant:** If a provider disconnects unexpectedly or experiences upstream failure, the Agent invokes `request_channel_close`. The channel enters a formal 300-slot (~120s) Dispute Challenge Window allowing the provider to submit the latest signed voucher for equitable settlement. If the provider does not contest or verifies full clearance within 300 slots, 100% of remaining unconsumed collateral is securely unlocked to the Agent with zero capital loss risk.

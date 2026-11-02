@@ -43,17 +43,18 @@
   }
 
   function getWhitepaperUrlForLang(lang) {
+    const versionParam = '?v=v31_perfect_10lang_audit';
     switch (lang) {
-      case 'vi': return '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf';
-      case 'zh': return '/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf';
-      case 'ko': return '/HAICHAIN_WHITEPAPER_V1.0_KO.pdf';
-      case 'es': return '/HAICHAIN_WHITEPAPER_V1.0_ES.pdf';
-      case 'fr': return '/HAICHAIN_WHITEPAPER_V1.0_FR.pdf';
-      case 'ru': return '/HAICHAIN_WHITEPAPER_V1.0_RU.pdf';
-      case 'kk': return '/HAICHAIN_WHITEPAPER_V1.0_KK.pdf';
-      case 'hi': return '/HAICHAIN_WHITEPAPER_V1.0_HI.pdf';
-      case 'he': return '/HAICHAIN_WHITEPAPER_V1.0_HE.pdf';
-      default:   return '/HAICHAIN_WHITEPAPER_V1.0_EN.pdf';
+      case 'vi': return '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf' + versionParam;
+      case 'zh': return '/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf' + versionParam;
+      case 'ko': return '/HAICHAIN_WHITEPAPER_V1.0_KO.pdf' + versionParam;
+      case 'es': return '/HAICHAIN_WHITEPAPER_V1.0_ES.pdf' + versionParam;
+      case 'fr': return '/HAICHAIN_WHITEPAPER_V1.0_FR.pdf' + versionParam;
+      case 'ru': return '/HAICHAIN_WHITEPAPER_V1.0_RU.pdf' + versionParam;
+      case 'kk': return '/HAICHAIN_WHITEPAPER_V1.0_KK.pdf' + versionParam;
+      case 'hi': return '/HAICHAIN_WHITEPAPER_V1.0_HI.pdf' + versionParam;
+      case 'he': return '/HAICHAIN_WHITEPAPER_V1.0_HE.pdf' + versionParam;
+      default:   return '/HAICHAIN_WHITEPAPER_V1.0_EN.pdf' + versionParam;
     }
   }
 

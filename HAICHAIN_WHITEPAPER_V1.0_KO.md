@@ -846,7 +846,13 @@ HAICHAIN은 **하이브리드 옵티미스틱 상태 채널 (Hybrid Optimistic S
 
 1. **온체인 에스크로 락업:** 세션 초기화 시 에이전트는 지출 금고에서 소액 예산(예: $1.00 USDT)을 Solana L1의 상태 채널 PDA로 잠급니다.
 2. **메모리 내 오프체인 마이크로 틱 (< 5ms):** AI 공급자로부터 토큰이 스트리밍될 때 에이전트는 RAM의 임시 Ed25519 키쌍을 사용하여 암호학적 마이크로 바우처에 지속적으로 서명합니다:
-   $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+   매개변수 정의:
+   * $\text{DOMAIN\_SEPARATOR}$: 프로토콜 레벨 암호학적 도메인 분리 태그 (`"haichain-v1-channel-settlement"`).
+   * $\text{ClusterID}$: Solana 클러스터 식별자 (Devnet, Testnet, Mainnet-Beta), 환경 간 서명 재전송(Replay) 공격 완전 차단.
+   * $\text{ProgramID} \text{ \& } \text{VaultPDA}$: 배포된 프로그램 및 에이전트의 격리된 볼트 PDA 계정에 바인딩.
+   * $\text{ProviderPubkey}$: 활성 세션의 인가된 공급자 공개키, 바우처 제3자 무단 양도 방지.
+   * $(\text{SessionID}, k, \text{CumulativeAmount}_k)$: 단조 증가 틱 번호($k$) 및 누적 지출액 기반 5ms 미만 단일 바우처 최종 정산.
    이는 5ms 미만의 지연 시간을 가진 암호화된 WebSocket/gRPC를 통해 교환되며, **블록체인 블록 생성과 완전히 무관하게 작동하여 LLM 추론 지연을 100% 제거합니다**.
 3. **단일 배치 온체인 정산:** 세션 종료 시 또는 정기 플러시 주기(매 10-15분)에 AI 공급자는 **가장 높은 Nonce를 가진 단일 바우처만** Solana 컨트랙트에 제출합니다. 컨트랙트는 누적 잔액을 정산하고 남은 자금을 에이전트 마스터 금고로 즉시 환불합니다.
 4. **타임아웃 자동 회수 불변성:** 에이전트가 `request_channel_close`를 호출하면 300 슬롯(~120초)의 분쟁 챌린지 윈도우(Dispute Challenge Window)에 진입합니다. 제공자는 서명된 최신 바우처를 제출하여 공정 정산할 수 있습니다. 300 슬롯 내 이의가 없으면 미소비 자금 100%가 안전하게 잠금 해제되며, 부정 조기 인출 시도는 보증금 Slashing 처리됩니다.
@@ -896,7 +902,7 @@ HAICHAIN은 수학적으로 닫힌 **이중 자산 경제 (Dual-Asset Economy)**
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ 의무적 $HAISI 스테이킹 (veHAISI) ]             [ 순수 USDT 순액 수수료 수익 포착 ]
-├── 잠긴 자본에 비례하여 대역폭 부여              ├── 0.1%의 청산 마진을 100% 순수한
+├── 잠긴 자본에 비례하여 대역폭 부여              ├── 0.05%의 청산 마진을 100% 순수한
 │   일일 트랜잭션 한도 = k * sqrt(스테이킹 * 기간)│   네이티브 USDT로 엄격히 징수
 └── 더 많은 에이전트 -> 더 많은 $HAISI 락업       └── 100% 프로토콜 금고로 유입
        │                                                 │

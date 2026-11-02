@@ -644,7 +644,13 @@ HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc
 
 1. **Khóa Ký Quỹ Ban Đầu (On-chain Escrow Lock):** Khi khởi tạo phiên làm việc, Agent khóa một lượng quỹ nhỏ (ví dụ $1.00 USDT) từ Spending Pot vào một tài khoản PDA chuyên dụng của State Channel trên Solana L1.
 2. **Ký Luồng Siêu Tốc Ngoài Chuỗi (Off-chain Tick Signatures < 5ms):** Trong suốt quá trình nhận luồng phản hồi từ AI Provider (stream từng cụm token), Agent liên tục ký các vé điện tử vi mô (Micro-Vouchers) bằng cặp khóa Ed25519 tại tầng RAM:
-   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}(\text{SessionID}, k, \text{CumulativeAmount}_k)$$
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+   Trong đó:
+   * $\text{DOMAIN\_SEPARATOR}$: Chuỗi định danh phân tách miền chuẩn giao thức (`"haichain-v1-channel-settlement"`).
+   * $\text{ClusterID}$: Định danh cụm mạng (Devnet, Testnet, Mainnet-Beta), triệt tiêu 100% rủi ro tấn công phát lại chữ ký xuyên môi trường (Cross-Cluster Replay Attack).
+   * $\text{ProgramID} \text{ \& } \text{VaultPDA}$: Ràng buộc chính xác địa chỉ hợp đồng lõi và Kho quỹ PDA của Agent, ngăn chặn tái sử dụng chữ ký trên các hợp đồng fork hoặc hũ tiền khác.
+   * $\text{ProviderPubkey}$: Địa chỉ ví công khai của Nhà cung cấp dịch vụ được ủy quyền trong phiên, vô hiệu hóa việc chuyển nhượng vé trái phép cho bên thứ ba.
+   * $(\text{SessionID}, k, \text{CumulativeAmount}_k)$: Khóa phiên duy nhất, số thứ tự đơn điệu tăng dần ($k$) và số tiền tích lũy lũy tiến, đảm bảo quyết toán gom một vé duy nhất an toàn tuyệt đối.
    Quá trình này diễn ra hoàn toàn ngoài chuỗi qua kết nối WebSocket/gRPC bảo mật, đạt độ trễ dưới 5ms, **hoàn toàn độc lập với trạng thái tải của blockchain và loại bỏ 100% tình trạng giật lag suy luận (zero-stall inference)**.
 3. **Quyết Toán Gom Trên Chuỗi (Batched On-chain Settlement):** Khi kết thúc phiên hội thoại hoặc định kỳ sau mỗi 10-15 phút, AI Provider chỉ cần nộp **duy nhất 1 vé có chỉ số Nonce cao nhất** lên Solana Anchor Program để rút toàn bộ khoản thanh toán tích lũy. Hợp đồng thông minh tự động hoàn trả số dư chưa tiêu về Master Pot của Agent.
 4. **Bất Biến Rút Tiền Hết Hạn (Timeout Retract Invariant):** Nếu nhà cung cấp dịch vụ ngắt kết nối đột ngột hoặc mạng có sự cố bất khả kháng, sau khoảng thời gian ấn định, Agent có quyền gửi yêu cầu đóng kênh `request_channel_close`. Kênh sẽ bước vào Cửa Sổ Thử Thách (Dispute Challenge Window - 300 slots / ~120 giây) cho phép Nhà cung cấp nộp voucher mới nhất có chữ ký để đối soát và quyết toán công bằng. Nếu hết 300 slots mà Nhà cung cấp không phản hồi hoặc xác nhận số dư hợp lệ, số tiền còn lại sẽ được hoàn 100% về ví Agent mà không có bất kỳ rủi ro thất thoát vốn nào.

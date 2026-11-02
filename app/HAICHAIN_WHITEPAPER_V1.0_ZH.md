@@ -845,7 +845,13 @@ HAICHAIN 通过 **混合乐观流式状态通道 (Hybrid Optimistic State Channe
 
 1. **链上极简开渠锁定:** 会话建立时，智能体从 Spending Pot 中划转一笔微小预算 (如 $1.00 USDT) 锁定在 Solana L1 的通道 PDA 中。
 2. **内存级链下微签名凭据 (< 5ms):** 当大模型流式吐字时，智能体通过内存中的临时 Ed25519 秘钥对快速签发连续的微型凭单 (Micro-Vouchers):
-   $$	ext{Voucher}_k = 	ext{Sign}_{	ext{Agent}}(	ext{SessionID}, k, 	ext{CumulativeAmount}_k)$$
+   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+   参数说明:
+   * $\text{DOMAIN\_SEPARATOR}$: 协议级密码学域分离标识 (`"haichain-v1-channel-settlement"`)。
+   * $\text{ClusterID}$: Solana 集群标识符 (Devnet, Testnet, Mainnet-Beta)，杜绝跨网络签名重放攻击。
+   * $\text{ProgramID} \text{ \& } \text{VaultPDA}$: 锚定部署的程序和智能体隔离的金库 PDA 账户。
+   * $\text{ProviderPubkey}$: 当前会话指定合法服务商公钥，严禁凭单非法向第三方转让。
+   * $(\text{SessionID}, k, \text{CumulativeAmount}_k)$: 严格单调递增序号($k$)与累计消费额，支持 < 5ms 单张终局清算。
    这完全在端到端的 WebSocket/gRPC 高速连接中传输，耗时不到 5 毫秒，**彻底脱离区块链出块排队束缚，消除 100% 的大模型停顿卡手现象**。
 3. **最高 Nonce 单笔批量结算:** 当会话结束或达到定时刷新周期 (如每 10-15 分钟)，AI 服务商**只需将带有最大序号 (Highest Nonce) 的单张凭单**提交给 Solana 智能合约。内核直接划转累计金额给服务商，并将剩余资金全额无损退回用户金库。
 4. **超时自动回撤不变量:** 智能体可发起 `request_channel_close`。通道进入 300 个插槽 (约 120 秒) 争议挑战窗口 (Dispute Challenge Window)，允许服务商提交最新签署凭证结算。若 300 插槽内无争议，100% 剩余未消费资金安全退还智能体；恶意提款将被罚没 (Slashing) 质押金。
@@ -895,7 +901,7 @@ HAICHAIN 建立了一套严谨自洽且在数学上完全闭环的 **双资产�
        ┌────────────────────────┴────────────────────────┐
        ▼                                                 ▼
 [ 强制质押 $HAISI 获取带宽 (veHAISI) ]          [ 捕获纯正 USDT 净额手续费收入 ]
-├── 锁定资本换取网络吞吐额度                     ├── 按照 0.1% 的费率进行清算抽成，
+├── 锁定资本换取网络吞吐额度                     ├── 按照 0.05% 的费率进行清算抽成，
 │   每日可用带宽 = k * sqrt(质押量 * 锁定时长)    │   全程严格以纯正原生 USDT 计价收取
 └── 接入智能体越多 -> 锁定的 $HAISI 越多        └── 100% 汇流至协议自主金库中
        │                                                 │
