@@ -174,7 +174,7 @@
 
   <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
 
-  <script src="/app/i18n.js?v=v38_sync_small_text_1793637895707"></script>
+  <script src="/app/i18n.js?v=v39_exact_small_text_1793638573636"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v40_fluid_signature_validated_1793646000000"></script>
@@ -470,6 +470,20 @@
     }
 
   </style>
+
+  <!-- HAICHAIN Genesis Referral Tracker -->
+  <script>
+    (function() {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var ref = p.get('ref') || p.get('referrer') || p.get('inviter');
+        if (ref && ref.trim().length >= 4) {
+          localStorage.setItem('haichain_ref', ref.trim());
+          localStorage.setItem('haichain_ref_captured_at', new Date().toISOString());
+        }
+      } catch (_) {}
+    })();
+  </script>
 
 </head>
 
@@ -927,7 +941,7 @@
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white" data-i18n="agenticShift.title">
           Cả thế giới công nghệ đều nhận ra: "AI Agent bắt buộc phải có tiền!"
         </h2>
-        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="agenticShift.subtitle">
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed font-light" data-i18n="agenticShift.subtitle">
           Từ OpenAI, Google, Stripe cho đến Coinbase đều xác định: 2023 - 2024 là thời kỳ AI trò chuyện (Chatbot), nhưng từ 2026 trở đi là kỷ nguyên AI tự hành động (AI Agent). Và một khi AI hành động, nó bắt buộc phải có tiền.
         </p>
       </div>
@@ -935,40 +949,40 @@
       <!-- 3 Columns: Minimalist, unboxed, airy -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
         <!-- Stripe -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-neutral-50/60 dark:bg-neutral-900/40 border border-neutral-200/70 dark:border-neutral-800/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
-          <div class="flex items-center space-x-3 mb-3.5">
-            <i data-lucide="credit-card" class="w-5 h-5 text-neutral-900 dark:text-white shrink-0"></i>
-            <h3 class="text-base sm:text-lg font-semibold text-neutral-950 dark:text-white tracking-tight" data-i18n="agenticShift.card1Title">
+        <div class="p-5 sm:p-6 rounded-2xl bg-neutral-50/60 dark:bg-neutral-900/40 border border-neutral-200/70 dark:border-neutral-800/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
+          <div class="flex items-center space-x-2.5 mb-2.5">
+            <i data-lucide="credit-card" class="w-4 h-4 text-neutral-900 dark:text-white shrink-0"></i>
+            <h3 class="text-sm sm:text-base font-semibold text-neutral-950 dark:text-white tracking-tight" data-i18n="agenticShift.card1Title">
               Stripe (Mỹ)
             </h3>
           </div>
-          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card1Desc">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card1Desc">
             Thành lập bộ phận riêng nghiên cứu "Agentic Commerce" — xây dựng hạ tầng thanh toán chuyên biệt cho AI tự giao dịch.
           </p>
         </div>
 
         <!-- Coinbase -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-neutral-50/60 dark:bg-neutral-900/40 border border-neutral-200/70 dark:border-neutral-800/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
-          <div class="flex items-center space-x-3 mb-3.5">
-            <i data-lucide="wallet" class="w-5 h-5 text-neutral-900 dark:text-white shrink-0"></i>
-            <h3 class="text-base sm:text-lg font-semibold text-neutral-950 dark:text-white tracking-tight" data-i18n="agenticShift.card2Title">
+        <div class="p-5 sm:p-6 rounded-2xl bg-neutral-50/60 dark:bg-neutral-900/40 border border-neutral-200/70 dark:border-neutral-800/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
+          <div class="flex items-center space-x-2.5 mb-2.5">
+            <i data-lucide="wallet" class="w-4 h-4 text-neutral-900 dark:text-white shrink-0"></i>
+            <h3 class="text-sm sm:text-base font-semibold text-neutral-950 dark:text-white tracking-tight" data-i18n="agenticShift.card2Title">
               Coinbase (Mỹ)
             </h3>
           </div>
-          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card2Desc">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card2Desc">
             CEO Brian Armstrong kêu gọi: "Hãy cấp ví tiền cho AI, tương lai là máy móc tự thanh toán với nhau trên chuỗi".
           </p>
         </div>
 
         <!-- Venture Backed -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-neutral-50/60 dark:bg-neutral-900/40 border border-neutral-200/70 dark:border-neutral-800/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
-          <div class="flex items-center space-x-3 mb-3.5">
-            <i data-lucide="trending-up" class="w-5 h-5 text-neutral-900 dark:text-white shrink-0"></i>
-            <h3 class="text-base sm:text-lg font-semibold text-neutral-950 dark:text-white tracking-tight" data-i18n="agenticShift.card3Title">
+        <div class="p-5 sm:p-6 rounded-2xl bg-neutral-50/60 dark:bg-neutral-900/40 border border-neutral-200/70 dark:border-neutral-800/70 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
+          <div class="flex items-center space-x-2.5 mb-2.5">
+            <i data-lucide="trending-up" class="w-4 h-4 text-neutral-900 dark:text-white shrink-0"></i>
+            <h3 class="text-sm sm:text-base font-semibold text-neutral-950 dark:text-white tracking-tight" data-i18n="agenticShift.card3Title">
               Các Quỹ Đầu Tư Lớn
             </h3>
           </div>
-          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card3Desc">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card3Desc">
             Skyfire Systems, Nevermined huy động hàng chục triệu USD từ các quỹ mạo hiểm chỉ để giải bài toán AI tự thanh toán.
           </p>
         </div>
@@ -987,7 +1001,7 @@
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white" data-i18n="advantages.title">
           Vậy HAICHAIN có gì KHÁC BIỆT để vượt trội?
         </h2>
-        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mt-4 leading-relaxed font-light" data-i18n="advantages.subtitle">
+        <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-3 leading-relaxed font-light" data-i18n="advantages.subtitle">
           Hầu hết các dự án trên thế giới hiện nay chỉ mới là ý tưởng trên giấy hoặc làm theo lối mòn cũ. HAICHAIN tạo ra 4 sự khác biệt mang tính sống còn:
         </p>
       </div>
@@ -996,15 +1010,15 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
         
         <!-- Pillar 1: Sub-Cent Micro-Escrow -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
+        <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
           <div>
-            <div class="flex items-start space-x-3 mb-3.5">
-              <i data-lucide="zap" class="w-5 h-5 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
-              <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item1Title">
+            <div class="flex items-start space-x-2.5 mb-2.5">
+              <i data-lucide="zap" class="w-4 h-4 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
+              <h3 class="text-sm sm:text-base font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item1Title">
                 Thanh toán siêu nhỏ (Dưới 1 xu Mỹ) với 0% Phí
               </h3>
             </div>
-            <div class="space-y-3 font-sans text-xs sm:text-sm leading-relaxed">
+            <div class="space-y-2.5 font-sans text-xs leading-relaxed">
               <p class="text-neutral-500 dark:text-neutral-400" data-i18n="advantages.item1Rival">
                 <strong>Các đối thủ:</strong> Dùng thẻ Visa/Mastercard với phí tối thiểu $0.30 + 2.9%. Tác vụ AI chỉ tốn $0.002 nhưng phí đắt gấp 150 lần giá trị công việc.
               </p>
@@ -1016,15 +1030,15 @@
         </div>
 
         <!-- Pillar 2: 380ms Emergency Circuit Breaker -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
+        <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
           <div>
-            <div class="flex items-start space-x-3 mb-3.5">
-              <i data-lucide="shield-alert" class="w-5 h-5 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
-              <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item2Title">
+            <div class="flex items-start space-x-2.5 mb-2.5">
+              <i data-lucide="shield-alert" class="w-4 h-4 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
+              <h3 class="text-sm sm:text-base font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item2Title">
                 Cầu dao an toàn 380ms (Chống hack & cạn ví)
               </h3>
             </div>
-            <div class="space-y-3 font-sans text-xs sm:text-sm leading-relaxed">
+            <div class="space-y-2.5 font-sans text-xs leading-relaxed">
               <p class="text-neutral-500 dark:text-neutral-400" data-i18n="advantages.item2Rival">
                 <strong>Các đối thủ:</strong> Chỉ tập trung chi tiêu mà thiếu phòng thủ Prompt Injection hoặc lỗi lặp tiêu cạn kiệt số dư ví.
               </p>
@@ -1036,15 +1050,15 @@
         </div>
 
         <!-- Pillar 3: Ultra-Simple MCP Standard -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
+        <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
           <div>
-            <div class="flex items-start space-x-3 mb-3.5">
-              <i data-lucide="smartphone" class="w-5 h-5 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
-              <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item3Title">
+            <div class="flex items-start space-x-2.5 mb-2.5">
+              <i data-lucide="smartphone" class="w-4 h-4 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
+              <h3 class="text-sm sm:text-base font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item3Title">
                 Cực kỳ đơn giản cho người dùng (Chuẩn MCP Claude)
               </h3>
             </div>
-            <div class="space-y-3 font-sans text-xs sm:text-sm leading-relaxed">
+            <div class="space-y-2.5 font-sans text-xs leading-relaxed">
               <p class="text-neutral-500 dark:text-neutral-400" data-i18n="advantages.item3Rival">
                 <strong>Các đối thủ:</strong> Yêu cầu kiến thức lập trình phức tạp, tự dựng server, cấu hình API rắc rối.
               </p>
@@ -1056,15 +1070,15 @@
         </div>
 
         <!-- Pillar 4: Blockchain Transparency & Merkle Proof -->
-        <div class="p-6 sm:p-7 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
+        <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-brand-card border border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex flex-col justify-between">
           <div>
-            <div class="flex items-start space-x-3 mb-3.5">
-              <i data-lucide="file-check-2" class="w-5 h-5 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
-              <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item4Title">
+            <div class="flex items-start space-x-2.5 mb-2.5">
+              <i data-lucide="file-check-2" class="w-4 h-4 text-neutral-950 dark:text-white shrink-0 mt-0.5"></i>
+              <h3 class="text-sm sm:text-base font-bold text-neutral-950 dark:text-white tracking-tight" data-i18n="advantages.item4Title">
                 Minh bạch 100% trên Blockchain (Không thể gian lận)
               </h3>
             </div>
-            <div class="space-y-3 font-sans text-xs sm:text-sm leading-relaxed">
+            <div class="space-y-2.5 font-sans text-xs leading-relaxed">
               <p class="text-neutral-900 dark:text-neutral-100 font-medium" data-i18n="advantages.item4Desc">
                 Mọi khoản chi dù chỉ 1 phần nghìn cent đều có chứng thực mật mã độc lập (Merkle Proof) neo trực tiếp trên Solana L1. Doanh nghiệp kiểm toán cuối năm mở sổ cái đối chiếu từng giao dịch tức thì, triệt tiêu hoàn toàn gian lận hay báo khống chi phí.
               </p>

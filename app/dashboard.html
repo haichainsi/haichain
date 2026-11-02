@@ -160,7 +160,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
-  <script src="/app/i18n.js?v=v38_sync_small_text_1793637895707"></script>
+  <script src="/app/i18n.js?v=v39_exact_small_text_1793638573636"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v40_fluid_signature_validated_1793646000000"></script>
@@ -6354,6 +6354,94 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 <p class="text-[10px] text-neutral-400 font-sans">${getVestingText('step3Desc', lang)} (~${monthlyStream.toLocaleString()} HAISI / mo)</p>
               </div>
             </div>
+          </div>
+
+          <!-- Genesis Referral & Affiliate Commission Stream -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800 gap-2">
+              <div class="flex items-center space-x-2 text-black dark:text-white font-bold">
+                <i data-lucide="users" class="w-4 h-4 text-emerald-500"></i>
+                <span class="uppercase tracking-wider text-xs">${lang === 'vi' ? 'Quỹ Thưởng & Hoa Hồng Giới Thiệu Genesis' : 'Genesis Referral & Affiliate Portfolio'}</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-300 dark:border-emerald-800">
+                  6% $HAISI • SAFT Vesting
+                </span>
+              </div>
+              <button onclick="window.switchTab('tab-preseed')" class="text-[11px] text-neutral-500 hover:text-black dark:hover:text-white underline font-sans cursor-pointer self-start sm:self-auto">
+                ${lang === 'vi' ? 'Mở Cổng Giới Thiệu →' : 'Open Referral Portal →'}
+              </button>
+            </div>
+
+            <!-- Referral Link Share Box in Vesting -->
+            <div class="p-3.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div class="space-y-0.5 flex-1 min-w-0">
+                <span class="text-[10px] text-neutral-400 font-sans block">${lang === 'vi' ? 'Link ref của bạn (Bạn bè được +5% Bonus, bạn nhận 6% hoa hồng):' : 'Your Referral Link (Friends get +5% Bonus, you receive 6% commission):'}</span>
+                <div class="text-xs font-mono font-bold text-black dark:text-white truncate select-all">
+                  ${window.location.origin}/?ref=${currentAddress}
+                </div>
+              </div>
+              <button onclick="navigator.clipboard.writeText('${window.location.origin}/?ref=${currentAddress}').then(()=>{if(typeof showToast==='function')showToast({title:'Copied',message:'Referral link copied to clipboard',icon:'check-circle'});else alert('Copied!');})" class="px-3.5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all hover:opacity-90 active:scale-95 cursor-pointer shrink-0">
+                ${lang === 'vi' ? 'Sao Chép Link Ref' : 'Copy Ref Link'}
+              </button>
+            </div>
+
+            <!-- Commission Summary -->
+            ${(() => {
+              const ledger = JSON.parse(localStorage.getItem('haichain_referral_ledger') || '[]');
+              const myComms = ledger.filter(item => item.referrer && item.referrer.toLowerCase() === currentAddress.toLowerCase());
+              const totalCommHai = myComms.reduce((sum, item) => sum + (Number(item.commissionHai) || 0), 0);
+              const totalRefVol = myComms.reduce((sum, item) => sum + (Number(item.amountUsdt) || 0), 0);
+              
+              if (myComms.length === 0) {
+                return `
+                  <div class="p-3 text-center text-neutral-400 font-sans text-xs">
+                    ${lang === 'vi' ? 'Chưa có lượt nạp nào qua link ref của bạn. Hãy chia sẻ link để nhận 6% hoa hồng $HAISI!' : 'No referral deposits recorded yet. Share your link to start earning 6% $HAISI commission!'}
+                  </div>
+                `;
+              }
+
+              return `
+                <div class="space-y-2 pt-1">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px]">
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+                      <span class="text-neutral-400 text-[10px] block font-sans">${lang === 'vi' ? 'Tổng ví đã nạp' : 'Active Referees'}</span>
+                      <strong class="text-black dark:text-white font-bold text-sm">${myComms.length}</strong>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+                      <span class="text-neutral-400 text-[10px] block font-sans">${lang === 'vi' ? 'Doanh số nạp SAFT' : 'Total SAFT Volume'}</span>
+                      <strong class="text-black dark:text-white font-bold text-sm">$${totalRefVol.toLocaleString()} USDT</strong>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1 p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
+                      <span class="text-neutral-400 text-[10px] block font-sans">${lang === 'vi' ? 'Hoa hồng tích lũy' : 'Total $HAISI Earned'}</span>
+                      <strong class="text-emerald-500 font-bold text-sm">${totalCommHai.toLocaleString()} $HAISI</strong>
+                    </div>
+                  </div>
+
+                  <!-- Details Table -->
+                  <div class="overflow-x-auto pt-1">
+                    <table class="w-full text-left text-[11px]">
+                      <thead>
+                        <tr class="border-b border-neutral-200 dark:border-neutral-800 text-neutral-400 font-sans">
+                          <th class="py-1.5 px-2">${lang === 'vi' ? 'Ví Người Nạp' : 'Referee'}</th>
+                          <th class="py-1.5 px-2">${lang === 'vi' ? 'Số Tiền' : 'Amount'}</th>
+                          <th class="py-1.5 px-2">${lang === 'vi' ? 'Hoa Hồng 6%' : 'Commission'}</th>
+                          <th class="py-1.5 px-2">${lang === 'vi' ? 'Lịch Mở Khóa' : 'Vesting'}</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-neutral-100 dark:divide-neutral-900">
+                        ${myComms.map(c => `
+                          <tr>
+                            <td class="py-2 px-2 font-mono text-black dark:text-white">${c.referee ? c.referee.slice(0, 6) + '...' + c.referee.slice(-4) : 'Anonymous'}</td>
+                            <td class="py-2 px-2 font-mono">$${(c.amountUsdt || 0).toLocaleString()} USDT</td>
+                            <td class="py-2 px-2 font-mono font-bold text-emerald-500">+${(c.commissionHai || 0).toLocaleString()} $HAISI</td>
+                            <td class="py-2 px-2 font-sans text-neutral-400 text-[10px]">20% TGE, 2-Mo Cliff, 6-Mo Linear</td>
+                          </tr>
+                        `).join('')}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              `;
+            })()}
           </div>
 
         </div>

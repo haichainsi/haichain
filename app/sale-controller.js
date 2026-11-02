@@ -96,7 +96,32 @@
       lockedTitle: 'HAICHAIN Private Allocation Portal',
       lockedDesc: 'This round is strictly private and reserved for invited Early Backers & Angel Partners under institutional SAFT terms.',
       accessPlaceholder: 'Enter VIP Access Key...',
-      unlockBtn: 'Unlock'
+      unlockBtn: 'Unlock',
+
+      // Referral & Commission Engine
+      refProgramTitle: 'HAICHAIN Genesis Referral Program',
+      refProgramBadge: '+5% Bonus for Friends • 6% Commission for You',
+      refProgramDesc: 'Invite fellow builders and strategic backers to the Private Round. When your invitees subscribe to SAFT (min 500 USDT), they instantly receive +5% Bonus $HAISI and you earn 6% $HAISI commission. 100% synchronized with SAFT Vesting (20% TGE, 2-Month Cliff, 6-Month Linear Stream).',
+      refYourLink: 'Your Unique Referral Link:',
+      refCopyLink: 'Copy Link',
+      refCopied: 'Copied! ✓',
+      refShareX: 'Share on X',
+      refShareTelegram: 'Telegram',
+      refConnectToGenerate: 'Connect your Web3 wallet to generate your referral link and start earning 6% $HAISI commissions.',
+      refActiveBadge: '✓ Referral Code Active: +5% Bonus Tokens Applied',
+      refInvitedBy: 'Referred by:',
+      refEnterCodePrompt: 'Have a referral code or inviter wallet?',
+      refCodePlaceholder: 'Enter Solana / EVM wallet address...',
+      refApplyBtn: 'Apply',
+      refRemoveBtn: 'Remove',
+      refSelfReferralError: 'You cannot refer your own wallet address.',
+      refInvalidCodeError: 'Invalid referral address format.',
+      refCodeAppliedToast: 'Referral code applied! You will receive +5% bonus $HAISI tokens.',
+      refStatsTitle: 'Your Affiliate Performance',
+      refTotalInvites: 'Referred Backers',
+      refTotalVolume: 'Total Volume Raised',
+      refTotalEarned: 'Total $HAISI Commission',
+      refBonusTag: '(+5% Ref Bonus)'
     },
     vi: {
       confirmMsgInvestment: 'XÁC NHẬN THANH TOÁN MUA $HAISI ({provider}):\n\n• Số tiền đầu tư: ${amount} USDT\n• Phân bổ sở hữu: {tokens} $HAISI (Đơn giá: $0.007)\n• Ví thụ hưởng: {wallet}\n• Bảo chứng Mainnet: Cam kết tự động giải ngân 100% Token Thật tại sự kiện TGE.\n\nVí {provider} của bạn sẽ mở ra để xác thực mật mã.',
@@ -184,7 +209,32 @@
       lockedTitle: 'Cổng Phân Bổ Nội Bộ HAICHAIN',
       lockedDesc: 'Vòng này được bảo mật nghiêm ngặt, chỉ dành riêng cho các Đối tác Thiên thần & Co-builders theo thỏa thuận SAFT thể chế.',
       accessPlaceholder: 'Nhập Khóa Truy Cập VIP...',
-      unlockBtn: 'Mở Khóa'
+      unlockBtn: 'Mở Khóa',
+
+      // Referral & Commission Engine
+      refProgramTitle: 'Chương Trình Giới Thiệu & Hoa Hồng Genesis',
+      refProgramBadge: '+5% Bonus Cho Bạn Bè • 6% Hoa Hồng Cho Bạn',
+      refProgramDesc: 'Mời bạn bè và đối tác tham gia Vòng Chiến Lược Nội Bộ. Khi người được mời đăng ký SAFT (tối thiểu 500 USDT), họ nhận ngay +5% Bonus $HAISI và bạn nhận 6% hoa hồng $HAISI. Lịch mở khóa đồng bộ 100% với hợp đồng SAFT (20% TGE, Cliff 2 tháng, Linear Stream 6 tháng).',
+      refYourLink: 'Link Giới Thiệu Riêng Của Bạn:',
+      refCopyLink: 'Sao Chép Link',
+      refCopied: 'Đã Sao Chép! ✓',
+      refShareX: 'Chia sẻ lên X',
+      refShareTelegram: 'Telegram',
+      refConnectToGenerate: 'Kết nối ví Web3 để tạo link giới thiệu và bắt đầu nhận 6% hoa hồng $HAISI.',
+      refActiveBadge: '✓ Đang Áp Dụng Mã Giới Thiệu: Nhận Thêm +5% Bonus Token',
+      refInvitedBy: 'Người giới thiệu:',
+      refEnterCodePrompt: 'Bạn có địa chỉ ví hoặc mã người giới thiệu?',
+      refCodePlaceholder: 'Nhập địa chỉ ví Solana / EVM...',
+      refApplyBtn: 'Áp Dụng',
+      refRemoveBtn: 'Gỡ Bỏ',
+      refSelfReferralError: 'Bạn không thể tự giới thiệu địa chỉ ví của chính mình.',
+      refInvalidCodeError: 'Định dạng địa chỉ giới thiệu không hợp lệ.',
+      refCodeAppliedToast: 'Đã kích hoạt mã giới thiệu! Bạn sẽ nhận thêm +5% Bonus $HAISI.',
+      refStatsTitle: 'Hiệu Quả Giới Thiệu Của Bạn',
+      refTotalInvites: 'Số Ví Đã Nạp',
+      refTotalVolume: 'Tổng Doanh Số Giới Thiệu',
+      refTotalEarned: 'Tổng Hoa Hồng $HAISI',
+      refBonusTag: '(+5% Thưởng Ref)'
     },
     zh: {
       confirmMsgInvestment: '确认认购 $HAISI 代币 ({provider})：\n\n• 投资金额：${amount} USDT\n• 代币额度：{tokens} $HAISI（单价：$0.007）\n• 受益人钱包：{wallet}\n• 主网保函：在 TGE 时自动 100% 兑换链上代币。\n\n您的 {provider} 钱包将打开进行密码学授权。',
@@ -1403,6 +1453,130 @@
           </div>
         </div>
 
+      <!-- 3. GENESIS REFERRAL & AMBASSADOR VAULT CARD (LUXURY APPLE TITANIUM THEME) -->
+      <div id="saft-referral-hub" class="p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-4 shadow-xs font-mono">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-neutral-100 dark:border-neutral-800/80">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-2xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                  ${getI18nText('refProgramTitle')}
+                </h3>
+                <span class="px-2.5 py-0.5 rounded-full text-[9px] font-mono bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-300 dark:border-emerald-800">
+                  ${getI18nText('refProgramBadge')}
+                </span>
+              </div>
+              <p class="text-[11px] text-neutral-500 font-sans mt-0.5 max-w-2xl leading-relaxed">
+                ${getI18nText('refProgramDesc')}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referral Link & Attribution Controls -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 pt-1">
+          <!-- Col Left (7): My Unique Referral Link -->
+          <div class="lg:col-span-7 p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2.5">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-neutral-500 font-sans font-medium">${getI18nText('refYourLink')}</span>
+              <span class="text-[10px] text-neutral-400 font-mono">${connectedWalletAddr ? `${connectedWalletAddr.slice(0, 4)}...${connectedWalletAddr.slice(-4)}` : (getActiveLang() === 'vi' ? 'Cần kết nối ví' : 'Wallet required')}</span>
+            </div>
+
+            ${connectedWalletAddr ? `
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <input type="text" id="ref-share-url-input" readonly value="${window.location.origin}/?ref=${connectedWalletAddr}" class="flex-1 px-3 py-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-xs font-mono select-all focus:outline-none">
+              <button type="button" id="btn-copy-ref-link" class="px-3.5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all hover:opacity-90 active:scale-95 cursor-pointer flex items-center justify-center space-x-1.5 shrink-0 shadow-xs">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span id="btn-copy-ref-text">${getI18nText('refCopyLink')}</span>
+              </button>
+            </div>
+            <div class="flex items-center space-x-2 pt-1 text-[11px]">
+              <span class="text-neutral-400 font-sans">${getActiveLang() === 'vi' ? 'Chia sẻ nhanh:' : 'Quick Share:'}</span>
+              <button type="button" id="btn-share-ref-x" class="px-2.5 py-1 rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-[11px] flex items-center space-x-1 cursor-pointer transition-colors">
+                <i data-lucide="twitter" class="w-3 h-3"></i>
+                <span>${getI18nText('refShareX')}</span>
+              </button>
+              <button type="button" id="btn-share-ref-tg" class="px-2.5 py-1 rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-[11px] flex items-center space-x-1 cursor-pointer transition-colors">
+                <i data-lucide="send" class="w-3 h-3"></i>
+                <span>${getI18nText('refShareTelegram')}</span>
+              </button>
+            </div>
+            ` : `
+            <div class="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-center space-y-2">
+              <p class="text-xs text-neutral-500 font-sans leading-relaxed">
+                ${getI18nText('refConnectToGenerate')}
+              </p>
+              <button type="button" onclick="document.getElementById('wallet-btn').click()" class="px-4 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all cursor-pointer hover:opacity-90 active:scale-95">
+                ${getActiveLang() === 'vi' ? 'Kết Nối Ví Web3' : 'Connect Web3 Wallet'}
+              </button>
+            </div>
+            `}
+          </div>
+
+          <!-- Col Right (5): Active Referral Attribution Status & Input -->
+          <div class="lg:col-span-5 p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2.5 flex flex-col justify-between">
+            <div>
+              <span class="text-neutral-500 font-sans font-medium text-[11px] block mb-1">${getActiveLang() === 'vi' ? 'Mã Người Giới Thiệu Của Bạn:' : 'Your Inviter Referral Code:'}</span>
+              ${(() => {
+                const activeRef = getActiveReferral();
+                const isSelf = activeRef && connectedWalletAddr && activeRef.toLowerCase() === connectedWalletAddr.toLowerCase();
+                if (activeRef && !isSelf) {
+                  return `
+                    <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/80 flex items-center justify-between text-xs font-mono">
+                      <div class="flex items-center space-x-2 truncate">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+                        <span class="text-emerald-800 dark:text-emerald-200 font-bold truncate">${activeRef.slice(0, 6)}...${activeRef.slice(-4)}</span>
+                        <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold shrink-0">(+5% Bonus)</span>
+                      </div>
+                      <button type="button" id="btn-remove-ref-code" class="text-[10px] text-neutral-500 hover:text-rose-500 underline ml-2 shrink-0 cursor-pointer">
+                        ${getI18nText('refRemoveBtn')}
+                      </button>
+                    </div>
+                  `;
+                } else {
+                  return `
+                    <div class="flex items-center space-x-1.5">
+                      <input type="text" id="manual-ref-code-input" placeholder="${getI18nText('refCodePlaceholder')}" class="flex-1 px-3 py-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-[11px] font-mono focus:outline-none">
+                      <button type="button" id="btn-apply-ref-code" class="px-3 py-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white font-bold text-xs font-mono transition-all cursor-pointer shrink-0">
+                        ${getI18nText('refApplyBtn')}
+                      </button>
+                    </div>
+                    <p class="text-[10px] text-neutral-400 font-sans mt-1">
+                      ${getI18nText('refEnterCodePrompt')}
+                    </p>
+                  `;
+                }
+              })()}
+            </div>
+
+            <!-- Active Affiliate Metrics for this user -->
+            ${(() => {
+              const refStats = getReferralStats(connectedWalletAddr);
+              return `
+              <div class="grid grid-cols-3 gap-2 pt-2 border-t border-neutral-200/60 dark:border-neutral-800/80 text-center">
+                <div class="p-1.5 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
+                  <span class="text-[9px] text-neutral-400 block font-sans">${getI18nText('refTotalInvites')}</span>
+                  <strong class="text-xs font-bold text-black dark:text-white">${refStats.count}</strong>
+                </div>
+                <div class="p-1.5 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
+                  <span class="text-[9px] text-neutral-400 block font-sans">${getI18nText('refTotalVolume')}</span>
+                  <strong class="text-xs font-bold text-black dark:text-white">$${refStats.volume.toLocaleString()}</strong>
+                </div>
+                <div class="p-1.5 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
+                  <span class="text-[9px] text-neutral-400 block font-sans">${getI18nText('refTotalEarned')}</span>
+                  <strong class="text-xs font-bold text-emerald-600 dark:text-emerald-400">${refStats.totalCommission.toLocaleString()}</strong>
+                </div>
+              </div>
+              `;
+            })()}
+          </div>
+        </div>
+      </div>
+
+
       </div>
     `;
 
@@ -1420,6 +1594,62 @@
     };
   }
 
+
+  // ==========================================
+  // REFERRAL & AFFILIATE SUBSYSTEM
+  // ==========================================
+  function initReferralTracking() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref') || params.get('referrer') || params.get('inviter');
+      if (ref && ref.trim().length >= 4) {
+        const clean = ref.trim();
+        localStorage.setItem('haichain_ref', clean);
+        localStorage.setItem('haichain_ref_captured_at', new Date().toISOString());
+        console.log('[HAICHAIN] Genesis Referral captured:', clean);
+      }
+    } catch (_) {}
+  }
+
+  function getActiveReferral() {
+    try {
+      const r = localStorage.getItem('haichain_ref');
+      if (r && typeof r === 'string' && r.trim().length >= 4) {
+        return r.trim();
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function setActiveReferral(code) {
+    if (!code) {
+      localStorage.removeItem('haichain_ref');
+    } else {
+      localStorage.setItem('haichain_ref', code.trim());
+      localStorage.setItem('haichain_ref_captured_at', new Date().toISOString());
+    }
+    window.dispatchEvent(new CustomEvent('haichain:referralUpdated'));
+  }
+
+  function getReferralLedger() {
+    try {
+      return JSON.parse(localStorage.getItem('haichain_referral_ledger') || '[]');
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function getReferralStats(walletAddr) {
+    if (!walletAddr) return { count: 0, volume: 0, totalCommission: 0, list: [] };
+    const ledger = getReferralLedger();
+    const target = walletAddr.toLowerCase();
+    const myRefs = ledger.filter(item => item.referrer && item.referrer.toLowerCase() === target);
+    const count = myRefs.length;
+    const volume = myRefs.reduce((sum, item) => sum + (Number(item.amountUsdt) || 0), 0);
+    const totalCommission = myRefs.reduce((sum, item) => sum + (Number(item.commissionHai) || 0), 0);
+    return { count, volume, totalCommission, list: myRefs };
+  }
+
   // 7. CALCULATOR LOGIC
   function setupCalculatorLogic(container) {
     const inputUsdt = container.querySelector('#calc-usdt-input');
@@ -1432,7 +1662,14 @@
     function updateCalculations() {
       if (!inputUsdt || !totalHaiEl) return;
       const usdt = parseFloat(inputUsdt.value) || 0;
-      const totalTokens = Math.round(usdt / 0.007);
+      const activeRef = getActiveReferral();
+      const connectedWallet = (JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}')).address || '';
+      const isRefValid = activeRef && (!connectedWallet || activeRef.toLowerCase() !== connectedWallet.toLowerCase());
+
+      const baseTokens = Math.round(usdt / 0.007);
+      const bonusTokens = isRefValid ? Math.round(baseTokens * 0.05) : 0;
+      const totalTokens = baseTokens + bonusTokens;
+
       const tgeTokens = Math.round(totalTokens * 0.20);
       const streamTokens = totalTokens - tgeTokens;
       const tgeValue = (totalTokens * 0.010).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
@@ -1441,7 +1678,12 @@
         ? (executionCapacity / 1000000).toFixed(1) + 'M Ticks' 
         : executionCapacity.toLocaleString('en-US') + ' Ticks';
 
-      totalHaiEl.textContent = totalTokens.toLocaleString('en-US');
+      if (isRefValid && bonusTokens > 0) {
+        totalHaiEl.innerHTML = `<span class="text-black dark:text-white font-black">${totalTokens.toLocaleString('en-US')}</span> <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold block">(+${bonusTokens.toLocaleString('en-US')} ${getI18nText('refBonusTag') || '+5% Bonus'})</span>`;
+      } else {
+        totalHaiEl.textContent = totalTokens.toLocaleString('en-US');
+      }
+
       tgeValEl.textContent = tgeValue;
       l1ValEl.textContent = l1Value;
       const l1SubEl = container.querySelector('#calc-l1-subtext');
@@ -1451,7 +1693,11 @@
 
       const previewAllocEl = container.querySelector('#saft-preview-allocation');
       if (previewAllocEl) {
-        previewAllocEl.textContent = totalTokens.toLocaleString('en-US');
+        if (isRefValid && bonusTokens > 0) {
+          previewAllocEl.innerHTML = `${totalTokens.toLocaleString('en-US')} <span class="text-[10px] text-emerald-500 font-bold">(+5% Ref)</span>`;
+        } else {
+          previewAllocEl.textContent = totalTokens.toLocaleString('en-US');
+        }
       }
     }
 
@@ -1499,6 +1745,87 @@
         });
       });
       updateCalculations();
+    }
+
+    
+    // ==========================================
+    // REFERRAL EVENT LISTENERS & SOCIAL SHARING
+    // ==========================================
+    const btnCopyRef = container.querySelector('#btn-copy-ref-link');
+    if (btnCopyRef) {
+      btnCopyRef.addEventListener('click', () => {
+        const refInput = container.querySelector('#ref-share-url-input');
+        if (refInput && refInput.value) {
+          navigator.clipboard.writeText(refInput.value).then(() => {
+            const btnText = container.querySelector('#btn-copy-ref-text');
+            if (btnText) btnText.textContent = getI18nText('refCopied') || 'Copied! ✓';
+            setTimeout(() => {
+              if (btnText) btnText.textContent = getI18nText('refCopyLink') || 'Copy Link';
+            }, 2000);
+            if (typeof showToast === 'function') {
+              showToast({
+                title: 'Referral Link Copied',
+                message: 'Share with friends to give them +5% bonus $HAISI and earn 6% commission.',
+                icon: 'check-circle'
+              });
+            }
+          });
+        }
+      });
+    }
+
+    const btnShareX = container.querySelector('#btn-share-ref-x');
+    if (btnShareX) {
+      btnShareX.addEventListener('click', () => {
+        const refInput = container.querySelector('#ref-share-url-input');
+        const url = refInput ? refInput.value : window.location.origin;
+        const text = encodeURIComponent(`🚀 Join the HAICHAIN Pre-Seed Round! Get +5% Bonus $HAISI allocation on your SAFT deposit:\n\n${url}\n\n#HAICHAIN #Solana #AI #Token2022`);
+        window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+      });
+    }
+
+    const btnShareTg = container.querySelector('#btn-share-ref-tg');
+    if (btnShareTg) {
+      btnShareTg.addEventListener('click', () => {
+        const refInput = container.querySelector('#ref-share-url-input');
+        const url = refInput ? refInput.value : window.location.origin;
+        const text = encodeURIComponent(`Join HAICHAIN Pre-Seed Round with +5% $HAISI Token Bonus!`);
+        window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${text}`, '_blank');
+      });
+    }
+
+    const btnApplyRef = container.querySelector('#btn-apply-ref-code');
+    if (btnApplyRef) {
+      btnApplyRef.addEventListener('click', () => {
+        const input = container.querySelector('#manual-ref-code-input');
+        const code = input ? input.value.trim() : '';
+        if (!code || code.length < 4) {
+          alert(getI18nText('refInvalidCodeError'));
+          return;
+        }
+        let savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+        if (savedW && savedW.address && savedW.address.toLowerCase() === code.toLowerCase()) {
+          alert(getI18nText('refSelfReferralError'));
+          return;
+        }
+        setActiveReferral(code);
+        if (typeof showToast === 'function') {
+          showToast({
+            title: 'Referral Applied',
+            message: getI18nText('refCodeAppliedToast'),
+            icon: 'check-circle'
+          });
+        }
+        renderTerminalContent(container, true);
+      });
+    }
+
+    const btnRemoveRef = container.querySelector('#btn-remove-ref-code');
+    if (btnRemoveRef) {
+      btnRemoveRef.addEventListener('click', () => {
+        setActiveReferral(null);
+        renderTerminalContent(container, true);
+      });
     }
 
     // Copy Treasury Pubkey Button
@@ -1728,7 +2055,12 @@
           return;
         }
 
-        const totalHaiNum = Math.round(amount / 0.007);
+        const activeRef = getActiveReferral();
+        const isRefValid = Boolean(activeRef && (!wallet || activeRef.toLowerCase() !== wallet.toLowerCase()));
+        const baseHaiNum = Math.round(amount / 0.007);
+        const bonusHaiNum = isRefValid ? Math.round(baseHaiNum * 0.05) : 0;
+        const totalHaiNum = baseHaiNum + bonusHaiNum;
+        const commHaiNum = isRefValid ? Math.round(baseHaiNum * 0.06) : 0;
         const provName = isVi ? 'Ví Web3' : 'Web3 Wallet';
 
         const confirmMsg = (getI18nText('confirmMsgInvestment') || '')
@@ -1917,6 +2249,18 @@ Please fund your wallet with SOL to continue.`);
           const tx = new solana.Transaction().add(
             solana.SystemProgram.transfer({ fromPubkey, toPubkey, lamports: lamportsToSend })
           );
+          if (isRefValid) {
+            try {
+              const memoProgramId = new solana.PublicKey('MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr');
+              tx.add(new solana.TransactionInstruction({
+                keys: [{ pubkey: fromPubkey, isSigner: true, isWritable: true }],
+                programId: memoProgramId,
+                data: new TextEncoder().encode('haichain:saft:ref:' + activeRef)
+              }));
+            } catch (memoErr) {
+              console.warn('Could not attach Solana referral memo:', memoErr);
+            }
+          }
           tx.feePayer = fromPubkey;
           const { blockhash } = await connection.getLatestBlockhash();
           tx.recentBlockhash = blockhash;
@@ -1950,6 +2294,9 @@ Please fund your wallet with SOL to continue.`);
             email: email,
             amountUsdt: amount,
             haiTokens: totalHaiNum,
+            baseTokens: baseHaiNum,
+            referralBonusTokens: bonusHaiNum,
+            referredBy: isRefValid ? activeRef : null,
             price: 0.007,
             tgePrice: 0.010,
             token2022Mint: "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu",
@@ -1959,6 +2306,26 @@ Please fund your wallet with SOL to continue.`);
             mainnetGuarantee: true
           };
           localStorage.setItem('haichain_early_allocations', JSON.stringify(allocs));
+
+          // Record Referral Commission in Ledger for Referrer
+          if (isRefValid) {
+            try {
+              const ledger = getReferralLedger();
+              ledger.push({
+                referrer: activeRef,
+                referee: wallet,
+                amountUsdt: amount,
+                commissionHai: commHaiNum,
+                bonusHai: bonusHaiNum,
+                txSignature: txSig,
+                timestamp: new Date().toISOString()
+              });
+              localStorage.setItem('haichain_referral_ledger', JSON.stringify(ledger));
+              window.dispatchEvent(new CustomEvent('haichain:referralUpdated'));
+            } catch (ledErr) {
+              console.warn('Could not record referral commission:', ledErr);
+            }
+          }
           localStorage.setItem('haichain-connected-wallet', JSON.stringify({
             address: wallet,
             type: isEVM ? 'metamask' : 'solana',
@@ -1970,9 +2337,14 @@ Please fund your wallet with SOL to continue.`);
           console.warn('Could not persist allocation:', e);
         }
 
-        alert(getI18nText('saftSuccessAlert')
-          .replace('{shortWallet}', `${wallet.slice(0, 6)}...${wallet.slice(-4)}`)
-          .replace(/{tokens}/g, totalHaiNum.toLocaleString()));
+        const successMsg = isRefValid
+          ? (isVi
+              ? `🎉 ĐÃ GHI NHẬN ĐĂNG KÝ SAFT VÀ NHẬN BONUS REFERRAL +5%!\n\nVí của bạn (${wallet.slice(0, 4)}...${wallet.slice(-4)}) nhận tổng cộng: ${totalHaiNum.toLocaleString()} $HAISI (đã bao gồm +${bonusHaiNum.toLocaleString()} $HAISI thưởng giới thiệu từ mã ${activeRef.slice(0, 4)}...${activeRef.slice(-4)})!\n\n🛡️ BẢO CHỨNG CHUYỂN ĐỔI MAINNET:\nToàn bộ số token này đã được bảo lưu bất biến theo Hợp đồng SAFT và sẽ tự động giải ngân theo lịch Vesting tại TGE.\n\nNgười giới thiệu của bạn cũng đã nhận được 6% hoa hồng (+${commHaiNum.toLocaleString()} $HAISI) ghi nhận on-chain!`
+              : `🎉 SAFT SUBSCRIPTION & +5% REFERRAL BONUS CONFIRMED!\n\nYour wallet (${wallet.slice(0, 4)}...${wallet.slice(-4)}) now holds: ${totalHaiNum.toLocaleString()} $HAISI (includes +${bonusHaiNum.toLocaleString()} $HAISI referral bonus from ${activeRef.slice(0, 4)}...${activeRef.slice(-4)})!\n\n🛡️ MAINNET CONVERSION GUARANTEE:\nAll tokens are secured under the SAFT Agreement and will be automatically disbursed at TGE under standard vesting terms.\n\nYour inviter has also been credited with a 6% commission (+${commHaiNum.toLocaleString()} $HAISI)!`)
+          : getI18nText('saftSuccessAlert')
+              .replace('{shortWallet}', `${wallet.slice(0, 6)}...${wallet.slice(-4)}`)
+              .replace(/{tokens}/g, totalHaiNum.toLocaleString());
+        alert(successMsg);
 
         if (typeof window.switchTab === 'function') {
           window.switchTab('tab-vesting');
@@ -2015,7 +2387,12 @@ Please fund your wallet with SOL to continue.`);
           return;
         }
 
-        const totalHaiNum = Math.round(amount / 0.007);
+        const activeRef = getActiveReferral();
+        const isRefValid = Boolean(activeRef && (!wallet || activeRef.toLowerCase() !== wallet.toLowerCase()));
+        const baseHaiNum = Math.round(amount / 0.007);
+        const bonusHaiNum = isRefValid ? Math.round(baseHaiNum * 0.05) : 0;
+        const totalHaiNum = baseHaiNum + bonusHaiNum;
+        const commHaiNum = isRefValid ? Math.round(baseHaiNum * 0.06) : 0;
         const totalHai = totalHaiNum.toLocaleString('en-US');
 
         // Save Allocation Record (Token-2022 Transfer-Hook bound)
@@ -2026,6 +2403,9 @@ Please fund your wallet with SOL to continue.`);
             email: email,
             amountUsdt: amount,
             haiTokens: totalHaiNum,
+            baseTokens: baseHaiNum,
+            referralBonusTokens: bonusHaiNum,
+            referredBy: isRefValid ? activeRef : null,
             price: 0.007,
             tgePrice: 0.010,
             token2022Mint: "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu",
@@ -2035,6 +2415,24 @@ Please fund your wallet with SOL to continue.`);
             mainnetGuarantee: true
           };
           localStorage.setItem('haichain_early_allocations', JSON.stringify(allocs));
+
+          // Record in Referral Ledger for Referrer
+          if (isRefValid) {
+            try {
+              const ledger = getReferralLedger();
+              ledger.push({
+                referrer: activeRef,
+                referee: wallet,
+                amountUsdt: amount,
+                commissionHai: commHaiNum,
+                bonusHai: bonusHaiNum,
+                txSignature: "4MqTEpY6WCBE71PZ4jmH4dZWZQ5dmvQtK7i1A7ma3hMJknrkD6w297g8bTV6KKGRERmAwyrpQkh14eHMjHHWB2oU",
+                timestamp: new Date().toISOString()
+              });
+              localStorage.setItem('haichain_referral_ledger', JSON.stringify(ledger));
+              window.dispatchEvent(new CustomEvent('haichain:referralUpdated'));
+            } catch (_) {}
+          }
           localStorage.setItem('haichain-connected-wallet', JSON.stringify({
             address: wallet,
             type: 'phantom',
@@ -2099,6 +2497,7 @@ Please fund your wallet with SOL to continue.`);
 
   // 9. INITIALIZATION
   function init() {
+    initReferralTracking();
     const isAuthorized = checkAccessPermission();
     injectNavigationTabs(isAuthorized);
 
@@ -2129,6 +2528,14 @@ Please fund your wallet with SOL to continue.`);
     window.addEventListener('haichain:languageChanged', (e) => {
       const code = e.detail && (e.detail.lang || e.detail.language);
       updateLanguage(code);
+    });
+
+    // Listen for referral updates
+    window.addEventListener('haichain:referralUpdated', () => {
+      let c = document.getElementById('tab-preseed');
+      if (c && !c.classList.contains('hidden')) {
+        renderTerminalContent(c, checkAccessPermission());
+      }
     });
 
     // Listen for wallet connection from header modal or anywhere
