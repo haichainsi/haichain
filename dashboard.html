@@ -160,10 +160,10 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793594250362"></script>
-  <script src="/app/i18n.js?v=v31_perfect_10lang_audit"></script>
+  <script src="/app/i18n.js?v=v32_mobile_hub_clean_1793615000000"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
-  <script src="/app/pdf-modal.js?v=v31_perfect_10lang_audit"></script>
+  <script src="/app/pdf-modal.js?v=v32_mobile_hub_clean_1793615000000"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
   <script src="/app/sale-controller.js?v=v26_vip_gatekeeper_shield_1793606000000"></script>
   <script>
@@ -1458,7 +1458,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         </button>
         <button id="hub-tab-online" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-medium flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
           <i data-lucide="globe" class="w-3.5 h-3.5 shrink-0"></i>
-          <span class="truncate" data-i18n="aiHub.tabOnline">2. Claude Online</span>
+          <span class="truncate" data-i18n="aiHub.tabOnline">2. Claude Mobile</span>
         </button>
         <button id="hub-tab-web" type="button" class="flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-neutral-500 hover:text-black dark:hover:text-white text-center font-medium flex items-center justify-center space-x-1 sm:space-x-1.5 transition-all cursor-pointer text-[11px] sm:text-xs">
           <i data-lucide="zap" class="w-3.5 h-3.5 shrink-0"></i>
@@ -1532,18 +1532,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         </div>
       </div>
 
-            <!-- ================= TAB 2: CLOUD MCP GATEWAY (INFRASTRUCTURE IN PROGRESS) ================= -->
+            <!-- ================= TAB 2: CLAUDE MOBILE MCP GATEWAY (MOBILE OPTIMIZED) ================= -->
       <div id="hub-section-online" class="hidden space-y-3 font-mono text-xs">
         <div class="p-3 sm:p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 space-y-1.5">
           <div class="flex items-center justify-between">
             <span class="text-black dark:text-white font-sans font-bold text-xs flex items-center space-x-1.5">
-              <i data-lucide="cloud" class="w-3.5 h-3.5 text-amber-500"></i>
-              <span data-i18n="aiHub.onlineTitle">Cloud MCP Gateway (Claude Mobile)</span>
+              <i data-lucide="smartphone" class="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300"></i>
+              <span data-i18n="aiHub.onlineTitle">MCP Gateway (Claude Mobile)</span>
             </span>
             <span class="text-[9.5px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-mono uppercase tracking-wider font-semibold" data-i18n="aiHub.onlineBadge">Under Deployment</span>
           </div>
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed" data-i18n="aiHub.onlineDesc">
-            Direct remote integration for Claude Mobile requires a dedicated 24/7 Cloud Gateway server. For immediate verified testing, choose one of the two active options below:
+            Direct remote integration for Claude Mobile requires a dedicated 24/7 Gateway server. For immediate verified testing, choose one of the two active options below:
           </p>
         </div>
 
@@ -1552,32 +1552,31 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div class="flex items-start space-x-2.5 text-xs text-neutral-700 dark:text-neutral-300">
             <div class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse mt-1 shrink-0"></div>
             <div class="space-y-1 flex-1">
-              <div class="font-bold text-black dark:text-white text-xs sm:text-[13px]" data-i18n="aiHub.onlineNoticeTitle">24/7 Cloud Gateway Server Under Deployment</div>
+              <div class="font-bold text-black dark:text-white text-xs sm:text-[13px]" data-i18n="aiHub.onlineNoticeTitle">24/7 Gateway Server Under Deployment</div>
               <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="aiHub.onlineNoticeText">
                 The site is currently hosted on a Static CDN, so remote requests return 404. We recommend using AI Playground directly on mobile or Claude Desktop on PC.
               </p>
             </div>
           </div>
 
+          <!-- Pure text buttons with zero duplicate icons, optimized for mobile finger taps -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-            <button type="button" id="online-switch-playground-btn" class="py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-bold text-xs flex items-center justify-center space-x-1.5 hover:opacity-90 active:scale-98 transition-all cursor-pointer shadow-sm">
-              <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-              <span data-i18n="aiHub.onlinePlaygroundBtn">⚡ Open AI Playground (Mobile)</span>
+            <button type="button" id="online-switch-playground-btn" class="w-full py-2.5 px-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-bold text-xs flex items-center justify-center hover:opacity-90 active:scale-98 transition-all cursor-pointer shadow-sm text-center">
+              <span data-i18n="aiHub.onlinePlaygroundBtn">Open AI Playground (Mobile)</span>
             </button>
-            <button type="button" id="online-switch-desktop-btn" class="py-2.5 px-3 rounded-xl bg-neutral-200/80 dark:bg-neutral-800 text-black dark:text-white font-semibold text-xs border border-neutral-300 dark:border-neutral-700 flex items-center justify-center space-x-1.5 hover:bg-neutral-300 dark:hover:bg-neutral-700 active:scale-98 transition-all cursor-pointer">
-              <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
-              <span data-i18n="aiHub.onlineDesktopBtn">💻 Claude Desktop (PC/Mac)</span>
+            <button type="button" id="online-switch-desktop-btn" class="w-full py-2.5 px-3 rounded-xl bg-neutral-200/80 dark:bg-neutral-800 text-black dark:text-white font-semibold text-xs border border-neutral-300 dark:border-neutral-700 flex items-center justify-center hover:bg-neutral-300 dark:hover:bg-neutral-700 active:scale-98 transition-all cursor-pointer text-center">
+              <span data-i18n="aiHub.onlineDesktopBtn">Claude Desktop (PC/Mac)</span>
             </button>
           </div>
         </div>
 
-        <!-- On-Chain Ready Tools Card -->
+        <!-- On-Chain Ready Tools Card (Mobile Responsive Text wrapping) -->
         <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 text-[11px] text-neutral-600 dark:text-neutral-300 space-y-1.5 font-sans">
           <div class="font-bold text-black dark:text-white flex items-center space-x-1.5 text-xs">
             <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
             <span data-i18n="aiHub.onlineReadyToolsTitle">4 On-Chain MCP Tools Ready on Kernel:</span>
           </div>
-          <div class="space-y-1 font-mono text-[10.5px] text-neutral-500 dark:text-neutral-400 pl-5">
+          <div class="space-y-1 font-mono text-[10px] sm:text-[10.5px] text-neutral-500 dark:text-neutral-400 pl-2 sm:pl-4 break-words">
             <div>• <strong class="text-neutral-800 dark:text-neutral-200">get_spending_pot_balance</strong>: On-chain vault balance query</div>
             <div>• <strong class="text-neutral-800 dark:text-neutral-200">execute_micro_payment</strong>: Autonomous sub-cent disbursement</div>
             <div>• <strong class="text-neutral-800 dark:text-neutral-200">trigger_emergency_panic</strong>: Instant 380ms fund recall</div>
