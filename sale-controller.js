@@ -1117,7 +1117,6 @@
 
     // VIP GATEKEEPER LOCK SCREEN (LUXURY APPLE TITANIUM THEME)
     if (!isAuthorized && !phase.isPublic) {
-      container.classList.remove('hidden');
       container.innerHTML = `
         <div class="max-w-lg mx-auto my-8 sm:my-14 p-6 sm:p-9 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-lg text-center space-y-6 animate-fadeIn">
           <div class="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex items-center justify-center mx-auto text-black dark:text-white shadow-xs">
@@ -1195,7 +1194,6 @@
       return;
     }
 
-    container.classList.remove('hidden');
     const percentClaimed = ((phase.allocatedSoFar / phase.totalAllocation) * 100).toFixed(1);
 
     let userAllocation = null;
@@ -1459,98 +1457,114 @@
           </div>
         </div>
 
-      <!-- 3. GENESIS REFERRAL & AMBASSADOR VAULT CARD (LUXURY APPLE TITANIUM THEME) -->
-      <div id="saft-referral-hub" class="p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-4 shadow-xs font-mono">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-neutral-100 dark:border-neutral-800/80">
-          <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-2xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs">
+      </div> <!-- CLOSES 2-COLUMN BALANCED WORKFLOW (STEP 1 & STEP 2) -->
+
+      <!-- 3. GENESIS REFERRAL & AMBASSADOR VAULT CARD (LUXURY APPLE TITANIUM & MOBILE OPTIMIZED) -->
+      <div id="saft-referral-hub" class="w-full p-4 sm:p-5 md:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card space-y-4 sm:space-y-5 shadow-xs font-mono">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-neutral-100 dark:border-neutral-800/80">
+          <div class="flex items-start sm:items-center space-x-3 min-w-0">
+            <div class="w-10 h-10 rounded-2xl bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0 shadow-xs mt-0.5 sm:mt-0">
               <i data-lucide="users" class="w-5 h-5"></i>
             </div>
-            <div>
+            <div class="min-w-0 space-y-1">
               <div class="flex flex-wrap items-center gap-2">
-                <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black dark:text-white">
+                <h3 class="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-wider text-black dark:text-white truncate">
                   ${getI18nText('refProgramTitle')}
                 </h3>
-                <span class="px-2.5 py-0.5 rounded-full text-[9px] font-mono bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-300 dark:border-emerald-800">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-mono bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-300 dark:border-emerald-800 shrink-0">
                   ${getI18nText('refProgramBadge')}
                 </span>
               </div>
-              <p class="text-[11px] text-neutral-500 font-sans mt-0.5 max-w-2xl leading-relaxed">
+              <p class="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed max-w-3xl">
                 ${getI18nText('refProgramDesc')}
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Referral Link & Attribution Controls -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 pt-1">
-          <!-- Col Left (7): My Unique Referral Link -->
-          <div class="lg:col-span-7 p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2.5">
-            <div class="flex items-center justify-between text-[11px]">
-              <span class="text-neutral-500 font-sans font-medium">${getI18nText('refYourLink')}</span>
-              <span class="text-[10px] text-neutral-400 font-mono">${connectedWalletAddr ? `${connectedWalletAddr.slice(0, 4)}...${connectedWalletAddr.slice(-4)}` : (getActiveLang() === 'vi' ? 'Cần kết nối ví' : 'Wallet required')}</span>
+        <!-- Responsive Two-Sided Workflow: Share (Col 7) vs Status & Stats (Col 5) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <!-- Col 1 (Lg: 7 Cols): My Referral Link & 1-Click Sharing -->
+          <div class="lg:col-span-7 p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-neutral-500 font-sans font-semibold">${getI18nText('refYourLink')}</span>
+                <span class="text-[10px] text-neutral-400 font-mono">${connectedWalletAddr ? `${connectedWalletAddr.slice(0, 4)}...${connectedWalletAddr.slice(-4)}` : (getActiveLang() === 'vi' ? 'Chưa kết nối ví' : 'Wallet required')}</span>
+              </div>
+
+              ${connectedWalletAddr ? `
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <div class="flex-1 min-w-0 px-3.5 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 flex items-center">
+                  <input type="text" id="ref-share-url-input" readonly value="${window.location.origin}/?ref=${connectedWalletAddr}" class="w-full bg-transparent text-black dark:text-white text-xs font-mono select-all focus:outline-none truncate">
+                </div>
+                <button type="button" id="btn-copy-ref-link" class="min-h-[42px] px-4 py-2.5 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all hover:opacity-90 active:scale-95 cursor-pointer flex items-center justify-center space-x-2 shrink-0 shadow-xs">
+                  <i data-lucide="copy" class="w-3.5 h-3.5 shrink-0"></i>
+                  <span id="btn-copy-ref-text">${getI18nText('refCopyLink')}</span>
+                </button>
+              </div>
+
+              <!-- Social Quick Share Action Bar -->
+              <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                <span class="text-neutral-400 font-sans text-[11px]">${getActiveLang() === 'vi' ? 'Chia sẻ nhanh:' : 'Quick Share:'}</span>
+                <button type="button" id="btn-share-ref-x" class="min-h-[34px] px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs flex items-center space-x-1.5 cursor-pointer transition-colors active:scale-95">
+                  <i data-lucide="twitter" class="w-3.5 h-3.5"></i>
+                  <span>${getI18nText('refShareX')}</span>
+                </button>
+                <button type="button" id="btn-share-ref-tg" class="min-h-[34px] px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-xs flex items-center space-x-1.5 cursor-pointer transition-colors active:scale-95">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>${getI18nText('refShareTelegram')}</span>
+                </button>
+              </div>
+              ` : `
+              <div class="p-4 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-center space-y-2.5">
+                <p class="text-xs text-neutral-500 font-sans leading-relaxed">
+                  ${getI18nText('refConnectToGenerate')}
+                </p>
+                <button type="button" onclick="document.getElementById('wallet-btn').click()" class="min-h-[40px] px-5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all cursor-pointer hover:opacity-90 active:scale-95 shadow-xs">
+                  ${getActiveLang() === 'vi' ? 'Kết Nối Ví Web3 Để Lấy Link' : 'Connect Web3 Wallet to Get Link'}
+                </button>
+              </div>
+              `}
             </div>
 
-            ${connectedWalletAddr ? `
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-              <input type="text" id="ref-share-url-input" readonly value="${window.location.origin}/?ref=${connectedWalletAddr}" class="flex-1 px-3 py-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-xs font-mono select-all focus:outline-none">
-              <button type="button" id="btn-copy-ref-link" class="px-3.5 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all hover:opacity-90 active:scale-95 cursor-pointer flex items-center justify-center space-x-1.5 shrink-0 shadow-xs">
-                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                <span id="btn-copy-ref-text">${getI18nText('refCopyLink')}</span>
-              </button>
+            <div class="pt-2 text-[11px] text-neutral-400 font-sans border-t border-neutral-200/60 dark:border-neutral-800/60">
+              <span class="inline-flex items-center space-x-1">
+                <i data-lucide="shield-check" class="w-3 h-3 text-emerald-500 shrink-0"></i>
+                <span>${getActiveLang() === 'vi' ? 'Hoa hồng 6% được bảo chứng bất biến và mở khóa theo chuẩn SAFT (20% TGE, Cliff 2 tháng, Linear Stream 6 tháng).' : '6% commission is cryptographically recorded and vested under SAFT parity (20% TGE, 2-Mo Cliff, 6-Mo Linear Stream).'}</span>
+              </span>
             </div>
-            <div class="flex items-center space-x-2 pt-1 text-[11px]">
-              <span class="text-neutral-400 font-sans">${getActiveLang() === 'vi' ? 'Chia sẻ nhanh:' : 'Quick Share:'}</span>
-              <button type="button" id="btn-share-ref-x" class="px-2.5 py-1 rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-[11px] flex items-center space-x-1 cursor-pointer transition-colors">
-                <i data-lucide="twitter" class="w-3 h-3"></i>
-                <span>${getI18nText('refShareX')}</span>
-              </button>
-              <button type="button" id="btn-share-ref-tg" class="px-2.5 py-1 rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white text-black dark:text-white font-medium text-[11px] flex items-center space-x-1 cursor-pointer transition-colors">
-                <i data-lucide="send" class="w-3 h-3"></i>
-                <span>${getI18nText('refShareTelegram')}</span>
-              </button>
-            </div>
-            ` : `
-            <div class="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-center space-y-2">
-              <p class="text-xs text-neutral-500 font-sans leading-relaxed">
-                ${getI18nText('refConnectToGenerate')}
-              </p>
-              <button type="button" onclick="document.getElementById('wallet-btn').click()" class="px-4 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs font-mono transition-all cursor-pointer hover:opacity-90 active:scale-95">
-                ${getActiveLang() === 'vi' ? 'Kết Nối Ví Web3' : 'Connect Web3 Wallet'}
-              </button>
-            </div>
-            `}
           </div>
 
-          <!-- Col Right (5): Active Referral Attribution Status & Input -->
-          <div class="lg:col-span-5 p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2.5 flex flex-col justify-between">
+          <!-- Col 2 (Lg: 5 Cols): Inviter Status & Live Performance Stats -->
+          <div class="lg:col-span-5 p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-3.5 flex flex-col justify-between">
+            <!-- Top Box: Inviter Attribution -->
             <div>
-              <span class="text-neutral-500 font-sans font-medium text-[11px] block mb-1">${getActiveLang() === 'vi' ? 'Mã Người Giới Thiệu Của Bạn:' : 'Your Inviter Referral Code:'}</span>
+              <span class="text-neutral-500 font-sans font-semibold text-xs block mb-1.5">${getActiveLang() === 'vi' ? 'Mã Người Giới Thiệu Của Bạn:' : 'Your Inviter Referral Code:'}</span>
               ${(() => {
                 const activeRef = getActiveReferral();
                 const isSelf = activeRef && connectedWalletAddr && activeRef.toLowerCase() === connectedWalletAddr.toLowerCase();
                 if (activeRef && !isSelf) {
                   return `
-                    <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/80 flex items-center justify-between text-xs font-mono">
+                    <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800/80 flex items-center justify-between text-xs font-mono">
                       <div class="flex items-center space-x-2 truncate">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
                         <span class="text-emerald-800 dark:text-emerald-200 font-bold truncate">${activeRef.slice(0, 6)}...${activeRef.slice(-4)}</span>
-                        <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold shrink-0">(+5% Bonus)</span>
+                        <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold shrink-0">(+5% Bonus Active)</span>
                       </div>
-                      <button type="button" id="btn-remove-ref-code" class="text-[10px] text-neutral-500 hover:text-rose-500 underline ml-2 shrink-0 cursor-pointer">
+                      <button type="button" id="btn-remove-ref-code" class="text-xs text-neutral-500 hover:text-rose-500 underline ml-2 shrink-0 cursor-pointer font-sans">
                         ${getI18nText('refRemoveBtn')}
                       </button>
                     </div>
                   `;
                 } else {
                   return `
-                    <div class="flex items-center space-x-1.5">
-                      <input type="text" id="manual-ref-code-input" placeholder="${getI18nText('refCodePlaceholder')}" class="flex-1 px-3 py-2 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-[11px] font-mono focus:outline-none">
-                      <button type="button" id="btn-apply-ref-code" class="px-3 py-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white font-bold text-xs font-mono transition-all cursor-pointer shrink-0">
+                    <div class="flex items-center space-x-2">
+                      <input type="text" id="manual-ref-code-input" placeholder="${getI18nText('refCodePlaceholder')}" class="flex-1 px-3.5 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 text-black dark:text-white text-xs font-mono focus:outline-none truncate">
+                      <button type="button" id="btn-apply-ref-code" class="min-h-[40px] px-4 py-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white font-bold text-xs font-mono transition-all cursor-pointer shrink-0 active:scale-95">
                         ${getI18nText('refApplyBtn')}
                       </button>
                     </div>
-                    <p class="text-[10px] text-neutral-400 font-sans mt-1">
+                    <p class="text-[10px] text-neutral-400 font-sans mt-1.5">
                       ${getI18nText('refEnterCodePrompt')}
                     </p>
                   `;
@@ -1558,31 +1572,31 @@
               })()}
             </div>
 
-            <!-- Active Affiliate Metrics for this user -->
+            <!-- Bottom Box: 3 Clean KPI Stat Cards -->
             ${(() => {
               const refStats = getReferralStats(connectedWalletAddr);
               return `
-              <div class="grid grid-cols-3 gap-2 pt-2 border-t border-neutral-200/60 dark:border-neutral-800/80 text-center">
-                <div class="p-1.5 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
-                  <span class="text-[9px] text-neutral-400 block font-sans">${getI18nText('refTotalInvites')}</span>
-                  <strong class="text-xs font-bold text-black dark:text-white">${refStats.count}</strong>
-                </div>
-                <div class="p-1.5 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
-                  <span class="text-[9px] text-neutral-400 block font-sans">${getI18nText('refTotalVolume')}</span>
-                  <strong class="text-xs font-bold text-black dark:text-white">$${refStats.volume.toLocaleString()}</strong>
-                </div>
-                <div class="p-1.5 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
-                  <span class="text-[9px] text-neutral-400 block font-sans">${getI18nText('refTotalEarned')}</span>
-                  <strong class="text-xs font-bold text-emerald-600 dark:text-emerald-400">${refStats.totalCommission.toLocaleString()}</strong>
+              <div class="space-y-1.5 pt-2 border-t border-neutral-200/60 dark:border-neutral-800/60">
+                <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getI18nText('refStatsTitle')}</span>
+                <div class="grid grid-cols-3 gap-2 text-center">
+                  <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
+                    <span class="text-[9px] text-neutral-400 block font-sans truncate">${getI18nText('refTotalInvites')}</span>
+                    <strong class="text-xs sm:text-sm font-black text-black dark:text-white block mt-0.5">${refStats.count}</strong>
+                  </div>
+                  <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
+                    <span class="text-[9px] text-neutral-400 block font-sans truncate">${getI18nText('refTotalVolume')}</span>
+                    <strong class="text-xs sm:text-sm font-black text-black dark:text-white block mt-0.5">$${refStats.volume.toLocaleString()}</strong>
+                  </div>
+                  <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800">
+                    <span class="text-[9px] text-neutral-400 block font-sans truncate">${getI18nText('refTotalEarned')}</span>
+                    <strong class="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-400 block mt-0.5">+${refStats.totalCommission.toLocaleString()}</strong>
+                  </div>
                 </div>
               </div>
               `;
             })()}
           </div>
         </div>
-      </div>
-
-
       </div>
     `;
 
