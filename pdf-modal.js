@@ -1752,6 +1752,19 @@
           console.warn('Edge SAFT dispatch error:', err);
         }
 
+        // 3. Direct Google Apps Script Webhook Dispatch (Google Sheets + Dual Email)
+        try {
+          const sheetWebhook = window.HAICHAIN_GOOGLE_SHEETS_WEBHOOK_URL || '';
+          if (sheetWebhook) {
+            fetch(sheetWebhook, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(signedRecord)
+            }).catch(e => console.warn('Google Sheets Webhook non-blocking:', e));
+          }
+        } catch (_) {}
+
         // Display Success View
         modal.querySelector('#saft-rec-id').textContent = contractId;
         modal.querySelector('#saft-rec-name').textContent = name;
