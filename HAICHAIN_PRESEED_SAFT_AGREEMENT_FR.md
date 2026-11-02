@@ -59,7 +59,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 | :--- | :--- |
 | **Signature Autorisée:**<br><br>____________________________________ | **Signature Autorisée:**<br><br>____________________________________ |
 | **Date:** ____ / ____ / 2026 | **Date:** ____ / ____ / 2026 |
-| **Trésorerie Multi-Sig:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Adresse Solana de Réception:** `____________________________________` |
+| **Trésorerie Multi-Sig:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Adresse Solana de Réception:** `____________________________________` |
 
 ---
 *Instrument Juridique Officiel • Régulé par les Normes Numériques Internationales • HAICHAIN 2026*

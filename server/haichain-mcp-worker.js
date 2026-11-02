@@ -19,7 +19,7 @@
 const SOLANA_DEVNET_RPC = 'https://api.devnet.solana.com';
 const MASTER_VAULT_PDA = 'FtqZDVdogFfWeQxBwoXjZ62XQzbKeAs32umRVNQt4t8F';
 const PROGRAM_ID = 'DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk';
-const TREASURY_ADDRESS = 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
+const TREASURY_ADDRESS = '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
 
 const MCP_TOOLS = [
   {
@@ -191,9 +191,13 @@ async function handleGetSpendingPotBalance(args = {}) {
 
 // Tool Implementation: execute_micro_payment
 async function handleExecuteMicroPayment(args = {}) {
-  const amount = typeof args.amountUsdt === 'number' ? args.amountUsdt : 0.002;
-  const description = args.actionDescription || 'Autonomous AI Task Compensation';
-  const recipient = args.merchantRecipient || TREASURY_ADDRESS;
+  const rawAmount = typeof args.amountUsdt === 'number' ? args.amountUsdt
+                  : typeof args.amount === 'number' ? args.amount
+                  : typeof args.amount_usdt === 'number' ? args.amount_usdt
+                  : parseFloat(args.amountUsdt || args.amount || args.amount_usdt || 0.005);
+  const amount = isNaN(rawAmount) || rawAmount <= 0 ? 0.005 : rawAmount;
+  const description = args.actionDescription || args.description || args.service || args.task || 'DeepSeek AI Inference Settlement';
+  const recipient = args.merchantRecipient || args.recipient || args.to || args.recipientAddress || TREASURY_ADDRESS;
 
   let currentSlot = 517670100;
   try {
@@ -558,6 +562,6 @@ export default {
       return await env.ASSETS.fetch(request);
     }
 
-    return new Response('Not Found', { status: 404 });
+    return await fetch(request);
   }
 };

@@ -59,7 +59,7 @@ EL PRESENTE ACUERDO SIMPLE PARA FUTUROS TOKENS (este "**Acuerdo**" o "**SAFT**")
 | :--- | :--- |
 | **Firma Autorizada:**<br><br>____________________________________ | **Firma Autorizada:**<br><br>____________________________________ |
 | **Fecha:** ____ / ____ / 2026 | **Fecha:** ____ / ____ / 2026 |
-| **Tesorería Multifirma:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Dirección Solana de Destino:** `____________________________________` |
+| **Tesorería Multifirma:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Dirección Solana de Destino:** `____________________________________` |
 
 ---
 *Instrumento Legal Oficial • Bajo Estándares Internacionales de Activos Digitales • HAICHAIN 2026*

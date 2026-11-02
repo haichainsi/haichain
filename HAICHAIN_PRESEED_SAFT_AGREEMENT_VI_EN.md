@@ -95,7 +95,7 @@ Hai Bên cùng thống nhất ký kết bản thỏa thuận với các điều 
 | :--- | :--- |
 | **Ký và ghi rõ họ tên:**<br><br><br>____________________________________ | **Ký và ghi rõ họ tên:**<br><br><br>____________________________________ |
 | **Ngày ký:** ____ / ____ / 2026 | **Ngày ký:** ____ / ____ / 2026 |
-| **Địa chỉ ví Multi-Sig nhận vốn:**<br>`HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Địa chỉ ví Solana nhận Token:**<br>`________________________________________________` |
+| **Địa chỉ ví Multi-Sig nhận vốn:**<br>`5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Địa chỉ ví Solana nhận Token:**<br>`________________________________________________` |
 
 ---
 ---

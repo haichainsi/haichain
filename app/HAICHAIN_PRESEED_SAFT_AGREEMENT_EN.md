@@ -92,7 +92,7 @@ The Purchaser agrees to maintain strict confidentiality regarding the preferenti
 | :--- | :--- |
 | **Authorized Signature:**<br><br><br>____________________________________ | **Authorized Signature:**<br><br><br>____________________________________ |
 | **Date:** ____ / ____ / 2026 | **Date:** ____ / ____ / 2026 |
-| **Official Multi-Sig Treasury:**<br>`HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Designated Receiving Solana Address:**<br>`________________________________________________` |
+| **Official Multi-Sig Treasury:**<br>`5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Designated Receiving Solana Address:**<br>`________________________________________________` |
 
 ---
 *Official Legal Instrument &bull; Governed under International Digital Asset Standards &bull; HAICHAIN 2026*

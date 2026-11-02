@@ -747,7 +747,7 @@
             </div>
             <div class="flex justify-between items-center py-1.5 border-b border-neutral-100 dark:border-neutral-900">
               <span class="text-neutral-500" data-i18n="vault.deployerOperator">Deployer Operator:</span>
-              <a href="https://explorer.solana.com/address/HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">HD1b...5nVW (2.5 SOL)</a>
+              <a href="https://explorer.solana.com/address/5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">HD1b...5nVW (2.5 SOL)</a>
             </div>
             <div class="flex justify-between items-center py-1.5">
               <span class="text-neutral-500" data-i18n="vault.usdtMint">Official USDT Mint:</span>
@@ -6918,7 +6918,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           }
 
           const payerPubkey = phantom.publicKey;
-          const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
+          const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
           const treasuryPubkey = new solanaWeb3.PublicKey(treasuryAddress);
 
           // Check payer SOL balance safely converting BigInt to Number

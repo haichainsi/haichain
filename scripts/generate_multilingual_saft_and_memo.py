@@ -578,7 +578,7 @@ SAFT_TRANSLATIONS = {
 | :--- | :--- |
 | **授权签字:**<br><br><br>____________________________________ | **授权签字:**<br><br><br>____________________________________ |
 | **日期:** 2026年 ____ 月 ____ 日 | **日期:** 2026年 ____ 月 ____ 日 |
-| **官方多签金库地址:**<br>`HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **指定接收代币地址:**<br>`________________________________________________` |
+| **官方多签金库地址:**<br>`5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **指定接收代币地址:**<br>`________________________________________________` |
 
 ---
 *正式法律文书 • 受国际数字资产通用准则管辖 • HAICHAIN 2026*""",
@@ -671,7 +671,7 @@ SAFT_TRANSLATIONS = {
 | :--- | :--- |
 | **서명:**<br><br><br>____________________________________ | **서명:**<br><br><br>____________________________________ |
 | **일자:** 2026년 ____ 월 ____ 일 | **일자:** 2026년 ____ 월 ____ 일 |
-| **공식 다중서명 금고:**<br>`HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **지정 수령 지갑 주소:**<br>`________________________________________________` |
+| **공식 다중서명 금고:**<br>`5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **지정 수령 지갑 주소:**<br>`________________________________________________` |
 
 ---
 *공식 법률 문서 • 국제 디지털 자산 표준 준용 • HAICHAIN 2026*""",
@@ -737,7 +737,7 @@ EL PRESENTE ACUERDO SIMPLE PARA FUTUROS TOKENS (este "**Acuerdo**" o "**SAFT**")
 | :--- | :--- |
 | **Firma Autorizada:**<br><br>____________________________________ | **Firma Autorizada:**<br><br>____________________________________ |
 | **Fecha:** ____ / ____ / 2026 | **Fecha:** ____ / ____ / 2026 |
-| **Tesorería Multifirma:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Dirección Solana de Destino:** `____________________________________` |
+| **Tesorería Multifirma:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Dirección Solana de Destino:** `____________________________________` |
 
 ---
 *Instrumento Legal Oficial • Bajo Estándares Internacionales de Activos Digitales • HAICHAIN 2026*""",
@@ -803,7 +803,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 | :--- | :--- |
 | **Signature Autorisée:**<br><br>____________________________________ | **Signature Autorisée:**<br><br>____________________________________ |
 | **Date:** ____ / ____ / 2026 | **Date:** ____ / ____ / 2026 |
-| **Trésorerie Multi-Sig:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Adresse Solana de Réception:** `____________________________________` |
+| **Trésorerie Multi-Sig:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Adresse Solana de Réception:** `____________________________________` |
 
 ---
 *Instrument Juridique Officiel • Régulé par les Normes Numériques Internationales • HAICHAIN 2026*""",
@@ -869,7 +869,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 | :--- | :--- |
 | **Подпись:**<br><br>____________________________________ | **Подпись:**<br><br>____________________________________ |
 | **Дата:** ____ / ____ / 2026 | **Дата:** ____ / ____ / 2026 |
-| **Мультисиг Казначейство:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Назначенный адрес Solana:** `____________________________________` |
+| **Мультисиг Казначейство:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Назначенный адрес Solana:** `____________________________________` |
 
 ---
 *Официальный юридический документ • Международные стандарты цифровых активов • HAICHAIN 2026*""",
@@ -927,7 +927,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 | :--- | :--- |
 | **Қолы:**<br><br>____________________________________ | **Қолы:**<br><br>____________________________________ |
 | **Күні:** ____ / ____ / 2026 | **Күні:** ____ / ____ / 2026 |
-| **Multi-Sig Қазынашылығы:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **Тағайындалған Solana мекенжайы:** `____________________________________` |
+| **Multi-Sig Қазынашылығы:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **Тағайындалған Solana мекенжайы:** `____________________________________` |
 
 ---
 *Ресми заңды құжат • Халықаралық цифрлық активтер стандарттарымен реттеледі • HAICHAIN 2026*""",
@@ -985,7 +985,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 | :--- | :--- |
 | **अधिकृत हस्ताक्षर:**<br><br>____________________________________ | **अधिकृत हस्ताक्षर:**<br><br>____________________________________ |
 | **दिनांक:** ____ / ____ / 2026 | **दिनांक:** ____ / ____ / 2026 |
-| **मल्टी-सिग ट्रेजरी:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **नामित Solana पता:** `____________________________________` |
+| **मल्टी-सिग ट्रेजरी:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **नामित Solana पता:** `____________________________________` |
 
 ---
 *आधिकारिक कानूनी दस्तावेज • अंतर्राष्ट्रीय डिजिटल संपत्ति मानकों के तहत शासित • HAICHAIN 2026*""",
@@ -1043,7 +1043,7 @@ LE PRÉSENT ACCORD SIMPLE POUR TOKENS FUTURS (cet "**Accord**" ou "**SAFT**") at
 | :--- | :--- |
 | **חתימה מורשית:**<br><br>____________________________________ | **חתימה מורשית:**<br><br>____________________________________ |
 | **תאריך:** ____ / ____ / 2026 | **תאריך:** ____ / ____ / 2026 |
-| **קופת מולטי-סיג:** `HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW` | **כתובת Solana לקבלת טוקנים:** `____________________________________` |
+| **קופת מולטי-סיג:** `5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3` | **כתובת Solana לקבלת טוקנים:** `____________________________________` |
 
 ---
 *מסמך משפטי רשמי • כפוף לתקנים בינלאומיים לנכסים דיגיטליים • HAICHAIN 2026*"""

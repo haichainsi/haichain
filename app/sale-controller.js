@@ -926,7 +926,7 @@
   window.HAICHAIN_SALE_CONFIG = {
     CURRENT_PHASE: 'PRE_SEED_PRIVATE', // 'PRE_SEED_PRIVATE' | 'PUBLIC_TGE'
     ACCESS_KEYS: ['haichainsi2030st', 'early-backer-2026', 'haichain2026', 'hai-angel', 'vip', 'preseed', 'angel', 'investor'],
-    TREASURY_ADDRESS: 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW',
+    TREASURY_ADDRESS: '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
 
     PHASES: {
       PRE_SEED_PRIVATE: {
@@ -1910,7 +1910,7 @@ Please fund your wallet with SOL to continue.`);
           }
 
           // Real transaction popup in Phantom/Solflare
-          const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || 'HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW';
+          const treasuryAddress = (window.HAICHAIN_SALE_CONFIG && window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS) || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
           const fromPubkey = pubkey;
           const toPubkey = new solana.PublicKey(treasuryAddress);
           const lamportsToSend = Math.round(0.005 * solana.LAMPORTS_PER_SOL);
