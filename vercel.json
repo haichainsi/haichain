@@ -2,6 +2,31 @@
   "version": 2,
   "redirects": [
     {
+      "source": "/vip",
+      "destination": "/app/dashboard.html?access=vip",
+      "permanent": false
+    },
+    {
+      "source": "/access-vip",
+      "destination": "/app/dashboard.html?access=vip",
+      "permanent": false
+    },
+    {
+      "source": "/preseed",
+      "destination": "/app/dashboard.html?access=vip",
+      "permanent": false
+    },
+    {
+      "source": "/private",
+      "destination": "/app/dashboard.html?access=vip",
+      "permanent": false
+    },
+    {
+      "source": "/sale",
+      "destination": "/app/dashboard.html?access=vip",
+      "permanent": false
+    },
+    {
       "source": "/whitepaper.pdf",
       "destination": "/HAICHAIN_WHITEPAPER_V1.0_EN.pdf",
       "permanent": false

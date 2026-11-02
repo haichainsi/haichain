@@ -2553,13 +2553,16 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     try {
       const initUrlParams = new URLSearchParams(window.location.search);
       let urlTab = (initUrlParams.get('tab') || window.location.hash.replace('#', '')).toLowerCase();
-      if (urlTab === 'preseed' || urlTab === 'presale' || urlTab === 'private' || urlTab === 'sale') urlTab = 'tab-preseed';
+      if (urlTab === 'preseed' || urlTab === 'presale' || urlTab === 'private' || urlTab === 'sale' || urlTab === 'vip') urlTab = 'tab-preseed';
       if (urlTab === 'vesting' || urlTab === 'vault') urlTab = 'tab-vesting';
       if (urlTab === 'overview') urlTab = 'tab-overview';
       if (urlTab === 'agents' || urlTab === 'bot') urlTab = 'tab-agents';
       if (urlTab === 'playground') urlTab = 'tab-playground';
       if (urlTab === 'ledger') urlTab = 'tab-ledger';
       if (urlTab === 'mcp') urlTab = 'tab-mcp';
+      if (initUrlParams.get('access') || initUrlParams.get('key') || initUrlParams.get('code')) {
+        urlTab = 'tab-preseed';
+      }
       if (urlTab && tabTitles[urlTab]) {
         switchTab(urlTab);
       }

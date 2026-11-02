@@ -819,10 +819,70 @@
     const config = window.HAICHAIN_SALE_CONFIG;
     const phase = config.PHASES[config.CURRENT_PHASE];
 
-    // GHOST MODE: Never tease public visitors with a password box or private sale leak
+    // VIP GATEKEEPER LOCK SCREEN (LUXURY APPLE TITANIUM THEME)
     if (!isAuthorized && !phase.isPublic) {
-      container.innerHTML = '';
-      container.classList.add('hidden');
+      container.classList.remove('hidden');
+      container.innerHTML = `
+        <div class="max-w-lg mx-auto my-8 sm:my-14 p-6 sm:p-9 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-lg text-center space-y-6 animate-fadeIn">
+          <div class="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex items-center justify-center mx-auto text-black dark:text-white shadow-xs">
+            <i data-lucide="shield-check" class="w-8 h-8"></i>
+          </div>
+          <div class="space-y-2">
+            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[11px] font-mono font-semibold text-neutral-700 dark:text-neutral-300">
+              <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+              <span>HAICHAIN VIP GATEKEEPER</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-black dark:text-white pt-1">
+              ${getI18nText('lockedTitle')}
+            </h2>
+            <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans max-w-sm mx-auto">
+              ${getI18nText('lockedDesc')}
+            </p>
+          </div>
+          <div class="space-y-3 pt-2">
+            <div class="relative">
+              <input type="text" id="vip-gatekeeper-input" placeholder="${getI18nText('accessPlaceholder')}" class="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 text-black dark:text-white placeholder-neutral-400 text-xs sm:text-sm font-mono focus:outline-hidden focus:border-black dark:focus:border-white transition-all text-center tracking-wider font-semibold">
+            </div>
+            <button type="button" id="vip-gatekeeper-submit" class="w-full py-3.5 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-xs sm:text-sm font-mono transition-all hover:opacity-90 active:scale-98 shadow-sm cursor-pointer flex items-center justify-center space-x-2">
+              <i data-lucide="key" class="w-4 h-4"></i>
+              <span>${getI18nText('unlockBtn')}</span>
+            </button>
+            <p id="vip-gatekeeper-err" class="text-xs font-mono text-rose-500 hidden pt-1"></p>
+            <div class="pt-2">
+              <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
+                Key ví dụ: <code class="text-black dark:text-white underline cursor-pointer" onclick="document.getElementById('vip-gatekeeper-input').value='vip';document.getElementById('vip-gatekeeper-submit').click();">vip</code> | <code class="text-black dark:text-white underline cursor-pointer" onclick="document.getElementById('vip-gatekeeper-input').value='haichain2026';document.getElementById('vip-gatekeeper-submit').click();">haichain2026</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+      const gateInput = document.getElementById('vip-gatekeeper-input');
+      const gateSubmit = document.getElementById('vip-gatekeeper-submit');
+      const gateErr = document.getElementById('vip-gatekeeper-err');
+      function attemptGateUnlock() {
+        if (!gateInput) return;
+        const val = (gateInput.value || '').toLowerCase().trim();
+        if (config.ACCESS_KEYS.includes(val)) {
+          try {
+            localStorage.setItem('haichain_vip_access', val);
+          } catch (_) {}
+          injectNavigationTabs(true);
+          renderTerminalContent(container, true);
+        } else {
+          if (gateErr) {
+            gateErr.textContent = getActiveLang() === 'vi' ? 'Khóa truy cập không hợp lệ. Vui lòng kiểm tra lại.' : 'Invalid VIP Access Key. Please try again.';
+            gateErr.classList.remove('hidden');
+          }
+          gateInput.focus();
+        }
+      }
+      if (gateSubmit) gateSubmit.addEventListener('click', attemptGateUnlock);
+      if (gateInput) gateInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') attemptGateUnlock();
+      });
       return;
     }
 
@@ -1457,14 +1517,22 @@
       updateLanguage(code);
     });
 
-    // Auto switch to pre-seed tab if access key in query
+    // Auto switch to pre-seed tab if access key or preseed tab in query
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('access') || urlParams.get('key')) {
-      setTimeout(() => {
+    const hasAccessKey = Boolean(urlParams.get('access') || urlParams.get('key') || urlParams.get('code'));
+    const isPreseedTab = ['preseed', 'presale', 'private', 'sale', 'vip'].includes((urlParams.get('tab') || '').toLowerCase());
+
+    if (hasAccessKey || isPreseedTab) {
+      let attempts = 0;
+      const autoSwitchInterval = setInterval(() => {
+        attempts++;
         if (typeof window.switchTab === 'function') {
           window.switchTab('tab-preseed');
+          clearInterval(autoSwitchInterval);
+        } else if (attempts > 25) {
+          clearInterval(autoSwitchInterval);
         }
-      }, 300);
+      }, 80);
     }
   }
 
