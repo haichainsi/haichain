@@ -524,9 +524,18 @@ async function handleMcpRequest(request) {
   });
 }
 
-
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    if (url.pathname === '/api/mcp' || url.pathname.startsWith('/api/mcp/') || url.pathname === '/') {
+      return await handleMcpRequest(request);
+    }
+    if (env && env.ASSETS) {
+      try {
+        const res = await env.ASSETS.fetch(request);
+        if (res.status !== 404) return res;
+      } catch (_) {}
+    }
     return await handleMcpRequest(request);
   }
 };
