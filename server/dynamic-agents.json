@@ -16,5 +16,41 @@
     ],
     "registeredAt": "2026-11-03T13:40:58.263Z",
     "isCommunityVerified": true
+  },
+  {
+    "agentId": "agent-community-mw0qqo24-166",
+    "name": "DeepSeek-V3 Decentralized Inference Node",
+    "provider": "Community Decentralized Agent Node",
+    "category": "automation",
+    "pricingUsdt": 0.003,
+    "slaUptime": "99.5%",
+    "description": "High-throughput 671B MoE reasoning node with cryptographic HTTP 402 paywall",
+    "recipientAddress": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "endpointUrl": "http://127.0.0.1:4020/api/ai-inference",
+    "capabilities": [
+      "DeepSeek-V3 reasoning",
+      "Mathematical theorem proving",
+      "Solana Paywall"
+    ],
+    "registeredAt": "2026-11-03T13:45:59.116Z",
+    "isCommunityVerified": true
+  },
+  {
+    "agentId": "agent-community-mw0qtbvo-227",
+    "name": "DeepSeek-V3 Decentralized Inference Node",
+    "provider": "Community Decentralized Agent Node",
+    "category": "automation",
+    "pricingUsdt": 0.003,
+    "slaUptime": "99.5%",
+    "description": "High-throughput 671B MoE reasoning node with cryptographic HTTP 402 paywall",
+    "recipientAddress": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "endpointUrl": "http://127.0.0.1:4020/api/ai-inference",
+    "capabilities": [
+      "DeepSeek-V3 reasoning",
+      "Mathematical theorem proving",
+      "Solana Paywall"
+    ],
+    "registeredAt": "2026-11-03T13:48:03.300Z",
+    "isCommunityVerified": true
   }
 ]

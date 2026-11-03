@@ -261,7 +261,11 @@ class ProductionAgentRelayer {
     const startTime = Date.now();
     let resultData = null;
 
-    if (agentId.includes('scraper')) {
+    // Check if agent is a registered community or external agent with an endpointUrl
+    const matchedAgent = (this.allAgents || []).find(a => a.agentId === agentId);
+    if (matchedAgent && matchedAgent.endpointUrl) {
+      resultData = await this.relayRemoteAgentEndpoint(matchedAgent, payload);
+    } else if (agentId.includes('scraper')) {
       resultData = await this.relayWebExtraction(payload);
     } else if (agentId.includes('market') || agentId.includes('arbitrage') || agentId.includes('sentiment')) {
       resultData = await this.relayFinancialIntelligence(payload);
@@ -282,6 +286,83 @@ class ProductionAgentRelayer {
       latencyMs,
       result: resultData
     };
+  }
+
+  /**
+   * Real Autonomous HTTP 402 Handshake & Remote Agent Dispatch
+   */
+  async relayRemoteAgentEndpoint(agent, payload) {
+    console.log(`[Remote Agent Relay] Dispatching task to external agent: ${agent.name} (${agent.endpointUrl})`);
+    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    try {
+      let resp = await fetch(agent.endpointUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'HAICHAIN-Autonomous-Agent-Relayer/1.1'
+        },
+        body: JSON.stringify({ taskPayload: payload, clientTimestamp: Date.now() }),
+        signal: controller.signal
+      });
+
+      // If HTTP 402 Payment Required: Settle on-chain and retry with payment signature!
+      if (resp.status === 402) {
+        console.log(`[Remote Agent Relay] Agent returned HTTP 402 Payment Required! Initiating Solana micro-escrow...`);
+        const challengeHeaders = Object.fromEntries(resp.headers.entries());
+        let challengeBody = {};
+        try { challengeBody = await resp.json(); } catch (_) {}
+        
+        const challenge = this.parse402Challenge(challengeHeaders, challengeBody);
+        const recipient = challenge.payee || agent.recipientAddress || DEFAULT_TREASURY;
+        const amountUsdt = challenge.amountUsdt || agent.pricingUsdt || 0.003;
+
+        // Broadcast Real Solana Transaction
+        const payment = await this.broadcastRealSolanaPayment(recipient, amountUsdt);
+        console.log(`[Remote Agent Relay] Micro-payment confirmed: ${payment.txSignature}. Retrying downstream task with voucher...`);
+
+        // Second attempt: Present on-chain payment signature
+        const retryResp = await fetch(agent.endpointUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `X402 ${payment.txSignature}`,
+            'X-Payment-Signature': payment.txSignature,
+            'User-Agent': 'HAICHAIN-Autonomous-Agent-Relayer/1.1'
+          },
+          body: JSON.stringify({ taskPayload: payload, txSignature: payment.txSignature }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+        if (!retryResp.ok) {
+          throw new Error(`Downstream agent failed verification after payment: HTTP ${retryResp.status}`);
+        }
+
+        const data = await retryResp.json().catch(async () => ({ text: await retryResp.text() }));
+        return {
+          status: 'SUCCESS',
+          protocolHandshake: 'HTTP_402_PAYMENT_SETTLED',
+          agentEndpoint: agent.endpointUrl,
+          onChainSettlement: payment,
+          downstreamResponse: data
+        };
+      }
+
+      clearTimeout(timeoutId);
+      const data = await resp.json().catch(async () => ({ text: await resp.text() }));
+      return {
+        status: 'SUCCESS',
+        protocolHandshake: 'DIRECT_DISPATCH',
+        agentEndpoint: agent.endpointUrl,
+        downstreamResponse: data
+      };
+    } catch (err) {
+      clearTimeout(timeoutId);
+      throw new Error(`Remote agent dispatch failed (${agent.endpointUrl}): ${err.message}`);
+    }
   }
 
   /**
@@ -548,8 +629,13 @@ class ProductionAgentRelayer {
       return refundReceipt;
     }
 
-    // Happy Path: Task verified -> Broadcast on-chain payment to agent
-    const payment = await this.broadcastRealSolanaPayment(effectiveRecipient, bidAmountUsdt || 0.003);
+    // Happy Path: Check if payment was already broadcasted during HTTP 402 challenge, otherwise broadcast now
+    let payment = null;
+    if (taskExecution.result && taskExecution.result.onChainSettlement) {
+      payment = taskExecution.result.onChainSettlement;
+    } else {
+      payment = await this.broadcastRealSolanaPayment(effectiveRecipient, bidAmountUsdt || 0.003);
+    }
 
     const receipt = {
       jobId,
