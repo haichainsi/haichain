@@ -62,28 +62,13 @@ Où :
 
 Cinq vecteurs d'attaque critiques ont été rigoureusement testés et verrouillés dans le noyau :
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN MATRICE DE RENFORCEMENT EN 5 POINTS                       |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | Vecteur d'Attaque          | Mécanisme de Vulnérabilité       | Invariant On-Chain Renforcé   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Double Réclamation Escrow  | Soumission de multiples reçus    | Règlement Monotone Non-Réversible: |
-|   |                            | pour dépasser la réserve         | P_i <= min(C_i, R_i)          |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Détournement Compte ATA    | Redirection du compte receveur   | Liaison Stricte ATA Canonique |
-|   |                            | vers un tiers non approuvé       | Validation rigide sur Solana L1|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Contournement Gel Panic    | Les anciens canaux réclament     | Isolation d'Époque Instantanée|
-|   |                            | après activation du Panic Freeze | Invalidation immédiate ($I_6$) |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Drainage Lamport Loyer     | Vol des lamports lors de la      | Restitution Canonique du Loyer|
-|   |                            | fermeture d'un canal             | Retour automatique à grant_pot|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Attaque Sybil Micro-Boucle | Création de 1 000 sous-feuilles  | Brûlage du Budget Modèle      |
-|   |                            | pour drainer des micro-réserves  | activate_child déduit du père |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | Vecteur d'Attaque | Mécanisme de Vulnérabilité | Invariant On-Chain Renforcé |
+|:---:|:---|:---|:---|
+| **1** | **Double Réclamation Escrow** | Soumission de multiples reçus cumulatifs pour dépasser la réserve | **Règlement Monotone Non-Réversible**<br>$P_i \le \min(C_i, R_i)$ : Verrouillage strict du plafond |
+| **2** | **Détournement Compte ATA** | Redirection du compte receveur vers un tiers non approuvé | **Liaison Stricte ATA Canonique**<br>Validation cryptographique immuable sur Solana L1 |
+| **3** | **Contournement Gel Panic** | Les anciens canaux réclament après activation du Panic Freeze | **Isolation d'Époque Instantanée ($I_6$)**<br>Invalidation immédiate de tous les bons en 380ms |
+| **4** | **Drainage Lamport Loyer** | Vol des lamports de loyer lors de la fermeture d'un canal | **Restitution Canonique du Loyer**<br>Remboursement automatique à 100% au trésor (`grant_pot`) |
+| **5** | **Attaque Sybil Micro-Boucle** | Création de 1 000 sous-feuilles pour drainer des micro-réserves | **Brûlage du Budget Modèle**<br>`activate_child` déduit directement du plafond père |
 
 ---
 

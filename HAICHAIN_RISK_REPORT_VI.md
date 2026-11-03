@@ -62,28 +62,13 @@ Trong đó:
 
 Trong cuộc kiểm toán điều tra kỹ thuật nội bộ, 5 vector tấn công nghiêm trọng đã được kiểm thử và đóng cứng vào nhân giao thức:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 MA TRẬN PHÒNG THỦ 5 ĐIỂM HAICHAIN                                  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| STT| Vector Tấn công            | Cơ chế Khai thác Tiềm ẩn         | Biện pháp Khắc phục Cốt lõi   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Rút Tiền Kép Kênh Ký Quỹ   | Bên bán gửi nhiều chứng từ       | Thanh toán Đơn điệu Không thể |
-|   | (Channel Escrow Double-Dip)| tích lũy để rút vượt hạn mức     | Đảo ngược: $P_i \le \min(C,R)$|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Chiếm Đoạt Tài Khoản ATA   | Chuyển hướng thanh toán sang     | Ràng buộc Khắt khe Địa chỉ ATA|
-|   |                            | tài khoản Token bên thứ 3        | Xác thực bất biến PDA trên L1 |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Tấn công Bỏ qua Cầu Dao    | Kênh cũ tiếp tục rút tiền sau    | Cách ly Kỷ nguyên Panic       |
-|   | Khẩn Cấp (Panic-Bypass)    | khi đã kích hoạt nút Panic       | Hủy bỏ toàn bộ chứng từ cũ    |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Bòn Rút Lamport Tiền Thuê  | Bên thứ ba chiếm đoạt lamports   | Hoàn Trả Tuyệt Đối Tiền Thuê  |
-|   | (Rent Lamport Vampire)     | tiền thuê khi đóng kênh          | Tự động trả về người nạp gốc  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Tấn công Sybil Vòng lặp Nhỏ| Tạo 1.000 lá thử việc để rút     | Tiêu Hao Ngân Sách Mẫu Cha    |
-|   |                            | các khoản dự trữ vi mô           | Khóa cứng trần ngân sách gốc  |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| STT | Vector Tấn công | Cơ chế Khai thác Tiềm ẩn | Biện pháp Khắc phục Cốt lõi |
+|:---:|:---|:---|:---|
+| **1** | **Rút Tiền Kép Kênh Ký Quỹ**<br>(Channel Escrow Double-Dip) | Bên bán gửi nhiều chứng từ tích lũy để rút vượt hạn mức | **Thanh toán Đơn điệu Không thể Đảo ngược**<br>$P_i \le \min(C, R)$: Khóa cứng mức chi trả tối đa |
+| **2** | **Chiếm Đoạt Tài Khoản ATA** | Chuyển hướng thanh toán sang tài khoản Token bên thứ 3 | **Ràng buộc Khắt khe Địa chỉ ATA**<br>Xác thực bất biến PDA trực tiếp trên Solana L1 |
+| **3** | **Tấn công Bỏ qua Cầu Dao Khẩn Cấp**<br>(Panic-Bypass) | Kênh cũ tiếp tục rút tiền sau khi chủ sở hữu đã kích hoạt nút Panic | **Cách ly Kỷ nguyên Panic ($I_6$)**<br>Hủy bỏ hiệu lực tức thì toàn bộ chứng từ cũ trong 380ms |
+| **4** | **Bòn Rút Lamport Tiền Thuê**<br>(Rent Lamport Vampire) | Bên thứ ba chiếm đoạt lamports tiền thuê khi đóng kênh thanh toán | **Hoàn Trả Tuyệt Đối Tiền Thuê**<br>Tự động hoàn 100% về ví kho quỹ gốc (`grant_pot`) |
+| **5** | **Tấn công Sybil Vòng lặp Nhỏ** | Tạo 1.000 nhánh con thử việc để bòn rút các khoản dự trữ vi mô | **Tiêu Hao Ngân Sách Mẫu Cha**<br>`activate_child` đốt trực tiếp trần ngân sách gốc của cha |
 
 ---
 

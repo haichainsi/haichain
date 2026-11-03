@@ -2457,7 +2457,7 @@ function buildHaichainSaftEmailHtml(opt) {
       if (!doc) {
         const pdfjs = await ensurePdfJs();
         let fetchUrl = pdfUrl;
-        const bust = 'v=v1.2_inst_1793593000000';
+        const bust = 'v=v1.3.2_risk_table_full_view';
         if (!fetchUrl.includes('?')) {
           fetchUrl += '?' + bust;
         } else if (!fetchUrl.includes('v=')) {
@@ -2521,7 +2521,7 @@ function buildHaichainSaftEmailHtml(opt) {
       if (loader) loader.classList.add('hidden');
       if (fallbackIframe) {
         let fetchUrl = pdfUrl;
-        const bust = 'v=v1.2_inst_1793593000000';
+        const bust = 'v=v1.3.2_risk_table_full_view';
         if (!fetchUrl.includes('?')) fetchUrl += '?' + bust;
         fallbackIframe.src = fetchUrl;
         fallbackIframe.classList.remove('hidden');

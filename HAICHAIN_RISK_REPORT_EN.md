@@ -62,33 +62,13 @@ Where:
 
 During the internal red-team forensic audit, 5 critical attack vectors were evaluated and hardened into the protocol kernel:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN 5-POINT HARDENING MATRIX                                 |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | Attack Vector              | Vulnerability Mechanism          | Hardened On-Chain Invariant   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Jito MEV Panic Front-Run   | Malicious voucher bundles placed | Panic Epoch Tag ($I_6$)       |
-|   |                            | ahead of owner Panic Freeze      | Channel tagged with epoch;    |
-|   |                            |                                  | instantly invalidated         |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Window Straddle Double-Dip | Splitting reserve across window  | Atomic Epoch Consumption      |
-|   |                            | boundary to draw 2x velocity     | Reserve strictly burns        |
-|   |                            |                                  | window capacity in anchor     |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Merchant Liquidity Hostage | Uncooperative merchant leaves    | OwnerForceReclaim ($I_1$)     |
-|   |                            | unspent channel un-settled       | Zero-claim channels unlocked  |
-|   |                            |                                  | immediately by master owner   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Rent Lamport Vampire Drain | Third-party rent-recipient       | Canonical Rent Recipient      |
-|   |                            | draining rent on channel close   | Rent strictly refunded to     |
-|   |                            |                                  | original funder (`grant_pot`) |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Indirect Micro-Loop Sybil  | 1,000 child probation leaves     | Template Budget Burn          |
-|   |                            | draining small micro-reserves    | `activate_child` burns        |
-|   |                            |                                  | parent `max_reserve` ceiling  |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | Attack Vector | Vulnerability Mechanism | Hardened On-Chain Invariant |
+|:---:|:---|:---|:---|
+| **1** | **Jito MEV Panic Front-Run** | Malicious voucher bundles placed ahead of owner Panic Freeze | **Panic Epoch Tag ($I_6$)**<br>Channel tagged with epoch; instantly invalidated |
+| **2** | **Window Straddle Double-Dip** | Splitting reserve across window boundary to draw 2x velocity | **Atomic Epoch Consumption**<br>Reserve strictly burns window capacity in anchor |
+| **3** | **Merchant Liquidity Hostage** | Uncooperative merchant leaves unspent channel un-settled | **OwnerForceReclaim ($I_1$)**<br>Zero-claim channels unlocked immediately by master owner |
+| **4** | **Rent Lamport Vampire Drain** | Third-party rent-recipient draining rent on channel close | **Canonical Rent Recipient**<br>Rent strictly refunded to original funder (`grant_pot`) |
+| **5** | **Indirect Micro-Loop Sybil** | 1,000 child probation leaves draining small micro-reserves | **Template Budget Burn**<br>`activate_child` burns parent `max_reserve` ceiling |
 
 ---
 

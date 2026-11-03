@@ -80,7 +80,7 @@ def latex_to_html(tex):
         r'\prod': '&prod;', r'\Delta': '&Delta;', r'\alpha': '&alpha;', r'\beta': '&beta;',
         r'\gamma': '&gamma;', r'\tau': '&tau;', r'\pi': '&pi;', r'\mu': '&mu;',
         r'\sigma': '&sigma;', r'\epsilon': '&epsilon;', r'\theta': '&theta;', r'\lambda': '&lambda;',
-        r'\omega': '&omega;', r'\Omega': '&Omega;', r'\,': ' ', r'\quad': ' &nbsp; ', r'\qquad': ' &nbsp; &nbsp; '
+        r'\omega': '&omega;', r'\Omega': '&Omega;', r'\,': ' ', r'\quad': ' &nbsp; ', r'\qquad': ' &nbsp; &nbsp; ', r'\dots': '&hellip;'
     }
     for macro, rep in symbols.items():
         s = s.replace(macro, rep)
@@ -165,33 +165,13 @@ Where:
 
 During the internal red-team forensic audit, 5 critical attack vectors were evaluated and hardened into the protocol kernel:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN 5-POINT HARDENING MATRIX                                 |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | Attack Vector              | Vulnerability Mechanism          | Hardened On-Chain Invariant   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Jito MEV Panic Front-Run   | Malicious voucher bundles placed | Panic Epoch Tag ($I_6$)       |
-|   |                            | ahead of owner Panic Freeze      | Channel tagged with epoch;    |
-|   |                            |                                  | instantly invalidated         |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Window Straddle Double-Dip | Splitting reserve across window  | Atomic Epoch Consumption      |
-|   |                            | boundary to draw 2x velocity     | Reserve strictly burns        |
-|   |                            |                                  | window capacity in anchor     |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Merchant Liquidity Hostage | Uncooperative merchant leaves    | OwnerForceReclaim ($I_1$)     |
-|   |                            | unspent channel un-settled       | Zero-claim channels unlocked  |
-|   |                            |                                  | immediately by master owner   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Rent Lamport Vampire Drain | Third-party rent-recipient       | Canonical Rent Recipient      |
-|   |                            | draining rent on channel close   | Rent strictly refunded to     |
-|   |                            |                                  | original funder (`grant_pot`) |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Indirect Micro-Loop Sybil  | 1,000 child probation leaves     | Template Budget Burn          |
-|   |                            | draining small micro-reserves    | `activate_child` burns        |
-|   |                            |                                  | parent `max_reserve` ceiling  |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | Attack Vector | Vulnerability Mechanism | Hardened On-Chain Invariant |
+|:---:|:---|:---|:---|
+| **1** | **Jito MEV Panic Front-Run** | Malicious voucher bundles placed ahead of owner Panic Freeze | **Panic Epoch Tag ($I_6$)**<br>Channel tagged with epoch; instantly invalidated |
+| **2** | **Window Straddle Double-Dip** | Splitting reserve across window boundary to draw 2x velocity | **Atomic Epoch Consumption**<br>Reserve strictly burns window capacity in anchor |
+| **3** | **Merchant Liquidity Hostage** | Uncooperative merchant leaves unspent channel un-settled | **OwnerForceReclaim ($I_1$)**<br>Zero-claim channels unlocked immediately by master owner |
+| **4** | **Rent Lamport Vampire Drain** | Third-party rent-recipient draining rent on channel close | **Canonical Rent Recipient**<br>Rent strictly refunded to original funder (`grant_pot`) |
+| **5** | **Indirect Micro-Loop Sybil** | 1,000 child probation leaves draining small micro-reserves | **Template Budget Burn**<br>`activate_child` burns parent `max_reserve` ceiling |
 
 ---
 
@@ -341,28 +321,13 @@ Trong đó:
 
 Trong cuộc kiểm toán điều tra kỹ thuật nội bộ, 5 vector tấn công nghiêm trọng đã được kiểm thử và đóng cứng vào nhân giao thức:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 MA TRẬN PHÒNG THỦ 5 ĐIỂM HAICHAIN                                  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| STT| Vector Tấn công            | Cơ chế Khai thác Tiềm ẩn         | Biện pháp Khắc phục Cốt lõi   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Rút Tiền Kép Kênh Ký Quỹ   | Bên bán gửi nhiều chứng từ       | Thanh toán Đơn điệu Không thể |
-|   | (Channel Escrow Double-Dip)| tích lũy để rút vượt hạn mức     | Đảo ngược: $P_i \le \min(C,R)$|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Chiếm Đoạt Tài Khoản ATA   | Chuyển hướng thanh toán sang     | Ràng buộc Khắt khe Địa chỉ ATA|
-|   |                            | tài khoản Token bên thứ 3        | Xác thực bất biến PDA trên L1 |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Tấn công Bỏ qua Cầu Dao    | Kênh cũ tiếp tục rút tiền sau    | Cách ly Kỷ nguyên Panic       |
-|   | Khẩn Cấp (Panic-Bypass)    | khi đã kích hoạt nút Panic       | Hủy bỏ toàn bộ chứng từ cũ    |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Bòn Rút Lamport Tiền Thuê  | Bên thứ ba chiếm đoạt lamports   | Hoàn Trả Tuyệt Đối Tiền Thuê  |
-|   | (Rent Lamport Vampire)     | tiền thuê khi đóng kênh          | Tự động trả về người nạp gốc  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Tấn công Sybil Vòng lặp Nhỏ| Tạo 1.000 lá thử việc để rút     | Tiêu Hao Ngân Sách Mẫu Cha    |
-|   |                            | các khoản dự trữ vi mô           | Khóa cứng trần ngân sách gốc  |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| STT | Vector Tấn công | Cơ chế Khai thác Tiềm ẩn | Biện pháp Khắc phục Cốt lõi |
+|:---:|:---|:---|:---|
+| **1** | **Rút Tiền Kép Kênh Ký Quỹ**<br>(Channel Escrow Double-Dip) | Bên bán gửi nhiều chứng từ tích lũy để rút vượt hạn mức | **Thanh toán Đơn điệu Không thể Đảo ngược**<br>$P_i \le \min(C, R)$: Khóa cứng mức chi trả tối đa |
+| **2** | **Chiếm Đoạt Tài Khoản ATA** | Chuyển hướng thanh toán sang tài khoản Token bên thứ 3 | **Ràng buộc Khắt khe Địa chỉ ATA**<br>Xác thực bất biến PDA trực tiếp trên Solana L1 |
+| **3** | **Tấn công Bỏ qua Cầu Dao Khẩn Cấp**<br>(Panic-Bypass) | Kênh cũ tiếp tục rút tiền sau khi chủ sở hữu đã kích hoạt nút Panic | **Cách ly Kỷ nguyên Panic ($I_6$)**<br>Hủy bỏ hiệu lực tức thì toàn bộ chứng từ cũ trong 380ms |
+| **4** | **Bòn Rút Lamport Tiền Thuê**<br>(Rent Lamport Vampire) | Bên thứ ba chiếm đoạt lamports tiền thuê khi đóng kênh thanh toán | **Hoàn Trả Tuyệt Đối Tiền Thuê**<br>Tự động hoàn 100% về ví kho quỹ gốc (`grant_pot`) |
+| **5** | **Tấn công Sybil Vòng lặp Nhỏ** | Tạo 1.000 nhánh con thử việc để bòn rút các khoản dự trữ vi mô | **Tiêu Hao Ngân Sách Mẫu Cha**<br>`activate_child` đốt trực tiếp trần ngân sách gốc của cha |
 
 ---
 
@@ -512,23 +477,13 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 在内部取证审计中，5 大关键攻击向量均已通过渗透测试并在协议内核中获得根本性防御：
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                HAICHAIN 五维核心防御矩阵                                            |
-+---+----------------------------+----------------------------------+-------------------------------+
-|序号| 攻击向量                   | 传统漏洞机理                     | HAICHAIN 核心防御对策          |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | 通道双重认领攻击           | 商户提交多张历史凭证重复提现     | 单调不可逆结算：$P_i \le \min(C,R)|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | ATA 账户恶意劫持           | 攻击者重定向收款账户至第三方地址 | 严格规范绑定商户 Associated Token|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | 紧急熔断绕过攻击           | 触发熔断后旧通道仍试图结算凭证   | 纪元隔离与全局时间锁全面失效  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | 租金 Lamports 吸血鬼攻击   | 第三方关闭通道时盗取账户租金     | 租金严格原路返还至出资主金库  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | 微型循环女巫攻击           | 派生 1,000 个子叶节点蚕食小额资金| 动态消耗父模板总预算池锁定上限|
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| 序号 | 攻击向量 | 传统漏洞机理 | HAICHAIN 核心防御对策 |
+|:---:|:---|:---|:---|
+| **1** | **通道双重认领攻击** | 商户提交多张历史凭证重复提现 | **单调不可逆结算**<br>$P_i \le \min(C, R)$：硬性锁定最大可支取上限 |
+| **2** | **ATA 账户恶意劫持** | 攻击者重定向收款账户至第三方地址 | **严格规范绑定商户 Associated Token**<br>在 Solana L1 强制执行 PDA 不变性验证 |
+| **3** | **紧急熔断绕过攻击** | 触发熔断后旧通道仍试图结算凭证 | **纪元隔离与全局时间锁 ($I_6$)**<br>380毫秒内立即使全网历史凭证彻底失效 |
+| **4** | **租金 Lamports 吸血鬼攻击** | 第三方关闭通道时盗取账户租金 | **租金严格原路返还**<br>关闭通道时自动全额返还至主出资金库 (`grant_pot`) |
+| **5** | **微型循环女巫攻击** | 派生 1,000 个子叶节点蚕食小额资金 | **动态消耗父模板总预算池**<br>`activate_child` 实时扣减父级 `max_reserve` 上限 |
 
 ---
 
@@ -651,23 +606,13 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 내부 포렌식 감사에서 5대 주요 공격 벡터가 검증되었으며 프로토콜 커널에서 하드웨어적으로 방어됩니다:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN 5대 핵심 방어 매트릭스                                   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | 공격 벡터                  | 취약점 메커니즘                  | 온체인 핵심 방어 대책         |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | 채널 에스크로 이중 청구    | 가맹점이 여러 누적 바우처 제출   | 단조 비가역 정산: P_i <= min  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | ATA 토큰 계정 하이재킹     | 공격자가 수취 계정을 임의 변경   | 가맹점 SPL Associated Token 결합|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | 패닉 동결 우회 공격        | 동결 명령 이후 기존 채널 정산 시도| 에포크 격리 및 전역 시간 무효화|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | 임대 Lamport 흡혈 공격     | 채널 종료 시 계정 임대료 탈취    | 임대료 출자 주 금고로 전액 환불|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | 미세 루프 시빌 공격        | 1,000개 수습 리프 생성 후 소진   | 상위 템플릿 총 예산 한도 잠금 |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | 공격 벡터 | 취약점 메커니즘 | 온체인 핵심 방어 대책 |
+|:---:|:---|:---|:---|
+| **1** | **채널 에스크로 이중 청구** | 가맹점이 여러 누적 바우처 제출하여 한도 초과 인출 | **단조 비가역 정산**<br>$P_i \le \min(C, R)$: 최대 지출 한도 엄격 잠금 |
+| **2** | **ATA 토큰 계정 하이재킹** | 공격자가 수취 계정을 제3자 주소로 임의 변경 | **가맹점 SPL Associated Token 결합**<br>Solana L1에서 PDA 불변성 하드웨어적 강제 |
+| **3** | **패닉 동결 우회 공격** | 동결 명령 이후 기존 채널에서 잔여 바우처 정산 시도 | **에포크 격리 및 전역 시간 무효화 ($I_6$)**<br>380ms 내 구형 바우처 즉시 효력 상실 |
+| **4** | **임대 Lamport 흡혈 공격** | 채널 종료 시 계정 보관용 임대료 탈취 | **임대료 출자 주 금고로 전액 환불**<br>종료 시 원본 펀딩 풀(`grant_pot`)로 자동 귀속 |
+| **5** | **미세 루프 시빌 공격** | 1,000개 수습 리프 생성 후 소액 분할 인출 | **상위 템플릿 총 예산 한도 잠금**<br>`activate_child` 호출 시 상위 `max_reserve` 직접 차감 |
 
 ---
 
@@ -790,28 +735,13 @@ Où :
 
 Cinq vecteurs d'attaque critiques ont été rigoureusement testés et verrouillés dans le noyau :
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN MATRICE DE RENFORCEMENT EN 5 POINTS                       |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | Vecteur d'Attaque          | Mécanisme de Vulnérabilité       | Invariant On-Chain Renforcé   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Double Réclamation Escrow  | Soumission de multiples reçus    | Règlement Monotone Non-Réversible: |
-|   |                            | pour dépasser la réserve         | P_i <= min(C_i, R_i)          |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Détournement Compte ATA    | Redirection du compte receveur   | Liaison Stricte ATA Canonique |
-|   |                            | vers un tiers non approuvé       | Validation rigide sur Solana L1|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Contournement Gel Panic    | Les anciens canaux réclament     | Isolation d'Époque Instantanée|
-|   |                            | après activation du Panic Freeze | Invalidation immédiate ($I_6$) |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Drainage Lamport Loyer     | Vol des lamports lors de la      | Restitution Canonique du Loyer|
-|   |                            | fermeture d'un canal             | Retour automatique à grant_pot|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Attaque Sybil Micro-Boucle | Création de 1 000 sous-feuilles  | Brûlage du Budget Modèle      |
-|   |                            | pour drainer des micro-réserves  | activate_child déduit du père |
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | Vecteur d'Attaque | Mécanisme de Vulnérabilité | Invariant On-Chain Renforcé |
+|:---:|:---|:---|:---|
+| **1** | **Double Réclamation Escrow** | Soumission de multiples reçus cumulatifs pour dépasser la réserve | **Règlement Monotone Non-Réversible**<br>$P_i \le \min(C_i, R_i)$ : Verrouillage strict du plafond |
+| **2** | **Détournement Compte ATA** | Redirection du compte receveur vers un tiers non approuvé | **Liaison Stricte ATA Canonique**<br>Validation cryptographique immuable sur Solana L1 |
+| **3** | **Contournement Gel Panic** | Les anciens canaux réclament après activation du Panic Freeze | **Isolation d'Époque Instantanée ($I_6$)**<br>Invalidation immédiate de tous les bons en 380ms |
+| **4** | **Drainage Lamport Loyer** | Vol des lamports de loyer lors de la fermeture d'un canal | **Restitution Canonique du Loyer**<br>Remboursement automatique à 100% au trésor (`grant_pot`) |
+| **5** | **Attaque Sybil Micro-Boucle** | Création de 1 000 sous-feuilles pour drainer des micro-réserves | **Brûlage du Budget Modèle**<br>`activate_child` déduit directement du plafond père |
 
 ---
 
@@ -923,28 +853,13 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 Cinco vectores de ataque críticos han sido probados y mitigados en el núcleo:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN MATRIZ DE PROTECCIÓN EN 5 PUNTOS                         |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | Vector de Ataque           | Mecanismo de Vulnerabilidad      | Invariante Endurecido On-Chain|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Doble Reclamación Escrow   | Presentación de múltiples vales  | Liquidación Monótona Inreversible: |
-|   |                            | acumulativos                     | P_i <= min(C_i, R_i)          |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Secuestro de Cuenta ATA    | Redirección de cuenta destino    | Derivación Canónica Estricta  |
-|   |                            | a un tercero malicioso           | Validación invariable en L1   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Evasión de Panic Freeze    | Canales antiguos intentan liquidar| Aislamiento de Época Instantáneo|
-|   |                            | tras la activación de emergencia | Invalidación inmediata ($I_6$) |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Drenaje Lamport Alquiler   | Robo de lamports de alquiler al  | Reembolso Canónico de Alquiler|
-|   |                            | cerrar un canal                  | Retorno forzoso a grant_pot   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Ataque Sybil Micro-Bucles  | Creación de 1.000 sub-hojas      | Consumo de Presupuesto Padre  |
-|   |                            | para extraer micro-reservas      | activate_child descuenta techo|
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | Vector de Ataque | Mecanismo de Vulnerabilidad | Invariante Endurecido On-Chain |
+|:---:|:---|:---|:---|
+| **1** | **Doble Reclamación Escrow** | Presentación de múltiples vales acumulativos para exceder reserva | **Liquidación Monótona Inreversible**<br>$P_i \le \min(C_i, R_i)$: Límite de desembolso sellado |
+| **2** | **Secuestro de Cuenta ATA** | Redirección de cuenta destino a un tercero malicioso | **Derivación Canónica Estricta**<br>Validación invariable de PDA en Solana L1 |
+| **3** | **Evasión de Panic Freeze** | Canales antiguos intentan liquidar tras la activación de emergencia | **Aislamiento de Época Instantáneo ($I_6$)**<br>Invalidación total e inmediata de vales en 380ms |
+| **4** | **Drenaje Lamport Alquiler** | Robo de lamports de alquiler al cerrar un canal | **Reembolso Canónico de Alquiler**<br>Retorno forzoso al 100% al fondo original (`grant_pot`) |
+| **5** | **Ataque Sybil Micro-Bucles** | Creación de 1.000 sub-hojas para extraer micro-reservas | **Consumo de Presupuesto Padre**<br>`activate_child` descuenta del techo de reserva matriz |
 
 ---
 
@@ -1041,28 +956,13 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 ## 3. МАТРИЦА АППАРАТНОГО УКРЕПЛЕНИЯ RED-TEAM
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN МАТРИЦА БЕЗОПАСНОСТИ ИЗ 5 ПУНКТОВ                         |
-+---+----------------------------+----------------------------------+-------------------------------+
-| № | Вектор Атаки               | Механизм Уязвимости              | Аппаратный Ончейн Инвариант   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Двойное Списание Эскроу    | Отправка нескольких накопительных| Монотонный Необратимый Расчет: |
-|   |                            | ваучеров на сумму выше лимита    | P_i <= min(C_i, R_i)          |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Перехват Аккаунта ATA      | Подмена адреса получателя токенов| Жесткая Каноническая Привязка |
-|   |                            | на посторонний адрес             | Валидация ассоциированного ATA|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Обход Panic Freeze         | Попытка закрыть канал после      | Мгновенная Изоляция Эпохи ($I_6)|
-|   |                            | активации экстренной заморозки   | Все старые ваучеры недействительны|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Вампирский Слив Аренды     | Хищение Lamports аренды при      | Возврат Аренды Создателю      |
-|   |                            | закрытии канала                  | Автоматический возврат в пул  |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Sybil-Атака Микро-Циклов   | Создание 1 000 дочерних листьев  | Сжигание Лимита Шаблона       |
-|   |                            | для распыления баланса           | Списание из родительского пула|
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| № | Вектор Атаки | Механизм Уязвимости | Аппаратный Ончейн Инвариант |
+|:---:|:---|:---|:---|
+| **1** | **Двойное Списание Эскроу** | Отправка нескольких накопительных ваучеров на сумму выше лимита | **Монотонный Необратимый Расчет**<br>$P_i \le \min(C_i, R_i)$: Аппаратная блокировка перерасхода |
+| **2** | **Перехват Аккаунта ATA** | Подмена адреса получателя токенов на посторонний адрес | **Жесткая Каноническая Привязка**<br>Валидация ассоциированного ATA на Solana L1 |
+| **3** | **Обход Panic Freeze** | Попытка закрыть канал после активации экстренной заморозки | **Мгновенная Изоляция Эпохи ($I_6$)**<br>Все старые ваучеры аннулируются за 380 мс |
+| **4** | **Вампирский Слив Аренды** | Хищение Lamports аренды при закрытии канала | **Возврат Аренды Создателю**<br>Автоматический возврат 100% средств в `grant_pot` |
+| **5** | **Sybil-Атака Микро-Циклов** | Создание 1 000 дочерних листьев для распыления баланса | **Сжигание Лимита Шаблона**<br>`activate_child` списывает лимит из родительского пула |
 
 ---
 
@@ -1314,6 +1214,10 @@ def generate_pdf_for_lang(lang_code):
     md_converter = markdown.Markdown(extensions=['tables', 'fenced_code', 'attr_list'])
     body_html = md_converter.convert(text_with_math)
     
+    # Tag Section 3 hardening table with class
+    pattern_hardening = re.compile(r"(<table>\s*<thead>\s*<tr>\s*<th[^>]*>\s*(?:#|STT|序号|№|क्र|מס))")
+    body_html = pattern_hardening.sub(r'<table class="hardening-matrix-table">\n<thead>\n<tr>\n<th style="text-align: center;">', body_html, count=1)
+    
     logo_uri = get_logo_base64()
     is_rtl = (lang_code == 'he')
     direction = "rtl" if is_rtl else "ltr"
@@ -1539,36 +1443,100 @@ strong {{
   color: #09090b;
 }}
 
-/* Clean Tables */
+/* Institutional Grade Clean Tables */
 table {{
   width: 100%;
   border-collapse: collapse;
-  margin: 14px 0 16px 0;
-  font-size: 7.5pt;
+  margin: 14px 0 18px 0;
+  font-size: 7.2pt;
   line-height: 1.45;
   page-break-inside: avoid;
+  border: 1px solid #e4e4e7;
 }}
 
 th {{
-  background: #f4f4f5;
-  color: #09090b;
+  background: #09090b !important;
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 6.8pt;
   font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
   text-align: left;
-  padding: 7px 9px;
-  border: 1px solid #e4e4e7;
+  padding: 8px 10px;
+  border: 1px solid #27272a;
 }}
 
 td {{
-  padding: 6px 9px;
+  padding: 8px 10px;
   border: 1px solid #e4e4e7;
   color: #27272a;
   vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }}
 
 tr:nth-child(even) td {{
   background: #fafafa;
 }}
 
+/* Hardening Matrix (Section 3 Table) */
+table.hardening-matrix-table {{
+  table-layout: fixed;
+}}
+
+table.hardening-matrix-table th:nth-child(1),
+table.hardening-matrix-table td:nth-child(1) {{
+  width: 32px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}}
+
+table.hardening-matrix-table td:nth-child(2) {{
+  width: 25%;
+  font-weight: 600;
+  color: #09090b;
+}}
+
+table.hardening-matrix-table td:nth-child(3) {{
+  width: 37%;
+  color: #3f3f46;
+}}
+
+table.hardening-matrix-table td:nth-child(4) {{
+  width: 35%;
+  color: #09090b;
+}}
+
+/* General / Threat Surface Taxonomy (Section 2.1 Table) */
+table:not(.hardening-matrix-table) {{
+  table-layout: fixed;
+}}
+
+table:not(.hardening-matrix-table) th:nth-child(1),
+table:not(.hardening-matrix-table) td:nth-child(1) {{
+  width: 18%;
+  font-weight: 600;
+  color: #09090b;
+}}
+
+table:not(.hardening-matrix-table) td:nth-child(2) {{
+  width: 26%;
+  font-weight: 500;
+  color: #09090b;
+}}
+
+table:not(.hardening-matrix-table) td:nth-child(3) {{
+  width: 28%;
+  color: #3f3f46;
+}}
+
+table:not(.hardening-matrix-table) td:nth-child(4) {{
+  width: 28%;
+  color: #09090b;
+}}
 /* Code Blocks & Matrices */
 pre {{
   background: #09090b;

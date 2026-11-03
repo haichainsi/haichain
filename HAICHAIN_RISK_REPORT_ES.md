@@ -51,28 +51,13 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 
 Cinco vectores de ataque críticos han sido probados y mitigados en el núcleo:
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 HAICHAIN MATRIZ DE PROTECCIÓN EN 5 PUNTOS                         |
-+---+----------------------------+----------------------------------+-------------------------------+
-| # | Vector de Ataque           | Mecanismo de Vulnerabilidad      | Invariante Endurecido On-Chain|
-+---+----------------------------+----------------------------------+-------------------------------+
-| 1 | Doble Reclamación Escrow   | Presentación de múltiples vales  | Liquidación Monótona Inreversible: |
-|   |                            | acumulativos                     | P_i <= min(C_i, R_i)          |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 2 | Secuestro de Cuenta ATA    | Redirección de cuenta destino    | Derivación Canónica Estricta  |
-|   |                            | a un tercero malicioso           | Validación invariable en L1   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 3 | Evasión de Panic Freeze    | Canales antiguos intentan liquidar| Aislamiento de Época Instantáneo|
-|   |                            | tras la activación de emergencia | Invalidación inmediata ($I_6$) |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 4 | Drenaje Lamport Alquiler   | Robo de lamports de alquiler al  | Reembolso Canónico de Alquiler|
-|   |                            | cerrar un canal                  | Retorno forzoso a grant_pot   |
-+---+----------------------------+----------------------------------+-------------------------------+
-| 5 | Ataque Sybil Micro-Bucles  | Creación de 1.000 sub-hojas      | Consumo de Presupuesto Padre  |
-|   |                            | para extraer micro-reservas      | activate_child descuenta techo|
-+---+----------------------------+----------------------------------+-------------------------------+
-```
+| # | Vector de Ataque | Mecanismo de Vulnerabilidad | Invariante Endurecido On-Chain |
+|:---:|:---|:---|:---|
+| **1** | **Doble Reclamación Escrow** | Presentación de múltiples vales acumulativos para exceder reserva | **Liquidación Monótona Inreversible**<br>$P_i \le \min(C_i, R_i)$: Límite de desembolso sellado |
+| **2** | **Secuestro de Cuenta ATA** | Redirección de cuenta destino a un tercero malicioso | **Derivación Canónica Estricta**<br>Validación invariable de PDA en Solana L1 |
+| **3** | **Evasión de Panic Freeze** | Canales antiguos intentan liquidar tras la activación de emergencia | **Aislamiento de Época Instantáneo ($I_6$)**<br>Invalidación total e inmediata de vales en 380ms |
+| **4** | **Drenaje Lamport Alquiler** | Robo de lamports de alquiler al cerrar un canal | **Reembolso Canónico de Alquiler**<br>Retorno forzoso al 100% al fondo original (`grant_pot`) |
+| **5** | **Ataque Sybil Micro-Bucles** | Creación de 1.000 sub-hojas para extraer micro-reservas | **Consumo de Presupuesto Padre**<br>`activate_child` descuenta del techo de reserva matriz |
 
 ---
 
