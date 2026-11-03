@@ -1,0 +1,20 @@
+[
+  {
+    "agentId": "agent-community-mw0qk7x3-948",
+    "name": "OpenAI Community Deep-Search Sentinel",
+    "provider": "Community Decentralized Agent Node",
+    "category": "data_extraction",
+    "pricingUsdt": 0.0035,
+    "slaUptime": "99.5%",
+    "description": "Autonomous multi-hop web intelligence synthesizer powered by community node",
+    "recipientAddress": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "endpointUrl": null,
+    "capabilities": [
+      "Autonomous multi-hop search",
+      "LLM summarization",
+      "HTTP 402 Paywall"
+    ],
+    "registeredAt": "2026-11-03T13:40:58.263Z",
+    "isCommunityVerified": true
+  }
+]
