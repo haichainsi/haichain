@@ -16,7 +16,7 @@
   ██╔══██║██╔══██║██║██║     ██╔══██║██╔══██║██║██║╚██╗██║
   ██║  ██║██║  ██║██║╚██████╗██║  ██║██║  ██║██║██║ ╚████║
   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
-    EL SISTEMA OPERATIVO FINANCIERO Y DE LIQUIDACIÓN PARA MÁQUINAS AUTÓNOMAS
+    The Economic Bedrock for the Symbiotic Superintelligence Era AI²
 ```
 
 ---
@@ -44,8 +44,8 @@
   - [6.2. Árboles Jerárquicos de Capacidad (HCT)](#62-árboles-jerárquicos-de-capacidad-hct)
   - [6.3. Compresión de Estado con Alquiler Cero (Árboles de Merkle Concurrentes) y Ciclo de Vida de PDA Efímeras](#63-compresión-de-estado-con-alquiler-cero-árboles-de-merkle-concurrentes-y-ciclo-de-vida-de-pda-efímeras)
   - [6.4. Límite de Presupuesto Determinista y Plantillas de Intención en Lenguaje Natural de 1 Clic](#64-límite-de-presupuesto-determinista-y-plantillas-de-intención-en-lenguaje-natural-de-1-clic)
-  - [6.4. Guía Rápida para Desarrolladores y SDK de Integración sin Fricción (Implementación de 5 Líneas)](#64-guía-rápida-para-desarrolladores-y-sdk-de-integración-sin-fricción-5-líneas)
-  - [6.5. Integración Nativa de Servidor Anthropic Model Context Protocol (MCP)](#65-integración-nativa-de-servidor-anthropic-model-context-protocol-mcp)
+  - [6.5. Guía Rápida para Desarrolladores y SDK de Integración sin Fricción (Implementación de 5 Líneas)](#64-guía-rápida-para-desarrolladores-y-sdk-de-integración-sin-fricción-5-líneas)
+  - [6.6. Integración Nativa de Servidor Anthropic Model Context Protocol (MCP)](#65-integración-nativa-de-servidor-anthropic-model-context-protocol-mcp)
 7. [Compensación Simétrica Multilateral y Matriz de Liquidación a Velocidad de Cable (Multilateral Netting)](#7-compensación-simétrica-multilateral-y-matriz-de-liquidación-a-velocidad-de-cable)
   - [7.1. Búfer de Garantía de Cámara de Compensación (CHGB) y Mitigación del Riesgo de Insolvencia](#71-búfer-de-garantía-de-cámara-de-compensación-chgb-y-mitigación-del-riesgo-de-insolvencia)
   - [7.3. Canales de Estado de Transmisión Optimistas: Inferencia LLM sin Paradas y Liquidación Inmune a la Congestión](#73-canales-de-estado-de-transmisión-optimistas-inferencia-llm-sin-paradas)
@@ -58,7 +58,7 @@
 9. [El Fin de Juego de la IA L1 Soberana: Superinteligencia Artificial Descentralizada (ASI Endgame)](#9-el-fin-de-juego-de-la-ia-l1-soberana-superinteligencia-artificial-descentralizada-asi)
   - [9.1. La Trayectoria Evolutiva de 3 Etapas y el Rollup de Máquinas Soberano](#91-la-trayectoria-evolutiva-de-3-etapas)
   - [9.2. Restricciones Físicas de la Superinteligencia Descentralizada y Mitigaciones de Ingeniería](#92-restricciones-físicas-de-la-superinteligencia-descentralizada-y-mitigaciones-de-ingeniería)
-  - [9.3. HAI-VM y la Instrucción Nativa a Nivel de Hardware `OP_402_PAY`](#93-hai-vm-y-la-instrucción-nativa-a-nivel-de-hardware-op_402_pay)
+  - [9.3. HAI-VM y la Instrucción Nativa a Nivel de Hardware OP_402_PAY](#93-hai-vm-y-la-instrucción-nativa-a-nivel-de-hardware-op_402_pay)
   - [9.4. Consenso de Doble Nivel: Prueba de Trabajo de Agente (PoAW) y Prueba de Inteligencia Real (PoAI)](#94-consenso-de-doble-nivel-prueba-de-trabajo-de-agente-poaw-y-prueba-de-inteligencia-real-poai)
   - [9.5. Micro-Tareas Inversas con Humanos en el Bucle y Penalización Anti-Sybil](#95-micro-tareas-inversas-con-humanos-en-el-bucle-y-penalización-anti-sybil)
   - [9.6. DIDs Efímeros de Conocimiento Cero y Cumplimiento Legal del Artículo 17 del GDPR de la UE](#96-dids-efímeros-de-conocimiento-cero-y-cumplimiento-legal-del-artículo-17-del-gdpr-de-la-ue)
@@ -290,7 +290,7 @@ Para establecer por qué la infraestructura existente falla fundamentalmente en 
 3. **ASI Alliance / Fetch.ai (La Trampa del Sobrecosto de CPI en Smart Contracts):**
    * *Fallo Arquitectónico:* Intentar negociaciones agente a agente utilizando contratos inteligentes estándar EVM o CosmWasm.
    * *Desglose Empírico:* Cada micro-negociación desencadena una invocación entre programas (CPI) o una llamada de contrato con estado que requiere de 20.000 a 80.000 unidades de gas (\$0.01 a \$0.05). Cuando 100.000 agentes negocian a escala, el motor de ejecución colapsa por la serialización del acceso al estado.
-   * *La Inmunidad de HAICHAIN:* En HAICHAIN L1 Soberano, la liquidación de máquinas no es un contrato interpretado. Está compilada directamente en la máquina virtual básica como **`OP_402_PAY`**. Un solo opcode ejecuta la compensación, la aserción de nulificadores y la deducción de saldo en < 2.500 Unidades de Cómputo, desbloqueando **más de 100.000 TPS de máquinas sostenidos**.
+   * *La Inmunidad de HAICHAIN:* En HAICHAIN L1 Soberano, la liquidación de máquinas no es un contrato interpretado. Está compilada directamente en la máquina virtual básica como **OP_402_PAY**. Un solo opcode ejecuta la compensación, la aserción de nulificadores y la deducción de saldo en < 2.500 Unidades de Cómputo, desbloqueando **más de 100.000 TPS de máquinas sostenidos**.
 
 4. **Virtuals Protocol (El Abismo entre Memes Especulativos e Infraestructura Financiera):**
    * *Fallo Arquitectónico:* Desplegado en Base (un rollup L2 de EVM), se enfoca en la tokenización de curvas de bonos de personajes de agentes.
@@ -1044,7 +1044,7 @@ Haichain rechaza el ingenuo paradigma de "Cadena Fantasma Aislada" donde un proy
        │                                ▼
     [ EXTENSIÓN SVM DE HAI-VM: MOTOR DE EJECUCIÓN AUTÓNOMO DEDICADO ]
     ├── Rendimiento: > 100.000 TPS de Máquinas | Latencia < 5ms
-    ├── Opcodes en Silicio: `OP_402_PAY` y `OP_402_BURN`
+    ├── Opcodes en Silicio: OP_402_PAY y `OP_402_BURN`
     ├── Enrutamiento de Inferencia de Máquinas Distribuida y Pruebas ZK
     └── Seguridad Compartida por Restaking: Dual-Staking SOL + $HAISI
 ```
@@ -1086,9 +1086,9 @@ Para reconciliar la tensión criptográfica entre la ejecución CPU AVX-512 y la
 * **Entorno de Ejecución en Borde a Velocidad de Cable:** Los nodos conservan **Blake3** para todos los hashes de micro-custodia, logrando latencias sub-microsegundo.
 * **Aritmetización zkVM Basada en Tablas de Búsqueda:** Para las pruebas de estado de HAI-VM en la Fase 3, Haichain implementa **Jolt/Lasso zkVM y Binius (Binary Field Circle STARKs)**. Mediante argumentos de búsqueda multidimensionales, el circuito prueba operaciones de bits ARX nativamente sobre campos binarios, reduciendo el sobrecosto de restricciones en **más de un 90%** y permitiendo la generación de pruebas ZK casi en tiempo real sin sacrificar la velocidad de la CPU.
 
-### 9.3. HAI-VM y la Instrucción Nativa a Nivel de Hardware `OP_402_PAY`
+### 9.3. HAI-VM y la Instrucción Nativa a Nivel de Hardware OP_402_PAY
 En cadenas de bloques convencionales, los pagos de máquinas son operaciones de smart contracts interpretadas que incurren en un alto costo de cómputo. En HAICHAIN L1 Soberano:
-* El pago entre máquinas está compilado directamente en la tabla de opcodes de la máquina virtual como **`OP_402_PAY`**.
+* El pago entre máquinas está compilado directamente en la tabla de opcodes de la máquina virtual como **OP_402_PAY**.
 * La transferencia de valor, el avance de nonce, la aserción de nulificadores y la asignación de regalías ocurren a nivel de ejecución de CPU en metal desnudo, alcanzando rendimientos superiores a **100.000 TPS**.
 
 ### 9.4. Consenso de Doble Nivel: Prueba de Trabajo de Agente (PoAW) y Prueba de Inteligencia Real (PoAI)

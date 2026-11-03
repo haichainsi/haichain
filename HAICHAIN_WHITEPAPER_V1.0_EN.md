@@ -16,7 +16,7 @@
   ██╔══██║██╔══██║██║██║     ██╔══██║██╔══██║██║██║╚██╗██║
   ██║  ██║██║  ██║██║╚██████╗██║  ██║██║  ██║██║██║ ╚████║
   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
-    THE AUTONOMOUS MACHINE FINANCIAL & SETTLEMENT OPERATING SYSTEM
+    The Economic Bedrock for the Symbiotic Superintelligence Era AI²
 ```
 
 ---
@@ -52,18 +52,12 @@
 9. [The Sovereign AI L1 Endgame: Decentralized Artificial Superintelligence (ASI)](#9-the-sovereign-ai-l1-endgame-decentralized-artificial-superintelligence-asi)
   - [9.1. The 3-Stage Evolutionary Trajectory](#91-the-3-stage-evolutionary-trajectory)
   - [9.2. Physical Constraints of Decentralized Superintelligence & Engineering Mitigations](#92-physical-constraints-of-decentralized-superintelligence--engineering-mitigations)
-  - [9.3. HAI-VM & The Native `OP_402_PAY` Hardware-Level Instruction](#93-hai-vm--the-native-op_402_pay-hardware-level-instruction)
+  - [9.3. HAI-VM & The Native OP_402_PAY Hardware-Level Instruction](#93-hai-vm--the-native-op_402_pay-hardware-level-instruction)
   - [9.4. Dual-Tier Consensus: Proof-of-Agentic-Work (PoAW) & Proof-of-Actual-Intelligence (PoAI)](#94-dual-tier-consensus-proof-of-agentic-work-poaw--proof-of-actual-intelligence-poai)
   - [9.5. Human-in-the-Loop Reverse Micro-Tasking & The Anti-MAD Engine](#95-human-in-the-loop-reverse-micro-tasking--the-anti-mad-engine)
   - [9.6. Zero-Knowledge Ephemeral DIDs & GDPR Article 17 Legal Compliance](#96-zero-knowledge-ephemeral-dids--gdpr-article-17-legal-compliance)
   - [9.7. Institutional Enterprise Safeguards: SOC2 Type II & EU AI Act (Article 14 Human Oversight)](#97-institutional-enterprise-safeguards-soc2-type-ii--eu-ai-act-article-14-human-oversight)
   - [9.8. Zero-Knowledge Prompt Privacy & TEE Confidential Computing Architecture](#98-zero-knowledge-prompt-privacy--tee-confidential-computing-architecture)
-  - [9.1. The 3-Stage Evolutionary Trajectory](#91-the-3-stage-evolutionary-trajectory)
-  - [9.2. Physical Constraints of Decentralized Superintelligence & Engineering Mitigations](#92-physical-constraints-of-decentralized-superintelligence--engineering-mitigations)
-  - [9.3. HAI-VM & The Native `OP_402_PAY` Hardware-Level Instruction](#93-hai-vm--the-native-op_402_pay-hardware-level-instruction)
-  - [9.4. Dual-Tier Consensus: Proof-of-Agentic-Work (PoAW) & Proof-of-Actual-Intelligence (PoAI)](#94-dual-tier-consensus-proof-of-agentic-work-poaw--proof-of-actual-intelligence-poai)
-  - [9.5. Human-in-the-Loop Reverse Micro-Tasking & The Anti-MAD Engine](#95-human-in-the-loop-reverse-micro-tasking--the-anti-mad-engine)
-  - [9.6. Unified Human-Agent Soulbound DIDs & Institutional Regulatory Topology](#96-unified-human-agent-soulbound-dids--institutional-regulatory-topology)
 10. [Formal Mathematical Theorems & Invariant Verification](#10-formal-mathematical-theorems--invariant-verification)
 11. [Strategic Roadmap & Milestone Commitments](#11-strategic-roadmap--milestone-commitments)
 12. [Conclusion & The $AI^2$ Manifesto](#12-conclusion--the-ai2-manifesto)
@@ -321,7 +315,7 @@ To establish why existing infrastructure fundamentally fails to support an auton
 3. **ASI Alliance / Fetch.ai (The Smart Contract CPI Overhead Trap):**
    * *Architectural Flaw:* Attempting agent-to-agent negotiations using standard EVM or CosmWasm smart contracts.
    * *Empirical Breakdown:* Every micro-negotiation triggers a Cross-Program Invocation (CPI) or stateful contract call requiring 20,000 to 80,000 gas units, costing \$0.01 to \$0.05 per interaction. When 100,000 agents negotiate resources at scale, the blockchain's execution engine chokes under state access serialization.
-   * *The HAICHAIN Immunity:* On HAICHAIN Sovereign L1, machine settlement is not an interpreted contract. It is compiled directly into the bare-metal virtual machine as **`OP_402_PAY`**. A single opcode executes state netting, nullifier assertion, and balance deduction in < 2,500 Compute Units, unlocking sustained **100,000+ machine TPS**.
+   * *The HAICHAIN Immunity:* On HAICHAIN Sovereign L1, machine settlement is not an interpreted contract. It is compiled directly into the bare-metal virtual machine as **OP_402_PAY**. A single opcode executes state netting, nullifier assertion, and balance deduction in < 2,500 Compute Units, unlocking sustained **100,000+ machine TPS**.
 
 4. **Virtuals Protocol (The Speculative Meme vs. Financial Infrastructure Chasm):**
    * *Architectural Flaw:* Deployed on Base (an EVM Layer 2 rollup), Virtuals focuses on bonding-curve tokenization of agent personas.
@@ -1070,7 +1064,7 @@ Haichain rejects the naive "Siloed Ghost-Chain" paradigm where a project departs
       │                                ▼
    [ HAI-VM SVM EXTENSION: SPECIALIZED AUTONOMOUS EXECUTION ENGINE ]
    ├── Throughput: > 100,000 Machine TPS | Latency < 5ms
-   ├── Bare-Metal Opcodes: `OP_402_PAY` & `OP_402_BURN`
+   ├── Bare-Metal Opcodes: OP_402_PAY & `OP_402_BURN`
    ├── Distributed Machine Inference Routing & ZK State Proving
    └── Shared Restaked Security: Dual-Staking SOL + $HAISI
 ```
@@ -1115,9 +1109,9 @@ To reconcile the cryptographic tension between wire-speed AVX-512 CPU execution 
 * **Lookup-Based zkVM Arithmetization:** For Phase 3 HAI-VM state proofs and zkML validation, Haichain deploys **Jolt/Lasso zkVM & Binius (Binary Field Circle STARKs)**. By utilizing multi-dimensional Lookup Arguments, the circuit proves ARX (Addition, Rotation, XOR) bit operations natively over binary fields, reducing prover constraint overhead by **over 90%** and enabling real-time zero-knowledge state generation without sacrificing hardware CPU execution speed.
 
 
-### 9.3. HAI-VM & The Native `OP_402_PAY` Hardware-Level Instruction
+### 9.3. HAI-VM & The Native OP_402_PAY Hardware-Level Instruction
 On conventional blockchains, machine payments are interpreted smart contract operations incurring high compute-unit overhead. On HAICHAIN Sovereign L1:
-* The machine payment is compiled directly into the virtual machine opcode table as **`OP_402_PAY`**.
+* The machine payment is compiled directly into the virtual machine opcode table as **OP_402_PAY**.
 * Value transfer, nonce advancement, nullifier assertion, and streaming royalty allocation occur at the bare-metal CPU execution level, achieving wire throughput exceeding **100,000 TPS**.
 
 ### 9.4. Dual-Tier Consensus: Proof-of-Agentic-Work (PoAW) & Proof-of-Actual-Intelligence (PoAI)
@@ -1427,13 +1421,15 @@ Let $	au$ represent the total protocol response latency from the instant of mali
 $$	au = t_{	ext{detect}} + t_{	ext{owner}} + t_{	ext{land}} \le 12.0	ext{s}$$
 Under the worst-case attack scenario $T_4$ (complete exfiltration of the agent's Ed25519 private key combined with active collusion by an authenticated merchant in the Merkle tree), the maximum cumulative theft $E_{	ext{theft}}(	au)$ is bounded by:
 
-$$E_{	ext{theft}}(	au) \le \min\left(B,\; K,\; W_p \cdot n(	au, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(	au)ight)$$
+$$E_{	ext{theft}}(	au) \le \min\left(B,\; K,\; W_p \cdot n(	au, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(	au)
+ight)$$
 
 Where:
 * $B$: Available pot balance.
 * $K$: Cumulative spend ceiling `leaf.max_spend`.
 * $W_p$: Velocity limit `leaf.window_cap`.
-* $n(	au, \omega_p) = \lceil 	au / \omega_p ceil$: Number of sliding windows spanned during response window $	au$. For $	au = 12	ext{s} \ll 3600	ext{s}$, $n(	au, \omega_p) = 1$.
+* $n(	au, \omega_p) = \lceil 	au / \omega_p 
+ceil$: Number of sliding windows spanned during response window $	au$. For $	au = 12	ext{s} \ll 3600	ext{s}$, $n(	au, \omega_p) = 1$.
 
 **Formal Consequence:** In 100% of standard Indirect Prompt Injection attacks ($T_1$), $E_{	ext{theft}} = 0$ because unauthorized destinations fail Merkle proof verification. In complete key exfiltration ($T_4$), total loss is strictly capped at $\min(K, W_p)$, preserving over $99.9\%$ of enterprise capital.
 

@@ -2649,6 +2649,38 @@ function buildHaichainSaftEmailHtml(opt) {
   // =========================================================================
   // GLOBAL MULTI-LANGUAGE SAFT & MEMO RESOLVERS (10 LANGUAGES)
   // =========================================================================
+
+  // =========================================================================
+  // GLOBAL MULTI-LANGUAGE RISK REPORT RESOLVER (10 LANGUAGES)
+  // =========================================================================
+  window.getRiskReportPdfForLang = function(lang) {
+    const l = (lang || (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en')).toLowerCase();
+    const titles = {
+      vi: 'Báo Cáo Thẩm Định Rủi Ro & Phòng Thủ Mật Mã HAICHAIN',
+      en: 'HAICHAIN Institutional Risk Due Diligence Report',
+      zh: 'HAICHAIN 机构级风险尽职调查与安全防御报告',
+      ko: 'HAICHAIN 기관용 위험 실사 및 암호학적 보안 감사 보고서',
+      fr: 'Rapport de Diligence Raisonnable des Risques Institutionnels HAICHAIN',
+      es: 'Informe de Diligencia Debida de Riesgos Institucionales de HAICHAIN',
+      ru: 'Отчет об Институциональном Дью-Дилидженсе Рисков HAICHAIN',
+      kk: 'HAICHAIN Институционалдық Тәуекелдерді Бағалау Және Сенімділік Есебі',
+      hi: 'HAICHAIN संस्थागत जोखिम देय परिश्रम और सुरक्षा ऑडिट रिपोर्ट',
+      he: 'דוח בדיקת נאותות סיכונים מוסדיים ואבטחת קריפטוגרפיה של HAICHAIN'
+    };
+    const title = titles[l] || titles['en'];
+    const validLangs = ['en', 'vi', 'zh', 'ko', 'es', 'fr', 'ru', 'kk', 'hi', 'he'];
+    const chosenLang = validLangs.includes(l) ? l.toUpperCase() : 'EN';
+    return {
+      url: `/HAICHAIN_RISK_REPORT_${chosenLang}.pdf`,
+      title: title
+    };
+  };
+
+  window.openRiskReportPdfModal = function(lang) {
+    const doc = window.getRiskReportPdfForLang(lang);
+    window.openPdfViewerModal(doc.url, doc.title);
+  };
+
   window.getSaftPdfForLang = function(lang) {
     const l = (lang || getCurrentLang()).toLowerCase();
     const titles = {
@@ -2733,6 +2765,9 @@ function buildHaichainSaftEmailHtml(opt) {
         } else if (u.includes('MEMO')) {
           const doc = typeof window.getPreseedMemoPdfForLang === 'function' ? window.getPreseedMemoPdfForLang(lang) : null;
           if (doc && doc.url !== currentPdfUrl) window.openPdfViewerModal(doc.url, doc.title);
+        } else if (u.includes('RISK')) {
+          const doc = typeof window.getRiskReportPdfForLang === 'function' ? window.getRiskReportPdfForLang(lang) : null;
+          if (doc && doc.url !== currentPdfUrl) window.openPdfViewerModal(doc.url, doc.title);
         }
       }
     }
@@ -2747,3 +2782,18 @@ function buildHaichainSaftEmailHtml(opt) {
     }
   });
 
+
+
+  // Global Event Listener for Risk Report links
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('#nav-risk-report-link, [data-mobile-risk-report="true"], [data-risk-report="true"], a[href*="HAICHAIN_INSTITUTIONAL_RISK_DUE_DILIGENCE_REPORT"], a[href*="HAICHAIN_RISK_REPORT"]');
+    if (trigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof window.closeMobileMenu === 'function') {
+        window.closeMobileMenu();
+      }
+      const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en');
+      window.openRiskReportPdfModal(lang);
+    }
+  }, true);

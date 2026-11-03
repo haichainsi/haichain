@@ -177,10 +177,10 @@
 
   <script src="/app/dialog.js?v=v21_fix_alert_body_1793580832459"></script>
 
-  <script src="/app/i18n.js?v=v45_reorder_langs_kk_bottom"></script>
+  <script src="/app/i18n.js?v=v1.2.8_risk_pdf"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
-  <script src="/app/pdf-modal.js?v=v48_reorder_langs_kk_bottom"></script>
+  <script src="/app/pdf-modal.js?v=v1.2.8_risk_pdf"></script>
 
   <script>
 
@@ -684,7 +684,7 @@
 
         </a>
 
-        <a href="/docs/HAICHAIN_INSTITUTIONAL_RISK_DUE_DILIGENCE_REPORT.md" target="_blank" class="hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer text-xs px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200" id="nav-risk-report-link" title="Institutional Risk Due Diligence Report">
+        <a href="/HAICHAIN_RISK_REPORT_EN.pdf" target="_blank" onclick="if (window.openRiskReportPdfModal) { event.preventDefault(); const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en'); window.openRiskReportPdfModal(lang); }" class="hover:text-black dark:hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer text-xs px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200" id="nav-risk-report-link" title="Institutional Risk Due Diligence Report" data-risk-report="true">
           <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-emerald-500"></i>
           <span data-i18n="nav.riskReport">Institutional Risk Report</span>
         </a>
@@ -759,10 +759,10 @@
 
     <div id="mobile-menu" class="menu-closed md:hidden border-t border-brand-lightBorder dark:border-brand-border bg-white/98 dark:bg-[#0a0a0c]/98 backdrop-blur-2xl px-6 py-6 space-y-4 text-base font-medium shadow-2xl">
       <a href="/HAICHAIN_WHITEPAPER_V1.0_EN.pdf" target="_blank" onclick="if (typeof window.closeMobileMenu === \'function\') { window.closeMobileMenu(); } if (window.openPdfViewerModal) { event.preventDefault(); const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem(\'haichain_lang\') || \'en\').toUpperCase(); window.openPdfViewerModal(\'/HAICHAIN_WHITEPAPER_V1.0_\' + lang + \'.pdf\'); }" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors" id="mobile-nav-whitepaper-link" data-open-whitepaper="true" data-pdf-whitepaper="true">
-        <span data-i18n="nav.whitepaper">Technical Whitepaper v1.1</span>
+        <span data-i18n="nav.whitepaper">Whitepaper</span>
         <i data-lucide="file-text" class="w-4 h-4 text-neutral-400"></i>
       </a>
-      <a href="/docs/HAICHAIN_INSTITUTIONAL_RISK_DUE_DILIGENCE_REPORT.md" target="_blank" onclick="if (typeof window.closeMobileMenu === 'function') { window.closeMobileMenu(); }" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors" data-mobile-risk-report="true">
+      <a href="/HAICHAIN_RISK_REPORT_EN.pdf" target="_blank" onclick="if (typeof window.closeMobileMenu === 'function') { window.closeMobileMenu(); } if (window.openRiskReportPdfModal) { event.preventDefault(); const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en'); window.openRiskReportPdfModal(lang); }" class="mobile-nav-link block py-2.5 cursor-pointer touch-manipulation text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white flex items-center justify-between transition-colors" data-mobile-risk-report="true">
         <span data-i18n="nav.riskReport">Institutional Risk Report</span>
         <i data-lucide="shield-alert" class="w-4 h-4 text-emerald-500"></i>
       </a>
