@@ -4235,7 +4235,7 @@
     "nav.riskReport": "Отчет об Оценке Рисков для Институционалов"
   },
   "vi": {
-    "nav.devHub": "Trung Tâm Lập Trình & MCP",
+    "nav.devHub": "Lập Trình & MCP",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "Tích Hợp TypeScript SDK",
     "mcp.sdkDesc": "Phát hành vé năng lực và thực thi ký quỹ vi mô qua @haichainsi/sdk:",
