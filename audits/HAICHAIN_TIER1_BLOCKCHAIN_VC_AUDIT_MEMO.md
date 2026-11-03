@@ -24,7 +24,7 @@
 ## 1. TỔNG QUAN THƯƠNG VỤ & LUẬN ĐIỂM ĐẦU TƯ (THE INVESTMENT THESIS)
 
 ### 1.1. Tóm Tắt Dự Án (Executive Pitch)
-HAICHAIN là **Hệ Điều Hành Tài Chính & Bù Trừ Vi Thanh Toán Toàn Cầu cho Trí Tuệ Nhân Tạo Tự Trị (Autonomous AI Agents)** xây dựng trên nền tảng **Solana L1**. Dự án giải quyết sự va chạm lớn nhất của chu kỳ công nghệ 2026: **Nền kinh tế hàng triệu AI Agents bùng nổ nhưng hoàn toàn thiếu một hệ thống tài chính máy tính (M2M Financial Rails) có thể thanh toán các khoản tiền siêu vi (Micro-cents) dưới 1ms với chi phí giao dịch bằng 0 và không có rủi ro bị bòn rút vốn.**
+HAICHAIN là **Hệ Điều Hành Tài Chính & Bù Trừ Vi Thanh Toán Toàn Cầu cho Trí Tuệ Nhân Tạo Tự Hành (Autonomous AI Agents)** xây dựng trên nền tảng **Solana L1**. Dự án giải quyết sự va chạm lớn nhất của chu kỳ công nghệ 2026: **Nền kinh tế hàng triệu AI Agents bùng nổ nhưng hoàn toàn thiếu một hệ thống tài chính máy tính (M2M Financial Rails) có thể thanh toán các khoản tiền siêu vi (Micro-cents) dưới 1ms với chi phí giao dịch bằng 0 và không có rủi ro bị bòn rút vốn.**
 
 ### 1.2. Ba Trụ Cột Luận Điểm Khiến Quỹ Quyết Định Rót Vốn (Why We Must Lead This Round)
 1. **Bắt Đúng Điểm Giao Thoa Siêu Chu Kỳ (Convergence of Two Megatrends):**

@@ -49,7 +49,7 @@ Cuộc kiểm định này được thực hiện bởi **hai đối tác kỹ t
 |  3. Chiết khấu bộ nhớ đệm   Prompt Caching (Anthropic/OpenAI)        Dynamic Prompt Cache Rebate   |
 |     (Prompt Caching)        giúp giảm 90% giá token đầu vào.         Tự động hoàn tiền chênh lệch. |
 |                                                                                                    |
-|  4. Tích hợp chuẩn mở       Thiếu chuẩn thanh toán tự trị            Native Anthropic MCP Server   |
+|  4. Tích hợp chuẩn mở       Thiếu chuẩn thanh toán tự hành            Native Anthropic MCP Server   |
 |     Anthropic MCP           cho hàng vạn công cụ mã nguồn mở.        Cắm là chạy trong 60 giây.    |
 |                                                                                                    |
 |  5. Robot & Thiết bị biên   Robot vật lý không có hệ điều hành lớn,  Zero-RTT Bare-Metal C-SDK     |

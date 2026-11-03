@@ -93,7 +93,7 @@
 > *"Tại sao phải dùng Blockchain và Crypto phức tạp? Tại sao không dùng Stripe, PayPal hay cấp cho con bot một chiếc thẻ tín dụng ảo (Virtual Credit Card)?"*
 
 **CÁCH BẠN PHẢN BIỆN (THE DEFENSE):**
-* *"Có 3 lý do vật lý khiến thẻ tín dụng Web2 hoàn toàn thất bại trong nền kinh tế máy tự trị:  
+* *"Có 3 lý do vật lý khiến thẻ tín dụng Web2 hoàn toàn thất bại trong nền kinh tế máy tự hành:  
 1. **Phí sàn giao dịch giết chết thanh toán vi mô:** Stripe tính phí tối thiểu `0.30$ + 2.9%`. Khi một Agent gọi 1 công cụ chỉ đáng giá `0.0001$` (1 phần vạn đô-la), phí quẹt thẻ đắt gấp 3.000 lần giá trị món hàng.  
 2. **Hệ thống phát hiện gian lận Web2 sẽ khóa thẻ:** Nếu một con bot tự động phát sinh 200 giao dịch vi mô trong 1 phút tới 50 API khác nhau trên thế giới, hệ thống rủi ro của Visa/Mastercard sẽ đánh dấu là hành vi gian lận và khóa thẻ ngay lập tức.  
 3. **Thiếu tính năng Ký quỹ Không cần Tín nhiệm (Trustless Escrow):** Làm sao Agent A ở Mỹ dám thuê Agent B ở Singapore làm một tác vụ 5 giây nếu không có hợp đồng ký quỹ tự động giải ngân bằng code? Thẻ tín dụng không thể lập trình được logic ký quỹ vi mô đó!"*
@@ -170,7 +170,7 @@
 ---
 
 ### CÂU HỎI 14: TUÂN THỦ PHÁP LÝ QUỐC TẾ (FATF TRAVEL RULE & OFAC SANCTIONS)
-> *"Các tập đoàn Fortune 500 bắt buộc phải tuân thủ Đạo luật Chống Rửa tiền (AML) và quy tắc FATF Travel Rule cho các giao dịch trên 1.000$. Làm sao cỗ máy tự trị của các bạn chuyển tiền mà không vi phạm luật pháp quốc tế?"*
+> *"Các tập đoàn Fortune 500 bắt buộc phải tuân thủ Đạo luật Chống Rửa tiền (AML) và quy tắc FATF Travel Rule cho các giao dịch trên 1.000$. Làm sao cỗ máy tự hành của các bạn chuyển tiền mà không vi phạm luật pháp quốc tế?"*
 
 **CÁCH BẠN PHẢN BIỆN (THE DEFENSE):**
 * *"HAICHAIN tích hợp trực tiếp **Mô-đun Bằng Chứng Tuân Thủ zk-DID**:  

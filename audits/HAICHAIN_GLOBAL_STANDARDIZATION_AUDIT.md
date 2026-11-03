@@ -52,7 +52,7 @@ Dự án HAICHAIN được định vị là **Hệ Điều Hành Tài Chính Má
 
 3. **Nhóm Lập Trình Viên Toàn Cầu (Global AI & Robotics Developers):**
    - *Hành vi:* Phát triển ứng dụng trên Claude Desktop, Cursor, OpenAI Agents SDK, hoặc chế tạo robot phần cứng.
-   - *Giá trị mang lại:* Cắm trực tiếp `@haichain/mcp-server` vào cấu hình JSON là bot có ngay tài khoản thanh toán vi mô tự trị mà không cần viết mã thanh toán phức tạp.
+   - *Giá trị mang lại:* Cắm trực tiếp `@haichain/mcp-server` vào cấu hình JSON là bot có ngay tài khoản thanh toán vi mô tự hành mà không cần viết mã thanh toán phức tạp.
 
 ---
 
