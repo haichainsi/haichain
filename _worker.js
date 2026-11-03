@@ -367,7 +367,7 @@ async function handleVerifyKernelStatus() {
 // ==============================================================================
 // GLOBAL AGENT LABOR MARKET REGISTRY (Smithery MCP, Fetch.ai uAgents, Glama)
 // ==============================================================================
-export const GLOBAL_AGENT_REGISTRY = [
+const GLOBAL_AGENT_REGISTRY = [
   {
     agentId: 'agent-smithery-scraper-01',
     name: 'Smithery Web Extraction Sentinel',
@@ -665,7 +665,7 @@ async function handleJsonRpc(req, boundVault = '', allocatedBal = 0) {
 }
 
 // Primary Dispatcher for Cloudflare Pages / Workers & Node Tunnel
-export async function handleMcpRequest(request, env = null, ctx = null) {
+async function handleMcpRequest(request, env = null, ctx = null) {
   const url = new URL(request.url);
   const sessionId = url.searchParams.get('sessionId') || request.headers.get('mcp-session-id') || '';
 
