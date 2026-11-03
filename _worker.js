@@ -223,7 +223,10 @@ async function handleGetSpendingPotBalance(args = {}, boundVault = '', allocated
       velocityCap: velocityCap,
       circuitBreaker: '60 ticks/min',
       currentSpendRate: '~$0.0018/min',
-      panicStatus: 'ARMED_AND_READY'
+      panicStatus: 'ARMED_AND_READY',
+      capLeafVersion: 'v1.1 (223 bytes Wire Schema)',
+      reservationAccounting: 'Active (Sliding Window & Domain Throttling Enforced)',
+      treeDepth: 12
     },
     programId: PROGRAM_ID,
     explorerUrl: `https://explorer.solana.com/address/${targetAddress}?cluster=devnet`,
