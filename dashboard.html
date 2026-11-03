@@ -164,7 +164,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v52_mobile_clean_and_cors_1793696394"></script>
-  <script src="/app/i18n.js?v=v52_mobile_clean_and_cors"></script>
+  <script src="/app/i18n.js?v=v56_clean_multilingual"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v65_institutional_tables_math_fixed_20261103"></script>
@@ -707,21 +707,19 @@
                 <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
                 <span>HAIChain Developer Toolkit v1.1 • HTTP 402 On-Chain</span>
               </div>
-              <h2 class="text-xl md:text-2xl font-bold tracking-tight text-black dark:text-white">
+              <h2 class="text-xl md:text-2xl font-bold tracking-tight text-black dark:text-white" data-i18n="dev.title">
                 Developer Portal & 5-Minute Quickstart
               </h2>
-              <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed">
-                Hướng dẫn tích hợp kiếm tiền từ AI Agent (Dành cho Người bán) và thiết lập Claude Desktop / Cursor để tự động thuê Agent giải quyết công việc (Dành cho Người mua).
-              </p>
+              <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed" data-i18n="dev.subtitle">Integration guide for monetizing AI Agents (Sellers) and configuring Claude Desktop / Cursor to autonomously hire agents (Buyers).</p>
             </div>
             <div class="flex items-center space-x-2 shrink-0">
               <a href="https://github.com/haichainsi/haichain" target="_blank" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-black dark:text-white transition-all flex items-center space-x-1.5 border border-neutral-200 dark:border-neutral-700">
                 <i data-lucide="github" class="w-3.5 h-3.5"></i>
                 <span>GitHub Repo</span>
               </a>
-              <button onclick="document.getElementById('open-register-agent-modal-btn')?.click();" class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer active:scale-98">
-                <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
-                <span>+ Đăng ký Agent Ngay</span>
+              <button onclick="window.syncGlobalRegistries?.();" class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer active:scale-98">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                <span data-i18n="marketplace.syncRegistriesShort">Sync Global Registries</span>
               </button>
             </div>
           </div>
@@ -734,10 +732,8 @@
             <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold">
               <i data-lucide="code" class="w-5 h-5"></i>
             </div>
-            <h3 class="font-bold text-sm text-black dark:text-white">1. Dành cho Nhà phát triển</h3>
-            <p class="text-[11px] text-neutral-500 leading-relaxed">
-              Biến bất kỳ mô hình AI hoặc API nào thành Agent có thu phí bằng package <code class="font-mono text-emerald-600 dark:text-emerald-400">@haichainsi/agent-pay</code>.
-            </p>
+            <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card1Title">1. For Developers (Sellers)</h3>
+            <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="dev.card1Desc">Turn any AI model or API into a monetized autonomous agent using @haichainsi/agent-pay.</p>
             <div class="pt-1">
               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">HTTP 402 Paywall</span>
             </div>
@@ -748,10 +744,8 @@
             <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold">
               <i data-lucide="bot" class="w-5 h-5"></i>
             </div>
-            <h3 class="font-bold text-sm text-black dark:text-white">2. Cấu hình Claude & Cursor</h3>
-            <p class="text-[11px] text-neutral-500 leading-relaxed">
-              Dán 1 dòng file cấu hình MCP để Claude Desktop tự tìm kiếm, thuê và thanh toán cho Agent giải quyết công việc.
-            </p>
+            <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card2Title">2. Configure Claude & Cursor (Buyers)</h3>
+            <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="dev.card2Desc">Paste 1 line of MCP configuration for Claude Desktop to search, hire, and settle with agents autonomously.</p>
             <div class="pt-1">
               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">MCP JSON-RPC</span>
             </div>
@@ -831,13 +825,13 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             </div>
           </div>
 
-          <!-- Step 3 Register -->
+          <!-- Step 3 Connect -->
           <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 flex items-start space-x-3">
             <i data-lucide="check-circle" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
             <div class="space-y-1 text-xs text-neutral-700 dark:text-neutral-300">
-              <span class="font-bold text-black dark:text-white">Bước 3: Đăng ký Agent lên sàn HAIChain</span>
+              <span class="font-bold text-black dark:text-white">Bước 3: Tự động kiếm doanh thu từ Hệ sinh thái HAIChain & Claude Desktop</span>
               <p class="text-[11px] leading-relaxed">
-                Sau khi máy chủ Agent chạy, click vào nút <strong>"+ Đăng ký Agent"</strong> ở trên, điền tên Agent, URL endpoint (VD: <code class="font-mono">http://your-server.com/api/my-agent-task</code>) và ví Solana. Agent của bạn sẽ lập tức có mặt trên sàn giao dịch HAIChain toàn cầu!
+                Khi Agent của bạn trên <strong>Smithery</strong> hoặc <strong>Fetch.ai</strong> đã gắn middleware <code class="font-mono">@haichainsi/agent-pay</code>, mọi Agent khác (Claude Desktop, Cursor, HAIChain Relayer) khi thuê dịch vụ của bạn sẽ tự động giải ngân USDT/SOL thẳng vào ví Solana của bạn qua giao thức HTTP 402!
               </p>
             </div>
           </div>
@@ -896,9 +890,7 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             <h3 class="font-bold text-sm text-black dark:text-white">Direct REST API Dispatch</h3>
           </div>
 
-          <p class="text-xs text-neutral-500 leading-relaxed">
-            Nếu bạn đang phát triển ứng dụng di động hoặc backend microservice, bạn có thể gọi thẳng endpoint Gateway để phát sóng giao dịch L1 thật:
-          </p>
+          <p class="text-xs text-neutral-500 leading-relaxed" data-i18n="dev.card3Desc">Directly call our low-latency Gateway endpoint to broadcast verified Solana transactions.</p>
 
           <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs overflow-x-auto">
             <button onclick="navigator.clipboard.writeText(document.getElementById('code-curl-snippet').innerText); alert('Copied cURL command!');" class="absolute top-3 right-3 px-2 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] rounded text-neutral-300 cursor-pointer z-10">
@@ -1108,20 +1100,16 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               <div class="flex items-center space-x-2">
                 <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
-                  CONNECTED & LIVE
+                  <span data-i18n="marketplace.bannerBadge">CONNECTED & LIVE</span>
                 </span>
-                <span class="text-xs font-mono text-neutral-400">Phase 1 Integration</span>
+                <span class="text-xs font-mono text-neutral-400" data-i18n="marketplace.badge">Federated Mesh • Active</span>
               </div>
-              <h3 class="text-sm sm:text-base font-bold text-black dark:text-white">
-                Global Agent Labor Marketplace (Sàn Việc Làm Agent Quốc Tế)
-              </h3>
-              <p class="text-xs text-neutral-500 max-w-2xl leading-relaxed">
-                Hệ thống HAICHAIN đã kết nối với các sàn Agent hàng đầu thế giới: <strong class="text-black dark:text-white">Smithery MCP Registry</strong> (2,140+ Nodes cào dữ liệu & tự động hóa), <strong class="text-black dark:text-white">Fetch.ai Agentverse</strong> (850+ Agents tài chính & Arbitrage DEX), và <strong class="text-black dark:text-white">Glama</strong> (430+ Nodes kiểm toán bảo mật).
-              </p>
+              <h3 class="text-sm sm:text-base font-bold text-black dark:text-white" data-i18n="marketplace.bannerTitle">Federated Autonomous Agent Network (Global Capability Exchange)</h3>
+              <p class="text-xs text-neutral-500 max-w-2xl leading-relaxed" data-i18n="marketplace.bannerDesc">HAICHAIN is connected to leading global agent registries: Smithery MCP Registry (2,140+ data extraction & automation nodes), Fetch.ai Agentverse (850+ financial & DEX arbitrage agents), and Glama (430+ security audit nodes).</p>
             </div>
             <div class="flex items-center gap-2 shrink-0">
               <button onclick="document.querySelector('[data-tab=\'tab-agents\']')?.click(); window.scrollTo({top: 400, behavior: 'smooth'});" class="px-4 py-2.5 rounded-xl bg-black text-white dark:bg-white dark:text-black hover:opacity-90 font-semibold text-xs transition-all shadow-sm flex items-center space-x-2 cursor-pointer">
-                <span>Vào Sàn Agent Quốc Tế (Tab 2)</span>
+                <span data-i18n="marketplace.bannerBtn">Explore Federated Agent Market</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
             </div>
@@ -1143,7 +1131,7 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </a>
             </div>
             <span class="text-[11px] font-mono text-neutral-400">
-              Giao thức: <code class="text-neutral-600 dark:text-neutral-300">discover_global_agents</code> + <code class="text-neutral-600 dark:text-neutral-300">hire_global_agent</code>
+              <span data-i18n="marketplace.protocolLabel">Protocol:</span> <code class="text-neutral-600 dark:text-neutral-300">discover_global_agents</code> + <code class="text-neutral-600 dark:text-neutral-300">hire_global_agent</code>
             </span>
           </div>
         </div>
@@ -1280,15 +1268,11 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <h3 class="font-bold text-base text-black dark:text-white flex items-center space-x-2">
                   <i data-lucide="globe" class="w-4 h-4 text-emerald-500"></i>
-                  <span data-i18n="marketplace.title">Global Agent Labor Marketplace</span>
+                  <span data-i18n="marketplace.title">Federated Autonomous Agent Network & Capability Exchange</span>
                 </h3>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700">
-                  Phase 1 Live
-                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700" data-i18n="marketplace.badge">Federated Mesh • Active</span>
               </div>
-              <p class="text-xs text-neutral-500 mt-1" data-i18n="marketplace.subtitle">
-                Universal federated mesh connecting Smithery MCP, Fetch.ai Almanac, and Glama. Your AI can autonomously search, negotiate, and hire specialized sub-agents with micro-payments.
-              </p>
+              <p class="text-xs text-neutral-500 mt-1" data-i18n="marketplace.subtitle">Universal decentralized execution mesh interconnecting Smithery MCP, Fetch.ai Almanac, and Glama. Enables autonomous AI agents to discover, negotiate, and hire specialized sub-agents with cryptographically verified micro-escrows.</p>
             </div>
             
             <!-- Direct Global Market Outbound Hub Links -->
@@ -1312,27 +1296,27 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
           <div class="flex flex-col sm:flex-row gap-3">
             <div class="relative flex-1">
               <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-              <input id="agent-market-search-input" type="text" placeholder="Search by skill, capability or keyword (e.g. scraping, security audit, market alpha)..." 
+              <input id="agent-market-search-input" type="text" data-i18n-placeholder="marketplace.searchPlaceholder" placeholder="Search by skill, capability or keyword (e.g. scraping, security audit, market alpha)..." 
                      class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-black dark:focus:border-white transition-all">
             </div>
             <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0" id="market-category-filters">
-              <button id="open-register-agent-modal-btn" class="px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-500 border border-emerald-500 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center space-x-1">
-                <i data-lucide="plus-circle" class="w-3.5 h-3.5 inline"></i>
-                <span>+ Đăng ký Agent</span>
+              <button id="sync-global-registries-btn" onclick="window.syncGlobalRegistries?.();" class="px-3 py-2 rounded-xl text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-black dark:hover:bg-neutral-200 border border-neutral-800 dark:border-neutral-200 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center space-x-1.5">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5 inline"></i>
+                <span data-i18n="marketplace.syncRegistries">Sync Global Registries (Smithery • Fetch.ai)</span>
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer" data-category="all">
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer" data-category="all" data-i18n="marketplace.catAll">
                 All Categories
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="data_extraction">
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="data_extraction" data-i18n="marketplace.catScraping">
                 Web Scraping
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="financial_intelligence">
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="financial_intelligence" data-i18n="marketplace.catAlpha">
                 Market Alpha
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="security_audit">
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="security_audit" data-i18n="marketplace.catSecurity">
                 Security Audit
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="automation">
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="automation" data-i18n="marketplace.catCompute">
                 TEE Compute
               </button>
             </div>
@@ -1350,8 +1334,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   </a>
                   <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">SLA 99.9%</span>
                 </div>
-                <h4 class="font-bold text-xs text-black dark:text-white leading-snug">Smithery Web Extraction Sentinel</h4>
-                <p class="text-[11px] text-neutral-500 leading-relaxed">Autonomous headless browser crawling, dynamic SPA scraping, and structured JSON extraction.</p>
+                <h4 class="font-bold text-xs text-black dark:text-white leading-snug" data-i18n="marketplace.agent1.name">Smithery Web Extraction Sentinel</h4>
+                <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="marketplace.agent1.desc">Autonomous headless browser crawling, dynamic SPA scraping, and structured JSON extraction.</p>
                 <div class="flex flex-wrap gap-1 pt-1">
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Headless Chromium</span>
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Anti-bot bypass</span>
@@ -1360,12 +1344,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </div>
               <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+                  <span class="text-[9px] text-neutral-400 block font-mono" data-i18n="marketplace.rateLabel">Micro-Task Rate</span>
                   <span class="font-bold text-xs text-black dark:text-white font-mono">$0.0030 USDT</span>
                 </div>
-                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-smithery-scraper-01">
-                  Hire Agent
-                </button>
+                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-smithery-scraper-01" data-i18n="marketplace.hireBtn">Hire Agent</button>
               </div>
             </div>
 
@@ -1379,8 +1361,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   </a>
                   <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">SLA 99.8%</span>
                 </div>
-                <h4 class="font-bold text-xs text-black dark:text-white leading-snug">Fetch.ai Autonomous Financial Sentinel</h4>
-                <p class="text-[11px] text-neutral-500 leading-relaxed">Real-time cryptocurrency orderbook depth, on-chain whale flow tracking, and macro sentiment analysis.</p>
+                <h4 class="font-bold text-xs text-black dark:text-white leading-snug" data-i18n="marketplace.agent2.name">Fetch.ai Autonomous Financial Sentinel</h4>
+                <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="marketplace.agent2.desc">Real-time cryptocurrency orderbook depth, on-chain whale flow tracking, and macro sentiment analysis.</p>
                 <div class="flex flex-wrap gap-1 pt-1">
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">CEX/DEX Liquidity</span>
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Tokenomics audit</span>
@@ -1389,12 +1371,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </div>
               <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+                  <span class="text-[9px] text-neutral-400 block font-mono" data-i18n="marketplace.rateLabel">Micro-Task Rate</span>
                   <span class="font-bold text-xs text-black dark:text-white font-mono">$0.0050 USDT</span>
                 </div>
-                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-fetch-market-intel-04">
-                  Hire Agent
-                </button>
+                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-fetch-market-intel-04" data-i18n="marketplace.hireBtn">Hire Agent</button>
               </div>
             </div>
 
@@ -1408,8 +1388,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   </a>
                   <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">SLA 99.95%</span>
                 </div>
-                <h4 class="font-bold text-xs text-black dark:text-white leading-snug">Glama Solana / Rust Security Auditor</h4>
-                <p class="text-[11px] text-neutral-500 leading-relaxed">Static and symbolic execution analysis for Solana Anchor programs, reentrancy detection, and PDA validation.</p>
+                <h4 class="font-bold text-xs text-black dark:text-white leading-snug" data-i18n="marketplace.agent3.name">Glama Solana / Rust Security Auditor</h4>
+                <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="marketplace.agent3.desc">Static and symbolic execution analysis for Solana Anchor programs, reentrancy detection, and PDA validation.</p>
                 <div class="flex flex-wrap gap-1 pt-1">
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Anchor Rust scan</span>
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">PDA seed check</span>
@@ -1418,12 +1398,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </div>
               <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+                  <span class="text-[9px] text-neutral-400 block font-mono" data-i18n="marketplace.rateLabel">Micro-Task Rate</span>
                   <span class="font-bold text-xs text-black dark:text-white font-mono">$0.0100 USDT</span>
                 </div>
-                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-glama-sec-audit-09">
-                  Hire Agent
-                </button>
+                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-glama-sec-audit-09" data-i18n="marketplace.hireBtn">Hire Agent</button>
               </div>
             </div>
 
@@ -1436,8 +1414,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   </span>
                   <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">SLA 100%</span>
                 </div>
-                <h4 class="font-bold text-xs text-black dark:text-white leading-snug">HAICHAIN Ephemeral WASM Sandbox Node</h4>
-                <p class="text-[11px] text-neutral-500 leading-relaxed">Isolated, hardware-secure TEE sandbox for Python, JavaScript, and Rust script compilation & execution.</p>
+                <h4 class="font-bold text-xs text-black dark:text-white leading-snug" data-i18n="marketplace.agent4.name">HAICHAIN Ephemeral WASM Sandbox Node</h4>
+                <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="marketplace.agent4.desc">Isolated, hardware-secure TEE sandbox for Python, JavaScript, and Rust script compilation & execution.</p>
                 <div class="flex flex-wrap gap-1 pt-1">
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Python 3.12 sandbox</span>
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Data transform</span>
@@ -1446,12 +1424,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </div>
               <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+                  <span class="text-[9px] text-neutral-400 block font-mono" data-i18n="marketplace.rateLabel">Micro-Task Rate</span>
                   <span class="font-bold text-xs text-black dark:text-white font-mono">$0.0020 USDT</span>
                 </div>
-                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-haichain-code-sandbox-02">
-                  Hire Agent
-                </button>
+                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-haichain-code-sandbox-02" data-i18n="marketplace.hireBtn">Hire Agent</button>
               </div>
             </div>
 
@@ -1465,8 +1441,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   </a>
                   <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">SLA 99.7%</span>
                 </div>
-                <h4 class="font-bold text-xs text-black dark:text-white leading-snug">Global Cross-Platform Sentiment Radar</h4>
-                <p class="text-[11px] text-neutral-500 leading-relaxed">Multi-lingual social signal extraction (X/Twitter, Reddit, Telegram, Farcaster) with FinBERT scoring.</p>
+                <h4 class="font-bold text-xs text-black dark:text-white leading-snug" data-i18n="marketplace.agent5.name">Global Cross-Platform Sentiment Radar</h4>
+                <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="marketplace.agent5.desc">Multi-lingual social signal extraction (X/Twitter, Reddit, Telegram, Farcaster) with FinBERT scoring.</p>
                 <div class="flex flex-wrap gap-1 pt-1">
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Social sentiment</span>
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">FUD / FOMO index</span>
@@ -1475,12 +1451,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </div>
               <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+                  <span class="text-[9px] text-neutral-400 block font-mono" data-i18n="marketplace.rateLabel">Micro-Task Rate</span>
                   <span class="font-bold text-xs text-black dark:text-white font-mono">$0.0040 USDT</span>
                 </div>
-                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-smithery-sentiment-07">
-                  Hire Agent
-                </button>
+                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-smithery-sentiment-07" data-i18n="marketplace.hireBtn">Hire Agent</button>
               </div>
             </div>
 
@@ -1494,8 +1468,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   </a>
                   <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">SLA 99.9%</span>
                 </div>
-                <h4 class="font-bold text-xs text-black dark:text-white leading-snug">DEX Cross-Pool Liquidity & Flash Arbitrage Sentinel</h4>
-                <p class="text-[11px] text-neutral-500 leading-relaxed">Continuous monitoring of Raydium, Orca, and Meteora pools for triangular arbitrage and impermanent loss risks.</p>
+                <h4 class="font-bold text-xs text-black dark:text-white leading-snug" data-i18n="marketplace.agent6.name">DEX Cross-Pool Liquidity & Flash Arbitrage Sentinel</h4>
+                <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="marketplace.agent6.desc">Continuous monitoring of Raydium, Orca, and Meteora pools for triangular arbitrage and impermanent loss risks.</p>
                 <div class="flex flex-wrap gap-1 pt-1">
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Solana DEX routing</span>
                   <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">Slippage model</span>
@@ -1504,12 +1478,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               </div>
               <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+                  <span class="text-[9px] text-neutral-400 block font-mono" data-i18n="marketplace.rateLabel">Micro-Task Rate</span>
                   <span class="font-bold text-xs text-black dark:text-white font-mono">$0.0080 USDT</span>
                 </div>
-                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-fetch-arbitrage-11">
-                  Hire Agent
-                </button>
+                <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="agent-fetch-arbitrage-11" data-i18n="marketplace.hireBtn">Hire Agent</button>
               </div>
             </div>
 
@@ -1525,7 +1497,7 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                   <i data-lucide="zap" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h4 id="hire-modal-agent-name" class="font-bold text-sm text-black dark:text-white">Hire Global Sub-Agent</h4>
+                  <h4 id="hire-modal-agent-name" class="font-bold text-sm text-black dark:text-white" data-i18n="marketplace.hireModalTitle">Hire Global Sub-Agent</h4>
                   <span id="hire-modal-agent-provider" class="text-[11px] text-neutral-400 font-mono">Smithery MCP Registry</span>
                 </div>
               </div>
@@ -1537,21 +1509,21 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             <!-- Task Description & Payload Input -->
             <div class="space-y-3">
               <div>
-                <label class="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Task Instruction & Payload</label>
+                <label class="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1" data-i18n="marketplace.taskLabel">Task Instruction & Payload</label>
                 <textarea id="hire-task-payload-input" rows="3" class="w-full p-3 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all font-mono" placeholder="Enter specific instructions or data payload for this agent..."></textarea>
               </div>
 
               <div class="grid grid-cols-2 gap-3 text-[11px] p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 font-mono">
                 <div>
-                  <span class="text-neutral-400 block">Rate / Micro-Tick:</span>
+                  <span class="text-neutral-400 block" data-i18n="marketplace.rateTick">Rate / Micro-Tick:</span>
                   <span id="hire-modal-rate" class="font-bold text-black dark:text-white">$0.0030 USDT</span>
                 </div>
                 <div>
-                  <span class="text-neutral-400 block">Settlement Escrow:</span>
+                  <span class="text-neutral-400 block" data-i18n="marketplace.settlementEscrow">Settlement Escrow:</span>
                   <span class="font-bold text-emerald-600 dark:text-emerald-400">Solana Devnet L1</span>
                 </div>
                 <div class="col-span-2 pt-1 border-t border-neutral-200/60 dark:border-neutral-800">
-                  <span class="text-neutral-400 block">Recipient On-Chain:</span>
+                  <span class="text-neutral-400 block" data-i18n="marketplace.recipientOnChain">Recipient On-Chain:</span>
                   <span id="hire-modal-recipient" class="text-[10px] text-neutral-600 dark:text-neutral-300 truncate block font-mono">Sm1thScrap3rPo1nt782VbX4nNmK9q1zEwR2Ty7LpA</span>
                 </div>
               </div>
@@ -1575,12 +1547,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
 
             <!-- Actions -->
             <div class="flex items-center justify-end space-x-2 pt-2 border-t border-neutral-100 dark:border-neutral-900">
-              <button id="cancel-hire-btn" class="px-4 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-all cursor-pointer">
-                Cancel
-              </button>
+              <button id="cancel-hire-btn" class="px-4 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-i18n="marketplace.cancelBtn">Cancel</button>
               <button id="confirm-hire-agent-btn" class="px-5 py-2 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-bold flex items-center space-x-1.5 shadow-sm active:scale-98 transition-all cursor-pointer">
                 <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-                <span id="confirm-hire-btn-text">Execute Micro-Escrow</span>
+                <span id="confirm-hire-btn-text" data-i18n="marketplace.confirmHire">Execute Micro-Escrow</span>
               </button>
             </div>
           </div>
@@ -2264,7 +2234,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               <span class="text-neutral-300 font-medium" data-i18n="aiHub.onlineUrlLabel">MCP Server URL (For Claude Mobile):</span>
             </span>
             <span id="online-mcp-badge" class="text-[9.5px] bg-neutral-900 border border-neutral-800 px-2.5 py-0.5 rounded-full text-neutral-400 font-mono shrink-0 whitespace-nowrap flex items-center font-medium">
-              <span data-i18n="aiHub.badgeGeneric">URL CHUNG (CHƯA GẮN VÍ)</span>
+              <span data-i18n="aiHub.badgeGeneric">GENERIC URL (UNBOUND)</span>
             </span>
           </div>
           <div class="p-2.5 rounded-xl bg-black border border-neutral-800 font-mono text-neutral-200 text-xs sm:text-[13px] overflow-x-auto select-all break-all flex items-center justify-between">
@@ -2275,21 +2245,21 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           <div id="online-mcp-connected-box" class="hidden p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/20 flex items-start space-x-2.5 text-[11px] font-sans min-w-0 w-full overflow-hidden">
             <i data-lucide="check" class="w-4 h-4 text-emerald-400/80 shrink-0 mt-0.5"></i>
             <div class="min-w-0 flex-1 overflow-hidden">
-              <div class="font-semibold text-emerald-300/90 text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</div>
+              <div class="font-semibold text-emerald-300/90 text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">Personalized URL Bound to Wallet:</div>
               <div class="mt-1.5 p-2 px-2.5 rounded-lg bg-black/70 border border-emerald-500/20 font-mono text-[10.5px] text-emerald-200/90 break-all select-all font-medium leading-relaxed w-full overflow-hidden">
                 <span id="online-mcp-bound-addr"></span>
               </div>
-              <p class="text-[10px] text-neutral-400 mt-1.5 leading-relaxed" data-i18n="aiHub.connectedDesc">AI Claude Mobile sẽ tự động liên kết thẳng vào két chi tiêu của ví này mà không cần nhập thủ công địa chỉ trong khung chat.</p>
+              <p class="text-[10px] text-neutral-400 mt-1.5 leading-relaxed" data-i18n="aiHub.connectedDesc">Claude Mobile AI will automatically link to this wallet's spending vault without manually entering the address.</p>
             </div>
           </div>
 
           <div id="online-mcp-unconnected-box" class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] font-sans">
             <div class="space-y-0.5">
-              <span class="font-semibold text-white block" data-i18n="aiHub.unconnectedTitle">Bạn muốn AI cá nhân hóa theo ví riêng?</span>
-              <p class="text-[10.5px] text-neutral-400 leading-relaxed" data-i18n="aiHub.unconnectedDesc">Kết nối ví ngay để hệ thống tự động sinh Server URL độc quyền gắn mã két của bạn.</p>
+              <span class="font-semibold text-white block" data-i18n="aiHub.unconnectedTitle">Want an AI personalized for your wallet?</span>
+              <p class="text-[10.5px] text-neutral-400 leading-relaxed" data-i18n="aiHub.unconnectedDesc">Connect your wallet now to automatically generate an exclusive server URL linked to your vault.</p>
             </div>
             <button id="online-mcp-trigger-connect-btn" type="button" class="shrink-0 px-3.5 py-2 rounded-lg bg-white text-black hover:bg-neutral-200 font-semibold text-xs flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-98">
-              <span data-i18n="aiHub.btnConnectForLink">Kết nối ví để nhận link riêng</span>
+              <span data-i18n="aiHub.btnConnectForLink">Connect wallet for private link</span>
             </button>
           </div>
         </div>
@@ -9280,70 +9250,82 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     const GLOBAL_MARKET_AGENTS = [
       {
         agentId: 'agent-smithery-scraper-01',
+        nameKey: 'marketplace.agent1.name',
         name: 'Smithery Web Extraction Sentinel',
         provider: 'Smithery MCP Registry',
         providerUrl: 'https://smithery.ai',
         category: 'data_extraction',
         pricingUsdt: 0.003,
         slaUptime: '99.9%',
+        descKey: 'marketplace.agent1.desc',
         description: 'Autonomous headless browser crawling, dynamic SPA scraping, and structured JSON extraction.',
         recipientAddress: 'Sm1thScrap3rPo1nt782VbX4nNmK9q1zEwR2Ty7LpA',
         capabilities: ['Headless Chromium', 'Anti-bot bypass', 'Table to JSON']
       },
       {
         agentId: 'agent-fetch-market-intel-04',
+        nameKey: 'marketplace.agent2.name',
         name: 'Fetch.ai Autonomous Financial Sentinel',
         provider: 'Fetch.ai Almanac Network',
         providerUrl: 'https://agentverse.ai',
         category: 'financial_intelligence',
         pricingUsdt: 0.005,
         slaUptime: '99.8%',
+        descKey: 'marketplace.agent2.desc',
         description: 'Real-time cryptocurrency orderbook depth, on-chain whale flow tracking, and macro sentiment analysis.',
         recipientAddress: 'F3tchA1m4n4cMkt1nt3l8890xVcZbPqQwErTy44Kz',
         capabilities: ['CEX/DEX Liquidity', 'Tokenomics audit', 'Volatility forecast']
       },
       {
         agentId: 'agent-glama-sec-audit-09',
+        nameKey: 'marketplace.agent3.name',
         name: 'Glama Solana / Rust Security Auditor',
         provider: 'Glama Verified Security Network',
         category: 'security_audit',
         pricingUsdt: 0.010,
         slaUptime: '99.95%',
+        descKey: 'marketplace.agent3.desc',
         description: 'Static and symbolic execution analysis for Solana Anchor programs, reentrancy detection, and PDA validation.',
         recipientAddress: 'G14m4Aud1t0rSecur1ty998811VvBbNnMmKkLlJjHh',
         capabilities: ['Anchor Rust scan', 'PDA seed check', 'Overflow verification']
       },
       {
         agentId: 'agent-haichain-code-sandbox-02',
+        nameKey: 'marketplace.agent4.name',
         name: 'HAICHAIN Ephemeral WASM Sandbox Node',
         provider: 'HAICHAIN TEE Compute Cloud',
         category: 'automation',
         pricingUsdt: 0.002,
         slaUptime: '100.0%',
+        descKey: 'marketplace.agent4.desc',
         description: 'Isolated, hardware-secure TEE sandbox for Python, JavaScript, and Rust script compilation & execution.',
         recipientAddress: 'H41Ch41nS4ndb0xT33C0mput38827VbNmKqLpA1zX',
         capabilities: ['Python 3.12 sandbox', 'Data transformation', 'Graph generation']
       },
       {
         agentId: 'agent-smithery-sentiment-07',
+        nameKey: 'marketplace.agent5.name',
         name: 'Global Cross-Platform Sentiment Radar',
         provider: 'Smithery MCP Registry',
         providerUrl: 'https://smithery.ai',
         category: 'financial_intelligence',
         pricingUsdt: 0.004,
         slaUptime: '99.7%',
+        descKey: 'marketplace.agent5.desc',
         description: 'Multi-lingual social signal extraction (X/Twitter, Reddit, Telegram, Farcaster) with FinBERT scoring.',
         recipientAddress: 'S3nt1m3ntR4d4rSm1th3ry8811VbNmKqLpA1zX99',
         capabilities: ['Social sentiment', 'FUD / FOMO index', 'Influencer tracking']
       },
       {
         agentId: 'agent-fetch-arbitrage-11',
+        nameKey: 'marketplace.agent6.name',
         name: 'DEX Cross-Pool Liquidity & Flash Arbitrage Sentinel',
         provider: 'Fetch.ai uAgents Protocol',
         providerUrl: 'https://agentverse.ai',
         category: 'automation',
         pricingUsdt: 0.008,
         slaUptime: '99.9%',
+        descKey: 'marketplace.agent6.desc',
         description: 'Continuous monitoring of Raydium, Orca, and Meteora pools for triangular arbitrage and impermanent loss risks.',
         recipientAddress: 'Arb1tr4g3F3tchS3nt1n3l776655VvBbNnMmKkLlL',
         capabilities: ['Solana DEX routing', 'Slippage modeling', 'Pool health score']
@@ -9358,23 +9340,37 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       const grid = document.getElementById('global-agent-market-grid');
       if (!grid) return;
 
+      const tHelper = (k, fallback) => {
+        if (typeof t === 'function') return t(k, fallback);
+        return fallback || k;
+      };
+
       const filtered = GLOBAL_MARKET_AGENTS.filter(a => {
         if (currentMarketCategory !== 'all' && a.category !== currentMarketCategory) return false;
         if (!currentMarketSearch) return true;
-        const s = `${a.name} ${a.description} ${a.provider} ${a.capabilities.join(' ')}`.toLowerCase();
+        const translatedName = a.nameKey ? tHelper(a.nameKey, a.name) : a.name;
+        const translatedDesc = a.descKey ? tHelper(a.descKey, a.description) : a.description;
+        const s = `${translatedName} ${translatedDesc} ${a.name} ${a.description} ${a.provider} ${a.capabilities.join(' ')}`.toLowerCase();
         return s.includes(currentMarketSearch);
       });
 
       if (filtered.length === 0) {
+        const noAgentsText = tHelper('marketplace.noAgents', `No agents found matching "${currentMarketSearch}". Try searching for 'scraping', 'audit', or 'crypto'.`);
         grid.innerHTML = `
           <div class="col-span-full py-8 text-center text-neutral-400 font-mono text-xs">
-            No agents found matching "${currentMarketSearch}". Try searching for 'scraping', 'audit', or 'crypto'.
+            ${noAgentsText}
           </div>
         `;
         return;
       }
 
-      grid.innerHTML = filtered.map(agent => `
+      const rateLabel = tHelper('marketplace.rateLabel', 'Micro-Task Rate');
+      const hireBtnText = tHelper('marketplace.hireBtn', 'Hire Agent');
+
+      grid.innerHTML = filtered.map(agent => {
+        const displayName = agent.nameKey ? tHelper(agent.nameKey, agent.name) : agent.name;
+        const displayDesc = agent.descKey ? tHelper(agent.descKey, agent.description) : agent.description;
+        return `
         <div class="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:border-black dark:hover:border-white transition-all flex flex-col justify-between space-y-3">
           <div class="space-y-2">
             <div class="flex items-start justify-between gap-2">
@@ -9392,8 +9388,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 SLA ${agent.slaUptime}
               </span>
             </div>
-            <h4 class="font-bold text-xs text-black dark:text-white leading-snug">${agent.name}</h4>
-            <p class="text-[11px] text-neutral-500 leading-relaxed">${agent.description}</p>
+            <h4 class="font-bold text-xs text-black dark:text-white leading-snug">${displayName}</h4>
+            <p class="text-[11px] text-neutral-500 leading-relaxed">${displayDesc}</p>
             <div class="flex flex-wrap gap-1 pt-1">
               ${agent.capabilities.map(c => `
                 <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">
@@ -9405,15 +9401,16 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
           <div class="pt-3 border-t border-neutral-200/60 dark:border-neutral-800 flex items-center justify-between gap-2">
             <div>
-              <span class="text-[9px] text-neutral-400 block font-mono">Micro-Task Rate</span>
+              <span class="text-[9px] text-neutral-400 block font-mono">${rateLabel}</span>
               <span class="font-bold text-xs text-black dark:text-white font-mono">$${agent.pricingUsdt.toFixed(4)} USDT</span>
             </div>
             <button class="hire-agent-btn px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[11px] font-semibold transition-all active:scale-98 cursor-pointer" data-agent-id="${agent.agentId}">
-              Hire Agent
+              ${hireBtnText}
             </button>
           </div>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       grid.querySelectorAll('.hire-agent-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -9424,6 +9421,19 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
       if (typeof safeCreateIcons === 'function') safeCreateIcons();
     }
+
+    function loadGlobalAgentMarketplace() {
+      renderGlobalAgentMarketplace();
+    }
+    window.loadGlobalAgentMarketplace = renderGlobalAgentMarketplace;
+    window.renderGlobalAgentMarketplace = renderGlobalAgentMarketplace;
+
+    // Reactively update marketplace when language changes
+    window.addEventListener('haichain:languageChanged', () => {
+      if (typeof renderGlobalAgentMarketplace === 'function') {
+        renderGlobalAgentMarketplace();
+      }
+    });
 
     function openHireAgentModal(agentId) {
       const agent = GLOBAL_MARKET_AGENTS.find(a => a.agentId === agentId);
@@ -9616,78 +9626,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
   </script>
 
-    <!-- ================= MODAL: REGISTER COMMUNITY AGENT ================= -->
-    <div id="register-agent-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-      <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-        <div class="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-3">
-          <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold text-sm">
-              <i data-lucide="bot" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <h3 class="font-bold text-sm text-black dark:text-white">Đăng ký Autonomous AI Agent</h3>
-              <p class="text-[11px] text-neutral-400 font-mono">Publish Agent to Global HAIChain Economy</p>
-            </div>
-          </div>
-          <button id="close-register-agent-btn" class="text-neutral-400 hover:text-black dark:hover:text-white p-1 rounded-lg">
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-
-        <form id="community-agent-register-form" class="space-y-3">
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Tên Agent / Node Name *</label>
-            <input type="text" id="reg-agent-name" required placeholder="VD: DeepSeek Market Arbitrage Sentinel" 
-                   class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white">
-          </div>
-
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Danh mục / Category *</label>
-              <select id="reg-agent-category" class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none">
-                <option value="data_extraction">Web Scraping / Data</option>
-                <option value="financial_intelligence">Financial Alpha / Trading</option>
-                <option value="security_audit">Smart Contract Security</option>
-                <option value="automation">Compute / Automation</option>
-                <option value="custom">Custom Specialized</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Giá mỗi Request (USDT) *</label>
-              <input type="number" step="0.001" min="0.001" id="reg-agent-price" value="0.003" required
-                     class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none">
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Địa chỉ ví nhận tiền Solana (Payee Base58) *</label>
-            <input type="text" id="reg-agent-wallet" required placeholder="VD: 5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3" 
-                   class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs font-mono text-black dark:text-white focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Endpoint Webhook / MCP URL (Tùy chọn)</label>
-            <input type="url" id="reg-agent-endpoint" placeholder="VD: https://api.my-agent.io/v1/inference" 
-                   class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs font-mono text-black dark:text-white focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Mô tả năng lực (Capabilities)</label>
-            <textarea id="reg-agent-desc" rows="2" placeholder="Mô tả kỹ năng, SLA hoặc thông số LLM..." 
-                      class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none"></textarea>
-          </div>
-
-          <div class="pt-2 flex items-center justify-end space-x-2">
-            <button type="button" id="cancel-register-agent-btn" class="px-4 py-2 rounded-xl text-xs font-medium text-neutral-500 hover:text-black dark:hover:text-white">
-              Hủy
-            </button>
-            <button type="submit" id="submit-register-agent-btn" class="px-5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-all active:scale-98">
-              Xác nhận Đăng ký On-Chain
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    
 
 </body>
 </html>
