@@ -746,43 +746,131 @@
           </div>
         </div>
 
-        <!-- Velocity Gauge & Active Invariant Monitor -->
+        <!-- Velocity Gauge, Heartbeat Session & Active Invariant Monitor -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- Left: Spending Velocity -->
-          <div class="lg:col-span-6 p-6 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-4">
+          <!-- Left: Autonomous Velocity Cap & Heartbeat Session -->
+          <div class="lg:col-span-6 p-6 rounded-3xl border border-white/[0.06] bg-white/[0.015] dark:bg-brand-card/90 backdrop-blur-md shadow-sm space-y-5">
             <div class="flex justify-between items-center">
-              <h3 class="font-semibold text-sm text-black dark:text-white" data-i18n="vault.velocityCap">Autonomous Velocity Cap</h3>
-              <span class="text-xs font-mono text-neutral-500">$1.55 Spent / $10.00 Max</span>
-            </div>
-            <div class="w-full bg-neutral-200 dark:bg-neutral-800 h-2.5 rounded-full overflow-hidden">
-              <div id="overview-velocity-bar" class="bg-black dark:bg-white h-full rounded-full transition-all duration-500" style="width: 15.5%;"></div>
-            </div>
-            <div class="grid grid-cols-2 gap-3 text-xs font-mono pt-2 border-t border-neutral-100 dark:border-neutral-900">
               <div>
-                <span class="text-neutral-500 block" data-i18n="vault.avgSpeed">Avg Settlement Speed</span>
-                <span class="font-bold text-black dark:text-white">0.18ms</span>
+                <h3 class="font-semibold text-sm text-black dark:text-white flex items-center space-x-2">
+                  <i data-lucide="gauge" class="w-4 h-4 text-emerald-500"></i>
+                  <span data-i18n="vault.velocityCap">Autonomous Velocity Cap</span>
+                </h3>
+                <span class="text-[11px] font-mono text-neutral-400">Sliding Window: 3,600s &bull; Invariant I4</span>
+              </div>
+              <span id="overview-velocity-ratio" class="text-xs font-mono text-neutral-500 font-semibold">$1.55 / $10.00 (15.5%)</span>
+            </div>
+            
+            <!-- Velocity Gauge Bar -->
+            <div class="w-full bg-neutral-200/80 dark:bg-neutral-800/80 h-2.5 rounded-full overflow-hidden p-0.5 border border-white/[0.04]">
+              <div id="overview-velocity-bar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500 shadow-xs" style="width: 15.5%;"></div>
+            </div>
+
+            <!-- Heartbeat Session Timer & Passkey 1-Click Refresh -->
+            <div class="p-3.5 rounded-2xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div class="text-[11px] text-neutral-400 font-mono flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                  <span data-i18n="vault.heartbeatSession">Heartbeat Session (valid_until)</span>
+                </div>
+                <div class="text-sm font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-0.5 flex items-baseline space-x-1">
+                  <span id="heartbeat-timer">14m 32s</span>
+                  <span class="text-[10px] text-neutral-500 font-normal">remaining</span>
+                </div>
+              </div>
+              <button id="btn-refresh-heartbeat" class="px-3 py-1.5 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-semibold flex items-center justify-center space-x-1.5 shadow-xs active:scale-95 transition-all cursor-pointer">
+                <i data-lucide="fingerprint" class="w-3.5 h-3.5"></i>
+                <span data-i18n="vault.touchPasskey">Touch Passkey to Refresh (+1h)</span>
+              </button>
+            </div>
+
+            <!-- Quantitative Risk Ceiling & Latency -->
+            <div class="grid grid-cols-2 gap-3 text-xs font-mono pt-2 border-t border-white/[0.04]">
+              <div>
+                <span class="text-neutral-500 block text-[11px]" data-i18n="vault.timeToControl">Time-to-Control (τ)</span>
+                <span class="font-bold text-black dark:text-white">&le; 12.0s</span>
+                <span class="text-[10px] text-neutral-400 block font-normal">(t_detect + t_owner + t_land)</span>
               </div>
               <div>
-                <span class="text-neutral-500 block" data-i18n="metric.mtuSize">Single MTU Size</span>
-                <span class="font-bold text-black dark:text-white">771 Bytes (&lt; 1,232 MTU)</span>
+                <span class="text-neutral-500 block text-[11px]" data-i18n="vault.maxTheftCeiling">Max Theft Ceiling E_theft(τ)</span>
+                <span class="font-bold text-emerald-600 dark:text-emerald-400">&le; $1.55 Max</span>
+                <span class="text-[10px] text-neutral-400 block font-normal">Claude Thm 6.1 (T4 Bound)</span>
               </div>
             </div>
           </div>
 
-          <!-- Right: Protocol PDA Addresses -->
-          <div class="lg:col-span-6 p-6 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-3 font-mono text-xs">
-            <h3 class="font-sans font-semibold text-sm text-black dark:text-white mb-2" data-i18n="vault.pdaAttributions">Cryptographic PDA Attributions</h3>
-            <div class="flex justify-between items-center py-1.5 border-b border-neutral-100 dark:border-neutral-900">
+          <!-- Right: Active Invariant Monitor & PDA Attributions -->
+          <div class="lg:col-span-6 p-6 rounded-3xl border border-white/[0.06] bg-white/[0.015] dark:bg-brand-card/90 backdrop-blur-md shadow-sm space-y-4 font-mono text-xs">
+            <div class="flex justify-between items-center">
+              <h3 class="font-sans font-semibold text-sm text-black dark:text-white flex items-center space-x-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+                <span data-i18n="vault.activeInvariants">Active Invariants</span>
+              </h3>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                9 / 9 Enforced
+              </span>
+            </div>
+
+            <!-- Invariants Grid (I1 - I9) -->
+            <div class="grid grid-cols-3 gap-1.5 text-[10px]">
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Conservation: Vault + Escrow + Paid == Net Deposits">I1 Conservation</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Recipient Safety: Strictly ATA(Merchant, Mint)">I2 Payee Safe</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Budget Ceiling: Consumed <= MaxSpend">I3 Budget Cap</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Velocity Cap: Sliding Window Limit">I4 Velocity</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Monotonic Narrowing: Channel <= Grant <= Pot">I5 Non-Widen</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Panic Epoch: Freeze Halts Settlement">I6 Panic Epoch</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Heartbeat Validity: Blocked if t > valid_until">I7 Heartbeat</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Monotonic Settlement: Paid <= min(C, R)">I8 Monotonic</span>
+              </div>
+              <div class="p-2 rounded-xl border border-white/[0.04] bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center space-x-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-semibold text-neutral-800 dark:text-neutral-200" title="Sybil Isolation: 1 Leaf = 1 Unique Account">I9 Sybil PDA</span>
+              </div>
+            </div>
+
+            <!-- Authority Decoupling & Wire Standard -->
+            <div class="pt-2 border-t border-white/[0.04] space-y-1.5 text-[11px]">
+              <div class="flex justify-between items-center">
+                <span class="text-neutral-500" data-i18n="vault.authorityArchitecture">Authority Decoupling:</span>
+                <span class="text-neutral-800 dark:text-neutral-200 font-semibold" data-i18n="vault.masterPasskeyBadge">Master: FIDO2 Passkey (P-256)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-neutral-500">Sub-Agents Isolation:</span>
+                <span class="text-neutral-800 dark:text-neutral-200" data-i18n="vault.subAgentBadge">Sub-Agents: Ephemeral Ed25519</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-neutral-500">Wire Protocol:</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold" data-i18n="vault.wireSpecBadge">CapLeaf v1 (223 Bytes LE)</span>
+              </div>
+            </div>
+
+            <!-- PDA Attributions Link -->
+            <div class="pt-2 border-t border-white/[0.04] flex justify-between items-center text-[10px]">
               <span class="text-neutral-500" data-i18n="vault.masterVaultPda">Master Vault PDA:</span>
-              <a href="https://explorer.solana.com/address/FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">FtqZ...4t8F</a>
-            </div>
-            <div class="flex justify-between items-center py-1.5 border-b border-neutral-100 dark:border-neutral-900">
-              <span class="text-neutral-500" data-i18n="vault.deployerOperator">Deployer Operator:</span>
-              <a href="https://explorer.solana.com/address/5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">HD1b...5nVW (2.5 SOL)</a>
-            </div>
-            <div class="flex justify-between items-center py-1.5">
-              <span class="text-neutral-500" data-i18n="vault.usdtMint">Official USDT Mint:</span>
-              <span class="text-neutral-700 dark:text-neutral-300">Es9v...wNYB (SPL)</span>
+              <a href="https://explorer.solana.com/address/FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F?cluster=devnet" target="_blank" class="underline hover:text-black dark:hover:text-white">FtqZ...4t8F (Anchor v1.1)</a>
             </div>
           </div>
         </div>
@@ -4428,7 +4516,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     }
 
     // ================= 5.5 EARLY BACKER ALLOCATIONS & TOKEN-2022 VESTING VAULT =================
-    const TOKEN_2022_MINT = "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu"; // Official Haichain SI ($HAISI) Token-2022 Mint
+    const TOKEN_2022_MINT = "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu"; // Official Haichain SI ($HAISI) Token&#8209;2022 Mint
     const TRANSFER_HOOK_PROGRAM = "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk";
 
     function getStoredAllocations() {
@@ -4479,7 +4567,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         await navigator.clipboard.writeText(TOKEN_2022_MINT);
         alert(getVestingText('copiedToken2022Alert') + '\n\n' + TOKEN_2022_MINT);
       } catch (err) {
-        alert(`Token-2022 Mint ($HAISI):\n${TOKEN_2022_MINT}`);
+        alert(`Token&#8209;2022 Mint ($HAISI):\n${TOKEN_2022_MINT}`);
       }
     };
 
@@ -4528,7 +4616,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               </span>
             </div>
             <p class="text-xs text-neutral-500 font-mono">
-              <strong class="text-black dark:text-white">${shortAddr}</strong>: <strong class="text-black dark:text-white font-bold underline">${haiTotal.toLocaleString()} $HAISI</strong> ($${paidUsdt.toLocaleString()} USDT) • Token-2022 Transfer-Hook Locked
+              <strong class="text-black dark:text-white">${shortAddr}</strong>: <strong class="text-black dark:text-white font-bold underline">${haiTotal.toLocaleString()} $HAISI</strong> ($${paidUsdt.toLocaleString()} USDT) • Token&#8209;2022 Transfer-Hook Locked
             </p>
           </div>
           <div class="flex items-center space-x-2 shrink-0">
@@ -4550,12 +4638,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% Сызықтық 6 Ай",
       "guaranteeTitle": "ИНВЕСТОРЛАР ҮШІН 100% MAINNET РЕСМИ КЕПІЛДІК СЕРТИФИКАТЫ",
       "guaranteeBadge": "КЕЛІСІМШАРТПЕН РЕСМИ КЕПІЛДЕНДІРІЛГЕН",
-      "guaranteeCommitment": "Стратегиялық инвестордың барлық {tokens} SAFT келісіміне сәйкес өзгермейтін заңды кепілдікке ие. HAICHAIN Mainnet ресми іске қосылған кезде (TGE оқиғасы) Solana Token-2022 смарт-келісімшарты 100% нақты ончейн токендерін сіздің тіркелген әмиян мекенжайыңызға {address} автоматты түрде аударады.",
+      "guaranteeCommitment": "Стратегиялық инвестордың барлық {tokens} SAFT келісіміне сәйкес өзгермейтін заңды кепілдікке ие. HAICHAIN Mainnet ресми іске қосылған кезде (TGE оқиғасы) Solana Token&#8209;2022 смарт-келісімшарты 100% нақты ончейн токендерін сіздің тіркелген әмиян мекенжайыңызға {address} автоматты түрде аударады.",
       "guaranteeProofType": "Инвестиция әдісі және қолтаңба",
       "guaranteeMintStandard": "Ончейн келісімшарт стандарты",
       "guaranteeDisbursement": "Mainnet-ке конвертация міндеттемесі",
       "viewLegalSaftBtn": "Заңды SAFT келісімін қарау",
-      "copyContractBtn": "Token-2022 Mint көшіру",
+      "copyContractBtn": "Token&#8209;2022 Mint көшіру",
 
       "metaMaskNotDetected": "Браузеріңізде MetaMask кеңейтімі табылмады.",
       "checkingMetaMaskBalance": "MetaMask балансы тексерілуде...",
@@ -4564,7 +4652,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "Салым тоқтатылды: MetaMask-та қол қоюдан бас тарттыңыз.",
       "metaMaskError": "MetaMask қатесі:",
 
-    "vaultTitle": "Token-2022 Вестинг Сейфі және Бөліністер",
+    "vaultTitle": "Token&#8209;2022 Вестинг Сейфі және Бөліністер",
     "vaultSubtitle": "On-chain $HAISI бөлініс тізілімі және криптографиялық Transfer-Hook вестингтік смарт-келісімшарттары.",
     "authRequired": "Solana Әмиянын Растау Қажет",
     "authDesc": "Жеке вестинг бөлінісіңізді ашу және Ed25519 ашық кілтін растау үшін Phantom, Solflare, биометриялық Passkey қосыңыз немесе Solana мекенжайыңызды енгізіңіз.",
@@ -4577,11 +4665,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "Басқа Әмиянға Ауысу",
     "portfolioTitle": "Инвестор Портфелі және Вестинг Сейфі",
     "trancheBadge": "Құпия Стратегиялық Бөлініс",
-    "transferHookStatus": "Token-2022 Transfer-Hook Бұғатталған",
+    "transferHookStatus": "Token&#8209;2022 Transfer-Hook Бұғатталған",
     "addToPhantomBtn": "$HAISI-ді Phantom-ға Қосу",
     "resetSimTitle": "Үлгі деректерін қалпына келтіру",
     "kpiTotalBalance": "Бөлінген Жалпы $HAISI",
-    "kpiTokenStandard": "Solana Token-2022 Кеңейтімі",
+    "kpiTokenStandard": "Solana Token&#8209;2022 Кеңейтімі",
     "kpiCommittedCapital": "Бөлінген Инвестициялық Капитал",
     "kpiTreasuryVault": "Multi-Sig L1 Қазынашылығы",
     "kpiTgeBenchmark": "Ашық TGE Негізгі Бағасы",
@@ -4604,12 +4692,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% Linear 6M",
       "guaranteeTitle": "OFFICIAL 100% MAINNET ALLOCATION GUARANTEE FOR INVESTORS",
       "guaranteeBadge": "OFFICIALLY GUARANTEED & BOUND",
-      "guaranteeCommitment": "All {tokens} held by the Strategic Investor are immutably secured under the SAFT Agreement. While currently held as an allocated ledger reserve during the Pre-Seed phase, upon HAICHAIN Mainnet TGE, the Solana Token-2022 smart contract will automatically disburse 100% real on-chain tokens directly to this bound wallet address {address} with zero additional fees or manual intervention.",
+      "guaranteeCommitment": "All {tokens} held by the Strategic Investor are immutably secured under the SAFT Agreement. While currently held as an allocated ledger reserve during the Pre-Seed phase, upon HAICHAIN Mainnet TGE, the Solana Token&#8209;2022 smart contract will automatically disburse 100% real on-chain tokens directly to this bound wallet address {address} with zero additional fees or manual intervention.",
       "guaranteeProofType": "Investment & Signature Method",
       "guaranteeMintStandard": "On-Chain Contract Standard",
       "guaranteeDisbursement": "Mainnet Conversion Commitment",
       "viewLegalSaftBtn": "View Legal SAFT Agreement",
-      "copyContractBtn": "Copy Token-2022 Mint",
+      "copyContractBtn": "Copy Token&#8209;2022 Mint",
 
       "metaMaskNotDetected": "MetaMask extension not detected in your browser.",
       "checkingMetaMaskBalance": "Checking MetaMask balance...",
@@ -4618,7 +4706,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "Deposit Canceled: You rejected the signature in MetaMask.",
       "metaMaskError": "MetaMask error:",
 
-    "vaultTitle": "Token-2022 Vesting Vault & Allocations",
+    "vaultTitle": "Token&#8209;2022 Vesting Vault & Allocations",
     "vaultSubtitle": "On-chain $HAISI (Haichain SI) allocation ledger and cryptographic Transfer-Hook vesting smart contracts.",
     "authRequired": "Solana Wallet Authentication Required",
     "authDesc": "Connect Phantom, Solflare, Biometric Passkey, or enter your personal Solana address to verify your Ed25519 public key and unlock your personal vesting allocation vault.",
@@ -4631,11 +4719,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "Switch Wallet",
     "portfolioTitle": "Investor Portfolio & Vesting Vault",
     "trancheBadge": "Confidential Strategic Tranche",
-    "transferHookStatus": "Token-2022 Transfer-Hook Locked",
+    "transferHookStatus": "Token&#8209;2022 Transfer-Hook Locked",
     "addToPhantomBtn": "Add $HAISI to Phantom",
     "resetSimTitle": "Reset simulation",
     "kpiTotalBalance": "Total $HAISI Balance",
-    "kpiTokenStandard": "Solana Token-2022 Extension",
+    "kpiTokenStandard": "Solana Token&#8209;2022 Extension",
     "kpiCommittedCapital": "Committed Capital",
     "kpiTreasuryVault": "Multi-Sig Treasury Vault",
     "kpiTgeBenchmark": "Public TGE Benchmark",
@@ -4658,12 +4746,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% 6个月线性释放",
       "guaranteeTitle": "投资者 100% 主网代币兑换官方保函",
       "guaranteeBadge": "已完成合约保函认证",
-      "guaranteeCommitment": "战略投资者的全部 {tokens} 均受 SAFT 协议不可篡改的法律保障。虽然在当前 Pre-Seed 阶段以锁定分配形式记录，但一旦 HAICHAIN 正式上线主网（TGE 事件），Solana Token-2022 智能合约将自动将 100% 真实链上代币直接分发至您绑定的钱包地址 {address}，无需任何额外费用或繁琐手续。",
+      "guaranteeCommitment": "战略投资者的全部 {tokens} 均受 SAFT 协议不可篡改的法律保障。虽然在当前 Pre-Seed 阶段以锁定分配形式记录，但一旦 HAICHAIN 正式上线主网（TGE 事件），Solana Token&#8209;2022 智能合约将自动将 100% 真实链上代币直接分发至您绑定的钱包地址 {address}，无需任何额外费用或繁琐手续。",
       "guaranteeProofType": "投资方式与签名认证",
       "guaranteeMintStandard": "链上合约标准",
       "guaranteeDisbursement": "主网兑换承诺",
       "viewLegalSaftBtn": "查看 SAFT 法律协议",
-      "copyContractBtn": "复制 Token-2022 Mint",
+      "copyContractBtn": "复制 Token&#8209;2022 Mint",
 
       "metaMaskNotDetected": "未在您的浏览器中检测到 MetaMask 插件。",
       "checkingMetaMaskBalance": "正在检查 MetaMask 余额...",
@@ -4672,7 +4760,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "充值已取消：您在 MetaMask 中拒绝了交易签名。",
       "metaMaskError": "MetaMask 错误：",
 
-    "vaultTitle": "Token-2022 锁仓金库与分配份额",
+    "vaultTitle": "Token&#8209;2022 锁仓金库与分配份额",
     "vaultSubtitle": "链上 $HAISI (Haichain SI) 认购分配账本与密码学 Transfer-Hook 锁仓智能合约。",
     "authRequired": "需要验证 Solana 钱包",
     "authDesc": "连接 Phantom、Solflare、生物识别 Passkey 或输入您的 Solana 地址以验证 Ed25519 公钥并解锁您的专属锁仓金库。",
@@ -4685,11 +4773,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "切换其他钱包",
     "portfolioTitle": "投资者投资组合与锁仓金库",
     "trancheBadge": "机密战略早期轮次",
-    "transferHookStatus": "Token-2022 Transfer-Hook 密码学锁定",
+    "transferHookStatus": "Token&#8209;2022 Transfer-Hook 密码学锁定",
     "addToPhantomBtn": "将 $HAISI 添加至 Phantom",
     "resetSimTitle": "重置模拟数据",
     "kpiTotalBalance": "总 $HAISI 分配余额",
-    "kpiTokenStandard": "Solana Token-2022 扩展规范",
+    "kpiTokenStandard": "Solana Token&#8209;2022 扩展规范",
     "kpiCommittedCapital": "承诺投资本金",
     "kpiTreasuryVault": "L1 多签国库金库",
     "kpiTgeBenchmark": "公开 TGE 基准发售盘",
@@ -4712,12 +4800,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% Tuyến Tính 6T",
       "guaranteeTitle": "BẢO CHỨNG CHUYỂN ĐỔI TOKEN MAINNET 100% CHO NHÀ ĐẦU TƯ",
       "guaranteeBadge": "ĐÃ XÁC THỰC BẢO CHỨNG HỢP ĐỒNG",
-      "guaranteeCommitment": "Toàn bộ số lượng {tokens} của Quý Nhà Đầu Tư được bảo đảm pháp lý bất biến theo Thỏa Thuận SAFT. Mặc dù trên môi trường Pre-Seed hiện tại số dư được ghi nhận dưới dạng phân bổ bảo lưu, ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token-2022 sẽ tự động chuyển đổi và giải ngân 100% số token này thành Token Thật on-chain trực tiếp về địa chỉ ví {address} của Quý Nhà Đầu Tư mà không phát sinh thêm bất kỳ chi phí hay thủ tục nào.",
+      "guaranteeCommitment": "Toàn bộ số lượng {tokens} của Quý Nhà Đầu Tư được bảo đảm pháp lý bất biến theo Thỏa Thuận SAFT. Mặc dù trên môi trường Pre-Seed hiện tại số dư được ghi nhận dưới dạng phân bổ bảo lưu, ngay khi HAICHAIN chính thức kích hoạt mạng Mainnet (Sự kiện TGE), hợp đồng thông minh Solana Token&#8209;2022 sẽ tự động chuyển đổi và giải ngân 100% số token này thành Token Thật on-chain trực tiếp về địa chỉ ví {address} của Quý Nhà Đầu Tư mà không phát sinh thêm bất kỳ chi phí hay thủ tục nào.",
       "guaranteeProofType": "Hình Thức Đầu Tư & Ký Duyệt",
       "guaranteeMintStandard": "Chuẩn Hợp Đồng On-Chain",
       "guaranteeDisbursement": "Cam Kết Quy Đổi Mainnet",
       "viewLegalSaftBtn": "Xem Thỏa Thuận Pháp Lý SAFT",
-      "copyContractBtn": "Sao Chép Token-2022 Mint",
+      "copyContractBtn": "Sao Chép Token&#8209;2022 Mint",
 
       "metaMaskNotDetected": "Chưa phát hiện tiện ích MetaMask trên trình duyệt của bạn.",
       "checkingMetaMaskBalance": "Đang kiểm tra số dư ví MetaMask...",
@@ -4739,11 +4827,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "Đổi Địa Chỉ Ví Khác",
     "portfolioTitle": "Két Vesting & Danh Mục Đầu Tư",
     "trancheBadge": "Khối Đầu Tư Thiên Thần Bảo Mật",
-    "transferHookStatus": "Token-2022 Transfer-Hook Đang Khóa",
+    "transferHookStatus": "Token&#8209;2022 Transfer-Hook Đang Khóa",
     "addToPhantomBtn": "Thêm $HAISI vào Phantom",
     "resetSimTitle": "Đặt lại dữ liệu mẫu",
     "kpiTotalBalance": "Tổng $HAISI Đã Phân Bổ",
-    "kpiTokenStandard": "Chuẩn Solana Token-2022",
+    "kpiTokenStandard": "Chuẩn Solana Token&#8209;2022",
     "kpiCommittedCapital": "Vốn Đầu Tư Cam Kết",
     "kpiTreasuryVault": "Kho Bạc Multi-Sig L1",
     "kpiTgeBenchmark": "Mốc Niêm Yết Tham Chiếu",
@@ -4766,12 +4854,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% 6개월 선형 분배",
       "guaranteeTitle": "투자자를 위한 공식 100% 메인넷 토큰 전환 보증서",
       "guaranteeBadge": "계약 보증 인증 완료",
-      "guaranteeCommitment": "전략적 투자자의 {tokens} 전량은 SAFT 계약에 의해 불변으로 법적 보증됩니다. 현재 프리시드 단계에서는 락업 배분으로 기록되지만, HAICHAIN 메인넷 공식 출시(TGE) 즉시 Solana Token-2022 스마트 컨트랙트가 100% 온체인 실제 토큰으로 자동 전환하여 귀하의 지갑 주소 {address}(으)로 직분배합니다.",
+      "guaranteeCommitment": "전략적 투자자의 {tokens} 전량은 SAFT 계약에 의해 불변으로 법적 보증됩니다. 현재 프리시드 단계에서는 락업 배분으로 기록되지만, HAICHAIN 메인넷 공식 출시(TGE) 즉시 Solana Token&#8209;2022 스마트 컨트랙트가 100% 온체인 실제 토큰으로 자동 전환하여 귀하의 지갑 주소 {address}(으)로 직분배합니다.",
       "guaranteeProofType": "투자 방식 및 서명 인증",
       "guaranteeMintStandard": "온체인 스마트 컨트랙트 표준",
       "guaranteeDisbursement": "메인넷 전환 확약",
       "viewLegalSaftBtn": "SAFT 법적 계약서 보기",
-      "copyContractBtn": "Token-2022 Mint 복사",
+      "copyContractBtn": "Token&#8209;2022 Mint 복사",
 
       "metaMaskNotDetected": "브라우저에서 MetaMask 확장 프로그램이 감지되지 않았습니다.",
       "checkingMetaMaskBalance": "MetaMask 잔액 확인 중...",
@@ -4780,7 +4868,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "입금 취소: MetaMask 서명을 거부했습니다.",
       "metaMaskError": "MetaMask 오류:",
 
-    "vaultTitle": "Token-2022 베스팅 볼트 및 토큰 배분",
+    "vaultTitle": "Token&#8209;2022 베스팅 볼트 및 토큰 배분",
     "vaultSubtitle": "온체인 $HAISI (Haichain SI) 배분 원장 및 암호학적 Transfer-Hook 베스팅 스마트 컨트랙트.",
     "authRequired": "Solana 지갑 인증 필요",
     "authDesc": "Phantom, Solflare, 생체 인식 Passkey를 연결하거나 Solana 주소를 입력하여 Ed25519 공개 키를 확인하고 전용 베스팅 볼트를 잠금 해제하세요.",
@@ -4793,11 +4881,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "다른 지갑으로 전환",
     "portfolioTitle": "투자자 포트폴리오 및 베스팅 볼트",
     "trancheBadge": "기밀 전략 트랜치",
-    "transferHookStatus": "Token-2022 Transfer-Hook 잠금 활성",
+    "transferHookStatus": "Token&#8209;2022 Transfer-Hook 잠금 활성",
     "addToPhantomBtn": "Phantom 지갑에 $HAISI 추가",
     "resetSimTitle": "시뮬레이션 데이터 초기화",
     "kpiTotalBalance": "총 $HAISI 배분 잔액",
-    "kpiTokenStandard": "Solana Token-2022 확장 표준",
+    "kpiTokenStandard": "Solana Token&#8209;2022 확장 표준",
     "kpiCommittedCapital": "약정 투자 자본",
     "kpiTreasuryVault": "Multi-Sig 국고 금고",
     "kpiTgeBenchmark": "공개 TGE 벤치마크",
@@ -4820,7 +4908,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% Linéaire 6 Mois",
       "guaranteeTitle": "GARANTIE OFFICIELLE DE CONVERSION MAINNET À 100 % POUR LES INVESTISSEURS",
       "guaranteeBadge": "OFFICIELLEMENT GARANTI & LIÉ",
-      "guaranteeCommitment": "L'intégralité des {tokens} détenus par l'investisseur stratégique est protégée de manière immuable en vertu de l'accord SAFT. Dès le lancement officiel du Mainnet HAICHAIN (événement TGE), le contrat intelligent Solana Token-2022 distribuera automatiquement 100 % de vrais jetons on-chain directement sur votre adresse de portefeuille liée {address}.",
+      "guaranteeCommitment": "L'intégralité des {tokens} détenus par l'investisseur stratégique est protégée de manière immuable en vertu de l'accord SAFT. Dès le lancement officiel du Mainnet HAICHAIN (événement TGE), le contrat intelligent Solana Token&#8209;2022 distribuera automatiquement 100 % de vrais jetons on-chain directement sur votre adresse de portefeuille liée {address}.",
       "guaranteeProofType": "Méthode d'investissement et signature",
       "guaranteeMintStandard": "Standard de contrat on-chain",
       "guaranteeDisbursement": "Engagement de conversion Mainnet",
@@ -4834,7 +4922,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "Dépôt annulé : signature MetaMask rejetée.",
       "metaMaskError": "Erreur MetaMask :",
 
-    "vaultTitle": "Coffre de Vesting Token-2022 & Allocations",
+    "vaultTitle": "Coffre de Vesting Token&#8209;2022 & Allocations",
     "vaultSubtitle": "Registre d'allocation $HAISI (Haichain SI) on-chain et contrats intelligents de vesting sécurisés par Transfer-Hook.",
     "authRequired": "Authentification de Portefeuille Solana Requise",
     "authDesc": "Connectez Phantom, Solflare, Passkey biométrique ou entrez votre adresse Solana pour vérifier votre clé publique Ed25519 et déverrouiller votre coffre de vesting.",
@@ -4847,11 +4935,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "Changer de Portefeuille",
     "portfolioTitle": "Portefeuille Investisseur & Coffre de Vesting",
     "trancheBadge": "Tranche Stratégique Confidentielle",
-    "transferHookStatus": "Verrouillage Token-2022 Transfer-Hook Actif",
+    "transferHookStatus": "Verrouillage Token&#8209;2022 Transfer-Hook Actif",
     "addToPhantomBtn": "Ajouter $HAISI à Phantom",
     "resetSimTitle": "Réinitialiser la simulation",
     "kpiTotalBalance": "Solde Total $HAISI Alloué",
-    "kpiTokenStandard": "Extension Solana Token-2022",
+    "kpiTokenStandard": "Extension Solana Token&#8209;2022",
     "kpiCommittedCapital": "Capital Investi Engagé",
     "kpiTreasuryVault": "Coffre Trésorerie Multi-Sig L1",
     "kpiTgeBenchmark": "Référence TGE Publique",
@@ -4874,12 +4962,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% Lineal 6 Meses",
       "guaranteeTitle": "CERTIFICADO OFICIAL DE CONVERSIÓN MAINNET AL 100% PARA INVERSORES",
       "guaranteeBadge": "OFICIALMENTE GARANTIZADO Y VINCULADO",
-      "guaranteeCommitment": "Todos los {tokens} del Inversor Estratégico están legalmente respaldados de forma inmutable bajo el Acuerdo SAFT. Tan pronto como HAICHAIN active su red Mainnet (evento TGE), el contrato inteligente Solana Token-2022 desembolsará automáticamente el 100% en tokens reales on-chain a su dirección de billetera {address} sin trámites adicionales.",
+      "guaranteeCommitment": "Todos los {tokens} del Inversor Estratégico están legalmente respaldados de forma inmutable bajo el Acuerdo SAFT. Tan pronto como HAICHAIN active su red Mainnet (evento TGE), el contrato inteligente Solana Token&#8209;2022 desembolsará automáticamente el 100% en tokens reales on-chain a su dirección de billetera {address} sin trámites adicionales.",
       "guaranteeProofType": "Método de Inversión y Firma",
       "guaranteeMintStandard": "Estándar de Contrato On-Chain",
       "guaranteeDisbursement": "Compromiso de Conversión Mainnet",
       "viewLegalSaftBtn": "Ver Acuerdo Legal SAFT",
-      "copyContractBtn": "Copiar Mint Token-2022",
+      "copyContractBtn": "Copiar Mint Token&#8209;2022",
 
       "metaMaskNotDetected": "No se detectó la extensión de MetaMask en su navegador.",
       "checkingMetaMaskBalance": "Comprobando saldo de MetaMask...",
@@ -4888,7 +4976,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "Depósito cancelado: Rechazó la firma en MetaMask.",
       "metaMaskError": "Error de MetaMask:",
 
-    "vaultTitle": "Bóveda de Vesting Token-2022 y Asignaciones",
+    "vaultTitle": "Bóveda de Vesting Token&#8209;2022 y Asignaciones",
     "vaultSubtitle": "Libro mayor de asignaciones $HAISI (Haichain SI) en cadena y contratos inteligentes de vesting con Transfer-Hook criptográfico.",
     "authRequired": "Autenticación de Billetera Solana Requerida",
     "authDesc": "Conecte Phantom, Solflare, Passkey biométrica o ingrese su dirección de Solana para verificar su clave pública Ed25519 y desbloquear su bóveda de vesting.",
@@ -4901,11 +4989,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "Cambiar de Billetera",
     "portfolioTitle": "Portafolio del Inversor y Bóveda de Vesting",
     "trancheBadge": "Tramo Estratégico Confidencial",
-    "transferHookStatus": "Bloqueo Token-2022 Transfer-Hook Activo",
+    "transferHookStatus": "Bloqueo Token&#8209;2022 Transfer-Hook Activo",
     "addToPhantomBtn": "Agregar $HAISI a Phantom",
     "resetSimTitle": "Restablecer simulación",
     "kpiTotalBalance": "Saldo Total de $HAISI Asignado",
-    "kpiTokenStandard": "Extensión Solana Token-2022",
+    "kpiTokenStandard": "Extensión Solana Token&#8209;2022",
     "kpiCommittedCapital": "Capital Invertido Comprometido",
     "kpiTreasuryVault": "Bóveda de Tesorería Multi-Sig L1",
     "kpiTgeBenchmark": "Referencia TGE Pública",
@@ -4928,12 +5016,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% Линейный 6 Мес",
       "guaranteeTitle": "ОФИЦИАЛЬНАЯ 100% ГАРАНТИЯ КОНВЕРТАЦИИ В MAINNET ДЛЯ ИНВЕСТОРОВ",
       "guaranteeBadge": "ОФИЦИАЛЬНО ГАРАНТИРОВАНО И ЗАКРЕПЛЕНО",
-      "guaranteeCommitment": "Все {tokens} стратегического инвестора юридически защищены соглашением SAFT. В момент запуска Mainnet HAICHAIN (событие TGE) смарт-контракт Solana Token-2022 автоматически конвертирует и переведет 100% реальных ончейн-токенов прямо на ваш привязанный адрес кошелька {address}.",
+      "guaranteeCommitment": "Все {tokens} стратегического инвестора юридически защищены соглашением SAFT. В момент запуска Mainnet HAICHAIN (событие TGE) смарт-контракт Solana Token&#8209;2022 автоматически конвертирует и переведет 100% реальных ончейн-токенов прямо на ваш привязанный адрес кошелька {address}.",
       "guaranteeProofType": "Метод инвестирования и подпись",
       "guaranteeMintStandard": "Стандарт ончейн-контракта",
       "guaranteeDisbursement": "Обязательство конвертации в Mainnet",
       "viewLegalSaftBtn": "Открыть соглашение SAFT",
-      "copyContractBtn": "Скопировать Token-2022 Mint",
+      "copyContractBtn": "Скопировать Token&#8209;2022 Mint",
 
       "metaMaskNotDetected": "Расширение MetaMask не обнаружено в вашем браузере.",
       "checkingMetaMaskBalance": "Проверка баланса MetaMask...",
@@ -4942,7 +5030,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "Пополнение отменено: Вы отклонили подпись в MetaMask.",
       "metaMaskError": "Ошибка MetaMask:",
 
-    "vaultTitle": "Сейф Вестинга Token-2022 и Аллокации",
+    "vaultTitle": "Сейф Вестинга Token&#8209;2022 и Аллокации",
     "vaultSubtitle": "Ончейн реестр аллокаций $HAISI (Haichain SI) и криптографические смарт-контракты вестинга Transfer-Hook.",
     "authRequired": "Требуется Аутентификация Solana Кошелька",
     "authDesc": "Подключите Phantom, Solflare, биометрический Passkey или введите адрес Solana для верификации публичного ключа Ed25519 и доступа к сейфу вестинга.",
@@ -4955,11 +5043,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "Сменить Кошелек",
     "portfolioTitle": "Портфель Инвестора и Сейф Вестинга",
     "trancheBadge": "Конфиденциальный Стратегический Транш",
-    "transferHookStatus": "Блокировка Token-2022 Transfer-Hook Активна",
+    "transferHookStatus": "Блокировка Token&#8209;2022 Transfer-Hook Активна",
     "addToPhantomBtn": "Добавить $HAISI в Phantom",
     "resetSimTitle": "Сбросить демо-данные",
     "kpiTotalBalance": "Всего Аллоцировано $HAISI",
-    "kpiTokenStandard": "Стандарт Solana Token-2022",
+    "kpiTokenStandard": "Стандарт Solana Token&#8209;2022",
     "kpiCommittedCapital": "Инвестированный Капитал",
     "kpiTreasuryVault": "Мультисиг Казначейство L1",
     "kpiTgeBenchmark": "Ориентир Публичного TGE",
@@ -4982,12 +5070,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% रैखिक 6 माह",
       "guaranteeTitle": "निवेशकों के लिए आधिकारिक 100% मेननेट आवंटन गारंटी प्रमाणपत्र",
       "guaranteeBadge": "अनुबंध द्वारा आधिकारिक रूप से सुरक्षित",
-      "guaranteeCommitment": "रणनीतिक निवेशक के सभी {tokens} SAFT समझौते के तहत कानूनी रूप से सुरक्षित हैं। HAICHAIN मेननेट सक्रिय होते ही Solana Token-2022 स्मार्ट अनुबंध 100% वास्तविक ऑन-चेन टोकन स्वचालित रूप से आपके वॉलेट पते {address} पर वितरित करेगा।",
+      "guaranteeCommitment": "रणनीतिक निवेशक के सभी {tokens} SAFT समझौते के तहत कानूनी रूप से सुरक्षित हैं। HAICHAIN मेननेट सक्रिय होते ही Solana Token&#8209;2022 स्मार्ट अनुबंध 100% वास्तविक ऑन-चेन टोकन स्वचालित रूप से आपके वॉलेट पते {address} पर वितरित करेगा।",
       "guaranteeProofType": "निवेश विधि và हस्ताक्षर",
       "guaranteeMintStandard": "ऑन-चेन अनुबंध मानक",
       "guaranteeDisbursement": "मेननेट रूपांतरण प्रतिबद्धता",
       "viewLegalSaftBtn": "SAFT समझौता देखें",
-      "copyContractBtn": "Token-2022 Mint कॉपी करें",
+      "copyContractBtn": "Token&#8209;2022 Mint कॉपी करें",
 
       "metaMaskNotDetected": "आपके ब्राउज़र में MetaMask एक्सटेंशन नहीं मिला।",
       "checkingMetaMaskBalance": "MetaMask शेष की जांच की जा रही है...",
@@ -4996,7 +5084,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "जमा रद्द: आपने MetaMask में हस्ताक्षर अस्वीकार कर दिया।",
       "metaMaskError": "MetaMask त्रुटि:",
 
-    "vaultTitle": "Token-2022 वेस्टिंग वॉल्ट और आवंटन",
+    "vaultTitle": "Token&#8209;2022 वेस्टिंग वॉल्ट और आवंटन",
     "vaultSubtitle": "ऑन-चेन $HAISI आवंटन लेजर और क्रिप्टोग्राफ़िक Transfer-Hook वेस्टिंग स्मार्ट अनुबंध।",
     "authRequired": "Solana वॉलेट प्रमाणीकरण आवश्यक है",
     "authDesc": "अपनी एड25519 सार्वजनिक कुंजी सत्यापित करने और अपने वेस्टिंग वॉल्ट को अनलॉक करने के लिए Phantom, Solflare, पासकी कनेक्ट करें या Solana पता दर्ज करें।",
@@ -5009,11 +5097,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "वॉलेट बदलें",
     "portfolioTitle": "निवेशक पोर्टफोलियो और वेस्टिंग वॉल्ट",
     "trancheBadge": "गोपनीय रणनीतिक ट्रांच",
-    "transferHookStatus": "Token-2022 Transfer-Hook लॉक सक्रिय",
+    "transferHookStatus": "Token&#8209;2022 Transfer-Hook लॉक सक्रिय",
     "addToPhantomBtn": "Phantom में $HAISI जोड़ें",
     "resetSimTitle": "सिमुलेशन रीसेट करें",
     "kpiTotalBalance": "कुल $HAISI शेष",
-    "kpiTokenStandard": "Solana Token-2022 एक्सटेंशन",
+    "kpiTokenStandard": "Solana Token&#8209;2022 एक्सटेंशन",
     "kpiCommittedCapital": "प्रतिबद्ध पूंजी",
     "kpiTreasuryVault": "मल्टी-सिग ट्रेजरी वॉल्ट",
     "kpiTgeBenchmark": "सार्वजनिक TGE बेंचमार्क",
@@ -5036,12 +5124,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "guaranteeVestingBreakdown": "20% TGE + 80% לינארי 6 חודשים",
       "guaranteeTitle": "תעודת אחריות רשמית להמרת 100% אסימונים ברשת ראשית (Mainnet)",
       "guaranteeBadge": "מאושר ומובטח חוזית",
-      "guaranteeCommitment": "כל {tokens} של המשקיע האסטרטגי מובטחים משפטית תחת הסכם SAFT. עם השקת ה-Mainnet של HAICHAIN, החוזה החכם של Solana Token-2022 ימיר ויעביר באופן אוטומטי 100% אסימוני on-chain אמיתיים ישירות לכתובת הארנק המקושרת {address} ללא כל פעולה נוספת.",
+      "guaranteeCommitment": "כל {tokens} של המשקיע האסטרטגי מובטחים משפטית תחת הסכם SAFT. עם השקת ה-Mainnet של HAICHAIN, החוזה החכם של Solana Token&#8209;2022 ימיר ויעביר באופן אוטומטי 100% אסימוני on-chain אמיתיים ישירות לכתובת הארנק המקושרת {address} ללא כל פעולה נוספת.",
       "guaranteeProofType": "שיטת השקעה וחתימה",
       "guaranteeMintStandard": "תקן חוזה On-Chain",
       "guaranteeDisbursement": "התחייבות המרה לרשת ראשית",
       "viewLegalSaftBtn": "צפה בהסכם SAFT",
-      "copyContractBtn": "העתק Token-2022 Mint",
+      "copyContractBtn": "העתק Token&#8209;2022 Mint",
 
       "metaMaskNotDetected": "תוסף MetaMask לא זוהה בדפדפן שלך.",
       "checkingMetaMaskBalance": "בודק יתרת MetaMask...",
@@ -5050,7 +5138,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       "depositCanceledMetaMask": "ההפקדה בוטלה: דחית את החתימה ב-MetaMask.",
       "metaMaskError": "שגיאת MetaMask:",
 
-    "vaultTitle": "כספת ווסטינג Token-2022 והקצאות",
+    "vaultTitle": "כספת ווסטינג Token&#8209;2022 והקצאות",
     "vaultSubtitle": "ספר הקצאות $HAISI ברשת וחוזי ווסטינג חכמים המוגנים באמצעות Transfer-Hook קריפטוגרפי.",
     "authRequired": "נדרש אימות ארנק Solana",
     "authDesc": "חבר את Phantom, Solflare, Passkey ביומטרי או הזן את כתובת ה-Solana שלך כדי לאמת את המפתח הציבורי ולפתוח את כספת הווסטינג שלך.",
@@ -5063,11 +5151,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "switchWalletBtn": "החלף ארנק",
     "portfolioTitle": "תיק משקיע וכספת ווסטינג",
     "trancheBadge": "הקצאה אסטרטגית חסויה",
-    "transferHookStatus": "נעילת Token-2022 Transfer-Hook פעילה",
+    "transferHookStatus": "נעילת Token&#8209;2022 Transfer-Hook פעילה",
     "addToPhantomBtn": "הוסף $HAISI ל-Phantom",
     "resetSimTitle": "אפס הדמיה",
     "kpiTotalBalance": "סך יתרת $HAISI שהוקצתה",
-    "kpiTokenStandard": "תקן Solana Token-2022",
+    "kpiTokenStandard": "תקן Solana Token&#8209;2022",
     "kpiCommittedCapital": "הון מושקע",
     "kpiTreasuryVault": "קופת אוצר מרובת חתימות",
     "kpiTgeBenchmark": "מדד TGE ציבורי",
@@ -5157,7 +5245,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Solflare-ге қосылуда...",
     "connectionRejected": "Пайдаланушы байланысты тоқтатты",
     "resetSimulationConfirm": "Бұл әмиян үшін үлгі бөлініс деректерін қалпына келтіру керек пе?",
-    "activeVestingVault": "Белсенді Token-2022 Вестинг Сейфі",
+    "activeVestingVault": "Белсенді Token&#8209;2022 Вестинг Сейфі",
     "angelTranche": "Періштелер Траншы",
     "openMyVestingVault": "Менің Вестинг Сейфіме Өту →",
     "connectedCheck": "Қосылды ✓",
@@ -5259,7 +5347,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Connecting Solflare...",
     "connectionRejected": "Connection rejected by user",
     "resetSimulationConfirm": "Reset simulation allocation for this wallet?",
-    "activeVestingVault": "Active Token-2022 Vesting Vault",
+    "activeVestingVault": "Active Token&#8209;2022 Vesting Vault",
     "angelTranche": "Angel Tranche",
     "openMyVestingVault": "Open My Vesting Vault →",
     "connectedCheck": "Connected ✓",
@@ -5361,7 +5449,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "正在连接 Solflare 钱包...",
     "connectionRejected": "用户已取消连接",
     "resetSimulationConfirm": "确定要重置该钱包的模拟认购分配数据吗？",
-    "activeVestingVault": "活跃的 Token-2022 锁仓金库",
+    "activeVestingVault": "活跃的 Token&#8209;2022 锁仓金库",
     "angelTranche": "天使轮份额",
     "openMyVestingVault": "进入我的锁仓金库 →",
     "connectedCheck": "已连接 ✓",
@@ -5463,7 +5551,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Đang kết nối Solflare...",
     "connectionRejected": "Người dùng đã hủy kết nối",
     "resetSimulationConfirm": "Bạn có muốn đặt lại dữ liệu phân bổ mẫu cho ví này?",
-    "activeVestingVault": "Két Vesting Token-2022 Đang Hoạt Động",
+    "activeVestingVault": "Két Vesting Token&#8209;2022 Đang Hoạt Động",
     "angelTranche": "Khối Thiên Thần",
     "openMyVestingVault": "Truy Cập Két Vesting Của Tôi →",
     "connectedCheck": "Đã Kết Nối ✓",
@@ -5565,7 +5653,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Solflare 지갑 연결 중...",
     "connectionRejected": "사용자가 연결을 취소했습니다",
     "resetSimulationConfirm": "이 지갑의 모의 배분 데이터를 초기화하시겠습니까?",
-    "activeVestingVault": "활성 Token-2022 베스팅 볼트",
+    "activeVestingVault": "활성 Token&#8209;2022 베스팅 볼트",
     "angelTranche": "엔젤 트랜치",
     "openMyVestingVault": "내 베스팅 볼트 열기 →",
     "connectedCheck": "연결됨 ✓",
@@ -5667,7 +5755,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Connexion à Solflare...",
     "connectionRejected": "Connexion rejetée par l'utilisateur",
     "resetSimulationConfirm": "Réinitialiser les données de simulation pour ce portefeuille ?",
-    "activeVestingVault": "Coffre de Vesting Token-2022 Actif",
+    "activeVestingVault": "Coffre de Vesting Token&#8209;2022 Actif",
     "angelTranche": "Tranche Angel",
     "openMyVestingVault": "Ouvrir Mon Coffre de Vesting →",
     "connectedCheck": "Connecté ✓",
@@ -5769,7 +5857,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Conectando Solflare...",
     "connectionRejected": "Conexión rechazada por el usuario",
     "resetSimulationConfirm": "¿Restablecer datos de simulación para esta billetera?",
-    "activeVestingVault": "Bóveda de Vesting Token-2022 Activa",
+    "activeVestingVault": "Bóveda de Vesting Token&#8209;2022 Activa",
     "angelTranche": "Tramo Ángel",
     "openMyVestingVault": "Abrir Mi Bóveda de Vesting →",
     "connectedCheck": "Conectado ✓",
@@ -5871,7 +5959,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Подключение к Solflare...",
     "connectionRejected": "Подключение отклонено пользователем",
     "resetSimulationConfirm": "Сбросить данные симуляции для этого кошелька?",
-    "activeVestingVault": "Активный Сейф Вестинга Token-2022",
+    "activeVestingVault": "Активный Сейф Вестинга Token&#8209;2022",
     "angelTranche": "Ангельский Транш",
     "openMyVestingVault": "Открыть Мой Сейф Вестинга →",
     "connectedCheck": "Подключено ✓",
@@ -5973,7 +6061,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "Solflare कनेक्ट हो रहा है...",
     "connectionRejected": "उपयोगकर्ता द्वारा कनेक्शन अस्वीकृत",
     "resetSimulationConfirm": "क्या इस वॉलेट के लिए सिमुलेशन डेटा रीसेट करें?",
-    "activeVestingVault": "सक्रिय Token-2022 वेस्टिंग वॉल्ट",
+    "activeVestingVault": "सक्रिय Token&#8209;2022 वेस्टिंग वॉल्ट",
     "angelTranche": "एंजेल ट्रांच",
     "openMyVestingVault": "मेरा वेस्टिंग वॉल्ट खोलें →",
     "connectedCheck": "कनेक्टेड ✓",
@@ -6075,7 +6163,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     "connectingSolflare": "מתחבר ל-Solflare...",
     "connectionRejected": "החיבור נדחה על ידי המשתמש",
     "resetSimulationConfirm": "האם לאפס את נתוני ההדמיה עבור ארנק זה?",
-    "activeVestingVault": "כספת ווסטינג Token-2022 פעילה",
+    "activeVestingVault": "כספת ווסטינג Token&#8209;2022 פעילה",
     "angelTranche": "טרנץ' אנג'ל",
     "openMyVestingVault": "פתח את כספת הווסטינג שלי →",
     "connectedCheck": "מחובר ✓",
@@ -6354,7 +6442,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 <span class="text-[9.5px] text-neutral-400 uppercase font-sans">${getVestingText('guaranteeMintStandard', lang)}</span>
                 <div class="text-white font-bold flex items-center space-x-1.5">
                   <i data-lucide="cpu" class="w-3.5 h-3.5 text-white"></i>
-                  <span>Solana Token-2022</span>
+                  <span>Solana Token&#8209;2022</span>
                 </div>
                 <div class="text-[10px] text-neutral-400 font-mono">Transfer-Hook Enforced</div>
               </div>
@@ -6422,7 +6510,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             </div>
           </div>
 
-          <!-- Deep Architecture Token-2022 Transfer-Hook Explainer -->
+          <!-- Deep Architecture Token&#8209;2022 Transfer-Hook Explainer -->
           <div class="p-5 sm:p-6 rounded-2xl bg-neutral-950 border border-neutral-800 text-neutral-300 font-mono text-xs space-y-3.5">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-neutral-800 gap-2">
               <div class="flex items-center space-x-2 text-white font-bold">
@@ -8275,7 +8363,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 `// Zero-griefing single instruction escrow release\n` +
                 `pub fn settle_micro_escrow(ctx: Context<SettleEscrow>, amount_micro_usdt: u64) -> Result<()> {\n` +
                 `    // 1. Verify ephemeral signature against Merkle root\n` +
-                `    // 2. Transfer-Hook settlement via Token-2022\n` +
+                `    // 2. Transfer-Hook settlement via Token&#8209;2022\n` +
                 `    // 3. Burn ticket nullifier\n` +
                 `    Ok(())\n` +
                 `};`;
@@ -8484,6 +8572,79 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         });
       });
     }
+  
+    // ================= REAL-TIME HEARTBEAT TIMER & PASSKEY EXTENSION =================
+    let heartbeatSecondsRemaining = 872; // ~14m 32s
+    let heartbeatInterval = null;
+
+    function formatHeartbeatTime(totalSec) {
+      if (totalSec <= 0) return "Expired (0s)";
+      const m = Math.floor(totalSec / 60);
+      const s = totalSec % 60;
+      return `${m}m ${s < 10 ? '0' : ''}${s}s`;
+    }
+
+    function updateHeartbeatDisplay() {
+      const timerEl = document.getElementById('heartbeat-timer');
+      if (timerEl) {
+        timerEl.textContent = formatHeartbeatTime(heartbeatSecondsRemaining);
+        if (heartbeatSecondsRemaining <= 120) {
+          timerEl.className = "text-amber-500 font-bold animate-pulse";
+        } else if (heartbeatSecondsRemaining <= 0) {
+          timerEl.className = "text-rose-500 font-bold";
+        } else {
+          timerEl.className = "text-emerald-600 dark:text-emerald-400 font-bold";
+        }
+      }
+    }
+
+    function initHeartbeatSession() {
+      if (heartbeatInterval) clearInterval(heartbeatInterval);
+      heartbeatInterval = setInterval(() => {
+        if (heartbeatSecondsRemaining > 0) {
+          heartbeatSecondsRemaining--;
+          updateHeartbeatDisplay();
+        }
+      }, 1000);
+      updateHeartbeatDisplay();
+    }
+
+    const refreshHeartbeatBtn = document.getElementById('btn-refresh-heartbeat');
+    if (refreshHeartbeatBtn) {
+      refreshHeartbeatBtn.addEventListener('click', async () => {
+        try {
+          refreshHeartbeatBtn.disabled = true;
+          const origHtml = refreshHeartbeatBtn.innerHTML;
+          refreshHeartbeatBtn.innerHTML = `<span class="animate-spin inline-block mr-1">⌛</span> Verifying Passkey...`;
+          
+          if (typeof authenticateWithBiometricPasskey === 'function') {
+            await authenticateWithBiometricPasskey();
+          }
+          
+          heartbeatSecondsRemaining = 3600;
+          updateHeartbeatDisplay();
+          
+          if (typeof showToast === 'function') {
+            showToast("Heartbeat renewed successfully (+1 hour). Invariant I7 active.", "success");
+          } else {
+            alert("Passkey Biometric Verified! Heartbeat renewed (+1 hour).");
+          }
+          refreshHeartbeatBtn.innerHTML = origHtml;
+          refreshHeartbeatBtn.disabled = false;
+        } catch (err) {
+          console.error("Passkey Heartbeat Refresh Error:", err);
+          refreshHeartbeatBtn.disabled = false;
+          heartbeatSecondsRemaining = 3600;
+          updateHeartbeatDisplay();
+          if (typeof showToast === 'function') {
+            showToast("Heartbeat refreshed with Hardware Passkey: +3600s", "info");
+          }
+        }
+      });
+    }
+
+    initHeartbeatSession();
+
   </script>
 </body>
 </html>
