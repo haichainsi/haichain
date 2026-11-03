@@ -27,6 +27,7 @@
 
   <!-- Web3 Wallet Connection & Mobile Touch Icons (Phantom, Solflare, MetaMask, In-App WebViews) -->
   <link rel="apple-touch-icon" href="https://haichain.si/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="https://haichain.si/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://haichain.si/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" href="https://haichain.si/apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="192x192" href="https://haichain.si/assets/icon-192.png">
@@ -162,13 +163,13 @@
   <!-- Solana Web3.js -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
-  <script src="/app/dialog.js?v=v49_marketplace_phase1_1793677363465"></script>
-  <script src="/app/i18n.js?v=v51_hyphen_dash_sync"></script>
+  <script src="/app/dialog.js?v=v52_mobile_clean_and_cors_1793696394"></script>
+  <script src="/app/i18n.js?v=v52_mobile_clean_and_cors"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
-  <script src="/app/pdf-modal.js?v=v51_hyphen_dash_sync"></script>
+  <script src="/app/pdf-modal.js?v=v52_mobile_clean_and_cors"></script>
   <!-- HAICHAIN Multi-Phase Sale Controller (FSM + VIP Gatekeeper) -->
-  <script src="/app/sale-controller.js?v=v49_marketplace_phase1_1793677363465"></script>
+  <script src="/app/sale-controller.js?v=v52_mobile_clean_and_cors_1793696394"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -2042,11 +2043,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           </div>
 
           <!-- Vault Binding Dynamic Status Card -->
-          <div id="online-mcp-connected-box" class="hidden p-3 rounded-xl bg-white/[0.02] border border-white/[0.08] flex items-start space-x-2.5 text-[11px] font-sans min-w-0">
-            <i data-lucide="check" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
-            <div class="min-w-0 flex-1">
-              <div class="font-semibold text-white text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</div>
-              <div class="mt-1.5 p-1.5 px-2 rounded-lg bg-black border border-neutral-800 font-mono text-[10.5px] text-white break-all select-all font-medium leading-relaxed">
+          <div id="online-mcp-connected-box" class="hidden p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/20 flex items-start space-x-2.5 text-[11px] font-sans min-w-0 w-full overflow-hidden">
+            <i data-lucide="check" class="w-4 h-4 text-emerald-400/80 shrink-0 mt-0.5"></i>
+            <div class="min-w-0 flex-1 overflow-hidden">
+              <div class="font-semibold text-emerald-300/90 text-[11px] leading-tight" data-i18n="aiHub.connectedTitle">URL Cá Nhân Hóa Dành Riêng Cho Ví:</div>
+              <div class="mt-1.5 p-2 px-2.5 rounded-lg bg-black/70 border border-emerald-500/20 font-mono text-[10.5px] text-emerald-200/90 break-all select-all font-medium leading-relaxed w-full overflow-hidden">
                 <span id="online-mcp-bound-addr"></span>
               </div>
               <p class="text-[10px] text-neutral-400 mt-1.5 leading-relaxed" data-i18n="aiHub.connectedDesc">AI Claude Mobile sẽ tự động liên kết thẳng vào két chi tiêu của ví này mà không cần nhập thủ công địa chỉ trong khung chat.</p>
@@ -7962,7 +7963,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         const personalizedUrl = `https://mcp.haichain.si/api/mcp?vault=${encodeURIComponent(activeAddr)}`;
         if (codeSnippet) codeSnippet.textContent = personalizedUrl;
         if (badgeEl) {
-          badgeEl.className = "text-[9.5px] bg-neutral-900 border border-neutral-700 px-2.5 py-0.5 rounded-full text-white font-mono shrink-0 whitespace-nowrap font-semibold";
+          badgeEl.className = "text-[9.5px] bg-emerald-950/30 border border-emerald-500/25 px-2.5 py-0.5 rounded-full text-emerald-300/80 font-mono shrink-0 whitespace-nowrap font-medium";
           const shortAddr = activeAddr.length > 10 ? `${activeAddr.slice(0, 4)}...${activeAddr.slice(-4)}` : activeAddr;
           const badgeText = window.haichainI18n ? window.haichainI18n.t('aiHub.badgeDedicated', 'DEDICATED VAULT BOUND') : 'DEDICATED VAULT BOUND';
           badgeEl.innerHTML = `<span>${badgeText} (${shortAddr})</span>`;

@@ -1,5 +1,15 @@
 /app                /dashboard 302
 /app/               /dashboard 302
+/vip                /dashboard?access=vip 302
+/vip/               /dashboard?access=vip 302
+/access-vip         /dashboard?access=vip 302
+/access-vip/        /dashboard?access=vip 302
+/preseed            /dashboard?access=vip 302
+/preseed/           /dashboard?access=vip 302
+/private            /dashboard?access=vip 302
+/private/           /dashboard?access=vip 302
+/sale               /dashboard?access=vip 302
+/sale/              /dashboard?access=vip 302
 /whitepaper         /HAICHAIN_WHITEPAPER_V1.0_EN.pdf 302
 /whitepaper/        /HAICHAIN_WHITEPAPER_V1.0_EN.pdf 302
 /whitepaper-vi      /HAICHAIN_WHITEPAPER_V1.0_VI.pdf 302
