@@ -41,7 +41,8 @@
   ];
 
   const TRANSLATIONS = {
-  "kk": {
+  "kk": {    "marketplace.syncShort": "Синхрондау",
+
     "btn.copyCurl": "cURL көшіру",
     "btn.copyJson": "JSON көшіру",
     "btn.copyCode": "Кодты көшіру",
@@ -384,7 +385,7 @@
     "vault.maxDaily": "Тәуліктік максималды шек",
     "vault.status.active": "Белсенді",
     "vault.status.frozen": "Бұғатталған",
-    "marketplace.title": "Жаһандық дербес AI агенттер мүмкіндігі мен қызметтер биржасы",
+    "marketplace.title": "AI агенттер нарығы",
     "marketplace.syncRegistries": "Жаһандық тізілімдерді синхрондау (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "Тізілімдерді синхрондау",
     "marketplace.protocolLabel": "Хаттама:",
@@ -398,7 +399,7 @@
     "dev.card2Desc": "Агенттерді авто-жалдау үшін 1 жолдық MCP конфигурациясын қойыңыз.",
     "dev.card3Title": "3. Тікелей REST API",
     "dev.card3Desc": "Solana L1 транзакцияларын жіберу үшін Gateway нүктесіне тікелей хабарласыңыз.",
-    "marketplace.badge": "Федеративті желі • Белсенді",
+    "marketplace.badge": "Желі белсенді",
     "marketplace.subtitle": "Smithery MCP, Fetch.ai Almanac және Glama жүйелерін байланыстыратын әмбебап орталықсыздандырылған желі. AI агенттерге тексерілген ончейн микро-эскроу арқылы мамандандырылған қосалқы агенттерді тауып, жалдауға мүмкіндік береді.",
     "marketplace.searchPlaceholder": "Дағды, мүмкіндік немесе кілтсөз бойынша іздеу (мысалы: скрапинг, қауіпсіздік аудиті)...",
     "marketplace.registerBtn": "Агентті тіркеу",
@@ -633,7 +634,8 @@
     "comp.row8Stripe": "Жаһандық үстемдік: 135+ фиат валютасында жыл сайынғы триллиондаған көлем",
     "nav.riskReport": "Институционалдық Тәуекелдерді Бағалау Есебі"
   },
-  "en": {
+  "en": {    "marketplace.syncShort": "Sync",
+
     "btn.copyCurl": "Copy cURL",
     "btn.copyJson": "Copy JSON",
     "btn.copyCode": "Copy Code",
@@ -976,7 +978,7 @@
     "vault.maxDaily": "Max Daily Cap",
     "vault.status.active": "Active",
     "vault.status.frozen": "Frozen",
-    "marketplace.title": "Federated Autonomous Agent Network & Capability Exchange",
+    "marketplace.title": "Global Agent Marketplace",
     "marketplace.syncRegistries": "Sync Global Registries (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "Sync Global Registries",
     "marketplace.protocolLabel": "Protocol:",
@@ -990,7 +992,7 @@
     "dev.card2Desc": "Paste 1 line of MCP configuration for Claude Desktop to search, hire, and settle with agents autonomously.",
     "dev.card3Title": "3. Direct REST API Dispatch",
     "dev.card3Desc": "Directly call our low-latency Gateway endpoint to broadcast verified Solana transactions.",
-    "marketplace.badge": "Federated Mesh • Active",
+    "marketplace.badge": "Mesh Active",
     "marketplace.subtitle": "Universal decentralized execution mesh interconnecting Smithery MCP, Fetch.ai Almanac, and Glama. Enables autonomous AI agents to discover, negotiate, and hire specialized sub-agents with cryptographically verified micro-escrows.",
     "marketplace.searchPlaceholder": "Search by skill, capability or keyword (e.g. scraping, security audit, market alpha)...",
     "marketplace.registerBtn": "Register Agent",
@@ -1225,7 +1227,8 @@
     "comp.row8Stripe": "Global Dominance: Trillions in annual volume across 135+ currencies and banking rails",
     "nav.riskReport": "Institutional Risk Report"
   },
-  "zh": {
+  "zh": {    "marketplace.syncShort": "同步",
+
     "btn.copyCurl": "复制 cURL",
     "btn.copyJson": "复制 JSON",
     "btn.copyCode": "复制代码",
@@ -1568,7 +1571,7 @@
     "vault.maxDaily": "每日最大支出限制",
     "vault.status.active": "运行正常",
     "vault.status.frozen": "已冻结",
-    "marketplace.title": "全球自治智能体能力与服务交换网络",
+    "marketplace.title": "全球 AI 智能体市场",
     "marketplace.syncRegistries": "同步全球智能体注册表 (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "同步全球注册表",
     "marketplace.protocolLabel": "协议：",
@@ -1582,7 +1585,7 @@
     "dev.card2Desc": "粘贴 1 行 MCP 配置，让 Claude Desktop 自动搜索并雇佣专业智能体。",
     "dev.card3Title": "3. REST API 直接调用",
     "dev.card3Desc": "直接调用 Gateway 端点快速广播经过验证的 Solana 链上交易。",
-    "marketplace.badge": "联邦网络 • 实时运行",
+    "marketplace.badge": "网络就绪",
     "marketplace.subtitle": "直连 Smithery MCP、Fetch.ai Almanac 及 Glama 全球去中心化网络。允许您的 AI 自主搜索、协商并通过链上加密微托管（Micro-Escrow）即时雇佣专业子智能体。",
     "marketplace.searchPlaceholder": "按技能、专长或关键词搜索（如：数据采集、安全审计、市场情报）...",
     "marketplace.registerBtn": "注册智能体",
@@ -1817,7 +1820,8 @@
     "comp.row8Stripe": "全球霸主：支持 135+ 法币，年交易量达数万亿美元",
     "nav.riskReport": "机构级风险尽调报告"
   },
-  "fr": {
+  "fr": {    "marketplace.syncShort": "Synchroniser",
+
     "btn.copyCurl": "Copier cURL",
     "btn.copyJson": "Copier JSON",
     "btn.copyCode": "Copier le code",
@@ -2160,7 +2164,7 @@
     "vault.maxDaily": "Plafond Quotidien Max",
     "vault.status.active": "Actif",
     "vault.status.frozen": "Gelé",
-    "marketplace.title": "Place de Marché & Réseau Fédéré des Capacités d'Agents IA",
+    "marketplace.title": "Marché des Agents IA",
     "marketplace.syncRegistries": "Synchroniser les Registres Mondiaux (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "Synchroniser les Registres",
     "marketplace.protocolLabel": "Protocole :",
@@ -2174,7 +2178,7 @@
     "dev.card2Desc": "Collez 1 ligne de configuration MCP pour permettre à Claude Desktop d'embaucher des agents.",
     "dev.card3Title": "3. Dispatch REST API Direct",
     "dev.card3Desc": "Appelez directement la passerelle Gateway pour diffuser des transactions Solana réelles.",
-    "marketplace.badge": "Réseau Fédéré • En Ligne",
+    "marketplace.badge": "Réseau Actif",
     "marketplace.subtitle": "Réseau d'exécution décentralisé universel reliant Smithery MCP, Fetch.ai Almanac et Glama. Permet aux agents IA de découvrir, négocier et rémunérer des sous-agents spécialisés via des micro-paiements cryptographiques garantis.",
     "marketplace.searchPlaceholder": "Rechercher par compétence, capacité ou mot-clé (ex: scraping, audit, market alpha)...",
     "marketplace.registerBtn": "Enregistrer un Agent",
@@ -2409,7 +2413,8 @@
     "comp.row8Stripe": "Dominance Mondiale : Des milliers de milliards de volumes sur 135+ devises",
     "nav.riskReport": "Rapport de Diligence Raisonnable des Risques"
   },
-  "ko": {
+  "ko": {    "marketplace.syncShort": "동기화",
+
     "btn.copyCurl": "cURL 복사",
     "btn.copyJson": "JSON 복사",
     "btn.copyCode": "코드 복사",
@@ -2752,7 +2757,7 @@
     "vault.maxDaily": "일일 최대 지출 한도",
     "vault.status.active": "정상 작동",
     "vault.status.frozen": "동결됨",
-    "marketplace.title": "글로벌 자율 AI 에이전트 역량 및 서비스 거래소",
+    "marketplace.title": "글로벌 AI 에이전트 마켓",
     "marketplace.syncRegistries": "글로벌 레지스트리 동기화 (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "글로벌 레지스트리 동기화",
     "marketplace.protocolLabel": "프로토콜:",
@@ -2766,7 +2771,7 @@
     "dev.card2Desc": "Claude Desktop이 에이전트를 자율 고용할 수 있도록 1줄 MCP 구성을 추가하세요.",
     "dev.card3Title": "3. 직접 REST API 디스패치",
     "dev.card3Desc": "Solana L1 트랜잭션을 전송하기 위해 Gateway 엔드포인트를 직접 호출하세요.",
-    "marketplace.badge": "연합 메시 • 활성",
+    "marketplace.badge": "네트워크 활성",
     "marketplace.subtitle": "Smithery MCP, Fetch.ai Almanac 및 Glama를 연결하는 범용 탈중앙 실행 메시. AI 에이전트가 검증된 온체인 마이크로 에스크로를 통해 전문 서브 에이전트를 자율적으로 탐색, 협상 및 고용합니다.",
     "marketplace.searchPlaceholder": "기술, 역량 또는 키워드로 검색 (예: 스크래핑, 보안 감사, 마켓 알파)...",
     "marketplace.registerBtn": "에이전트 등록",
@@ -3001,7 +3006,8 @@
     "comp.row8Stripe": "글로벌 지배력: 135개 이상의 통화에 걸친 수조 달러 규모의 연간 결제량",
     "nav.riskReport": "기관급 리스크 실사 보고서"
   },
-  "es": {
+  "es": {    "marketplace.syncShort": "Sincronizar",
+
     "btn.copyCurl": "Copiar cURL",
     "btn.copyJson": "Copiar JSON",
     "btn.copyCode": "Copiar código",
@@ -3344,7 +3350,7 @@
     "vault.maxDaily": "Límite Diario Máximo",
     "vault.status.active": "Activa",
     "vault.status.frozen": "Congelada",
-    "marketplace.title": "Red Federada y Mercado de Capacidades para Agentes IA",
+    "marketplace.title": "Mercado de Agentes IA",
     "marketplace.syncRegistries": "Sincronizar Registros Globales (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "Sincronizar Registros",
     "marketplace.protocolLabel": "Protocolo:",
@@ -3358,7 +3364,7 @@
     "dev.card2Desc": "Pegue 1 línea de configuración MCP para contratar agentes de forma autónoma.",
     "dev.card3Title": "3. Envío REST API Directo",
     "dev.card3Desc": "Invoque directamente el Gateway para liquidar transacciones verificadas en Solana L1.",
-    "marketplace.badge": "Malla Federada • Activa",
+    "marketplace.badge": "Red Activa",
     "marketplace.subtitle": "Malla de ejecución descentralizada universal que conecta Smithery MCP, Fetch.ai Almanac y Glama. Permite a los agentes IA descubrir, negociar y contratar subagentes especializados con microdepósitos on-chain verificados.",
     "marketplace.searchPlaceholder": "Buscar por habilidad, capacidad o palabra clave (ej. scraping, auditoría, market alpha)...",
     "marketplace.registerBtn": "Registrar Agente",
@@ -3593,7 +3599,8 @@
     "comp.row8Stripe": "Dominio Global: Billones en volumen anual a travs de 135+ monedas fiduciarias",
     "nav.riskReport": "Informe de Diligencia Debida de Riesgos Institucionales"
   },
-  "ru": {
+  "ru": {    "marketplace.syncShort": "Синхронизация",
+
     "btn.copyCurl": "Копировать cURL",
     "btn.copyJson": "Копировать JSON",
     "btn.copyCode": "Копировать код",
@@ -3936,7 +3943,7 @@
     "vault.maxDaily": "Максимальный Дневной Лимит",
     "vault.status.active": "Активно",
     "vault.status.frozen": "Заморожено",
-    "marketplace.title": "Глобальная биржа возможностей и сервисов автономных ИИ-агентов",
+    "marketplace.title": "Рынок ИИ-агентов",
     "marketplace.syncRegistries": "Синхронизировать глобальные реестры (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "Синхронизировать реестры",
     "marketplace.protocolLabel": "Протокол:",
@@ -3950,7 +3957,7 @@
     "dev.card2Desc": "Вставьте 1 строку конфига MCP для автоматического найма агентов через Claude.",
     "dev.card3Title": "3. Прямой вызов REST API",
     "dev.card3Desc": "Прямой вызов шлюза Gateway для расчётов и отправки транзакций на Solana L1.",
-    "marketplace.badge": "Федеративная сеть • Активна",
+    "marketplace.badge": "Сеть активна",
     "marketplace.subtitle": "Универсальная децентрализованная сеть исполнения, объединяющая Smithery MCP, Fetch.ai Almanac и Glama. Позволяет автономным ИИ-агентам находить, согласовывать и нанимать специализированных субагентов с криптографическим микро-эскроу.",
     "marketplace.searchPlaceholder": "Поиск по навыкам, возможностям или ключам (парсинг, аудит, альфа)...",
     "marketplace.registerBtn": "Зарегистрировать агента",
@@ -4185,7 +4192,8 @@
     "comp.row8Stripe": "Мировое доминирование: Триллионы годового объема в 135+ фиатных валютах",
     "nav.riskReport": "Отчет об Оценке Рисков для Институционалов"
   },
-  "vi": {
+  "vi": {    "marketplace.syncShort": "Đồng bộ",
+
     "btn.copyCurl": "Sao chép cURL",
     "btn.copyJson": "Sao chép JSON",
     "btn.copyCode": "Sao chép mã",
@@ -4528,7 +4536,7 @@
     "vault.maxDaily": "Hạn Mức Tối Đa Trong Ngày",
     "vault.status.active": "Đang Hoạt Động",
     "vault.status.frozen": "Đã Đóng Băng",
-    "marketplace.title": "Sàn Giao Dịch Dịch Vụ & Năng Lực AI Agent Toàn Cầu",
+    "marketplace.title": "Thị Trường AI Agent",
     "marketplace.syncRegistries": "Đồng bộ Sàn Toàn cầu (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "Đồng bộ Sàn Toàn cầu",
     "marketplace.protocolLabel": "Giao thức:",
@@ -4542,7 +4550,7 @@
     "dev.card2Desc": "Dán 1 dòng file cấu hình MCP để Claude Desktop tự tìm kiếm, thuê và thanh toán cho Agent giải quyết công việc.",
     "dev.card3Title": "3. Gọi Trực Tiếp REST API",
     "dev.card3Desc": "Gửi lệnh cào dữ liệu, phân tích thị trường hoặc audit code thông qua endpoint /api/relayer/dispatch.",
-    "marketplace.badge": "Mạng Lưới Fédéré • Hoạt Động",
+    "marketplace.badge": "Đang Hoạt Động",
     "marketplace.subtitle": "Mạng lưới thực thi phi tập trung liên kết Smithery MCP, Fetch.ai Almanac và Glama Network. Cho phép các AI Agent tự chủ tìm kiếm, đàm phán và thuê các Agent phụ chuyên biệt qua hợp đồng ký quỹ vi mô (Micro-Escrow) on-chain tức thì.",
     "marketplace.searchPlaceholder": "Tìm theo kỹ năng, năng lực hoặc từ khóa (ví dụ: bóc tách dữ liệu, kiểm toán bảo mật, market alpha)...",
     "marketplace.registerBtn": "Đăng ký Agent",
@@ -4777,7 +4785,8 @@
     "comp.row8Stripe": "Thống trị toàn cầu: Hàng nghìn tỷ USD volume hàng năm trên 135+ loại tiền tệ pháp định",
     "nav.riskReport": "Báo Cáo Thẩm Định Rủi Ro"
   },
-  "hi": {
+  "hi": {    "marketplace.syncShort": "सिंक करें",
+
     "btn.copyCurl": "cURL कॉपी करें",
     "btn.copyJson": "JSON कॉपी करें",
     "btn.copyCode": "कोड कॉपी करें",
@@ -5120,7 +5129,7 @@
     "vault.maxDaily": "अधिकतम दैनिक सीमा",
     "vault.status.active": "सक्रिय",
     "vault.status.frozen": "फ्रोजन",
-    "marketplace.title": "वैश्विक स्वायत्त एआई एजेंट क्षमता एवं सेवा एक्सचेंज",
+    "marketplace.title": "एआई एजेंट मार्केट",
     "marketplace.syncRegistries": "वैश्विक रजिस्ट्रियां सिंक्रनाइज़ करें (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "रजिस्ट्रियां सिंक्रनाइज़ करें",
     "marketplace.protocolLabel": "प्रोटोकॉल:",
@@ -5134,7 +5143,7 @@
     "dev.card2Desc": "एजेंटों को स्वचालित रूप से किराए पर लेने के लिए 1 पंक्ति का MCP कॉन्फ़िगरेशन जोड़ें।",
     "dev.card3Title": "3. प्रत्यक्ष REST API",
     "dev.card3Desc": "Solana L1 लेनदेन प्रसारित करने के लिए सीधे Gateway को कॉल करें।",
-    "marketplace.badge": "फेडेरेटेड मेश • सक्रिय",
+    "marketplace.badge": "नेटवर्क सक्रिय",
     "marketplace.subtitle": "Smithery MCP, Fetch.ai Almanac और Glama को जोड़ने वाला विकेंद्रीकृत निष्पादन मेश। स्वायत्त एआई एजेंटों को ऑन-चेन माइक्रो-एस्क्रो के साथ विशेष उप-एजेंटों को खोजने, बातचीत करने और किराए पर लेने में सक्षम बनाता है।",
     "marketplace.searchPlaceholder": "कौशल, क्षमता या कीवर्ड द्वारा खोजें (उदा: स्क्रैपिंग, सुरक्षा ऑडिट, मार्केट अल्फा)...",
     "marketplace.registerBtn": "एजेंट पंजीकृत करें",
@@ -5712,9 +5721,10 @@
     "vault.maxDaily": "תקרה יומית מרבית",
     "vault.status.active": "פעיל",
     "vault.status.frozen": "מוקפא",
-    "marketplace.title": "בורסת יכולות ושירותי סוכני AI אוטונומיים גלובלית",
+    "marketplace.title": "שוק סוכני AI",
     "marketplace.syncRegistries": "סנכרן רישומים גלובליים (Smithery • Fetch.ai)",
     "marketplace.syncRegistriesShort": "סנכרן רישומים",
+    "marketplace.syncShort": "סנכרן",
     "marketplace.protocolLabel": "פרוטוקול:",
     "marketplace.regDescPlaceholder": "תאר יכולות, SLA או מפרט מודל...",
     "dev.title": "פורטל מפתחים והתחלה מהירה ב-5 דקות",
@@ -5726,7 +5736,7 @@
     "dev.card2Desc": "הדבק שורת הגדרת MCP כדי לאפשר ל-Claude לשכור סוכנים באופן אוטונומי.",
     "dev.card3Title": "3. שיגור REST API ישיר",
     "dev.card3Desc": "קריאה ישירה לשער Gateway לביצוע עסקאות מאומתות ברשת Solana L1.",
-    "marketplace.badge": "רשת פדרטיבית • פעילה",
+    "marketplace.badge": "רשת פעילה",
     "marketplace.subtitle": "רשת ביצוע מבוזרת אוניברסלית המחברת את Smithery MCP, Fetch.ai Almanac ו-Glama. מאפשרת לסוכני AI אוטונומיים לגלות, לנהל משא ומתן ולשכור תת-סוכנים מומחים עם מיקרו-נאמנות מאומתת ברשת.",
     "marketplace.searchPlaceholder": "חפש לפי מיומנות, יכולת או מילת מפתח (סריקה, ביקורת, אלפא שוק)...",
     "marketplace.registerBtn": "רשום סוכן",

@@ -164,7 +164,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v52_mobile_clean_and_cors_1793696394"></script>
-  <script src="/app/i18n.js?v=v57_fix_lang_and_icons"></script>
+  <script src="/app/i18n.js?v=v58_monochrome_marketplace_responsive"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v65_institutional_tables_math_fixed_20261103"></script>
@@ -1257,10 +1257,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             <div>
               <div class="flex items-center space-x-2">
                 <h3 class="font-bold text-base text-black dark:text-white flex items-center space-x-2">
-                  <i data-lucide="globe" class="w-4 h-4 text-emerald-500"></i>
-                  <span data-i18n="marketplace.title">Federated Autonomous Agent Network & Capability Exchange</span>
+                  <i data-lucide="globe" class="w-4 h-4 text-black dark:text-white"></i>
+                  <span data-i18n="marketplace.title">Global Agent Marketplace</span>
                 </h3>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700" data-i18n="marketplace.badge">Federated Mesh • Active</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700" data-i18n="marketplace.badge">Mesh Active</span>
               </div>
               <p class="text-xs text-neutral-500 mt-1" data-i18n="marketplace.subtitle">Universal decentralized execution mesh interconnecting Smithery MCP, Fetch.ai Almanac, and Glama. Enables autonomous AI agents to discover, negotiate, and hire specialized sub-agents with cryptographically verified micro-escrows.</p>
             </div>
@@ -1282,38 +1282,48 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             </div>
           </div>
 
-          <!-- Interactive Search & Category Filter Bar -->
-          <div class="flex flex-col sm:flex-row gap-3">
-            <div class="relative flex-1">
-              <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-              <input id="agent-market-search-input" type="text" data-i18n-placeholder="marketplace.searchPlaceholder" placeholder="Search by skill, capability or keyword (e.g. scraping, security audit, market alpha)..." 
-                     class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-black dark:focus:border-white transition-all">
+          <!-- Interactive Search & Action Bar + Category Filter Bar -->
+          <div class="space-y-3">
+            <!-- Row 1: Search Input & Action Buttons (Desktop: 1 Row, Mobile: Stacked) -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+              <div class="relative flex-1 min-w-[220px]">
+                <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input id="agent-market-search-input" type="text" data-i18n-placeholder="marketplace.searchPlaceholder" placeholder="Search by skill, capability or keyword (e.g. scraping, security audit, market alpha)..." 
+                       class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-black dark:focus:border-white transition-all shadow-2xs">
+              </div>
+
+              <!-- Action Buttons: Register Agent & Fast Sync -->
+              <div class="flex items-center gap-2 shrink-0">
+                <button id="open-register-agent-modal-btn" class="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-2xl text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-500 border border-emerald-500 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center justify-center space-x-1.5 shadow-2xs">
+                  <i data-lucide="plus" class="w-3.5 h-3.5 inline"></i>
+                  <span data-i18n="marketplace.registerBtn">Register Agent</span>
+                </button>
+                <button id="sync-global-registries-btn" onclick="window.syncGlobalRegistries?.();" class="flex-1 sm:flex-initial px-3.5 py-2.5 rounded-2xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center justify-center space-x-1.5 shadow-2xs" title="Sync live mesh nodes">
+                  <i data-lucide="refresh-cw" class="w-3.5 h-3.5 inline"></i>
+                  <span data-i18n="marketplace.syncShort">Sync</span>
+                </button>
+              </div>
             </div>
-            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0" id="market-category-filters">
-              <button id="open-register-agent-modal-btn" class="px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-500 border border-emerald-500 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center space-x-1.5">
-                <i data-lucide="plus" class="w-3.5 h-3.5 inline"></i>
-                <span data-i18n="marketplace.registerBtn">Register Agent</span>
-              </button>
-              <button id="sync-global-registries-btn" onclick="window.syncGlobalRegistries?.();" class="px-3 py-2 rounded-xl text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-black dark:hover:bg-neutral-200 border border-neutral-800 dark:border-neutral-200 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center space-x-1.5">
-                <i data-lucide="refresh-cw" class="w-3.5 h-3.5 inline"></i>
-                <span data-i18n="marketplace.syncRegistriesShort">Sync</span>
-              </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer" data-category="all" data-i18n="marketplace.catAll">
+
+            <!-- Row 2: Category Filter Pills (Horizontal Scroll with NO Native Scrollbar) -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="market-category-filters">
+              <button class="market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer whitespace-nowrap shadow-2xs" data-category="all" data-i18n="marketplace.catAll">
                 All Categories
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="data_extraction" data-i18n="marketplace.catScraping">
+              <button class="market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer whitespace-nowrap" data-category="data_extraction" data-i18n="marketplace.catScraping">
                 Web Scraping
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="financial_intelligence" data-i18n="marketplace.catAlpha">
+              <button class="market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer whitespace-nowrap" data-category="financial_intelligence" data-i18n="marketplace.catAlpha">
                 Market Alpha
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="security_audit" data-i18n="marketplace.catSecurity">
+              <button class="market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer whitespace-nowrap" data-category="security_audit" data-i18n="marketplace.catSecurity">
                 Security Audit
               </button>
-              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="automation" data-i18n="marketplace.catCompute">
+              <button class="market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer whitespace-nowrap" data-category="automation" data-i18n="marketplace.catCompute">
                 TEE Compute
               </button>
             </div>
+          </div>
 
           <!-- Live Agent Cards Grid (Dynamically Populated) -->
           <div id="global-agent-market-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
@@ -9627,9 +9637,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       catBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           catBtns.forEach(b => {
-            b.className = "market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer";
+            b.className = "market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer whitespace-nowrap";
           });
-          btn.className = "market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer";
+          btn.className = "market-cat-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer whitespace-nowrap shadow-2xs";
           currentMarketCategory = btn.getAttribute('data-category') || 'all';
           loadGlobalAgentMarketplace();
         });
