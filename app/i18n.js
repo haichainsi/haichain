@@ -5977,7 +5977,7 @@
     try {
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       if (urlLang && TRANSLATIONS[urlLang]) return urlLang;
-      const saved = localStorage.getItem('haichain-lang');
+      const saved = localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang');
       if (saved && TRANSLATIONS[saved]) return saved;
     } catch (_) {}
     return 'en';
@@ -5995,6 +5995,7 @@
     currentLang = langCode;
     try {
       localStorage.setItem('haichain-lang', langCode);
+      localStorage.setItem('haichain_lang', langCode);
     } catch (_) {}
 
     document.documentElement.setAttribute('lang', langCode);
