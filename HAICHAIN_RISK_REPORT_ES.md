@@ -37,10 +37,7 @@ Para neutralizar esta amenaza sin sacrificar la ejecución en milisegundos, **HA
 
 Sea $\tau$ la latencia de respuesta total del protocolo desde que se inicia una transacción no autorizada hasta que la orden de congelamiento de emergencia (Panic Freeze) se confirma en cadena:
 $$\tau = t_{\text{detect}} + t_{\text{owner}} + t_{\text{land}}$$
-donde:
-- $t_{\text{detect}} \le 5.0\text{s}$ (umbral de detección de anomalías por telemetría)
-- $t_{\text{owner}} \le 2.0\text{s}$ (autorización biométrica de un toque con Passkey)
-- $t_{\text{land}} \le 5.0\text{s}$ (inclusión de transacción de alta prioridad en Solana)
+donde $t_{\text{detect}} \le 5.0\text{s}$, $t_{\text{owner}} \le 2.0\text{s}$, $t_{\text{land}} \le 5.0\text{s}$.
 
 En el escenario extremo de compromiso total de la clave Ed25519 del agente y colusión con un comercio validado en el árbol Merkle, el robo máximo acumulado $E_{\text{theft}}(\tau)$ está acotado por:
 
@@ -53,18 +50,44 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 ## 3. MATRIZ DE AUDITORÍA Y ENDURECIMIENTO RED-TEAM
 
 Cinco vectores de ataque críticos han sido probados y mitigados en el núcleo:
-1. **Doble Reclamación de Escrow:** Bloqueada mediante liquidación monótona irreversible.
-2. **Secuestro de Cuentas ATA:** Imposibilitado por la derivación canónica estricta del Associated Token Account.
-3. **Evasión de Congelamiento de Emergencia:** Eliminada mediante invalidación por época ($I_6$).
-4. **Drenaje de Lamports de Alquiler:** Reembolso obligatorio y automático al fondo de origen (`grant_pot`).
-5. **Ataque Sybil de Micro-Bucles:** Bloqueado por el consumo estricto del presupuesto plantilla padre.
+
+```
++---------------------------------------------------------------------------------------------------+
+|                                 HAICHAIN MATRIZ DE PROTECCIÓN EN 5 PUNTOS                         |
++---+----------------------------+----------------------------------+-------------------------------+
+| # | Vector de Ataque           | Mecanismo de Vulnerabilidad      | Invariante Endurecido On-Chain|
++---+----------------------------+----------------------------------+-------------------------------+
+| 1 | Doble Reclamación Escrow   | Presentación de múltiples vales  | Liquidación Monótona Inreversible: |
+|   |                            | acumulativos                     | P_i <= min(C_i, R_i)          |
++---+----------------------------+----------------------------------+-------------------------------+
+| 2 | Secuestro de Cuenta ATA    | Redirección de cuenta destino    | Derivación Canónica Estricta  |
+|   |                            | a un tercero malicioso           | Validación invariable en L1   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 3 | Evasión de Panic Freeze    | Canales antiguos intentan liquidar| Aislamiento de Época Instantáneo|
+|   |                            | tras la activación de emergencia | Invalidación inmediata ($I_6$) |
++---+----------------------------+----------------------------------+-------------------------------+
+| 4 | Drenaje Lamport Alquiler   | Robo de lamports de alquiler al  | Reembolso Canónico de Alquiler|
+|   |                            | cerrar un canal                  | Retorno forzoso a grant_pot   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 5 | Ataque Sybil Micro-Bucles  | Creación de 1.000 sub-hojas      | Consumo de Presupuesto Padre  |
+|   |                            | para extraer micro-reservas      | activate_child descuenta techo|
++---+----------------------------+----------------------------------+-------------------------------+
+```
 
 ---
 
 ## 4. INFORME DE AUDITORÍA DE LOS 9 INVARIANTES MATEMÁTICOS ($I_1 \dots I_9$)
 
 Todas las instrucciones en `programs/haichain-core/src/lib.rs` satisfacen los 9 invariantes matemáticos:
-- $I_1$ (Conservación de Capital), $I_2$ (Seguridad de Destinatario Canónico), $I_3$ (Tope Presupuestario), $I_4$ (Límite de Velocidad Autónomo), $I_5$ (Estrechamiento Monótono PDA), $I_6$ (Aislamiento de Época Panic), $I_7$ (Expiración de Sesión Heartbeat), $I_8$ (Liquidación Monótona Única), $I_9$ (Aislamiento de Cuenta Anti-Sybil).
+1. **$I_1$ (Conservación de Capital):** Billetera ATA + Escrow + Liquidado + Reembolsos $\equiv$ Depósitos Netos.
+2. **$I_2$ (Seguridad de Destinatario Canónico):** Cuenta ATA derivada estrictamente del SPL Token.
+3. **$I_3$ (Tope Presupuestario Inviolable):** Gasto real siempre inferior o igual al presupuesto total.
+4. **$I_4$ (Límite de Velocidad Autónomo):** Tasa de gasto acotada por ventana temporal deslizante.
+5. **$I_5$ (Estrechamiento Monótono PDA):** Las sub-instancias no pueden expandir privilegios.
+6. **$I_6$ (Aislamiento de Época Panic):** Invalidación inmediata de todos los vales en circulación.
+7. **$I_7$ (Expiración de Sesión Heartbeat):** Cese automático de reservas al caducar la sesión.
+8. **$I_8$ (Liquidación Monótona Única):** Imposibilidad matemática de doble gasto en canales.
+9. **$I_9$ (Aislamiento de Cuenta Anti-Sybil):** Relación 1:1 estricta entre hoja y cuenta PDA on-chain.
 
 ---
 

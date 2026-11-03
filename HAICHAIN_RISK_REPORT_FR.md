@@ -10,7 +10,7 @@
 
 Les agents d'IA autonomes exécutant des micro-transactions financières introduisent des surfaces d'attaque fondamentalement différentes de la DeFi humaine :
 1. **Zéro Latence Humaine :** Un agent IA exécutant des appels d'outils peut être manipulé par Injection Indirecte de Prompt pour émettre des milliers de bons de paiement illégitimes en quelques secondes.
-2. **Vulnérabilité d'Exfiltration de Clés :** L'exécution d'instances d'agents sur des nœuds distribués accroît considérablement le risque d'exfiltration des clés privées.
+2. **Vulnérabilité d'Exfiltration de Clés :** L'exécution d'instances d'agents sur des nœuds distribués (Cloudflare Workers, MCP locaux, serverless) accroît considérablement le risque d'exfiltration des clés privées.
 3. **Prolifération de Commerçants Sybil :** Dans un réseau M2M ouvert, des commerçants malveillants peuvent enregistrer une infinité de domaines jetables pour contourner les limitations de débit.
 
 Pour résoudre ce défi sans compromettre la rapidité à la milliseconde, **HAICHAIN dissocie entièrement l'exécution financière de la garde des fonds** :
@@ -46,6 +46,14 @@ Même dans l'éventualité la plus grave de compromission intégrale de la clé 
 
 $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(\tau)\right)$$
 
+Où :
+- $B$ : Solde total du coffre (`pot.balance`).
+- $K$ : Plafond cumulé de la feuille active (`leaf.max_spend`).
+- $W_p$ : Vélocité maximale par fenêtre glissante (`leaf.window_cap`).
+- $\omega_p$ : Durée de la fenêtre (typiquement $3\,600\text{s}$ = 1 heure).
+- $n(\tau, \omega_p) = \lceil \tau / \omega_p \rceil$ : Nombre de fenêtres traversées pendant $\tau$. Pour $\tau = 12\text{s} \ll 3600\text{s}$, $n = 1$.
+- $\sum E_i$ : Somme des montants mis sous séquestre pour les marchands complices.
+
 **Corollaire :** Pour un coffre institutionnel doté de $10\,000\text{ USDT}$, avec un budget par feuille de $50\text{ USDT}$ et une limite de vélocité de $10\text{ USDT / heure}$, un pirate s'emparant de la clé de l'agent **ne pourra en aucun cas dérober plus de $10\text{ USDT}$** avant le gel complet, préservant ainsi **$9\,990\text{ USDT}$ (99,9 %)** des capitaux.
 
 ---
@@ -53,26 +61,44 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 ## 3. PÉNÉTRATION RED-TEAM ET MATRICE DE RENFORCEMENT
 
 Cinq vecteurs d'attaque critiques ont été rigoureusement testés et verrouillés dans le noyau :
-1. **Attaque par Double Réclamation d'Escrow :** Empêchée par le règlement monotone irréversible ($P_i \le \min(C, R)$).
-2. **Détournement de Compte ATA :** Empêché par la dérivation canonique stricte de l'Associated Token Account du commerçant.
-3. **Contournement de Gel d'Urgence :** Éliminé par l'invalidation d'époque instantanée ($I_6$).
-4. **Drainage Vampirique des Lamports de Loyer :** Loyer restitué intégralement au coffre d'origine (`grant_pot`).
-5. **Attaque Sybil par Micro-Boucles :** Verrouillée par la consommation du budget du modèle parent.
+
+```
++---------------------------------------------------------------------------------------------------+
+|                                 HAICHAIN MATRICE DE RENFORCEMENT EN 5 POINTS                       |
++---+----------------------------+----------------------------------+-------------------------------+
+| # | Vecteur d'Attaque          | Mécanisme de Vulnérabilité       | Invariant On-Chain Renforcé   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 1 | Double Réclamation Escrow  | Soumission de multiples reçus    | Règlement Monotone Non-Réversible: |
+|   |                            | pour dépasser la réserve         | P_i <= min(C_i, R_i)          |
++---+----------------------------+----------------------------------+-------------------------------+
+| 2 | Détournement Compte ATA    | Redirection du compte receveur   | Liaison Stricte ATA Canonique |
+|   |                            | vers un tiers non approuvé       | Validation rigide sur Solana L1|
++---+----------------------------+----------------------------------+-------------------------------+
+| 3 | Contournement Gel Panic    | Les anciens canaux réclament     | Isolation d'Époque Instantanée|
+|   |                            | après activation du Panic Freeze | Invalidation immédiate ($I_6$) |
++---+----------------------------+----------------------------------+-------------------------------+
+| 4 | Drainage Lamport Loyer     | Vol des lamports lors de la      | Restitution Canonique du Loyer|
+|   |                            | fermeture d'un canal             | Retour automatique à grant_pot|
++---+----------------------------+----------------------------------+-------------------------------+
+| 5 | Attaque Sybil Micro-Boucle | Création de 1 000 sous-feuilles  | Brûlage du Budget Modèle      |
+|   |                            | pour drainer des micro-réserves  | activate_child déduit du père |
++---+----------------------------+----------------------------------+-------------------------------+
+```
 
 ---
 
 ## 4. RAPPORT D'AUDIT DES 9 INVARIANTS MATHÉMATIQUES ($I_1 \dots I_9$)
 
 Toutes les instructions de `programs/haichain-core/src/lib.rs` respectent scrupuleusement les 9 invariants mathématiques :
-- **$I_1$ (Conservation du Capital) :** Solde ATA + Escrows + Paiements + Remboursements $\equiv$ Dépôts Nets.
-- **$I_2$ (Sécurité du Bénéficiaire Canonique) :** Adresse ATA rigoureusement vérifiée sur Solana L1.
-- **$I_3$ (Plafond Budgétaire Inviolable) :** Consommation toujours inférieure ou égale au budget alloué.
-- **$I_4$ (Limitation de Vélocité Autonome) :** Dépenses strictement plafonnées par fenêtre glissante.
-- **$I_5$ (Rétrécissement Monotone PDA) :** Les sous-instances ne peuvent jamais élargir leurs droits.
-- **$I_6$ (Isolation d'Époque et Gel Immédiat) :** Désactivation instantanée de tous les bons en circulation.
-- **$I_7$ (Expiration de Session Heartbeat) :** Arrêt des réservations dès expiration du délai.
-- **$I_8$ (Règlement Unique et Monotone) :** Aucune possibilité de double dépense.
-- **$I_9$ (Isolation de Compte Anti-Sybil) :** Relation 1:1 stricte entre feuille et compte PDA.
+1. **$I_1$ (Conservation du Capital) :** Solde ATA + Escrows + Paiements + Remboursements $\equiv$ Dépôts Nets.
+2. **$I_2$ (Sécurité du Bénéficiaire Canonique) :** Adresse ATA rigoureusement vérifiée sur Solana L1.
+3. **$I_3$ (Plafond Budgétaire Inviolable) :** Consommation toujours inférieure ou égale au budget alloué.
+4. **$I_4$ (Limitation de Vélocité Autonome) :** Dépenses strictement plafonnées par fenêtre glissante.
+5. **$I_5$ (Rétrécissement Monotone PDA) :** Les sous-instances ne peuvent jamais élargir leurs droits.
+6. **$I_6$ (Isolation d'Époque et Gel Immédiat) :** Désactivation instantanée de tous les bons en circulation.
+7. **$I_7$ (Expiration de Session Heartbeat) :** Arrêt des réservations dès expiration du délai.
+8. **$I_8$ (Règlement Unique et Monotone) :** Aucune possibilité de double dépense.
+9. **$I_9$ (Isolation de Compte Anti-Sybil) :** Relation 1:1 stricte entre feuille et compte PDA.
 
 ---
 

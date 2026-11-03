@@ -673,12 +673,36 @@ function buildHaichainSaftEmailHtml(opt) {
       modal.querySelectorAll('.modal-lang-opt').forEach((opt) => {
         opt.addEventListener('click', (e) => {
           e.stopPropagation();
-          const targetLang = opt.getAttribute('data-lang');
+          const targetLang = (opt.getAttribute('data-lang') || 'en').toLowerCase();
           langDropdown.classList.add('hidden');
           if (langCodeSpan) langCodeSpan.textContent = targetLang.toUpperCase();
+
+          // Immediate direct PDF document switch inside modal
+          if (currentPdfUrl) {
+            const u = currentPdfUrl.toUpperCase();
+            if (u.includes('RISK')) {
+              const doc = typeof window.getRiskReportPdfForLang === 'function' ? window.getRiskReportPdfForLang(targetLang) : null;
+              if (doc) window.openPdfViewerModal(doc.url, doc.title);
+            } else if (u.includes('WHITEPAPER')) {
+              const meta = getI18nMeta(targetLang);
+              window.openPdfViewerModal(getWhitepaperUrlForLang(targetLang), meta.title);
+            } else if (u.includes('SAFT')) {
+              const doc = typeof window.getSaftPdfForLang === 'function' ? window.getSaftPdfForLang(targetLang) : null;
+              if (doc) window.openPdfViewerModal(doc.url, doc.title);
+            } else if (u.includes('MEMO')) {
+              const doc = typeof window.getPreseedMemoPdfForLang === 'function' ? window.getPreseedMemoPdfForLang(targetLang) : null;
+              if (doc) window.openPdfViewerModal(doc.url, doc.title);
+            }
+          }
+
+          // Propagate language switch to the rest of the application
           if (window.haichainI18n && typeof window.haichainI18n.setLanguage === 'function') {
             window.haichainI18n.setLanguage(targetLang);
           } else {
+            try {
+              localStorage.setItem('haichain-lang', targetLang);
+              localStorage.setItem('haichain_lang', targetLang);
+            } catch (_) {}
             window.dispatchEvent(new CustomEvent('haichain:languageChanged', { detail: { lang: targetLang } }));
           }
         });
@@ -2654,7 +2678,7 @@ function buildHaichainSaftEmailHtml(opt) {
   // GLOBAL MULTI-LANGUAGE RISK REPORT RESOLVER (10 LANGUAGES)
   // =========================================================================
   window.getRiskReportPdfForLang = function(lang) {
-    const l = (lang || (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en')).toLowerCase();
+    const l = (lang || getCurrentLang() || 'en').toLowerCase();
     const titles = {
       vi: 'Báo Cáo Thẩm Định Rủi Ro & Phòng Thủ Mật Mã HAICHAIN',
       en: 'HAICHAIN Institutional Risk Due Diligence Report',
@@ -2784,16 +2808,24 @@ function buildHaichainSaftEmailHtml(opt) {
 
 
 
-  // Global Event Listener for Risk Report links
-  document.addEventListener('click', (e) => {
-    const trigger = e.target.closest('#nav-risk-report-link, [data-mobile-risk-report="true"], [data-risk-report="true"], a[href*="HAICHAIN_INSTITUTIONAL_RISK_DUE_DILIGENCE_REPORT"], a[href*="HAICHAIN_RISK_REPORT"]');
-    if (trigger) {
+  // Dedicated Risk Report Handler
+  window.handleRiskReportClick = function(e, trigger) {
+    if (e) {
       e.preventDefault();
       e.stopPropagation();
-      if (typeof window.closeMobileMenu === 'function') {
-        window.closeMobileMenu();
-      }
-      const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en');
-      window.openRiskReportPdfModal(lang);
+    }
+    if (typeof window.closeMobileMenu === 'function') {
+      try { window.closeMobileMenu(); } catch (_) {}
+    }
+    const lang = getCurrentLang();
+    const doc = window.getRiskReportPdfForLang(lang);
+    window.openPdfViewerModal(doc.url, doc.title);
+  };
+
+  // Global Capture-Phase Event Listener for All Risk Report Links
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('#nav-risk-report-link, #mobile-nav-risk-report-link, [data-mobile-risk-report="true"], [data-risk-report="true"], a[href*="HAICHAIN_INSTITUTIONAL_RISK_DUE_DILIGENCE_REPORT"], a[href*="HAICHAIN_RISK_REPORT"]');
+    if (trigger) {
+      window.handleRiskReportClick(e, trigger);
     }
   }, true);

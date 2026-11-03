@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 HAICHAIN Institutional Risk Due Diligence Report - Complete 10-Language Generator & PDF Compiler
-Generates:
-  HAICHAIN_RISK_REPORT_EN.md / .pdf
-  HAICHAIN_RISK_REPORT_VI.md / .pdf
-  HAICHAIN_RISK_REPORT_ZH.md / .pdf
-  HAICHAIN_RISK_REPORT_KO.md / .pdf
-  HAICHAIN_RISK_REPORT_FR.md / .pdf
-  HAICHAIN_RISK_REPORT_ES.md / .pdf
-  HAICHAIN_RISK_REPORT_RU.md / .pdf
-  HAICHAIN_RISK_REPORT_KK.md / .pdf
-  HAICHAIN_RISK_REPORT_HI.md / .pdf
-  HAICHAIN_RISK_REPORT_HE.md / .pdf
-Copies all compiled PDFs to both root and app/ directory.
+Upgraded Layout:
+  - Official Haichain White Logo at top
+  - Document Title / Tagline positioned harmoniously and balanced DIRECTLY UNDER the Haichain Logo
+  - Localized 3-Column Meta Footer for each of the 10 languages
+  - Full institutional rigor, mathematical formulas, threat matrix, and 9 invariants across all 10 languages
 """
 
 import os
@@ -93,16 +86,21 @@ def latex_to_html(tex):
         s = s.replace(macro, rep)
     return s
 
-# 10 Institutional Risk Reports Content
 DOCS = {}
 
-# 1. EN
+# 1. EN - English
 DOCS['en'] = {
     'title': 'HAICHAIN: Institutional Risk Due Diligence Report',
     'subtitle': 'Mathematical Proofs, Threat Modeling & Red-Team Verification Matrix for Tier-1 Allocators and Audit Firms',
     'edition': 'Institutional Risk Due Diligence Report v1.1 • Cryptographic Defense Standard',
     'tag': 'HAICHAIN CRYPTOGRAPHIC DEFENSE & PROTOCOL RISK ASSESSMENT',
     'footer': 'CONFIDENTIAL & INSTITUTIONAL • HAICHAIN GLOBAL RISK TASKFORCE',
+    'meta_audience_lbl': 'Target Audience',
+    'meta_audience_val': 'Tier-1 Venture Allocators & Audit Firms',
+    'meta_sec_lbl': 'Cryptographic Security',
+    'meta_sec_val': 'Hardware Passkey • 9 Invariants Bound',
+    'meta_kern_lbl': 'Protocol Kernel',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 Bytes',
     'md': """# HAICHAIN INSTITUTIONAL RISK DUE DILIGENCE REPORT
 ## Mathematical Proofs, Threat Modeling & Red-Team Verification Matrix
 **Target Audience:** Tier-1 Venture Capitalists (a16z crypto, Paradigm, Sequoia), Institutional Custodians, and Top-Tier Audit Firms (OtterSec, Neodyme, Kudelski Security)  
@@ -121,7 +119,7 @@ Autonomous AI agents executing financial micro-transactions introduce fundamenta
 To solve this without sacrificing sub-millisecond execution, **HAICHAIN decouples execution from custody**:
 - **Master Authority:** WebAuthn FIDO2 Biometric Hardware Passkey (P-256) retaining 100% sovereign ownership over the spending pot.
 - **Sub-Agent Authority:** Ephemeral Ed25519 keypairs strictly sandboxed inside out-of-process Policy Engines with zero access to underlying wallet seeds.
-- **On-Chain Merkle Anchor:** 223-byte leaf wire schema enforcing 9 non-malleable mathematical invariants ($I_1 \dots I_9$).
+- **On-Chain Merkle Anchor:** 223-byte leaf wire schema enforcing 9 non-malleable mathematical invariants ($I_1 \\dots I_9$).
 
 ---
 
@@ -266,13 +264,19 @@ The external audit package is organized into:
 """
 }
 
-# 2. VI
+# 2. VI - Vietnamese
 DOCS['vi'] = {
     'title': 'HAICHAIN: Báo Cáo Thẩm Định Rủi Ro & Phòng Thủ Mật Mã',
     'subtitle': 'Chứng minh Toán học, Mô hình Đe dọa & Ma trận Kiểm thử Xâm nhập Red-Team cho Nhà Đầu tư Thể chế',
     'edition': 'Báo Cáo Thẩm Định Rủi Ro Thể Chế v1.1 • Tiêu Chuẩn Phòng Thủ Mật Mã',
     'tag': 'HAICHAIN BÁO CÁO ĐÁNH GIÁ RỦI RO & PHÒNG THỦ MẬT MÃ TOÀN DIỆN',
     'footer': 'TÀI LIỆU BẢO MẬT & THỂ CHẾ • HAICHAIN GLOBAL RISK TASKFORCE',
+    'meta_audience_lbl': 'Đối Tượng Báo Cáo',
+    'meta_audience_val': 'Quỹ Mạo Hiểm Hạng 1 & Đơn Vị Kiểm Toán',
+    'meta_sec_lbl': 'An Toàn Mật Mã',
+    'meta_sec_val': 'Phần Cứng Passkey • Khóa 9 Bất Biến',
+    'meta_kern_lbl': 'Nhân Giao Thức',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 Bytes',
     'md': """# BÁO CÁO THẨM ĐỊNH RỦI RO & PHÒNG THỦ MẬT MÃ HAICHAIN
 ## Chứng minh Toán học, Mô hình Đe dọa & Ma trận Kiểm thử Xâm nhập Red-Team
 **Đối tượng mục tiêu:** Các Quỹ đầu tư mạo hiểm Hạng 1 (a16z crypto, Paradigm, Sequoia), Đơn vị Lưu ký Thể chế và Các Công ty Kiểm toán Bảo mật Hàng đầu (OtterSec, Neodyme, Kudelski Security)  
@@ -344,7 +348,7 @@ Trong cuộc kiểm toán điều tra kỹ thuật nội bộ, 5 vector tấn c�
 | STT| Vector Tấn công            | Cơ chế Khai thác Tiềm ẩn         | Biện pháp Khắc phục Cốt lõi   |
 +---+----------------------------+----------------------------------+-------------------------------+
 | 1 | Rút Tiền Kép Kênh Ký Quỹ   | Bên bán gửi nhiều chứng từ       | Thanh toán Đơn điệu Không thể |
-|   | (Channel Escrow Double-Dip)| tích lũy để rút vượt hạn mức     | Đảo ngược: $P_i \\le \\min(C,R)$|
+|   | (Channel Escrow Double-Dip)| tích lũy để rút vượt hạn mức     | Đảo ngược: $P_i \le \min(C,R)$|
 +---+----------------------------+----------------------------------+-------------------------------+
 | 2 | Chiếm Đoạt Tài Khoản ATA   | Chuyển hướng thanh toán sang     | Ràng buộc Khắt khe Địa chỉ ATA|
 |   |                            | tài khoản Token bên thứ 3        | Xác thực bất biến PDA trên L1 |
@@ -431,13 +435,19 @@ Gói tài liệu kiểm toán thể chế bao gồm:
 """
 }
 
-# 3. ZH
+# 3. ZH - Chinese
 DOCS['zh'] = {
     'title': 'HAICHAIN: 机构级风险尽职调查与安全防御报告',
     'subtitle': '面向一线投资机构与顶级审计团队的数学证明、威胁建模与红队安全验证矩阵',
     'edition': '机构级风险尽职调查报告 v1.1 • 密码学安全防御标准',
     'tag': 'HAICHAIN 机构级密码学安全防御与协议风险评估报告',
     'footer': '机密与机构级专用 • HAICHAIN 全球系统风险特别工作组',
+    'meta_audience_lbl': '目标受众',
+    'meta_audience_val': '一线风险投资机构与顶级审计机构',
+    'meta_sec_lbl': '密码学安全标准',
+    'meta_sec_val': '硬件 Passkey • 9 大不变性约束',
+    'meta_kern_lbl': '协议内核版本',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 字节',
     'md': """# HAICHAIN 机构级风险尽职调查与安全防御报告
 ## 数学证明、威胁建模与红队安全验证矩阵
 **目标受众：** 一线风险投资机构 (a16z crypto, Paradigm, Sequoia)、机构级数字资产托管商及顶级安全审计公司 (OtterSec, Neodyme, Kudelski Security)  
@@ -564,13 +574,19 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 """
 }
 
-# 4. KO
+# 4. KO - Korean
 DOCS['ko'] = {
     'title': 'HAICHAIN: 기관용 위험 실사 및 암호학적 보안 감사 보고서',
     'subtitle': '티어-1 벤처 캐피털과 감사 기관을 위한 수학적 증명, 위협 모델링 및 레드팀 검증 매트릭스',
     'edition': '기관용 위험 실사 보고서 v1.1 • 암호학적 방어 표준',
     'tag': 'HAICHAIN 기관급 암호학 방어 및 프로토콜 리스크 평가 보고서',
     'footer': '기밀 및 기관 전용 • HAICHAIN 글로벌 리스크 태스크포스',
+    'meta_audience_lbl': '대상 독자',
+    'meta_audience_val': '티어 1 VC 및 기관 감사 기업',
+    'meta_sec_lbl': '암호학적 보안 표준',
+    'meta_sec_val': '하드웨어 패스키 • 9대 불변성 구속',
+    'meta_kern_lbl': '프로토콜 커널',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 바이트',
     'md': """# HAICHAIN 기관용 위험 실사 및 암호학적 보안 감사 보고서
 ## 수학적 증명, 위협 모델링 및 레드팀 침투 검증 매트릭스
 **대상 독자:** 글로벌 티어 1 VC (a16z crypto, Paradigm, Sequoia), 기관 수탁 기관 및 최고 수준 보안 감사 기업 (OtterSec, Neodyme, Kudelski Security)  
@@ -697,13 +713,19 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 """
 }
 
-# 5. FR
+# 5. FR - French
 DOCS['fr'] = {
     'title': 'HAICHAIN: Rapport de Diligence Raisonnable des Risques Institutionnels',
     'subtitle': 'Preuves Mathématiques, Modélisation des Menaces et Matrice de Vérification Red-Team pour Allocateurs Tier-1',
     'edition': 'Rapport Institutionnel de Risque v1.1 • Norme de Défense Cryptographique',
     'tag': 'HAICHAIN RAPPORT INSTITUTIONNEL D’ÉVALUATION DES RISQUES & DÉFENSE CRYPTOGRAPHIQUE',
     'footer': 'CONFIDENTIEL & INSTITUTIONNEL • TASKFORCE GLOBALE DE RISQUE HAICHAIN',
+    'meta_audience_lbl': 'Destinataires',
+    'meta_audience_val': 'Fonds Tier-1 & Cabinets d\'Audit',
+    'meta_sec_lbl': 'Sécurité Cryptographique',
+    'meta_sec_val': 'Passkey Matérielle • 9 Invariants',
+    'meta_kern_lbl': 'Noyau Protocole',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 Octets',
     'md': """# RAPPORT DE DILIGENCE RAISONNABLE DES RISQUES INSTITUTIONNELS HAICHAIN
 ## Preuves Mathématiques, Modélisation des Menaces et Matrice de Vérification Red-Team
 **Destinataires :** Fonds de Capital-Risque Tier-1 (a16z crypto, Paradigm, Sequoia), Dépositaires Institutionnels et Cabinets d'Audit de Premier Rang (OtterSec, Neodyme, Kudelski Security)  
@@ -716,7 +738,7 @@ DOCS['fr'] = {
 
 Les agents d'IA autonomes exécutant des micro-transactions financières introduisent des surfaces d'attaque fondamentalement différentes de la DeFi humaine :
 1. **Zéro Latence Humaine :** Un agent IA exécutant des appels d'outils peut être manipulé par Injection Indirecte de Prompt pour émettre des milliers de bons de paiement illégitimes en quelques secondes.
-2. **Vulnérabilité d'Exfiltration de Clés :** L'exécution d'instances d'agents sur des nœuds distribués accroît considérablement le risque d'exfiltration des clés privées.
+2. **Vulnérabilité d'Exfiltration de Clés :** L'exécution d'instances d'agents sur des nœuds distribués (Cloudflare Workers, MCP locaux, serverless) accroît considérablement le risque d'exfiltration des clés privées.
 3. **Prolifération de Commerçants Sybil :** Dans un réseau M2M ouvert, des commerçants malveillants peuvent enregistrer une infinité de domaines jetables pour contourner les limitations de débit.
 
 Pour résoudre ce défi sans compromettre la rapidité à la milliseconde, **HAICHAIN dissocie entièrement l'exécution financière de la garde des fonds** :
@@ -752,6 +774,14 @@ Même dans l'éventualité la plus grave de compromission intégrale de la clé 
 
 $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\omega_p),\\; \\sum_{i:\\, m_i \\in \\mathcal{A}} E_i(\\tau)\\right)$$
 
+Où :
+- $B$ : Solde total du coffre (`pot.balance`).
+- $K$ : Plafond cumulé de la feuille active (`leaf.max_spend`).
+- $W_p$ : Vélocité maximale par fenêtre glissante (`leaf.window_cap`).
+- $\\omega_p$ : Durée de la fenêtre (typiquement $3\\,600\\text{s}$ = 1 heure).
+- $n(\\tau, \\omega_p) = \\lceil \\tau / \\omega_p \\rceil$ : Nombre de fenêtres traversées pendant $\\tau$. Pour $\\tau = 12\\text{s} \\ll 3600\\text{s}$, $n = 1$.
+- $\\sum E_i$ : Somme des montants mis sous séquestre pour les marchands complices.
+
 **Corollaire :** Pour un coffre institutionnel doté de $10\\,000\\text{ USDT}$, avec un budget par feuille de $50\\text{ USDT}$ et une limite de vélocité de $10\\text{ USDT / heure}$, un pirate s'emparant de la clé de l'agent **ne pourra en aucun cas dérober plus de $10\\text{ USDT}$** avant le gel complet, préservant ainsi **$9\\,990\\text{ USDT}$ (99,9 %)** des capitaux.
 
 ---
@@ -759,26 +789,44 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 ## 3. PÉNÉTRATION RED-TEAM ET MATRICE DE RENFORCEMENT
 
 Cinq vecteurs d'attaque critiques ont été rigoureusement testés et verrouillés dans le noyau :
-1. **Attaque par Double Réclamation d'Escrow :** Empêchée par le règlement monotone irréversible ($P_i \\le \\min(C, R)$).
-2. **Détournement de Compte ATA :** Empêché par la dérivation canonique stricte de l'Associated Token Account du commerçant.
-3. **Contournement de Gel d'Urgence :** Éliminé par l'invalidation d'époque instantanée ($I_6$).
-4. **Drainage Vampirique des Lamports de Loyer :** Loyer restitué intégralement au coffre d'origine (`grant_pot`).
-5. **Attaque Sybil par Micro-Boucles :** Verrouillée par la consommation du budget du modèle parent.
+
+```
++---------------------------------------------------------------------------------------------------+
+|                                 HAICHAIN MATRICE DE RENFORCEMENT EN 5 POINTS                       |
++---+----------------------------+----------------------------------+-------------------------------+
+| # | Vecteur d'Attaque          | Mécanisme de Vulnérabilité       | Invariant On-Chain Renforcé   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 1 | Double Réclamation Escrow  | Soumission de multiples reçus    | Règlement Monotone Non-Réversible: |
+|   |                            | pour dépasser la réserve         | P_i <= min(C_i, R_i)          |
++---+----------------------------+----------------------------------+-------------------------------+
+| 2 | Détournement Compte ATA    | Redirection du compte receveur   | Liaison Stricte ATA Canonique |
+|   |                            | vers un tiers non approuvé       | Validation rigide sur Solana L1|
++---+----------------------------+----------------------------------+-------------------------------+
+| 3 | Contournement Gel Panic    | Les anciens canaux réclament     | Isolation d'Époque Instantanée|
+|   |                            | après activation du Panic Freeze | Invalidation immédiate ($I_6$) |
++---+----------------------------+----------------------------------+-------------------------------+
+| 4 | Drainage Lamport Loyer     | Vol des lamports lors de la      | Restitution Canonique du Loyer|
+|   |                            | fermeture d'un canal             | Retour automatique à grant_pot|
++---+----------------------------+----------------------------------+-------------------------------+
+| 5 | Attaque Sybil Micro-Boucle | Création de 1 000 sous-feuilles  | Brûlage du Budget Modèle      |
+|   |                            | pour drainer des micro-réserves  | activate_child déduit du père |
++---+----------------------------+----------------------------------+-------------------------------+
+```
 
 ---
 
 ## 4. RAPPORT D'AUDIT DES 9 INVARIANTS MATHÉMATIQUES ($I_1 \\dots I_9$)
 
 Toutes les instructions de `programs/haichain-core/src/lib.rs` respectent scrupuleusement les 9 invariants mathématiques :
-- **$I_1$ (Conservation du Capital) :** Solde ATA + Escrows + Paiements + Remboursements $\\equiv$ Dépôts Nets.
-- **$I_2$ (Sécurité du Bénéficiaire Canonique) :** Adresse ATA rigoureusement vérifiée sur Solana L1.
-- **$I_3$ (Plafond Budgétaire Inviolable) :** Consommation toujours inférieure ou égale au budget alloué.
-- **$I_4$ (Limitation de Vélocité Autonome) :** Dépenses strictement plafonnées par fenêtre glissante.
-- **$I_5$ (Rétrécissement Monotone PDA) :** Les sous-instances ne peuvent jamais élargir leurs droits.
-- **$I_6$ (Isolation d'Époque et Gel Immédiat) :** Désactivation instantanée de tous les bons en circulation.
-- **$I_7$ (Expiration de Session Heartbeat) :** Arrêt des réservations dès expiration du délai.
-- **$I_8$ (Règlement Unique et Monotone) :** Aucune possibilité de double dépense.
-- **$I_9$ (Isolation de Compte Anti-Sybil) :** Relation 1:1 stricte entre feuille et compte PDA.
+1. **$I_1$ (Conservation du Capital) :** Solde ATA + Escrows + Paiements + Remboursements $\\equiv$ Dépôts Nets.
+2. **$I_2$ (Sécurité du Bénéficiaire Canonique) :** Adresse ATA rigoureusement vérifiée sur Solana L1.
+3. **$I_3$ (Plafond Budgétaire Inviolable) :** Consommation toujours inférieure ou égale au budget alloué.
+4. **$I_4$ (Limitation de Vélocité Autonome) :** Dépenses strictement plafonnées par fenêtre glissante.
+5. **$I_5$ (Rétrécissement Monotone PDA) :** Les sous-instances ne peuvent jamais élargir leurs droits.
+6. **$I_6$ (Isolation d'Époque et Gel Immédiat) :** Désactivation instantanée de tous les bons en circulation.
+7. **$I_7$ (Expiration de Session Heartbeat) :** Arrêt des réservations dès expiration du délai.
+8. **$I_8$ (Règlement Unique et Monotone) :** Aucune possibilité de double dépense.
+9. **$I_9$ (Isolation de Compte Anti-Sybil) :** Relation 1:1 stricte entre feuille et compte PDA.
 
 ---
 
@@ -809,13 +857,19 @@ Documents d'audit disponibles :
 """
 }
 
-# 6. ES
+# 6. ES - Spanish
 DOCS['es'] = {
     'title': 'HAICHAIN: Informe de Diligencia Debida de Riesgos Institucionales',
     'subtitle': 'Demostraciones Matemáticas, Modelado de Amenazas y Matriz de Verificación Red-Team para Asignadores Tier-1',
     'edition': 'Informe de Diligencia Debida de Riesgos v1.1 • Estándar de Defensa Criptográfica',
     'tag': 'HAICHAIN EVALUACIÓN DE RIESGOS INSTITUCIONALES Y DEFENSA CRIPTOGRÁFICA',
     'footer': 'CONFIDENCIAL E INSTITUCIONAL • GRUPO DE TRABAJO GLOBAL DE RIESGO HAICHAIN',
+    'meta_audience_lbl': 'Audiencia Objetivo',
+    'meta_audience_val': 'Fondos Tier-1 y Firmas Auditoras',
+    'meta_sec_lbl': 'Seguridad Criptográfica',
+    'meta_sec_val': 'Passkey de Hardware • 9 Invariantes',
+    'meta_kern_lbl': 'Núcleo del Protocolo',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 Bytes',
     'md': """# INFORME DE DILIGENCIA DEBIDA DE RIESGOS INSTITUCIONALES DE HAICHAIN
 ## Demostraciones Matemáticas, Modelado de Amenazas y Matriz de Verificación Red-Team
 **Audiencia Objetivo:** Firmas de Capital de Riesgo Tier-1 (a16z crypto, Paradigm, Sequoia), Custodios Institucionales y Firmas Auditoras de Primer Nivel (OtterSec, Neodyme, Kudelski Security)  
@@ -855,10 +909,7 @@ Para neutralizar esta amenaza sin sacrificar la ejecución en milisegundos, **HA
 
 Sea $\\tau$ la latencia de respuesta total del protocolo desde que se inicia una transacción no autorizada hasta que la orden de congelamiento de emergencia (Panic Freeze) se confirma en cadena:
 $$\\tau = t_{\\text{detect}} + t_{\\text{owner}} + t_{\\text{land}}$$
-donde:
-- $t_{\\text{detect}} \\le 5.0\\text{s}$ (umbral de detección de anomalías por telemetría)
-- $t_{\\text{owner}} \\le 2.0\\text{s}$ (autorización biométrica de un toque con Passkey)
-- $t_{\\text{land}} \\le 5.0\\text{s}$ (inclusión de transacción de alta prioridad en Solana)
+donde $t_{\\text{detect}} \\le 5.0\\text{s}$, $t_{\\text{owner}} \\le 2.0\\text{s}$, $t_{\\text{land}} \\le 5.0\\text{s}$.
 
 En el escenario extremo de compromiso total de la clave Ed25519 del agente y colusión con un comercio validado en el árbol Merkle, el robo máximo acumulado $E_{\\text{theft}}(\\tau)$ está acotado por:
 
@@ -871,18 +922,44 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 ## 3. MATRIZ DE AUDITORÍA Y ENDURECIMIENTO RED-TEAM
 
 Cinco vectores de ataque críticos han sido probados y mitigados en el núcleo:
-1. **Doble Reclamación de Escrow:** Bloqueada mediante liquidación monótona irreversible.
-2. **Secuestro de Cuentas ATA:** Imposibilitado por la derivación canónica estricta del Associated Token Account.
-3. **Evasión de Congelamiento de Emergencia:** Eliminada mediante invalidación por época ($I_6$).
-4. **Drenaje de Lamports de Alquiler:** Reembolso obligatorio y automático al fondo de origen (`grant_pot`).
-5. **Ataque Sybil de Micro-Bucles:** Bloqueado por el consumo estricto del presupuesto plantilla padre.
+
+```
++---------------------------------------------------------------------------------------------------+
+|                                 HAICHAIN MATRIZ DE PROTECCIÓN EN 5 PUNTOS                         |
++---+----------------------------+----------------------------------+-------------------------------+
+| # | Vector de Ataque           | Mecanismo de Vulnerabilidad      | Invariante Endurecido On-Chain|
++---+----------------------------+----------------------------------+-------------------------------+
+| 1 | Doble Reclamación Escrow   | Presentación de múltiples vales  | Liquidación Monótona Inreversible: |
+|   |                            | acumulativos                     | P_i <= min(C_i, R_i)          |
++---+----------------------------+----------------------------------+-------------------------------+
+| 2 | Secuestro de Cuenta ATA    | Redirección de cuenta destino    | Derivación Canónica Estricta  |
+|   |                            | a un tercero malicioso           | Validación invariable en L1   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 3 | Evasión de Panic Freeze    | Canales antiguos intentan liquidar| Aislamiento de Época Instantáneo|
+|   |                            | tras la activación de emergencia | Invalidación inmediata ($I_6$) |
++---+----------------------------+----------------------------------+-------------------------------+
+| 4 | Drenaje Lamport Alquiler   | Robo de lamports de alquiler al  | Reembolso Canónico de Alquiler|
+|   |                            | cerrar un canal                  | Retorno forzoso a grant_pot   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 5 | Ataque Sybil Micro-Bucles  | Creación de 1.000 sub-hojas      | Consumo de Presupuesto Padre  |
+|   |                            | para extraer micro-reservas      | activate_child descuenta techo|
++---+----------------------------+----------------------------------+-------------------------------+
+```
 
 ---
 
 ## 4. INFORME DE AUDITORÍA DE LOS 9 INVARIANTES MATEMÁTICOS ($I_1 \\dots I_9$)
 
 Todas las instrucciones en `programs/haichain-core/src/lib.rs` satisfacen los 9 invariantes matemáticos:
-- $I_1$ (Conservación de Capital), $I_2$ (Seguridad de Destinatario Canónico), $I_3$ (Tope Presupuestario), $I_4$ (Límite de Velocidad Autónomo), $I_5$ (Estrechamiento Monótono PDA), $I_6$ (Aislamiento de Época Panic), $I_7$ (Expiración de Sesión Heartbeat), $I_8$ (Liquidación Monótona Única), $I_9$ (Aislamiento de Cuenta Anti-Sybil).
+1. **$I_1$ (Conservación de Capital):** Billetera ATA + Escrow + Liquidado + Reembolsos $\\equiv$ Depósitos Netos.
+2. **$I_2$ (Seguridad de Destinatario Canónico):** Cuenta ATA derivada estrictamente del SPL Token.
+3. **$I_3$ (Tope Presupuestario Inviolable):** Gasto real siempre inferior o igual al presupuesto total.
+4. **$I_4$ (Límite de Velocidad Autónomo):** Tasa de gasto acotada por ventana temporal deslizante.
+5. **$I_5$ (Estrechamiento Monótono PDA):** Las sub-instancias no pueden expandir privilegios.
+6. **$I_6$ (Aislamiento de Época Panic):** Invalidación inmediata de todos los vales en circulación.
+7. **$I_7$ (Expiración de Sesión Heartbeat):** Cese automático de reservas al caducar la sesión.
+8. **$I_8$ (Liquidación Monótona Única):** Imposibilidad matemática de doble gasto en canales.
+9. **$I_9$ (Aislamiento de Cuenta Anti-Sybil):** Relación 1:1 estricta entre hoja y cuenta PDA on-chain.
 
 ---
 
@@ -900,13 +977,19 @@ HAICHAIN v1.1 establece la primera infraestructura de pago formalmente demostrad
 """
 }
 
-# 7. RU
+# 7. RU - Russian
 DOCS['ru'] = {
     'title': 'HAICHAIN: Отчет об Институциональном Дью-Дилидженсе Рисков',
     'subtitle': 'Математические Доказательства, Моделирование Угроз и Матрица Верификации Red-Team для Инвесторов Tier-1',
     'edition': 'Отчет о Рисках Институционального Уровня v1.1 • Стандарт Криптографической Защиты',
     'tag': 'HAICHAIN ИНСТИТУЦИОНАЛЬНЫЙ АУДИТ БЕЗОПАСНОСТИ И ОЦЕНКА РИСКОВ',
     'footer': 'КОНФИДЕНЦИАЛЬНО И ДЛЯ ИНСТИТУЦИОНАЛОВ • ГЛОБАЛЬНАЯ ГРУППА ПО РИСКАМ HAICHAIN',
+    'meta_audience_lbl': 'Целевая Аудитория',
+    'meta_audience_val': 'Фонды Tier-1 и Аудиторские Компании',
+    'meta_sec_lbl': 'Криптографическая Защита',
+    'meta_sec_val': 'Аппаратный Passkey • 9 Инвариантов',
+    'meta_kern_lbl': 'Ядро Протокола',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 Байта',
     'md': """# ОТЧЕТ ОБ ИНСТИТУЦИОНАЛЬНОМ ДЬЮ-ДИЛИДЖЕНСЕ РИСКОВ HAICHAIN
 ## Математические Доказательства, Моделирование Угроз и Матрица Верификации Red-Team
 **Целевая аудитория:** Венчурные фонды Tier-1 (a16z crypto, Paradigm, Sequoia), институциональные кастодианы и ведущие аудиторские компании (OtterSec, Neodyme, Kudelski Security)  
@@ -958,18 +1041,43 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 ## 3. МАТРИЦА АППАРАТНОГО УКРЕПЛЕНИЯ RED-TEAM
 
-5 критических векторов атак устранены на уровне протокольного ядра:
-1. Защита от повторного списания эскроу-канала.
-2. Строгая каноническая привязка Associated Token Account мерчанта.
-3. Полная недействительность ваучеров при смене эпохи паники ($I_6$).
-4. Обязательный возврат Lamports аренды в основной пул.
-5. Жесткое сжигание бюджета шаблона при создании дочерних листьев.
+```
++---------------------------------------------------------------------------------------------------+
+|                                 HAICHAIN МАТРИЦА БЕЗОПАСНОСТИ ИЗ 5 ПУНКТОВ                         |
++---+----------------------------+----------------------------------+-------------------------------+
+| № | Вектор Атаки               | Механизм Уязвимости              | Аппаратный Ончейн Инвариант   |
++---+----------------------------+----------------------------------+-------------------------------+
+| 1 | Двойное Списание Эскроу    | Отправка нескольких накопительных| Монотонный Необратимый Расчет: |
+|   |                            | ваучеров на сумму выше лимита    | P_i <= min(C_i, R_i)          |
++---+----------------------------+----------------------------------+-------------------------------+
+| 2 | Перехват Аккаунта ATA      | Подмена адреса получателя токенов| Жесткая Каноническая Привязка |
+|   |                            | на посторонний адрес             | Валидация ассоциированного ATA|
++---+----------------------------+----------------------------------+-------------------------------+
+| 3 | Обход Panic Freeze         | Попытка закрыть канал после      | Мгновенная Изоляция Эпохи ($I_6)|
+|   |                            | активации экстренной заморозки   | Все старые ваучеры недействительны|
++---+----------------------------+----------------------------------+-------------------------------+
+| 4 | Вампирский Слив Аренды     | Хищение Lamports аренды при      | Возврат Аренды Создателю      |
+|   |                            | закрытии канала                  | Автоматический возврат в пул  |
++---+----------------------------+----------------------------------+-------------------------------+
+| 5 | Sybil-Атака Микро-Циклов   | Создание 1 000 дочерних листьев  | Сжигание Лимита Шаблона       |
+|   |                            | для распыления баланса           | Списание из родительского пула|
++---+----------------------------+----------------------------------+-------------------------------+
+```
 
 ---
 
 ## 4. ОТЧЕТ ОБ АУДИТЕ 9 МАТЕМАТИЧЕСКИХ ИНВАРИАНТОВ ($I_1 \\dots I_9$)
 
-Все инструкции в `programs/haichain-core/src/lib.rs` строго соблюдают инварианты $I_1$ (сохранение капитала), $I_2$ (безопасность получателя), $I_3$ (потолок бюджета), $I_4$ (ограничение скорости), $I_5$ (сужение прав PDA), $I_6$ (изоляция эпохи паники), $I_7$ (таймаут сессии), $I_8$ (однократный расчет), $I_9$ (изоляция аккаунтов).
+Все инструкции в `programs/haichain-core/src/lib.rs` строго соблюдают инварианты:
+1. **$I_1$ (Сохранение Капитала):** Баланс ATA + Эскроу + Выплачено + Возвраты $\\equiv$ Чистые Депозиты.
+2. **$I_2$ (Безопасность Получателя):** Аккаунт ATA строго равен ассоциированному токен-аккаунту мерчанта.
+3. **$I_3$ (Потолок Бюджета):** Фактические расходы строго меньше или равны выделенному бюджету.
+4. **$I_4$ (Автономный Скоростной Лимит):** Расход в рамках скользящего окна строго ограничен.
+5. **$I_5$ (Монотонное Сужение Прав PDA):** Дочерние инстансы не могут расширять права родителя.
+6. **$I_6$ (Изоляция Эпохи Panic Freeze):** Немедленная аннуляция всех обращающихся ваучеров.
+7. **$I_7$ (Истечение Сессии Heartbeat):** Запрет новых резервов после окончания таймаута.
+8. **$I_8$ (Однократный Расчет):** Исключение любых повторных списаний.
+9. **$I_9$ (Изоляция Аккаунтов Sybil):** Каждая способность привязана ровно к одному ончейн PDA.
 
 ---
 
@@ -987,13 +1095,19 @@ HAICHAIN v1.1 представляет собой первый в мире ма�
 """
 }
 
-# 8. KK
+# 8. KK - Kazakh
 DOCS['kk'] = {
     'title': 'HAICHAIN: Институционалдық Тәуекелдерді Бағалау Есебі',
     'subtitle': 'Tier-1 Қорлары мен Аудиторлық Компанияларға Арналған Математикалық Дәлелдеулер мен Red-Team Тексеру Матрицасы',
     'edition': 'Институционалдық Тәуекелдерді Бағалау Есебі v1.1 • Криптографиялық Қорғаныс Стандарты',
     'tag': 'HAICHAIN ИНСТИТУЦИОНАЛДЫҚ ТӘУЕКЕЛДЕР МЕН ҚАУІПСІЗДІКТІ БАҒАЛАУ ЕСЕБІ',
     'footer': 'ҚҰПИЯ ЖӘНЕ ИНСТИТУЦИОНАЛДЫҚ • HAICHAIN ЖАҺАНДЫҚ ТӘУЕКЕЛДЕР БОЙЫНША ТОБЫ',
+    'meta_audience_lbl': 'Мақсатты Аудитория',
+    'meta_audience_val': 'Tier-1 Қорлары мен Аудит Фирмалары',
+    'meta_sec_lbl': 'Криптографиялық Қауіпсіздік',
+    'meta_sec_val': 'Аппараттық Passkey • 9 Инвариант',
+    'meta_kern_lbl': 'Хаттама Ядросы',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 Байт',
     'md': """# HAICHAIN ИНСТИТУЦИОНАЛДЫҚ ТӘУЕКЕЛДЕРДІ БАҒАЛАУ ЖӘНЕ СЕНІМДІЛІК ЕСЕБІ
 ## Математикалық Дәлелдеулер, Қауіптерді Модельдеу және Red-Team Тексеру Матрицасы
 **Мақсатты аудитория:** Tier-1 Венчурлық қорлары (a16z crypto, Paradigm, Sequoia), Институционалдық кастодиандар және жетекші аудит фирмалары (OtterSec, Neodyme, Kudelski Security)  
@@ -1026,13 +1140,23 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 ---
 
-## 3. ЯДРОНЫ КҮШЕЙТУ ЖӘНЕ 9 ИНВАРИАНТ
+## 3. ЯДРОНЫ КҮШЕЙТУ ЖӘНЕ 5 ҚАУІПСІЗДІК ТЕТІГІ
+
+1. **Эскроуды Қос Қайтара Алудан Қорғау:** $P_i \\le \\min(C_i, R_i)$ шарты бойынша қайтарымсыз төлем.
+2. **ATA Шоттарын Басып Алуға Жол Бермеу:** SPL Associated Token Address-ті қатаң канондық байлау.
+3. **Panic Freeze-ді Айналып Өтуді Болдырмау:** Эпоханы жедел оқшаулау ($I_6$).
+4. **Жалдау Lamports-тарын Қайтару:** Қаражат автоматты түрде бастапқы қазынаға қайтарылады.
+5. **Sybil Микро-Циклдерін Шектеу:** Ата-аналық үлгі шегінен артық шығындалуға жол берілмейді.
+
+---
+
+## 4. 9 МАТЕМАТИКАЛЫҚ ИНВАРИАНТ ($I_1 \\dots I_9$)
 
 Барлық он-чейн нұсқаулықтар 9 математикалық инвариантты ($I_1$ капитал сақталуы, $I_2$ қабылдаушы қауіпсіздігі, $I_3$ бюджет төбесі, $I_4$ автономды жылдамдық, $I_5$ PDA құқықтарының тарылуы, $I_6$ шұғыл эпоха оқшаулануы, $I_7$ сессия мерзімі, $I_8$ қайталанбайтын есеп айырысу, $I_9$ Sybil оқшаулануы) толық сақтайды.
 
 ---
 
-## 4. ТОКЕНОМИКА ЖӘНЕ ЗАҢДЫ СӘЙКЕСТІК
+## 5. ТОКЕНОМИКА ЖӘНЕ ЗАҢДЫ СӘЙКЕСТІК
 
 - **Таза Утилитарлық Стандарт:** Пассивті табыс пен дивидендтерден ада (Howey және MiCA сынақтарынан толық қорғалған).
 - **50% Buyback & Burn:** Желілік комиссиялардың 50%-ы $HAISI токендерін нарықтан сатып алып, мәңгілікке жоюға жұмсалады.
@@ -1040,13 +1164,19 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 """
 }
 
-# 9. HI
+# 9. HI - Hindi
 DOCS['hi'] = {
     'title': 'HAICHAIN: संस्थागत जोखिम देय परिश्रम और सुरक्षा ऑडिट रिपोर्ट',
     'subtitle': 'टियर-1 उद्यम पूंजीपतियों और शीर्ष ऑडिट फर्मों के लिए गणितीय प्रमाण और रेड-टीम सत्यापन मैट्रिक्स',
     'edition': 'संस्थागत जोखिम देय परिश्रम रिपोर्ट v1.1 • क्रिप्टोग्राफिक रक्षा मानक',
     'tag': 'HAICHAIN संस्थागत जोखिम मूल्यांकन और क्रिप्टोग्राफिक रक्षा रिपोर्ट',
     'footer': 'गोपनीय और संस्थागत • HAICHAIN वैश्विक जोखिम कार्यबल',
+    'meta_audience_lbl': 'लक्षित दर्शक',
+    'meta_audience_val': 'टियर-1 उद्यम पूंजी और ऑडिट फर्म',
+    'meta_sec_lbl': 'क्रिप्टोग्राफिक सुरक्षा',
+    'meta_sec_val': 'हार्डवेयर पासकी • 9 अपरिवर्तनीय नियम',
+    'meta_kern_lbl': 'प्रोटोकॉल कर्नेल',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 बाइट्स',
     'md': """# HAICHAIN संस्थागत जोखिम देय परिश्रम और सुरक्षा ऑडिट रिपोर्ट
 ## गणितीय प्रमाण, खतरा मॉडलिंग और रेड-टीम सुरक्षा सत्यापन मैट्रिक्स
 **लक्ष्य दर्शक:** टियर-1 वेंचर कैपिटलिस्ट (a16z crypto, Paradigm, Sequoia), संस्थागत कस्टोडियन और शीर्ष ऑडिट फर्म (OtterSec, Neodyme, Kudelski Security)  
@@ -1079,22 +1209,39 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 ---
 
-## 3. 9 गणितीय अपरिवर्तनीय नियम और टोकनॉमिक्स
+## 3. 5-सूत्रीय रेड-टीम सुदृढ़ीकरण और 9 अपरिवर्तनीय नियम
 
-- 9 गणितीय अपरिवर्तनीय नियम ($I_1 \\dots I_9$) पूंजी संरक्षण और सुरक्षा की गारंटी देते हैं।
+1. **एस्क्रो दोहरा दावा रोकथाम:** $P_i \\le \\min(C_i, R_i)$ के तहत अपरिवर्तनीय निपटान।
+2. **कैनोनिकल ATA खाता सुरक्षा:** तीसरे पक्ष के खातों में रीडायरेक्शन पर पूर्ण रोक।
+3. **पैनिक फ्रीज अलगाव ($I_6$):** आपातकालीन फ्रीज के बाद पुराने वाउचर तुरंत अमान्य।
+4. **किराया लैम्पॉर्ट्स वापसी:** सभी अप्रयुक्त लैम्पॉर्ट्स मूल फंड में वापस।
+5. **सिबिल बजट सीमा:** पैरेंट टेम्पलेट सीमा से अधिक निकासी संभव नहीं।
+
+9 गणितीय नियम ($I_1 \\dots I_9$) पूंजी संरक्षण और सुरक्षा की गारंटी देते हैं।
+
+---
+
+## 4. टोकनॉमिक्स और नियामक अनुपालन
+
 - **शुद्ध उपयोगिता मानक:** कोई निष्क्रिय लाभांश या स्टेकिंग प्रतिफल नहीं (हाउवे और MiCA प्रतिरक्षा)।
 - **50% बायबैक और बर्न:** प्रोटोकॉल शुल्क का 50% खुले बाजार से $HAISI खरीदने और नष्ट करने के लिए उपयोग किया जाता है।
 - **50% प्रोटोकॉल रिजर्व फंड (CHGB):** नेटवर्क स्थिरता और सुरक्षा के लिए।
 """
 }
 
-# 10. HE
+# 10. HE - Hebrew
 DOCS['he'] = {
     'title': 'HAICHAIN: דוח בדיקת נאותות סיכונים מוסדיים',
     'subtitle': 'הוכחות מתמטיות, מידול איומים ומטריצת אימות רד-טים עבור קרנות Tier-1 וחברות ביקורת',
     'edition': 'דוח בדיקת נאותות סיכונים מוסדיים v1.1 • תקן הגנה קריפטוגרפי',
     'tag': 'HAICHAIN דוח הערכת סיכונים מוסדיים והגנה קריפטוגרפית',
     'footer': 'סודי ומוסדי • צוות המשימה הגלובלי לסיכונים של HAICHAIN',
+    'meta_audience_lbl': 'קהל יעד',
+    'meta_audience_val': 'קרנות מובילות וחברות ביקורת',
+    'meta_sec_lbl': 'אבטחה קריפטוגרפית',
+    'meta_sec_val': 'מפתח חומרה Passkey • 9 אינווריאנטים',
+    'meta_kern_lbl': 'ליבת הפרוטוקול',
+    'meta_kern_val': 'HAICHAIN v1.1 • CapLeaf 223 בייטים',
     'md': """# דוח בדיקת נאותות סיכונים מוסדיים ואבטחת קריפטוגרפיה של HAICHAIN
 ## הוכחות מתמטיות, מידול איומים ומטריצת אימות רד-טים
 **קהל יעד:** קרנות הון סיכון מובילות (a16z crypto, Paradigm, Sequoia), גופי משמורת מוסדיים וחברות ביקורת מובילות (OtterSec, Neodyme, Kudelski Security)  
@@ -1127,9 +1274,20 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 
 ---
 
-## 3. אינווריאנטים מתמטיים וטוקנומיקה
+## 3. מטריצת הקשחה ו-9 אינווריאנטים
 
-- **9 אינווריאנטים מתמטיים ($I_1 \\dots I_9$)** נאכפים ללא פשרות.
+1. **מניעת תביעה כפולה באסקרו:** פדיון חד-כיווני בלתי הפיך $P_i \\le \\min(C_i, R_i)$.
+2. **הגנת חשבון ATA קנוני:** מניעת ניתוב כספים לחשבונות זרים.
+3. **בידוד הקפאת פאניקה ($I_6$):** ביטול מיידי של כל השוברים בתפוצה.
+4. **השבת דמי שכירות (Lamports):** החזרה מלאה לקופה המקורית.
+5. **בלימת מתקפות Sybil:** צריכה קשיחה של תקרת תקציב האב.
+
+כל ההוראות ב-`programs/haichain-core/src/lib.rs` מצייתות ל-9 אינווריאנטים מתמטיים ($I_1 \\dots I_9$).
+
+---
+
+## 4. טוקנומיקה ותאימות רגולטורית
+
 - **תקן שירות טהור ללא דיבידנדים:** חסינות מלאה מפני מבחן Howey ורגולציית MiCA האירופית.
 - **50% רכישה חוזרת ושריפה (Buyback & Burn):** 50% מדמי הרשת מופנים לרכישת $HAISI ושריפתו לצמיתות.
 - **50% קרן רזרבה אוטונומית (CHGB):** תמיכה ביציבות ורשתות חיסול מרובות.
@@ -1232,36 +1390,48 @@ body {{
   box-sizing: border-box;
   background: #09090b;
   color: #ffffff;
-  padding: 40mm 24mm 30mm 24mm;
+  padding: 38mm 24mm 28mm 24mm;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }}
 
+/* Redesigned Cover Header: Logo on top, Title/Tagline positioned harmoniously and balanced DIRECTLY UNDER the logo */
 .cover-header {{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20mm;
+}}
+
+.cover-brand-block {{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
 }}
 
 .cover-logo {{
-  height: 38px;
+  height: 36px;
   width: auto;
+  display: block;
 }}
 
 .cover-tag {{
   font-family: 'JetBrains Mono', monospace;
-  font-size: 7pt;
+  font-size: 7.5pt;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   color: #a1a1aa;
   text-transform: uppercase;
+  line-height: 1.6;
+  max-width: 580px;
 }}
 
 .cover-hero {{
   margin-top: auto;
   margin-bottom: auto;
-  padding: 20mm 0;
+  padding: 16mm 0;
 }}
 
 .cover-badge {{
@@ -1271,11 +1441,11 @@ body {{
   font-family: 'JetBrains Mono', monospace;
   font-size: 7.5pt;
   font-weight: 600;
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: 4px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }}
 
 .cover-title {{
@@ -1297,7 +1467,7 @@ body {{
 }}
 
 .cover-footer {{
-  padding-top: 16mm;
+  padding-top: 14mm;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   justify-content: space-between;
@@ -1469,8 +1639,10 @@ li {{
 <!-- Cover Page -->
 <div class="cover-page">
   <div class="cover-header">
-    <img src="{logo_uri}" class="cover-logo" alt="HAICHAIN" />
-    <span class="cover-tag">{info['tag']}</span>
+    <div class="cover-brand-block">
+      <img src="{logo_uri}" class="cover-logo" alt="HAICHAIN" />
+      <div class="cover-tag">{info['tag']}</div>
+    </div>
   </div>
   
   <div class="cover-hero">
@@ -1481,16 +1653,16 @@ li {{
   
   <div class="cover-footer">
     <div class="cover-meta-col">
-      <span class="cover-meta-lbl">Target Audience</span>
-      <span class="cover-meta-val">Tier-1 Venture Allocators &amp; Audit Firms</span>
+      <span class="cover-meta-lbl">{info['meta_audience_lbl']}</span>
+      <span class="cover-meta-val">{info['meta_audience_val']}</span>
     </div>
     <div class="cover-meta-col">
-      <span class="cover-meta-lbl">Cryptographic Security</span>
-      <span class="cover-meta-val">Hardware Passkey • 9 Invariants Bound</span>
+      <span class="cover-meta-lbl">{info['meta_sec_lbl']}</span>
+      <span class="cover-meta-val">{info['meta_sec_val']}</span>
     </div>
     <div class="cover-meta-col">
-      <span class="cover-meta-lbl">Protocol Kernel</span>
-      <span class="cover-meta-val">HAICHAIN v1.1 • CapLeaf 223 Bytes</span>
+      <span class="cover-meta-lbl">{info['meta_kern_lbl']}</span>
+      <span class="cover-meta-val">{info['meta_kern_val']}</span>
     </div>
   </div>
 </div>
@@ -1522,7 +1694,6 @@ li {{
     if os.path.exists(pdf_path):
         size = os.path.getsize(pdf_path)
         print(f"[✓] Compiled {pdf_filename}: {size:,} bytes")
-        # Copy to app directory
         app_pdf = os.path.join(WORKSPACE_DIR, "app", pdf_filename)
         shutil.copy2(pdf_path, app_pdf)
         print(f"[✓] Copied to app/{pdf_filename}")
@@ -1532,7 +1703,7 @@ li {{
         return False
 
 if __name__ == "__main__":
-    print("[*] Starting compilation of 10 Institutional Risk Reports...")
+    print("[*] Starting recompilation of 10 Institutional Risk Reports with balanced logo/tagline layout...")
     langs = ['en', 'vi', 'zh', 'ko', 'fr', 'es', 'ru', 'kk', 'hi', 'he']
     success = []
     for l in langs:
