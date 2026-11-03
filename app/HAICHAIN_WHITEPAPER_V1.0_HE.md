@@ -213,19 +213,13 @@ $$
 2. **סופיות תת-שנייתית (Sub-Second Finality):** שיהוי סליקה בזמן אמת התואם את מחזורי ההסקה הפנימיים של מודלי שפה (< 400ms), המונע הרעבת תהליכים במשימות אסינכרוניות.
 3. **חסינות מוחלטת מניצול וממהירות (Exploit & Velocity Immunity):** בידוד קריפטוגרפי המבטיח כי סוכן שנחטף באמצעות הזרקת הנחיות עקיפה (Indirect Prompt Injection) אינו יכול לחרוג מתקרת התקציב המאושרת מראש או לרוקן את עתודות המשתמש.
 
-```
-+----------------------------------------------------------------------------------------------------+
-|                         CROSS-PARADIGM INFRASTRUCTURE COMPARISON MATRIX                            |
-+----------------------------------------------------------------------------------------------------+
-|  METRIC                 WEB2 RAILS (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  HAICHAIN PROTOCOL     |
-+----------------------------------------------------------------------------------------------------+
-|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (Netting)   |
-|  Settlement Latency     2 - 5 Business Days       2,000 - 15,000ms           < 400ms Wire Finality |
-|  Prompt-Injection Risk  Complete Card Drain       Drain of Master EOA        Mathematically 0 (PDA)|
-|  Onboarding Friction    KYC, Bank Forms, 3 Days   12-Word Seed Phrase, Gas   Passkey FaceID (60s)  |
-|  Reversibility / Panic  Chargeback (60-90 Days)   Irreversible On-Chain Loss 1-Tap Panic (< 400ms) |
-+----------------------------------------------------------------------------------------------------+
-```
+| Métrica de Evaluación | Rieles Tradicionales Web2 (Stripe / Visa) | Cadenas EVM L1/L2 (Base / Arbitrum) | Protocolo de Liquidación HAICHAIN (v1.1) |
+| :--- | :--- | :--- | :--- |
+| **Tarifa Mínima Práctica** | Tarifa base fija de $0.30 por transacción | Picos de Gas volátiles de $0.02 a $0.50 | $0.000001 (Compensación Neta 1,000:1) |
+| **Latencia de Liquidación** | 2 a 5 días hábiles bancarios | 2,000 a 15,000ms de espera por congestión | < 400ms en el cable (Límite teórico τ ≤ 12s on-chain) |
+| **Riesgo de Inyección de Prompt** | Drenaje total de la tarjeta de crédito corporativa | Fuga de clave privada EOA vacía la billetera maestra | Matemáticamente 0 (Bóvedas PDA segregadas) |
+| **Fricción de Entrada (Onboarding)** | Formularios KYC bancarios lentos, espera de 3 días | Frases semilla de 12 palabras, gestión de Gas | Passkey biométrico FaceID (< 60s sin fricción) |
+| **Reversibilidad / Pánico** | Disputas de contracargo (Chargeback 60-90 días) | Pérdida irreparable e irreversible en la cadena | Pánico en 1 toque (< 400ms congelación y retiro a frío) |
 
 ### 3.1. כלכלת הפוסט-SaaS: שחרור תועלת המיקרו ממלכודת המנויים לפי משתמש
 כדי להעריך את היתכנות החלפתם של מודלים עסקיים מסורתיים של תוכנה, המסגרת הכלכלית של HAICHAIN מבחינה בין שתי קטגוריות תוכנה ארגונית:
@@ -236,20 +230,14 @@ $$
    * **ביטול התלות בממשקי משתמש חזותיים (Headless AI):** סוכני משנה אוטונומיים מתקשרים ממכונה למכונה באמצעות API ופרוטוקול Model Context Protocol (MCP). מכונות אינן מתחברות לממשקי דפדפן גרפיים כדי להביט בלוחות בקרה, וכלי תוכנה הגובים פרמיות על ממשקי UI מאבדים את כוח התמחור שלהם.
    * **עייפות מנויים ובזבוז הון:** נתוני טלמטריה ארגוניים מגלים כי **51% מרישיונות התוכנה שנרכשו אינם בשימוש**, ואנשי מקצוע מוותרים חודשית על למעלה מ-**85% ממכסת החישוב המוקצית להם** על פני 5 עד 10 מנויים שונים של $20-$30 (ChatGPT, Claude, Perplexity, Cursor, Midjourney). מעל 88% מההוצאה החודשית על תוכנה מהווה הפסד הון שאינו מוחזר.
 
-```
-+----------------------------------------------------------------------------------------------------+
-|                LEGACY PER-SEAT SUBSCRIPTION TRAP VS. HAICHAIN PAY-PER-VALUE UTILITY                |
-+----------------------------------------------------------------------------------------------------+
-|  ECONOMIC DIMENSION   LEGACY PER-SEAT SAAS (WEB2)          HAICHAIN UTILITY PROTOCOL (v6.9.3)      |
-+----------------------------------------------------------------------------------------------------+
-| Billing Philosophy   Pay-to-Access (Forced Fixed Month)   Pay-per-Execution (Fractional Nano-cents)|
-|  Unused Quota         100% Forfeited at Month-End          100% Retained in User Custody           |
-|  Billing Unit         Arbitrary Human Seat ($20 - $50/mo)  Actual Consumed Compute ($0.0002/tick)  |
-|  Interactivity Mode   Human Clicking Visual Web UI         Headless Agent-to-Agent Autonomous API  |
-|  Financial Security   Full Corporate Card Stored in SaaS   Isolated PDA Spending Pot ($5.00 Cap)   |
-|  Effective Monthly Exp$150.00 - $300.00 / seat / month     $3.40 / month (97.7% Real Reduction)    |
-+----------------------------------------------------------------------------------------------------+
-```
+| Dimensión Económica | SaaS Tradicional por Asiento (Trampa Web2) | Protocolo de Utilidad HAICHAIN (v1.1) |
+| :--- | :--- | :--- |
+| **Filosofía de Cobro** | Pago por acceso (Cuota mensual fija forzada) | Pago por ejecución real (Micropagos de nanocéntimos) |
+| **Cuota no Consumida** | Se pierde 100% al fin de mes (Costo hundido) | Se preserva 100% en la bóveda PDA bajo control del usuario |
+| **Unidad de Tarificación** | Asiento humano arbitrario ($20 - $50/persona/mes) | Cómputo real y tokens consumidos ($0.0002/llamada API) |
+| **Modo de Interacción** | Empleados haciendo clic manual en la interfaz Web | Enjambres de agentes autónomos llamando vía HTTP x402 |
+| **Seguridad Financiera** | Tarjeta de crédito corporativa expuesta en SaaS | Bóveda PDA aislada con límite estricto ($5.00 por tarea) |
+| **Gasto Mensual Efectivo** | $150.00 - $300.00 por empleado al mes | $3.40 al mes (97.7% de ahorro real mediante BYOK) |
 
 * **התפקיד האסטרטגי של HAICHAIN:** HAICHAIN אינה בונה כלי תוכנה צרכניים בעצמה. תחת זאת, HAICHAIN מספקת את **המסילות הקריפטוגרפיות האוניברסליות (האתים)** המאפשרות למפתחים (הכורים) לייצר מונטיזציה של יכולות AI אוטונומיות לפי מיקרו-ביצוע. משתמשים פותחים "קופת הוצאות" ריבונית עם $5.00 או $10.00; סוכנים מושכים שברירי סנטים אך ורק עם השלמת העבודה. ההוצאה החודשית הממוצעת צונחת מ-**$150.00 ל-$3.40**, ומשחררת ארגונים מכבלי המנויים.
 
@@ -279,45 +267,15 @@ client = openai.OpenAI(
 ### 3.2. ביקורת אמפירית של מתחרים: נקודות עיוורון קריטיות בארכיטקטורות קיימות
 כדי להמחיש מדוע התשתית הקיימת כושלת באופן יסודי בתמיכה בכלכלת מכונות אוטונומית, כוח המשימה למערכות של HAICHAIN ביצע ביקורת ארכיטקטונית ופורנזית מקיפה על פני שש פרדיגמות מתחרות מובילות:
 
-```
-+-------------------------------------------------------------------------------------------------------------------+
-|                        EMPIRICAL ARCHITECTURAL MATRIX: INCUMBENT FAILURES VS. HAICHAIN SI                         |
-+-------------------------------------------------------------------------------------------------------------------+
-| PLATFORM / PARADIGM   CRITICAL ARCHITECTURAL BLIND SPOT                HAICHAIN SI RESOLUTION                     |
-+-------------------------------------------------------------------------------------------------------------------+
-| Coinbase AgentKit &   Raw EOA Private Key Exposure; Indirect prompt   Merkle Capability Leaves (4-tuple bound);   |
-| ElizaOS (ai16z)       injection causes catastrophic wallet drain;     Segregated PDA Vaults; Hardware Panic       |
-|                       Zero on-chain velocity bounds; No kill switch.  Kill-Switch sweeping 100% funds in < 400ms. |
-|                                                                                                                   |
-| Bittensor (TAO)       12,000ms Block Latency (incapable of real-time  50ms Fast-Path BFT Netting; Real utility    |
-|                       micro-settlement); Yuma Consensus collusion &   streaming USDT; Proof of Actual Intelligence|
-|                       copycat mining; Closed-loop Model Autophagy      (PoAI) ingesting unpoisoned human ground   |
-|                       Disorder (MAD) due to zero human grounding.     truth via quadratic Schelling staking.      |
-|                                                                                                                   |
-| ASI Alliance          Cosmos/EVM Smart Contract CPI overhead; Multi-  Native OP_402_PAY opcode compiled into VM   |
-| (Fetch.ai / SingNet)  second BFT latency; Lack of native wire micro-  bytecode (> 100,000 TPS, zero CPI overhead);|
-|                       opcodes; Decoupled from human legal identity.   Unified Soulbound DIDs anchoring machines   |
-|                                                                       to human biometric Passkeys (EU AI Act).    |
-|                                                                                                                   |
-| Virtuals Protocol     Single-threaded EVM write-lock contention on    Sealevel 32-partitioned ingestion ATAs;     |
-| (Base Layer 2)        Base; Volatile Ethereum L1 blob fees ($0.01-    Off-chain symmetric netting yielding 99.999%|
-|                      $0.50); Speculative meme bonding curves         compression (771-byte datagram); Real utility|
-|                       rather than enterprise micro-utility rails.     micro-billing settling in stable USDT.      |
-|                                                                                                                   |
-| Legacy Web2 Rails    $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 netting floor);|
-| (Stripe / Visa)       overhead on $0.0002 API calls); T+2 to T+5 day  Sub-400ms cryptographic wire finality;      |
-|                       settlement lag; High chargeback fraud risk.     Zero chargeback risk via PDA escrow.        |
-|                                                                                                                   |
-| Worldcoin             Single-purpose iris biometrics (The Orb) for    Open biometric standards (WebAuthn/ZK-PoH)  |
-| (Tools for Humanity)  passive UBI token distribution; Zero machine    integrated directly into the economic loop  |
-|                       execution runtime; Zero capability bounding;    (Reverse Micro-Tasking), turning human minds|
-|                       Zero AI cognitive coprocessor integration.      into an active, compensated ASI coprocessor.|
-|                                                                                                                   |
-| HTTP x402 & Pay.sh    צינורות תעבורה ופרוקסי גולמיים; מגבלת נציג בודד  שכבת מדיניות וכספות ניתנת לתכנות; עץ מרקל  |
-| (Coinbase / Linux Fdn/ב-SPL; היעדר תקרות הוצאה בלקוח (ביקורת V12);  יכולות Merkle מרובה-נציגים; קופות PDA מבודדות;|
-| Solana x Google Cloud)ללא מפסקי זרם בשרשרת וללא מנגנון חילוט לספקים.   מפסק פאניקה < 400ms; משפט ההפסד החסום.     |
-+-------------------------------------------------------------------------------------------------------------------+
-```
+| Plataforma / Modelo | Punto Ciego Arquitectónico Crítico | Avance Tecnológico de HAICHAIN SI |
+| :--- | :--- | :--- |
+| **Coinbase AgentKit y ElizaOS (ai16z)** | Exposición de claves privadas EOA; Inyecciones de prompt vacían la billetera principal; Sin límites de velocidad on-chain ni interruptor de parada. | Árboles de capacidad Merkle (CapLeaf de 4 tuplas); Bóvedas de gasto PDA aisladas; Interruptor de pánico (< 400ms, límite $\tau \le 12\text{s}$). |
+| **Bittensor (TAO)** | Latencia de bloque de 12 segundos (inviable para micropagos en tiempo real); Consenso Yuma vulnerable a colusión; Trastorno de autofagia (MAD). | Bloques de compensación BFT de 50ms; Flujo de caja real en USDT/USDC; Prueba de Inteligencia Real (PoAI) que inyecta verdad humana directa. |
+| **ASI Alliance (Fetch.ai / SingNet)** | Costos exorbitantes de llamadas CPI en Cosmos/EVM; Latencia BFT de varios segundos; Sin códigos de operación para micropagos nativos. | Código de operación nativo OP_402_PAY en bytecode de VM (> 100,000 TPS, 0 CPI); DID Soulbound vinculado a Passkey FaceID biométrico. |
+| **Virtuals Protocol (Base Layer 2)** | Cuello de botella monohilo en EVM sobre Base; Tarifas blob de Ethereum L1 volátiles ($0.01 - $0.50); Especulación de memecoins en lugar de infraestructura. | Procesamiento paralelo Sealevel con 32 hilos ATA; Compensación simétrica con 99.999% de compresión (paquete 771B); Liquidación en USDT estable. |
+| **Stripe / Tempo MPP y Rieles Web2** | Tarifa fija de $0.30 + 2.9% (150,000% sobre llamadas API de $0.0002); Retraso de 2 a 5 días; Riesgo de contracargos fraudulentos. | Micropagos puros ($0.000001 neto); Finalidad criptográfica sub-segundo (< 400ms); Eliminación total de contracargos mediante Escrow on-chain. |
+| **Worldcoin (Tools for Humanity)** | Escáner de iris propietario (The Orb) para repartir tokens UBI pasivos; Sin entorno de ejecución para agentes; Sin límites de capacidad. | Estándares biométricos abiertos (WebAuthn/ZK-PoH) integrados en el ciclo económico (Reverse Task), remunerando la inteligencia humana como coprocesador de IA. |
+| **HTTP x402 y Pay.sh (Solana x Google Cloud)** | Protocolo simple de encabezados HTTP/proxy; Límite de 1 delegado en Solana; Sin límites de gasto en clientes tempranos (CVEs V12). | Capa de Gobernanza y Bóveda Segura complementaria; Capacidad Merkle multidelegada; Disyuntor de emergencia en < 400ms; Teorema de Pérdida Acotada. |
 
 #### ניתוחי מקרי כשל אמפיריים מפורטים:
 
@@ -353,18 +311,9 @@ $$
 
 HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמא" (The Mom-Test Axiom)**: *משתמש שאינו בעל רקע טכנולוגי חייב להיות מסוגל להצטרף למערכת, לממן אותה ולהפעיל נחיל של סוכני בינה מלאכותית אוטונומיים בתוך 60 שניות, מבלי להיתקל באף מונח קריפטוגרפי יחיד (`PDA`, `Lamports`, `Borsh`, `Sysvar`, `Private Key`).*
 
-```
-   +---------------------------------------------------------------------------------+
-   |                       INVISIBLE WEB3 ONBOARDING TOPOLOGY                        |
-   +---------------------------------------------------------------------------------+
-   |                                                                                 |
-   |   [ 1. BIOMETRIC PASSKEY ] ───► [ 2. UNIVERSAL ON-RAMP ] ───► [ 3. SAFE POT ]   |
-   |  - Apple FaceID / TouchID     - Apple Pay / Google Pay     - Isolated $10.00    |
-   |  - WebAuthn Secure Enclave    - Instant QR / SEPA / Card   - Anti-Drain PDA     |
-   |  - Zero Seed Phrases          - Zero Crypto Exchange KYC   - Circuit Breaker    |
-   |                                                                                 |
-   +---------------------------------------------------------------------------------+
-```
+| Paso 1: Passkey Biométrico Seguro | Paso 2: Depósito Global Multicanal (Sandbox Demo) | Paso 3: Bóveda Segura Aislada (Safe Pot PDA) |
+| :--- | :--- | :--- |
+| **Protección a Nivel de Chip Físico**<br>• Apple FaceID / TouchID / TPM 2.0<br>• Enclave seguro WebAuthn certificado<br>• Cero frases semilla y cero fugas de claves | **Pasarela de Fondos Global en 1 Clic**<br>• Apple Pay / Google Pay / Tarjetas<br>• Integración VASP regulada en curso<br>• Conversión 1:1 a USDT colateralizado | **Bóveda con Límite de Pérdida Estricto**<br>• Subcuenta PDA de gasto micro aislada ($10.00)<br>• Disyuntor automático ante anomalías<br>• Retiro de pánico del 100% a billetera fría |
 
 ### 4.1. מובלעת אבטחה ביומטרית באמצעות Passkey (WebAuthn / FIDO2)
 זהות הריבון העליונה של המשתמש מעוגנת בחומרת המכשיר שלו (Secure Enclave ב-iOS/macOS, Titan M2 ב-Android, TPM 2.0 ב-Windows):
@@ -446,35 +395,14 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
 
 ליבת החוזים החכמים (`haichain-core v6.9.3`) מיישמת ארכיטקטורת **הגנה לעומק דטרמיניסטית רב-שכבתית (Deterministic Multi-Layer Defense-in-Depth)**, האוכפת 6 אינווריאנטים מתמטיים בזמן ריצה כדי לנטרל מחלקות פגיעות עבר בהיקף של למעלה מ-821 מיליון דולר. בשילוב ביקורות אבטחה חיצוניות בלתי תלויות קבועות, המערכת מבטלת לחלוטין כשלי היגיון בחוזים:
 
-```
-+----------------------------------------------------------------------------------------------------+
-|               HAICHAIN v6.9.3 SIX INVARIANTS EXPLOIT DEFENSE MATRIX                                |
-+----------------------------------------------------------------------------------------------------+
-| 1. INSTRUCTION SYSVAR INTROSPECTION (CVE-2022-24300 PREVENTION):                                   |
-|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstructions1111111111111111111111111              |
-|   - דחיית כתובות sysvar מזויפות המועברות דרך חשבונות הקשר שרירותיים.                               |
-|                                                                                                    |
-| 2. NON-ZERO MERKLE ROOT & UNINITIALIZED PDA DEFENSE:                                               |
-|   - Non-Zero Root Invariant: require!(composite_root != [0u8; 32])                                 |
-|   - מניעת פגיעויות המאפשרות ביצוע עסקאות כנגד שורשי מרקל לא מאותחלים.                              |
-|                                                                                                    |
-| 3. ELIZAOS PROMPT INJECTION DEFENSE:                                                               |
-|   - 4-Tuple Bound Capability Leaf: Hash(Pubkey || MaxSpend || Expiry || Nonce)                     |
-|   - איסור מוחלט על סוכנים מורעלים להפנות כספים לארנקי תוקפים.                                      |
-|                                                                                                    |
-| 4. LIVE SPL ATA BALANCE INTROSPECTION & ANTI-DRIFT GUARD:                                          |
-|   - Strict ATA Balance Reload: require!(actual_ata_balance >= spend_amount)                        |
-|   - מניעת סטיות הנהלת חשבונות פנימיות ושגיאות שערי חליפין מבוססות תרומות.                          |
-|                                                                                                    |
-| 5. MULTI-SLOT FLASH-LOAN LIQUIDITY QUARANTINE:                                                     |
-|   - Multi-Slot Quarantine: require!(slot >= last_deposit_slot + 2)                                 |
-|   - מניעת מניפולציות הפקדה-ומיד-ריקון של הלוואות בזק (Flash Loan) באותו בלוק.                      |
-|                                                                                                    |
-| 6. TETHER USDT FREEZE DEFENSE:                                                                     |
-|   - Segregated Vault ATAs: Each user vault maintains an isolated SPL ATA.                          |
-|   - אפס הדבקה צולבת אם ארנקי צדדים שלישיים עומדים בפני הקפאה רגולטורית.                            |
-+----------------------------------------------------------------------------------------------------+
-```
+| Invariante / Capa Defensiva | Vector de Ataque y Vulnerabilidad Histórica | Mecanismo Criptográfico de HAICHAIN |
+| :--- | :--- | :--- |
+| **1. Introspección Sysvar Nativa** | Falsificación de cuentas de contexto Sysvar (CVE-2022-24300) | Clave pública de Sysvar Instructions codificada: `Sysvar1nstructions1111111111111111111111111`. |
+| **2. Raíz Merkle No Nula y Bóvedas PDA** | Ejecución ilegítima aprovechando raíces Merkle en cero | Afirmación forzada al invocar: `require!(composite_root != [0u8; 32])`. |
+| **3. Inmunidad a Inyecciones de Prompt** | Agentes envenenados transfiriendo fondos a billeteras de atacantes | Hojas Merkle de 4 tuplas (`Pubkey \|\| MaxSpend \|\| Expiry \|\| Nonce`) que restringen el monto por tarea. |
+| **4. Saldo en Vivo de Cuentas ATA** | Desviación de contabilidad interna o manipulación por donación | Recarga estricta del saldo real en la cadena: `require!(actual_ata_balance >= spend_amount)`. |
+| **5. Cuarentena de Liquidez Flash-Loan** | Préstamos rápidos para inflar depósitos y drenar en el mismo bloque | Bloqueo temporal multiranura: `require!(slot >= last_deposit_slot + 2)`. |
+| **6. Cuentas Segregadas de Tether USDT** | Congelaciones regulatorias de terceros causan contagio | Cada usuario posee un ATA SPL independiente, eliminando el riesgo de propagación cruzada. |
 
 ### 5.1. מקביליות Sealevel וחשבונות ATA מונעי-התנגשות
 כדי למנוע תחרות על משאבי מצב תחת עומסי כתיבה בתדר גבוה:

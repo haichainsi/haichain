@@ -32,6 +32,7 @@ export interface UsdtDepositSessionRequest {
     amountUsdt: number;
     sourceNetwork?: SupportedCrossChainNetwork;
     preferredRail?: SupportedPaymentRail;
+    agentVaultOwner?: string;
 }
 export interface UsdtDepositSessionResponse {
     sessionId: string;
@@ -49,8 +50,8 @@ export declare class HaiChainClient {
     constructor(connection: Connection, programId?: PublicKey, usdtMint?: PublicKey);
     createUsdtDepositSession(request: UsdtDepositSessionRequest): Promise<UsdtDepositSessionResponse>;
     /**
-     * Handles HTTP x402 Payment Challenge with strict destination whitelist verification
-     * and dynamically derived Payer Vault PDA.
+     * Handles HTTP x402 Payment Challenge with strict destination whitelist verification,
+     * authentic Ed25519 detached cryptographic signature, and dynamically derived Payer Vault PDA.
      */
     handleX402Challenge(headers: X402PaymentRequestHeaders, agentPrivateKey: Uint8Array, whitelistedProviders: PublicKey[], vaultOwner?: PublicKey): Promise<X402PaymentAuthorizationHeaders>;
     /**
@@ -254,3 +255,7 @@ export interface EnterpriseConsolidatedInvoice {
 export declare class EnterpriseRollupInvoiceGenerator {
     static generateMonthlyInvoice(transactions: MicroTransactionRecord[], organizationName: string, billingPeriod: string, vatTaxPct?: number): EnterpriseConsolidatedInvoice;
 }
+export * from "./capleaf";
+export * from "./tron-solver";
+export * from "./policy-engine";
+export * from "./x402-client";

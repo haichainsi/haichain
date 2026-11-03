@@ -1,7 +1,7 @@
 {
   "name": "@haichainsi/sdk",
-  "version": "6.2.1",
-  "description": "HAICHAIN: Mass-Consumer & Frontier AI Autonomous Agent Client SDK",
+  "version": "1.1.0",
+  "description": "HAICHAIN: Mass-Consumer & Frontier AI Autonomous Agent Client SDK (CapLeaf & 9 Invariants Edition)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "Apache-2.0",
@@ -19,9 +19,11 @@
     "mcp",
     "autonomous-agents",
     "escrow",
-    "streaming-payments"
+    "streaming-payments",
+    "capleaf",
+    "invariants"
   ],
-  "author": "HAICHAIN Foundation <haichain.si@gmail.com>",
+  "author": "HAICHAIN Technical Architecture Collective <contact@haichain.si>",
   "files": [
     "dist",
     "README.md"

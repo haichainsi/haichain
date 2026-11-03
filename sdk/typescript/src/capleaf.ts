@@ -156,7 +156,7 @@ export class CapLeafV1Engine {
    * Computes an internal Merkle node hash:
    * node(l, r) = SHA256( 0x01 || left || right )
    */
-  public static computeMerkleNode(left: Buffer, right: Buffer): Buffer {
+  public static computeMerkleNode(left: Uint8Array, right: Uint8Array): Buffer {
     if (left.length !== 32 || right.length !== 32) {
       throw new Error("Both left and right node hashes must be exactly 32 bytes");
     }
@@ -188,7 +188,7 @@ export class CapLeafV1Engine {
     leafIndex: number,
     expectedRoot: Buffer
   ): boolean {
-    let currentHash = Buffer.from(leafHash);
+    let currentHash: Uint8Array = leafHash;
     let index = leafIndex;
 
     for (let i = 0; i < proof.length; i++) {
@@ -203,7 +203,7 @@ export class CapLeafV1Engine {
       index = index >> 1;
     }
 
-    return currentHash.equals(expectedRoot);
+    return Buffer.from(currentHash).equals(expectedRoot);
   }
 
   /**

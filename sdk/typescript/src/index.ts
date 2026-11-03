@@ -1,5 +1,5 @@
 // sdk/typescript/src/index.ts
-// HAICHAIN v7.0.0: Universal Autonomous Machine Financial Operating System Client SDK
+// HAICHAIN v1.1.0 (CapLeaf & Invariants Edition): Universal Autonomous Machine Financial Operating System Client SDK
 // Supports all 5 Core Market Solutions:
 // 1. SLA Staked Provider Bonds & Probabilistic Auditing (Anti-Garbage Data Engine)
 // 2. Hybrid Web2 & DePIN Router (io.net, Aethir, Grass Anti-Deplatforming Fallback)
@@ -69,6 +69,7 @@ export interface UsdtDepositSessionRequest {
   amountUsdt: number;
   sourceNetwork?: SupportedCrossChainNetwork;
   preferredRail?: SupportedPaymentRail;
+  agentVaultOwner?: string;
 }
 
 export interface UsdtDepositSessionResponse {
@@ -100,11 +101,21 @@ export class HaiChainClient {
     request: UsdtDepositSessionRequest
   ): Promise<UsdtDepositSessionResponse> {
     const sessionId = `hcusdt_${Date.now()}_${Math.random().toString(36).substring(7)}`;
-    const checkoutUrlFiat = `https://pay.haichain.io/checkout/${sessionId}?rail=${request.preferredRail || "apple_pay"}&amt=${request.amountUsdt}&token=USDT`;
+    const checkoutUrlFiat = `https://pay.haichain.si/checkout/${sessionId}?rail=${request.preferredRail || "apple_pay"}&amt=${request.amountUsdt}&token=USDT`;
+
+    // Derive canonical Associated Token Account for agent vault PDA
+    let depositAddress = "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB";
+    try {
+      if (request.agentVaultOwner) {
+        const ownerPk = new PublicKey(request.agentVaultOwner);
+        const [vaultPda] = this.getAgentVaultPda(ownerPk);
+        depositAddress = getAssociatedTokenAddressSync(this.usdtMint, vaultPda, true).toBase58();
+      }
+    } catch (_) {}
 
     return {
       sessionId,
-      depositAddressSolanaSpl: "HaiUsdt11111111111111111111111111111111111",
+      depositAddressSolanaSpl: depositAddress,
       crossChainDepositAddressTron: "TX...deBridgeBridgeUSDT",
       checkoutUrlFiat,
       amountUsdtExpected: request.amountUsdt,
@@ -114,8 +125,8 @@ export class HaiChainClient {
   }
 
   /**
-   * Handles HTTP x402 Payment Challenge with strict destination whitelist verification
-   * and dynamically derived Payer Vault PDA.
+   * Handles HTTP x402 Payment Challenge with strict destination whitelist verification,
+   * authentic Ed25519 detached cryptographic signature, and dynamically derived Payer Vault PDA.
    */
   public async handleX402Challenge(
     headers: X402PaymentRequestHeaders,
@@ -130,7 +141,13 @@ export class HaiChainClient {
       throw new Error("SECURITY ALERT: Destination provider is not whitelisted. ElizaOS Memory Poisoning blocked!");
     }
 
-    const authSignature = `x402_sig_${Buffer.from(agentPrivateKey.slice(0, 16)).toString("hex")}_${headers["X-402-Nonce"]}`;
+    // Produce legitimate Ed25519 detached signature over canonical x402 challenge bytes
+    const challengeMessage = Buffer.from(
+      `haichain-x402-v1:${headers["X-402-PayTo"]}:${headers["X-402-Amount"]}:${headers["X-402-Nonce"]}`,
+      "utf-8"
+    );
+    const signatureBytes = nacl.sign.detached(challengeMessage, agentPrivateKey);
+    const authSignature = `ed25519_${Buffer.from(signatureBytes).toString("base64")}`;
 
     // Derive canonical Agent Vault PDA from vaultOwner, or fallback to Keypair public key
     let payerVaultStr: string;
