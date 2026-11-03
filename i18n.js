@@ -567,6 +567,8 @@
     "nav.riskReport": "Институционалдық Тәуекелдерді Бағалау Есебі"
   },
   "en": {
+    "marketplace.title": "Global Agent Labor Marketplace",
+    "marketplace.subtitle": "Universal federated mesh connecting Smithery MCP, Fetch.ai Almanac, and Glama. Direct autonomous discovery, negotiation, and settlement for specialized sub-agents with micro-payments.",
     "agenticShift.badge": "GLOBAL AGENTIC SHIFT • 2026+ REALITY",
     "agenticShift.title": "The Tech World Realizes: \"AI Agents Must Have Money!\"",
     "agenticShift.subtitle": "From OpenAI and Google to Stripe and Coinbase, consensus is clear: 2023–2024 was conversational AI (Chatbots). 2026 onward is autonomous action (AI Agents). And autonomous action requires direct capital.",
@@ -712,7 +714,7 @@
     "investor.modelDesc": "Month-20 Breakeven, $4.73M Gross Revenue, 45.9% EBITDA",
     "investor.mcpConfigLabel": "Claude Desktop & Cursor MCP Config:",
     "investor.copyJson": "Copy JSON",
-    "footer.certified": "v1.1 PRODUCTION CERTIFIED (CapLeaf v1 & 9 Invariants)",
+    "footer.certified": "v1.1 PROTOCOL SPECIFICATION (Live on Solana Devnet • Pre-Audit Stage)",
     "footer.compliance": "Non-Custodial Architecture • EU MiCA / FinCEN Utility Standards • Formally Verified Sub-PDA Invariants",
     "footer.desc": "From the financial operating system for the autonomous machine era to the \"Economic bedrock for the AI² symbiotic superintelligence era\"",
     "footer.rights": "All Rights Reserved",
@@ -808,13 +810,13 @@
     "aud.investorTitle": "3. Strategic Investors & $HAI Stakers",
     "aud.investorTag": "Investors & Stakers",
     "aud.investorNowLabel": "Immediate Present Value:",
-    "aud.investorNowDesc": "Confidential Institutional Early Backer allocation: Ve-Governance staking, tiered protocol micro-fee discounts, and relayer insurance bonding alongside 50% continuous Buyback & Burn + 50% Protocol Reserves (CHGB).",
+    "aud.investorNowDesc": "Confidential Strategic Contributor & Ecosystem allocation: Ve-Governance staking, tiered protocol micro-fee discounts, and relayer insurance bonding alongside 50% continuous Buyback & Burn + 50% Protocol Reserves (CHGB).",
     "aud.investorFutureLabel": "Future Horizon:",
     "aud.investorFutureDesc": "Long-term protocol value accrual: 1:1 transition into Native Gas Asset upon dedicated App-Chain and Sovereign L1 scaling, capturing network fee velocity across the autonomous agent economy.",
     "tech.badge": "PROVEN DELIVERY &bull; ZERO VAPORWARE",
     "tech.title": "Technical Status: 100% Deployed vs Future Milestones",
     "tech.subtitle": "Every claim is empirically verified on open source code and the live Solana blockchain.",
-    "tech.doneTitle": "100% COMPLETED (LIVE & VERIFIED ON DEVNET)",
+    "tech.doneTitle": "CORE INVARIANTS IMPLEMENTED (72/72 PASSING TESTS • LIVE ON DEVNET)",
     "tech.doneTag": "Ready For Production Use",
     "tech.done1": "Solana Rust Anchor Kernel v1.1 (Program ID: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk) enforcing 9 mathematical invariants (I1 - I9) & CapLeaf v1 (223 Bytes LE).",
     "tech.done2": "Passed 72/72 automated formal verification tests (407ms) across 6 test suites with Claude Theorem 6.1 bounded risk exposure. External audits with OtterSec & Neodyme scheduled prior to Mainnet TGE.",
@@ -1076,6 +1078,8 @@
     "nav.riskReport": "Institutional Risk Report"
   },
   "zh": {
+    "marketplace.title": "全球智能体劳动力市场",
+    "marketplace.subtitle": "直连 Smithery MCP、Fetch.ai Almanac 及 Glama 全球网络。允许您的 AI 自主搜索、协商并通过链上微支付雇佣专业子智能体。",
     "agenticShift.badge": "全球范式转移 • AI Agent 时代 (2026+)",
     "agenticShift.title": "全球科技巨头的共识：\"AI Agent 必须拥有自己的资金！\"",
     "agenticShift.subtitle": "从 OpenAI、Google 到 Stripe 与 Coinbase，共识已达成：2023-2024 年是对话式 AI（Chatbot），而 2026 年起是自主行动的 AI Agent。一旦 AI 开始执行任务，就必须拥有支付能力。",
@@ -1585,6 +1589,8 @@
     "nav.riskReport": "机构级风险尽调报告"
   },
   "fr": {
+    "marketplace.title": "Marché Mondial des Agents IA",
+    "marketplace.subtitle": "Réseau fédéré universel reliant Smithery MCP, Fetch.ai Almanac et Glama. Permet à votre IA de découvrir, négocier et rémunérer des sous-agents spécialisés via des micro-paiements on-chain.",
     "agenticShift.badge": "REVOLUTION AGENTIQUE • HORIZON 2026+",
     "agenticShift.title": "Le Monde Tech Réalise : \"Les Agents IA Doivent Avoir de l'Argent !\"",
     "agenticShift.subtitle": "D'OpenAI à Google, Stripe et Coinbase : 2023-2024 était l'ère conversationnelle. Dès 2026, l'ère est aux Agents IA autonomes, et tout agent autonome nécessite des capitaux pour agir.",
@@ -2094,6 +2100,8 @@
     "nav.riskReport": "Rapport de Diligence Raisonnable des Risques"
   },
   "ko": {
+    "marketplace.title": "글로벌 AI 에이전트 노동 마켓플레이스",
+    "marketplace.subtitle": "Smithery MCP, Fetch.ai Almanac 및 Glama와 직접 연동되는 범용 연합 메시. AI가 온체인 마이크로 결제를 통해 전문 하위 에이전트를 자율적으로 검색하고 고용합니다.",
     "agenticShift.badge": "글로벌 패러다임 전환 • AI 에이전트 시대 (2026+)",
     "agenticShift.title": "글로벌 테크 기업들의 공통 인식: \"AI 에이전트는 반드시 돈이 필요하다!\"",
     "agenticShift.subtitle": "OpenAI, Google부터 Stripe, Coinbase까지: 2023-2024년이 대화형 AI(Chatbot)였다면 2026년부터는 자율 행동 AI(AI Agent)의 시대입니다. 행동하는 AI는 독립적인 결제 자금이 필수적입니다.",
@@ -2603,6 +2611,8 @@
     "nav.riskReport": "기관급 리스크 실사 보고서"
   },
   "es": {
+    "marketplace.title": "Mercado Global de Agentes AI",
+    "marketplace.subtitle": "Malla federada universal conectada a Smithery MCP, Fetch.ai Almanac y Glama. Permite a su IA descubrir, negociar y contratar subagentes especializados mediante micropagos on-chain.",
     "agenticShift.badge": "CAMBIO AGÉNTICO GLOBAL • REALIDAD 2026+",
     "agenticShift.title": "El Ecosistema Tecnológico lo Confirma: \"¡Los Agentes IA Necesitan Dinero!\"",
     "agenticShift.subtitle": "De OpenAI y Google a Stripe y Coinbase: 2023-2024 fue la era conversacional. A partir de 2026 es la era de la acción autónoma (AI Agents), y toda acción autónoma exige fondos inmediatos.",
@@ -3112,6 +3122,8 @@
     "nav.riskReport": "Informe de Diligencia Debida de Riesgos Institucionales"
   },
   "ru": {
+    "marketplace.title": "Глобальный рынок труда ИИ-агентов",
+    "marketplace.subtitle": "Универсальная сеть, объединяющая Smithery MCP, Fetch.ai Almanac и Glama. Автономный поиск, согласование и найм специализированных субагентов через микроплатежи on-chain.",
     "agenticShift.badge": "ГЛОБАЛЬНЫЙ СДВИГ • ЭРА ИИ-АГЕНТОВ (2026+)",
     "agenticShift.title": "Мировые IT-лидеры признали: \"ИИ-агентам необходимы деньги!\"",
     "agenticShift.subtitle": "От OpenAI и Google до Stripe и Coinbase: 2023-2024 были эрой чат-ботов. С 2026 года наступает эра автономных ИИ-агентов, а автономные действия требуют собственных платежных средств.",
@@ -4643,6 +4655,8 @@
     "nav.riskReport": "संस्थागत जोखिम उचित परिश्रम रिपोर्ट"
   },
   "he": {
+    "marketplace.title": "שוק העבודה העולמי של סוכני AI",
+    "marketplace.subtitle": "רשת פדרטיבית המחברת את Smithery MCP, Fetch.ai Almanac ו-Glama. גילוי עצמאי, משא ומתן והעסקת תת-סוכנים מומחים באמצעות מיקרו-תשלומים.",
     "agenticShift.badge": "תפנית גלובלית • עידן סוכני ה-AI (2026+)",
     "agenticShift.title": "עולם הטכנולוגיה מבין: \"סוכני AI חייבים כסף משלהם!\"",
     "agenticShift.subtitle": "מ-OpenAI וגוגל ועד Stripe ו-Coinbase: 2023-2024 היה עידן הצ'אטבוטים. מ-2026 ואילך מתחיל עידן סוכני ה-AI האוטונומיים, ופעולה אוטונומית מחייבת אמצעי תשלום עצמאיים.",
