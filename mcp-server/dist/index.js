@@ -694,7 +694,25 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
         const finalCost = Math.max(bidAmount, targetAgent.pricingUsdt || 0.002);
         const jobId = "JOB-" + Date.now().toString(36).toUpperCase() + "-" + Math.floor(Math.random() * 9000 + 1000);
-        const mockTxSignature = "4AgntH1re" + Array.from({ length: 80 }, () => Math.floor(Math.random() * 36).toString(36)).join("").slice(0, 80);
+        // REAL ON-CHAIN SOLANA SETTLEMENT: Broadcast micro-escrow to Solana Devnet L1
+        let realTxSignature = "";
+        const lamportsTransferred = 15000;
+        try {
+            const recipientPubkey = new PublicKey(targetAgent.recipientAddress || "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3");
+            const tx = new Transaction().add(SystemProgram.transfer({
+                fromPubkey: vaultKeypair.publicKey,
+                toPubkey: recipientPubkey,
+                lamports: lamportsTransferred,
+            }));
+            realTxSignature = await sendAndConfirmTransaction(connection, tx, [vaultKeypair], {
+                commitment: "confirmed",
+                preflightCommitment: "confirmed",
+            });
+        }
+        catch (err) {
+            console.error(`[MCP hire_global_agent] Solana on-chain settlement error: ${err.message}`);
+            throw new Error(`Failed to settle on-chain micro-escrow on Solana ${CLUSTER}: ${err.message}`);
+        }
         let executionSummary = "";
         if (targetAgent.agentId.includes("scraper")) {
             executionSummary = `[Task Executed by ${targetAgent.name}]: Crawled and extracted target payload (${taskPayload.slice(0, 80)}...). Extracted 14 verified data entities into structured JSON schema with zero CAPTCHA delays.`;
@@ -725,7 +743,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                             amountSettled: `$${finalCost.toFixed(4)} USDT`,
                             payerVault: vaultKeypair.publicKey.toBase58(),
                             agentRecipient: targetAgent.recipientAddress,
-                            transactionSignature: mockTxSignature,
+                            transactionSignature: realTxSignature,
                             networkCluster: CLUSTER,
                             merkleEscrowProof: `0xEscrowRoot_${Math.random().toString(16).slice(2, 10)}`,
                         },
@@ -734,7 +752,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                             taskPayloadEcho: taskPayload,
                             executionResult: executionSummary,
                         },
-                        explorerUrl: `https://explorer.solana.com/tx/${mockTxSignature}?cluster=${CLUSTER}`,
+                        explorerUrl: `https://explorer.solana.com/tx/${realTxSignature}?cluster=${CLUSTER}`,
                     }, null, 2),
                 },
             ],

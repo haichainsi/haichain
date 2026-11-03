@@ -19,12 +19,15 @@ export interface PaywallConfig {
   rpcUrl?: string;                    // Custom RPC URL
   serviceName?: string;               // Name of the monetized agent
   minLamports?: number;               // Minimum lamports required (defaults to 10,000)
+  maxAgeSeconds?: number;             // Maximum allowed transaction age in seconds (defaults to 300s = 5m)
 }
 
 export class HaichainPaywall {
   private config: PaywallConfig;
   private connection: Connection;
   private recipientPubkey: PublicKey;
+  // Nullifier store: tracks consumed transaction signatures to prevent Replay Attacks
+  private usedSignatures: Map<string, { usedAt: number; slot: number }>;
 
   constructor(config: PaywallConfig) {
     if (!config.recipient) {
@@ -34,6 +37,7 @@ export class HaichainPaywall {
       cluster: 'devnet',
       minLamports: 10000,
       serviceName: 'Autonomous AI Agent Service',
+      maxAgeSeconds: 300, // 5 minutes max freshness window
       ...config
     };
 
@@ -43,6 +47,7 @@ export class HaichainPaywall {
 
     this.connection = new Connection(rpc, 'confirmed');
     this.recipientPubkey = new PublicKey(this.config.recipient);
+    this.usedSignatures = new Map();
   }
 
   /**
@@ -95,6 +100,15 @@ export class HaichainPaywall {
       return { valid: false, reason: `Malformed Solana transaction signature: ${txSig.slice(0, 20)}... (Must be Base58 86-90 chars)` };
     }
 
+    // [OPENAI BILLING SAFETY] Replay Attack Prevention (Nullifier check)
+    if (this.usedSignatures.has(txSig)) {
+      const record = this.usedSignatures.get(txSig)!;
+      return {
+        valid: false,
+        reason: `Replay Attack Rejected: Transaction signature ${txSig} has ALREADY been consumed at ${new Date(record.usedAt).toISOString()} (Slot #${record.slot}). Each on-chain micro-payment is strictly single-use.`
+      };
+    }
+
     try {
       const tx = await this.connection.getTransaction(txSig, {
         maxSupportedTransactionVersion: 0,
@@ -107,6 +121,18 @@ export class HaichainPaywall {
 
       if (tx.meta && tx.meta.err) {
         return { valid: false, reason: `Transaction failed on-chain: ${JSON.stringify(tx.meta.err)}` };
+      }
+
+      // [GOOGLE SRE FRESHNESS CHECK] Max-Age Verification
+      if (tx.blockTime && this.config.maxAgeSeconds) {
+        const nowSec = Math.floor(Date.now() / 1000);
+        const ageSec = nowSec - tx.blockTime;
+        if (ageSec > this.config.maxAgeSeconds) {
+          return {
+            valid: false,
+            reason: `Stale Transaction Rejected: Transaction age is ${ageSec}s old (Maximum permitted freshness: ${this.config.maxAgeSeconds}s). Timestamps prevent pre-mined voucher recycling.`
+          };
+        }
       }
 
       // Verify recipient received funds
@@ -132,13 +158,20 @@ export class HaichainPaywall {
           };
         }
 
+        // Mark as consumed in Nullifier Store immediately
+        this.usedSignatures.set(txSig, {
+          usedAt: Date.now(),
+          slot: tx.slot
+        });
+
         return {
           valid: true,
           txDetails: {
             slot: tx.slot,
             fee: tx.meta.fee,
             lamportsReceived: delta,
-            recipient: this.recipientPubkey.toBase58()
+            recipient: this.recipientPubkey.toBase58(),
+            blockTime: tx.blockTime
           }
         };
       }

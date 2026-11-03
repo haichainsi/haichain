@@ -16,11 +16,13 @@ export interface PaywallConfig {
     rpcUrl?: string;
     serviceName?: string;
     minLamports?: number;
+    maxAgeSeconds?: number;
 }
 export declare class HaichainPaywall {
     private config;
     private connection;
     private recipientPubkey;
+    private usedSignatures;
     constructor(config: PaywallConfig);
     /**
      * Generates standard HTTP 402 Payment Challenge Response
