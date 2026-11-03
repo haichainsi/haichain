@@ -228,7 +228,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     # Document metadata and titles
     if lang == "en":
         doc_title = "HAICHAIN: The Economic Bedrock for the AI² Symbiotic Superintelligence Era"
-        doc_subtitle = "Empowering billions of AI Agents and Autonomous Robots to freely compute, transact, and coalesce with human real-world intelligence to co-create abundance—ensuring all generated wealth and sovereign ownership remain permanently with humanity. The financial operating system for the autonomous machine age today; the economic bedrock for the AI² symbiotic superintelligence era tomorrow."
+        doc_subtitle = "Empowering billions of AI Agents and Autonomous Robots to freely compute, transact, and coalesce with human real-world intelligence to co-create abundance-ensuring all generated wealth and sovereign ownership remain permanently with humanity. The financial operating system for the autonomous machine age today; the economic bedrock for the AI² symbiotic superintelligence era tomorrow."
         doc_edition = "Official Whitepaper v1.0 • Institutional Standard Edition"
         brand_sub_text = "Financial Operating System for the Autonomous Machine Age"
         running_header_left = "HAICHAIN: The Economic Bedrock for the AI² Era"
@@ -245,7 +245,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Formal Verification • Zero-Griefing Standard"
     elif lang == "zh":
         doc_title = "HAICHAIN: AI² 共生超级智能时代的基石经济网络"
-        doc_subtitle = "赋能数十亿 AI 智能体与自主机器人自由协作、结算并与人类现实智慧深度融合以共同创造财富——确保所有创造的财富与主权掌控权永远属于人类。今日自主机器时代的金融操作系统，明日 AI² 共生超级智能时代的基石经济网络。"
+        doc_subtitle = "赋能数十亿 AI 智能体与自主机器人自由协作、结算并与人类现实智慧深度融合以共同创造财富-确保所有创造的财富与主权掌控权永远属于人类。今日自主机器时代的金融操作系统，明日 AI² 共生超级智能时代的基石经济网络。"
         doc_edition = "官方技术白皮书 v1.0 • 国际机构标准版"
         brand_sub_text = "自主机器时代的金融操作系统"
         running_header_left = "HAICHAIN: AI² 共生超级智能时代的基石经济网络"
@@ -313,7 +313,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Vérification Mathématique • Norme Zero-Griefing"
     elif lang == "ru":
         doc_title = "HAICHAIN: Экономический фундамент для эпохи симбиотического сверхразума AI²"
-        doc_subtitle = "Предоставление миллиардам ИИ-агентов и автономных роботов возможности свободно вычислять, совершать транзакции и объединяться с реальным интеллектом человека для совместного создания богатства — гарантируя, что все созданные блага и суверенное владение навсегда остаются за человечеством. Финансовая операционная система для эпохи автономных машин сегодня; экономический фундамент для эпохи симбиотического сверхразума AI² завтра."
+        doc_subtitle = "Предоставление миллиардам ИИ-агентов и автономных роботов возможности свободно вычислять, совершать транзакции и объединяться с реальным интеллектом человека для совместного создания богатства - гарантируя, что все созданные блага и суверенное владение навсегда остаются за человечеством. Финансовая операционная система для эпохи автономных машин сегодня; экономический фундамент для эпохи симбиотического сверхразума AI² завтра."
         doc_edition = "Официальный White Paper v1.0 • Международное институциональное издание"
         brand_sub_text = "Финансовая операционная система для эпохи автономных машин"
         running_header_left = "HAICHAIN: Экономический фундамент для эпохи AI²"
@@ -330,7 +330,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Формальная математическая верификация • Стандарт Zero-Griefing"
     elif lang == "kk":
         doc_title = "HAICHAIN: AI² симбиотикалық асқан интеллект дәуіріне арналған экономикалық іргетас"
-        doc_subtitle = "Миллиардтаған AI агенттері мен автономды роботтарға еркін жұмыс істеуге, транзакциялар жасауға және адамның нақты интеллектімен бірігіп байлық жасауға мүмкіндік береді — барлық жасалған игілік пен егемендік мәңгілікке адамзатқа тиесілі болады. Бүгінгі автономды машиналар дәуіріне арналған қаржылық операциялық жүйе; ертеңгі AI² симбиотикалық асқан интеллект дәуірінің экономикалық іргетасы."
+        doc_subtitle = "Миллиардтаған AI агенттері мен автономды роботтарға еркін жұмыс істеуге, транзакциялар жасауға және адамның нақты интеллектімен бірігіп байлық жасауға мүмкіндік береді - барлық жасалған игілік пен егемендік мәңгілікке адамзатқа тиесілі болады. Бүгінгі автономды машиналар дәуіріне арналған қаржылық операциялық жүйе; ертеңгі AI² симбиотикалық асқан интеллект дәуірінің экономикалық іргетасы."
         doc_edition = "Ресми Ақ Қағаз v1.0 • Халықаралық институционалдық басылым"
         brand_sub_text = "Автономды машиналар дәуіріне арналған қаржылық операциялық жүйе"
         running_header_left = "HAICHAIN: AI² дәуіріне арналған экономикалық іргетас"
@@ -347,7 +347,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Математикалық формалды тексеру • Zero-Griefing стандарты"
     elif lang == "hi":
         doc_title = "HAICHAIN: AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार"
-        doc_subtitle = "अरबों एआई एजेंटों और स्वायत्त रोबोटों को स्वतंत्र रूप से कार्य करने, लेनदेन करने और वास्तविक मानव बुद्धि के साथ मिलकर समृद्धि का निर्माण करने में सक्षम बनाना—यह सुनिश्चित करते हुए कि सारा सृजित धन और संप्रभु स्वामित्व हमेशा मानवता के पास रहे। आज स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम; कल AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार।"
+        doc_subtitle = "अरबों एआई एजेंटों और स्वायत्त रोबोटों को स्वतंत्र रूप से कार्य करने, लेनदेन करने और वास्तविक मानव बुद्धि के साथ मिलकर समृद्धि का निर्माण करने में सक्षम बनाना-यह सुनिश्चित करते हुए कि सारा सृजित धन और संप्रभु स्वामित्व हमेशा मानवता के पास रहे। आज स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम; कल AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार।"
         doc_edition = "आधिकारिक श्वेतपत्र v1.0 • अंतर्राष्ट्रीय संस्थागत मानक संस्करण"
         brand_sub_text = "स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम"
         running_header_left = "HAICHAIN: AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार"
@@ -364,7 +364,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "गणितीय औपचारिक सत्यापन • जीरो-ग्रीफिंग मानक"
     elif lang == "he":
         doc_title = "HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²"
-        doc_subtitle = "הענקת כוח למיליארדי סוכני AI ורובוטים אוטונומיים לחשב, לסחור ולהתמזג בחופשיות עם הבינה האנושית בעולם האמיתי כדי לייצר שפע משותף — תוך הבטחה שכל העושר והבעלות הריבונית יישארו לנצח בידי האנושות. מערכת ההפעלה הפיננסית לעידן המכונות האוטונומיות כיום; התשתית הכלכלית לעידן בינת-העל הסימביוטית AI² מחר."
+        doc_subtitle = "הענקת כוח למיליארדי סוכני AI ורובוטים אוטונומיים לחשב, לסחור ולהתמזג בחופשיות עם הבינה האנושית בעולם האמיתי כדי לייצר שפע משותף - תוך הבטחה שכל העושר והבעלות הריבונית יישארו לנצח בידי האנושות. מערכת ההפעלה הפיננסית לעידן המכונות האוטונומיות כיום; התשתית הכלכלית לעידן בינת-העל הסימביוטית AI² מחר."
         doc_edition = "נייר עמדה רשמי v1.0 • מהדורה מוסדית בינלאומית"
         brand_sub_text = "מערכת הפעלה פיננסית לעידן המכונות האוטונומיות"
         running_header_left = "HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²"

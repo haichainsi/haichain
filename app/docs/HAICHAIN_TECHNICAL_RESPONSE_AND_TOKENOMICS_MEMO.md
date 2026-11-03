@@ -146,11 +146,11 @@ Every substantive critique raised has been critically examined. In response, the
 | **Private Pre-Seed (Core Angels)** | 25,000,000 | 2.50% | **$7,000,000** | $0.0070 USD | 20% at TGE, 2-mo cliff, 6-mo linear daily |
 | **Strategic Seed Investors** | 120,000,000 | 12.00% | **$8,500,000** | $0.0085 USD | 0% at TGE, 12-mo cliff, 18-mo linear daily |
 | **Public Community Launchpad (TGE)** | 100,000,000 | 10.00% | **$10,000,000** | $0.0100 USD | 100% unlock with 7-day Meteora DLMM anti-sniping |
-| **Ecosystem & Machine Netting Mining** | 350,000,000 | 35.00% | — | — | 48-month milestone-coupled emission |
-| **Core Engineering & Founding Team** | 180,000,000 | 18.00% | — | — | 0% at TGE, 12-mo cliff, 36-mo linear daily |
-| **Protocol Security Treasury & CHGB** | 125,000,000 | 12.50% | — | — | Multi-sig locked for audits, bug bounties & reserves |
-| **Initial DEX Liquidity (Raydium/Orca)** | 100,000,000 | 10.00% | — | — | 100% LP tokens permanently burned at launch |
-| **Total Supply** | **1,000,000,000** | **100.00%** | — | — | **Zero inflationary mint capabilities** |
+| **Ecosystem & Machine Netting Mining** | 350,000,000 | 35.00% | - | - | 48-month milestone-coupled emission |
+| **Core Engineering & Founding Team** | 180,000,000 | 18.00% | - | - | 0% at TGE, 12-mo cliff, 36-mo linear daily |
+| **Protocol Security Treasury & CHGB** | 125,000,000 | 12.50% | - | - | Multi-sig locked for audits, bug bounties & reserves |
+| **Initial DEX Liquidity (Raydium/Orca)** | 100,000,000 | 10.00% | - | - | 100% LP tokens permanently burned at launch |
+| **Total Supply** | **1,000,000,000** | **100.00%** | - | - | **Zero inflationary mint capabilities** |
 
 > [!IMPORTANT]
 > **Resolution of Valuation Inversion:** In Whitepaper v1.0, the seed round was mistakenly labeled with a legacy \$15M FDV artifact while the public sale was at \$10M FDV. In v1.1, the mathematical hierarchy is strictly restored: **Pre-Seed (\$7M FDV) < Seed (\$8.5M FDV) < Public TGE (\$10M FDV)**, ensuring early capital receives institutional-grade risk compensation.

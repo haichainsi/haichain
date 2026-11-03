@@ -310,7 +310,7 @@ HAICHAIN 坚信:
     output_text = "\n".join(parts)
 
     # STRICT SANITIZATION HOOK: Replace any em-dash variants with '-'
-    output_text = output_text.replace('\u2014', '-').replace('\u2013', '-').replace('——', '-')
+    output_text = output_text.replace('\u2014', '-').replace('\u2013', '-').replace('-', '-')
 
     out_path = os.path.join(os.getcwd(), 'HAICHAIN_WHITEPAPER_V1.0_ZH.md')
     with open(out_path, 'w', encoding='utf-8') as f:

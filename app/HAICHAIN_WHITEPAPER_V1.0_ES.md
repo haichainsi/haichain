@@ -1339,7 +1339,7 @@ Cada métrica arquitectónica, cifra de exploits históricos, restricción físi
 
 ---
 
-## 12. APÉNDICE TÉCNICO V1.1 — ARQUITECTURA BINARIA CAPLEAF V1, 9 INVARIANTES, MODELO DE AMENAZAS Y TECHO DE RIESGO
+## 12. APÉNDICE TÉCNICO V1.1 - ARQUITECTURA BINARIA CAPLEAF V1, 9 INVARIANTES, MODELO DE AMENAZAS Y TECHO DE RIESGO
 
 ### 12.1. Formato Binario de 223 Bytes Little-Endian y Separación de Dominio de 3 Capas
 En el núcleo HAICHAIN v1.1, cada capacidad de gasto otorgada por el Propietario Maestro se codifica como una estructura binaria de 223 bytes (`CapLeafV1`) serializada en Borsh Little-Endian con 16 campos estrictos.

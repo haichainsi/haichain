@@ -38,7 +38,7 @@ ALL_TRANSLATIONS = {
         "agenticShift.card1Title": "Payment Giant Stripe (USA)",
         "agenticShift.card1Desc": "Recently established a dedicated division researching \"Agentic Commerce\" (Commerce for Autonomous AI).",
         "agenticShift.card2Title": "Crypto Exchange Coinbase (USA)",
-        "agenticShift.card2Desc": "CEO Brian Armstrong declared: \"Developers, give your AI agents crypto wallets — the future is machines transacting directly with machines.\"",
+        "agenticShift.card2Desc": "CEO Brian Armstrong declared: \"Developers, give your AI agents crypto wallets - the future is machines transacting directly with machines.\"",
         "agenticShift.card3Title": "Mega-Funded AI Startups",
         "agenticShift.card3Desc": "Pioneers like Skyfire Systems and Nevermined raised tens of millions from tier-1 VCs just to solve one question: How can AI autonomously pay for resources?",
 
@@ -53,9 +53,9 @@ ALL_TRANSLATIONS = {
         "advantages.item2Hai": "<strong>HAICHAIN:</strong> Places \"Human Sovereign Control\" at #1:<br>&bull; <strong>Velocity Cap:</strong> Hard-caps spending speed (e.g., max $0.50/minute).<br>&bull; <strong>Emergency Kill-Switch:</strong> At any anomaly, 1 tap or 1 message triggers smart contracts to freeze all vaults and refund balance to your cold wallet in exactly <strong>380ms</strong>. No adversary can drain your capital.",
         "advantages.item3Title": "3. Ultra-Simple for End-Users (Claude's Official MCP Standard)",
         "advantages.item3Rival": "<strong>Competitors:</strong> Require users to be advanced software engineers, forcing manual code writing, server configs, and complex API credential wrangling.",
-        "advantages.item3Hai": "<strong>HAICHAIN:</strong> Pioneers Anthropic's universal Model Context Protocol (MCP) standard.<br>👉 <strong>Non-technical users simply paste 1 link into the Claude mobile app and start in 30 seconds — zero code required!</strong>",
+        "advantages.item3Hai": "<strong>HAICHAIN:</strong> Pioneers Anthropic's universal Model Context Protocol (MCP) standard.<br>👉 <strong>Non-technical users simply paste 1 link into the Claude mobile app and start in 30 seconds - zero code required!</strong>",
         "advantages.item4Title": "4. Absolute Blockchain Transparency (100% Tamper-Proof & Auditable)",
-        "advantages.item4Desc": "Every micro-disbursement down to 1/1,000th of a cent carries an independent cryptographic Merkle Proof anchored to Solana L1. Enterprises undergoing year-end audits can reconcile every single execution on-chain with 100% mathematical integrity — eliminating fraudulent expense claims from either employees or rogue AI."
+        "advantages.item4Desc": "Every micro-disbursement down to 1/1,000th of a cent carries an independent cryptographic Merkle Proof anchored to Solana L1. Enterprises undergoing year-end audits can reconcile every single execution on-chain with 100% mathematical integrity - eliminating fraudulent expense claims from either employees or rogue AI."
     },
     "zh": {
         "agenticShift.badge": "全球浪潮 • AI AGENT 智能体时代 (2026+)",
@@ -116,7 +116,7 @@ ALL_TRANSLATIONS = {
         "agenticShift.card1Title": "Le Géant des Paiements Stripe (USA)",
         "agenticShift.card1Desc": "Vient de créer une division dédiée à la recherche sur le « Commerce Agentique » (Commerce pour l'IA).",
         "agenticShift.card2Title": "Plateforme Crypto Coinbase (USA)",
-        "agenticShift.card2Desc": "Le PDG Brian Armstrong déclare : « Développeurs, donnez des portefeuilles cryptos à vos IA — l'avenir appartient aux machines payant d'autres machines. »",
+        "agenticShift.card2Desc": "Le PDG Brian Armstrong déclare : « Développeurs, donnez des portefeuilles cryptos à vos IA - l'avenir appartient aux machines payant d'autres machines. »",
         "agenticShift.card3Title": "Startups aux Levées de Fonds Record",
         "agenticShift.card3Desc": "Des pionniers comme Skyfire Systems ou Nevermined ont levé des dizaines de millions de dollars auprès des plus grands fonds pour répondre à une question : comment permettre à l'IA de payer ?",
 
@@ -168,13 +168,13 @@ ALL_TRANSLATIONS = {
         "agenticShift.card1Title": "Платежный гигант Stripe (США)",
         "agenticShift.card1Desc": "Недавно создал специальное подразделение для исследований \"Agentic Commerce\" (Коммерция для автономного AI).",
         "agenticShift.card2Title": "Криптобиржа Coinbase (США)",
-        "agenticShift.card2Desc": "CEO Брайан Армстронг заявил: \"Разработчики, дайте своим AI-агентам кошельки — будущее за прямыми расчетами машин с машинами\".",
+        "agenticShift.card2Desc": "CEO Брайан Армстронг заявил: \"Разработчики, дайте своим AI-агентам кошельки - будущее за прямыми расчетами машин с машинами\".",
         "agenticShift.card3Title": "Стартапы с рекордными раундами",
         "agenticShift.card3Desc": "Такие компании, как Skyfire Systems и Nevermined, привлекли десятки миллионов долларов от ведущих фондов ради одной задачи: как научить AI платить самому?",
 
         "advantages.badge": "КЛЮЧЕВЫЕ ПРЕИМУЩЕСТВА • 4 ЖИЗНЕННО ВАЖНЫХ ОТЛИЧИЯ",
         "advantages.title": "В чем кардинальное превосходство HAICHAIN?",
-        "advantages.subtitle": "Большинство мировых проектов сегодня — лишь концепции на бумаге или повторение старых путей. HAICHAIN создал 4 жизненно важных отличия:",
+        "advantages.subtitle": "Большинство мировых проектов сегодня - лишь концепции на бумаге или повторение старых путей. HAICHAIN создал 4 жизненно важных отличия:",
         "advantages.item1Title": "1. Микроплатежи меньше цента (< $0.01) с комиссией 0%",
         "advantages.item1Rival": "<strong>Мировые конкуренты:</strong> Пытаются использовать кредитные карты или старые платежные шлюзы. Но Visa/Mastercard берут минимум <strong>$0.30 + 2.9%</strong> за транзакцию. Если ваш AI читает текст стоимостью <strong>$0.002</strong>, вы не можете платить комиссию $0.30 за задачу в $0.002 (комиссия в 150 раз выше стоимости работы)!",
         "advantages.item1Hai": "<strong>HAICHAIN:</strong> Собственные микроканалы расчетов (State Channel) на базе Solana. Позволяет AI оплачивать счета по <strong>$0.001, $0.002</strong> с <strong>0% комиссии</strong> и задержкой всего <strong>160 мс</strong> (быстрее моргания глаза)!",
@@ -194,7 +194,7 @@ ALL_TRANSLATIONS = {
         "agenticShift.card1Title": "भुगतान दिग्गज Stripe (USA)",
         "agenticShift.card1Desc": "\"Agentic Commerce\" (स्वायत्त AI के लिए वाणिज्य) पर शोध के लिए एक विशेष विभाग की स्थापना की।",
         "agenticShift.card2Title": "क्रिप्टो एक्सचेंज Coinbase (USA)",
-        "agenticShift.card2Desc": "सीईओ ब्रायन आर्मस्ट्रांग ने कहा: \"डेवलपर्स, AI को वॉलेट दें — भविष्य मशीनों के आपस में लेन-देन का है।\"",
+        "agenticShift.card2Desc": "सीईओ ब्रायन आर्मस्ट्रांग ने कहा: \"डेवलपर्स, AI को वॉलेट दें - भविष्य मशीनों के आपस में लेन-देन का है।\"",
         "agenticShift.card3Title": "भारी फंडिंग प्राप्त AI स्टार्टअप्स",
         "agenticShift.card3Desc": "Skyfire Systems और Nevermined जैसी कंपनियों ने केवल इस समस्या के समाधान के लिए शीर्ष फंडों से करोड़ों डॉलर जुटाए: AI खुद भुगतान कैसे करे?",
 
@@ -220,7 +220,7 @@ ALL_TRANSLATIONS = {
         "agenticShift.card1Title": "ענקית התשלומים Stripe (ארה\"ב)",
         "agenticShift.card1Desc": "הקימה חטיבה ייעודית החוקרת את \"Agentic Commerce\" (מסחר אוטונומי עבור בינה מלאכותית).",
         "agenticShift.card2Title": "בורסת הקריפטו Coinbase (ארה\"ב)",
-        "agenticShift.card2Desc": "המנכ\"ל בריאן ארמסטרונג הכריז: \"מפתחים, תנו ארנקים ל-AI שלכם — העתיד הוא מכונות שמשלמות ישירות למכונות.\"",
+        "agenticShift.card2Desc": "המנכ\"ל בריאן ארמסטרונג הכריז: \"מפתחים, תנו ארנקים ל-AI שלכם - העתיד הוא מכונות שמשלמות ישירות למכונות.\"",
         "agenticShift.card3Title": "סטארט-אפים עם גיוסי ענק",
         "agenticShift.card3Desc": "חברות כמו Skyfire Systems או Nevermined גייסו עשרות מיליוני דולרים מקרנות מובילות רק כדי לפתור בעיה אחת: כיצד ה-AI ישלם בעצמו?",
 
@@ -246,7 +246,7 @@ ALL_TRANSLATIONS = {
         "agenticShift.card1Title": "Төлем алыбы Stripe (АҚШ)",
         "agenticShift.card1Desc": "\"Agentic Commerce\" (AI үшін дербес сауда) бағытын зерттейтін арнайы бөлім ашты.",
         "agenticShift.card2Title": "Coinbase криптобиржасы (АҚШ)",
-        "agenticShift.card2Desc": "Бас директор Брайан Армстронг: \"Әзірлеушілер, AI-ға крипто әмиян беріңіздер — болашақ машиналардың өзара дербес есеп айырысуында.\"",
+        "agenticShift.card2Desc": "Бас директор Брайан Армстронг: \"Әзірлеушілер, AI-ға крипто әмиян беріңіздер - болашақ машиналардың өзара дербес есеп айырысуында.\"",
         "agenticShift.card3Title": "Ірі инвестиция тартқан стартаптар",
         "agenticShift.card3Desc": "Skyfire Systems және Nevermined сияқты компаниялар ірі қорлардан тек бір мәселені шешу үшін миллиондаған доллар тартты: AI қалай өздігінен төлей алады?",
 

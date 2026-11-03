@@ -1335,7 +1335,7 @@ $$orall 	ext{套利搜索者 } M, \quad \mathbb{E}[	ext{MEV 获利} \mid 	ext{C
 
 ---
 
-## 12. 技术附录 V1.1 — CAPLEAF V1 二进制架构、9大数学不变量、威胁模型与损失上限
+## 12. 技术附录 V1.1 - CAPLEAF V1 二进制架构、9大数学不变量、威胁模型与损失上限
 
 ### 12.1. 223 字节 Little-Endian 协议格式与三层域分离
 在 HAICHAIN v1.1 内核中，主所有者授予 AI 子代理的每一项支付能力凭证均被编码为严格遵循 Borsh Little-Endian 序列化的 223 字节二进制结构体 (`CapLeafV1`)：

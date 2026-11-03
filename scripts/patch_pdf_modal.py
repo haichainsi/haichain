@@ -55,7 +55,7 @@ function buildHaichainSaftEmailHtml(opt) {
           <img src="https://haichain.si/assets/haichain-official-logo-white.png" alt="Haichain" height="32" style="height: 32px; width: auto; display: block; border: 0;" />
         </div>
         <div style="font-size: 13px; font-weight: 600; color: #ffffff; letter-spacing: -0.2px; line-height: 1.5;">
-          Haichain — The Financial Operating System for The Autonomous Machine Era
+          Haichain - The Financial Operating System for The Autonomous Machine Era
         </div>
         <div style="font-size: 12px; color: #a1a1aa; margin-top: 4px; line-height: 1.5;">
           The Economic Bedrock for the Symbiotic Superintelligence Era AI²

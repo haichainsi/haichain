@@ -1391,7 +1391,7 @@ function buildHaichainSaftEmailHtml(opt) {
     "errAgree": "Пожалуйста, подтвердите согласие с условиями договора SAFT.",
     "alertProceed": "ДОГОВОР ПОДПИСАН!\n\nПожалуйста, переведите {amount} USDT в Казначейство:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nВаша аллокация в размере {tokens} $HAISI будет автоматически перечислена при TGE.",
     "noWalletDetected": "Web3 кошелек (Phantom/Solflare) не обнаружен. Пожалуйста, вставьте адрес вручную.",
-    "evmDetectedNeedSolana": "Подключенный кошелек — MetaMask (EVM). Токены $HAISI распределяются в сети Solana. Пожалуйста, укажите адрес кошелька Solana (Phantom / Solflare).",
+    "evmDetectedNeedSolana": "Подключенный кошелек - MetaMask (EVM). Токены $HAISI распределяются в сети Solana. Пожалуйста, укажите адрес кошелька Solana (Phantom / Solflare).",
     "walletFilledSuccess": "✓ Кошелек успешно заполнен"
   },
   "kk": {
@@ -1433,7 +1433,7 @@ function buildHaichainSaftEmailHtml(opt) {
     "errAgree": "Жалғастыру үшін SAFT шарттарымен келісуіңіз керек.",
     "alertProceed": "КЕЛІСІМГЕ ҚОЛ ҚОЙЫЛДЫ!\n\nҚазынашылыққа {amount} USDT аударыңыз:\n5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3\n\nСізге бөлінген {tokens} $HAISI токендері TGE кезінде автоматты түрде аударылады.",
     "noWalletDetected": "Қосылған Web3 әмиян табылмады. Мекенжайды қолмен енгізіңіз.",
-    "evmDetectedNeedSolana": "Қосылған әмиян — MetaMask (EVM). $HAISI токендері Solana желісінде таратылады. Solana әмиян мекенжайын (Phantom / Solflare) енгізіңіз.",
+    "evmDetectedNeedSolana": "Қосылған әмиян - MetaMask (EVM). $HAISI токендері Solana желісінде таратылады. Solana әмиян мекенжайын (Phantom / Solflare) енгізіңіз.",
     "walletFilledSuccess": "✓ Әмиян мекенжайы сәтті қойылды"
   },
   "hi": {

@@ -1349,7 +1349,7 @@ Every architectural metric, historical exploit figure, physical constraint, and 
 
 ---
 
-## 12. TECHNICAL APPENDIX V1.1 — CAPLEAF V1 BINARY ARCHITECTURE, 9 INVARIANTS, THREAT MODEL & BOUNDED THEFT EXPOSURE
+## 12. TECHNICAL APPENDIX V1.1 - CAPLEAF V1 BINARY ARCHITECTURE, 9 INVARIANTS, THREAT MODEL & BOUNDED THEFT EXPOSURE
 
 ### 12.1. 223-Byte Little-Endian Wire Format & 3-Layer Domain Separation
 In the HAICHAIN v1.1 Kernel, every spending capability granted by the Master Owner to an AI sub-agent is encoded as a canonical 223-byte binary struct (`CapLeafV1`) serialized strictly in Borsh Little-Endian:

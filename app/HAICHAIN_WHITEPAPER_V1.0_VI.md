@@ -1217,7 +1217,7 @@ Mọi con số, chỉ số kỹ thuật, dữ liệu thiệt hại lịch sử, 
 
 ---
 
-## 12. PHỤ LỤC KỸ THUẬT V1.1 — CẤU TRÚC NHỊ PHÂN CAPLEAF V1, 9 BẤT BIẾN HỆ THỐNG, MÔ HÌNH ĐE DỌA & TRẦN THIỆT HẠI RỦI RO
+## 12. PHỤ LỤC KỸ THUẬT V1.1 - CẤU TRÚC NHỊ PHÂN CAPLEAF V1, 9 BẤT BIẾN HỆ THỐNG, MÔ HÌNH ĐE DỌA & TRẦN THIỆT HẠI RỦI RO
 
 ### 12.1. Cấu Trúc Lá Nhị Phân 223 Bytes & Phân Tách Miền 3 Tầng (Domain Separation)
 Trong Hạt nhân HAICHAIN v1.1, mọi năng lực chi tiêu do Chủ Sở Hữu (Master Owner) cấp cho Agent con đều được mã hóa dưới dạng cấu trúc nhị phân chuẩn hóa 223 bytes (`CapLeafV1`) tuần tự hóa theo định dạng Borsh Little-Endian:

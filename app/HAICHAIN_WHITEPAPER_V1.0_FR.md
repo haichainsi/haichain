@@ -1339,7 +1339,7 @@ Chaque donnée technique, évaluation financière d'attaque historique, frontiè
 
 ---
 
-## 12. ANNEXE TECHNIQUE V1.1 — ARCHITECTURE BINAIRE CAPLEAF V1, 9 INVARIANTS, MODÈLE DE MENACE & PLAFOND DE RISQUE
+## 12. ANNEXE TECHNIQUE V1.1 - ARCHITECTURE BINAIRE CAPLEAF V1, 9 INVARIANTS, MODÈLE DE MENACE & PLAFOND DE RISQUE
 
 ### 12.1. Format Binaire 223 Octets Little-Endian & Séparation de Domaine à 3 Niveaux
 Dans le noyau HAICHAIN v1.1, chaque capacité de dépense accordée par le Propriétaire Principal est encodée sous la forme d'une structure binaire normalisée de 223 octets (`CapLeafV1`) sérialisée en Borsh Little-Endian (16 champs immuables).

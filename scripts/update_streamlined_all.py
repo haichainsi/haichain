@@ -27,7 +27,7 @@ STREAMLINED_SECTIONS_HTML = """  <!-- ======================== SECTION: AGENTIC 
             </h3>
           </div>
           <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans" data-i18n="agenticShift.card1Desc">
-            Thành lập bộ phận riêng nghiên cứu "Agentic Commerce" — xây dựng hạ tầng thanh toán chuyên biệt cho AI tự giao dịch.
+            Thành lập bộ phận riêng nghiên cứu "Agentic Commerce" - xây dựng hạ tầng thanh toán chuyên biệt cho AI tự giao dịch.
           </p>
         </div>
 
@@ -168,7 +168,7 @@ REFINED_TRANSLATIONS = {
         "agenticShift.title": "Cả thế giới công nghệ đều nhận ra: \"AI Agent bắt buộc phải có tiền!\"",
         "agenticShift.subtitle": "Từ OpenAI, Google, Stripe cho đến Coinbase đều xác định: 2023 - 2024 là thời kỳ AI trò chuyện (Chatbot), nhưng từ 2026 trở đi là kỷ nguyên AI tự hành động (AI Agent). Và một khi AI hành động, nó bắt buộc phải có tiền.",
         "agenticShift.card1Title": "Stripe (Mỹ)",
-        "agenticShift.card1Desc": "Thành lập bộ phận riêng nghiên cứu \"Agentic Commerce\" — xây dựng hạ tầng thanh toán chuyên biệt cho AI tự giao dịch.",
+        "agenticShift.card1Desc": "Thành lập bộ phận riêng nghiên cứu \"Agentic Commerce\" - xây dựng hạ tầng thanh toán chuyên biệt cho AI tự giao dịch.",
         "agenticShift.card2Title": "Coinbase (Mỹ)",
         "agenticShift.card2Desc": "CEO Brian Armstrong kêu gọi: \"Hãy cấp ví tiền cho AI, tương lai là máy móc tự thanh toán với nhau trên chuỗi\".",
         "agenticShift.card3Title": "Các Quỹ Đầu Tư Lớn",
@@ -209,7 +209,7 @@ REFINED_TRANSLATIONS = {
         "advantages.item2Hai": "<strong>HAICHAIN:</strong> Human sovereign velocity caps & hardware-speed Emergency Kill-Switch recalling 100% of funds to safe storage in 380ms.",
         "advantages.item3Title": "3. Ultra-Simple for End Users (Claude MCP Standard)",
         "advantages.item3Rival": "<strong>Competitors:</strong> Demand heavy engineering skills, manual server hosting, and tedious API keys.",
-        "advantages.item3Hai": "<strong>HAICHAIN:</strong> Native Anthropic Claude MCP standard. Zero coding required — paste a single link into Claude mobile in 30 seconds.",
+        "advantages.item3Hai": "<strong>HAICHAIN:</strong> Native Anthropic Claude MCP standard. Zero coding required - paste a single link into Claude mobile in 30 seconds.",
         "advantages.item4Title": "4. 100% Cryptographic Ledger Transparency",
         "advantages.item4Desc": "Every fractional cent disbursement produces an independent cryptographic Merkle Proof anchored to Solana L1, enabling instant, tamper-proof corporate audits."
     },
@@ -334,7 +334,7 @@ REFINED_TRANSLATIONS = {
         "advantages.item2Hai": "<strong>HAICHAIN:</strong> Полный контроль человека: лимиты скорости и Kill-Switch, возвращающий 100% средств на кошелек за 380 мс.",
         "advantages.item3Title": "3. Предельная простота (Стандарт Claude MCP)",
         "advantages.item3Rival": "<strong>Конкуренты:</strong> Требуют навыков программирования, настройки серверов и сложных API.",
-        "advantages.item3Hai": "<strong>HAICHAIN:</strong> Официальный стандарт MCP от Anthropic Claude. Без кода — просто вставьте ссылку в приложение Claude за 30 секунд.",
+        "advantages.item3Hai": "<strong>HAICHAIN:</strong> Официальный стандарт MCP от Anthropic Claude. Без кода - просто вставьте ссылку в приложение Claude за 30 секунд.",
         "advantages.item4Title": "4. 100% криптографическая прозрачность",
         "advantages.item4Desc": "Каждая доля цента подтверждается доказательством Меркла на Solana L1, обеспечивая мгновенный безошибочный аудит предприятия."
     },

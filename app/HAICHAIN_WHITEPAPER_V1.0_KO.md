@@ -1338,7 +1338,7 @@ $	ext{CommitHash} = 	ext{Blake3}(	ext{Payload} \parallel 	ext{Salt} \parallel 	e
 
 ---
 
-## 12. 기술 부록 V1.1 — CAPLEAF V1 바이너리 아키텍처, 9대 수학적 불변성, 위협 모델 및 손실 상한선
+## 12. 기술 부록 V1.1 - CAPLEAF V1 바이너리 아키텍처, 9대 수학적 불변성, 위협 모델 및 손실 상한선
 
 ### 12.1. 223 바이트 Little-Endian 와이어 포맷 및 3단계 도메인 분리
 HAICHAIN v1.1 커널에서 마스터 소유자가 AI 하위 에이전트에게 부여하는 모든 지출 권한은 Borsh Little-Endian으로 직렬화된 표준 223 바이트 바이너리 구조체(`CapLeafV1`)로 인코딩됩니다.
