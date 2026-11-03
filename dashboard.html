@@ -997,6 +997,144 @@
           </div>
         </div>
 
+        
+        <!-- ================= GLOBAL AGENT LABOR MARKETPLACE (SMITHERY • FETCH.AI • GLAMA) ================= -->
+        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card shadow-sm space-y-5">
+          <!-- Header & Telemetry Badges -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <h3 class="font-bold text-base text-black dark:text-white flex items-center space-x-2">
+                  <i data-lucide="globe" class="w-4 h-4 text-emerald-500"></i>
+                  <span data-i18n="marketplace.title">Global Agent Labor Marketplace</span>
+                </h3>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700">
+                  Phase 1 Live
+                </span>
+              </div>
+              <p class="text-xs text-neutral-500 mt-1" data-i18n="marketplace.subtitle">
+                Universal federated mesh connecting Smithery MCP, Fetch.ai Almanac, and Glama. Your AI can autonomously search, negotiate, and hire specialized sub-agents with micro-payments.
+              </p>
+            </div>
+            
+            <!-- Network Telemetry Badges -->
+            <div class="flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
+              <span class="px-2.5 py-1 rounded-xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400">
+                Smithery: <b>2,140+ Nodes</b>
+              </span>
+              <span class="px-2.5 py-1 rounded-xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400">
+                Fetch.ai: <b>850+ Agents</b>
+              </span>
+              <span class="px-2.5 py-1 rounded-xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400">
+                Glama: <b>430+ Auditors</b>
+              </span>
+            </div>
+          </div>
+
+          <!-- Interactive Search & Category Filter Bar -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+              <input id="agent-market-search-input" type="text" placeholder="Search by skill, capability or keyword (e.g. scraping, security audit, market alpha)..." 
+                     class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-black dark:focus:border-white transition-all">
+            </div>
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0" id="market-category-filters">
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white shrink-0 transition-all cursor-pointer" data-category="all">
+                All Categories
+              </button>
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="data_extraction">
+                Web Scraping
+              </button>
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="financial_intelligence">
+                Market Alpha
+              </button>
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="security_audit">
+                Security Audit
+              </button>
+              <button class="market-cat-btn px-3 py-2 rounded-xl text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 shrink-0 hover:border-black dark:hover:border-white transition-all cursor-pointer" data-category="automation">
+                TEE Compute
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Agent Cards Grid (Dynamically Populated) -->
+          <div id="global-agent-market-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
+            <!-- Dynamically populated by renderGlobalAgentMarketplace() -->
+          </div>
+        </div>
+
+        <!-- Hire Agent Modal Dialog -->
+        <div id="hire-agent-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+          <div class="bg-white dark:bg-brand-card w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-2xl p-6 space-y-4 animate-scaleUp">
+            <div class="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-900 pb-3">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-xl bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-xs">
+                  <i data-lucide="zap" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 id="hire-modal-agent-name" class="font-bold text-sm text-black dark:text-white">Hire Global Sub-Agent</h4>
+                  <span id="hire-modal-agent-provider" class="text-[11px] text-neutral-400 font-mono">Smithery MCP Registry</span>
+                </div>
+              </div>
+              <button id="close-hire-agent-modal" class="p-1.5 rounded-lg text-neutral-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Task Description & Payload Input -->
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Task Instruction & Payload</label>
+                <textarea id="hire-task-payload-input" rows="3" class="w-full p-3 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all font-mono" placeholder="Enter specific instructions or data payload for this agent..."></textarea>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-[11px] p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 font-mono">
+                <div>
+                  <span class="text-neutral-400 block">Rate / Micro-Tick:</span>
+                  <span id="hire-modal-rate" class="font-bold text-black dark:text-white">$0.0030 USDT</span>
+                </div>
+                <div>
+                  <span class="text-neutral-400 block">Settlement Escrow:</span>
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">Solana Devnet L1</span>
+                </div>
+                <div class="col-span-2 pt-1 border-t border-neutral-200/60 dark:border-neutral-800">
+                  <span class="text-neutral-400 block">Recipient On-Chain:</span>
+                  <span id="hire-modal-recipient" class="text-[10px] text-neutral-600 dark:text-neutral-300 truncate block font-mono">Sm1thScrap3rPo1nt782VbX4nNmK9q1zEwR2Ty7LpA</span>
+                </div>
+              </div>
+
+              <!-- Output Box (hidden initially) -->
+              <div id="hire-execution-result-box" class="hidden p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-2">
+                <div class="flex items-center justify-between text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-semibold">
+                  <span class="flex items-center space-x-1.5">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                    <span>Settlement & Task Completed</span>
+                  </span>
+                  <span id="hire-result-job-id">JOB-9821</span>
+                </div>
+                <p id="hire-result-summary" class="text-neutral-800 dark:text-neutral-200 text-[11px] font-mono bg-white/60 dark:bg-black/60 p-2 rounded-xl"></p>
+                <div class="flex justify-between items-center text-[10px] font-mono">
+                  <span class="text-neutral-400">Tx Signature:</span>
+                  <a id="hire-result-tx-link" href="#" target="_blank" class="underline text-emerald-600 dark:text-emerald-400 hover:text-black dark:hover:text-white font-semibold">View On Solana Explorer &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end space-x-2 pt-2 border-t border-neutral-100 dark:border-neutral-900">
+              <button id="cancel-hire-btn" class="px-4 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-all cursor-pointer">
+                Cancel
+              </button>
+              <button id="confirm-hire-agent-btn" class="px-5 py-2 rounded-xl bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-bold flex items-center space-x-1.5 shadow-sm active:scale-98 transition-all cursor-pointer">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                <span id="confirm-hire-btn-text">Execute Micro-Escrow</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="agent-cards-container">
           <!-- Agent 1 -->
           <div class="agent-card p-5 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-3">
