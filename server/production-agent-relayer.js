@@ -1052,7 +1052,7 @@ class ProductionAgentRelayer {
           '.woff2': 'font/woff2'
         };
 
-        let reqPath = url.pathname === '/' ? '/dashboard.html' : url.pathname;
+        let reqPath = url.pathname === '/' ? '/index.html' : (url.pathname === '/dashboard' ? '/dashboard.html' : url.pathname);
         let filePath = path.join(__dirname, '..', reqPath.replace(/^\//, ''));
 
         if (!fs.existsSync(filePath) && fs.existsSync(filePath + '.html')) {
