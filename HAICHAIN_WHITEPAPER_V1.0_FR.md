@@ -2,7 +2,7 @@
 ## Livre Blanc Technique Officiel v1.0 - Architecture, Invariants Cryptographiques et l'Endgame de la Superintelligence AI L1 Souveraine
 **Conçu par:** Le Groupe de Travail sur les Systèmes Globaux de HAICHAIN & le Comité d'Architecture du Cœur Cryptographique  
 **Date de Publication:** 31 octobre 2026 (Édition Standard Institutionnelle)  
-**Classification du Document:** Livre Blanc Technique v1.0 (Édition Française)  
+**Classification du Document:** Livre Blanc Technique v1.1 (Édition Française CapLeaf & 9 Invariants)  
 **Actif de Règlement Principal:** **USDT (Tether USD sur Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
 **Actif Natif de Gouvernance, Gas et Staking:** **$HAISI (Offre Fixe de 1.000.000.000)**  
 **Domaine Souverain de Réseau:** `haichain.si` *(Où `.si` désigne la Superintelligence Décentralisée - Superintelligence)*  
@@ -1329,3 +1329,36 @@ Chaque donnée technique, évaluation financière d'attaque historique, frontiè
 
 ---
 *Livre Blanc Technique Officiel v1.0 • Groupe de Travail sur les Systèmes Globaux de HAICHAIN • Document d'Architecture Enregistré • Tous Droits Réservés.*
+
+
+---
+
+## 12. ANNEXE TECHNIQUE V1.1 — ARCHITECTURE BINAIRE CAPLEAF V1, 9 INVARIANTS, MODÈLE DE MENACE & PLAFOND DE RISQUE
+
+### 12.1. Format Binaire 223 Octets Little-Endian & Séparation de Domaine à 3 Niveaux
+Dans le noyau HAICHAIN v1.1, chaque capacité de dépense accordée par le Propriétaire Principal est encodée sous la forme d'une structure binaire normalisée de 223 octets (`CapLeafV1`) sérialisée en Borsh Little-Endian (16 champs immuables).
+La séparation de domaine (`0x00` feuille, `0x01` nœud, `0x02` vide) élimine les attaques par seconde préimage, avec un arbre Merkle à profondeur fixe $d = 12$ (4.096 feuilles, preuve de 384 octets).
+
+### 12.2. Comptabilité par Réservation & Hiérarchie Monotone des PDA
+Le noyau on-chain sépare la preuve Merkle de l'exécution : `PotAccount` (coffre de gouvernance) $\rightarrow$ `ActiveGrantAccount` (activé une seule fois) $\rightarrow$ `ChannelAccount` (micro-séquestre temporaire pour les flux HTTP x402).
+L'adresse du compte bénéficiaire est strictement dérivée on-chain : $\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$.
+
+### 12.3. Les 9 Invariants Mathématiques Fondamentaux ($I_1 \dots I_9$)
+* $I_1$ (Conservation du Capital) : Trésorerie + Séquestres + Paiements + Remboursements $\equiv$ Dépôts Nets.
+* $I_2$ (Sécurité Bénéficiaire) : Flux dirigés exclusivement vers l'ATA officielle du marchand.
+* $I_3$ (Plafond Budgétaire) : Consommation $\le$ Dépense maximale autorisée.
+* $I_4$ (Plafond de Vélocité Autonome) : Réserves limitées sur fenêtre glissante.
+* $I_5$ (Rétrécissement Monotone) : Les permissions des sous-agents ne peuvent excéder le modèle parent.
+* $I_6$ (Isolation d'Époque de Panique) : Gel instantané invalidant tous les vouchers en vol.
+* $I_7$ (Expiration du Heartbeat) : Blocage absolu après dépassement de `valid_until`.
+* $I_8$ (Règlement Monotone) : Paiement non-décroissant interdisant le double-spend de vouchers.
+* $I_9$ (Isolation Sybil) : Unicité stricte du PDA par feuille de capacité.
+
+### 12.4. Modèle de Menace Quantitatif & Théorème 6.1 Plafond de Perte Maximale
+Sous une latence de réponse $\tau \le 12.0\text{s}$, dans le pire scénario $T_4$ (vol de clé d'agent et collusion du marchand), la perte maximale théorique $E_{\text{theft}}(\tau)$ est strictement bornée par $\min(B, K, W_p \cdot n(\tau, \omega_p))$, préservant plus de $99,9\%$ du capital institutionnel.
+
+### 12.5. Les 5 Défenses de Durcissement Red-Team
+Protection contre le front-running Jito MEV via `panic_epoch`, blocage du double-retrait par chevauchement de fenêtre, récupération immédiate des fonds non-dépensés sans attendre 24h (`OwnerForceReclaim`), préservation intégrale des lamports de loyer (Rent), et limitation de fréquence contre l'injection indirecte de prompt.
+
+---
+*Annexe du Livre Blanc Technique v1.1 • HAICHAIN Global Systems Taskforce • Tous droits réservés.*

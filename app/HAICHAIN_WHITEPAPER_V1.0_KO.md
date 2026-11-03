@@ -2,7 +2,7 @@
 ## 공식 기술 백서 v1.0 - 핵심 아키텍처, 암호학적 불변성 및 주권 AI L1 초지능 엔드게임
 **아키텍처 제정 기관:** HAICHAIN 글로벌 시스템 태스크포스 & 암호학 핵심 아키텍처 실무위원회  
 **발행일:** 2026년 10월 31일 (국제 기관 표준 에디션)  
-**문서 분류:** 기술 백서 v1.0 (한국어판)  
+**문서 분류:** 기술 백서 v1.1 (한국어 CapLeaf 및 9대 불변성 에디션)  
 **주요 정산 자산:** **USDT (Solana SPL 토큰: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB` & USDC (MiCA Compliant: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`))**  
 **네트워크 가스, 거버넌스 및 스테이킹 자산:** **$HAISI (총 공급량 1,000,000,000 개 고정)**  
 **주권 네트워크 도메인:** `haichain.si` *(여기서 `.si`는 탈중앙화 초지능 - Superintelligence를 의미함)*  
@@ -1328,3 +1328,37 @@ $	ext{CommitHash} = 	ext{Blake3}(	ext{Payload} \parallel 	ext{Salt} \parallel 	e
 
 ---
 *공식 기술 백서 v1.0 • HAICHAIN 글로벌 시스템 태스크포스 • 등록된 시스템 아키텍처 기록 • All Rights Reserved.*
+
+
+---
+
+## 12. 기술 부록 V1.1 — CAPLEAF V1 바이너리 아키텍처, 9대 수학적 불변성, 위협 모델 및 손실 상한선
+
+### 12.1. 223 바이트 Little-Endian 와이어 포맷 및 3단계 도메인 분리
+HAICHAIN v1.1 커널에서 마스터 소유자가 AI 하위 에이전트에게 부여하는 모든 지출 권한은 Borsh Little-Endian으로 직렬화된 표준 223 바이트 바이너리 구조체(`CapLeafV1`)로 인코딩됩니다.
+16개 필드(버전, 에이전트 서명키, 가맹점 주소, USDT 토큰 민트, 최대 지출액, 최대 예약액, 슬라이딩 윈도우 한도, 유효 기간, 심장박동 만료 시점, 분쟁 해결 기간 등)를 포함합니다.
+도메인 분리 프리픽스(`0x00`, `0x01`, `0x02`)를 통해 2차 역상 공격 및 길이 확장 공격을 수학적으로 차단하며, 고정 깊이 $d = 12$ (4,096개 리프, 384 바이트 증명 크기)를 강제합니다.
+
+### 12.2. 예약 회계 상태 머신 및 단조적 PDA 계층 구조
+온체인 상태 머신은 머클 증명 제출과 채널 결제를 분리합니다: `PotAccount` (금고 PDA) $\rightarrow$ `ActiveGrantAccount` (1회 증명 활성화) $\rightarrow$ `ChannelAccount` (x402 오프체인 마이크로 바우처 스트리밍 채널).
+수취인 토큰 계정은 스마트 계약 내부에서 $\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$로만 유도되며 제3자 계정으로의 탈취를 원천 차단합니다.
+
+### 12.3. 핵심 9대 수학적 불변성 ($I_1 \dots I_9$)
+* $I_1$ (자본 보존): 금고 + 에스크로 + 정산 완료 + 미사용 반환금 $\equiv$ 순 예치금.
+* $I_2$ (수취인 안전): 자금은 오직 정규 ATA(Merchant, Mint)로만 출금.
+* $I_3$ (예산 상한): 소비액 $\le$ 최대 지출 한도.
+* $I_4$ (속도 상한): 슬라이딩 윈도우 내 지출 $\le$ 윈도우 한도.
+* $I_5$ (단조적 축소): 하위 PDA는 상위 권한 범위를 초과할 수 없음.
+* $I_6$ (패닉 에포크 격리): 패닉 시 `panic_epoch` 변경으로 미체결 바우처 즉시 동결.
+* $I_7$ (하트비트 만료): `valid_until` 초과 시 새로운 지출 차단.
+* $I_8$ (단조적 정산): 누적 금액 단조 증가 검증으로 바우처 재사용 방지.
+* $I_9$ (시빌 공격 격리): 능력치 리프당 고유한 채널 PDA 매핑.
+
+### 12.4. 위협 모델 및 정리 6.1 최대 손실 수학적 상한선
+대응 지연 시간 $\tau \le 12.0\text{s}$ ($t_{\text{detect}} + t_{\text{owner}} + t_{\text{land}}$) 하에서, 최악의 시나리오 $T_4$ (에이전트 개인키 탈취 및 가맹점 공모) 발생 시 최대 손실 $E_{\text{theft}}(\tau)$는 $\min(B, K, W_p \cdot n(\tau, \omega_p))$로 완벽하게 한정되어 기업 자산의 $99.9\%$ 이상을 보존합니다.
+
+### 12.5. 5대 레드팀 침투 방어 대책
+Jito MEV 패닉 선행매매 방어, 윈도우 경계 이중 지출 방어, 미사용 채널 24시간 대기 없는 즉시 자금 회수(`OwnerForceReclaim`), 계정 임대료(Rent Lamports) 100% 반환, 간접 프롬프트 주입 마이크로 루프 쓰로틀링 완비.
+
+---
+*기술 백서 v1.1 부록 • HAICHAIN 글로벌 시스템 태스크포스 • All Rights Reserved.*

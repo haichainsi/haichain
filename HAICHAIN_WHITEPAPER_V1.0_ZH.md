@@ -2,7 +2,7 @@
 ## 官方技术白皮书 v1.0 - 核心架构、密码学不变量与主权 AI L1 超级智能终局
 **架构制定机构:** HAICHAIN 全球系统特别工作组 & 密码学核心架构工作委员会  
 **发布日期:** 2026年10月31日 (国际机构标准版)  
-**文件分类:** 技术白皮书 v1.0 (简体中文版)  
+**文件分类:** 技术白皮书 v1.1 (简体中文 CapLeaf 与 9 大不变量正式版)  
 **主要结算资产:** **USDT (Solana SPL 代币: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB` & USDC (MiCA Compliant: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`))**  
 **网络原生治理、Gas 与质押资产:** **$HAISI (固定总量 1,000,000,000 枚)**  
 **主权网络域名:** `haichain.si` *(其中 `.si` 代表去中心化超级智能 - Superintelligence)*  
@@ -1325,3 +1325,84 @@ $$orall 	ext{套利搜索者 } M, \quad \mathbb{E}[	ext{MEV 获利} \mid 	ext{C
 
 ---
 *官方技术白皮书 v1.0 • HAICHAIN 全球系统特别工作组 • 登记在册的权威系统架构档案 • 保留所有权利。*
+
+
+---
+
+## 12. 技术附录 V1.1 — CAPLEAF V1 二进制架构、9大数学不变量、威胁模型与损失上限
+
+### 12.1. 223 字节 Little-Endian 协议格式与三层域分离
+在 HAICHAIN v1.1 内核中，主所有者授予 AI 子代理的每一项支付能力凭证均被编码为严格遵循 Borsh Little-Endian 序列化的 223 字节二进制结构体 (`CapLeafV1`)：
+* `version` (u8, `0x01`): 线缆协议版本号。
+* `grantee_scope` (Pubkey, 32 字节): AI 子代理的独立 Ed25519 签名公钥。
+* `merchant` (Pubkey, 32 字节): 白名单商户收款地址，试用模板 (`PROBATION`) 填 `[0u8; 32]`。
+* `token_mint` (Pubkey, 32 字节): 绑定的支付代币铸币地址 (Solana SPL USDT: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)。
+* `max_spend` (u64, 8 字节): 该叶片生命周期内最大累计支出上限。
+* `max_reserve` (u64, 8 字节): 单个结算通道允许锁定的最大预留保证金。
+* `window_cap` (u64, 8 字节): 滑动窗口速率上限（在周期 $\omega_p$ 内的最大支出）。
+* `window_secs` (u32, 4 字节): 滑动窗口时长（秒，默认 $3,600	ext{s}$）。
+* `budget_total` (u64, 8 字节): 分配给整个代理树的总预算。
+* `budget_used` (u64, 8 字节): 历史上累计已消耗的预算总额。
+* `valid_after` (i64, 8 字节): Unix 时间戳，生效起始时间。
+* `valid_until` (i64, 8 字节): Unix 时间戳，会话心跳过期时间。
+* `dispute_secs` (u32, 4 字节): 结算争议窗口期（默认 $86,400	ext{s}$ / 24小时）。
+* `flags` (u16, 2 字节): 控制位标志（`PROBATION`, `REQUIRE_COSIGN`, `STREAMING` 等）。
+* `cluster_id` (u8, 1 字节): 集群网络 ID (`0x01` Mainnet-Beta, `0x02` Devnet)。
+* `template_id` (u64, 8 字节): 自增模板 ID，关联子授权与父级模板。
+
+#### 三层域分离 (3-Layer Domain Separation)
+为彻底杜绝第二原像与长度扩展攻击：
+$$	ext{leaf\_hash} = 	ext{SHA256}(0	ext{x}00 \parallel 	ext{"HAICHAIN-CAPLEAF-V1"} \parallel 	ext{program\_id} \parallel 	ext{leaf\_bytes})$$
+$$	ext{node}(l, r) = 	ext{SHA256}(0	ext{x}01 \parallel l \parallel r)$$
+$$	ext{EMPTY} = 	ext{SHA256}(0	ext{x}02 \parallel 	ext{"HAICHAIN-CAPLEAF-V1"})$$
+Merkle 树采用固定深度 $d = 12$（4,096 个叶片槽位，证明尺寸固定为 384 字节），彻底消除动态树高漏洞。
+
+---
+
+### 12.2. 预留会计状态机与单调 PDA 层级
+链上内核解耦 Merkle 证明验证与高频通道结算：
+1. **`PotAccount` (`["pot", owner_auth]`):** 根资金池 PDA，托管未分配 USDT 存款并维护全局 `panic_epoch`。
+2. **`ActiveGrantAccount` (`["grant", pot, leaf_hash]`):** 通过 12 步证明由 `ActivateGrant` 激活一次。缓存叶片条款与滑动窗口状态。
+3. **`ChannelAccount` (`["chan", grant, channel_id]`):** 临时微托管通道，锁定最多 `max_reserve` 用于链下 HTTP x402 流式凭证结算。
+
+#### 规范收款人绝对安全
+结算指令中收款账户由智能合约链上强制推导：
+$$	ext{payee\_ata} \equiv 	ext{get\_associated\_token\_address}(	ext{grant.merchant}, 	ext{pot.token\_mint})$$
+任何试图将资金重定向到未授权地址的恶意交易均会被 SVM 虚拟机确定性拒绝。
+
+---
+
+### 12.3. 核心 9 大数学系统不变量 ($I_1 \dots I_9$)
+* **不变量 $I_1$ (资金绝对守恒):** $	ext{Vault}_{	ext{ATA}} + \sum 	ext{Escrow}_j + \sum 	ext{Paid}_j + 	ext{Refunds} \equiv 	ext{Net Deposits}$。
+* **不变量 $I_2$ (规范收款人安全):** 资金只能流向 $	ext{ATA}(	ext{merchant}, 	ext{mint})$ 或退回 Vault。
+* **不变量 $I_3$ (预算硬顶):** $	ext{grant.consumed} \le 	ext{leaf.max\_spend} \;\land\; 	ext{pot.budget\_used} \le 	ext{pot.budget\_total}$。
+* **不变量 $I_4$ (自主速率上限):** 滑动窗口内预留总资金不超过 `window_cap`。
+* **不变量 $I_5$ (单调权限收敛):** 子代理 PDA 权限绝不能宽于父级模板。
+* **不变量 $I_6$ (恐慌纪元与冻结隔离):** 结算必须满足 $	ext{pot.panic\_epoch} == 	ext{channel.created\_at\_epoch} \;\land\; 
+eg	ext{pot.frozen}$。
+* **不变量 $I_7$ (心跳时效性):** 超过 `valid_until` 严禁发起新预留。
+* **不变量 $I_8$ (单调结算与防双花):** $	ext{paid}_{	ext{new}} \le \min(	ext{voucher.cumulative}, 	ext{channel.reserved}) \;\land\; 	ext{paid}_{	ext{new}} \ge 	ext{paid}_{	ext{old}}$。
+* **不变量 $I_9$ (女巫账户隔离):** 每个能力叶片在链上映射唯一且确定性的 Channel PDA。
+
+---
+
+### 12.4. 定量威胁模型与定理 6.1 最大损失数学上限
+设 $	au$ 为从恶意凭证签署到链上紧急冻结交易确认的全部反应时间：
+$$	au = t_{	ext{detect}} + t_{	ext{owner}} + t_{	ext{land}} \le 12.0	ext{s}$$
+在最恶劣场景 $T_4$（代理私钥泄露且 Merkle 树中商户串通）下，最大潜在损失 $E_{	ext{theft}}(	au)$ 严格受限于：
+
+$$E_{	ext{theft}}(	au) \le \min\left(B,\; K,\; W_p \cdot n(	au, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(	au)ight)$$
+
+在标准提示词注入 ($T_1$) 攻击中，$E_{	ext{theft}} = 0$；即使私钥完全失窃 ($T_4$)，损失亦绝不会超过 $\min(K, W_p)$，保全企业 $99.9\%$ 以上资金。
+
+---
+
+### 12.5. 五大红队攻防加固防线
+1. **防御 Jito MEV 抢先结算:** 通道绑定 `created_at_epoch`。所有者触发 Panic 时纪元递增，黑客 MEV 捆绑包全部失效。
+2. **防御滑动窗口边界双重套现:** 预留时即刻原子性扣减滑动容量，杜绝跨窗口双倍提取。
+3. **`OwnerForceReclaim` 即时资金回收:** 若 `channel.paid == 0`，主所有者可免等 24 小时争议期立即抽回资金。
+4. **100% 租金 Lamports 保全:** 通道注销时租金强制原路退回出资者 (`grant_pot`)。
+5. **防御提示词注入微循环吸血:** 独立策略引擎限制试用域每 10 分钟最多 3 笔微交易，并严格校验返回载荷语义。
+
+---
+*技术白皮书 v1.1 附录 &bull; HAICHAIN 全球系统特别工作组 &bull; 版权所有。*

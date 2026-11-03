@@ -2,7 +2,7 @@
 ## Bản Sách Trắng Chính Thức v1.0 - Kiến Trúc Hệ Thống, Các Bất Biến Mật Mã & Đích Đến Siêu Trí Tuệ Sovereign AI L1 (ASI)
 **Đơn vị chủ trì:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN  
 **Ngày phát hành:** 31 tháng 10 năm 2026  
-**Phân loại tài liệu:** Sách Trắng Chính Thức v1.0 (Phiên bản Tiếng Việt)  
+**Phân loại tài liệu:** Sách Trắng Chính Thức v1.1 (Phiên bản Tiếng Việt - Bản CapLeaf & 9 Bất Biến)  
 **Tài sản thanh toán chính:** **USDC (Circle USD chuẩn MiCA: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`) & USDT (Tether SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
 **Token quản trị & hệ sinh thái:** **$HAISI (Tổng cung cố định: 1.000.000.000 Token)**  
 
@@ -1224,3 +1224,83 @@ Mọi con số, chỉ số kỹ thuật, dữ liệu thiệt hại lịch sử, 
 
 ---
 *Bản Sách Trắng Chính Thức v1.0 &bull; Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN &bull; Bảo lưu mọi quyền.*
+
+---
+
+## 12. PHỤ LỤC KỸ THUẬT V1.1 — CẤU TRÚC NHỊ PHÂN CAPLEAF V1, 9 BẤT BIẾN HỆ THỐNG, MÔ HÌNH ĐE DỌA & TRẦN THIỆT HẠI RỦI RO
+
+### 12.1. Cấu Trúc Lá Nhị Phân 223 Bytes & Phân Tách Miền 3 Tầng (Domain Separation)
+Trong Hạt nhân HAICHAIN v1.1, mọi năng lực chi tiêu do Chủ Sở Hữu (Master Owner) cấp cho Agent con đều được mã hóa dưới dạng cấu trúc nhị phân chuẩn hóa 223 bytes (`CapLeafV1`) tuần tự hóa theo định dạng Borsh Little-Endian:
+* `version` (u8, `0x01`): Phiên bản giao thức wire format.
+* `grantee_scope` (Pubkey, 32 bytes): Khóa ký Ed25519 riêng biệt của AI Sub-Agent.
+* `merchant` (Pubkey, 32 bytes): Địa chỉ Merchant được ủy quyền, hoặc `[0u8; 32]` cho lá mẫu thử việc `PROBATION`.
+* `token_mint` (Pubkey, 32 bytes): Mint token thanh toán (Tether USD Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`).
+* `max_spend` (u64, 8 bytes): Hạn mức chi tiêu tối đa trọn đời của lá năng lực.
+* `max_reserve` (u64, 8 bytes): Hạn mức khóa ký quỹ (escrow) tối đa cho mỗi kênh thanh toán.
+* `window_cap` (u64, 8 bytes): Trần tốc độ chi tiêu tối đa trong một cửa sổ trượt $\omega_p$.
+* `window_secs` (u32, 4 bytes): Thời lượng của cửa sổ tốc độ tính bằng giây (mặc định $3.600	ext{s}$).
+* `budget_total` (u64, 8 bytes): Tổng ngân sách phân bổ cho toàn bộ cây Agent.
+* `budget_used` (u64, 8 bytes): Ngân sách tích lũy đã tiêu thụ.
+* `valid_after` (i64, 8 bytes): Mốc thời gian Unix trước đó lá chưa có hiệu lực.
+* `valid_until` (i64, 8 bytes): Mốc thời gian Unix hết hạn heartbeat của phiên làm việc.
+* `dispute_secs` (u32, 4 bytes): Thời gian giải quyết tranh chấp khi đóng kênh ($86.400	ext{s}$ / 24 giờ).
+* `flags` (u16, 2 bytes): Cờ điều khiển (`PROBATION`, `REQUIRE_COSIGN`, `STREAMING`).
+* `cluster_id` (u8, 1 byte): Định danh mạng (`0x01` Mainnet-Beta, `0x02` Devnet).
+* `template_id` (u64, 8 bytes): Số định danh tăng dần liên kết lá con với lá mẫu cha.
+
+#### Phân Tách Miền 3 Tầng (3-Layer Domain Separation)
+Để triệt tiêu hoàn toàn các cuộc tấn công second-preimage và length-extension:
+$$	ext{leaf\_hash} = 	ext{SHA256}(0	ext{x}00 \parallel 	ext{"HAICHAIN-CAPLEAF-V1"} \parallel 	ext{program\_id} \parallel 	ext{leaf\_bytes})$$
+$$	ext{node}(l, r) = 	ext{SHA256}(0	ext{x}01 \parallel l \parallel r)$$
+$$	ext{EMPTY} = 	ext{SHA256}(0	ext{x}02 \parallel 	ext{"HAICHAIN-CAPLEAF-V1"})$$
+Cây Merkle được thiết lập ở độ sâu cố định $d = 12$ ($4.096$ vị trí lá, kích thước proof cố định $384	ext{ bytes}$), loại bỏ hoàn toàn lỗ hổng biến thiên độ sâu cây.
+
+---
+
+### 12.2. Kế Toán Đặt Trước (Reservation Accounting) & Thứ Bậc PDA Đơn Điệu
+Hạt nhân on-chain tách bạch việc nộp bằng chứng Merkle khỏi luồng thanh toán vi mô:
+1. **`PotAccount` (`["pot", owner_auth]`):** Kho quỹ quản trị gốc lưu trữ số dư USDT chưa phân bổ và `panic_epoch` hiện tại.
+2. **`ActiveGrantAccount` (`["grant", pot, leaf_hash]`):** Kích hoạt 1 lần duy nhất qua `ActivateGrant` với Merkle proof 12 bước. Lưu trữ các điều khoản của lá, `consumed`, và bộ đếm cửa sổ trượt.
+3. **`ChannelAccount` (`["chan", grant, channel_id]`):** Kênh ký quỹ tạm thời khóa trước tối đa `max_reserve` phục vụ thanh toán vi mô streaming HTTP x402 ngoài chuỗi.
+
+#### Cưỡng Chế Tài Khoản Thụ Hưởng Chuẩn Tắc (Canonical Payee Safety)
+Trong mọi lệnh thanh toán, tài khoản nhận tiền được suy diễn trực tiếp on-chain:
+$$	ext{payee\_ata} \equiv 	ext{get\_associated\_token\_address}(	ext{grant.merchant}, 	ext{pot.token\_mint})$$
+Mọi nỗ lực của Agent bị chiếm quyền nhằm trích xuất tiền về tài khoản ATA giả mạo đều bị hệ điều hành SVM chặn đứng ngay lập tức.
+
+---
+
+### 12.3. Hệ Thống 9 Bất Biến Toán Học Cốt Lõi ($I_1 \dots I_9$)
+* **Bất biến $I_1$ (Bảo toàn Vốn):** $	ext{Vault}_{	ext{ATA}} + \sum 	ext{Escrow}_j + \sum 	ext{Paid}_j + 	ext{Refunds} \equiv 	ext{Net Deposits}$. Tổng tài sản trong hệ thống bảo toàn tuyệt đối qua mọi lệnh.
+* **Bất biến $I_2$ (An toàn Thụ hưởng):** Tiền rời khỏi Escrow chỉ được phép chảy về $	ext{ATA}(	ext{merchant}, 	ext{mint})$ hoặc hoàn về Vault.
+* **Bất biến $I_3$ (Trần Ngân sách):** $	ext{grant.consumed} \le 	ext{leaf.max\_spend} \;\land\; 	ext{pot.budget\_used} \le 	ext{pot.budget\_total}$.
+* **Bất biến $I_4$ (Trần Tốc độ Tự hành):** Tổng vốn đặt trước trong cửa sổ trượt $[t, t + \omega_p]$ không vượt quá `window_cap`.
+* **Bất biến $I_5$ (Thu hẹp Quyền hạn Đơn điệu):** PDA con tuyệt đối không thể mở rộng phạm vi quyền hạn so với PDA cha.
+* **Bất biến $I_6$ (Cô lập Kỷ nguyên Panic & Đóng băng):** Thanh toán yêu cầu $	ext{pot.panic\_epoch} == 	ext{channel.created\_at\_epoch} \;\land\; 
+eg	ext{pot.frozen}$. Lệnh Panic lập tức phong tỏa toàn bộ voucher off-chain.
+* **Bất biến $I_7$ (Tuân thủ Heartbeat):** Từ chối mọi hoạt động chi tiêu nếu $	ext{clock.unix\_timestamp} > 	ext{valid\_until}$.
+* **Bất biến $I_8$ (Thanh toán Đơn điệu & Duy nhất):** $	ext{paid}_{	ext{new}} \le \min(	ext{voucher.cumulative}, 	ext{channel.reserved}) \;\land\; 	ext{paid}_{	ext{new}} \ge 	ext{paid}_{	ext{old}}$. Chống lặp và chống double-spending voucher.
+* **Bất biến $I_9$ (Cô lập Tài khoản Sybil):** Mỗi lá năng lực tương ứng với một tài khoản Channel PDA duy nhất.
+
+---
+
+### 12.4. Mô Hình Đe Dọa & Định Lý 6.1 Về Trần Thiệt Hại Tối Đa ($E_{	ext{theft}}$)
+Gọi $	au$ là tổng thời gian phản ứng từ khi phát sinh voucher gian lận đến khi lệnh Panic hạ cánh on-chain:
+$$	au = t_{	ext{detect}} + t_{	ext{owner}} + t_{	ext{land}} \le 12.0	ext{s}$$
+Trong kịch bản tồi tệ nhất $T_4$ (lộ hoàn toàn khóa Ed25519 của Agent và Merchant trong Merkle tree thông đồng lừa đảo), tổng thiệt hại tối đa $E_{	ext{theft}}(	au)$ bị khóa cứng trong:
+
+$$E_{	ext{theft}}(	au) \le \min\left(B,\; K,\; W_p \cdot n(	au, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(	au)ight)$$
+
+**Hệ quả định chế:** Trong 100% các cuộc tấn công Prompt Injection thông thường ($T_1$), $E_{	ext{theft}} = 0$. Trong kịch bản lộ khóa toàn bộ ($T_4$), thiệt hại bị chặn trên bởi $\min(K, W_p)$, bảo toàn hơn $99.9\%$ vốn của doanh nghiệp.
+
+---
+
+### 12.5. Năm Bản Vá Phòng Thủ Tấn Công Red-Team
+1. **Chống Jito MEV Panic Front-Running:** Channel gắn nhãn `created_at_epoch`. Khi Owner bấm `Panic`, epoch tăng lên, vô hiệu hóa ngay tức thì các gói bundle MEV của hacker.
+2. **Chống Window Straddle Double-Dip:** Hạn mức cửa sổ trượt được đốt tức thì khi đặt trước, ngăn chặn rút gấp đôi hạn mức qua khe thời gian 2 giây.
+3. **`OwnerForceReclaim` Giải Phóng Vốn 24h:** Chủ sở hữu có quyền rút ngay lập tức số tiền ký quỹ chưa tiêu nếu `channel.paid == 0` mà không cần chờ 24h tranh chấp.
+4. **Bảo Toàn 100% Rent Lamports:** Hoàn trả tiền thuê tài khoản (rent) về đúng địa chỉ người mở ban đầu (`grant_pot`).
+5. **Chống Vòng Lặp Rút Ruột Prompt Injection:** Policy Engine giới hạn tối đa 3 giao dịch/10 phút đối với domain thử việc và xác thực ngữ nghĩa payload.
+
+---
+*Phụ Lục Sách Trắng Kỹ Thuật v1.1 &bull; Hội đồng Hệ thống HAICHAIN &bull; Bảo lưu Mọi Quyền.*

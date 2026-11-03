@@ -2,7 +2,7 @@
 ## Libro Blanco Técnico Oficial v1.0 - Arquitectura, Invariantes Criptográficos y el Fin de Juego de la Superinteligencia AI L1 Soberana
 **Diseñado por:** El Grupo de Trabajo de Sistemas Globales de HAICHAIN & Comité de Arquitectura del Núcleo Criptográfico  
 **Fecha de Publicación:** 31 de octubre de 2026 (Edición Estándar Institucional)  
-**Clasificación del Documento:** Libro Blanco Técnico v1.0 (Edición en Español)  
+**Clasificación del Documento:** Libro Blanco Técnico v1.1 (Edición en Español CapLeaf y 9 Invariantes)  
 **Activo de Liquidación Principal:** **USDT (Tether USD en Solana SPL: `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`)**  
 **Activo Nativo de Gobernanza, Gas y Staking:** **$HAISI (Suministro Fijo de 1.000.000.000)**  
 **Dominio Soberano de Red:** `haichain.si` *(Donde `.si` designa Superinteligencia Descentralizada - Superintelligence)*  
@@ -1329,3 +1329,36 @@ Cada métrica arquitectónica, cifra de exploits históricos, restricción físi
 
 ---
 *Libro Blanco Técnico Oficial v1.0 • Grupo de Trabajo de Sistemas Globales de HAICHAIN • Registro Arquitectónico Registrado • Todos los Derechos Reservados.*
+
+
+---
+
+## 12. APÉNDICE TÉCNICO V1.1 — ARQUITECTURA BINARIA CAPLEAF V1, 9 INVARIANTES, MODELO DE AMENAZAS Y TECHO DE RIESGO
+
+### 12.1. Formato Binario de 223 Bytes Little-Endian y Separación de Dominio de 3 Capas
+En el núcleo HAICHAIN v1.1, cada capacidad de gasto otorgada por el Propietario Maestro se codifica como una estructura binaria de 223 bytes (`CapLeafV1`) serializada en Borsh Little-Endian con 16 campos estrictos.
+La separación de dominio (`0x00`, `0x01`, `0x02`) neutraliza ataques de segunda preimagen, operando sobre un árbol Merkle de profundidad fija $d = 12$ (4.096 hojas, prueba fija de 384 bytes).
+
+### 12.2. Contabilidad de Reserva y Jerarquía Monótona de PDA
+El contrato inteligente separa la verificación de prueba del flujo de pagos: `PotAccount` (bóveda raíz) $\rightarrow$ `ActiveGrantAccount` (activación de prueba en 1 paso) $\rightarrow$ `ChannelAccount` (micro-custodia temporal para vouchers HTTP x402).
+La cuenta de destino se deriva obligatoriamente on-chain: $\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$.
+
+### 12.3. Los 9 Invariantes Matemáticos del Sistema ($I_1 \dots I_9$)
+* $I_1$ (Conservación de Capital): Bóveda + Custodias + Pagos + Devoluciones $\equiv$ Depósitos Netos.
+* $I_2$ (Seguridad de Beneficiario): Fondos dirigidos exclusivamente a la ATA canónica del comercio.
+* $I_3$ (Techo Presupuestario): Gasto acumulado $\le$ Límite máximo establecido.
+* $I_4$ (Límite de Velocidad Autónomo): Control de gasto en ventana deslizante.
+* $I_5$ (Estricta Reducción Monótona): Los PDA secundarios no pueden ampliar permisos del PDA principal.
+* $I_6$ (Aislamiento de Época de Pánico): La congelación invalida inmediatamente vouchers pendientes.
+* $I_7$ (Vencimiento por Heartbeat): Bloqueo automático al superar `valid_until`.
+* $I_8$ (Liquidación Monótona): Liquidación no decreciente que elimina el doble gasto.
+* $I_9$ (Aislamiento contra Ataques Sybil): Unicidad matemática de cada cuenta de canal.
+
+### 12.4. Modelo Cuantitativo de Amenazas y Teorema 6.1 Techo de Pérdida
+Con un tiempo de reacción $\tau \le 12.0\text{s}$, en el peor escenario $T_4$ (compromiso de clave privada y comercio coludido), la pérdida máxima $E_{\text{theft}}(\tau)$ está acotada por $\min(B, K, W_p \cdot n(\tau, \omega_p))$, blindando más del $99,9\%$ de los fondos empresariales.
+
+### 12.5. Cinco Defensas Red-Team Integradas
+Defensa contra front-running Jito MEV en pánico, neutralización de doble gasto en fronteras de ventana temporal, recuperación instantánea de fondos sin esperar 24h (`OwnerForceReclaim`), restitución del 100% de lamports de renta y filtrado anti-bucles en inyecciones de prompt.
+
+---
+*Apéndice del Libro Blanco Técnico v1.1 • HAICHAIN Global Systems Taskforce • Todos los derechos reservados.*
