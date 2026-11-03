@@ -3,6 +3,7 @@
   "version": "6.9.0",
   "description": "HAICHAIN: Universal Autonomous Machine Financial & Cognitive Operating System - The Bedrock for Decentralized Superintelligence",
   "scripts": {
+    "build": "echo Build ready",
     "test": "node scripts/verify_i18n.js && ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts",
     "test:i18n": "node scripts/verify_i18n.js",
     "test:stress": "node scripts/stress_test_i18n.js",
