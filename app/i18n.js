@@ -1,16 +1,16 @@
 /**
  * HAICHAIN v6.9.5 - Official Multi-Language Internationalization (i18n) Engine
  * 10 Supported Languages:
- *   1. Kazakh (kk) 🇰🇿 [Primary / First]
- *   2. English (en) 🇺🇸
- *   3. Chinese (zh) 🇨🇳
- *   4. French (fr) 🇫🇷
- *   5. Korean (ko) 🇰🇷
- *   6. Spanish (es) 🇪🇸
- *   7. Russian (ru) 🇷🇺
- *   8. Vietnamese (vi) 🇻🇳
- *   9. Hindi (hi) 🇮🇳
- *  10. Modern Hebrew (he) 🇮🇱 [Native RTL Support]
+ *   1. English (en) 🇺🇸
+ *   2. French (fr) 🇫🇷
+ *   3. Spanish (es) 🇪🇸
+ *   4. Russian (ru) 🇷🇺
+ *   5. Chinese (zh) 🇨🇳
+ *   6. Korean (ko) 🇰🇷
+ *   7. Hindi (hi) 🇮🇳
+ *   8. Modern Hebrew (he) 🇮🇱 [Native RTL Support]
+ *   9. Vietnamese (vi) 🇻🇳
+ *  10. Kazakh (kk) 🇰🇿 [At the bottom]
  */
 
 (function () {
@@ -28,16 +28,16 @@
 };
 
   const LANGUAGES = [
-    { code: 'kk', name: 'Kazakh', flagSvg: FLAG_SVGS.kk, native: 'Қазақша' },
     { code: 'en', name: 'English', flagSvg: FLAG_SVGS.en, native: 'English' },
-    { code: 'zh', name: 'Chinese', flagSvg: FLAG_SVGS.zh, native: '简体中文' },
     { code: 'fr', name: 'French', flagSvg: FLAG_SVGS.fr, native: 'Français' },
-    { code: 'ko', name: 'Korean', flagSvg: FLAG_SVGS.ko, native: '한국어' },
     { code: 'es', name: 'Spanish', flagSvg: FLAG_SVGS.es, native: 'Español' },
     { code: 'ru', name: 'Russian', flagSvg: FLAG_SVGS.ru, native: 'Русский' },
-    { code: 'vi', name: 'Vietnamese', flagSvg: FLAG_SVGS.vi, native: 'Tiếng Việt' },
+    { code: 'zh', name: 'Chinese', flagSvg: FLAG_SVGS.zh, native: '简体中文' },
+    { code: 'ko', name: 'Korean', flagSvg: FLAG_SVGS.ko, native: '한국어' },
     { code: 'hi', name: 'Hindi', flagSvg: FLAG_SVGS.hi, native: 'हिन्दी' },
-    { code: 'he', name: 'Hebrew', flagSvg: FLAG_SVGS.he, native: 'עברית' }
+    { code: 'he', name: 'Hebrew', flagSvg: FLAG_SVGS.he, native: 'עברית' },
+    { code: 'vi', name: 'Vietnamese', flagSvg: FLAG_SVGS.vi, native: 'Tiếng Việt' },
+    { code: 'kk', name: 'Kazakh', flagSvg: FLAG_SVGS.kk, native: 'Қазақша' }
   ];
 
   const TRANSLATIONS = {
