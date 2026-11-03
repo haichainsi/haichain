@@ -217,7 +217,7 @@ function buildHaichainSaftEmailHtml(opt) {
   window.getCurrentLang = window.getHaichainLang = getCurrentLang;
 
   function getWhitepaperUrlForLang(lang) {
-    const versionParam = '?v=v32_ai2_title_math_fixed';
+    const versionParam = '?v=v60_institutional_math_rendered_20261103_final';
     switch (lang) {
       case 'vi': return '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf' + versionParam;
       case 'zh': return '/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf' + versionParam;
