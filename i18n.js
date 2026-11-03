@@ -4129,7 +4129,7 @@
     "comp.row8Render": "Trung bình: Mạng lưới đối tác doanh nghiệp đang mở rộng và danh bạ AI agent chọn lọc",
     "comp.row8Eliza": "Thống trị toàn cầu: Hàng nghìn tỷ USD volume hàng năm trên 135+ loại tiền tệ pháp định",
     "comp.row8Stripe": "Thống trị toàn cầu: Hàng nghìn tỷ USD volume hàng năm trên 135+ loại tiền tệ pháp định",
-    "nav.riskReport": "Báo Cáo Thẩm Định Rủi Ro Định Chế"
+    "nav.riskReport": "Báo Cáo Thẩm Định Rủi Ro"
   },
   "hi": {
     "agenticShift.badge": "वैश्विक परिवर्तन • AI एजेंट युग (2026+)",
