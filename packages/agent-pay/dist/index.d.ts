@@ -4,6 +4,10 @@
  * Universal HTTP 402 Micro-Payment Paywall & Solana Escrow Middleware
  * For Autonomous AI Agents on Smithery, Fetch.ai, and MCP Servers.
  * ==============================================================================
+ * REAL ON-CHAIN PRODUCTION-GRADE ENFORCEMENT:
+ * - Zero bypass backdoor.
+ * - Confirms on-chain Solana L1 transactions via RPC.
+ * - Verifies recipient address inclusion and positive lamport delta.
  */
 export interface PaywallConfig {
     recipient: string;
@@ -11,7 +15,7 @@ export interface PaywallConfig {
     cluster?: 'devnet' | 'mainnet-beta';
     rpcUrl?: string;
     serviceName?: string;
-    requireConfirmation?: boolean;
+    minLamports?: number;
 }
 export declare class HaichainPaywall {
     private config;
@@ -47,11 +51,15 @@ export declare class HaichainPaywall {
         };
     };
     /**
-     * Validates incoming payment authorization header or query token
+     * REAL ON-CHAIN SOLANA AUDIT:
+     * 1. Inspects raw Solana Transaction on L1 via RPC.
+     * 2. Confirms zero execution errors on-chain.
+     * 3. Confirms recipient balance received the micro-payment.
      */
     verifyPayment(authHeader?: string, customTxSig?: string): Promise<{
         valid: boolean;
         reason?: string;
+        txDetails?: any;
     }>;
     /**
      * Connect / Express Middleware
