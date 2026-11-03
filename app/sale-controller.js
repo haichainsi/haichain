@@ -2314,7 +2314,10 @@
     if (btnShareX) {
       btnShareX.addEventListener('click', () => {
         const refInput = container.querySelector('#ref-share-url-input');
-        const url = refInput ? refInput.value : window.location.origin;
+        let url = refInput ? refInput.value : window.location.origin;
+        if (!url.includes('utm_source')) {
+          url += (url.includes('?') ? '&' : '?') + 'utm_source=twitter';
+        }
         const text = encodeURIComponent(`🚀 Join the HAICHAIN Pre-Seed Round! Get +5% Bonus $HAISI allocation on your SAFT deposit:\n\n${url}\n\n#HAICHAIN #Solana #AI #Token2022`);
         window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
       });
@@ -2324,7 +2327,10 @@
     if (btnShareTg) {
       btnShareTg.addEventListener('click', () => {
         const refInput = container.querySelector('#ref-share-url-input');
-        const url = refInput ? refInput.value : window.location.origin;
+        let url = refInput ? refInput.value : window.location.origin;
+        if (!url.includes('utm_source')) {
+          url += (url.includes('?') ? '&' : '?') + 'utm_source=telegram';
+        }
         const text = encodeURIComponent(`Join HAICHAIN Pre-Seed Round with +5% $HAISI Token Bonus!`);
         window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${text}`, '_blank');
       });

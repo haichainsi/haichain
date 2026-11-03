@@ -577,7 +577,11 @@
               textEl.textContent = '🎉 Invited by Genesis Backer ' + shortRef + '! Claim +5% Bonus $HAISI on your deposit.';
               if (ctaText) ctaText.textContent = 'Claim +5% Bonus →';
             }
-            if (ctaEl) ctaEl.href = '/dashboard?tab=preseed&ref=' + encodeURIComponent(activeRef);
+            if (ctaEl) {
+              var targetHref = '/dashboard?tab=preseed&ref=' + encodeURIComponent(activeRef);
+              if (utmSource) targetHref += '&utm_source=' + encodeURIComponent(utmSource);
+              ctaEl.href = targetHref;
+            }
             banner.classList.remove('hidden');
           }
         });
