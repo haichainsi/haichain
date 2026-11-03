@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  haichain-gateway:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: haichain-production-gateway
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+      - SOLANA_CLUSTER=devnet
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+    volumes:
+      - ../server/dynamic-agents.json:/app/server/dynamic-agents.json
+      - ../logs:/app/logs
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:8080/status"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
