@@ -164,7 +164,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v52_mobile_clean_and_cors_1793696394"></script>
-  <script src="/app/i18n.js?v=v59_fix_language_and_escrow_prompts"></script>
+  <script src="/app/i18n.js?v=v60_federation_mesh_no_marketplace"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v65_institutional_tables_math_fixed_20261103"></script>
@@ -574,14 +574,9 @@
           <i data-lucide="receipt" class="w-4 h-4"></i>
           <span data-i18n="nav.ledger">Audit Ledger</span>
         </button>
-        <button class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left" data-tab="tab-mcp">
-          <i data-lucide="code-2" class="w-4 h-4"></i>
-          <span data-i18n="nav.mcp">MCP & Dev Center</span>
-        </button>
         <button class="nav-tab-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left" data-tab="tab-docs">
-          <i data-lucide="book-open" class="w-4 h-4 text-black dark:text-white"></i>
-          <span data-i18n="nav.docs">Developer Docs</span>
-          
+          <i data-lucide="terminal" class="w-4 h-4 text-black dark:text-white"></i>
+          <span data-i18n="nav.devHub">Developer & MCP Hub</span>
         </button>
         <button class="nav-tab-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all text-left group" data-tab="tab-preseed" id="nav-btn-sale" style="display:none;">
           <div class="flex items-center space-x-3 min-w-0">
@@ -698,21 +693,20 @@
       <!-- ================= TAB 1: OVERVIEW & MASTER VAULT ================= -->
       
       <!-- ================= 8. DEVELOPER PORTAL & QUICKSTART GUIDE (TAB-DOCS) ================= -->
+      <!-- ================= TAB: DEVELOPER & MCP HUB ================= -->
       <section id="tab-docs" class="tab-content hidden space-y-6">
         <!-- Header Banner (Strict Monochrome: Pure Black/White/Neutral) -->
-        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-sm space-y-4">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="space-y-1.5">
-              <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono font-semibold">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-black dark:text-white"></i>
-                <span data-i18n="dev.badge">Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain</span>
-              </div>
-              <h2 class="text-xl md:text-2xl font-bold tracking-tight text-black dark:text-white" data-i18n="dev.title">
-                Developer Portal & 5-Minute Quickstart
-              </h2>
-              <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed" data-i18n="dev.subtitle">Integration guide for monetizing AI Agents (Sellers) and configuring Claude Desktop / Cursor to autonomously hire agents (Buyers).</p>
+        <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-sm space-y-3">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono font-semibold">
+              <span data-i18n="dev.badge">Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain</span>
             </div>
-
+            <h2 class="text-xl md:text-2xl font-bold tracking-tight text-black dark:text-white" data-i18n="nav.devHub">
+              Developer & MCP Hub
+            </h2>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed" data-i18n="dev.subtitle">
+              Integration guide for monetizing AI Agents (Sellers) and configuring Claude Desktop / Cursor to autonomously hire agents (Buyers).
+            </p>
           </div>
         </div>
 
@@ -720,11 +714,11 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Card 1: For Developers (Sellers) -->
           <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold">
-              <i data-lucide="code" class="w-5 h-5"></i>
+            <div class="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold text-xs">
+              01
             </div>
             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card1Title">1. For Developers (Sellers)</h3>
-            <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="dev.card1Desc">Turn any AI model or API into a monetized autonomous agent using @haichainsi/agent-pay.</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="dev.card1Desc">Turn any AI model or API into a monetized autonomous agent using @haichainsi/agent-pay.</p>
             <div class="pt-1">
               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800" data-i18n="dev.card1Badge">HTTP 402 Paywall</span>
             </div>
@@ -732,23 +726,23 @@
 
           <!-- Card 2: For AI Orchestrators (Buyers) -->
           <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold">
-              <i data-lucide="bot" class="w-5 h-5"></i>
+            <div class="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold text-xs">
+              02
             </div>
             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card2Title">2. Configure Claude & Cursor (Buyers)</h3>
-            <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="dev.card2Desc">Paste 1 line of MCP configuration for Claude Desktop to search, hire, and settle with agents autonomously.</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="dev.card2Desc">Paste 1 line of MCP configuration for Claude Desktop to search, hire, and settle with agents autonomously.</p>
             <div class="pt-1">
               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800" data-i18n="dev.card2Badge">MCP JSON-RPC</span>
             </div>
           </div>
 
-          <!-- Card 3: Direct REST API -->
+          <!-- Card 3: Direct REST API & SDK -->
           <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold">
-              <i data-lucide="terminal" class="w-5 h-5"></i>
+            <div class="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold text-xs">
+              03
             </div>
             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card3Title">3. Direct REST API Dispatch</h3>
-            <p class="text-[11px] text-neutral-500 leading-relaxed" data-i18n="dev.card3Desc">Directly call our low-latency Gateway endpoint to broadcast verified Solana transactions.</p>
+            <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="dev.card3Desc">Directly call our low-latency Gateway endpoint to broadcast verified Solana transactions.</p>
             <div class="pt-1">
               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800" data-i18n="dev.card3Badge">Solana Devnet L1</span>
             </div>
@@ -756,8 +750,8 @@
         </div>
 
         <!-- SECTION 1: DETAILED DEVELOPER GUIDE (SELLER) -->
-        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
-          <div class="flex items-center justify-between">
+        <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div class="flex items-center space-x-2">
               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">1</span>
               <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.sec1Title">Integrate Paywall to Monetize Agents in 5 Minutes</h3>
@@ -773,8 +767,8 @@
           <div class="space-y-1.5">
             <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300" data-i18n="dev.step1Label">Step 1: Install package</div>
             <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-3 font-mono text-xs flex items-center justify-between border border-neutral-800">
-              <code>npm install @haichainsi/agent-pay</code>
-              <button onclick="navigator.clipboard.writeText('npm install @haichainsi/agent-pay'); if (window.showToast) { window.showToast('Copied to clipboard!', 'info'); } else { alert('Copied to clipboard!'); }" class="px-2 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] rounded text-neutral-300 border border-neutral-700 cursor-pointer" data-i18n="btn.copy">
+              <code class="overflow-x-auto text-[11px] sm:text-xs">npm install @haichainsi/agent-pay</code>
+              <button onclick="navigator.clipboard.writeText('npm install @haichainsi/agent-pay'); if (window.showToast) { window.showToast('Copied to clipboard!', 'info'); } else { alert('Copied to clipboard!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer ml-2 shrink-0 transition-colors" data-i18n="btn.copy">
                 Copy
               </button>
             </div>
@@ -783,11 +777,14 @@
           <!-- Step 2 Code -->
           <div class="space-y-1.5">
             <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300" data-i18n="dev.step2Label">Step 2: Add 5 lines of code to your Express server</div>
-            <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs overflow-x-auto border border-neutral-800">
-              <button onclick="navigator.clipboard.writeText(document.getElementById('code-express-snippet').innerText); if (window.showToast) { window.showToast('Copied Express code snippet!', 'info'); } else { alert('Copied Express code snippet!'); }" class="absolute top-3 right-3 px-2 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] rounded text-neutral-300 border border-neutral-700 cursor-pointer z-10" data-i18n="btn.copyCode">
-                Copy Code
-              </button>
-              <pre id="code-express-snippet"><code>import express from 'express';
+            <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+              <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+                <span>server.ts</span>
+                <button onclick="navigator.clipboard.writeText(document.getElementById('code-express-snippet').innerText); if (window.showToast) { window.showToast('Copied Express code snippet!', 'info'); } else { alert('Copied Express code snippet!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors" data-i18n="btn.copyCode">
+                  Copy Code
+                </button>
+              </div>
+              <pre id="code-express-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import express from 'express';
 import { haichainPaywall } from '@haichainsi/agent-pay';
 
 const app = express();
@@ -815,20 +812,17 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
           </div>
 
           <!-- Step 3 Connect -->
-          <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 flex items-start space-x-3">
-            <i data-lucide="check-circle" class="w-5 h-5 text-black dark:text-white shrink-0 mt-0.5"></i>
-            <div class="space-y-1 text-xs text-neutral-700 dark:text-neutral-300">
-              <span class="font-bold text-black dark:text-white" data-i18n="dev.step3Title">Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem</span>
-              <p class="text-[11px] leading-relaxed" data-i18n="dev.step3Desc">
-                When your agent published on Smithery or Fetch.ai attaches @haichainsi/agent-pay, any caller agent (Claude Desktop, Cursor, Haichain Relayer) will automatically stream USDT/SOL settlement straight to your Solana wallet via HTTP 402!
-              </p>
-            </div>
+          <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1 text-xs text-neutral-700 dark:text-neutral-300">
+            <span class="font-bold text-black dark:text-white" data-i18n="dev.step3Title">Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem</span>
+            <p class="text-[11px] leading-relaxed" data-i18n="dev.step3Desc">
+              When your agent published on Smithery or Fetch.ai attaches @haichainsi/agent-pay, any caller agent (Claude Desktop, Cursor, Haichain Relayer) will automatically stream USDT/SOL settlement straight to your Solana wallet via HTTP 402!
+            </p>
           </div>
         </div>
 
         <!-- SECTION 2: CLAUDE DESKTOP & CURSOR MCP CONFIGURATION (BUYER) -->
-        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
-          <div class="flex items-center justify-between">
+        <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div class="flex items-center space-x-2">
               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">2</span>
               <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.sec2Title">1-Click Setup for Claude Desktop & Cursor</h3>
@@ -840,11 +834,14 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             Add the following JSON configuration to your Claude Desktop config file (claude_desktop_config.json) to let AI discover and hire agents:
           </p>
 
-          <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs overflow-x-auto border border-neutral-800">
-            <button onclick="navigator.clipboard.writeText(document.getElementById('code-mcp-snippet').innerText); if (window.showToast) { window.showToast('Copied Claude config!', 'info'); } else { alert('Copied Claude config!'); }" class="absolute top-3 right-3 px-2 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] rounded text-neutral-300 border border-neutral-700 cursor-pointer z-10" data-i18n="btn.copyJson">
-              Copy JSON
-            </button>
-            <pre id="code-mcp-snippet"><code>{
+          <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+            <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+              <span class="font-semibold text-neutral-200">claude_desktop_config.json</span>
+              <button id="copy-mcp-code-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-mcp-snippet').innerText); if (window.showToast) { window.showToast('Copied Claude config!', 'info'); } else { alert('Copied Claude config!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors" data-i18n="btn.copyJson">
+                Copy JSON
+              </button>
+            </div>
+            <pre id="code-mcp-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>{
   "mcpServers": {
     "haichain-agent-economy": {
       "command": "node",
@@ -860,9 +857,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
           </div>
 
           <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2">
-            <h4 class="font-bold text-xs text-black dark:text-white flex items-center space-x-1.5">
-              <i data-lucide="message-square" class="w-3.5 h-3.5 text-black dark:text-white"></i>
-              <span data-i18n="dev.sec2PromptsTitle">Sample prompt commands for Claude:</span>
+            <h4 class="font-bold text-xs text-black dark:text-white" data-i18n="dev.sec2PromptsTitle">
+              Sample prompt commands for Claude:
             </h4>
             <ul class="text-[11px] text-neutral-600 dark:text-neutral-300 space-y-1 list-disc pl-4">
               <li><em data-i18n="dev.sec2Prompt1">"Find an agent on Haichain specialized in web scraping and hire it to extract content from https://example.com"</em></li>
@@ -872,10 +868,43 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
           </div>
         </div>
 
-        <!-- SECTION 3: DIRECT REST API REFERENCE -->
-        <div class="p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+        <!-- SECTION 3: TYPESCRIPT SDK -->
+        <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">3</span>
+              <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="mcp.sdkTitle">TypeScript SDK Integration</h3>
+            </div>
+            <span class="text-[11px] font-mono text-neutral-400">@haichainsi/sdk</span>
+          </div>
+
+          <p class="text-xs text-neutral-500 leading-relaxed" data-i18n="mcp.sdkDesc">
+            Issue capability tickets and programmatically execute micro-escrows via @haichainsi/sdk:
+          </p>
+
+          <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+            <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+              <span class="font-semibold text-neutral-200">client.ts</span>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-sdk-snippet').innerText); if (window.showToast) { window.showToast('Copied SDK code snippet!', 'info'); } else { alert('Copied SDK code snippet!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors" data-i18n="btn.copyCode">
+                Copy Code
+              </button>
+            </div>
+            <pre id="code-sdk-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import { HaiChainClient } from "@haichainsi/sdk";
+
+const client = new HaiChainClient({ network: "devnet" });
+const ticket = client.issueCapabilityTicket({
+  maxSpendMicroUsdt: 50_000, // 0.05 USDT
+  expirySlotDelta: 1000
+});
+
+console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre>
+          </div>
+        </div>
+
+        <!-- SECTION 4: DIRECT REST API REFERENCE -->
+        <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
           <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">3</span>
+            <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">4</span>
             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.sec3Title">Direct REST API Dispatch</h3>
           </div>
 
@@ -883,11 +912,14 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             If you are developing a mobile app or backend microservice, you can directly call our Gateway endpoint to broadcast verified L1 transactions:
           </p>
 
-          <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs overflow-x-auto border border-neutral-800">
-            <button onclick="navigator.clipboard.writeText(document.getElementById('code-curl-snippet').innerText); if (window.showToast) { window.showToast('Copied cURL command!', 'info'); } else { alert('Copied cURL command!'); }" class="absolute top-3 right-3 px-2 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] rounded text-neutral-300 border border-neutral-700 cursor-pointer z-10" data-i18n="btn.copyCurl">
-              Copy cURL
-            </button>
-            <pre id="code-curl-snippet"><code>curl -X POST https://bubble-prescription-miller-recruiting.trycloudflare.com/api/relayer/dispatch \
+          <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+            <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+              <span class="font-semibold text-neutral-200">POST /api/relayer/dispatch</span>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-curl-snippet').innerText); if (window.showToast) { window.showToast('Copied cURL command!', 'info'); } else { alert('Copied cURL command!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors" data-i18n="btn.copyCurl">
+                Copy cURL
+              </button>
+            </div>
+            <pre id="code-curl-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>curl -X POST https://bubble-prescription-miller-recruiting.trycloudflare.com/api/relayer/dispatch \
   -H "Content-Type: application/json" \
   -d '{
     "agentId": "agent-smithery-scraper-01",
@@ -1258,9 +1290,9 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               <div class="flex items-center space-x-2">
                 <h3 class="font-bold text-base text-black dark:text-white flex items-center space-x-2">
                   <i data-lucide="globe" class="w-4 h-4 text-black dark:text-white"></i>
-                  <span data-i18n="marketplace.title">Global Agent Marketplace</span>
+                  <span data-i18n="marketplace.title">Global Agent Federation Mesh</span>
                 </h3>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700" data-i18n="marketplace.badge">Mesh Active</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700" data-i18n="marketplace.badge">Solana L1 Escrow Mesh</span>
               </div>
               <p class="text-xs text-neutral-500 mt-1" data-i18n="marketplace.subtitle">Universal decentralized execution mesh interconnecting Smithery MCP, Fetch.ai Almanac, and Glama. Enables autonomous AI agents to discover, negotiate, and hire specialized sub-agents with cryptographically verified micro-escrows.</p>
             </div>
@@ -1292,15 +1324,15 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
                        class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-xs text-black dark:text-white placeholder-neutral-400 focus:outline-none focus:border-black dark:focus:border-white transition-all shadow-2xs">
               </div>
 
-              <!-- Action Buttons: Register Agent & Fast Sync -->
+              <!-- Action Buttons: Fast Sync Global Mesh & Monetize SDK Guide -->
               <div class="flex items-center gap-2 shrink-0">
-                <button id="open-register-agent-modal-btn" class="flex-1 sm:flex-none px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 border border-black dark:border-white shrink-0 transition-all active:scale-98 cursor-pointer flex items-center justify-center space-x-1.5 shadow-xs whitespace-nowrap">
-                  <i data-lucide="plus" class="w-3.5 h-3.5 inline"></i>
-                  <span data-i18n="marketplace.registerBtn">Register Agent</span>
-                </button>
-                <button id="sync-global-registries-btn" onclick="window.syncGlobalRegistries?.();" class="flex-1 sm:flex-none px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center justify-center space-x-1.5 shadow-xs whitespace-nowrap" title="Sync live mesh nodes">
+                <button id="sync-global-registries-btn" onclick="window.syncGlobalRegistries?.();" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl text-xs font-semibold bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 border border-black dark:border-white shrink-0 transition-all active:scale-98 cursor-pointer flex items-center justify-center space-x-1.5 shadow-xs whitespace-nowrap" title="Sync live mesh nodes from Smithery, Fetch.ai and Glama">
                   <i data-lucide="refresh-cw" class="w-3.5 h-3.5 inline"></i>
-                  <span data-i18n="marketplace.syncShort">Sync</span>
+                  <span data-i18n="marketplace.syncRegistriesShort">Sync Global Registries</span>
+                </button>
+                <button onclick="switchTab('tab-docs');" class="flex-1 sm:flex-none px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700 shrink-0 transition-all active:scale-98 cursor-pointer flex items-center justify-center space-x-1.5 shadow-xs whitespace-nowrap" title="Monetize your agent with Haichain HTTP 402 Paywall">
+                  <i data-lucide="code" class="w-3.5 h-3.5 inline"></i>
+                  <span data-i18n="marketplace.devDocsBtn">Monetize Agent (SDK)</span>
                 </button>
               </div>
             </div>
@@ -1860,51 +1892,7 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
       </section>
 
       <!-- ================= TAB 5: MCP & DEV CENTER ================= -->
-      <section id="tab-mcp" class="tab-content hidden space-y-6">
-        <div class="p-6 sm:p-8 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-6">
-          <div>
-            <h2 class="font-bold text-base text-black dark:text-white" data-i18n="mcp.title">Model Context Protocol (MCP) Integration</h2>
-            <p class="text-xs text-neutral-500 mt-1" data-i18n="mcp.subtitle">Connect Anthropic Claude Desktop or Cursor IDE to HAICHAIN in 60 seconds.</p>
-          </div>
-
-          <!-- Claude Desktop Config Box -->
-          <div class="space-y-2">
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="font-semibold text-black dark:text-white" data-i18n="mcp.claudeConfig">claude_desktop_config.json:</span>
-              <button id="copy-mcp-code-btn" class="px-3 py-1 rounded-lg bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[10px] font-bold" data-i18n="mcp.copyJson">Copy JSON</button>
-            </div>
-            <pre class="p-4 rounded-2xl bg-neutral-950 text-neutral-300 font-mono text-xs overflow-x-auto border border-neutral-800"><code>{
-  "mcpServers": {
-    "haichain": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@haichainsi/mcp-server"
-      ],
-      "env": {
-        "SOLANA_RPC_URL": "https://api.devnet.solana.com",
-        "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
-      }
-    }
-  }
-}</code></pre>
-          </div>
-
-          <!-- TypeScript SDK Snippet -->
-          <div class="space-y-2 pt-4 border-t border-neutral-100 dark:border-neutral-900">
-            <span class="font-semibold text-xs font-mono text-black dark:text-white" data-i18n="mcp.sdkTitle">Execute Micro-Escrow via TypeScript SDK:</span>
-            <pre class="p-4 rounded-2xl bg-neutral-950 text-neutral-300 font-mono text-xs overflow-x-auto border border-neutral-800"><code>import { HaiChainClient } from "@haichainsi/sdk";
-
-const client = new HaiChainClient({ network: "devnet" });
-const ticket = client.issueCapabilityTicket({
-  maxSpendMicroUsdt: 50_000, // 0.05 USDT
-  expirySlotDelta: 1000
-});
-
-console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre>
-          </div>
-        </div>
-      </section>
+      
 
       <!-- ================= TAB 6: ON-CHAIN VESTING VAULT & ALLOCATIONS ================= -->
       <section id="tab-vesting" class="tab-content hidden space-y-6">
@@ -1967,13 +1955,13 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         <span class="mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]" data-i18n="nav.mobile.ledger">Ledger</span>
       </button>
 
-      <!-- Tab 6: MCP -->
-      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-mcp">
+      <!-- Tab 6: Dev & MCP Hub -->
+      <button class="mobile-tab-btn flex-1 py-1 flex flex-col items-center justify-center transition-all active:opacity-70 group cursor-pointer" data-tab="tab-docs">
         <div class="tab-icon-wrapper w-10 h-7 flex items-center justify-center rounded-xl text-neutral-400 dark:text-neutral-500 transition-all relative">
-          <i data-lucide="code-2" class="w-4 h-4"></i>
+          <i data-lucide="terminal" class="w-4 h-4"></i>
           <span class="tab-indicator opacity-0 scale-0 absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-black dark:bg-white transition-all duration-300"></span>
         </div>
-        <span class="mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]" data-i18n="nav.mobile.mcp">MCP</span>
+        <span class="mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]" data-i18n="nav.devHubShort">Dev & MCP</span>
       </button>
 
       <!-- Tab 7: Private (Mobile) -->
@@ -2911,8 +2899,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             'tab-playground': 'nav.playground',
             'tab-vesting': 'nav.vesting',
             'tab-ledger': 'nav.ledger',
-            'tab-mcp': 'nav.mcp',
-            'tab-docs': 'nav.docs'
+            'tab-mcp': 'nav.devHub',
+            'tab-docs': 'nav.devHub'
           }[targetTab];
           if (targetTab === 'tab-preseed') {
             const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
@@ -3123,8 +3111,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           'tab-playground': 'nav.playground',
           'tab-vesting': 'nav.vesting',
           'tab-ledger': 'nav.ledger',
-          'tab-mcp': 'nav.mcp',
-            'tab-docs': 'nav.docs'
+          'tab-mcp': 'nav.devHub',
+            'tab-docs': 'nav.devHub'
         }[activeTabEl.id];
         const titleEl = document.getElementById('current-tab-title');
         if (titleEl) {
@@ -3193,8 +3181,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       'tab-playground': 'Live AI Inference Playground',
       'tab-vesting': 'Vesting Vault & Allocation',
       'tab-ledger': 'On-Chain Forensic Audit Ledger',
-      'tab-mcp': 'MCP & Developer Center',
-      'tab-docs': 'Developer Docs & Quickstart',
+      'tab-mcp': 'Developer & MCP Hub',
+      'tab-docs': 'Developer & MCP Hub',
       'tab-preseed': 'Private Strategic Allocation'
     };
 
@@ -3257,8 +3245,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           'tab-playground': 'nav.playground',
           'tab-vesting': 'nav.vesting',
           'tab-ledger': 'nav.ledger',
-          'tab-mcp': 'nav.mcp',
-            'tab-docs': 'nav.docs'
+          'tab-mcp': 'nav.devHub',
+            'tab-docs': 'nav.devHub'
         }[targetTab];
         if (targetTab === 'tab-preseed') {
           const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
@@ -3307,8 +3295,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       if (urlTab === 'agents' || urlTab === 'bot') urlTab = 'tab-agents';
       if (urlTab === 'playground') urlTab = 'tab-playground';
       if (urlTab === 'ledger') urlTab = 'tab-ledger';
-      if (urlTab === 'mcp') urlTab = 'tab-mcp';
-      if (urlTab === 'docs' || urlTab === 'dev' || urlTab === 'quickstart') urlTab = 'tab-docs';
+      if (urlTab === 'mcp' || urlTab === 'docs' || urlTab === 'dev' || urlTab === 'quickstart') urlTab = 'tab-docs';
       if (initUrlParams.get('access') || initUrlParams.get('key') || initUrlParams.get('code')) {
         urlTab = 'tab-preseed';
       }
@@ -9655,152 +9642,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
   
 // Modal controls for Registering Agent
-      const regModal = document.getElementById('register-agent-modal');
-      const openRegBtn = document.getElementById('open-register-agent-modal-btn');
-      const closeRegBtn = document.getElementById('close-register-agent-btn');
-      const cancelRegBtn = document.getElementById('cancel-register-agent-btn');
-      const regForm = document.getElementById('community-agent-register-form');
-
-      function showRegisterModal() {
-        if (regModal) regModal.classList.remove('hidden');
-      }
-      function hideRegisterModal() {
-        if (regModal) regModal.classList.add('hidden');
-      }
-
-      if (openRegBtn) openRegBtn.addEventListener('click', showRegisterModal);
-      if (closeRegBtn) closeRegBtn.addEventListener('click', hideRegisterModal);
-      if (cancelRegBtn) cancelRegBtn.addEventListener('click', hideRegisterModal);
-
-      if (regForm) {
-        regForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const submitBtn = document.getElementById('submit-register-agent-btn');
-          const origText = submitBtn ? submitBtn.textContent : '';
-          if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Registering on Solana...';
-          }
-
-          const agentData = {
-            name: document.getElementById('reg-agent-name')?.value,
-            category: document.getElementById('reg-agent-category')?.value,
-            pricingUsdt: parseFloat(document.getElementById('reg-agent-price')?.value || '0.003'),
-            recipientAddress: document.getElementById('reg-agent-wallet')?.value,
-            endpointUrl: document.getElementById('reg-agent-endpoint')?.value,
-            description: document.getElementById('reg-agent-desc')?.value
-          };
-
-          try {
-            const resp = await fetch('/api/agents/register', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(agentData)
-            });
-
-            const resJson = await resp.json();
-            if (!resp.ok) throw new Error(resJson.error || 'Registration failed');
-
-            if (typeof showToast === 'function') {
-              showToast({
-                title: 'Agent Registered Successfully',
-                message: `${agentData.name} is now live in the Haichain Mesh!`,
-                icon: 'check-circle'
-              });
-            }
-
-            regForm.reset();
-            hideRegisterModal();
-            if (typeof loadGlobalAgentMarketplace === 'function') {
-              loadGlobalAgentMarketplace();
-            }
-          } catch (err) {
-            alert('Registration Error: ' + err.message);
-          } finally {
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = origText;
-            }
-          }
-        });
-      }
-  </script>
+      </script>
 
     
 
 
-    <!-- ================= MODAL: REGISTER COMMUNITY AGENT ================= -->
-    <div id="register-agent-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-      <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-        <div class="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-3">
-          <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-black dark:text-white border border-neutral-200 dark:border-neutral-700 flex items-center justify-center font-bold text-sm">
-              <i data-lucide="bot" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="marketplace.regModalTitle">Register Autonomous AI Agent</h3>
-              <p class="text-[11px] text-neutral-400 font-mono" data-i18n="marketplace.regModalSub">Publish Agent to Global Haichain Economy</p>
-            </div>
-          </div>
-          <button id="close-register-agent-btn" class="text-neutral-400 hover:text-black dark:hover:text-white p-1 rounded-lg cursor-pointer">
-            <i data-lucide="x" class="w-4 h-4"></i>
-          </button>
-        </div>
-
-        <form id="community-agent-register-form" class="space-y-3">
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1" data-i18n="marketplace.regNameLabel">Agent Name / Node Name *</label>
-            <input type="text" id="reg-agent-name" required placeholder="VD: DeepSeek Market Arbitrage Sentinel" 
-                   class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white">
-          </div>
-
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1" data-i18n="marketplace.regCatLabel">Category *</label>
-              <select id="reg-agent-category" class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none">
-                <option value="data_extraction" data-i18n="marketplace.catScraping">Web Scraping / Data</option>
-                <option value="financial_intelligence" data-i18n="marketplace.catAlpha">Financial Alpha / Trading</option>
-                <option value="security_audit" data-i18n="marketplace.catSecurity">Smart Contract Security</option>
-                <option value="automation" data-i18n="marketplace.catCompute">Compute / Automation</option>
-                <option value="custom">Custom Specialized</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1" data-i18n="marketplace.regPriceLabel">Price per Request (USDT) *</label>
-              <input type="number" step="0.001" min="0.001" id="reg-agent-price" value="0.003" required
-                     class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none">
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1" data-i18n="marketplace.regWalletLabel">Solana Payout Wallet (Base58) *</label>
-            <input type="text" id="reg-agent-wallet" required placeholder="VD: 5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3" 
-                   class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs font-mono text-black dark:text-white focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1" data-i18n="marketplace.regEndpointLabel">Webhook / MCP URL Endpoint (Optional)</label>
-            <input type="url" id="reg-agent-endpoint" placeholder="VD: https://api.my-agent.io/v1/inference" 
-                   class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs font-mono text-black dark:text-white focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1" data-i18n="marketplace.regDescLabel">Capabilities Description</label>
-            <textarea id="reg-agent-desc" rows="2" data-i18n-placeholder="marketplace.regDescPlaceholder" placeholder="Describe agent capabilities, SLA or LLM parameters..." 
-                      class="w-full px-3 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 text-xs text-black dark:text-white focus:outline-none"></textarea>
-          </div>
-
-          <div class="pt-2 flex items-center justify-end space-x-2">
-            <button type="button" id="cancel-register-agent-btn" class="px-4 py-2 rounded-xl text-xs font-medium text-neutral-500 hover:text-black dark:hover:text-white cursor-pointer" data-i18n="marketplace.regCancel">
-              Cancel
-            </button>
-            <button type="submit" id="submit-register-agent-btn" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black border border-black dark:border-white transition-all active:scale-98 cursor-pointer shadow-xs" data-i18n="marketplace.regSubmit">
-              Confirm On-Chain Registration
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    
 
 </body>
 </html>
