@@ -42,8 +42,45 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 
 ---
 
-## 4. टोकनॉमिक्स और नियामक अनुपालन
+## 4. 9 गणितीय अपरिवर्तनीयता ऑन-चेन ऑडिट रिपोर्ट ($I_1 \dots I_9$)
 
-- **शुद्ध उपयोगिता मानक:** कोई निष्क्रिय लाभांश या स्टेकिंग प्रतिफल नहीं (हाउवे और MiCA प्रतिरक्षा)।
-- **50% बायबैक और बर्न:** प्रोटोकॉल शुल्क का 50% खुले बाजार से $HAISI खरीदने और नष्ट करने के लिए उपयोग किया जाता है।
-- **50% प्रोटोकॉल रिजर्व फंड (CHGB):** नेटवर्क स्थिरता और सुरक्षा के लिए।
+`programs/haichain-core/src/lib.rs` में प्रत्येक ऑन-चेन निर्देश बिना किसी अपवाद के सभी 9 स्थिति अपरिवर्तनीयों को सुरक्षित रखता है:
+
+1. **$I_1$ (पूंजी संरक्षण सिद्धांत):**
+   $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{शुद्ध जमा}$$
+   परीक्षण सूट में `test_invariant_i1_conservation` द्वारा सत्यापित।
+
+2. **$I_2$ (विहित प्राप्तकर्ता सुरक्षा):**
+   $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
+   Anchor बाधा के माध्यम से ऑन-चेन लागू; टोकन खाते के अनधिकृत पुनर्निर्देशन को रोकता है।
+
+3. **$I_3$ (अपरिवर्तनीय बजट सीमा):**
+   $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$
+   प्रत्येक रिजर्व या निपटान निष्पादन से पहले अनिवार्य रूप से जांचा गया।
+
+4. **$I_4$ (स्वायत्त वेग दर सीमक):**
+   $$\text{window\_used} \le \text{window\_cap} \quad \forall t \in [T_0, T_0 + \omega]$$
+   तीव्र स्वचालित पूंजी निकासी को रोकता है।
+
+5. **$I_5$ (एकदिष्ट PDA संकीर्णन):**
+   $$\text{Channel PDA} \subseteq \text{Grant PDA} \subseteq \text{Pot PDA}$$
+   उप-उदाहरण कभी भी मूल द्वारा दी गई अनुमतियों को विस्तृत नहीं कर सकते।
+
+6. **$I_6$ (पैनिक युग और तत्काल फ्रीज अलगाव):**
+   $$\text{pot.panic\_epoch} == \text{channel.created\_at\_epoch} \quad \land \quad \neg\text{pot.frozen}$$
+   तत्काल प्रोटोकॉल फ्रीज सभी संचलन में मौजूद वाउचर को तुरंत रद्द कर देता है।
+
+7. **$I_7$ (सत्र समाप्ति नियंत्रण):**
+   $$\text{current\_time} \le \text{valid\_until}$$
+   समाप्त या परित्यक्त सत्र नए रिजर्व निष्पादित नहीं कर सकते।
+
+8. **$I_8$ (एकदिष्ट निपटान और एक बार का दावा):**
+   $$\text{paid}_{\text{new}} \le \min(\text{cumulative\_amount}, \text{reserved\_amount}) \quad \land \quad \text{paid}_{\text{new}} \ge \text{paid}_{\text{old}}$$
+   वाउचर में डबल-स्पेंडिंग और रीप्ले हमलों को पूरी तरह समाप्त करता है।
+
+9. **$I_9$ (सिबिल खाता अलगाव):**
+   $$\text{PDA}(\text{"chan"}, \text{grant}, \text{channel\_id}) \text{ अद्वितीय है}$$
+   एक क्षमता लीफ ठीक एक ऑन-चेन खाते से विशिष्ट रूप से मैप होती है।
+
+---
+

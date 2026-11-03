@@ -74,16 +74,43 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 
 ## 4. 9대 수학적 불변성 온체인 감사 보고서 ($I_1 \dots I_9$)
 
-`programs/haichain-core/src/lib.rs`의 모든 온체인 명령어는 다음 9가지 불변성을 영구히 준수합니다:
-1. **$I_1$ (자본 보존의 법칙):** 금고 ATA 잔액 + 채널 에스크로 + 정산 완료액 + 환불액 $\equiv$ 순 예치 총액.
-2. **$I_2$ (정규 수취인 안전성):** 수취 ATA는 반드시 가맹점 주소로부터 표준 파생된 계정이어야 함.
-3. **$I_3$ (예산 한도 불변성):** 실소진액 $\le$ 최대 지출 한도 및 기사용 예산 $\le$ 총 예산.
-4. **$I_4$ (자율 속도 제한):** 임의의 슬라이딩 윈도우 내 지출은 윈도우 한도를 절대 초과 불가.
-5. **$I_5$ (PDA 권한 단조 축소):** 파생 권한은 상위 권한 범위를 절대 확장할 수 없음.
-6. **$I_6$ (패닉 에포크 및 즉시 동결):** 동결 발동 즉시 기존 미정산 바우처 전부 무효화.
-7. **$I_7$ (하트비트 세션 만료):** 세션 만료 즉시 신규 자금 예약 차단.
-8. **$I_8$ (단조 1회 정산성):** 신규 정산액은 예약 한도 내에서 단조 증가, 이중 지불 방지.
-9. **$I_9$ (시빌 계정 격리성):** 각 권한 리프는 온체인 고유 PDA 계정과 1:1 결합.
+`programs/haichain-core/src/lib.rs`의 모든 온체인 명령어는 예외 없이 다음 9가지 상태 불변성을 영구히 준수합니다:
+
+1. **$I_1$ (자본 보존의 법칙):**
+   $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{순 예치금 총액}$$
+   테스트 스위트의 `test_invariant_i1_conservation` 검증을 통해 완전 보장.
+
+2. **$I_2$ (정규 수취인 안전성):**
+   $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
+   Anchor 온체인 제약 조건을 통해 강제 집행; 제3자 토큰 계정 탈취 원천 차단.
+
+3. **$I_3$ (불가침 예산 상한선):**
+   $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$
+   모든 자금 예약 및 정산 실행 전 온체인 사전 검증 완료.
+
+4. **$I_4$ (자율 속도 제한기):**
+   $$\text{window\_used} \le \text{window\_cap} \quad \forall t \in [T_0, T_0 + \omega]$$
+   자동화된 급속 자본 유출 공격을 사전에 완벽 차단.
+
+5. **$I_5$ (단조적 PDA 권한 축소):**
+   $$\text{Channel PDA} \subseteq \text{Grant PDA} \subseteq \text{Pot PDA}$$
+   하위 인스턴스는 상위 인스턴스가 부여한 권한 범위를 결코 확장할 수 없음.
+
+6. **$I_6$ (패닉 에포크 및 즉각 동결 격리):**
+   $$\text{pot.panic\_epoch} == \text{channel.created\_at\_epoch} \quad \land \quad \neg\text{pot.frozen}$$
+   프로토콜 셧다운 즉시 유통 중인 모든 미정산 바우처 일괄 무효화.
+
+7. **$I_7$ (하트비트 세션 만료 제어):**
+   $$\text{current\_time} \le \text{valid\_until}$$
+   만료되거나 방치된 세션은 신규 자금 예약을 집행할 수 없음.
+
+8. **$I_8$ (단조 정산 및 단 1회 정산 보장):**
+   $$\text{paid}_{\text{new}} \le \min(\text{cumulative\_amount}, \text{reserved\_amount}) \quad \land \quad \text{paid}_{\text{new}} \ge \text{paid}_{\text{old}}$$
+   바우처 간 이중 지불 및 리플레이 공격 영구 배제.
+
+9. **$I_9$ (시빌 계정 격리성):**
+   $$\text{PDA}(\text{"chan"}, \text{grant}, \text{channel\_id}) \text{ 고유성 보장}$$
+   단일 기능 리프는 단 하나의 온체인 계정에만 1:1 결합.
 
 ---
 

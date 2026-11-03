@@ -74,16 +74,43 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 
 ## 4. 9 大数学不变性链上审计报告 ($I_1 \dots I_9$)
 
-`programs/haichain-core/src/lib.rs` 中的所有指令均在链上不可改变地遵循以下 9 大不变性：
-1. **$I_1$ (资本守恒定律):** 金库 ATA 余额 + 各通道托管额 + 已付凭证额 + 退款 $\equiv$ 净充值总额。
-2. **$I_2$ (规范收款人安全):** 收款 ATA 账户必须严格等于商户地址由 SPL 规范派生的关联代币账户。
-3. **$I_3$ (预算绝不超支):** 实际消耗金额 $\le$ 最大支出额，且已用预算 $\le$ 总预算。
-4. **$I_4$ (自主速率限流):** 任意滑动窗口内的支出绝对不得超过窗口上限。
-5. **$I_5$ (PDA 单调权限收窄):** 派生权限只能逐级缩减，绝无法突破上层限制。
-6. **$I_6$ (纪元隔离与即时冻结):** 熔断指令触发后，当前金库下所有存量未结算凭证全部作废。
-7. **$I_7$ (心跳会话过期机制):** 会话过期后立即禁止任何新增预留资金。
-8. **$I_8$ (单调单次清算):** 新清算金额在预留上限内单调递增，杜绝双花。
-9. **$I_9$ (账户防重叠隔离):** 每个能力叶节点严格一对一绑定链上独立 PDA 账户。
+`programs/haichain-core/src/lib.rs` 中的所有链上指令均严格且不可改变地遵循以下 9 大数学不变性：
+
+1. **$I_1$ (资本守恒定律):**
+   $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{净充值总额}$$
+   在测试套件中通过 `test_invariant_i1_conservation` 严格验证。
+
+2. **$I_2$ (规范收款人安全):**
+   $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
+   通过 Anchor 链上约束强制执行，杜绝第三方代币账户劫持重定向。
+
+3. **$I_3$ (预算绝不超支):**
+   $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$
+   在每次预留资金或通道结算执行前进行确定性安全核验。
+
+4. **$I_4$ (自主速率限流):**
+   $$\text{window\_used} \le \text{window\_cap} \quad \forall t \in [T_0, T_0 + \omega]$$
+   彻底阻断恶意并发调用导致的瞬时自动化资金抽干攻击。
+
+5. **$I_5$ (PDA 单调权限收窄):**
+   $$\text{Channel PDA} \subseteq \text{Grant PDA} \subseteq \text{Pot PDA}$$
+   子实例派生权限只能逐级缩减，绝无法突破上级授权边界。
+
+6. **$I_6$ (纪元隔离与即时冻结):**
+   $$\text{pot.panic\_epoch} == \text{channel.created\_at\_epoch} \quad \land \quad \neg\text{pot.frozen}$$
+   触发主控熔断后，当前金库下存量未结算的所有离线凭证全部作废。
+
+7. **$I_7$ (心跳会话过期机制):**
+   $$\text{current\_time} \le \text{valid\_until}$$
+   超时或废弃的智能体代理会话无法再发起任何新增资金锁定。
+
+8. **$I_8$ (单调单次清算):**
+   $$\text{paid}_{\text{new}} \le \min(\text{cumulative\_amount}, \text{reserved\_amount}) \quad \land \quad \text{paid}_{\text{new}} \ge \text{paid}_{\text{old}}$$
+   彻底消除各通道凭证之间的双花欺诈与重放攻击。
+
+9. **$I_9$ (账户防重叠隔离):**
+   $$\text{PDA}(\text{"chan"}, \text{grant}, \text{channel\_id}) \text{ 唯一绑定}$$
+   每个能力叶节点严格一对一映射到唯一的链上独立账户。
 
 ---
 

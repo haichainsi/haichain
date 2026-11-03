@@ -42,8 +42,45 @@ $$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; 
 
 ---
 
-## 4. טוקנומיקה ותאימות רגולטורית
+## 4. דוח ביקורת 9 אינווריאנטים מתמטיים ($I_1 \dots I_9$)
 
-- **תקן שירות טהור ללא דיבידנדים:** חסינות מלאה מפני מבחן Howey ורגולציית MiCA האירופית.
-- **50% רכישה חוזרת ושריפה (Buyback & Burn):** 50% מדמי הרשת מופנים לרכישת $HAISI ושריפתו לצמיתות.
-- **50% קרן רזרבה אוטונומית (CHGB):** תמיכה ביציבות ורשתות חיסול מרובות.
+כל ההוראות ב-`programs/haichain-core/src/lib.rs` שומרות על 9 אינווריאנטי המצב ללא יוצא מן הכלל:
+
+1. **$I_1$ (שימור הון מוחלט):**
+   $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{סך הפקדות נטו}$$
+   מאומת רשמית על ידי `test_invariant_i1_conservation` במערך הבדיקות.
+
+2. **$I_2$ (בטיחות מוטב קנוני):**
+   $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
+   נאכף בשרשרת דרך אילוץ Anchor; מונע ניתוב מחדש של חשבונות טוקן.
+
+3. **$I_3$ (תקרת תקציב בלתי ניתנת לפריצה):**
+   $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$
+   נבדק לפני כל ביצוע הקצאה או סילוקין בשרשרת.
+
+4. **$I_4$ (מגביל מהירות זרימה אוטונומי):**
+   $$\text{window\_used} \le \text{window\_cap} \quad \forall t \in [T_0, T_0 + \omega]$$
+   מונע ריקון הון מהיר ואוטומטי.
+
+5. **$I_5$ (הצרת הרשאות מונוטונית של PDA):**
+   $$\text{Channel PDA} \subseteq \text{Grant PDA} \subseteq \text{Pot PDA}$$
+   מופעי צאצא אינם יכולים להרחיב הרשאות שניתנו על ידי ההורה.
+
+6. **$I_6$ (בידוד תקופת פאניקה והקפאה מיידית):**
+   $$\text{pot.panic\_epoch} == \text{channel.created\_at\_epoch} \quad \land \quad \neg\text{pot.frozen}$$
+   הקפאת חירום מבטלת באופן מיידי את כל השוברים שטרם סולקו.
+
+7. **$I_7$ (פקיעת תוקף סשן):**
+   $$\text{current\_time} \le \text{valid\_until}$$
+   סשנים שפג תוקפם אינם יכולים לבצע הקצאות חדשות של הון.
+
+8. **$I_8$ (סילוקין מונוטוני וחד-פעמי):**
+   $$\text{paid}_{\text{new}} \le \min(\text{cumulative\_amount}, \text{reserved\_amount}) \quad \land \quad \text{paid}_{\text{new}} \ge \text{paid}_{\text{old}}$$
+   מבטיח אפס הוצאה כפולה בין שוברים ומונע מתקפות שידור חוזר.
+
+9. **$I_9$ (בידוד חשבונות נגד התקפת סיביל):**
+   $$\text{PDA}(\text{"chan"}, \text{grant}, \text{channel\_id}) \text{ ייחודי}$$
+   עלה יכולת ממופה בדיוק לחשבון בשרשרת יחיד.
+
+---
+

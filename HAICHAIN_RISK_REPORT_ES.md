@@ -63,16 +63,43 @@ Cinco vectores de ataque críticos han sido probados y mitigados en el núcleo:
 
 ## 4. INFORME DE AUDITORÍA DE LOS 9 INVARIANTES MATEMÁTICOS ($I_1 \dots I_9$)
 
-Todas las instrucciones en `programs/haichain-core/src/lib.rs` satisfacen los 9 invariantes matemáticos:
-1. **$I_1$ (Conservación de Capital):** Billetera ATA + Escrow + Liquidado + Reembolsos $\equiv$ Depósitos Netos.
-2. **$I_2$ (Seguridad de Destinatario Canónico):** Cuenta ATA derivada estrictamente del SPL Token.
-3. **$I_3$ (Tope Presupuestario Inviolable):** Gasto real siempre inferior o igual al presupuesto total.
-4. **$I_4$ (Límite de Velocidad Autónomo):** Tasa de gasto acotada por ventana temporal deslizante.
-5. **$I_5$ (Estrechamiento Monótono PDA):** Las sub-instancias no pueden expandir privilegios.
-6. **$I_6$ (Aislamiento de Época Panic):** Invalidación inmediata de todos los vales en circulación.
-7. **$I_7$ (Expiración de Sesión Heartbeat):** Cese automático de reservas al caducar la sesión.
-8. **$I_8$ (Liquidación Monótona Única):** Imposibilidad matemática de doble gasto en canales.
-9. **$I_9$ (Aislamiento de Cuenta Anti-Sybil):** Relación 1:1 estricta entre hoja y cuenta PDA on-chain.
+Todas las instrucciones on-chain en `programs/haichain-core/src/lib.rs` satisfacen los 9 invariantes matemáticos sin excepción:
+
+1. **$I_1$ (Conservación de Capital):**
+   $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{Depósitos Netos}$$
+   Verificado formalmente mediante `test_invariant_i1_conservation` en la suite de pruebas.
+
+2. **$I_2$ (Seguridad de Destinatario Canónico):**
+   $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
+   Ejecutado on-chain mediante restricciones Anchor; previene desvíos de tokens a terceros.
+
+3. **$I_3$ (Tope Presupuestario Inviolable):**
+   $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$
+   Verificado antes de cada reserva o liquidación on-chain.
+
+4. **$I_4$ (Limitador de Velocidad Autónomo):**
+   $$\text{window\_used} \le \text{window\_cap} \quad \forall t \in [T_0, T_0 + \omega]$$
+   Previene el vaciado rápido y automatizado del capital.
+
+5. **$I_5$ (Estrechamiento Monótono de PDA):**
+   $$\text{Channel PDA} \subseteq \text{Grant PDA} \subseteq \text{Pot PDA}$$
+   Las instancias hijas jamás pueden expandir los permisos otorgados por la entidad padre.
+
+6. **$I_6$ (Época de Pánico y Congelación Inmediata):**
+   $$\text{pot.panic\_epoch} == \text{channel.created\_at\_epoch} \quad \land \quad \neg\text{pot.frozen}$$
+   La parada de emergencia invalida inmediatamente todos los vales en circulación.
+
+7. **$I_7$ (Expiración del Latido de Sesión):**
+   $$\text{current\_time} \le \text{valid\_until}$$
+   Las sesiones caducadas o abandonadas no pueden ejecutar nuevas reservas de fondos.
+
+8. **$I_8$ (Liquidación Monótona y Única):**
+   $$\text{paid}_{\text{new}} \le \min(\text{cumulative\_amount}, \text{reserved\_amount}) \quad \land \quad \text{paid}_{\text{new}} \ge \text{paid}_{\text{old}}$$
+   Garantiza cero doble gasto entre vales del canal.
+
+9. **$I_9$ (Aislamiento de Cuentas Anti-Sybil):**
+   $$\text{PDA}(\text{"chan"}, \text{grant}, \text{channel\_id}) \text{ es único}$$
+   Una hoja de capacidad se asigna exactamente a una única cuenta on-chain.
 
 ---
 

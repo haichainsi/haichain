@@ -78,11 +78,11 @@ Mọi chỉ thị trên chuỗi trong `programs/haichain-core/src/lib.rs` đều
 
 1. **$I_1$ (Bảo toàn Vốn Tối cao):**
    $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{Tổng Tiền Nạp Ròng}$$
-   Được xác thực bởi kiểm thử `test_invariant_i1_conservation`.
+   Được xác thực bởi kiểm thử `test_invariant_i1_conservation` trong bộ kiểm thử.
 
 2. **$I_2$ (An toàn Người Thụ hưởng Đích thực):**
    $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
-   Thực thi trên chuỗi qua ràng buộc Anchor; triệt tiêu hoàn toàn chuyển hướng tài khoản.
+   Thực thi trên chuỗi qua ràng buộc Anchor; triệt tiêu hoàn toàn chuyển hướng tài khoản bên thứ ba.
 
 3. **$I_3$ (Hạn mức Ngân sách Bất biến):**
    $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$

@@ -1195,6 +1195,10 @@ $$E_{\\text{theft}}(\\tau) \\le \\min\\left(B,\\; K,\\; W_p \\cdot n(\\tau, \\om
 }
 
 def generate_pdf_for_lang(lang_code):
+    import upgrade_risk_reports
+    return upgrade_risk_reports.compile_risk_report(lang_code, DOCS[lang_code])
+
+def _legacy_generate_pdf_for_lang(lang_code):
     info = DOCS[lang_code]
     md_filename = f"HAICHAIN_RISK_REPORT_{lang_code.upper()}.md"
     pdf_filename = f"HAICHAIN_RISK_REPORT_{lang_code.upper()}.pdf"

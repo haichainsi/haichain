@@ -74,16 +74,43 @@ Cinq vecteurs d'attaque critiques ont été rigoureusement testés et verrouill�
 
 ## 4. RAPPORT D'AUDIT DES 9 INVARIANTS MATHÉMATIQUES ($I_1 \dots I_9$)
 
-Toutes les instructions de `programs/haichain-core/src/lib.rs` respectent scrupuleusement les 9 invariants mathématiques :
-1. **$I_1$ (Conservation du Capital) :** Solde ATA + Escrows + Paiements + Remboursements $\equiv$ Dépôts Nets.
-2. **$I_2$ (Sécurité du Bénéficiaire Canonique) :** Adresse ATA rigoureusement vérifiée sur Solana L1.
-3. **$I_3$ (Plafond Budgétaire Inviolable) :** Consommation toujours inférieure ou égale au budget alloué.
-4. **$I_4$ (Limitation de Vélocité Autonome) :** Dépenses strictement plafonnées par fenêtre glissante.
-5. **$I_5$ (Rétrécissement Monotone PDA) :** Les sous-instances ne peuvent jamais élargir leurs droits.
-6. **$I_6$ (Isolation d'Époque et Gel Immédiat) :** Désactivation instantanée de tous les bons en circulation.
-7. **$I_7$ (Expiration de Session Heartbeat) :** Arrêt des réservations dès expiration du délai.
-8. **$I_8$ (Règlement Unique et Monotone) :** Aucune possibilité de double dépense.
-9. **$I_9$ (Isolation de Compte Anti-Sybil) :** Relation 1:1 stricte entre feuille et compte PDA.
+Toutes les instructions on-chain de `programs/haichain-core/src/lib.rs` respectent scrupuleusement les 9 invariants mathématiques sans exception :
+
+1. **$I_1$ (Conservation du Capital):**
+   $$\text{Vault}_{\text{ATA}} + \sum_{\text{channels}} \text{Escrow}_j + \sum \text{Paid}_j + \text{Refunds} = \text{Dépôts Nets}$$
+   Vérifié formellement par `test_invariant_i1_conservation` dans la suite de tests.
+
+2. **$I_2$ (Sécurité du Bénéficiaire Canonique):**
+   $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{merchant}, \text{mint})$$
+   Appliqué on-chain via contrainte Anchor ; élimine tout détournement d'adresse.
+
+3. **$I_3$ (Plafond Budgétaire Inviolable):**
+   $$\text{consumed} \le \text{max\_spend} \quad \land \quad \text{budget\_used} \le \text{budget\_total}$$
+   Contrôlé obligatoirement avant toute réservation ou règlement.
+
+4. **$I_4$ (Limiteur de Vélocité Autonome):**
+   $$\text{window\_used} \le \text{window\_cap} \quad \forall t \in [T_0, T_0 + \omega]$$
+   Empêche la vidange rapide et automatisée des fonds.
+
+5. **$I_5$ (Rétrécissement Monotone des PDA):**
+   $$\text{Channel PDA} \subseteq \text{Grant PDA} \subseteq \text{Pot PDA}$$
+   Les instances enfants ne peuvent jamais élargir les privilèges accordés par le parent.
+
+6. **$I_6$ (Époque de Panique & Gel Immédiat):**
+   $$\text{pot.panic\_epoch} == \text{channel.created\_at\_epoch} \quad \land \quad \neg\text{pot.frozen}$$
+   L'arrêt d'urgence invalide instantanément tous les bons de paiement en circulation.
+
+7. **$I_7$ (Expiration du Battement de Cœur):**
+   $$\text{current\_time} \le \text{valid\_until}$$
+   Les sessions expirées ou abandonnées ne peuvent exécuter de nouvelles réservations.
+
+8. **$I_8$ (Règlement Monotone & Unique):**
+   $$\text{paid}_{\text{new}} \le \min(\text{cumulative\_amount}, \text{reserved\_amount}) \quad \land \quad \text{paid}_{\text{new}} \ge \text{paid}_{\text{old}}$$
+   Garantit l'absence totale de double dépense entre bons de paiement.
+
+9. **$I_9$ (Isolation de Compte Anti-Sybil):**
+   $$\text{PDA}(\text{"chan"}, \text{grant}, \text{channel\_id}) \text{ est unique}$$
+   Chaque feuille de capacité correspond exactement à un compte on-chain unique.
 
 ---
 
