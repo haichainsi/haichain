@@ -116,7 +116,7 @@ Donde la **Inteligencia Artificial ($\text{AI}_1$)** proporciona un rendimiento 
 
 Originado como un núcleo de liquidación de grado militar y cero ataques en Solana L1 (v6.9.3) antes de evolucionar a un rollup dedicado de Layer 2 en SVM y culminar en una cadena de bloques de consenso de máquinas soberana e independiente (HAICHAIN Soberano L1), el protocolo ofrece cinco avances fundamentales:
 
-1. **Experiencia de Usuario Web3 Invisible para Consumidores:** Las Passkeys biométricas WebAuthn (Apple FaceID / TouchID) combinadas con pasarelas de pago fiduciario de 1 clic (Apple Pay, QR instantáneo, SEPA, Stripe) abstraen por completo el 100% de la terminología de blockchain para usuarios habituales.
+1. **Experiencia de Usuario Web3 Invisible para Consumidores:** Las Passkeys biométricas WebAuthn (Apple FaceID / TouchID) combinadas con pasarelas de pago fiduciario de 1 clic (Apple Pay, Google Pay, tarjetas globales) abstraen por completo el 100% de la terminología de blockchain para usuarios habituales.
 2. **Fideicomiso Elástico de Cómputo de Razonamiento:** Mecanismos de compromiso criptográfico que resuelven el consumo no determinista de tokens para modelos de razonamiento de frontera (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Compensación Simétrica Multilateral:** Una matriz de compensación fuera de cadena que comprime el 99.999% de los micro-ticks en actualizaciones de estado únicas de 771 bytes que caben limpiamente en el MTU estándar de IPv6 (1.232 bytes).
 4. **Disyuntor de Emergencia de Pánico en Sub-Segundos (Panic Kill-Switch):** Retracción de balance forzada por hardware que devuelve el 100% de los fondos no gastados del usuario a custodia fría en **menos de 400ms**.
@@ -308,7 +308,6 @@ La identidad raíz del usuario está anclada en el hardware de su dispositivo (S
 Los usuarios depositan monedas locales a través de pasarelas nativas unificadas:
 
 * **Nivel Global:** Procesamiento directo con Apple Pay, Google Pay, Mastercard y Visa liquidando en Tether USD (USDT) respaldado 1:1 en Solana SPL.
-* **Mercados Emergentes:** Pagos dinámicos por código QR (VietQR, PromptPay) que se liquidan instantáneamente a través de retransmisores institucionales directamente en las bóvedas aisladas del usuario.
 * **Patrocinio sin Gas:** Los retransmisores del protocolo patrocinan todas las tarifas de cómputo de transacciones subyacentes de Solana, asegurando que $10.00 depositados se conviertan exactamente en 10.000000 USDT de saldo disponible.
 
 #### Solvers de Intención sin Custodia y Cortafuegos de Sanciones ZK-AML en Tiempo Real
@@ -352,7 +351,7 @@ Para eliminar la vacilación psicológica en el 95% de los consumidores convenci
                   
     [ RIEL RÁPIDO PARA CONSUMIDORES (WEB3 INVISIBLE) ] [ RIEL PRO PARA USUARIOS AVANZADOS ]
     ├── Login: Passkey FaceID / TouchID al instante    ├── Billeteras: Phantom, Solflare, Backpack
-    ├── Onramp: Apple Pay, Tarjetas, QR Local          ├── Onramp: Depósito directo SPL USDT
+    ├── Onramp: Apple Pay, Tarjetas, Pasarela Global          ├── Onramp: Depósito directo SPL USDT
     ├── UI: Denominación 100% en Fiduciario ($ USD)    ├── UI: Direcciones PDA detalladas, TxHashes,
     └── Cero jerga cripto, cero tarifas de gas         │   pruebas Merkle y deslizamiento manual
         (100% patrocinado por Gasless Paymaster)       └── Claves bajo autocustodia y RPCs propios

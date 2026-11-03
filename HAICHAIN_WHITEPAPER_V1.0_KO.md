@@ -116,7 +116,7 @@ $$
 
 Solana L1 (v6.9.3) 상의 군사 등급 무결점 정산 커널로 시작하여 전용 SVM Layer 2 롤업으로 진화하고 독립된 기계 합의 블록체인 (HAICHAIN 주권 L1)으로 완결되는 이 프로토콜은 5가지 획기적인 기술적 돌파구를 제공합니다:
 
-1. **일반 소비자를 위한 무마찰 Web3 극단적 단순화:** 생체 인식 WebAuthn Passkeys (Apple FaceID / TouchID)와 원클릭 법정화폐 온램프 (Apple Pay, QR 간편결제, SEPA, Stripe)를 결합하여 일반 대중에게 블록체인 전문 용어를 100% 완전히 숨깁니다.
+1. **일반 소비자를 위한 무마찰 Web3 극단적 단순화:** 생체 인식 WebAuthn Passkeys (Apple FaceID / TouchID)와 원클릭 법정화폐 온램프 (Apple Pay, Google Pay, 글로벌 카드 온램프)를 결합하여 일반 대중에게 블록체인 전문 용어를 100% 완전히 숨깁니다.
 2. **탄력적 추론 연산 에스크로 (Elastic Reasoning Compute Escrow):** 프론티어 심층 추론 모델 (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking) 실행 중 발생하는 비확정적 토큰 소비 문제를 해결하는 혁신적인 암호학적 약정 메커니즘입니다.
 3. **다자간 대칭 순액 정산 (Multilateral Symmetric Netting):** 오프체인 청산 매트릭스가 99.999%의 미세 틱을 단일 771바이트 온체인 상태 업데이트로 압축하여 표준 IPv6 MTU (1,232바이트) 내에 완벽히 수용합니다.
 4. **서브초 하드웨어 긴급 패닉 차단기 (Panic Kill-Switch):** 400밀리초 미만 내에 미사용 사용자 자금의 100%를 콜드 스토리지 금고로 안전하게 회수하는 하드웨어 강제 메커니즘입니다.
@@ -308,7 +308,6 @@ HAICHAIN은 **"엄마 테스트 공리" (The Mom-Test Axiom)**를 엄격히 공�
 사용자는 현지 통화 게이트웨이를 통해 매끄럽게 자금을 충전합니다:
 
 * **글로벌 티어:** Apple Pay, Google Pay, Mastercard 및 Visa 처리를 통해 Solana SPL 상에서 1:1 보증되는 Tether USD (USDT)로 즉시 결제됩니다.
-* **신흥 시장 (동남아시아 중심):** 동적 QR 결제 (VietQR, PromptPay)가 기관 유동성 릴레이를 통해 사용자 격리 토큰 금고로 직접 정산됩니다.
 * **가스비 없는 후원 (Gasless Paymaster):** 프로토콜 릴레이어가 기본 Solana 트랜잭션 연산 수수료를 전액 대납하여 충전된 $10.00가 정확히 10.000000 USDT의 사용 가능 잔액으로 변환됩니다.
 
 #### 제로 커스터디 인텐트 솔버 네트워크 및 실시간 ZK-AML 제재 방화벽
@@ -352,7 +351,7 @@ HAICHAIN은 **"엄마 테스트 공리" (The Mom-Test Axiom)**를 엄격히 공�
                   
     [ 일반 소비자 패스트레일 (완전 무감각 WEB3) ]     [ 전문 WEB3 파워 유저 레일 ]
     ├── 로그인: 1초 FaceID / TouchID 패스키      ├── 지갑 지원: Phantom, Solflare, Backpack
-    ├── 온램프: Apple Pay, 신용카드, 로컬 QR     ├── 입금 방식: 온체인 직접 SPL USDT 전송
+    ├── 온램프: Apple Pay, 신용카드, 글로벌 법정화폐 온램프     ├── 입금 방식: 온체인 직접 SPL USDT 전송
     ├── UI: 100% 미국 달러 법정화폐 ($ USD) 표기 ├── 상세 정보: PDA 주소, 트랜잭션 해시,
     └── 제로 암호화폐 전문 용어, 제로 가스비 부담 │   머클 증명 및 슬리피지 수수료 커스텀
         (가스리스 페이마스터 100% 전액 지원)     └── 자체 개인키 관리 및 커스텀 RPC 직결

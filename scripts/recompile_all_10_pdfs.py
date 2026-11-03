@@ -255,7 +255,8 @@ def compile_pdf(lang):
     clean_md = re.sub(r'(?<!\\)\$([^\$\n\r]+?)\$', save_inline_math, clean_md)
 
     # 4. Any remaining $ is plain currency! Protect them so HTML doesn't choke
-    clean_md = re.sub(r'(?<!\\)\$(?=[0-9A-Za-z])', r'&#36;', clean_md)
+    # Currency signs remain literal $ without &#36;
+    # clean_md = re.sub(r'(?<!\\)\$(?=[0-9A-Za-z])', r'&#36;', clean_md)
 
     # 5. Restore code blocks
     for i, cb in enumerate(code_blocks):
@@ -696,6 +697,7 @@ hr {{
 </html>
 """
 
+    full_html = full_html.replace("&#36;", "$").replace("&amp;#36;", "$")
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(full_html)
         

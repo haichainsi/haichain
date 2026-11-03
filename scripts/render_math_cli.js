@@ -67,8 +67,8 @@ for (let i = 0; i < parts.length; i += 2) {
   let text = parts[i];
 
   // Protect all explicit currency patterns
-  text = text.replace(/(?<!\\)\$(\d[\d,.]*(?:\s*(?:million|billion|trillion|[kKmMbB]))?(?:\+)?)/g, '&#36;$1');
-  text = text.replace(/(?<!\\)\$(HAISI|SOL|USDT|BTC|ETH)\b/g, '&#36;$1');
+  text = text.replace(/(?<!\\)\$(\d[\d,.]*(?:\s*(?:million|billion|trillion|[kKmMbB]))?(?:\+)?)/g, '___HAICHAIN_DOLLAR_TEMP___$1');
+  text = text.replace(/(?<!\\)\$(HAISI|SOL|USDT|BTC|ETH)\b/g, '___HAICHAIN_DOLLAR_TEMP___$1');
 
   // Replace display math: <p>$$...$$</p> or $$...$$
   text = text.replace(/<p>\s*\$\$([\s\S]*?)\$\$\s*<\/p>/g, (m, formula) => {
@@ -110,4 +110,5 @@ for (let i = 0; i < parts.length; i += 2) {
   parts[i] = text;
 }
 
-fs.writeFileSync(outputFile, parts.join(''), 'utf-8');
+let out = parts.join('').replace(/___HAICHAIN_DOLLAR_TEMP___/g, '$').replace(/&#36;/g, '$').replace(/&amp;#36;/g, '$');
+fs.writeFileSync(outputFile, out, 'utf-8');

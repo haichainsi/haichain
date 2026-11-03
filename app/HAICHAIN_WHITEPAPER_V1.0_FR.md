@@ -116,7 +116,7 @@ Où l'**Intelligence Artificielle ($\text{AI}_1$)** fournit un débit de calcul 
 
 Initié comme un noyau de règlement de qualité militaire et sans grief sur Solana L1 (v6.9.3) avant d'évoluer vers un rollup Layer 2 dédié sur SVM et de culminer dans une blockchain de consensus machine indépendante et souveraine (HAICHAIN Souverain L1), le protocole apporte cinq percées fondatrices:
 
-1. **Expérience Utilisateur Web3 Invisible pour le Grand Public:** Les Passkeys biométriques WebAuthn (Apple FaceID / TouchID) combinées à des passerelles d'accès fiat en 1 clic (Apple Pay, QR instantané, SEPA, Stripe) font disparaître 100% de la terminologie blockchain pour les utilisateurs ordinaires.
+1. **Expérience Utilisateur Web3 Invisible pour le Grand Public:** Les Passkeys biométriques WebAuthn (Apple FaceID / TouchID) combinées à des passerelles d'accès fiat en 1 clic (Apple Pay, Google Pay, cartes mondiales) font disparaître 100% de la terminologie blockchain pour les utilisateurs ordinaires.
 2. **Séquestre Élastique de Calcul de Raisonnement:** Des mécanismes d'engagement cryptographique résolvant la consommation non déterministe de tokens pour les modèles de raisonnement de frontière (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Compensation Symétrique Multilatérale:** Une matrice de compensation hors chaîne compressant 99.999% des micro-ticks en mises à jour d'état uniques de 771 octets s'intégrant parfaitement dans le MTU standard d'IPv6 (1.232 octets).
 4. **Coupe-Circuit d'Urgence de Panique Sub-Seconde (Panic Kill-Switch):** Une rétraction de solde imposée par le matériel qui renvoie 100% des fonds non dépensés de l'utilisateur vers un stockage à froid en **moins de 400ms**.
@@ -308,7 +308,6 @@ L'identité racine souveraine de l'utilisateur est ancrée dans le matériel de 
 Les utilisateurs déposent des devises locales via des passerelles natives unifiées:
 
 * **Niveau Mondial:** Traitement direct via Apple Pay, Google Pay, Mastercard et Visa avec règlement en Tether USD (USDT) adossé 1:1 sur Solana SPL.
-* **Marchés Émergents:** Paiements dynamiques par QR code (VietQR, PromptPay) réglés instantanément via des relais institutionnels directement dans les coffres isolés de l'utilisateur.
 * **Parrainage sans Frais de Gas:** Les relayeurs du protocole prennent en charge tous les frais de calcul des transactions Solana, garantissant que $10.00 déposés se convertissent en exactement 10.000000 USDT de solde disponible.
 
 #### Solvers d'Intention sans Garde et Pare-Feu de Sanctions ZK-AML en Temps Réel
@@ -352,7 +351,7 @@ Pour lever les freins psychologiques chez 95% des consommateurs habituels, Haich
                   
     [ RAIL RAPIDE CONSOMMATEUR (WEB3 INVISIBLE) ]    [ RAIL PRO POUR UTILISATEURS AVANCÉS ]
     ├── Connexion: Passkey FaceID / TouchID en 1s    ├── Portefeuilles: Phantom, Solflare, Backpack
-    ├── Onramp: Apple Pay, Cartes, QR Local          ├── Onramp: Dépôt direct de SPL USDT
+    ├── Onramp: Apple Pay, Cartes, Passerelle Globale          ├── Onramp: Dépôt direct de SPL USDT
     ├── UI: Dénomination 100% en Devises ($ USD)     ├── UI: Adresses PDA détaillées, TxHashes,
     └── Zéro jargon crypto, zéro frais de gas        │   preuves Merkle et slippage manuel
         (100% parrainé par Paymaster sans gas)       └── Clés sous auto-garde et RPCs dédiés

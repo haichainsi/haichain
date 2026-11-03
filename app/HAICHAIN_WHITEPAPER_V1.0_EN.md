@@ -109,7 +109,7 @@ Where **Artificial Intelligence ($\text{AI}_1$)** provides infinite nano-second 
 
 Originating as a military-hardened, zero-griefing settlement kernel on Solana L1 (v6.9.3) before evolving into a dedicated SVM Layer 2 rollup and culminating in an independent, sovereign machine-consensus blockchain (HAICHAIN Sovereign L1), the protocol delivers five foundational breakthroughs:
 
-1. **Invisible Web3 Mass-Consumer UX:** Biometric WebAuthn Passkeys (Apple FaceID / TouchID) combined with 1-click fiat on-ramps (Apple Pay, Instant QR, SEPA, Stripe) completely abstracts 100% of blockchain terminology for mainstream users.
+1. **Invisible Web3 Mass-Consumer UX:** Biometric WebAuthn Passkeys (Apple FaceID / TouchID) combined with 1-click fiat on-ramps (Apple Pay, Google Pay, Global Card On-Ramp) completely abstracts 100% of blockchain terminology for mainstream users.
 2. **Elastic Reasoning Compute Escrow:** Cryptographic commitment mechanisms resolving non-deterministic token consumption for frontier reasoning models (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Multilateral Symmetric Netting:** An off-chain clearing matrix compressing 99.999% of micro-ticks into single 771-byte on-chain state updates fitting cleanly within the standard IPv6 MTU (1,232 bytes).
 4. **Sub-Second Emergency Panic Kill-Switch:** Hardware-enforced balance retraction returning 100% of unspent user funds to cold custody in **< 400ms**.
@@ -298,7 +298,7 @@ HAICHAIN formalizes **The Mom-Test Axiom**: *A non-technical mainstream user mus
 
 | 1. Biometric Passkey Enclave | 2. Universal Fiat On-Ramp | 3. Isolated Safe Pot (PDA) |
 | :--- | :--- | :--- |
-| **Hardware Key Protection**<br>• Apple FaceID / TouchID<br>• WebAuthn Secure Enclave<br>• Zero Seed Phrases | **Frictionless Top-Up**<br>• Apple Pay / Google Pay / Card<br>• Instant QR / SEPA / Local Rail<br>• Zero Crypto Exchange Friction | **Deterministic Loss Ceiling**<br>• Isolated $10.00 Sub-Pot<br>• Anti-Drain Circuit Breaker<br>• 1-Tap Emergency Panic Freeze |
+| **Hardware Key Protection**<br>• Apple FaceID / TouchID<br>• WebAuthn Secure Enclave<br>• Zero Seed Phrases | **Frictionless Top-Up**<br>• Apple Pay / Google Pay / Card<br>• Global Visa / Mastercard On-Ramp<br>• Zero Crypto Exchange Friction | **Deterministic Loss Ceiling**<br>• Isolated $10.00 Sub-Pot<br>• Anti-Drain Circuit Breaker<br>• 1-Tap Emergency Panic Freeze |
 
 ### 4.1. Biometric Passkey Security Enclave
 The user's root sovereign identity is anchored in their device hardware (Secure Enclave on iOS/macOS, Titan M2 on Android, TPM 2.0 on Windows):
@@ -310,7 +310,6 @@ The user's root sovereign identity is anchored in their device hardware (Secure 
 Users deposit local currencies through unified native gateways:
 
 * **Global Tier:** Direct Apple Pay, Google Pay, Mastercard, and Visa processing settling into 1:1 backed Tether USD (USDT) on Solana SPL.
-* **Emerging Markets (Southeast Asia Focus):** Dynamic QR payments (VietQR, PromptPay) clearing instantly via institutional liquidity relays directly into user-segregated token vaults.
 * **Gasless Sponsorship:** Protocol relayers sponsor all underlying Solana transaction compute fees, ensuring $10.00 deposited converts to exactly 10.000000 USDT in spendable balance.
 
 #### Zero-Custody Intent Solvers & Real-Time ZK-AML Sanctions Firewall
@@ -354,7 +353,7 @@ To eliminate psychological hesitation across 95% of mainstream Web2 consumers en
                   
     [ CONSUMER FAST-RAIL (TRUE INVISIBLE WEB3) ]    [ PRO WEB3 POWER-USER RAIL ]
     ├── Login: 1-Touch FaceID / TouchID Passkey     ├── Wallets: Phantom, Solflare, Backpack
-    ├── Onramp: Apple Pay, Cards, Local Instant QR  ├── Onramp: Direct on-chain SPL USDT
+    ├── Onramp: Apple Pay, Cards, Global Fiat On-Ramp  ├── Onramp: Direct on-chain SPL USDT
     ├── UI: 100% Fiat-denominated ($ USD)           ├── UI: Granular PDA addresses, TxHashes,
     └── Zero crypto jargon, zero gas fee friction   │   Merkle proofs & custom slip fees
         (100% sponsored by Gasless Paymaster)       └── Self-custodied keys & custom RPCs
@@ -363,7 +362,7 @@ To eliminate psychological hesitation across 95% of mainstream Web2 consumers en
 1. **The Consumer Fast-Rail (True Invisible Web3):**
    * Users see balances exclusively in **$ USD** and authenticate via device biometrics (Apple FaceID, TouchID, Android Biometrics).
    * Blockchain terminology (`SOL`, `Lamports`, `PDA`, `SPL Token`) is completely abstracted away from the primary interface.
-   * Onboarding is powered by Apple Pay, Google Pay, or localized instant bank transfers (VietQR / SEPA / Pix). A Gasless Paymaster sponsors all underlying network gas, routing USDT deposits directly into the user's isolated Vault PDA invisibly.
+   * Onboarding is powered by Apple Pay, Google Pay, or global credit/debit rails via licensed on-ramp partners. A Gasless Paymaster sponsors all underlying network gas, routing USDT deposits directly into the user's isolated Vault PDA invisibly.
 
 2. **The Pro Web3 Power-User Rail:**
    * Designed for AI developers, quantitative traders, and Web3 natives seeking low-level programmatic control. Supports Phantom, Solflare, and Backpack, customizable nonce management, and direct on-chain state verification via Solana Explorer.

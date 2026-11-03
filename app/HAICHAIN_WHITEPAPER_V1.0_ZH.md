@@ -116,7 +116,7 @@ $$
 
 协议最初作为基于 Solana L1 (v6.9.3) 的军工级零恶意攻击结算内核运行，随后进化为专用高性能 SVM Layer 2 Rollup，并最终收敛为独立的机器共识区块链 (HAICHAIN 主权 L1)，带来了五大颠覆性突破:
 
-1. **面向大众消费者的无感 Web3 极简体验:** 生物识别 WebAuthn Passkeys (Apple FaceID / TouchID) 与一键法币通道 (Apple Pay、快捷 QR 扫码、SEPA、Stripe) 结合，为大众用户彻底抽离 100% 的区块链技术术语。
+1. **面向大众消费者的无感 Web3 极简体验:** 生物识别 WebAuthn Passkeys (Apple FaceID / TouchID) 与一键法币通道 (Apple Pay、Google Pay、全球合规信用卡直连) 结合，为大众用户彻底抽离 100% 的区块链技术术语。
 2. **弹性推理算力托管 (Elastic Reasoning Compute Escrow):** 创新的密码学承诺机制，彻底解决了前沿深度思考模型 (如 OpenAI o1/o3、Claude 3.5 Sonnet Extended Thinking) 运行期间非确定性 Token 消耗的预扣结算难题。
 3. **多边对称净额结算 (Multilateral Symmetric Netting):** 链下清算矩阵将 99.999% 的微结算聚合为单条 771 字节的链上状态更新，完美适配标准 IPv6 MTU (1,232 字节)，彻底消除网络封包分片。
 4. **亚秒级硬件紧急一键熔断机制 (Panic Kill-Switch):** 硬件级余额回撤逻辑，能在 **400 毫秒以内** 将用户未消耗的全部资金 100% 撤回冷存储保险库。
@@ -339,7 +339,7 @@ HAICHAIN 严格确立并贯彻 **"妈妈测试公理" (The Mom-Test Axiom)**: *�
    |                                                                                 |
    |   [ 1. 生物识别 PASSKEY ] ───► [ 2. 全球通用法币入金 ] ───► [ 3. 安全支出池 ]   |
    |  - 苹果 FaceID / TouchID      - Apple Pay / Google Pay     - 独立隔离 $10.00    |
-   |  - WebAuthn 硬件安全隔离区    - 本地快捷 QR / 银行卡直连   - 防盗刷防跑飞 PDA   |
+   |  - WebAuthn 硬件安全隔离区    - 全球信用卡 / Apple Pay 直连   - 防盗刷防跑飞 PDA   |
    |  - 彻底告别助记词抄写         - 零加密交易所繁琐 KYC 流程  - 毫秒级物理熔断开关 |
    |                                                                                 |
    +---------------------------------------------------------------------------------+
@@ -355,7 +355,6 @@ HAICHAIN 严格确立并贯彻 **"妈妈测试公理" (The Mom-Test Axiom)**: *�
 用户可以通过本地法定货币渠道无感注资:
 
 * **全球主流通道:** 原生支持 Apple Pay、Google Pay、Mastercard 及 Visa，瞬间结算为 Solana SPL 上 1:1 刚性兑付的 Tether USD (USDT)。
-* **新兴市场本地化通道:** 深度集成东南亚等地的动态二维码支付 (VietQR、PromptPay)，通过机构级流动性中继实时清算至用户专属隔离代币金库中。
 * **零 Gas 费用赞助 (Gasless Paymaster):** 协议中继节点代付所有底层 Solana 链上运算手续费，确保充值的 $10.00 美元完完全全变成金库中 10.000000 USDT 的可用余额。
 
 #### 零托管 Intent 求解器网络与实时 ZK-AML 制裁合规防火墙
@@ -399,7 +398,7 @@ HAICHAIN 严格确立并贯彻 **"妈妈测试公理" (The Mom-Test Axiom)**: *�
                   
     [ 大众消费者极速轨 (真正无感 WEB3) ]          [ 专业 WEB3 高级开发者轨 ]
     ├── 登录方式: 1 秒 FaceID / TouchID Passkey ├── 钱包支持: Phantom, Solflare, Backpack
-    ├── 充值渠道: Apple Pay, 信用卡, 快捷 QR   ├── 入金方式: 链上直转原生 SPL USDT
+    ├── 充值渠道: Apple Pay, 信用卡, 全球法币通道   ├── 入金方式: 链上直转原生 SPL USDT
     ├── 计费显示: 100% 美元法币计价 ($ USD)    ├── 界面细节: 完整展示 PDA 地址、交易 Hash、
     └── 零加密黑话，零 Gas 费困扰 (代付赞助)    │   Merkle 证明及滑点自定义配置
                                                 └── 自主持有私钥并可直连专属 RPC 节点

@@ -131,7 +131,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI²} = \text{ARTIFICIAL INTELLIGENCE} \times \
 
 הפרוטוקול, שהחל את דרכו כליבת סליקה מוקשחת בתקן צבאי עם אפס-הטרדה (Zero-Griefing) על גבי Solana L1 (תוכנית v6.9.3), התפתח לרול-אפ ייעודי למכונות (SVM Layer 2), ושיאו ברשת בלוקצ'יין עצמאית מבוססת קונצנזוס מכונות (HAICHAIN Sovereign L1), מציג חמש פריצות דרך יסודיות:
 
-1. **חוויית משתמש Web3 בלתי-נראית להמונים:** מפתחות Passkeys ביומטריים בתקן WebAuthn (Apple FaceID / TouchID) בשילוב מסילות כניסה בלחיצה אחת מפיאט (Apple Pay, QR מיידי, SEPA, Stripe) מעלימים לחלוטין 100% ממונחי הבלוקצ'יין המסורבלים עבור משתמשי הקצה.
+1. **חוויית משתמש Web3 בלתי-נראית להמונים:** מפתחות Passkeys ביומטריים בתקן WebAuthn (Apple FaceID / TouchID) בשילוב מסילות כניסה בלחיצה אחת מפיאט (Apple Pay, Google Pay, כרטיסי אשראי בינלאומיים) מעלימים לחלוטין 100% ממונחי הבלוקצ'יין המסורבלים עבור משתמשי הקצה.
 2. **נאמנות חישובי הסקה אלסטית (Elastic Reasoning Compute Escrow):** מנגנוני התחייבות קריפטוגרפיים הפותרים את בעיית צריכת הטוקנים הבלתי-דטרמיניסטית של מודלי הסקה מתקדמים (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **קיזוז סימטרי רב-צדדי (Multilateral Symmetric Netting):** מטריצת סליקה מחוץ לשרשרת הדוחסת 99.999% ממיקרו-הפעולות לעדכון מצב יחיד בשרשרת בגודל 771 בייט המתאים במדויק לחבילת IPv6 MTU תקנית (1,232 בייט).
 4. **מפסק חירום תת-שנייתי (Sub-Second Panic Kill-Switch):** משיכת יתרות המגובה בחומרה המחזירה 100% מכספי המשתמש שלא נוצלו בחזרה למשמורת קרה בתוך **פחות מ-400 מילישניות**.
@@ -325,7 +325,6 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
 משתמשים מפקידים מטבעות מקומיים דרך שערים טבעיים מאוחדים:
 
 * **שכבה גלובלית:** סליקה ישירה של Apple Pay, Google Pay, Mastercard ו-Visa המומרת ישירות ל-Tether USD (USDT) המגובה ביחס של 1:1 ב-Solana SPL (`Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`).
-* **שווקים מתעוררים:** תשלומים באמצעות קודי QR דינמיים (VietQR, PromptPay) הנסלקים מיידית דרך ממסרי נזילות מוסדיים ישירות לכספות הטוקנים המבודדות של המשתמש.
 * **חסות גז מלאה (Gasless):** ממסרי הפרוטוקול מממנים 100% מעמלות החישוב של עסקאות Solana הבסיסיות, ובכך מבטיחים כי הפקדה של $10.00 מומרת בדיוק ל-10.000000 USDT ביתרה הניתנת להוצאה.
 
 #### סולברי כוונות ללא משמורת וחומת אש לציות ZK-AML בזמן אמת
@@ -369,7 +368,7 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
                   
     [ CONSUMER FAST-RAIL (TRUE INVISIBLE WEB3) ]    [ PRO WEB3 POWER-USER RAIL ]
     ├── Login: 1-Touch FaceID / TouchID Passkey     ├── Wallets: Phantom, Solflare, Backpack
-    ├── Onramp: Apple Pay, Cards, Local Instant QR  ├── Onramp: Direct on-chain SPL USDT
+    ├── Onramp: Apple Pay, Cards, Global Fiat On-Ramp  ├── Onramp: Direct on-chain SPL USDT
     ├── UI: 100% Fiat-denominated ($ USD)           ├── UI: Granular PDA addresses, TxHashes,
     └── Zero crypto jargon, zero gas fee friction   │   Merkle proofs & custom slip fees
         (100% sponsored by Gasless Paymaster)       └── Self-custodied keys & custom RPCs

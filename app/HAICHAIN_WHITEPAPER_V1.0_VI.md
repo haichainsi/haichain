@@ -89,7 +89,7 @@ Sự bùng nổ theo cấp số nhân của các tác tử trí tuệ nhân tạ
 
 Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền tảng Solana L1 (phiên bản v6.9.3 Zero-Griefing Hardened) trước khi tiến hóa thành một mạng lưới Blockchain L1 độc lập chuyên dụng cho máy móc (HAICHAIN Sovereign L1), giao thức thiết lập 5 chuẩn mực mang tính cách mạng:
 
-1. **Trải nghiệm Người dùng Vô hình (Invisible Web3):** Xác thực sinh trắc học Passkey (FaceID/TouchID) kết hợp các cổng nạp tiền một chạm (Apple Pay, Instant QR, thẻ ngân hàng), xóa bỏ 100% thuật ngữ tiền mã hóa đối với người dùng phổ thông.
+1. **Trải nghiệm Người dùng Vô hình (Invisible Web3):** Xác thực sinh trắc học Passkey (FaceID/TouchID) kết hợp các cổng nạp tiền một chạm (Apple Pay, Google Pay, thẻ ngân hàng toàn cầu), xóa bỏ 100% thuật ngữ tiền mã hóa đối với người dùng phổ thông.
 2. **Ký Quỹ Co Giãn Cho Mô Hình Suy Luận Sâu (Elastic Reasoning Escrow):** Cơ chế cam kết mật mã giải quyết bài toán token suy luận biến thiên bất định của các mô hình hàng đầu (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).
 3. **Bù Trừ Đa Phương Nén 99.999%:** Cỗ máy bù trừ ngoại chuỗi nén hàng triệu vi thanh toán thành một giao dịch on-chain duy nhất có kích thước **771 bytes**, vừa khít trong 1 gói tin mạng **IPv6 MTU (1.232 bytes)**.
 4. **Nút Dừng Khẩn Cấp Dưới 1 Giây (Sub-Second Panic Kill-Switch):** Cầu chì cưỡng bức cấp độ phần cứng cho phép thu hồi 100% tiền thừa về tài khoản ngân hàng/ví chính trong **< 400ms**.
@@ -213,13 +213,12 @@ HAICHAIN áp dụng triết lý thiết kế **"The Mom Test"**: Bất kỳ ngư
 
 | Bước 1: Passkey Sinh Trắc Học | Bước 2: Nạp Tiền Đa Kênh Toàn Cầu | Bước 3: Hũ Tiền An Toàn (Safe Pot) |
 | :--- | :--- | :--- |
-| **Apple FaceID / TouchID / TPM 2.0**<br>WebAuthn Secure Enclave<br>• Không lưu trữ Seed Phrase<br>• Chống trộm khóa cấp chip phần cứng | **Apple Pay / Google Pay / Thẻ / VietQR**<br>Interactive Sandbox Demo (VASP In Progress)<br>• 0 thủ tục KYC sàn Crypto rườm rà<br>• Chuyển đổi 1:1 sang USDT bảo chứng | **Hũ PDA Phân Lập (Isolated $10.00)**<br>Trần chi tiêu cứng Bounded Loss<br>• Cầu chì tự động ngắt kết nối bất thường<br>• 1-Chạm Panic rút 100% tiền về ví lạnh |
+| **Apple FaceID / TouchID / TPM 2.0**<br>WebAuthn Secure Enclave<br>• Không lưu trữ Seed Phrase<br>• Chống trộm khóa cấp chip phần cứng | **Apple Pay / Google Pay / Thẻ Quốc Tế**<br>Interactive Sandbox Demo (VASP In Progress)<br>• 0 thủ tục KYC sàn Crypto rườm rà<br>• Chuyển đổi 1:1 sang USDT bảo chứng | **Hũ PDA Phân Lập (Isolated $10.00)**<br>Trần chi tiêu cứng Bounded Loss<br>• Cầu chì tự động ngắt kết nối bất thường<br>• 1-Chạm Panic rút 100% tiền về ví lạnh |
 
 ### 3.1. Cổng Nạp Tiền Đa Kênh Toàn Cầu (Universal Fiat Abstraction)
 Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phương thức thanh toán quen thuộc:
 
-* **Toàn cầu:** Apple Pay, Google Pay, thẻ Visa/Mastercard (thông qua hạ tầng đối tác cổng thanh toán được cấp phép).
-* **Việt Nam & Đông Nam Á:** Quét mã QR động (Instant QR), tiền tự động quy đổi tức thì sang USDT thông qua các kênh đối tác thanh khoản hợp pháp.
+* **Toàn Cầu (Global Enterprise Rails):** Apple Pay, Google Pay, thẻ Visa/Mastercard quốc tế (thông qua hạ tầng đối tác cổng thanh toán được cấp phép).
 * **Bao cấp phí gas (Gasless Paymaster):** Máy chủ chuyển tiếp của giao thức tự động thanh toán toàn bộ phí mạng Solana. Người dùng nạp $10.00 thì tài khoản có đúng chuẩn xác $10.00 để sử dụng.
 
 > [!NOTE]
@@ -268,7 +267,7 @@ Trong hệ thống phân tán, thời gian block (~400ms trên Solana) cần đ�
                
     [ NGƯỜI DÙNG PHỔ THÔNG (CONSUMER RAIL) ]    [ NHÀ PHÁT TRIỂN / DEGEN (PRO WEB3 RAIL) ]
     ├── Đăng nhập: 1 chạm FaceID / TouchID      ├── Kết nối: Phantom, Solflare, Backpack
-    ├── Nạp tiền: Apple Pay, Card, QR VietQR    ├── Nạp tiền: SPL USDT trực tiếp on-chain
+    ├── Nạp tiền: Apple Pay, Card, Cổng Fiat On-Ramp    ├── Nạp tiền: SPL USDT trực tiếp on-chain
     ├── Giao diện: 100% tiếng người, $ USD       ├── Giao diện: Hiển thị đầy đủ PDA, TxHash,
     └── Không nhìn thấy ví, SOL hay Gas fee     │   tùy chỉnh tham số Merkle & Slip Fee
         (Gasless Paymaster bao cấp 100%)        └── Tự quản lý private key & devnet RPCs
@@ -277,7 +276,7 @@ Trong hệ thống phân tán, thời gian block (~400ms trên Solana) cần đ�
 1. **Tuyến Phổ Thông (Consumer Fast-Rail - True Invisible Web3):**
    * Người dùng chỉ thấy số dư bằng **$ USD** và đăng nhập tức thì bằng cảm biến sinh trắc học thiết bị (Apple FaceID, TouchID, Android Biometrics).
    * Tuyệt đối không hiển thị bất kỳ thuật ngữ crypto nào (`SOL`, `Lamports`, `PDA`, `SPL Token`).
-   * Thanh toán nạp tiền bằng Apple Pay, Google Pay hoặc quét mã ngân hàng địa phương (VietQR / SEPA / Pix). Mạng lưới chuyển tiếp tự động thực thi việc hoán đổi và cấp phát số dư USDT vào Vault PDA mà người dùng không hề hay biết.
+   * Thanh toán nạp tiền bằng Apple Pay, Google Pay hoặc thẻ quốc tế qua đối tác on-ramp được cấp phép. Mạng lưới chuyển tiếp tự động thực thi việc hoán đổi và cấp phát số dư USDT vào Vault PDA mà người dùng không hề hay biết.
 
 2. **Tuyến Chuyên Gia (Pro Web3 Rail):**
    * Dành cho các kỹ sư AI, DeFi degens và doanh nghiệp Web3 muốn trực tiếp tương tác với hợp đồng thông minh. Hỗ trợ kết nối ví Phantom, Solflare, Backpack, tùy chỉnh chữ ký nonce và kiểm toán giao dịch on-chain qua Solana Explorer.
@@ -1027,7 +1026,7 @@ HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai 
 * **Phân tầng quyền lực Master Owner (Actual Intelligence) vs Sub-Agent Signer (Artificial Intelligence):** Con người nắm quyền chủ quyền tối cao qua Passkey sinh trắc học; AI là cánh tay thực thi các giao dịch vi mô nano-cents thần tốc.
 * **Dây cương mật mã (Merkle Capability Leaf):** Đóng gói ý chí và ranh giới quản trị rủi ro của con người vào Merkle Root, ngăn chặn triệt để Prompt Injection.
 * **Cầu chì bảo vệ bản năng (Panic Kill-Switch < 400ms):** Cưỡng bức thu hồi 100% dòng tiền về ví an toàn của con người khi AI gặp lỗi ảo giác hay hành vi bất thường.
-* **Invisible Web3:** Ứng dụng Apple Pay, Google Pay, Instant QR để công nghệ máy móc phục vụ trải nghiệm tự nhiên nhất của con người.
+* **Invisible Web3:** Ứng dụng Apple Pay, Google Pay, thẻ thanh toán toàn cầu và sinh trắc học để công nghệ máy móc phục vụ trải nghiệm tự nhiên nhất của con người.
 
 > [!IMPORTANT]
 > **RANH GIỚI TRIỂN KHAI THỰC TẾ GIỮA SOLANA L1 VÀ SOVEREIGN L1:**
