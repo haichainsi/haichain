@@ -183,11 +183,11 @@ Les agents économiques autonomes opérant sur des réseaux décentralisés néc
 +----------------------------------------------------------------------------------------------------+
 |  MÉTRIQUE               RAILS WEB2 (STRIPE/VISA)   EVM L1/L2 (BASE/ARBITRUM)  PROTOCOLE HAICHAIN   |
 +----------------------------------------------------------------------------------------------------+
-|  Frais Minimum Pratique Frais fixes de $0.30       $0.02 - $0.50 pic de gas   $0.000001 (Compression 1 000:1 / $0,001 Base)  |
+|  Frais Minimum Pratique Frais fixes de $0.30       $0.02 - $0.50 pic de gas   $0.000001 (Netting)  |
 |  Latence de Règlement  2 - 5 Jours Ouvrables       2.000 - 15.000ms           < 400ms sur Fil      |
 |  Risque Prompt InjectionVidage Total de Carte      Vidage de l'EOA Maître     Mathématiquement 0   |
 |  Friction d'Onboarding  KYC, Formulaires, 3 Jours  12 Mots Semence, Gas       Passkey FaceID (60s) |
-|  Réversibilité / PaniqueRétrofacturation (60-90 J) Perte On-Chain Définitive Panique 1-Tap (<400ms|
+|  Réversibilité / PaniqueRétrofacturation (60-90 J) Perte On-Chain Définitive Panique 1-Tap (<400ms |
 +----------------------------------------------------------------------------------------------------+
 ```
 
@@ -206,7 +206,7 @@ Pour évaluer la viabilité du remplacement des modèles commerciaux logiciels e
 +----------------------------------------------------------------------------------------------------+
 |  DIMENSION ÉCONOMIQUE SAAS LEGACY PAR SIÈGE (WEB2)         PROTOCOLE D'UTILITÉ HAICHAIN (v6.9.3)   |
 +----------------------------------------------------------------------------------------------------+
-|  Philosophie de Fact. Payer pour Accéder (Mois Forcé)     Payer par Exécution (Micro-Nanocentimes)|
+|  Philosophie de Fact. Payer pour Accéder (Mois Forcé)     Payer par Exécution (Micro-Nanocentimes) |
 |  Quota Non Utilisé    100% Confisqué en Fin de Mois        100% Conservé sous Garde de l'Utilisat. |
 |  Unité de Facturation Siège Humain Arbitraire ($20-$50)    Calcul Réel Consommé ($0.0002/appel)    |
 |  Mode d'Interaction   Humain Cliquant sur Interface Web    API Autonome d'Agent à Agent Headless   |
@@ -248,7 +248,7 @@ Pour établir pourquoi l'infrastructure actuelle échoue à soutenir une économ
 +-------------------------------------------------------------------------------------------------------------------+
 | PLATEFORME / PARADIGME ANGLE MORT ARCHITECTURAL CRITIQUE                RÉSOLUTION HAICHAIN SI                    |
 +-------------------------------------------------------------------------------------------------------------------+
-| Coinbase AgentKit &   Exposition directe des clés privées EOA;          Feuilles de capacité Merkle (4-uplet lié);  |
+| Coinbase AgentKit &   Exposition directe des clés privées EOA;          Feuilles de capacité Merkle (4-uplet lié);|
 | ElizaOS (ai16z)       l'injection indirecte de prompt draine le wallet; Coffres PDA ségrégués; Bouton de panique  |
 |                       Zéro limite de vitesse; Aucun bouton d'arrêt.     matériel qui balaie les fonds < 400ms.    |
 |                                                                                                                   |
@@ -260,7 +260,7 @@ Pour établir pourquoi l'infrastructure actuelle échoue à soutenir une économ
 | (Fetch.ai / SingNet)  Latence BFT de plusieurs secondes; Manque         machine virtuelle (> 100.000 TPS, 0 CPI); |
 |                       d'opcodes filaires natifs; Déconnecté de la loi.  DIDs Soulbound ancrés aux Passkeys.       |
 |                                                                                                                   |
-| Virtuals Protocol     Contention de verrouillage mono-thread sur Base;  32 ATAs d'ingestion partitionnées Sealevel;|
+| Virtuals Protocol    Contention de verrouillage mono-thread sur Base;  32 ATAs d'ingestion partitionnées Sealevel;|
 | (Base Layer 2)        Frais volatils de blobs sur Ethereum ($0.01-$0.50)Netting symétrique comprimant à 99.999%   |
 |                       Courbes de collage spéculatives de mèmes.         (771 octets); Micro-facturation en USDT.  |
 |                                                                                                                   |
@@ -272,10 +272,10 @@ Pour établir pourquoi l'infrastructure actuelle échoue à soutenir une économ
 | (Tools for Humanity)  distribution passive; Zéro runtime d'exécution;   intégrés au cycle économique (Micro-Tâches|
 |                       Zéro intégration de coprocesseur cognitif d'IA.   Inverses), rémunérant l'esprit humain.    |
 |                                                                                                                   |
-| HTTP x402 & Pay.sh    Canaux de transport HTTP/proxy bruts; Limite d'un Couche de Politiques et de Coffre Programmable     |
-| (Coinbase / Linux Fdn/seul délégué SPL; Absence de plafonds de dépenses (module complémentaire); Arbre Merkle multi-délégué;|
-| Solana x Google Cloud)client (audit V12); Sans disjoncteur on-chain ni  Fonds PDA isolés; Coupe-circuit d'urgence < 400ms; |
-|                       pénalité (slashing) des fournisseurs.            Théorème de Perte Bornée (zéro risque de ruine).   |
+| HTTP x402 & Pay.sh   Canaux de transport HTTP/proxy bruts; Limite d'un Couche de Politiques et Coffre Programmable|
+| (Coinbase / Linux Fdn/seul délégué SPL; Absence de plafonds de         (module d'extension); Arbre Merkle multi-  |
+| Solana x Google Cloud)dépenses client (audit V12); Sans disjoncteur    délégué; Fonds PDA isolés; Coupe-circuit en|
+|                       on-chain ni pénalité (slashing) fournisseur.    < 400ms; Théorème de Perte Bornée.          |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -314,7 +314,7 @@ HAICHAIN formalise l'**Axiome du Test de la Mère (The Mom-Test Axiom)**: *Un ut
    |                     TOPOLOGIE D'ONBOARDING WEB3 INVISIBLE                       |
    +---------------------------------------------------------------------------------+
    |                                                                                 |
-   |   [ 1. PASSKEY BIOMÉTRIQUE ] ───► [ 2. ON-RAMP UNIVERSEL ] ───► [ 3. FONDS SÉCURISÉ ]|
+   |  [ 1. PASSKEY BIOMÉTRIQUE ] -> [ 2. ON-RAMP UNIVERSEL ] -> [ 3. FONDS SÉCURISÉ ]|
    |  - Apple FaceID / TouchID        - Apple Pay / Google Pay     - $10.00 Isolés   |
    |  - Enclave Sécurisée WebAuthn    - QR Instantané / Cartes     - PDA Anti-Vidage |
    |  - Zéro Phrase de Récupération   - Zéro KYC d'Exchange        - Coupe-Circuit   |
@@ -403,7 +403,7 @@ Le noyau de contrats intelligents (`haichain-core v6.9.3`) met en œuvre une arc
 +---------------------------------------------------------------------------------+
 | 1. DÉFENSE CONTRE WORMHOLE (CORRECTION DE $320M):                               |
 |   - Clé publique de Sysvar Instructions codée en dur:                           |
-|     Sysvar1nstructions1111111111111111111111111                                        |
+|     Sysvar1nstructions1111111111111111111111111                                 |
 |   - Rejette les adresses sysvar usurpées transmises via des comptes arbitraires.|
 |                                                                                 |
 | 2. DÉFENSE CONTRE NOMAD BRIDGE (CORRECTION DE $190M):                           |
@@ -411,8 +411,8 @@ Le noyau de contrats intelligents (`haichain-core v6.9.3`) met en œuvre une arc
 |   - Supprime les failles permettant l'exécution contre des racines non initiées.|
 |                                                                                 |
 | 3. DÉFENSE CONTRE L'INJECTION DE PROMPTS ELIZAOS:                               |
-|   - Feuille de Capacité Liée à un 4-Uplet: Hash(Pubkey || MaxSpend || Exp || Nonce)|
-|   - Interdit aux agents infectés de détourner des fonds vers des portefeuilles.|
+|   - Feuille de Capacité Liée à 4-Uplet: Hash(Pubkey || MaxSpend || Exp || Nonce)|
+|   - Interdit aux agents infectés de détourner des fonds vers des portefeuilles. |
 |                                                                                 |
 | 4. DÉFENSE CONTRE EULER FINANCE (CORRECTION DE $197M):                          |
 |   - Rechargement Strict du Solde ATA: require!(actual_ata_balance >= spend_amt) |
@@ -1259,12 +1259,12 @@ Puisque $	ext{CommitHash} = 	ext{Blake3}(	ext{Payload} \parallel 	ext{Salt} \par
 
 ```
 +----------------------------------------------------------------------------------------------------+
-|                         MATRICE STRATÉGIQUE ET FEUILLE DE ROUTE DE HAICHAIN                         |
+|                         MATRICE STRATÉGIQUE ET FEUILLE DE ROUTE DE HAICHAIN                        |
 +----------------------------------------------------------------------------------------------------+
 |  CALENDRIER        OBJECTIFS MAJEURS                         LIVRABLES TECHNIQUES CLÉS             |
 +----------------------------------------------------------------------------------------------------+
 |  Phase 1: Q4 2026  Lancement Commercial sur Mainnet Solana L1 Déploiement du Noyau Blindé v6.9.3   |
-|                    (Implantation Commerciale et PMF)         Passkeys WebAuthn et Passerelle Directe|
+|                   (Implantation Commerciale et PMF)         Passkeys WebAuthn et Passerelle Directe|
 |                                                              Serveur MCP pour Cursor, Claude, etc. |
 |                                                              Audits Formels d'OtterSec et Neodyme  |
 |                                                                                                    |

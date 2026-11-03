@@ -183,7 +183,7 @@ Los agentes económicos autónomos que operan en redes descentralizadas requiere
 +----------------------------------------------------------------------------------------------------+
 |  MÉTRICA                RIELES WEB2 (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  PROTOCOLO HAICHAIN   |
 +----------------------------------------------------------------------------------------------------+
-|  Tarifa Mínima Práctica Tarifa fija de $0.30       $0.02 - $0.50 pico de gas  $0.000001 (Compresión 1,000:1 / $0.001 Base)  |
+|  Tarifa Mínima Práctica Tarifa fija de $0.30       $0.02 - $0.50 pico de gas  $0.000001 (Netting)  |
 |  Latencia de Liquidación2 - 5 Días Hábiles         2.000 - 15.000ms           < 400ms en Cable     |
 |  Riesgo Prompt InjectionVaciado Total de Tarjeta   Vaciado de EOA Maestra     Matemáticamente 0    |
 |  Fricción de Entrada    KYC, Formularios, 3 Días   12 Palabras Semilla, Gas   Passkey FaceID (60s) |
@@ -249,33 +249,33 @@ Para establecer por qué la infraestructura existente falla fundamentalmente en 
 | PLATAFORMA / PARADIGMA PUNTO CIEGO ARQUITECTÓNICO CRÍTICO               RESOLUCIÓN HAICHAIN SI                    |
 +-------------------------------------------------------------------------------------------------------------------+
 | Coinbase AgentKit &   Exposición directa de claves privadas EOA; la   Hojas de capacidad de Merkle acotadas (4);  |
-| ElizaOS (ai16z)       inyección indirecta de prompts drena la billetera;Bóvedas PDA segregadas; Disyuntor de       |
-|                       Cero límites de velocidad; Sin botón de pánico. Pánico por hardware que barre fondos < 400ms.|
+| ElizaOS (ai16z)       inyección indirecta de prompts drena la billetera;Bóvedas PDA segregadas; Disyuntor de      |
+|                      Cero límites de velocidad; Sin botón de pánico. Pánico por hardware que barre fondos < 400ms.|
 |                                                                                                                   |
 | Bittensor (TAO)       Latencia de bloque de 12.000ms (incapaz de      Compensación BFT rápida de 50ms; Flujo de   |
 |                       micro-liquidar en tiempo real); Colusión en     USDT real; Prueba de Inteligencia Real      |
-|                       consenso Yuma; Trastorno de Autofagia (MAD).    (PoAI) que inyecta verdad humana no corrupta.|
+|                      consenso Yuma; Trastorno de Autofagia (MAD).    (PoAI) que inyecta verdad humana no corrupta.|
 |                                                                                                                   |
 | ASI Alliance          Sobrecarga de CPI en contratos Cosmos/EVM;      Opcode nativo OP_402_PAY compilado en VM    |
 | (Fetch.ai / SingNet)  Latencia BFT de varios segundos; Falta de       (> 100.000 TPS, cero sobrecosto de CPI);    |
-|                       opcodes nativos; Desconectado de identidad legal. DIDs Soulbound anclados a Passkeys humanas.|
+|                      opcodes nativos; Desconectado de identidad legal. DIDs Soulbound anclados a Passkeys humanas.|
 |                                                                                                                   |
-| Virtuals Protocol     Contención de bloqueo en EVM mono-hilo en Base;  32 ATAs particionadas en Sealevel;          |
+| Virtuals Protocol     Contención de bloqueo en EVM mono-hilo en Base;  32 ATAs particionadas en Sealevel;         |
 | (Base Layer 2)        Tarifas volátiles de blobs L1 ($0.01-$0.50);    Compensación simétrica que comprime 99.999% |
 |                       Curvas de bonos de memes especulativos.         (771 bytes); Micro-facturación en USDT.     |
 |                                                                                                                   |
-| Rieles Web2 Legacy    Piso de tarifa fija de $0.30 + 2.9% (150.000% de Pura micro-utilidad (piso de $0.000001);  |
+| Rieles Web2 Legacy    Piso de tarifa fija de $0.30 + 2.9% (150.000% de Pura micro-utilidad (piso de $0.000001);   |
 | (Stripe / Visa)       recargo en llamadas de $0.0002); Retraso de T+2  Finalidad criptográfica < 400ms; Cero      |
 |                       a T+5 días; Alto riesgo de contracargos.        riesgo de contracargos vía depósito PDA.    |
 |                                                                                                                   |
 | Worldcoin             Biometría de iris de propósito único (The Orb)  Estándares biométricos abiertos (WebAuthn)  |
 | (Tools for Humanity)  para distribución pasiva; Cero tiempo de        integrados al circuito económico (Micro-    |
-|                       ejecución; Cero coprocesamiento cognitivo.      Tareas Inversas), remunerando mentes humanas.|
+|                      ejecución; Cero coprocesamiento cognitivo.      Tareas Inversas), remunerando mentes humanas.|
 |                                                                                                                   |
-| HTTP x402 y Pay.sh    Tuberías de transporte HTTP/proxy brutas; Límite Capa de Políticas y Bóvedas Programables (capa   |
-| (Coinbase / Linux Fdn/de 1 delegado SPL; Falta de topes de gasto en    compatible); Capacidad Merkle multidelegada; Fondos|
-| Solana x Google Cloud)clientes (auditoría V12); Sin disyuntores        PDA aislados; Disyuntor de pánico en < 400ms;     |
-|                       autónomos on-chain ni slashing a proveedores.    Teorema de Pérdida Acotada (sin riesgo de quiebra).|
+| HTTP x402 y Pay.sh    Tuberías de transporte HTTP/proxy brutas; Límite Capa de Políticas y Bóvedas Programables   |
+| (Coinbase / Linux Fdn/de 1 delegado SPL; Falta de topes de gasto en   (capa compatible); Capacidad Merkle multi-  |
+| Solana x Google Cloud)clientes (auditoría V12); Sin disyuntores        delegada; Fondos PDA aislados; Disyuntor en|
+|                       autónomos on-chain ni slashing a proveedores.   < 400ms; Teorema de Pérdida Acotada.        |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -314,7 +314,7 @@ HAICHAIN formaliza el **Axioma de la Prueba de la Madre (The Mom-Test Axiom)**: 
    |                     TOPOLOGÍA DE INCORPORACIÓN WEB3 INVISIBLE                   |
    +---------------------------------------------------------------------------------+
    |                                                                                 |
-   |   [ 1. PASSKEY BIOMÉTRICA ] ───► [ 2. ON-RAMP UNIVERSAL ] ───► [ 3. FONDO SEGURO ]|
+   | [ 1. PASSKEY BIOMÉTRICA ] ───► [ 2. ON-RAMP UNIVERSAL ] ───► [ 3. FONDO SEGURO ]|
    |  - Apple FaceID / TouchID        - Apple Pay / Google Pay     - $10.00 Aislados |
    |  - Enclave Seguro WebAuthn       - QR Instantáneo / Tarjetas  - PDA Anti-Drenaje|
    |  - Cero Frases Semilla           - Cero KYC de Exchanges      - Disyuntor Pánico|
@@ -402,8 +402,8 @@ El núcleo de contratos inteligentes (`haichain-core v6.9.3`) implementa una arq
 |               MATRIZ DE DEFENSA ANTE EXPLOITS DE HAICHAIN v6.9.3                |
 +---------------------------------------------------------------------------------+
 | 1. DEFENSA ANTE WORMHOLE (CORRECCIÓN DE $320M):                                 |
-|   - Clave pública de Sysvar Instructions codificada en duro:                     |
-|     Sysvar1nstructions1111111111111111111111111                                        |
+|   - Clave pública de Sysvar Instructions codificada en duro:                    |
+|     Sysvar1nstructions1111111111111111111111111                                 |
 |   - Rechaza direcciones de sysvar falsificadas pasadas por cuentas arbitrarias. |
 |                                                                                 |
 | 2. DEFENSA ANTE NOMAD BRIDGE (CORRECCIÓN DE $190M):                             |
@@ -411,7 +411,7 @@ El núcleo de contratos inteligentes (`haichain-core v6.9.3`) implementa una arq
 |   - Elimina vulnerabilidades que permiten ejecución contra raíces no iniciadas. |
 |                                                                                 |
 | 3. DEFENSA ANTE INYECCIÓN DE PROMPTS ELIZAOS:                                   |
-|   - Hoja de Capacidad Acotada a 4-Tupla: Hash(Pubkey || MaxSpend || Exp || Nonce)|
+|  - Hoja de Capacidad Acotada a 4-Tupla: Hash(Pubkey || MaxSpend || Exp || Nonce)|
 |   - Prohíbe que agentes infectados desvíen fondos a billeteras de atacantes.    |
 |                                                                                 |
 | 4. DEFENSA ANTE EULER FINANCE (CORRECCIÓN DE $197M):                            |
@@ -1268,7 +1268,7 @@ Dado que $	ext{CommitHash} = 	ext{Blake3}(	ext{Payload} \parallel 	ext{Salt} \pa
 |                                                              Servidor MCP para Cursor, Claude, etc.|
 |                                                              Auditorías por OtterSec y Neodyme     |
 |                                                                                                    |
-|  Fase 2: Q2 2027   App-Rollup Dedicado de Alto Rendimiento en SVM Testnet de Secuenciador SVM Propio|
+| Fase 2: Q2 2027   App-Rollup Dedicado de Alto Rendimiento en SVM Testnet de Secuenciador SVM Propio|
 |                    (Expansión del Ecosistema)                Integración DA de Celestia / EigenDA  |
 |                                                              Mercado de Conocimiento Simbiótico    |
 |                                                              Protocolo de Micro-Tareas Inversas    |
@@ -1276,7 +1276,7 @@ Dado que $	ext{CommitHash} = 	ext{Blake3}(	ext{Payload} \parallel 	ext{Salt} \pa
 |  Fase 3: Q4 2027   HAICHAIN Sovereign Machine L1             Testnet de Metal Desnudo HAI-VM       |
 |                    (El Fin de Juego de la Superinteligencia) Motor de Opcode Nativo OP_402_PAY     |
 |                                                              Consenso Dual de PoAW + PoAI          |
-|                                                              Puente Teleport 1:1 SPL a $HAISI Nativo|
+|                                                             Puente Teleport 1:1 SPL a $HAISI Nativo|
 |                                                              Verificación de más de 100.000 TPS    |
 +----------------------------------------------------------------------------------------------------+
 ```

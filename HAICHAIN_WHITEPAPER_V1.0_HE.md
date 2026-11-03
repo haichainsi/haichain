@@ -196,7 +196,7 @@ ight) = 0$$
 +----------------------------------------------------------------------------------------------------+
 |  METRIC                 WEB2 RAILS (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  HAICHAIN PROTOCOL     |
 +----------------------------------------------------------------------------------------------------+
-|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (דחיסת 1,000:1 / $0.001 בסיס)   |
+|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (Netting)   |
 |  Settlement Latency     2 - 5 Business Days       2,000 - 15,000ms           < 400ms Wire Finality |
 |  Prompt-Injection Risk  Complete Card Drain       Drain of Master EOA        Mathematically 0 (PDA)|
 |  Onboarding Friction    KYC, Bank Forms, 3 Days   12-Word Seed Phrase, Gas   Passkey FaceID (60s)  |
@@ -219,7 +219,7 @@ ight) = 0$$
 +----------------------------------------------------------------------------------------------------+
 |  ECONOMIC DIMENSION   LEGACY PER-SEAT SAAS (WEB2)          HAICHAIN UTILITY PROTOCOL (v6.9.3)      |
 +----------------------------------------------------------------------------------------------------+
-|  Billing Philosophy   Pay-to-Access (Forced Fixed Month)   Pay-per-Execution (Fractional Nano-cents)|
+| Billing Philosophy   Pay-to-Access (Forced Fixed Month)   Pay-per-Execution (Fractional Nano-cents)|
 |  Unused Quota         100% Forfeited at Month-End          100% Retained in User Custody           |
 |  Billing Unit         Arbitrary Human Seat ($20 - $50/mo)  Actual Consumed Compute ($0.0002/tick)  |
 |  Interactivity Mode   Human Clicking Visual Web UI         Headless Agent-to-Agent Autonomous API  |
@@ -267,7 +267,7 @@ client = openai.OpenAI(
 |                                                                                                                   |
 | Bittensor (TAO)       12,000ms Block Latency (incapable of real-time  50ms Fast-Path BFT Netting; Real utility    |
 |                       micro-settlement); Yuma Consensus collusion &   streaming USDT; Proof of Actual Intelligence|
-|                       copycat mining; Closed-loop Model Autophagy      (PoAI) ingesting unpoisoned human ground    |
+|                       copycat mining; Closed-loop Model Autophagy      (PoAI) ingesting unpoisoned human ground   |
 |                       Disorder (MAD) due to zero human grounding.     truth via quadratic Schelling staking.      |
 |                                                                                                                   |
 | ASI Alliance          Cosmos/EVM Smart Contract CPI overhead; Multi-  Native OP_402_PAY opcode compiled into VM   |
@@ -275,23 +275,23 @@ client = openai.OpenAI(
 |                       opcodes; Decoupled from human legal identity.   Unified Soulbound DIDs anchoring machines   |
 |                                                                       to human biometric Passkeys (EU AI Act).    |
 |                                                                                                                   |
-| Virtuals Protocol     Single-threaded EVM write-lock contention on    Sealevel 32-partitioned ingestion ATAs;    |
+| Virtuals Protocol     Single-threaded EVM write-lock contention on    Sealevel 32-partitioned ingestion ATAs;     |
 | (Base Layer 2)        Base; Volatile Ethereum L1 blob fees ($0.01-    Off-chain symmetric netting yielding 99.999%|
-|                       $0.50); Speculative meme bonding curves         compression (771-byte datagram); Real utility|
+|                      $0.50); Speculative meme bonding curves         compression (771-byte datagram); Real utility|
 |                       rather than enterprise micro-utility rails.     micro-billing settling in stable USDT.      |
 |                                                                                                                   |
-| Legacy Web2 Rails     $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 netting floor);|
+| Legacy Web2 Rails    $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 netting floor);|
 | (Stripe / Visa)       overhead on $0.0002 API calls); T+2 to T+5 day  Sub-400ms cryptographic wire finality;      |
 |                       settlement lag; High chargeback fraud risk.     Zero chargeback risk via PDA escrow.        |
 |                                                                                                                   |
 | Worldcoin             Single-purpose iris biometrics (The Orb) for    Open biometric standards (WebAuthn/ZK-PoH)  |
-| (Tools for Humanity)  passive UBI token distribution; Zero machine    integrated directly into the economic loop   |
+| (Tools for Humanity)  passive UBI token distribution; Zero machine    integrated directly into the economic loop  |
 |                       execution runtime; Zero capability bounding;    (Reverse Micro-Tasking), turning human minds|
 |                       Zero AI cognitive coprocessor integration.      into an active, compensated ASI coprocessor.|
 |                                                                                                                   |
-| HTTP x402 & Pay.sh    צינורות תעבורה ופרוקסי גולמיים; מגבלת נציג בודד  שכבת מדיניות וכספות ניתנת לתכנות (שכבה תואמת); עץ   |
-| (Coinbase / Linux Fdn/ב-SPL; היעדר תקרות הוצאה בלקוח (ביקורת V12);     יכולות Merkle מרובה-נציגים; קופות PDA מבודדות;      |
-| Solana x Google Cloud)ללא מפסקי זרם בשרשרת וללא מנגנון חילוט לספקים.   מפסק פאניקה < 400ms; משפט ההפסד החסום ללא ריקון.   |
+| HTTP x402 & Pay.sh    צינורות תעבורה ופרוקסי גולמיים; מגבלת נציג בודד  שכבת מדיניות וכספות ניתנת לתכנות; עץ מרקל  |
+| (Coinbase / Linux Fdn/ב-SPL; היעדר תקרות הוצאה בלקוח (ביקורת V12);  יכולות Merkle מרובה-נציגים; קופות PDA מבודדות;|
+| Solana x Google Cloud)ללא מפסקי זרם בשרשרת וללא מנגנון חילוט לספקים.   מפסק פאניקה < 400ms; משפט ההפסד החסום.     |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -332,9 +332,9 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
    +---------------------------------------------------------------------------------+
    |                                                                                 |
    |   [ 1. BIOMETRIC PASSKEY ] ───► [ 2. UNIVERSAL ON-RAMP ] ───► [ 3. SAFE POT ]   |
-   |  - Apple FaceID / TouchID     - Apple Pay / Google Pay     - Isolated $10.00 |
-   |  - WebAuthn Secure Enclave    - Instant QR / SEPA / Card   - Anti-Drain PDA  |
-   |  - Zero Seed Phrases          - Zero Crypto Exchange KYC   - Circuit Breaker |
+   |  - Apple FaceID / TouchID     - Apple Pay / Google Pay     - Isolated $10.00    |
+   |  - WebAuthn Secure Enclave    - Instant QR / SEPA / Card   - Anti-Drain PDA     |
+   |  - Zero Seed Phrases          - Zero Crypto Exchange KYC   - Circuit Breaker    |
    |                                                                                 |
    +---------------------------------------------------------------------------------+
 ```
@@ -416,33 +416,33 @@ HAICHAIN מנסחת באופן פורמלי את **אקסיומת "מבחן אמ
 ליבת החוזים החכמים (`haichain-core v6.9.3`) מיישמת ארכיטקטורת **הגנה לעומק דטרמיניסטית רב-שכבתית (Deterministic Multi-Layer Defense-in-Depth)**, האוכפת 6 אינווריאנטים מתמטיים בזמן ריצה כדי לנטרל מחלקות פגיעות עבר בהיקף של למעלה מ-821 מיליון דולר. בשילוב ביקורות אבטחה חיצוניות בלתי תלויות קבועות, המערכת מבטלת לחלוטין כשלי היגיון בחוזים:
 
 ```
-+---------------------------------------------------------------------------------+
-|               HAICHAIN v6.9.3 SIX INVARIANTS EXPLOIT DEFENSE MATRIX             |
-+---------------------------------------------------------------------------------+
-| 1. INSTRUCTION SYSVAR INTROSPECTION (CVE-2022-24300 PREVENTION):                                                |
-|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstructions1111111111111111111111111 |
-|   - דחיית כתובות sysvar מזויפות המועברות דרך חשבונות הקשר שרירותיים.             |
-|                                                                                 |
-| 2. NON-ZERO MERKLE ROOT & UNINITIALIZED PDA DEFENSE:                                            |
-|   - Non-Zero Root Invariant: require!(composite_root != [0u8; 32])            |
-|   - מניעת פגיעויות המאפשרות ביצוע עסקאות כנגד שורשי מרקל לא מאותחלים.          |
-|                                                                                 |
-| 3. ELIZAOS PROMPT INJECTION DEFENSE:                                            |
-|   - 4-Tuple Bound Capability Leaf: Hash(Pubkey || MaxSpend || Expiry || Nonce) |
-|   - איסור מוחלט על סוכנים מורעלים להפנות כספים לארנקי תוקפים.                   |
-|                                                                                 |
-| 4. LIVE SPL ATA BALANCE INTROSPECTION & ANTI-DRIFT GUARD:                                           |
-|   - Strict ATA Balance Reload: require!(actual_ata_balance >= spend_amount)    |
-|   - מניעת סטיות הנהלת חשבונות פנימיות ושגיאות שערי חליפין מבוססות תרומות.      |
-|                                                                                 |
-| 5. MULTI-SLOT FLASH-LOAN LIQUIDITY QUARANTINE:                                |
-|   - Multi-Slot Quarantine: require!(slot >= last_deposit_slot + 2)             |
-|   - מניעת מניפולציות הפקדה-ומיד-ריקון של הלוואות בזק (Flash Loan) באותו בלוק.    |
-|                                                                                 |
-| 6. TETHER USDT FREEZE DEFENSE:                                                  |
-|   - Segregated Vault ATAs: Each user vault maintains an isolated SPL ATA.     |
-|   - אפס הדבקה צולבת אם ארנקי צדדים שלישיים עומדים בפני הקפאה רגולטורית.        |
-+---------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------+
+|               HAICHAIN v6.9.3 SIX INVARIANTS EXPLOIT DEFENSE MATRIX                                |
++----------------------------------------------------------------------------------------------------+
+| 1. INSTRUCTION SYSVAR INTROSPECTION (CVE-2022-24300 PREVENTION):                                   |
+|   - Hardcoded Sysvar Instructions Pubkey: Sysvar1nstructions1111111111111111111111111              |
+|   - דחיית כתובות sysvar מזויפות המועברות דרך חשבונות הקשר שרירותיים.                               |
+|                                                                                                    |
+| 2. NON-ZERO MERKLE ROOT & UNINITIALIZED PDA DEFENSE:                                               |
+|   - Non-Zero Root Invariant: require!(composite_root != [0u8; 32])                                 |
+|   - מניעת פגיעויות המאפשרות ביצוע עסקאות כנגד שורשי מרקל לא מאותחלים.                              |
+|                                                                                                    |
+| 3. ELIZAOS PROMPT INJECTION DEFENSE:                                                               |
+|   - 4-Tuple Bound Capability Leaf: Hash(Pubkey || MaxSpend || Expiry || Nonce)                     |
+|   - איסור מוחלט על סוכנים מורעלים להפנות כספים לארנקי תוקפים.                                      |
+|                                                                                                    |
+| 4. LIVE SPL ATA BALANCE INTROSPECTION & ANTI-DRIFT GUARD:                                          |
+|   - Strict ATA Balance Reload: require!(actual_ata_balance >= spend_amount)                        |
+|   - מניעת סטיות הנהלת חשבונות פנימיות ושגיאות שערי חליפין מבוססות תרומות.                          |
+|                                                                                                    |
+| 5. MULTI-SLOT FLASH-LOAN LIQUIDITY QUARANTINE:                                                     |
+|   - Multi-Slot Quarantine: require!(slot >= last_deposit_slot + 2)                                 |
+|   - מניעת מניפולציות הפקדה-ומיד-ריקון של הלוואות בזק (Flash Loan) באותו בלוק.                      |
+|                                                                                                    |
+| 6. TETHER USDT FREEZE DEFENSE:                                                                     |
+|   - Segregated Vault ATAs: Each user vault maintains an isolated SPL ATA.                          |
+|   - אפס הדבקה צולבת אם ארנקי צדדים שלישיים עומדים בפני הקפאה רגולטורית.                            |
++----------------------------------------------------------------------------------------------------+
 ```
 
 ### 5.1. מקביליות Sealevel וחשבונות ATA מונעי-התנגשות

@@ -127,9 +127,9 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 +-------------------------------------------------------------------------------------------------------------------+
 | Coinbase AgentKit &   Lộ Private Key EOA; Tấn công Prompt Injection     Dây cương Merkle Capability Leaf (4 thành |
 | ElizaOS (ai16z)       làm cháy sạch ví chính; Không có giới hạn tốc độ  phần); Hũ tiền PDA cô lập; Panic Kill-    |
-|                       on-chain; Thiếu nút dừng khẩn cấp cấp phần cứng.  Switch cưỡng bức rút 100% tiền trong <0.4s.|
+|                      on-chain; Thiếu nút dừng khẩn cấp cấp phần cứng.  Switch cưỡng bức rút 100% tiền trong <0.4s.|
 |                                                                                                                   |
-| Bittensor (TAO)       Độ trễ khối 12 giây (12.000ms - bất khả thi cho   Khối 50ms BFT Netting; Dòng tiền thật USDT;|
+| Bittensor (TAO)      Độ trễ khối 12 giây (12.000ms - bất khả thi cho   Khối 50ms BFT Netting; Dòng tiền thật USDT;|
 |                       vi thanh toán thời gian thực); Yuma Consensus bị  Proof of Actual Intelligence (PoAI) nạp   |
 |                       thông đồng và gian lận sao chép mô hình; Thoái hóa trực giác sống của con người, triệt hạ   |
 |                       dữ liệu tự hoại (MAD) vì thiếu mỏ neo con người.  hoàn toàn hội chứng suy thoái dữ liệu MAD.|
@@ -139,23 +139,23 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 |                       vi thanh toán; Tác tử tách rời thể nhân con người.danh Soulbound DID neo vào Passkey FaceID.|
 |                                                                                                                   |
 | Virtuals Protocol     Nghẽn cổ chai ghi đơn luồng của EVM trên Base;   Xử lý song song Sealevel 32 luồng ATA;     |
-| (Base Layer 2)        Phí blob Ethereum L1 biến động ($0.01 - $0.50);   Bù trừ đối xứng nén 99.999% (gói tin 771B);|
+| (Base Layer 2)       Phí blob Ethereum L1 biến động ($0.01 - $0.50);   Bù trừ đối xứng nén 99.999% (gói tin 771B);|
 |                       Tập trung đầu cơ token meme thay vì hạ tầng tiện  Thanh toán tiện ích thực bằng USDT ổn định|
 |                       ích tài chính thực thụ cho doanh nghiệp.          không chịu rủi ro biến động giá.          |
 |                                                                                                                   |
-| Web2 Truyền Thống     Phí sàn cố định $0.30 + 2.9% (đắt gấp 150.000%    Vi tiện ích thực sự ($0.000001 nén / $0.001 gốc);    |
+| Web2 Truyền Thống Phí sàn cố định $0.30 + 2.9% (đắt gấp 150.000% Vi tiện ích thực sự ($0.000001 nén / $0.001 gốc);|
 | (Stripe / Visa)       giá trị lệnh gọi API $0.0002); Thời gian bù trừ   Tốc độ chốt sổ mật mã dưới 400ms;         |
 |                       2-5 ngày; Rủi ro gian lận bồi hoàn (chargeback).  Triệt tiêu 100% rủi ro bồi hoàn qua Escrow|
 |                                                                                                                   |
 | Worldcoin             Chỉ quét mống mắt (The Orb) để phát token UBI thụ Đưa chuẩn sinh trắc học mở (Passkey/ZK-PoH|
-| (Tools for Humanity)  động; Hoàn toàn không có runtime thực thi cho máy;vào thẳng chu trình kinh tế (Reverse Task),|
+| (Tools for Humanity) động; Hoàn toàn không có runtime thực thi cho máy;vào thẳng chu trình kinh tế (Reverse Task),|
 |                       Không quản trị hạn mức chi tiêu; Không biến con   biến trí tuệ con người thành bộ đồng xử lý|
 |                       người thành bộ đồng xử lý nhận thức cho AI.       nhận thức nhận thù lao vi mô cho Siêu AI. |
 |                                                                                                                   |
-| HTTP x402 & Pay.sh    Chỉ là ống dẫn HTTP/proxy thô; Giới hạn 1 delegate Lớp Quản trị Chính sách & Hạn mức Merkle;      |
-| (Coinbase / Linux Fdn/ủy quyền token Solana; Lỗ hổng thiếu trần chi tiêu  Cây năng lực đa tầng (Multi-delegate); Hũ PDA   |
-| Solana x Google Cloud)client (V12 audit); Thiếu mạch ngắt tự hành on-chain cô lập; Bounded Loss Theorem triệt tiêu rủi ro |
-|                       và thiếu cơ chế ký quỹ/phạt nhà cung cấp.           cháy ví; Tương thích mượt mà (drop-in layer).   |
+| HTTP x402 & Pay.sh    Chỉ là ống dẫn HTTP/proxy thô; Giới hạn 1       Lớp Quản trị Chính sách & Hũ PDA cô lập;    |
+| (Coinbase / Linux Fdn/delegate token Solana; Lỗ hổng thiếu trần chi  Cây năng lực Merkle đa tầng (Multi-delegate);|
+| Solana x Google Cloud)tiêu client (V12 audit); Thiếu mạch ngắt tự     Mạch ngắt tự hành < 400ms; Bounded Loss     |
+|                       hành on-chain và thiếu cơ chế phạt nhà mạng.    triệt tiêu hoàn toàn rủi ro cháy ví.        |
 +-------------------------------------------------------------------------------------------------------------------+
 ```
 
@@ -241,10 +241,10 @@ HAICHAIN áp dụng triết lý thiết kế **"The Mom Test"**: Bất kỳ ngư
   |                       QUY TRÌNH TIẾP CẬN VÔ HÌNH (INVISIBLE WEB3)               |
   +---------------------------------------------------------------------------------+
   |                                                                                 |
-  |   [ 1. PASSKEY SINH TRẮC ] ───► [ 2. NẠP TIỀN 1 CHẠM ] ───► [ 3. HŨ TIỀN AN TOÀN ] |
-  |  - Apple FaceID / TouchID     - Apple Pay / Google Pay   - Hạn mức $10.00 cô lập |
-  |  - WebAuthn Secure Enclave    - Chuyển khoản Instant QR / Card- Chống cháy ví tuyệt đối |
-  |  - Không cần giữ 12 từ khóa   - Không cần KYC sàn Crypto - Cầu chì ngắt mạch tự động |
+  |   [ 1. PASSKEY SINH TRẮC ] ──► [ 2. NẠP TIỀN 1 CHẠM ] ──► [ 3. HŨ AN TOÀN ]     |
+  | - Apple FaceID / TouchID   - Apple Pay / Google Pay     - Hạn mức $10.00 cô lập |
+  |  - WebAuthn Secure Enclave    - Instant QR / Thẻ Card      - Chống cháy ví      |
+  | - Không cần giữ 12 từ khóa   - Không cần KYC sàn Crypto   - Cầu chì ngắt tự động|
   |                                                                                 |
   +---------------------------------------------------------------------------------+
 ```
@@ -652,33 +652,33 @@ HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc
 Nhân hợp đồng thông minh (`haichain-core v6.9.3`) thiết lập mô hình **Phòng Thủ Chiều Sâu Tất Định (Deterministic Multi-Layer Defense-in-Depth)**, cưỡng bức 6 bất biến toán học ở cấp độ runtime nhằm vô hiệu hóa các lớp lỗ hổng trạng thái và kỹ thuật tấn công khai thác smart contract lịch sử trị giá hơn 821 triệu USD. Kết hợp cùng kế hoạch kiểm toán bảo mật độc lập định kỳ (Scheduled Third-Party Security Audits) từ các đơn vị kiểm toán uy tín, kiến trúc triệt tiêu hoàn toàn các điểm mù logic hợp đồng:
 
 ```
-+---------------------------------------------------------------------------------+
-|             MA TRẬN PHÒNG THỦ 6 BẤT BIẾN TOÁN HỌC CỦA HAICHAIN v6.9.3           |
-+---------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------+
+|             MA TRẬN PHÒNG THỦ 6 BẤT BIẾN TOÁN HỌC CỦA HAICHAIN v6.9.3                              |
++----------------------------------------------------------------------------------------------------+
 | 1. KIỂM TRA CHỮ KÝ NATIVE QUA SYSVAR INSTRUCTIONS (CHỐNG GIẢ MẠO):                                 |
-|   - Cố định địa chỉ Sysvar Instructions: Sysvar1nstructions1111111111111111111111111 |
-|   - Loại bỏ hoàn toàn nguy cơ giả mạo tài khoản sysvar hướng dẫn.             |
-|                                                                                 |
-| 2. BẤT BIẾN MERKLE ROOT KHÁC 0 & CHỐNG THỰC THI TRÊN PDA RỖNG:                            |
-|   - Bất biến Merkle Root khác 0: require!(composite_root != [0u8; 32])         |
-|   - Cấm tuyệt đối việc thực thi giao dịch trên một cây Merkle rỗng.            |
-|                                                                                 |
-| 3. CHỐNG ĐẦU ĐỘC BỘ NHỚ ELIZAOS & PROMPT INJECTION:                             |
-|   - Ràng buộc 4 thành phần: Hash(Pubkey || MaxSpend || ExpirySlot || Nonce)    |
-|   - Cấm bot bị thao túng chuyển tiền sang ví của kẻ tấn công.                  |
-|                                                                                 |
-| 4. TẢI LẠI SỐ DƯ SPL ATA THỰC TẾ & CHỐNG LỆCH SỔ SÁCH:                            |
-|   - Tải lại số dư thực tế: require!(actual_ata_balance >= spend_amount)        |
-|   - Ngăn chặn lỗi lệch sổ sách nội bộ và tấn công thổi giá bằng token tặng.    |
-|                                                                                 |
-| 5. CÁCH LY THANH KHOẢN CHỐNG FLASH-LOAN ĐA SLOT:              |
-|   - Rào cản cách ly đa slot: require!(slot >= last_deposit_slot + 2)           |
-|   - Cấm tuyệt đối hành vi vừa nạp tiền vừa rút sạch tiền trong cùng 1 block.   |
-|                                                                                 |
-| 6. BẢO VỆ CHỐNG ĐÓNG BĂNG VÍ TETHER USDT:                                       |
-|   - Tài khoản ATA tách biệt: Mỗi hũ tiền sở hữu một tài khoản Token độc lập.   |
-|   - Loại bỏ 100% rủi ro lây nhiễm nếu ví của người dùng khác bị Tether chặn.   |
-+---------------------------------------------------------------------------------+
+|   - Cố định địa chỉ Sysvar Instructions: Sysvar1nstructions1111111111111111111111111               |
+|   - Loại bỏ hoàn toàn nguy cơ giả mạo tài khoản sysvar hướng dẫn.                                  |
+|                                                                                                    |
+| 2. BẤT BIẾN MERKLE ROOT KHÁC 0 & CHỐNG THỰC THI TRÊN PDA RỖNG:                                     |
+|   - Bất biến Merkle Root khác 0: require!(composite_root != [0u8; 32])                             |
+|   - Cấm tuyệt đối việc thực thi giao dịch trên một cây Merkle rỗng.                                |
+|                                                                                                    |
+| 3. CHỐNG ĐẦU ĐỘC BỘ NHỚ ELIZAOS & PROMPT INJECTION:                                                |
+|   - Ràng buộc 4 thành phần: Hash(Pubkey || MaxSpend || ExpirySlot || Nonce)                        |
+|   - Cấm bot bị thao túng chuyển tiền sang ví của kẻ tấn công.                                      |
+|                                                                                                    |
+| 4. TẢI LẠI SỐ DƯ SPL ATA THỰC TẾ & CHỐNG LỆCH SỔ SÁCH:                                             |
+|   - Tải lại số dư thực tế: require!(actual_ata_balance >= spend_amount)                            |
+|   - Ngăn chặn lỗi lệch sổ sách nội bộ và tấn công thổi giá bằng token tặng.                        |
+|                                                                                                    |
+| 5. CÁCH LY THANH KHOẢN CHỐNG FLASH-LOAN ĐA SLOT:                                                   |
+|   - Rào cản cách ly đa slot: require!(slot >= last_deposit_slot + 2)                               |
+|   - Cấm tuyệt đối hành vi vừa nạp tiền vừa rút sạch tiền trong cùng 1 block.                       |
+|                                                                                                    |
+| 6. BẢO VỆ CHỐNG ĐÓNG BĂNG VÍ TETHER USDT:                                                          |
+|   - Tài khoản ATA tách biệt: Mỗi hũ tiền sở hữu một tài khoản Token độc lập.                       |
+|   - Loại bỏ 100% rủi ro lây nhiễm nếu ví của người dùng khác bị Tether chặn.                       |
++----------------------------------------------------------------------------------------------------+
 ```
 
 ### 6.1. Động Cơ Phát Sóng Đa Luồng (Multi-Rail Flash Broadcast Engine)
@@ -919,13 +919,13 @@ ight)$$
 +----------------------------------------------------------------------------------------------------+
 |  QUY ĐỊNH           KHU VỰC TÀI PHÁN  CƠ CHẾ TUÂN THỦ CỦA HAICHAIN                                 |
 +----------------------------------------------------------------------------------------------------+
-|  FATF Travel Rule   Quốc tế           Gói tin mật mã tự động cho lệnh > $1,000;                     |
+|  FATF Travel Rule   Quốc tế           Gói tin mật mã tự động cho lệnh > $1,000;                    |
 |                                       Chứng thực siêu nhẹ cho các vi thanh toán nhỏ lẻ.            |
 |  EU MiCA            Liên minh Châu Âu Giao thức mở phi lưu ký; bảo chứng 1:1 qua các token tiền    |
-|                                       điện tử được cấp phép và bộ định tuyến failover đa stablecoin.|
+|                                      điện tử được cấp phép và bộ định tuyến failover đa stablecoin.|
 |  US FinCEN          Hoa Kỳ            Phi lưu ký tuyệt đối; miễn trừ dịch vụ chuyển tiền theo điều |
 |                                       31 CFR § 1010.100(ff)(5)(ii) của Bộ Tài chính Mỹ.            |
-|  GDPR & CCPA        Toàn cầu / CA     Không ghi dữ liệu định danh (Zero PII) lên blockchain; khóa   |
+|  GDPR & CCPA        Toàn cầu / CA     Không ghi dữ liệu định danh (Zero PII) lên blockchain; khóa  |
 |                                       xem riêng tư hỗ trợ kế toán doanh nghiệp đạt chuẩn IFRS/GAAP.|
 +----------------------------------------------------------------------------------------------------+
 ```
@@ -1146,16 +1146,16 @@ Bởi vì $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt
 |  Phase 1: Q4 2026  Ra mắt Thương Mại Mainnet Solana L1       Triển khai nhân hợp đồng v6.9.3       |
 |                    (Thâm nhập thị trường & Đạt PMF)          Xác thực sinh trắc học Passkey FaceID |
 |                                                              Bộ công cụ MCP Server Cursor/LangChain|
-|                                                              Hoàn thành xác minh hình thức; Lên lịch audit OtterSec & Neodyme Q4 2026 |
+|                            Hoàn thành xác minh hình thức; Lên lịch audit OtterSec & Neodyme Q4 2026|
 |                                                                                                    |
-|  Phase 2: Q2 2027  SVM App-Rollup Thông Lượng Siêu Cao       Khởi chạy Sequencer Testnet chuyên dụng|
+| Phase 2: Q2 2027  SVM App-Rollup Thông Lượng Siêu Cao       Khởi chạy Sequencer Testnet chuyên dụng|
 |                    (Mở rộng hệ sinh thái)                    Tích hợp tầng dữ liệu Celestia/EigenDA|
 |                                                              Kích hoạt Chợ Tri Thức Bản Quyền      |
 |                                                              Giao thức Reverse Micro-Tasking       |
 |                                                                                                    |
 |  Phase 3: Q4 2027  HAICHAIN Sovereign Machine L1             Mạng thử nghiệm HAI-VM Bare-Metal     |
 |                    (Endgame Siêu Trí Tuệ ASI)                Nhúng mã máy OP_402_PAY vào CPU ảo    |
-|                                                              Đồng thuận kép PoAW (Máy) + PoAI (Người)|
+|                                                            Đồng thuận kép PoAW (Máy) + PoAI (Người)|
 |                                                              Cầu nối Teleport 1:1 SPL sang Native  |
 |                                                              Kiểm chứng thông lượng > 100.000 TPS  |
 +----------------------------------------------------------------------------------------------------+
