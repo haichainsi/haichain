@@ -1,0 +1,29 @@
+{
+  "name": "@haichainsi/agent-pay",
+  "version": "1.0.0",
+  "description": "Universal HTTP 402 Micro-Payment Paywall & Solana Escrow Middleware for AI Agents on Smithery, Fetch.ai, and MCP",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "mcp",
+    "agentic-payments",
+    "http-402",
+    "solana",
+    "micro-payments",
+    "ai-agents",
+    "smithery",
+    "fetchai"
+  ],
+  "author": "HAICHAIN Foundation",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.95.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
