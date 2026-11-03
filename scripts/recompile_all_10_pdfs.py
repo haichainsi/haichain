@@ -82,7 +82,7 @@ cover_dict = {
         'sub': 'SYSTÈME D\'EXPLOITATION FINANCIER POUR L\'ÈRE DES MACHINES AUTONOMES',
         'cat': 'SYSTÈME D\'EXPLOITATION FINANCIER POUR L\'ÈRE DES MACHINES AUTONOMES',
         'title': 'HAICHAIN : Le Socle Économique de l\'Ère de la<br>Superintelligence Symbiotique AI²',
-        'summary': 'Permettre à des milliards d\'agents IA et de robots autonomes de calculer, d\'effectuer des transactions et de fusionner librement avec l\'intelligence humaine du monde réel pour co-créer l\'abondance, tout en garantissant que toute la richesse générée et la propriété souveraine demeurent définitivement entre les mains de l\'humanité. Le système d\'exploitation financier de l\'ère des machines autonomes aujourd\'hui ; le socle économique de l\'ère de la superintelligence symbiotique AI² demain.',
+        'summary': 'Permettre à des milliards d\'agents IA et de robots autonomes de calculer, d\'effectuer des transactions et de fusionner librement với l\'intelligence humaine du monde réel pour co-créer l\'abondance, tout en garantissant que toute la richesse générée et la propriété souveraine demeurent définitivement entre les mains de l\'humanité. Le système d\'exploitation financier de l\'ère des machines autonomes aujourd\'hui ; le socle économique de l\'ère de la superintelligence symbiotique AI² demain.',
         'asset_lbl': 'ACTIF DE RÈGLEMENT PRINCIPAL',
         'asset_val': 'USDT (Tether USD SPL)',
         'gas_lbl': 'GAZ SOUVERAIN ET GOUVERNANCE',
@@ -99,7 +99,7 @@ cover_dict = {
         'sub': 'SISTEMA OPERATIVO FINANCIERO PARA LA ERA DE LAS MÁQUINAS AUTÓNOMAS',
         'cat': 'SISTEMA OPERATIVO FINANCIERO PARA LA ERA DE LAS MÁQUINAS AUTÓNOMAS',
         'title': 'HAICHAIN: El Pilar Económico para la Era de la<br>Superinteligencia Simbiótica AI²',
-        'summary': 'Empoderando a miles de millones de Agentes de IA y Robots Autónomos para computar, realizar transacciones y unirse libremente con la inteligencia del mundo real de la humanidad para co-crear abundancia, asegurando que toda la riqueza generada và la propiedad soberana permanezcan permanentemente con la humanidad. El sistema operativo financiero para la era de las máquinas autónomas hoy; la base económica para la era de la superinteligencia simbiótica AI² mañana.',
+        'summary': 'Empoderando a miles de millones de Agentes de IA y Robots Autónomos para computar, realizar transacciones y unirse libremente con la inteligencia del mundo real de la humanidad para co-crear abundancia, asegurando que toda la riqueza generada y la propiedad soberana permanezcan permanentemente con la humanidad. El sistema operativo financiero para la era de las máquinas autónomas hoy; la base económica para la era de la superinteligencia simbiótica AI² mañana.',
         'asset_lbl': 'ACTIVO DE LIQUIDACIÓN PRINCIPAL',
         'asset_val': 'USDT (Tether USD SPL)',
         'gas_lbl': 'GAS SOBERANO Y GOBERNANZA',
@@ -226,7 +226,6 @@ def compile_pdf(lang):
         </div>
         """
     else:
-        # Fallback if TOC pattern not matched
         conv = markdown.Markdown(extensions=['tables', 'fenced_code', 'attr_list'])
         body_html = conv.convert(md_text)
         content_html = f'<div class="body-content">{body_html}</div>'
@@ -280,7 +279,16 @@ def compile_pdf(lang):
 <meta charset="utf-8">
 <title>{c['title_pdf']}</title>
 <style>
+/* NAMED PAGES FOR 100% FULL-BLEED COVER & STANDARDIZED INSIDE MARGINS */
 @page {{
+    size: A4;
+    margin: 0;
+}}
+@page cover {{
+    size: A4;
+    margin: 0;
+}}
+@page standard {{
     size: A4;
     margin: 18mm 16mm 18mm 16mm;
     @bottom-right {{
@@ -288,12 +296,6 @@ def compile_pdf(lang):
         font-size: 8pt;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         color: #71717a;
-    }}
-}}
-@page :first {{
-    margin: 0;
-    @bottom-right {{
-        content: none;
     }}
 }}
 body {{
@@ -304,14 +306,17 @@ body {{
     background: #ffffff;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }}
 
-/* COVER PAGE (DARK LUXURY BLACK PREMIUM) */
+/* COVER PAGE (100% TRUE FULL-BLEED BLACK PREMIUM) */
 .cover-page {{
+    page: cover;
     width: 210mm;
     height: 297mm;
     box-sizing: border-box;
-    background: #000000;
+    background: #000000 !important;
     color: #ffffff;
     padding: 24mm 22mm 20mm 22mm;
     display: flex;
@@ -406,6 +411,7 @@ body {{
 
 /* DEDICATED TOC PAGE */
 .toc-page {{
+    page: standard;
     page-break-before: always !important;
     page-break-after: always !important;
     break-before: page !important;
@@ -458,8 +464,11 @@ body {{
 
 /* BODY CONTENT & HEADINGS */
 .body-content {{
+    page: standard;
     page-break-before: always !important;
     break-before: page !important;
+    max-width: 100%;
+    overflow: hidden;
 }}
 h1 {{
     font-size: 16pt;
@@ -519,14 +528,14 @@ pre {{
     padding: 7px 9px;
     border-radius: 4px;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 5.4pt;
+    font-size: 5.1pt;
     line-height: 1.22;
-    letter-spacing: -0.25px;
+    letter-spacing: -0.28px;
     white-space: pre !important;
-    overflow: visible !important;
+    overflow: hidden !important;
     margin: 8px 0;
-    max-width: 100%;
-    box-sizing: border-box;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
 }}
 pre code {{
     background-color: transparent !important;
@@ -596,14 +605,18 @@ hr {{
         text += p.get_text() + "\n"
     
     has_sys = "Sysvar1nstructions1111111111111111111111111" in text
-    has_005 = "0.05%" in text
-    has_010 = "0.10%" in text or "0.1%" in text
     size_kb = os.path.getsize(pdf_path) / 1024.0
+    
+    # Verify 100% full bleed black on page 0
+    p0 = doc[0]
+    drawings = [d for d in p0.get_drawings() if d['type'] == 'f' and d.get('fill') == (0.0, 0.0, 0.0)]
+    black_rect = drawings[0]['rect'] if drawings else None
+    is_full_bleed = black_rect and black_rect.width >= p0.rect.width and black_rect.height >= p0.rect.height
     
     p1_text = doc[0].get_text()[:40].replace('\n', ' ')
     p2_text = doc[1].get_text()[:40].replace('\n', ' ')
     
-    print(f"[{lang}] Compiled: {pages} pages | {size_kb:.1f} KB | P1: {p1_text} | P2: {p2_text} | Sysvar: {has_sys}")
+    print(f"[{lang}] Compiled: {pages} pages | {size_kb:.1f} KB | FullBleed Black: {is_full_bleed} ({black_rect}) | Sysvar: {has_sys}")
 
 if __name__ == "__main__":
     print("=== RECOMPILING ALL 10 OFFICIAL WHITEPAPER PDFS VIA MS EDGE HEADLESS ===")

@@ -159,10 +159,16 @@ HAICHAIN 正是作为底层的密码学价值与协调载体，将这两种伟�
 ```
                        自主机器财务三难困境 (TRILEMMA)
                        
-                             微型支付经济可行性
-                               (纳美分级手续费)
-                                      /                                     /                                      /                                       /  HA                                    /  CHAIN                                  /                                          /____________                 亚秒级确定性结算        防提示词攻击与资金耗尽免疫
-                 (< 400ms 实时清算)        (硬件级额度隔离与保险库隔离)
+                             MICROPAYMENT VIABILITY
+                              (Nano-cent Fees)
+                                     /\
+                                    /  \
+                                   /    \
+                                  /  HA  \
+                                 /  CHAIN \
+                                /          \
+                               /____________\
+                SUB-SECOND FINALITY (< 400ms)      EXPLOIT IMMUNITY (PDA Ceiling)
 ```
 
 在去中心化网络中自主运行的经济智能体，必须同时满足以下三大严苛指标:

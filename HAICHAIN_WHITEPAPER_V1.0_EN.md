@@ -178,7 +178,7 @@ Autonomous economic agents operating across decentralized networks require three
 +----------------------------------------------------------------------------------------------------+
 |  METRIC                 WEB2 RAILS (STRIPE/VISA)  EVM L1/L2 (BASE/ARBITRUM)  HAICHAIN PROTOCOL     |
 +----------------------------------------------------------------------------------------------------+
-|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (1,000:1 Compressed Netting / $0.001 Base)   |
+|  Minimum Practical Fee  $0.30 fixed fee floor     $0.02 - $0.50 gas spike    $0.000001 (Netting)   |
 |  Settlement Latency     2 - 5 Business Days       2,000 - 15,000ms           < 400ms Wire Finality |
 |  Prompt-Injection Risk  Complete Card Drain       Drain of Master EOA        Mathematically 0 (PDA)|
 |  Onboarding Friction    KYC, Bank Forms, 3 Days   12-Word Seed Phrase, Gas   Passkey FaceID (60s)  |
@@ -216,6 +216,14 @@ To assess the viability of replacing legacy software business models, the HAICHA
 #### The 1-Line Drop-in Proxy Gateway: Overcoming the Stripe & Coinbase AgentKit Wedges
 To achieve hyper-scale enterprise adoption without requiring AI developers to learn complex blockchain primitives, Haichain deploys the **1-Line Drop-in Gateway Architecture**:
 
+> [!NOTE]
+> **HOW HAICHAIN SETTLES WITH OPENAI, DEEPSEEK & ANTHROPIC:**
+> Foundational model labs currently require traditional corporate fiat billing (Stripe / Corporate Cards) and do not natively receive Solana SPL tokens. Haichain resolves this via the **Decentralized Liquidity Relayer Protocol**:
+> 1. The user's AI Agent locks micro-USDT into the non-custodial On-Chain Vault PDA on Solana.
+> 2. Bonded Relayers (who stake collateral in USDT/SOL to eliminate front-running and default risks) maintain high-tier enterprise billing agreements with OpenAI, Anthropic, and DeepSeek.
+> 3. The Relayer streams LLM inference responses to the agent in sub-second timeframes via HTTP/SSE while netting micro-USDT from the agent's signed voucher tickets.
+> 4. This delivers a seamless, non-custodial fiat-to-crypto bridge: developers enjoy pure on-chain pay-as-you-go micro-escrow without managing credit cards, while foundational AI labs receive their required fiat settlement.
+
 ```python
 import openai
 
@@ -223,24 +231,6 @@ import openai
 # client = openai.OpenAI(api_key="sk-proj-xxxx")
 
 # INSTANT HAICHAIN ACTIVATION (EXACTLY 1 LINE REPLACEMENT):
-
-> [!NOTE]
-> **HOW HAICHAIN SETTLES WITH OPENAI, DEEPSEEK & ANTHROPIC:**
-> Foundational model labs currently require traditional corporate fiat billing (Stripe / Corporate Cards) and do not natively receive Solana SPL tokens. Haichain resolves this via the **Decentralized Liquidity Relayer Protocol**:
-> 1. The user's AI Agent locks micro-USDT into the non-custodial On-Chain Vault PDA on Solana.
-> 2. Bonded Relayers (who stake collateral in USDT/SOL to eliminate front-running and default risks) maintain high-tier enterprise billing agreements with OpenAI, Anthropic, and DeepSeek.
-> 3. The Relayer streams LLM inference responses to the agent in sub-second timeframes via HTTP/SSE while netting micro-USDT from the agent's signed voucher tickets.
-> 4. This delivers a seamless, non-custodial fiat-to-crypto bridge: developers enjoy pure on-chain pay-as-you-go micro-escrow without managing credit cards, while foundational AI labs receive their required fiat settlement.
-
-
-> [!NOTE]
-> **HOW HAICHAIN SETTLES WITH OPENAI, DEEPSEEK & ANTHROPIC:**
-> Foundational model labs currently require traditional corporate fiat billing (Stripe / Corporate Cards) and do not natively receive Solana SPL tokens. Haichain resolves this via the **Decentralized Liquidity Relayer Protocol**:
-> 1. The user's AI Agent locks micro-USDT into the non-custodial On-Chain Vault PDA on Solana.
-> 2. Bonded Relayers (who stake collateral in USDT/SOL to eliminate front-running and default risks) maintain high-tier enterprise billing agreements with OpenAI, Anthropic, and DeepSeek.
-> 3. The Relayer streams LLM inference responses to the agent in sub-second timeframes via HTTP/SSE while netting micro-USDT from the agent's signed voucher tickets.
-> 4. This delivers a seamless, non-custodial fiat-to-crypto bridge: developers enjoy pure on-chain pay-as-you-go micro-escrow without managing credit cards, while foundational AI labs receive their required fiat settlement.
-
 client = openai.OpenAI(
     base_url="https://gateway.haichain.si/v1",  # <-- 1-Line Drop-in Gateway!
     api_key="hai_live_99f8d..."                 # Haichain Vault Security Key
@@ -282,7 +272,7 @@ To establish why existing infrastructure fundamentally fails to support an auton
 |                       $0.50); Speculative meme bonding curves         compression (771-byte datagram); Real utility|
 |                       rather than enterprise micro-utility rails.     micro-billing settling in stable USDT.      |
 |                                                                                                                   |
-| Legacy Web2 Rails     $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 via 1,000:1 batch compression / $0.001 base);|
+| Legacy Web2 Rails     $0.30 + 2.9% fixed fee floor (150,000% fee      Pure micro-utility ($0.000001 netted / $0.001 base);|
 | (Stripe / Visa)       overhead on $0.0002 API calls); T+2 to T+5 day  Sub-400ms cryptographic wire finality;      |
 |                       settlement lag; High chargeback fraud risk.     Zero chargeback risk via PDA escrow.        |
 |                                                                                                                   |

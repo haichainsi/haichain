@@ -159,10 +159,16 @@ HAICHAIN은 이 두 가지 힘을 하나의 불멸하고 번영하는 초유기�
 ```
                        자율 기계 금융 트릴레마 (TRILEMMA)
                        
-                             마이크로 결제 경제적 실행성
-                                (나노센트 단위 수수료)
-                                      /                                     /                                      /                                       /  HA                                    /  CHAIN                                  /                                          /____________                 서브초 확정성 정산       프롬프트 주입 및 자금 탈취 면역
-                 (< 400ms 실시간 청산)      (하드웨어 잠금 한도 및 금고 격리)
+                             MICROPAYMENT VIABILITY
+                              (Nano-cent Fees)
+                                     /\
+                                    /  \
+                                   /    \
+                                  /  HA  \
+                                 /  CHAIN \
+                                /          \
+                               /____________\
+                SUB-SECOND FINALITY (< 400ms)      EXPLOIT IMMUNITY (PDA Ceiling)
 ```
 
 탈중앙화 네트워크에서 자율적으로 운영되는 경제적 에이전트는 다음 세 가지 핵심 보장을 동시에 요구합니다:

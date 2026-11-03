@@ -160,10 +160,16 @@ HAICHAIN es el sustrato criptográfico de valor y coordinación que vincula esta
 ```
                        EL TRILEMA FINANCIERO DE LAS MÁQUINAS
                        
-                             VIABILIDAD DE MICROPAGOS
-                              (Comisiones de Nanocentavos)
-                                      /                                     /                                      /                                       /  HA                                    /  CHAIN                                  /                                          /____________                 FINALIDAD SUB-SEGUNDO    INMUNIDAD ANTE EXPLOITS Y VELOCIDAD
-                  (< 400ms en Tiempo Real)   (Techo Bloqueado por Hardware)
+                             MICROPAYMENT VIABILITY
+                              (Nano-cent Fees)
+                                     /\
+                                    /  \
+                                   /    \
+                                  /  HA  \
+                                 /  CHAIN \
+                                /          \
+                               /____________\
+                SUB-SECOND FINALITY (< 400ms)      EXPLOIT IMMUNITY (PDA Ceiling)
 ```
 
 Los agentes económicos autónomos que operan en redes descentralizadas requieren tres garantías simultáneas:

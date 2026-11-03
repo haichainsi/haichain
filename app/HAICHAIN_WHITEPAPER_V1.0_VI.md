@@ -143,7 +143,7 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 |                       Tập trung đầu cơ token meme thay vì hạ tầng tiện  Thanh toán tiện ích thực bằng USDT ổn định|
 |                       ích tài chính thực thụ cho doanh nghiệp.          không chịu rủi ro biến động giá.          |
 |                                                                                                                   |
-| Web2 Truyền Thống     Phí sàn cố định $0.30 + 2.9% (đắt gấp 150.000%    Vi tiện ích thực sự ($0.000001 sau khi gom lô nén trạng thái / $0.001 phí gốc);|
+| Web2 Truyền Thống     Phí sàn cố định $0.30 + 2.9% (đắt gấp 150.000%    Vi tiện ích thực sự ($0.000001 nén / $0.001 gốc);    |
 | (Stripe / Visa)       giá trị lệnh gọi API $0.0002); Thời gian bù trừ   Tốc độ chốt sổ mật mã dưới 400ms;         |
 |                       2-5 ngày; Rủi ro gian lận bồi hoàn (chargeback).  Triệt tiêu 100% rủi ro bồi hoàn qua Escrow|
 |                                                                                                                   |
@@ -204,34 +204,24 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 ### 2.2. Cổng Gateway "Con Ngựa Thành Troy" 1-Dòng Mã & Lợi Thế Đè Bẹp Stripe / Coinbase AgentKit
 Để chinh phục hàng triệu lập trình viên AI mà không bắt họ phải học lại các khái niệm Web3 phức tạp, Haichain cung cấp **Cổng Gateway 1-Dòng Mã (1-Line Drop-in Gateway)**:
 
+> [!NOTE]
+> **CƠ CHẾ TẤT TOÁN VỚI OPENAI, DEEPSEEK & ANTHROPIC:**
+> Các phòng nghiên cứu mô hình nền tảng hiện tại chỉ chấp nhận thanh toán thẻ tín dụng doanh nghiệp truyền thống (Stripe / Corporate Cards) và chưa trực tiếp nhận token Solana SPL. Haichain giải quyết triệt để rào cản này thông qua **Giao Thức Relayer Thanh Khoản Phân Tán**:
+> 1. Tác tử AI của người dùng khóa micro-USDT vào Kho Quỹ Vault PDA tự quản trên Solana L1.
+> 2. Các Relayer được cấp phép (phải ký quỹ bảo chứng bằng USDT/SOL để triệt tiêu rủi ro không thực hiện) duy trì thỏa thuận thanh toán doanh nghiệp trực tiếp với OpenAI, Anthropic, DeepSeek.
+> 3. Relayer truyền luồng suy luận AI (SSE stream) về cho Agent với độ trễ nano-giây, đồng thời cấn trừ micro-USDT từ vé chi tiêu đã ký của Agent.
+> 4. Mô hình này thiết lập một cây cầu thanh khoản hai chiều minh bạch: lập trình viên AI hưởng trọn cơ chế thanh toán tức thì theo nhu cầu (pay-as-you-go) mà không cần thẻ tín dụng, trong khi các lab AI vẫn nhận đủ tiền pháp định theo yêu cầu.
+
 ```python
 import openai
 
-# TRƯỚC ĐÂY (THANH TOÁN THẺ VISA TỐN KÉM & DỄ LỘ KHÓA API):
+# THAY THẾ TOÀN BỘ PRIVATE KEY & CƠ CHẾ STRIPE TRUYỀN THỐNG BẤT TIỆN:
 # client = openai.OpenAI(api_key="sk-proj-xxxx")
 
-# BÂY GIỜ VỚI HAICHAIN (CHỈ THAY ĐỔI DUY NHẤT 1 DÒNG MÃ):
-
-> [!NOTE]
-> **CƠ CHẾ TẤT TOÁN VỚI OPENAI, DEEPSEEK & ANTHROPIC:**
-> Các phòng nghiên cứu mô hình nền tảng hiện tại chỉ chấp nhận thanh toán thẻ tín dụng doanh nghiệp (USD Stripe) và chưa nhận trực tiếp token SPL trên Solana. HAICHAIN giải quyết thực tế này thông qua **Giao Thức Chuyển Tiếp Thanh Khoản Bằng Cọc (Decentralized Liquidity Relayer Protocol)**:
-> 1. Tác tử AI của người dùng khóa micro-USDT vào Kho Quỹ Vault PDA tự quản trên Solana L1.
-> 2. Các Relayer được cấp phép (phải ký quỹ bảo chứng bằng USDT/SOL để triệt tiêu rủi ro kiểm duyệt hoặc quỵt tiền) duy trì hạn mức thanh toán doanh nghiệp với OpenAI, Anthropic, DeepSeek.
-> 3. Relayer truyền luồng suy luận AI (SSE stream) về cho Agent với độ trễ nano-giây, đồng thời bù trừ micro-USDT từ vé voucher đã ký của Agent trên chuỗi.
-> 4. Mô hình này thiết lập một cây cầu thanh khoản hai chiều minh bạch: lập trình viên AI được dùng tiền mã hóa trả theo từng câu lệnh mà không cần thẻ visa cá nhân, trong khi các lab AI vẫn nhận được USD thanh toán theo chuẩn doanh nghiệp.
-
-
-> [!NOTE]
-> **CƠ CHẾ TẤT TOÁN VỚI OPENAI, DEEPSEEK & ANTHROPIC:**
-> Các phòng nghiên cứu mô hình nền tảng hiện tại chỉ chấp nhận thanh toán thẻ tín dụng doanh nghiệp (USD Stripe) và chưa nhận trực tiếp token SPL trên Solana. HAICHAIN giải quyết thực tế này thông qua **Giao Thức Chuyển Tiếp Thanh Khoản Bằng Cọc (Decentralized Liquidity Relayer Protocol)**:
-> 1. Tác tử AI của người dùng khóa micro-USDT vào Kho Quỹ Vault PDA tự quản trên Solana L1.
-> 2. Các Relayer được cấp phép (phải ký quỹ bảo chứng bằng USDT/SOL để triệt tiêu rủi ro kiểm duyệt hoặc quỵt tiền) duy trì hạn mức thanh toán doanh nghiệp với OpenAI, Anthropic, DeepSeek.
-> 3. Relayer truyền luồng suy luận AI (SSE stream) về cho Agent với độ trễ nano-giây, đồng thời bù trừ micro-USDT từ vé voucher đã ký của Agent trên chuỗi.
-> 4. Mô hình này thiết lập một cây cầu thanh khoản hai chiều minh bạch: lập trình viên AI được dùng tiền mã hóa trả theo từng câu lệnh mà không cần thẻ visa cá nhân, trong khi các lab AI vẫn nhận được USD thanh toán theo chuẩn doanh nghiệp.
-
+# KÍCH HOẠT HAICHAIN TỨC THÌ (ĐÚNG 1 DÒNG DUY NHẤT):
 client = openai.OpenAI(
-    base_url="https://gateway.haichain.si/v1",  # <-- CỔNG GATEWAY 1-DÒNG!
-    api_key="hai_live_99f8d..."                 # Khóa Hũ Tiền Sinh Trắc Học
+    base_url="https://gateway.haichain.si/v1",  # <-- Cổng kết nối tích hợp 1 dòng!
+    api_key="hai_live_99f8d..."                 # Khóa bảo mật Haichain Vault
 )
 ```
 

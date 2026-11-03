@@ -160,10 +160,16 @@ HAICHAIN est le substrat cryptographique de valeur et de coordination qui lie ce
 ```
                        LE TRILEMME FINANCIER DES MACHINES
                        
-                             VIABILITÉ DES MICROPAGEMENTS
-                              (Frais de Nanocentimes)
-                                      /                                     /                                      /                                       /  HA                                    /  CHAIN                                  /                                          /____________                 FINALITÉ SUB-SECONDE     IMMUNITÉ AUX EXPLOITS & VÉLOCITÉ
-                  (< 400ms Temps Réel)       (Plafond Verrouillé Matériel)
+                             MICROPAYMENT VIABILITY
+                              (Nano-cent Fees)
+                                     /\
+                                    /  \
+                                   /    \
+                                  /  HA  \
+                                 /  CHAIN \
+                                /          \
+                               /____________\
+                SUB-SECOND FINALITY (< 400ms)      EXPLOIT IMMUNITY (PDA Ceiling)
 ```
 
 Les agents économiques autonomes opérant sur des réseaux décentralisés nécessitent trois garanties simultanées:
