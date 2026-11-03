@@ -33,6 +33,102 @@ pub const USDT_SPL_MINT: Pubkey = pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8
 /// Official Solana Mainnet Circle USD (USDC) SPL Token Mint (EU MiCA & Global Regulatory Compliant)
 pub const USDC_SPL_MINT: Pubkey = pubkey!("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 
+
+pub const CAPLEAF_V1_TAG: &[u8] = b"HAICHAIN-CAPLEAF-V1";
+pub const CAPLEAF_V1_WIRE_LENGTH: usize = 223;
+pub const CAPLEAF_V1_VERSION: u8 = 1;
+
+pub fn compute_leaf_hash(program_id: &Pubkey, leaf_bytes: &[u8; 223]) -> [u8; 32] {
+    anchor_lang::solana_program::hash::hashv(&[
+        &[0x00],
+        CAPLEAF_V1_TAG,
+        program_id.as_ref(),
+        leaf_bytes,
+    ]).to_bytes()
+}
+
+pub fn compute_merkle_node(left: &[u8; 32], right: &[u8; 32]) -> [u8; 32] {
+    anchor_lang::solana_program::hash::hashv(&[
+        &[0x01],
+        left,
+        right,
+    ]).to_bytes()
+}
+
+pub fn compute_empty_leaf() -> [u8; 32] {
+    anchor_lang::solana_program::hash::hashv(&[
+        &[0x02],
+        CAPLEAF_V1_TAG,
+    ]).to_bytes()
+}
+
+#[derive(Clone, Debug)]
+pub struct CapLeafV1Data {
+    pub version: u8,
+    pub pot: Pubkey,
+    pub agent: Pubkey,
+    pub merchant: Pubkey,
+    pub mint: Pubkey,
+    pub max_spend: u64,
+    pub max_reserve: u64,
+    pub window_cap: u64,
+    pub window_secs: u32,
+    pub scope_class: u32,
+    pub scope_ref: [u8; 32],
+    pub nonce: u64,
+    pub not_before: i64,
+    pub expiry: i64,
+    pub epoch: u32,
+    pub flags: u16,
+}
+
+impl CapLeafV1Data {
+    pub fn parse(bytes: &[u8; 223]) -> Result<Self> {
+        let mut offset = 0;
+        let version = bytes[offset]; offset += 1;
+        require!(version == CAPLEAF_V1_VERSION, HaiChainMasterError::InvalidCapLeafVersion);
+
+        let pot = Pubkey::new_from_array(bytes[offset..offset+32].try_into().unwrap()); offset += 32;
+        let agent = Pubkey::new_from_array(bytes[offset..offset+32].try_into().unwrap()); offset += 32;
+        let merchant = Pubkey::new_from_array(bytes[offset..offset+32].try_into().unwrap()); offset += 32;
+        let mint = Pubkey::new_from_array(bytes[offset..offset+32].try_into().unwrap()); offset += 32;
+
+        let max_spend = u64::from_le_bytes(bytes[offset..offset+8].try_into().unwrap()); offset += 8;
+        let max_reserve = u64::from_le_bytes(bytes[offset..offset+8].try_into().unwrap()); offset += 8;
+        let window_cap = u64::from_le_bytes(bytes[offset..offset+8].try_into().unwrap()); offset += 8;
+        let window_secs = u32::from_le_bytes(bytes[offset..offset+4].try_into().unwrap()); offset += 4;
+        let scope_class = u32::from_le_bytes(bytes[offset..offset+4].try_into().unwrap()); offset += 4;
+
+        let mut scope_ref = [0u8; 32];
+        scope_ref.copy_from_slice(&bytes[offset..offset+32]); offset += 32;
+
+        let nonce = u64::from_le_bytes(bytes[offset..offset+8].try_into().unwrap()); offset += 8;
+        let not_before = i64::from_le_bytes(bytes[offset..offset+8].try_into().unwrap()); offset += 8;
+        let expiry = i64::from_le_bytes(bytes[offset..offset+8].try_into().unwrap()); offset += 8;
+        let epoch = u32::from_le_bytes(bytes[offset..offset+4].try_into().unwrap()); offset += 4;
+        let flags = u16::from_le_bytes(bytes[offset..offset+2].try_into().unwrap()); offset += 2;
+
+        Ok(Self {
+            version,
+            pot,
+            agent,
+            merchant,
+            mint,
+            max_spend,
+            max_reserve,
+            window_cap,
+            window_secs,
+            scope_class,
+            scope_ref,
+            nonce,
+            not_before,
+            expiry,
+            epoch,
+            flags,
+        })
+    }
+}
+
 #[program]
 pub mod haichain_core {
     use super::*;
@@ -442,10 +538,313 @@ pub mod haichain_core {
 
         require!(spot_price <= max_budget_cap, HaiChainMasterError::SpotPriceExceedsCap);
 
+
         msg!("HAICHAIN v7.0: Dynamic spot price verified: {} USDT micro-units (surge: {} bps)", 
              spot_price, load_factor_bps);
         Ok(())
     }
+
+    /// 11. INITIALIZE POT (HAICHAIN v1.1 CAPABILITY ROOT & GOVERNANCE)
+    pub fn initialize_pot(
+        ctx: Context<InitializePotContext>,
+        tree_depth: u8,
+        max_ttl: u32,
+        window_cap: u64,
+        window_secs: u32,
+        budget_total: u64,
+        cosigner: Pubkey,
+    ) -> Result<()> {
+        let pot = &mut ctx.accounts.pot;
+        require!(tree_depth > 0 && tree_depth <= 20, HaiChainMasterError::InvalidProofLength);
+        require!(window_secs >= 60, HaiChainMasterError::InvalidNonceSequence);
+
+        pot.owner_auth = ctx.accounts.owner_auth.key();
+        pot.policy_root = [0u8; 32];
+        pot.tree_depth = tree_depth;
+        pot.root_seq = 0;
+        pot.panic_epoch = 0;
+        pot.frozen = false;
+        pot.valid_until = Clock::get()?.unix_timestamp + max_ttl as i64;
+        pot.max_ttl = max_ttl;
+        pot.budget_total = budget_total;
+        pot.budget_used = 0;
+        pot.window_cap = window_cap;
+        pot.window_secs = window_secs;
+        pot.window_start = Clock::get()?.unix_timestamp;
+        pot.window_used = 0;
+        pot.cosigner = cosigner;
+        pot.token_mint = ctx.accounts.token_mint.key();
+        pot.bump = ctx.bumps.pot;
+
+        msg!("HAICHAIN v1.1: Pot initialized for owner {}", pot.owner_auth);
+        Ok(())
+    }
+
+    /// 12. PUBLISH ROOT (MASTER OWNER ROTATION WITH PASSPHRASE/PASSKEY)
+    pub fn publish_root(
+        ctx: Context<PublishRootContext>,
+        policy_root: [u8; 32],
+        tree_depth: u8,
+    ) -> Result<()> {
+        require!(policy_root != [0u8; 32], HaiChainMasterError::EmptyNomadRootForbidden);
+        require!(tree_depth > 0 && tree_depth <= 20, HaiChainMasterError::InvalidProofLength);
+
+        let pot = &mut ctx.accounts.pot;
+        pot.policy_root = policy_root;
+        pot.tree_depth = tree_depth;
+        pot.root_seq = pot.root_seq.checked_add(1).ok_or(HaiChainMasterError::MathOverflow)?;
+
+        msg!("HAICHAIN v1.1: Root published. Seq: {}", pot.root_seq);
+        Ok(())
+    }
+
+    /// 13. ACTIVATE GRANT (ONCE-PER-LEAF PROOF ACTIVATION)
+    pub fn activate_grant(
+        ctx: Context<ActivateGrantContext>,
+        leaf_bytes: [u8; 223],
+        proof: Vec<[u8; 32]>,
+        leaf_index: u32,
+    ) -> Result<()> {
+        let pot = &ctx.accounts.pot;
+        require!(!pot.frozen, HaiChainMasterError::PotFrozen);
+
+        let leaf = CapLeafV1Data::parse(&leaf_bytes)?;
+        require!(leaf.pot == pot.key(), HaiChainMasterError::PotMismatch);
+        require!(leaf.epoch == pot.panic_epoch, HaiChainMasterError::EpochMismatch);
+        require!(leaf.mint == pot.token_mint, HaiChainMasterError::MintMismatch);
+        require!((leaf.flags & 0xFFFC) == 0, HaiChainMasterError::ReservedFlagsNonZero);
+
+        let now = Clock::get()?.unix_timestamp;
+        require!(leaf.not_before <= now, HaiChainMasterError::CapLeafNotYetActive);
+        require!(now < leaf.expiry, HaiChainMasterError::CapLeafExpired);
+        require!(leaf.expiry <= now + pot.max_ttl as i64, HaiChainMasterError::ExpiryExceedsMaxTtl);
+
+        // Verify Merkle Proof (Domain Separated)
+        let leaf_hash = compute_leaf_hash(&crate::id(), &leaf_bytes);
+        require!(proof.len() == pot.tree_depth as usize, HaiChainMasterError::InvalidProofLength);
+
+        let mut current_hash = leaf_hash;
+        let mut idx = leaf_index;
+        for sibling in proof.iter() {
+            if (idx & 1) == 0 {
+                current_hash = compute_merkle_node(&current_hash, sibling);
+            } else {
+                current_hash = compute_merkle_node(sibling, &current_hash);
+            }
+            idx >>= 1;
+        }
+        require!(current_hash == pot.policy_root, HaiChainMasterError::ProofVerificationFailed);
+
+        let grant = &mut ctx.accounts.active_grant;
+        grant.pot = pot.key();
+        grant.leaf_hash = leaf_hash;
+        grant.agent = leaf.agent;
+        grant.merchant = leaf.merchant;
+        grant.mint = leaf.mint;
+        grant.max_spend = leaf.max_spend;
+        grant.max_reserve = leaf.max_reserve;
+        grant.window_cap = leaf.window_cap;
+        grant.window_secs = leaf.window_secs;
+        grant.consumed = 0;
+        grant.window_start = now;
+        grant.window_used = 0;
+        grant.expiry = leaf.expiry;
+        grant.epoch = leaf.epoch;
+        grant.flags = leaf.flags;
+        grant.revoked = false;
+        grant.bump = ctx.bumps.active_grant;
+
+        msg!("HAICHAIN v1.1: ActiveGrant initialized for leaf: {:?}", leaf_hash);
+        Ok(())
+    }
+
+    /// 14. RESERVE (ALLOCATE FUNDS FROM VAULT TO CHANNEL ESCROW)
+    pub fn reserve_channel(
+        ctx: Context<ReserveChannelContext>,
+        channel_id: u64,
+        amount: u64,
+    ) -> Result<()> {
+        let pot = &mut ctx.accounts.pot;
+        let grant = &mut ctx.accounts.active_grant;
+        let channel = &mut ctx.accounts.channel;
+
+        require!(!pot.frozen, HaiChainMasterError::PotFrozen);
+        require!(!grant.revoked, HaiChainMasterError::CapLeafExpired);
+        require!(grant.epoch == pot.panic_epoch, HaiChainMasterError::EpochMismatch);
+
+        let now = Clock::get()?.unix_timestamp;
+        require!(now < grant.expiry, HaiChainMasterError::CapLeafExpired);
+        require!(now <= pot.valid_until, HaiChainMasterError::CapabilityExpired);
+
+        require!(amount > 0 && amount <= grant.max_reserve, HaiChainMasterError::ExceedsMaxReserve);
+        require!(grant.consumed.checked_add(amount).ok_or(HaiChainMasterError::MathOverflow)? <= grant.max_spend, HaiChainMasterError::ExceedsMaxSpend);
+
+        // Update sliding window limits (Red-Team Patch 2)
+        if now >= grant.window_start + grant.window_secs as i64 {
+            grant.window_start = now;
+            grant.window_used = 0;
+        }
+        require!(grant.window_used.checked_add(amount).ok_or(HaiChainMasterError::MathOverflow)? <= grant.window_cap, HaiChainMasterError::WindowCapExceeded);
+
+        grant.consumed = grant.consumed.checked_add(amount).ok_or(HaiChainMasterError::MathOverflow)?;
+        grant.window_used = grant.window_used.checked_add(amount).ok_or(HaiChainMasterError::MathOverflow)?;
+
+        // Initialize Channel
+        channel.grant = grant.key();
+        channel.channel_id = channel_id;
+        channel.reserved = amount;
+        channel.paid = 0;
+        channel.agent_key = grant.agent;
+        channel.payee_ata = ctx.accounts.payee_ata.key();
+        channel.close_requested_at = 0;
+        channel.dispute_secs = 86400; // 24 hours standard
+        channel.created_at_epoch = pot.panic_epoch; // Red-Team Patch 1: Bound to panic epoch!
+        channel.rent_recipient = ctx.accounts.payer.key(); // Red-Team Patch 4: Strict rent refund!
+        channel.bump = ctx.bumps.channel;
+
+        // Transfer tokens from vault ATA to channel escrow ATA
+        let owner_auth_key = pot.owner_auth;
+        let pot_bump = pot.bump;
+        let seeds: &[&[&[u8]]] = &[&[
+            b"pot",
+            owner_auth_key.as_ref(),
+            &[pot_bump],
+        ]];
+
+        let cpi_accounts = Transfer {
+            from: ctx.accounts.vault_ata.to_account_info(),
+            to: ctx.accounts.channel_escrow_ata.to_account_info(),
+            authority: pot.to_account_info(),
+        };
+        token::transfer(
+            CpiContext::new_with_signer(ctx.accounts.token_program.to_account_info(), cpi_accounts, seeds),
+            amount,
+        )?;
+
+        msg!("HAICHAIN v1.1: Reserved {} tokens into channel {}", amount, channel_id);
+        Ok(())
+    }
+
+    /// 15. SETTLE VOUCHER (SETTLEMENT WITH ANTI-JITO-PANIC MEV IMMUNITY)
+    pub fn settle_voucher(
+        ctx: Context<SettleVoucherContext>,
+        cumulative_amount: u64,
+    ) -> Result<()> {
+        let pot = &ctx.accounts.pot;
+        let channel = &mut ctx.accounts.channel;
+
+        // RED-TEAM PATCH 1: Reject settlement if pot was panicked!
+        require!(pot.panic_epoch == channel.created_at_epoch && !pot.frozen, HaiChainMasterError::PotPanickedFundsFrozen);
+
+        require!(cumulative_amount > channel.paid, HaiChainMasterError::InvalidSettleAmount);
+        let effective_amount = std::cmp::min(cumulative_amount, channel.reserved);
+        let delta = effective_amount.checked_sub(channel.paid).ok_or(HaiChainMasterError::MathUnderflow)?;
+        require!(delta > 0, HaiChainMasterError::InvalidSettleAmount);
+
+        channel.paid = effective_amount;
+
+        // Transfer delta to payee_ata (enforced canonical ATA)
+        let grant_key = channel.grant;
+        let channel_id_bytes = channel.channel_id.to_le_bytes();
+        let bump = channel.bump;
+        let seeds: &[&[&[u8]]] = &[&[
+            b"chan",
+            grant_key.as_ref(),
+            channel_id_bytes.as_ref(),
+            &[bump],
+        ]];
+
+        let cpi_accounts = Transfer {
+            from: ctx.accounts.channel_escrow_ata.to_account_info(),
+            to: ctx.accounts.payee_ata.to_account_info(),
+            authority: channel.to_account_info(),
+        };
+        token::transfer(
+            CpiContext::new_with_signer(ctx.accounts.token_program.to_account_info(), cpi_accounts, seeds),
+            delta,
+        )?;
+
+        msg!("HAICHAIN v1.1: Settled delta {} to payee. Total paid: {}", delta, channel.paid);
+        Ok(())
+    }
+
+    /// 16. OWNER FORCE RECLAIM (RED-TEAM PATCH 3: ANTI-LIQUIDITY-RANSOMWARE)
+    pub fn owner_force_reclaim(
+        ctx: Context<OwnerForceReclaimContext>,
+    ) -> Result<()> {
+        let channel = &mut ctx.accounts.channel;
+        let grant = &mut ctx.accounts.active_grant;
+
+        // If no vouchers were ever paid (paid == 0), Master Owner can reclaim 100% immediately!
+        require!(channel.paid == 0, HaiChainMasterError::ChannelAlreadyPaid);
+
+        let refund_amount = channel.reserved;
+        channel.reserved = 0;
+
+        grant.consumed = grant.consumed.saturating_sub(refund_amount);
+
+        // Transfer funds back to Vault ATA
+        let grant_key = channel.grant;
+        let channel_id_bytes = channel.channel_id.to_le_bytes();
+        let bump = channel.bump;
+        let seeds: &[&[&[u8]]] = &[&[
+            b"chan",
+            grant_key.as_ref(),
+            channel_id_bytes.as_ref(),
+            &[bump],
+        ]];
+
+        let cpi_accounts = Transfer {
+            from: ctx.accounts.channel_escrow_ata.to_account_info(),
+            to: ctx.accounts.vault_ata.to_account_info(),
+            authority: channel.to_account_info(),
+        };
+        token::transfer(
+            CpiContext::new_with_signer(ctx.accounts.token_program.to_account_info(), cpi_accounts, seeds),
+            refund_amount,
+        )?;
+
+        msg!("HAICHAIN v1.1: Owner force-reclaimed {} tokens from uncooperative channel", refund_amount);
+        Ok(())
+    }
+
+    /// 17. CLOSE CHANNEL (REFUNDS RESIDUAL RESERVED & RED-TEAM PATCH 4 RENT PRESERVATION)
+    pub fn close_channel(
+        ctx: Context<CloseChannelContext>,
+    ) -> Result<()> {
+        let channel = &ctx.accounts.channel;
+        let grant = &mut ctx.accounts.active_grant;
+
+        // Refund any residual reserved funds
+        let unspent = channel.reserved.saturating_sub(channel.paid);
+        if unspent > 0 {
+            grant.consumed = grant.consumed.saturating_sub(unspent);
+
+            let grant_key = channel.grant;
+            let channel_id_bytes = channel.channel_id.to_le_bytes();
+            let bump = channel.bump;
+            let seeds: &[&[&[u8]]] = &[&[
+                b"chan",
+                grant_key.as_ref(),
+                channel_id_bytes.as_ref(),
+                &[bump],
+            ]];
+
+            let cpi_accounts = Transfer {
+                from: ctx.accounts.channel_escrow_ata.to_account_info(),
+                to: ctx.accounts.vault_ata.to_account_info(),
+                authority: channel.to_account_info(),
+            };
+            token::transfer(
+                CpiContext::new_with_signer(ctx.accounts.token_program.to_account_info(), cpi_accounts, seeds),
+                unspent,
+            )?;
+        }
+
+        msg!("HAICHAIN v1.1: Channel closed. Unspent refunded: {}", unspent);
+        Ok(())
+    }
+
 }
 
 // ============================================================================
@@ -690,6 +1089,246 @@ pub struct VerifyDynamicSpotContext<'info> {
     pub clock: Sysvar<'info, Clock>,
 }
 
+#[derive(Accounts)]
+pub struct InitializePotContext<'info> {
+    #[account(
+        init,
+        payer = owner_auth,
+        space = 8 + 32 + 32 + 1 + 8 + 4 + 1 + 8 + 4 + 8 + 8 + 8 + 4 + 8 + 8 + 32 + 32 + 1,
+        seeds = [b"pot", owner_auth.key().as_ref()],
+        bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    /// CHECK: Stablecoin SPL Mint
+    pub token_mint: AccountInfo<'info>,
+
+    #[account(mut)]
+    pub owner_auth: Signer<'info>,
+
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct PublishRootContext<'info> {
+    #[account(
+        mut,
+        has_one = owner_auth @ HaiChainMasterError::UnauthorizedOwner,
+        seeds = [b"pot", owner_auth.key().as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    pub owner_auth: Signer<'info>,
+}
+
+#[derive(Accounts)]
+#[instruction(leaf_bytes: [u8; 223], proof: Vec<[u8; 32]>, leaf_index: u32)]
+pub struct ActivateGrantContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        init,
+        payer = payer,
+        space = 8 + 32 + 32 + 32 + 32 + 32 + 8 + 8 + 8 + 4 + 8 + 8 + 8 + 8 + 4 + 2 + 1 + 1,
+        seeds = [b"grant", pot.key().as_ref(), &compute_leaf_hash(&crate::id(), &leaf_bytes)],
+        bump
+    )]
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+#[instruction(channel_id: u64, amount: u64)]
+pub struct ReserveChannelContext<'info> {
+    #[account(
+        mut,
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        has_one = pot @ HaiChainMasterError::PotMismatch,
+        seeds = [b"grant", pot.key().as_ref(), active_grant.leaf_hash.as_ref()],
+        bump = active_grant.bump
+    )]
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    #[account(
+        init,
+        payer = payer,
+        space = 8 + 32 + 8 + 8 + 8 + 32 + 32 + 8 + 4 + 4 + 32 + 1,
+        seeds = [b"chan", active_grant.key().as_ref(), &channel_id.to_le_bytes()],
+        bump
+    )]
+    pub channel: Account<'info, ChannelAccount>,
+
+    #[account(
+        mut,
+        constraint = vault_ata.owner == pot.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = vault_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub vault_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        mut,
+        constraint = channel_escrow_ata.owner == channel.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = channel_escrow_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub channel_escrow_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        constraint = payee_ata.owner == active_grant.merchant @ HaiChainMasterError::InvalidPayeeAta,
+        constraint = payee_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub payee_ata: Account<'info, TokenAccount>,
+
+    pub agent: Signer<'info>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    pub token_program: Program<'info, Token>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct SettleVoucherContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        seeds = [b"chan", channel.grant.as_ref(), &channel.channel_id.to_le_bytes()],
+        bump = channel.bump
+    )]
+    pub channel: Account<'info, ChannelAccount>,
+
+    #[account(
+        mut,
+        constraint = channel_escrow_ata.owner == channel.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = channel_escrow_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub channel_escrow_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        mut,
+        constraint = payee_ata.key() == channel.payee_ata @ HaiChainMasterError::InvalidPayeeAta
+    )]
+    pub payee_ata: Account<'info, TokenAccount>,
+
+    pub token_program: Program<'info, Token>,
+}
+
+#[derive(Accounts)]
+pub struct OwnerForceReclaimContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        has_one = pot @ HaiChainMasterError::PotMismatch,
+        seeds = [b"grant", pot.key().as_ref(), active_grant.leaf_hash.as_ref()],
+        bump = active_grant.bump
+    )]
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    #[account(
+        mut,
+        constraint = channel.grant == active_grant.key() @ HaiChainMasterError::PotMismatch,
+        seeds = [b"chan", active_grant.key().as_ref(), &channel.channel_id.to_le_bytes()],
+        bump = channel.bump
+    )]
+    pub channel: Account<'info, ChannelAccount>,
+
+    #[account(
+        mut,
+        constraint = channel_escrow_ata.owner == channel.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = channel_escrow_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub channel_escrow_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        mut,
+        constraint = vault_ata.owner == pot.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = vault_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub vault_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        address = pot.owner_auth @ HaiChainMasterError::UnauthorizedOwner
+    )]
+    pub owner_auth: Signer<'info>,
+
+    pub token_program: Program<'info, Token>,
+}
+
+#[derive(Accounts)]
+pub struct CloseChannelContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        has_one = pot @ HaiChainMasterError::PotMismatch,
+        seeds = [b"grant", pot.key().as_ref(), active_grant.leaf_hash.as_ref()],
+        bump = active_grant.bump
+    )]
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    #[account(
+        mut,
+        close = rent_recipient,
+        constraint = channel.grant == active_grant.key() @ HaiChainMasterError::PotMismatch,
+        seeds = [b"chan", active_grant.key().as_ref(), &channel.channel_id.to_le_bytes()],
+        bump = channel.bump
+    )]
+    pub channel: Account<'info, ChannelAccount>,
+
+    #[account(
+        mut,
+        constraint = channel_escrow_ata.owner == channel.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = channel_escrow_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub channel_escrow_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        mut,
+        constraint = vault_ata.owner == pot.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = vault_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub vault_ata: Account<'info, TokenAccount>,
+
+    /// CHECK: RED-TEAM PATCH 4: 100% of rent lamports strictly refunded to original rent_recipient
+    #[account(
+        mut,
+        address = channel.rent_recipient @ HaiChainMasterError::UnauthorizedRentRecipient
+    )]
+    pub rent_recipient: AccountInfo<'info>,
+
+    pub token_program: Program<'info, Token>,
+}
+
+
 // ============================================================================
 // DATA STORAGE ACCOUNTS
 // ============================================================================
@@ -729,6 +1368,64 @@ pub struct ProviderBondAccount {
     pub is_active: bool,
     pub bump: u8,
 }
+
+#[account]
+pub struct PotAccount {
+    pub owner_auth: Pubkey,       // 32
+    pub policy_root: [u8; 32],    // 32
+    pub tree_depth: u8,           // 1 (d = 12)
+    pub root_seq: u64,            // 8
+    pub panic_epoch: u32,         // 4
+    pub frozen: bool,             // 1
+    pub valid_until: i64,         // 8 (Unix timestamp heartbeat)
+    pub max_ttl: u32,             // 4 (seconds)
+    pub budget_total: u64,        // 8
+    pub budget_used: u64,         // 8
+    pub window_cap: u64,          // 8
+    pub window_secs: u32,         // 4
+    pub window_start: i64,        // 8
+    pub window_used: u64,         // 8
+    pub cosigner: Pubkey,         // 32
+    pub token_mint: Pubkey,       // 32
+    pub bump: u8,                 // 1
+}
+
+#[account]
+pub struct ActiveGrantAccount {
+    pub pot: Pubkey,              // 32
+    pub leaf_hash: [u8; 32],      // 32
+    pub agent: Pubkey,            // 32
+    pub merchant: Pubkey,         // 32
+    pub mint: Pubkey,             // 32
+    pub max_spend: u64,           // 8
+    pub max_reserve: u64,         // 8
+    pub window_cap: u64,          // 8
+    pub window_secs: u32,         // 4
+    pub consumed: u64,            // 8
+    pub window_start: i64,        // 8
+    pub window_used: u64,         // 8
+    pub expiry: i64,              // 8
+    pub epoch: u32,               // 4
+    pub flags: u16,               // 2
+    pub revoked: bool,            // 1
+    pub bump: u8,                 // 1
+}
+
+#[account]
+pub struct ChannelAccount {
+    pub grant: Pubkey,            // 32
+    pub channel_id: u64,          // 8
+    pub reserved: u64,            // 8
+    pub paid: u64,                // 8
+    pub agent_key: Pubkey,        // 32
+    pub payee_ata: Pubkey,        // 32
+    pub close_requested_at: i64,  // 8
+    pub dispute_secs: u32,        // 4
+    pub created_at_epoch: u32,    // 4 (RED-TEAM PATCH 1: Bound to pot.panic_epoch!)
+    pub rent_recipient: Pubkey,   // 32 (RED-TEAM PATCH 4: Strict rent refund!)
+    pub bump: u8,                 // 1
+}
+
 
 // ============================================================================
 // ERROR CODES SPECIFICATION
@@ -792,4 +1489,98 @@ pub enum HaiChainMasterError {
     SpotPriceExceedsCap,
     #[msg("Pricing: Dynamic spot quotation ticket has expired on Solana clock.")]
     SpotTicketExpired,
+    #[msg("CapLeaf: Invalid CapLeaf version; only version 1 is supported.")]
+    InvalidCapLeafVersion,
+    #[msg("CapLeaf: Leaf pot does not match Pot PDA.")]
+    PotMismatch,
+    #[msg("CapLeaf: Leaf panic epoch does not match Pot current epoch.")]
+    EpochMismatch,
+    #[msg("CapLeaf: CapLeaf is not yet active (not_before).")]
+    CapLeafNotYetActive,
+    #[msg("CapLeaf: CapLeaf has expired.")]
+    CapLeafExpired,
+    #[msg("CapLeaf: Expiry exceeds maximum TTL.")]
+    ExpiryExceedsMaxTtl,
+    #[msg("CapLeaf: Pot is currently frozen.")]
+    PotFrozen,
+    #[msg("CapLeaf: Mint does not match Pot token mint.")]
+    MintMismatch,
+    #[msg("CapLeaf: Reserved flags bits must be zero.")]
+    ReservedFlagsNonZero,
+    #[msg("CapLeaf: Merkle proof length must strictly equal pot tree depth.")]
+    InvalidProofLength,
+    #[msg("CapLeaf: Proof verification failed.")]
+    ProofVerificationFailed,
+    #[msg("Reservation: Amount exceeds maximum reserve per channel.")]
+    ExceedsMaxReserve,
+    #[msg("Reservation: Total consumed exceeds maximum spend.")]
+    ExceedsMaxSpend,
+    #[msg("Reservation: Window capacity exceeded.")]
+    WindowCapExceeded,
+    #[msg("Channel: Channel funds frozen due to Pot panic state (Jito MEV Front-Running defense).")]
+    PotPanickedFundsFrozen,
+    #[msg("Channel: Settle amount must be strictly greater than paid and less than or equal to reserved.")]
+    InvalidSettleAmount,
+    #[msg("Channel: Payee ATA does not match canonical ATA(merchant, mint).")]
+    InvalidPayeeAta,
+    #[msg("Channel: Dispute window active. Unilateral close not yet allowed.")]
+    DisputeWindowActive,
+    #[msg("Channel: Rent receiver must match channel rent_recipient.")]
+    UnauthorizedRentRecipient,
+    #[msg("Channel: Cannot force reclaim when vouchers have already been paid.")]
+    ChannelAlreadyPaid,
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_claude_section_7_leaf_hash_and_empty() {
+        let dummy_program_id = Pubkey::new_from_array([0xaa; 32]);
+        let scope_ref = anchor_lang::solana_program::hash::hash(b"GET https://api.example.com/v1/search").to_bytes();
+        
+        let mut leaf_bytes = [0u8; 223];
+        let mut offset = 0;
+        leaf_bytes[offset] = 1; offset += 1;
+        leaf_bytes[offset..offset+32].copy_from_slice(&[0x11; 32]); offset += 32;
+        leaf_bytes[offset..offset+32].copy_from_slice(&[0x22; 32]); offset += 32;
+        leaf_bytes[offset..offset+32].copy_from_slice(&[0x33; 32]); offset += 32;
+        leaf_bytes[offset..offset+32].copy_from_slice(&[0x44; 32]); offset += 32;
+
+        leaf_bytes[offset..offset+8].copy_from_slice(&5_000_000u64.to_le_bytes()); offset += 8;
+        leaf_bytes[offset..offset+8].copy_from_slice(&100_000u64.to_le_bytes()); offset += 8;
+        leaf_bytes[offset..offset+8].copy_from_slice(&500_000u64.to_le_bytes()); offset += 8;
+        leaf_bytes[offset..offset+4].copy_from_slice(&3600u32.to_le_bytes()); offset += 4;
+        leaf_bytes[offset..offset+4].copy_from_slice(&1u32.to_le_bytes()); offset += 4;
+        leaf_bytes[offset..offset+32].copy_from_slice(&scope_ref); offset += 32;
+        leaf_bytes[offset..offset+8].copy_from_slice(&1u64.to_le_bytes()); offset += 8;
+        leaf_bytes[offset..offset+8].copy_from_slice(&1793664000i64.to_le_bytes()); offset += 8;
+        leaf_bytes[offset..offset+8].copy_from_slice(&1793750400i64.to_le_bytes()); offset += 8;
+        leaf_bytes[offset..offset+4].copy_from_slice(&0u32.to_le_bytes()); offset += 4;
+        leaf_bytes[offset..offset+2].copy_from_slice(&0u16.to_le_bytes()); offset += 2;
+
+        assert_eq!(offset, 223);
+
+        let parsed = CapLeafV1Data::parse(&leaf_bytes).unwrap();
+        assert_eq!(parsed.version, 1);
+        assert_eq!(parsed.max_spend, 5_000_000);
+
+        let leaf_hash = compute_leaf_hash(&dummy_program_id, &leaf_bytes);
+        let expected_hash_hex = "64e35d5494c5a2fcfd9f08c0b7a390295f39a5638d542a3e6a92a29bf862d6c6";
+        let mut leaf_hash_hex = String::new();
+        for b in leaf_hash.iter() {
+            leaf_hash_hex.push_str(&format!("{:02x}", b));
+        }
+        assert_eq!(leaf_hash_hex, expected_hash_hex);
+
+        let empty = compute_empty_leaf();
+        let expected_empty_hex = "5356c70898f581c2674b86fb8bea19ec9eee3876ff0fa2e4950041e239e87c4d";
+        let mut empty_hex = String::new();
+        for b in empty.iter() {
+            empty_hex.push_str(&format!("{:02x}", b));
+        }
+        assert_eq!(empty_hex, expected_empty_hex);
+    }
 }
