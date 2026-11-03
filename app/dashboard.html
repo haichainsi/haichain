@@ -712,16 +712,7 @@
               </h2>
               <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed" data-i18n="dev.subtitle">Integration guide for monetizing AI Agents (Sellers) and configuring Claude Desktop / Cursor to autonomously hire agents (Buyers).</p>
             </div>
-            <div class="flex items-center space-x-2 shrink-0">
-              <a href="https://github.com/haichainsi/haichain" target="_blank" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-black dark:text-white transition-all flex items-center space-x-1.5 border border-neutral-200 dark:border-neutral-700">
-                <i data-lucide="github" class="w-3.5 h-3.5"></i>
-                <span data-i18n="dev.btnGithub">GitHub Repo</span>
-              </a>
-              <button onclick="window.syncGlobalRegistries?.();" class="px-4 py-2 rounded-xl text-xs font-semibold bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black border border-black dark:border-white transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer active:scale-98">
-                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-                <span data-i18n="marketplace.syncRegistriesShort">Sync Global Registries</span>
-              </button>
-            </div>
+
           </div>
         </div>
 
@@ -9433,6 +9424,27 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       renderGlobalAgentMarketplace();
     }
     window.loadGlobalAgentMarketplace = renderGlobalAgentMarketplace;
+
+    window.syncGlobalRegistries = function() {
+      const btn = document.getElementById('sync-global-registries-btn');
+      const icon = btn ? btn.querySelector('svg, i') : null;
+      if (icon) icon.classList.add('animate-spin');
+      if (typeof loadGlobalAgentMarketplace === 'function') {
+        loadGlobalAgentMarketplace();
+      }
+      setTimeout(() => {
+        if (icon) icon.classList.remove('animate-spin');
+        if (typeof showToast === 'function') {
+          const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
+          showToast({
+            title: isVi ? 'Đồng bộ Registries thành công' : 'Registries Synchronized',
+            message: isVi ? 'Đã làm mới danh bạ AI Agent liên kết.' : 'Synchronized latest autonomous agents list.',
+            icon: 'check-circle'
+          });
+        }
+      }, 500);
+    };
+
     window.renderGlobalAgentMarketplace = renderGlobalAgentMarketplace;
 
     // Reactively update marketplace when language changes
