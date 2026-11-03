@@ -1,5 +1,3 @@
-/api/agents/*  https://mcp.haichain.si/api/agents/:splat 200
-/api/mcp*  https://mcp.haichain.si/api/mcp:splat 200
 /app                /dashboard 302
 /app/               /dashboard 302
 /vip                /dashboard?access=vip 302
