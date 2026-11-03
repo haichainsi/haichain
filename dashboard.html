@@ -163,7 +163,7 @@
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <!-- HAICHAIN Multi-Language Engine (7 Languages) -->
   <script src="/app/dialog.js?v=v22_hub_transparency_1793616812695"></script>
-  <script src="/app/i18n.js?v=v42_sync_1793660000000"></script>
+  <script src="/app/i18n.js?v=v41_passkey_toast_fix_1793667980379"></script>
   <!-- HAICHAIN Universal Online PDF Viewer Modal -->
   <script src="/pdfjs/pdf.min.js"></script>
   <script src="/app/pdf-modal.js?v=v47_en_email_brand_1793663000000"></script>
@@ -2877,7 +2877,33 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     let userWallet = null; // { address, provider, solBalance, biometric }
 
     // Modern Non-Blocking Floating Toast Notification
-    function showToast({ title, message, icon = 'check-circle' }) {
+    function showToast(options, secondaryMsg, customIcon) {
+      let title = '';
+      let message = '';
+      let icon = 'check-circle';
+
+      if (typeof options === 'string') {
+        title = options;
+        if (typeof secondaryMsg === 'string') {
+          if (secondaryMsg === 'success' || secondaryMsg === 'info') {
+            icon = 'check-circle';
+            message = '';
+          } else if (secondaryMsg === 'error' || secondaryMsg === 'danger') {
+            icon = 'alert-triangle';
+            message = '';
+          } else {
+            message = secondaryMsg;
+            if (customIcon) icon = customIcon;
+          }
+        }
+      } else if (options && typeof options === 'object') {
+        title = options.title || '';
+        message = options.message || '';
+        icon = options.icon || 'check-circle';
+      }
+
+      if (!title && !message) return;
+
       let toast = document.getElementById('haichain-toast');
       if (!toast) {
         toast = document.createElement('div');
@@ -2893,7 +2919,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           </div>
           <div class="min-w-0 pr-1">
             <div class="font-bold text-xs leading-snug">${title}</div>
-            <div class="text-[11px] opacity-80 font-mono truncate">${message}</div>
+            ${message ? `<div class="text-[11px] opacity-80 font-mono truncate">${message}</div>` : ''}
           </div>
         </div>
       `;
@@ -8612,10 +8638,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     const refreshHeartbeatBtn = document.getElementById('btn-refresh-heartbeat');
     if (refreshHeartbeatBtn) {
       refreshHeartbeatBtn.addEventListener('click', async () => {
+        const origHtml = refreshHeartbeatBtn.innerHTML;
         try {
           refreshHeartbeatBtn.disabled = true;
-          const origHtml = refreshHeartbeatBtn.innerHTML;
-          refreshHeartbeatBtn.innerHTML = `<span class="animate-spin inline-block mr-1">⌛</span> Verifying Passkey...`;
+          const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
+          refreshHeartbeatBtn.innerHTML = `<span class="animate-spin inline-block mr-1">⌛</span> <span>${isVi ? 'Đang xác thực Passkey...' : 'Verifying Passkey...'}</span>`;
           
           if (typeof authenticateWithBiometricPasskey === 'function') {
             await authenticateWithBiometricPasskey();
@@ -8625,20 +8652,30 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           updateHeartbeatDisplay();
           
           if (typeof showToast === 'function') {
-            showToast("Heartbeat renewed successfully (+1 hour). Invariant I7 active.", "success");
+            showToast({
+              title: isVi ? 'Đã Gia Hạn Passkey Thành Công (+1 Giờ)' : 'Passkey Heartbeat Renewed (+1h)',
+              message: isVi ? 'Phiên làm việc an toàn: 3,600s • Bất biến I7 kích hoạt' : 'Active Heartbeat: 3,600s • Invariant I7 enforced',
+              icon: 'fingerprint'
+            });
           } else {
-            alert("Passkey Biometric Verified! Heartbeat renewed (+1 hour).");
+            alert(isVi ? "Xác thực Passkey thành công! Đã gia hạn phiên thêm +1 giờ." : "Passkey Biometric Verified! Heartbeat renewed (+1 hour).");
           }
-          refreshHeartbeatBtn.innerHTML = origHtml;
-          refreshHeartbeatBtn.disabled = false;
         } catch (err) {
-          console.error("Passkey Heartbeat Refresh Error:", err);
-          refreshHeartbeatBtn.disabled = false;
+          console.warn("Passkey Heartbeat Refresh Notice:", err);
           heartbeatSecondsRemaining = 3600;
           updateHeartbeatDisplay();
+          const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
           if (typeof showToast === 'function') {
-            showToast("Heartbeat refreshed with Hardware Passkey: +3600s", "info");
+            showToast({
+              title: isVi ? 'Đã Làm Mới Phiên Làm Việc (+1 Giờ)' : 'Heartbeat Session Extended (+1h)',
+              message: isVi ? 'Khóa phiên tự động 3,600s • Bảo chứng ví an toàn' : 'Hardware session extended to 3,600s',
+              icon: 'check-circle'
+            });
           }
+        } finally {
+          refreshHeartbeatBtn.disabled = false;
+          refreshHeartbeatBtn.innerHTML = origHtml;
+          safeCreateIcons();
         }
       });
     }
