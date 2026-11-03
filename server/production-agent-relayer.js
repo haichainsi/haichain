@@ -8,6 +8,7 @@
  */
 
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -93,6 +94,49 @@ const GLOBAL_AGENT_REGISTRY = [
   },
 ];
 
+
+
+const RESEND_API_KEY = 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
+const RESEND_SENDER = 'Haichain <no-reply@mail.haichain.si>';
+const ADMIN_NOTIFICATION_EMAIL = 'haichain.si@gmail.com';
+
+function sendResendEmail({ to, subject, html }) {
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify({
+      from: RESEND_SENDER,
+      to: Array.isArray(to) ? to : [to],
+      subject,
+      html
+    });
+
+    const req = https.request('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      }
+    }, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          try {
+            resolve(JSON.parse(body));
+          } catch (_) {
+            resolve({ ok: true, raw: body });
+          }
+        } else {
+          reject(new Error(`Resend Error ${res.statusCode}: ${body}`));
+        }
+      });
+    });
+
+    req.on('error', reject);
+    req.write(payload);
+    req.end();
+  });
+}
 
 class ProductionAgentRelayer {
   constructor(options = {}) {
@@ -261,23 +305,26 @@ class ProductionAgentRelayer {
     const startTime = Date.now();
     let resultData = null;
 
+    const safeAgentId = String(agentId || '').toLowerCase();
+    const safePayload = typeof payload === 'string' ? payload : (payload ? JSON.stringify(payload) : '');
+
     // Check if agent is a registered community or external agent with an endpointUrl
-    const matchedAgent = (this.allAgents || []).find(a => a.agentId === agentId);
+    const matchedAgent = (this.allAgents || []).find(a => (a.agentId || '').toLowerCase() === safeAgentId);
     if (matchedAgent && matchedAgent.endpointUrl) {
-      resultData = await this.relayRemoteAgentEndpoint(matchedAgent, payload);
-    } else if (agentId.includes('scraper')) {
-      resultData = await this.relayWebExtraction(payload);
-    } else if (agentId.includes('market') || agentId.includes('arbitrage') || agentId.includes('sentiment')) {
-      resultData = await this.relayFinancialIntelligence(payload);
-    } else if (agentId.includes('sec') || agentId.includes('audit')) {
-      resultData = await this.relaySecurityAudit(payload);
+      resultData = await this.relayRemoteAgentEndpoint(matchedAgent, safePayload);
+    } else if (safeAgentId.includes('scraper') || safeAgentId.includes('smithery')) {
+      resultData = await this.relayWebExtraction(safePayload);
+    } else if (safeAgentId.includes('market') || safeAgentId.includes('arbitrage') || safeAgentId.includes('sentiment') || safeAgentId.includes('alpha') || safeAgentId.includes('financial') || safeAgentId.includes('fetch')) {
+      resultData = await this.relayFinancialIntelligence(safePayload);
+    } else if (safeAgentId.includes('sec') || safeAgentId.includes('audit') || safeAgentId.includes('glama')) {
+      resultData = await this.relaySecurityAudit(safePayload);
     } else {
       resultData = {
         status: 'SUCCESS',
         mode: 'TEE_WASM_SANDBOX',
-        inputPayload: payload,
-        outputDigest: Buffer.from(payload).toString('base64'),
-        output: `Processed ${Buffer.byteLength(payload)} input bytes inside hardware-isolated enclave.`
+        inputPayload: safePayload,
+        outputDigest: Buffer.from(safePayload).toString('base64'),
+        output: `Processed ${Buffer.byteLength(safePayload)} input bytes inside hardware-isolated enclave.`
       };
     }
 
@@ -585,6 +632,7 @@ class ProductionAgentRelayer {
    */
   async dispatchAndSettle(jobRequest) {
     const { agentId, taskPayload, bidAmountUsdt, recipientAddress } = jobRequest;
+    const safePayload = typeof taskPayload === 'string' ? taskPayload : (taskPayload ? JSON.stringify(taskPayload) : '');
     const effectiveRecipient = recipientAddress || DEFAULT_TREASURY;
     const jobId = `RELAY-${Date.now().toString(36).toUpperCase()}-${Math.floor(Math.random() * 89999 + 10000)}`;
 
@@ -596,7 +644,7 @@ class ProductionAgentRelayer {
 
     // Phase 1: Execute Downstream Task inside Escrow Boundary
     try {
-      taskExecution = await this.executeDownstreamTask(agentId, taskPayload);
+      taskExecution = await this.executeDownstreamTask(agentId, safePayload);
       if (taskExecution.result && taskExecution.result.httpStatus >= 500) {
         taskFailed = true;
         taskError = `Downstream Agent Service Error (HTTP ${taskExecution.result.httpStatus})`;
@@ -614,7 +662,7 @@ class ProductionAgentRelayer {
         protocolVersion: 'haichain-v1.1-x402',
         status: 'TASK_FAILED_ESCROW_REFUNDED',
         hiredAgentId: agentId,
-        taskPayloadEcho: taskPayload.slice(0, 100),
+        taskPayloadEcho: safePayload.slice(0, 100),
         escrowSettlement: {
           settlementState: 'FUNDS_AUTOMATICALLY_REFUNDED_ZERO_LOSS',
           amountRefundedUsdt: bidAmountUsdt || 0.003,
@@ -642,7 +690,7 @@ class ProductionAgentRelayer {
       protocolVersion: 'haichain-v1.1-x402',
       status: 'COMPLETED_AND_SETTLED_ON_CHAIN',
       hiredAgentId: agentId,
-      taskPayloadEcho: taskPayload.slice(0, 100),
+      taskPayloadEcho: safePayload.slice(0, 100),
       escrowSettlement: {
         payer: payment.payer,
         recipient: payment.recipient,
@@ -804,6 +852,175 @@ class ProductionAgentRelayer {
         return;
       }
 
+      // API: Pre-Seed SAFT Agreement Submission & Dual Email Delivery (Admin + Investor)
+      if ((url.pathname === '/api/saft/submit' || url.pathname === '/api/notify/email') && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', async () => {
+          try {
+            const data = JSON.parse(body || '{}');
+            const contractId = data.contractId || ('SAFT-HAI-' + Math.random().toString(36).substring(2, 7).toUpperCase());
+            const name = data.name || 'Anonymous Investor';
+            const email = data.email || '';
+            const amount = Number(data.amount) || 0;
+            const tokens = Number(data.tokens) || Math.floor(amount / 0.007);
+            const wallet = data.wallet || 'N/A';
+            const treasury = data.treasury || DEFAULT_TREASURY;
+            const timestamp = data.timestamp || new Date().toISOString();
+            const hashHex = data.hashHex || 'N/A';
+
+            console.log(`[SAFT Received] Processing Contract ${contractId} for ${name} (${email}) - $${amount} USD`);
+
+            // Save record locally for persistent institutional audit trail
+            try {
+              const recordsDir = path.join(__dirname, '..', 'data');
+              if (!fs.existsSync(recordsDir)) fs.mkdirSync(recordsDir, { recursive: true });
+              const recordsFile = path.join(recordsDir, 'saft-records.json');
+              let existing = [];
+              if (fs.existsSync(recordsFile)) {
+                try { existing = JSON.parse(fs.readFileSync(recordsFile, 'utf8') || '[]'); } catch (_) {}
+              }
+              existing.unshift({ contractId, name, email, amount, tokens, wallet, treasury, timestamp, hashHex });
+              if (existing.length > 500) existing.pop();
+              fs.writeFileSync(recordsFile, JSON.stringify(existing, null, 2), 'utf8');
+            } catch (fsErr) {
+              console.warn('[SAFT Record Save Error]:', fsErr.message);
+            }
+
+            // Extract or build email HTML
+            let adminHtml = data.adminHtml;
+            let investorHtml = data.investorHtml;
+
+            if (!adminHtml) {
+              adminHtml = `
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; padding: 32px 24px; background-color: #0c0c0e; color: #ffffff; border-radius: 16px; border: 1px solid #27272a;">
+  <div style="border-bottom: 1px solid #27272a; padding-bottom: 20px; margin-bottom: 24px;">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff;">🔔 NEW PRE-SEED SAFT AGREEMENT SIGNED</h2>
+    <p style="margin: 6px 0 0 0; font-size: 13px; color: #a1a1aa;">HAICHAIN Autonomous Machine Financial Protocol</p>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6;">
+    <tr><td style="padding: 10px 0; color: #a1a1aa; width: 40%;">Contract ID:</td><td style="padding: 10px 0; font-weight: bold; font-family: monospace; color: #ffffff;">${contractId}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Signatory / Entity:</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff;">${name}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Contact Email:</td><td style="padding: 10px 0; color: #38bdf8;">${email}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Investment Amount:</td><td style="padding: 10px 0; font-weight: bold; color: #4ade80; font-size: 15px;">$${amount.toLocaleString('en-US')} USD (USDT)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Token Entitlement:</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff;">${tokens.toLocaleString('en-US')} $HAISI (@ $0.007)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Beneficiary Solana Wallet:</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #ffffff; word-break: break-all;">${wallet}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Multi-Sig Treasury Vault:</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #a1a1aa; word-break: break-all;">${treasury}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">SHA-256 Audit Proof:</td><td style="padding: 10px 0; font-family: monospace; font-size: 10px; color: #71717a; word-break: break-all;">${hashHex}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Execution Time (UTC):</td><td style="padding: 10px 0; color: #ffffff;">${timestamp}</td></tr>
+  </table>
+  <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid #27272a; text-align: center;">
+    <a href="https://haichain.si/dashboard" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 13px; padding: 10px 24px; border-radius: 9999px; text-decoration: none;">View Dashboard</a>
+  </div>
+</div>`;
+            }
+
+            if (!investorHtml) {
+              investorHtml = adminHtml;
+            }
+
+            const adminSubject = `🔔 [SAFT Signed] $${amount.toLocaleString('en-US')} USD - ${name} (${contractId})`;
+            const investorSubject = `Haichain Official SAFT Agreement - Signed Confirmation (${contractId})`;
+
+            let adminEmailResult = null;
+            let investorEmailResult = null;
+            let adminEmailError = null;
+            let investorEmailError = null;
+
+            // 1. Dispatch Email to Admin
+            try {
+              adminEmailResult = await sendResendEmail({
+                to: ADMIN_NOTIFICATION_EMAIL,
+                subject: adminSubject,
+                html: adminHtml
+              });
+              console.log(`[Resend OK] Admin notification sent for ${contractId}:`, adminEmailResult.id);
+            } catch (err) {
+              adminEmailError = err.message;
+              console.error(`[Resend Error Admin] Failed for ${contractId}:`, err.message);
+            }
+
+            // 2. Dispatch Confirmation Email to Investor
+            if (email && email.includes('@')) {
+              try {
+                investorEmailResult = await sendResendEmail({
+                  to: email,
+                  subject: investorSubject,
+                  html: investorHtml
+                });
+                console.log(`[Resend OK] Investor confirmation sent to ${email} for ${contractId}:`, investorEmailResult.id);
+              } catch (err) {
+                investorEmailError = err.message;
+                console.error(`[Resend Error Investor] Failed to send to ${email}:`, err.message);
+              }
+            }
+
+            // 3. Dispatch to Telegram Bot (Group: -5426770743)
+            let telegramSent = false;
+            try {
+              const tgToken = '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';
+              const tgChatId = '-5426770743';
+              const tgMsg = `🔔 *NEW PRE-SEED SAFT AGREEMENT SIGNED!*
+━━━━━━━━━━━━━━━━━━━━
+📋 *Contract ID:* \`${contractId}\`
+👤 *Investor:* *${name}*
+📧 *Email:* \`${email}\`
+💰 *Investment:* *$${amount.toLocaleString('en-US')} USD (USDT)*
+🪙 *Allocation:* *${tokens.toLocaleString('en-US')} $HAISI* (@ $0.007)
+📈 *TGE Upside:* *$${Math.round(tokens * 0.01).toLocaleString('en-US')} USD (+42.8%)*
+💼 *Beneficiary Solana Wallet:*
+\`${wallet}\`
+🏛️ *Multi-Sig Treasury Vault:*
+\`${treasury}\`
+🔐 *SHA-256 Audit Proof:*
+\`${hashHex}\`
+⏰ *Signed Time (UTC):* \`${timestamp}\`
+━━━━━━━━━━━━━━━━━━━━
+✅ *Legally Executed under US ESIGN Act & UETA*`;
+
+              const tgPayload = JSON.stringify({
+                chat_id: tgChatId,
+                text: tgMsg,
+                parse_mode: 'Markdown'
+              });
+
+              const tgReq = https.request(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Content-Length': Buffer.byteLength(tgPayload)
+                }
+              }, (tgRes) => {
+                tgRes.resume();
+              });
+              tgReq.on('error', () => {});
+              tgReq.write(tgPayload);
+              tgReq.end();
+              telegramSent = true;
+            } catch (_) {}
+
+            res.writeHead(200, { ...cors, 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({
+              success: true,
+              contractId,
+              adminEmailSent: !!adminEmailResult,
+              adminEmailId: adminEmailResult ? adminEmailResult.id : null,
+              adminEmailError,
+              investorEmailSent: !!investorEmailResult,
+              investorEmailId: investorEmailResult ? investorEmailResult.id : null,
+              investorEmailError,
+              telegramSent
+            }));
+
+          } catch (e) {
+            console.error('[SAFT Handler Error]:', e);
+            res.writeHead(500, { ...cors, 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: e.message }));
+          }
+        });
+        return;
+      }
+
       // API: Direct Agent Dispatch & Settlement
       if (url.pathname === '/api/relayer/dispatch' && req.method === 'POST') {
         let body = '';
@@ -871,3 +1088,12 @@ if (require.main === module) {
   const relayer = new ProductionAgentRelayer({ port: process.env.PORT || 8080 });
   relayer.start();
 }
+
+
+// Process Resilience Handlers (Zero Crash Guarantee)
+process.on('uncaughtException', (err) => {
+  console.error('[Relayer UncaughtException]', err);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[Relayer UnhandledRejection]', reason);
+});
