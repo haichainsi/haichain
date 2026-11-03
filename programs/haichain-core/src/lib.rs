@@ -845,6 +845,62 @@ pub mod haichain_core {
         Ok(())
     }
 
+    /// 18. ACTIVATE CHILD GRANT (PROBATION TEMPLATE LEAF EXPANSION)
+    pub fn activate_child(
+        ctx: Context<ActivateChildContext>,
+        new_merchant: Pubkey,
+    ) -> Result<()> {
+        let pot = &ctx.accounts.pot;
+        let template_grant = &mut ctx.accounts.template_grant;
+        let child_grant = &mut ctx.accounts.child_grant;
+
+        require!(!pot.frozen, HaiChainMasterError::PotFrozen);
+        require!(!template_grant.revoked, HaiChainMasterError::CapLeafExpired);
+        require!((template_grant.flags & (1 << 1)) != 0, HaiChainMasterError::InvalidCapLeafVersion); // PROBATION flag
+        require!((template_grant.flags & (1 << 0)) != 0, HaiChainMasterError::InvalidCapLeafVersion); // REQUIRE_COSIGN flag
+
+        let now = Clock::get()?.unix_timestamp;
+        require!(now < template_grant.expiry, HaiChainMasterError::CapLeafExpired);
+
+        // Deduct max_reserve from template grant permanently
+        let reserve_size = template_grant.max_reserve;
+        require!(
+            template_grant.consumed.checked_add(reserve_size).ok_or(HaiChainMasterError::MathOverflow)? <= template_grant.max_spend,
+            HaiChainMasterError::ExceedsMaxSpend
+        );
+
+        template_grant.consumed = template_grant.consumed.checked_add(reserve_size).ok_or(HaiChainMasterError::MathOverflow)?;
+        template_grant.window_used = template_grant.window_used.checked_add(reserve_size).ok_or(HaiChainMasterError::MathOverflow)?;
+
+        // Initialize child grant bounded by template limits
+        child_grant.pot = pot.key();
+        let child_hash = anchor_lang::solana_program::hash::hashv(&[
+            &template_grant.leaf_hash,
+            new_merchant.as_ref(),
+        ]).to_bytes();
+
+        child_grant.leaf_hash = child_hash;
+        child_grant.agent = template_grant.agent;
+        child_grant.merchant = new_merchant;
+        child_grant.mint = template_grant.mint;
+        child_grant.max_spend = reserve_size;
+        child_grant.max_reserve = reserve_size;
+        child_grant.window_cap = reserve_size;
+        child_grant.window_secs = template_grant.window_secs;
+        child_grant.consumed = 0;
+        child_grant.window_start = now;
+        child_grant.window_used = 0;
+        child_grant.expiry = template_grant.expiry;
+        child_grant.epoch = template_grant.epoch;
+        child_grant.flags = template_grant.flags;
+        child_grant.revoked = false;
+        child_grant.bump = ctx.bumps.child_grant;
+
+        msg!("HAICHAIN v1.1: Activated probation child grant for merchant {}", new_merchant);
+        Ok(())
+    }
+
+
 }
 
 // ============================================================================
@@ -1188,7 +1244,8 @@ pub struct ReserveChannelContext<'info> {
     pub channel_escrow_ata: Account<'info, TokenAccount>,
 
     #[account(
-        constraint = payee_ata.owner == active_grant.merchant @ HaiChainMasterError::InvalidPayeeAta,
+        constraint = payee_ata.key() == anchor_spl::associated_token::get_associated_token_address(&active_grant.merchant, &pot.token_mint) 
+            @ HaiChainMasterError::InvalidPayeeAta,
         constraint = payee_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
     )]
     pub payee_ata: Account<'info, TokenAccount>,
@@ -1327,6 +1384,47 @@ pub struct CloseChannelContext<'info> {
 
     pub token_program: Program<'info, Token>,
 }
+
+#[derive(Accounts)]
+#[instruction(new_merchant: Pubkey)]
+pub struct ActivateChildContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        has_one = pot @ HaiChainMasterError::PotMismatch,
+        seeds = [b"grant", pot.key().as_ref(), template_grant.leaf_hash.as_ref()],
+        bump = template_grant.bump
+    )]
+    pub template_grant: Account<'info, ActiveGrantAccount>,
+
+    #[account(
+        init,
+        payer = payer,
+        space = 8 + 32 + 32 + 32 + 32 + 32 + 8 + 8 + 8 + 4 + 8 + 8 + 8 + 8 + 4 + 2 + 1 + 1,
+        seeds = [b"grant", pot.key().as_ref(), &anchor_lang::solana_program::hash::hashv(&[&template_grant.leaf_hash, new_merchant.as_ref()]).to_bytes()],
+        bump
+    )]
+    pub child_grant: Account<'info, ActiveGrantAccount>,
+
+    /// Cosigner must co-sign for probation child leaf activation
+    #[account(
+        address = pot.cosigner @ HaiChainMasterError::UnauthorizedOwner
+    )]
+    pub cosigner: Signer<'info>,
+
+    pub agent: Signer<'info>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    pub system_program: Program<'info, System>,
+}
+
 
 
 // ============================================================================
