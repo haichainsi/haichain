@@ -214,6 +214,7 @@ function buildHaichainSaftEmailHtml(opt) {
     } catch (_) {}
     return (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
   }
+  window.getCurrentLang = window.getHaichainLang = getCurrentLang;
 
   function getWhitepaperUrlForLang(lang) {
     const versionParam = '?v=v31_perfect_10lang_audit';
@@ -398,7 +399,7 @@ function buildHaichainSaftEmailHtml(opt) {
   }
 
   function ensurePdfModal() {
-    let modal = document.getElementById('pdf-viewer-modal');
+    let modal = document.getElementById('pdf-viewer-modal') || document.getElementById('pdf-modal');
     if (modal) return modal;
 
     modal = document.createElement('div');
@@ -657,7 +658,7 @@ function buildHaichainSaftEmailHtml(opt) {
       </div>
     `;
 
-    document.body.appendChild(modal);
+    (document.body || document.documentElement).appendChild(modal);
 
         // Initialize In-Modal Language Dropdown
     const langToggle = modal.querySelector('#pdf-modal-lang-toggle');
@@ -2623,30 +2624,41 @@ function buildHaichainSaftEmailHtml(opt) {
 
   // 2. Direct Element Binding & Prewarming
   function initPdfTriggers() {
-    const selector = '#nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]';
-    document.querySelectorAll(selector).forEach((btn) => {
+    const whitepaperSelector = '#nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]';
+    document.querySelectorAll(whitepaperSelector).forEach((btn) => {
       if (btn.dataset.pdfBound === 'true') return;
       btn.dataset.pdfBound = 'true';
       btn.addEventListener('click', (e) => handleWhitepaperClick(e, btn));
     });
 
+    const riskSelector = '#nav-risk-report-link, #mobile-nav-risk-report-link, [data-mobile-risk-report="true"], [data-risk-report="true"], a[href*="HAICHAIN_INSTITUTIONAL_RISK_DUE_DILIGENCE_REPORT"], a[href*="HAICHAIN_RISK_REPORT"]';
+    document.querySelectorAll(riskSelector).forEach((btn) => {
+      if (btn.dataset.riskBound === 'true') return;
+      btn.dataset.riskBound = 'true';
+      btn.addEventListener('click', (e) => window.handleRiskReportClick(e, btn));
+    });
+
     checkAutoOpen();
 
-    // Idle background pre-warming: parse Whitepaper so opening takes <10ms
+    const warmBoth = () => {
+      try {
+        const lang = getCurrentLang();
+        prewarmDocument(getWhitepaperUrlForLang(lang));
+        if (typeof window.getRiskReportPdfForLang === 'function') {
+          const rDoc = window.getRiskReportPdfForLang(lang);
+          if (rDoc && rDoc.url) prewarmDocument(rDoc.url);
+        }
+      } catch (_) {}
+    };
+
     if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(() => {
-        const lang = getCurrentLang();
-        prewarmDocument(getWhitepaperUrlForLang(lang));
-      }, { timeout: 3000 });
+      requestIdleCallback(warmBoth, { timeout: 3000 });
     } else {
-      setTimeout(() => {
-        const lang = getCurrentLang();
-        prewarmDocument(getWhitepaperUrlForLang(lang));
-      }, 1500);
+      setTimeout(warmBoth, 1500);
     }
   }
 
-  // Auto-open modal if URL specifies ?open_whitepaper=1 or pathname is /whitepaper
+  // Auto-open modal if URL specifies ?open_whitepaper=1 or ?open_risk_report=1
   function checkAutoOpen() {
     try {
       const params = new URLSearchParams(window.location.search);
@@ -2655,6 +2667,12 @@ function buildHaichainSaftEmailHtml(opt) {
         const pdfUrl = getWhitepaperUrlForLang(lang);
         const meta = getI18nMeta(lang);
         window.openPdfViewerModal(pdfUrl, meta.title);
+      } else if (params.get('open_risk_report') === '1' || params.get('open_risk') === '1' || window.location.pathname === '/risk-report') {
+        const lang = getCurrentLang();
+        if (typeof window.getRiskReportPdfForLang === 'function') {
+          const doc = window.getRiskReportPdfForLang(lang);
+          if (doc) window.openPdfViewerModal(doc.url, doc.title);
+        }
       }
     } catch (_) {}
   }
@@ -2668,7 +2686,6 @@ function buildHaichainSaftEmailHtml(opt) {
   window.addEventListener('haichain-language-changed', () => {
     setTimeout(initPdfTriggers, 50);
   });
-})();
 
   // =========================================================================
   // GLOBAL MULTI-LANGUAGE SAFT & MEMO RESOLVERS (10 LANGUAGES)
@@ -2678,7 +2695,7 @@ function buildHaichainSaftEmailHtml(opt) {
   // GLOBAL MULTI-LANGUAGE RISK REPORT RESOLVER (10 LANGUAGES)
   // =========================================================================
   window.getRiskReportPdfForLang = function(lang) {
-    const l = (lang || getCurrentLang() || 'en').toLowerCase();
+    const l = (lang || (typeof getCurrentLang === 'function' ? getCurrentLang() : (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang') || 'en'))).toLowerCase();
     const titles = {
       vi: 'Báo Cáo Thẩm Định Rủi Ro & Phòng Thủ Mật Mã HAICHAIN',
       en: 'HAICHAIN Institutional Risk Due Diligence Report',
@@ -2706,7 +2723,7 @@ function buildHaichainSaftEmailHtml(opt) {
   };
 
   window.getSaftPdfForLang = function(lang) {
-    const l = (lang || getCurrentLang()).toLowerCase();
+    const l = (lang || (typeof getCurrentLang === 'function' ? getCurrentLang() : (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang') || 'en'))).toLowerCase();
     const titles = {
       vi: 'Hợp Đồng SAFT Pre-Seed HAICHAIN (Chính Thức)',
       en: 'HAICHAIN Official SAFT Agreement (Mainnet Guaranteed)',
@@ -2734,7 +2751,7 @@ function buildHaichainSaftEmailHtml(opt) {
   };
 
   window.getPreseedMemoPdfForLang = function(lang) {
-    const l = (lang || getCurrentLang()).toLowerCase();
+    const l = (lang || (typeof getCurrentLang === 'function' ? getCurrentLang() : (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain-lang') || localStorage.getItem('haichain_lang') || 'en'))).toLowerCase();
     const titles = {
       vi: 'Bản Ghi Nhớ Đầu Tư Chiến Lược Pre-Seed HAICHAIN (1-Pager)',
       en: 'HAICHAIN Pre-Seed Strategic Investment Memo (1-Pager)',
@@ -2767,7 +2784,7 @@ function buildHaichainSaftEmailHtml(opt) {
     if (typeof window.refreshSaftDrawerI18n === 'function') {
       window.refreshSaftDrawerI18n(lang);
     }
-    const modal = document.getElementById('pdf-modal');
+    const modal = document.getElementById('pdf-viewer-modal') || document.getElementById('pdf-modal');
     if (modal && !modal.classList.contains('hidden')) {
       const meta = getI18nMeta(lang);
       const signBtnText = document.getElementById('pdf-modal-sign-btn-text');
@@ -2829,3 +2846,5 @@ function buildHaichainSaftEmailHtml(opt) {
       window.handleRiskReportClick(e, trigger);
     }
   }, true);
+
+})();
