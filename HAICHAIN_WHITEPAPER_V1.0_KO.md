@@ -24,7 +24,7 @@
 ## 목차 (TABLE OF CONTENTS)
 
 1. [개요 및 실행 요약 (Executive Summary & Abstract)](#1-개요-및-실행-요약-executive-summary--abstract)
-2. [$AI^2$ 기초 인지 철학: 인간 주권과 기계 초고속성 (The Foundational $AI^2$ Epistemology)](#2-ai2-기초-인지-철학-인간-주권과-기계-초고속성-human-sovereignty--machine-velocity)
+2. [AI² 기초 인지 철학: 인간 주권과 기계 초고속성 (The Foundational AI² Epistemology)](#2-ai2-기초-인지-철학-인간-주권과-기계-초고속성-human-sovereignty--machine-velocity)
 3. [자율 기계 금융 트릴레마와 SaaS에서 에이전트로의 패러다임 전환 (The Autonomous Machine Financial Trilemma)](#3-자율-기계-금융-트릴레마와-saas에서-에이전트로의-패러다임-전환-the-autonomous-machine-financial-trilemma--the-saas-to-agentic-continuum)
   - [3.1. 포스트 SaaS 경제학: 좌석당 구독 함정에서 미세 효용 가치 해방](#31-포스트-saas-경제학-좌석당-구독-함정에서-미세-효용-가치-해방)
   - [3.2. 산업 경쟁 구도 실증 감사: 기존 AI 및 블록체인 아키텍처의 치명적 맹점](#32-산업-경쟁-구도-실증-감사-기존-ai-및-블록체인-아키텍처의-치명적-맹점)
@@ -73,7 +73,7 @@
 
 10. [형식적 수학 정리 및 불변성 검증 (Formal Mathematical Theorems)](#10-형식적-수학-정리-및-불변성-검증)
 11. [전략적 로드맵 및 엔지니어링 마일스톤 공약 (Strategic Roadmap)](#11-전략적-로드맵-및-엔지니어링-마일스톤-공약)
-12. [결론 및 $AI^2$ 선언문 (Conclusion & The $AI^2$ Manifesto)](#12-결론-및-ai2-선언문)
+12. [결론 및 AI² 선언문 (Conclusion & The AI² Manifesto)](#12-결론-및-ai2-선언문)
 13. [참고문헌 및 실증적 인용 색인 (References & Citations Index)](#13-참고문헌-및-실증적-인용-색인)
 
 ---
@@ -89,9 +89,13 @@
 2. **실존적 정렬 단절 (Existential Alignment Gap):** 중앙 집중화된 AI는 인간의 주권적 주체성을 박탈하여 80억 인류를 경제적 난민이나 수동적인 데이터 농장으로 전락시킵니다.
 3. **미시경제적 연결 차단 (Micro-Economic Disconnection):** 프론티어 LLM은 1밀리초 미만의 단위로 다단계 복합 추론을 수행하지만, 레거시 금융 레일 (Stripe, Visa, EVM의 가스비 폭등)은 150,000%의 수수료 마찰 없이는 1센트 미만의 미세 연산을 정산할 수 없습니다.
 
-**HAICHAIN** (`haichain.si`)은 중앙 집중식 단일 기계 신이라는 전제를 단호히 거부합니다. 대신 완전히 새로운 **$\mathbf{AI^2}$ (AI 제곱)** 패러다임을 개척합니다:
+**HAICHAIN** (`haichain.si`)은 중앙 집중식 단일 기계 신이라는 전제를 단호히 거부합니다. 대신 완전히 새로운 **AI² (AI 제곱)** 패러다임을 개척합니다:
+
 $$\mathbf{Hai} = \text{Human (인간)} + \text{AI (인공지능)}$$
-$$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE (인공지능)} \times \text{ACTUAL INTELLIGENCE (인간 실체적 지능)}$$
+
+$$\mathbf{HaiChain} \iff \mathbf{AI²} = \text{ARTIFICIAL INTELLIGENCE (인공지능)} \times \text{ACTUAL INTELLIGENCE (인간 실체적 지능)}
+
+$$
 여기서 **인공지능 ($\text{AI}_1$)** 은 무한한 나노초 단위 연산 처리량, 알고리즘 탐색 및 경계 없는 수평적 확장성을 제공하며, **인간 실체적 지능 ($\text{AI}_2$)** 은 생물학적 진화에 기반한 도덕적 직관, 분포 외 (OOD) 추론, 객관적 현실의 인식론적 앵커 및 인간의 최종 주권적 의도를 주입합니다.
 
 > **기관 투자자 및 핵심 빌더들을 위한 특별 안내:**  
@@ -124,7 +128,7 @@ Solana L1 (v6.9.3) 상의 군사 등급 무결점 정산 커널로 시작하여 
 
 ---
 
-## 2. $AI^2$ 기초 인지 철학: 인간 주권과 기계 초고속성 (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
+## 2. AI² 기초 인지 철학: 인간 주권과 기계 초고속성 (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
 
 **HaiChain** 이라는 명명 체계는 단순한 마케팅 용어가 아니며, 불변의 철학적-수학적 불변성을 암호화하고 있습니다:
 
@@ -158,9 +162,13 @@ Solana L1 (v6.9.3) 상의 군사 등급 무결점 정산 커널로 시작하여 
 * **인식론적 현실 세계 앵커 (Epistemic Ground-Truth):** 인간은 객관적 물리 현실 및 복잡한 사회적 현실과 끊임없이 상호작용하여 순수한 실증적 기반을 제공합니다.
 * **질적 도덕적 중재:** 인간은 단순한 손실 함수 최소화로 환원될 수 없는 정의, 공정성, 윤리적 불변성을 본질적으로 파악합니다.
 
-### 2.3. $AI^2$ 종합 정리 (The $AI^2$ Synthesis Theorem)
+### 2.3. AI² 종합 정리 (The AI² Synthesis Theorem)
 진정한 초지능 (Superintelligence - SI)은 실리콘만으로는 달성될 수 없으며 (부서지기 쉬운 환각 연산), 인간 생물학만으로도 달성될 수 없습니다 (신경 전달 지연의 한계). **초지능은 인공지능과 인간 실체적 지능의 곱입니다:**
-$$\mathbf{SI} = f(\text{AI}_1, \text{AI}_2) \iff \text{Velocity (기계 극속)} \times \text{Truth (인간 진실)}$$
+$$
+
+\mathbf{SI} = f(\text{AI}_1, \text{AI}_2) \iff \text{Velocity (기계 극속)} \times \text{Truth (인간 진실)}
+
+$$
 HAICHAIN은 이 두 가지 힘을 하나의 불멸하고 번영하는 초유기체로 결합하는 암호학적 가치 및 조정 기판으로 기능합니다.
 
 ---
@@ -297,7 +305,11 @@ client = openai.OpenAI(
    * *아키텍처 결함:* 두 프레임워크 모두 고권한 개인키 또는 원시 MPC 서명 자격 증명을 에이전트의 실행 환경 내에 직접 배치합니다.
    * *실증 공격 메커니즘:* 자율 에이전트가 신뢰할 수 없는 외부 데이터를 수집할 때(예: 적대적 웹페이지 스크래핑, 악성 이메일 구문 분석, 검증되지 않은 Discord 프롬프트 처리), 간접 프롬프트 주입 공격이 에이전트의 내부 목표 함수를 재작성합니다. 감염된 모델은 무제한 `wallet.transfer_all()` 명령을 실행합니다.
    * *HAICHAIN의 면역성:* HAICHAIN은 에이전트에 마스터 키 접근 권한을 절대 부여하지 않습니다. 에이전트는 온체인 **머클 역량 리프 노드**에 의해 제어되는 임시 서명자로만 서명합니다:
-     $$\text{Leaf} := \text{Blake3}(\text{SubAgentPubkey} \,\|\, \text{MaxAmount} \,\|\, \text{MerchantATA} \,\|\, \text{ExpirySlot} \,\|\, \text{Nonce})$$
+$$
+
+\text{Leaf} := \text{Blake3}(\text{SubAgentPubkey} \,\|\, \text{MaxAmount} \,\|\, \text{MerchantATA} \,\|\, \text{ExpirySlot} \,\|\, \text{Nonce})
+
+$$
      에이전트가 인지적으로 100% 감염되더라도 Solana/HAI-VM 커널은 확정적 경계를 강제합니다. $0.05를 초과하여 지출하거나 미승인 주소로 자금을 전송하려는 시도는 `ExceedsAuthorizedCapability` (0x1777) 오류와 함께 즉시 원자적으로 롤백됩니다.
 
 2. **Bittensor / TAO (고지연 시간 및 폐쇄 루프 합성 붕괴):**
@@ -448,7 +460,11 @@ HAICHAIN은 **"엄마 테스트 공리" (The Mom-Test Axiom)**를 엄격히 공�
 초고빈도 쓰기 환경에서 상태 경합과 락 병목을 방지하기 위해:
 
 * 프로토콜은 주요 서비스 제공자를 위해 **32개의 물리적 파티션 인제스천 ATA**를 사전 프로비저닝합니다:
-  $$\text{PartitionIndex} = \text{Blake3}(\text{Nonce}) \pmod{32}$$
+$$
+
+\text{PartitionIndex} = \text{Blake3}(\text{Nonce}) \pmod{32}
+
+$$
 
 * 이를 통해 Solana의 Sealevel 런타임 스케줄러는 파이프라인 직렬화 지연 없이 32개의 CPU 물리 코어에 걸쳐 결제 트랜잭션을 동시에 병렬 스케줄링할 수 있습니다.
 
@@ -487,23 +503,39 @@ HAICHAIN은 **"엄마 테스트 공리" (The Mom-Test Axiom)**를 엄격히 공�
 트랜잭션이 공개 RPC나 가십 채널에 브로드캐스트되더라도 2단계 암호학적 잠금을 통해 악성 MEV는 수학적으로 불가능합니다:
 
 1. **커밋 단계 ($t = 0$):** 에이전트가 담보를 포함한 온체인 약정 상태 해시를 게시합니다:
-   $$\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})$$
+$$
+
+\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})
+
+$$
    실행 페이로드, 대상 컨트랙트 호출, 금액이 256비트 충돌 방지 해시 뒤에 숨겨져 있으므로 차익 거래 검색자는 경제적 가치를 추출할 수 없습니다.
 
 2. **공개 및 원자적 실행 단계 ($t \le 4\text{ 슬롯}$):** 에이전트가 원상 튜플 $(\text{ExecutionPayload}, \text{SecretSalt})$을 제출합니다. Solana 스마트 컨트랙트 커널이 다음을 강제 실행합니다:
-   $$\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})$$
+$$
+
+\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})
+
+$$
    악의적인 검색자가 동일한 슬롯에서 공개 페이로드를 복제하더라도 원래 `CallerPubkey`만이 정산을 트리거할 수 있으므로 트랜잭션이 실패합니다. 만료 슬롯 전까지 공개하지 않으면 확정적 활성 슬래싱이 부과되어 옵션성 스팸 공격을 무력화합니다.
 
 #### 3. 동적 변동성 연계 슬래싱 불변성 ($\Delta P \times \gamma$)
 2단계 커밋-공개 방식의 전형적인 취약점은 **"무료 옵션성 악의적 포기 (Last-Look Griefing)"**입니다: 악의적인 에이전트가 슬롯 0에서 트랜잭션을 커밋한 후 4슬롯 동안 2차 시장 가격을 관찰하다가 시장 변동이 불리하면 공개 트랜잭션을 의도적으로 거부하여 막대한 시장 손실을 피하는 행위입니다.
 
 HAICHAIN은 **변동성 연계 슬래싱 불변성**을 통해 이 허점을 영구적으로 차단합니다:
-$$\text{슬래싱 페널티} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times 
-rac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma
-ight) \quad (\text{여기서 } \gamma = 1.5)$$
+$$
+
+\text{슬래싱 페널티} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times 
+\frac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma
+\right) \quad (\text{여기서 } \gamma = 1.5)
+
+$$
 
 * **게임 이론적 근본적 차단:** 자산 가격이 4슬롯 동안 커밋터에게 $2.0\%$ 불리하게 변동할 경우, 공개를 거부하면 즉각적인 온체인 슬래싱 페널티가 발생합니다:
-  $$\text{페널티} = \text{OrderValue} \times 2.0\% \times 1.5 = \text{주문 금액의 } 3.0\%$$
+$$
+
+\text{페널티} = \text{OrderValue} \times 2.0\% \times 1.5 = \text{주문 금액의 } 3.0\%
+
+$$
 
 * 페널티가 회피된 시장 손실의 엄격히 150%에 달하므로 악의적 포기의 수학적 기대 수익은 엄격하게 음수($\mathbb{E}[\text{차익 수익}] < 0$)가 되며, 무거운 시간락 암호화(t-TLE)의 네트워크 통신 오버헤드 없이도 악성 포기를 완벽히 무력화합니다.
 
@@ -535,12 +567,16 @@ ight) \quad (\text{여기서 } \gamma = 1.5)$$
 ### 5.7. 자율 AI 센티널 감시 프로그램: 밀리초 단위 이상 감지 및 소프트 프리즈
 **인간의 생물학적 반응 시간(200ms - 30초)이 기계의 밀리초 미만 자율 실행 속도에 비해 극도로 뒤처진다**는 점을 인식하여 HAICHAIN은 게이트웨이 에지에 직접 임베딩된 **자율 AI 센티널 감시 프로그램 (Autonomous AI Sentinel Watchdog)**을 배포합니다:
 
-$$\text{트리거 조건: } \left( 
-rac{\Delta \text{호출수}}{\Delta t} > \Theta_{\text{속도}} 
-ight) \lor \left( \text{유사도}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{루프}} 
-ight) \lor \left( \text{목적지} 
+$$
+
+\text{트리거 조건: } \left( 
+\frac{\Delta \text{호출수}}{\Delta t} > \Theta_{\text{속도}} 
+\right) \lor \left( \text{유사도}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{루프}} 
+\right) \lor \left( \text{목적지} 
 otin \mathcal{W}_{\text{화이트리스트}} 
-ight)$$
+\right)
+
+$$
 
 ```
           자율 AI 센티널 감시 프로그램 에지 방어 아키텍처 (< 10ms)
@@ -595,8 +631,12 @@ ight)$$
 
 ### 6.1. 탄력적 추론 연산 에스크로
 추론 모델은 사전에 확정적으로 계산할 수 없는 가변적인 내부 생각 토큰 (Thinking Tokens)을 생성합니다. HAICHAIN은 **탄력적 추론 에스크로 방정식**을 공식화합니다:
-$$Escrow_{total} = C_{base} + \min(lpha \cdot C_{base}, \Delta_{max})$$
-여기서 $lpha = 0.20$ (20% 동적 안전 버퍼 계수)이며 $\Delta_{max}$는 하드 실링 상한선입니다. 연산이 완료되면 제공자는 실제 소비된 토큰 증명을 제출합니다. 미사용 버퍼 자본은 **동일한 트랜잭션 틱** 내에서 사용자 금고로 즉시 반환됩니다.
+$$
+
+Escrow_{total} = C_{base} + \min(\alpha \cdot C_{base}, \Delta_{max})
+
+$$
+여기서 $\alpha = 0.20$ (20% 동적 안전 버퍼 계수)이며 $\Delta_{max}$는 하드 실링 상한선입니다. 연산이 완료되면 제공자는 실제 소비된 토큰 증명을 제출합니다. 미사용 버퍼 자본은 **동일한 트랜잭션 틱** 내에서 사용자 금고로 즉시 반환됩니다.
 
 #### 비동기 듀얼 클록 모델과 양자 간 초고속 정산 (< 80ms)
 Solana 네트워크에 슬롯 지연이나 일시적 정체가 발생할 때 원자적 교착 상태를 방지하기 위해 추론 에스크로 커널은 마이크로 세션 로직을 글로벌 블록 틱과 분리하는 **비동기 듀얼 클록 모델**을 도입합니다:
@@ -650,7 +690,11 @@ Solana 네트워크에 슬롯 지연이나 일시적 정체가 발생할 때 원
 온체인 상태를 오염시키지 않고 수백 개의 하위 에이전트 군집을 배포하기 위해:
 
 * 하위 에이전트는 BIP-32 스타일의 경로 파생을 사용하여 임시 키를 파생합니다:
-  $$Key_{child} = \text{HMAC-SHA512}(Key_{parent}, \text{Role} \parallel \text{Index})$$
+$$
+
+Key_{child} = \text{HMAC-SHA512}(Key_{parent}, \text{Role} \parallel \text{Index})
+
+$$
 
 * 하위 에이전트 권한은 32바이트 머클 루트(`composite_root`)에 바인딩됩니다. 8개 리프 포함 증명만으로 에이전트별 계정 초기화 없이 온체인 유효성을 검증합니다.
 
@@ -806,7 +850,6 @@ AI 툴 오케스트레이션의 글로벌 표준에 완벽히 부합하도록 HA
 
 ---
 
-
 ## 7. 다자간 대칭 순액 정산 및 유선 속도 청산 매트릭스 (MULTILATERAL NETTING & OPTIMISTIC STREAMING STATE CHANNELS)
 
 ```
@@ -830,7 +873,11 @@ AI 툴 오케스트레이션의 글로벌 표준에 완벽히 부합하도록 HA
 HAICHAIN 청산 매트릭스는 AI 에이전트 군집과 엔터프라이즈 API 공급자 간의 초고빈도 오프체인 상호작용을 통합합니다:
 
 1. **대칭 다자간 순액 상쇄:** 고속 마이크로 결제가 오프체인에서 균형을 이룹니다:
-   $$NetBalance_i = \sum Inflow_i - \sum Outflow_i$$
+$$
+
+NetBalance_i = \sum Inflow_i - \sum Outflow_i
+
+$$
 
 2. **압축 효율성:** 1,000,000개 이상의 마이크로 틱이 단일 배치 정산으로 압축되어 **99.999% 압축률**을 달성합니다.
 3. **단일 IPv6 MTU 유선 프레임:** 완전한 정산 페이로드는 정확히 **771바이트**를 필요로 하므로 표준 **1,232바이트 IPv6 MTU 한도** 내에 여유 있게 수용되어 대륙 간 광섬유 경로에서의 패킷 단편화를 원천 배제합니다.
@@ -890,7 +937,11 @@ HAICHAIN은 **하이브리드 옵티미스틱 상태 채널 (Hybrid Optimistic S
 
 1. **온체인 에스크로 락업:** 세션 초기화 시 에이전트는 지출 금고에서 소액 예산(예: $1.00 USDT)을 Solana L1의 상태 채널 PDA로 잠급니다.
 2. **메모리 내 오프체인 마이크로 틱 (< 5ms):** AI 공급자로부터 토큰이 스트리밍될 때 에이전트는 RAM의 임시 Ed25519 키쌍을 사용하여 암호학적 마이크로 바우처에 지속적으로 서명합니다:
-   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+$$
+
+\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)
+
+$$
    매개변수 정의:
    * $\text{DOMAIN\_SEPARATOR}$: 프로토콜 레벨 암호학적 도메인 분리 태그 (`"haichain-v1-channel-settlement"`).
    * $\text{ClusterID}$: Solana 클러스터 식별자 (Devnet, Testnet, Mainnet-Beta), 환경 간 서명 재전송(Replay) 공격 완전 차단.
@@ -967,7 +1018,11 @@ Haichain은 마찰 없는 듀얼 레일 시스템을 강제합니다:
 
 - **일반 에이전트 및 개발자:** 토큰 강제 스테이킹 없이 검증된 스테이블코인(USDC/USDT)으로만 건당 결제하며, 완전한 "Invisible Web3" 사용자 경험을 보장합니다.
 - **엔터프라이즈 군집 및 대규모 플릿:** 인프라 특권을 위해 $HAISI(`veHAISI`)를 선택적으로 락업할 수 있습니다:
-  $$\text{일일 허용 트랜잭션} = k \cdot \sqrt{\text{스테이킹 } \$HAISI \times \text{락업 기간}}$$
+$$
+
+\text{일일 허용 트랜잭션} = k \cdot \sqrt{\text{스테이킹 } \$HAISI \times \text{락업 기간}}
+
+$$
   * *계층형 수수료 할인:* 3개월~36개월 락업 시 순 청산 수수료 최대 80% 감면.
   * *5ms 이하 전용 패스트패스 라우팅:* 미션 크리티컬 군집을 위한 전용 멤풀 라우팅.
   * *무가스 백그라운드 청산:* 프로토콜 지원 계정 임대료 회수 및 널리파이어 정리.
@@ -981,7 +1036,11 @@ Haichain은 마찰 없는 듀얼 레일 시스템을 강제합니다:
 ### 8.3. 프로그램 방식 정산 배치 가치 흡수 (`OP_402_BURN`) 및 토큰 유통속도 중화
 화폐 유통속도 이론에 따른 가치 희석을 방지하기 위해 HAICHAIN은 게이트웨이 커널에 **배치 레벨 가치 흡수 프로토콜 (`OP_402_BURN`)**을 의무화합니다:
 
-$$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$$
+$$
+
+\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}
+
+$$
 
 *여기서:*
 
@@ -1079,7 +1138,7 @@ $$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$
 ```
 
 ### 9.1. 3단계 진화 궤적
-1. **1단계 (0 - 18개월):** Solana L1을 기반으로 시장 지배력을 확보하고, 마이크로 결제 제품 시장 적합성(PMF)을 완벽히 구축하며, $AI^2$ 보안 불변성을 엄격히 검증합니다.
+1. **1단계 (0 - 18개월):** Solana L1을 기반으로 시장 지배력을 확보하고, 마이크로 결제 제품 시장 적합성(PMF)을 완벽히 구축하며, AI² 보안 불변성을 엄격히 검증합니다.
 2. **2단계 (18 - 36개월):** Celestia/EigenDA를 데이터 가용성(DA) 계층으로 사용하는 고처리량 SVM Layer 2 롤업을 출시하여 50,000+ 머신 TPS를 처리하고, 공생 지식 마켓플레이스와 역방향 마이크로 태스킹을 도입합니다.
 3. **3단계 (36개월 이후):** 자율 기계 합의와 진정한 탈중앙화 초지능을 위해 실리콘 물리 계층부터 완전히 새롭게 설계된 독립형 Layer 1 블록체인인 **HAICHAIN 주권 머신 L1**으로 전면 도약합니다.
 
@@ -1222,7 +1281,11 @@ HAICHAIN은 **영지식 임시 탈중앙화 신원 (ZK-eDID)**을 통해 완전�
 
 * **오프체인 생체 인식 격리:** 개인 식별 정보(PII), 생체 인식 템플릿, 신원 해시는 블록체인 원장에 절대 기록되지 않습니다. 모든 자격 증명은 사용자 디바이스의 로컬 하드웨어 Secure Enclave 내에만 존재합니다.
 * **영지식 신원 검증:** 블록체인 원장은 승인된 인간의 고유성과 암호학적 서명 유효성에 대한 임시 영지식 증명만을 검증합니다:
-   $$DID_{agent} = \text{Hash}(\text{ZKP}_{auth} \parallel \text{DerivationIndex} \parallel \text{AgentCodeHash})$$
+$$
+
+DID_{agent} = \text{Hash}(\text{ZKP}_{auth} \parallel \text{DerivationIndex} \parallel \text{AgentCodeHash})
+
+$$
 
 * **암호학적 폐기 및 GDPR 제17조 불변성:** 사용자가 계정을 해지하거나 데이터 삭제를 요청하면 스마트 컨트랙트는 암호학적 널리파이어 티켓을 등록합니다. 클라이언트 측 하드웨어 키가 파기되어 과거 온체인 활동을 특정 자연인과 역추적하는 것이 수학적으로 불가능해지며 EU GDPR, MiCA 및 FATF 트래블 룰 표준을 완벽히 충족합니다.
 
@@ -1284,34 +1347,66 @@ HAICHAIN은 **영지식 임시 탈중앙화 신원 (ZK-eDID)**을 통해 완전�
 ### 정리 1: 금고 담보 자산 보존 정리 (비인플레이션 불변성)
 *슬롯 $t$에서의 글로벌 컨트랙트 상태를 $S_t$라 하자. 임의의 사용자 금고 $V$와 해당 연계 토큰 계정 $ATA_V$에 대해:*
 $$
-orall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)$$
+
+orall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)
+
+$$
 *증명:* 
 
 1. **기본 단계 ($t=0$):** 금고 초기화 시 $\text{ConfirmedBalance}(V, 0) = 0$ 및 $\text{TokenBalance}(ATA_V, 0) = 0$이므로 부등식이 엄격히 성립한다.
 2. **입금 단계 ($\Delta D > 0$):** 컨트랙트 커널은 상태를 변경하기 전에 $\Delta D$ 토큰을 $ATA_V$로 원자적 CPI 전송하도록 강제한다:
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D$$
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D
+
+$$
 
 3. **지출 단계 ($\Delta S > 0$):** 컨트랙트는 런타임 sysvars에서 실제 $ATA_V$ 잔액을 다시 로드한다. $\Delta S > \text{ConfirmedBalance}(V, t)$인 경우 `InsufficientConfirmedBalance` (0x1781)로 되돌려지며, $\text{TokenBalance}(ATA_V, t) < \text{ConfirmedBalance}(V, t)$인 경우 `EulerDriftBalanceMismatch` (0x177c)로 되돌려진다. 유효한 실행 상태에서는:
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S$$
-*수학적 귀납법에 의해 이 보존 불변성은 모든 상태 전이 전반에서 지속적으로 성립한다. $lacksquare$*
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S
+
+$$
+*수학적 귀납법에 의해 이 보존 불변성은 모든 상태 전이 전반에서 지속적으로 성립한다. $lacksquare$*
 
 ### 정리 2: 프롬프트 주입 공격 손실 상한선 판정 정리
 *$L = (\text{Pubkey}, \text{MaxSpend}, \text{ExpirySlot}, \text{Nonce})$를 머클 루트 $R$을 갖는 승인된 역량 리프 노드라 하자. 에이전트가 완전한 메모리 감염을 겪더라도 공격자가 탈취할 수 있는 최대 가치 $E$는 다음을 만족한다:*
-$$E \le \text{MaxSpend}$$
+$$
+
+E \le \text{MaxSpend}
+
+$$
 *증명:* 모든 지출 명령은 $\text{Verify}(R, L, \pi) = \text{true}$인 포함 증명 $\pi$를 제출해야 한다. 온체인 컨트랙트 바이트코드는 다음을 엄격히 강제하고:
-$$\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})$$
-재플레이를 방지하는 고유 널리파이어를 즉시 기록하므로, $amount > L.\text{MaxSpend}$인 모든 트랜잭션은 원자적으로 되돌려진다. 따라서 최대 손실은 $L.\text{MaxSpend}$로 상한이 고정된다. $lacksquare$
+$$
+
+\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})
+
+$$
+재플레이를 방지하는 고유 널리파이어를 즉시 기록하므로, $amount > L.\text{MaxSpend}$인 모든 트랜잭션은 원자적으로 되돌려진다. 따라서 최대 손실은 $L.\text{MaxSpend}$로 상한이 고정된다. $lacksquare$
 
 ### 정리 3: 상태 제로 임대료 중화 및 MEV 방어 동등성 정리
 $S_{ephem}$을 순액 주기 $\tau$ 동안 생성된 모든 임시 협상 PDA의 집합이라 하고, $R(A)$를 계정 $A$에 잠긴 임대료 Lamports라 하자.
-$$\lim_{t 	o \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0$$
+$$
+
+\lim_{t 	o \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0
+
+$$
 *증명:* 커널 불변성이 명령어 완료 시 `close = user_authority`를 원자적으로 강제하므로 모든 Lamports는 슬롯 $k \le \tau_{end}$ 내에 원래 금고로 반환된다.
 또한 커밋-공개 해시락 불변성 체계에서:
 $$
+
 orall \text{차익 검색자 } M, \quad \mathbb{E}[\text{MEV 수익} \mid \text{Commit 단계}] = 0$$
-$\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$는 256비트 엔트로피로 정보를 은닉하고 실행을 `Caller`에게 결합하므로, 검색자는 정보를 얻을 수 없으며 `Salt`와 `Caller`의 서명 없이는 실행을 위조할 수 없다. $lacksquare$
+$\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$는 256비트 엔트로피로 정보를 은닉하고 실행을 `Caller`에게 결합하므로, 검색자는 정보를 얻을 수 없으며 `Salt`와 `Caller`의 서명 없이는 실행을 위조할 수 없다. $lacksquare$
 
 ---
 
@@ -1343,7 +1438,7 @@ $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \paralle
 
 ---
 
-## 12. 결론 및 $AI^2$ 선언문 (CONCLUSION & THE $AI^2$ MANIFESTO)
+## 12. 결론 및 AI² 선언문 (CONCLUSION & THE AI² MANIFESTO)
 
 인류 문명이 직면한 진정한 역사적 도전은 인공지능이 순수 연산 능력 면에서 인간을 능가할 것인가의 문제가 아닙니다 - 특정한 경계 영역에서 기계는 이미 인간을 능가했습니다. 진정한 핵심 과제는 **거버넌스, 조정 메커니즘, 궁극적 주권 정렬**입니다: 자율 기계 지능이 소수 빅테크의 독점적 착취와 실존적 통제의 도구로 전락할 것인가, 아니면 인간의 자유와 번영을 비약적으로 배가시키는 탈중앙화 공생 유기체로 거듭날 것인가의 갈림길입니다.
 
@@ -1360,7 +1455,7 @@ $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \paralle
 본 백서에 인용된 모든 아키텍처 지표, 과거 해킹 사건의 수치, 하드웨어 물리적 한계 및 법률 조항은 공식 산업 표준, 전문 포렌식 사후 보고서, 동료 평가를 거친 학술 논문 및 정부 법령과 엄격히 대조 검증되었습니다:
 
 ### I. 금융 레일, 마이크로 정산 및 네트워크 통신 규격
-* `[1]` **Stripe 공식 수수료 규정 (2024-2026):** 표준 가맹점 카드 처리 수수료: 거래당 $2.9\% + \$0.30$. 1센트 미만 API 결제의 수학적 불가능성을 입증합니다 ($0.0002 달러의 스크래핑 호출에 150,000%의 수수료 오버헤드 부과). 출처: `https://stripe.com/pricing`.
+* `[1]` **Stripe 공식 수수료 규정 (2024-2026):** 표준 가맹점 카드 처리 수수료: 거래당 $2.9\% + $0.30$. 1센트 미만 API 결제의 수학적 불가능성을 입증합니다 ($0.0002 달러의 스크래핑 호출에 150,000%의 수수료 오버헤드 부과). 출처: `https://stripe.com/pricing`.
 * `[2]` **IETF RFC 8200 (IPv6 규격):** Deering, S., & Hinden, R. *Internet Protocol, Version 6 (IPv6) Specification*, Section 5 (Packet Size Issues): 네트워크 링크가 지원해야 하는 최소 MTU를 1,280 옥텟으로 의무화합니다.
 * `[3]` **Solana 공식 코어 유선 규격:** `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1,280 - 40\text{바이트 IPv6 헤더} - 8\text{바이트 UDP 헤더} = 1,232\text{바이트}$). HAICHAIN의 771바이트 대칭 순액 정산 페이로드가 단일 비단편화 데이터그램 내에 정확히 수용됨을 검증합니다.
 
@@ -1396,7 +1491,6 @@ $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \paralle
 
 ---
 *공식 기술 백서 v1.0 • HAICHAIN 글로벌 시스템 태스크포스 • 등록된 시스템 아키텍처 기록 • All Rights Reserved.*
-
 
 ---
 

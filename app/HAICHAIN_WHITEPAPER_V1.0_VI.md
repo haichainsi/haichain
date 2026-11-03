@@ -23,7 +23,7 @@
 ## MỤC LỤC HÌNH THỨC (TABLE OF CONTENTS)
 
 1. [Tóm Tắt Điều Hành & Nghịch Lý Siêu Trí Tuệ](#tóm-tắt-điều-hành-abstract)
-2. [Triết Lý Nền Tảng $AI^2$: Con Người Làm Chủ & Máy Móc Siêu Tốc](#triết-lý-nền-tảng-ai2-con-người-làm-chủ--máy-móc-siêu-tốc)
+2. [Triết Lý Nền Tảng AI²: Con Người Làm Chủ & Máy Móc Siêu Tốc](#triết-lý-nền-tảng-ai2-con-người-làm-chủ--máy-móc-siêu-tốc)
 3. [Chương 1: Thế Tiến Thoái Lưỡng Nan & Bằng Chứng Đối Thủ Thực Nghiệm](#chương-1-thế-tiến-thoái-lưỡng-nan-của-nền-kinh-tế-máy-móc)
 4. [Chương 2: Chuỗi Tiếp Nối Kinh Tế SaaS-to-Agentic: Tích Hợp Thuê Bao Doanh Nghiệp Với Tiện Ích Vi Mô Cho Tác Tử](#chương-2-bước-chuyển-dịch-kinh-tế-hậu-saas-giải-phóng-khỏi-bẫy-thuê-bao-đầu-người-sang-tiện-ích-vi-mô)
 5. [Chương 3: Kiến Trúc Trải Nghiệm Vô Hình & Chuẩn Mực "The Mom Test"](#chương-3-kiến-trúc-trải-nghiệm-vô-hình--chuẩn-mực-the-mom-test)
@@ -58,7 +58,7 @@
 11. [Chương 9: Lộ Trình Tiến Hóa Thành Blockchain L1 Độc Lập Cho Siêu Trí Tuệ (ASI)](#chương-9-lộ-trình-tiến-hóa-ai2-thành-blockchain-l1-độc-lập-cho-ai)
 12. [Chương 10: Các Định Lý Toán Học Hình Thức & Kiểm Chứng Bất Biến](#chương-10-các-định-lý-toán-học-hình-thức--kiểm-chứng-bất-biến)
 13. [Chương 11: Lộ Trình Triển Khai Chiến Lược & Các Cột Mốc Cam Kết](#chương-11-lộ-trình-triển-khai-chiến-lược--các-cột-mốc-cam-kết)
-14. [Chương 12: Kết Luận & Bản Tuyên Ngôn $AI^2$](#chương-12-kết-luận--bản-tuyên-ngôn-định-vị-ai2)
+14. [Chương 12: Kết Luận & Bản Tuyên Ngôn AI²](#chương-12-kết-luận--bản-tuyên-ngôn-định-vị-ai2)
 15. [Chương 13: Danh Mục Tài Liệu Tham Khảo & Nguồn Dẫn Chứng Đối Soát Thực Nghiệm](#chương-13-danh-mục-tài-liệu-tham-khảo--nguồn-dẫn-chứng-đối-soát-thực-nghiệm)
 
 ---
@@ -74,15 +74,18 @@ Thế nhưng, cuộc viễn chinh vĩ đại này đang mang theo một **điể
 2. **Cơn ác mộng tha hóa chủ quyền con người:** Trí tuệ nhân tạo tập trung biến 8 tỷ con người thành những nạn nhân bị tước đoạt việc làm hoặc những nông dân cung cấp dữ liệu thụ động.
 3. **Sự đứt gãy kinh tế vi mô:** Trong khi mô hình AI suy luận ở tốc độ nano-giây, các đường ray thanh toán cũ (Stripe, Visa, phí gas blockchain) lại áp mức phí cắt cổ 150.000% trên các lệnh gọi vi mô phần cent.
 
-**HAICHAIN** (`haichain.si`) bác bỏ hoàn toàn ý niệm về một cỗ máy AI độc tài đơn độc. Thay vào đó, giao thức mở ra kỷ nguyên **$\mathbf{AI^2}$ (AI Bình Phương)**:
+**HAICHAIN** (`haichain.si`) bác bỏ hoàn toàn ý niệm về một cỗ máy AI độc tài đơn độc. Thay vào đó, giao thức mở ra kỷ nguyên **AI² (AI Bình Phương)**:
+
 $$\mathbf{Hai} = \text{Human} + \text{AI}$$
-$$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE} \times \text{ACTUAL INTELLIGENCE}$$
+
+$$\mathbf{HaiChain} \iff \mathbf{AI²} = \text{ARTIFICIAL INTELLIGENCE} \times \text{ACTUAL INTELLIGENCE}$$
+
 *Trong đó, **Trí tuệ Nhân tạo (Artificial Intelligence)** mang lại tốc độ vi mô và năng lực tính toán mở rộng vô tận của máy móc; còn **Trí tuệ Thật sự của Con người (Actual Intelligence)** mang lại trực giác sinh học 4 tỷ năm tiến hóa, lương tri đạo đức, khả năng khái quát hóa phi tuyến tính và quyền làm chủ tối cao.*
 
 > **Thông Điệp Chiến Lược Dành Cho Các Nhà Đầu Tư Thể Chế:**  
 > *Giai đoạn 1 trên Solana L1 (Chương 3-7) chính là pháo đài tạo dòng tiền thương mại ngay trước mắt - thu về hàng triệu USD dòng tiền vi thanh toán thực tế thông qua giải pháp vi thanh toán siêu tốc và hũ tiền sinh trắc học không thể bị hack. Nhưng đối với những nhà đầu tư có tầm nhìn thế kỷ đang tìm kiếm kỳ lân công nghệ vĩ đại nhất, **Chương 9: Tầm Nhìn Endgame Blockchain L1 Độc Lập** mới chính là "Vương miện Vàng" độc nhất vô nhị: Khám phá cách HAICHAIN phá vỡ các giới hạn vật lý và toán học để khai sinh ra **Siêu Sinh Thể Nhận Thức Phức Hợp (Composite ASI)** đầu tiên trên thế giới - một Siêu Trí Tuệ trường tồn, phi tập trung và mãi mãi bảo vệ tự do của nhân loại.*
 
-Sự bùng nổ theo cấp số nhân của các tác tử trí tuệ nhân tạo độc lập (Autonomous AI Agents), các bầy đàn tác tử phân tầng (Hierarchical Sub-Agent Swarms), và robot vật lý thông minh (như Tesla Optimus, xe tự hành) đang đẩy hệ thống thanh toán toàn cầu vào một cuộc khủng hoảng chưa từng có: **Thế tiến thoái lưỡng nan của nền kinh tế máy móc (The Machine Financial Trilemma)**. Các hạ tầng thanh toán truyền thống (Stripe, Visa, SWIFT) vốn được thiết kế cho con người với độ trễ cao và chi phí quẹt thẻ cố định tối thiểu (\$0.30 + 2.9%), điều này bóp nghẹt hoàn toàn các giao dịch vi mô nano-cents của bot (\$0.0001 - \$0.05). Mặt khác, các blockchain đa năng hiện nay (Ethereum, các Layer 2) lại vướng phải rào cản phí gas đắt đỏ (\$0.02 - \$2.50), tốc độ xác thực chậm chạp (2 - 15 giây), và nguy cơ bị hack hợp đồng thông minh nghiêm trọng. 
+Sự bùng nổ theo cấp số nhân của các tác tử trí tuệ nhân tạo độc lập (Autonomous AI Agents), các bầy đàn tác tử phân tầng (Hierarchical Sub-Agent Swarms), và robot vật lý thông minh (như Tesla Optimus, xe tự hành) đang đẩy hệ thống thanh toán toàn cầu vào một cuộc khủng hoảng chưa từng có: **Thế tiến thoái lưỡng nan của nền kinh tế máy móc (The Machine Financial Trilemma)**. Các hạ tầng thanh toán truyền thống (Stripe, Visa, SWIFT) vốn được thiết kế cho con người với độ trễ cao và chi phí quẹt thẻ cố định tối thiểu ($0.30 + 2.9%), điều này bóp nghẹt hoàn toàn các giao dịch vi mô nano-cents của bot ($0.0001 - $0.05). Mặt khác, các blockchain đa năng hiện nay (Ethereum, các Layer 2) lại vướng phải rào cản phí gas đắt đỏ ($0.02 - $2.50), tốc độ xác thực chậm chạp (2 - 15 giây), và nguy cơ bị hack hợp đồng thông minh nghiêm trọng. 
 
 Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền tảng Solana L1 (phiên bản v6.9.3 Zero-Griefing Hardened) trước khi tiến hóa thành một mạng lưới Blockchain L1 độc lập chuyên dụng cho máy móc (HAICHAIN Sovereign L1), giao thức thiết lập 5 chuẩn mực mang tính cách mạng:
 
@@ -114,14 +117,14 @@ Xuất phát điểm là một nhân thanh toán chuẩn quân sự trên nền 
 
 Nền kinh tế tác tử tự hành đòi hỏi 3 điều kiện kỹ thuật không thể thỏa hiệp:
 
-1. **Khả năng vi thanh toán siêu nhỏ:** Khả năng thực hiện các giao dịch phần nhỏ của cent (\$0.0001 - \$0.01) mà ở đó chi phí xử lý bắt buộc phải chiếm **$< 1\%$** giá trị giao dịch.
+1. **Khả năng vi thanh toán siêu nhỏ:** Khả năng thực hiện các giao dịch phần nhỏ của cent ($0.0001 - $0.01) mà ở đó chi phí xử lý bắt buộc phải chiếm **$< 1\%$** giá trị giao dịch.
 2. **Thời gian hoàn tất dưới 1 giây:** Tốc độ thanh toán tức thì (< 400ms) để theo kịp các vòng lặp suy luận (Reasoning Loops) của mô hình ngôn ngữ lớn, không làm tắc nghẽn chuỗi gọi hàm giữa các bot.
 3. **Miễn nhiễm hoàn toàn với tấn công chiếm đoạt và cháy ví:** Rào cản toán học bảo đảm một con bot dù bị kẻ xấu lừa gạt bằng prompt injection hay nhiễm độc bộ nhớ cũng **tuyệt đối không thể rút quá số tiền tiêu vặt được phân bổ**.
 
 Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chuẩn này:
 
-* **Hạ tầng Web2 truyền thống (Stripe / Visa):** Áp mức phí sàn \$0.30 cho mỗi lần quẹt thẻ. Đối với một lệnh gọi API cào dữ liệu giá \$0.0002, phí thẻ của Stripe đắt gấp **1.500 lần (150.000%)** giá trị dịch vụ.
-* **Các chuỗi khối EVM thông thường (Base, Arbitrum, Optimism):** Phí gas từ \$0.02 đến \$0.10, thời gian chờ 2 đến 15 giây, cùng cơ chế quản lý 12 từ khóa phức tạp khiến người dùng phổ thông từ chối sử dụng.
+* **Hạ tầng Web2 truyền thống (Stripe / Visa):** Áp mức phí sàn $0.30 cho mỗi lần quẹt thẻ. Đối với một lệnh gọi API cào dữ liệu giá $0.0002, phí thẻ của Stripe đắt gấp **1.500 lần (150.000%)** giá trị dịch vụ.
+* **Các chuỗi khối EVM thông thường (Base, Arbitrum, Optimism):** Phí gas từ $0.02 đến $0.10, thời gian chờ 2 đến 15 giây, cùng cơ chế quản lý 12 từ khóa phức tạp khiến người dùng phổ thông từ chối sử dụng.
 * **Các bộ công cụ AI thử nghiệm (Coinbase AgentKit, ElizaOS):** Thiếu các bất biến an toàn ở cấp độ giao thức, khiến ví chính của người dùng dễ dàng bị bot rút cạn sạch tiền khi gặp vòng lặp vô tận hoặc bị tin tặc đầu độc.
 
 ### 1.1. Bằng Chứng Thực Nghiệm: Những Giới Hạn Tử Huyệt Của Các Nền Tảng Đối Thủ Hiện Nay
@@ -188,7 +191,7 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 2. **Sự Sụp Đổ Không Thể Tránh Khỏi Của Mô Hình "Thuê Bao Đầu Người" (Per-Seat AI Wrappers):** Ngược lại, thị trường hơn 30 tỷ USD của các công cụ SaaS bọc giao diện AI thu phí theo tháng (công cụ viết bài, trợ lý code, tổng hợp báo cáo, cào web tự động) đang đối mặt với khủng hoảng sinh tử khi kỷ nguyên tác tử tự hành (Autonomous Agents) bùng nổ:
    * **Nghịch lý "Một Người Quản Một Đàn Bot":** Mô hình SaaS truyền thống tính tiền theo số lượng nhân viên ("seat"). Trong kỷ nguyên mới, 1 kỹ sư có thể chỉ huy một đàn 50 tác tử AI chạy ngầm 24/7. Việc tiếp tục thu tiền theo "đầu người" trở thành một nghịch lý kinh tế vô lý.
    * **Sự Biến Mất Của Giao Diện Người Dùng (UI Disintermediation / Headless AI):** Các tác tử AI giao tiếp trực tiếp với nhau thông qua API và giao thức ngữ cảnh Model Context Protocol (MCP). Máy móc không đăng nhập vào giao diện web để ngắm nhìn bảng điều khiển dashboard; do đó, các phần mềm tính phí đắt đỏ dựa trên giao diện người dùng bóng bẩy sẽ hoàn toàn mất quyền định giá.
-   * **Hội Chứng Mệt Mỏi Vì Thuê Bao & Lãng Phí Vốn:** Báo cáo quản trị SaaS doanh nghiệp [19] chỉ ra **51% số lượng license phần mềm mua về bị bỏ xó hoàn toàn**, và người dùng cá nhân lãng phí hơn **85% dung lượng tính toán provisioned** hàng tháng trên 5-10 gói thuê bao riêng rẽ \$20-\$30 (ChatGPT, Claude, Perplexity, Cursor, Midjourney). Hơn 88% dòng tiền chi tiêu phần mềm mỗi tháng là lãng phí không thể thu hồi.
+   * **Hội Chứng Mệt Mỏi Vì Thuê Bao & Lãng Phí Vốn:** Báo cáo quản trị SaaS doanh nghiệp [19] chỉ ra **51% số lượng license phần mềm mua về bị bỏ xó hoàn toàn**, và người dùng cá nhân lãng phí hơn **85% dung lượng tính toán provisioned** hàng tháng trên 5-10 gói thuê bao riêng rẽ $20-$30 (ChatGPT, Claude, Perplexity, Cursor, Midjourney). Hơn 88% dòng tiền chi tiêu phần mềm mỗi tháng là lãng phí không thể thu hồi.
 
 ```
 +----------------------------------------------------------------------------------------------------+
@@ -205,10 +208,9 @@ Không một giải pháp nào hiện nay đáp ứng được cả 3 tiêu chu�
 +----------------------------------------------------------------------------------------------------+
 ```
 
-* **Vị Thế Chiến Lược Của HAICHAIN:** HAICHAIN không tự mình xây dựng các công cụ phần mềm ứng dụng để đối đầu với các công ty SaaS. Thay vào đó, HAICHAIN cung cấp **đường ray thanh toán mật mã phổ quát (Bán Xẻng)** để cho phép các nhà phát triển AI (Người Đào Vàng) thương mại hóa sản phẩm theo từng vi giao dịch execution. Người dùng chỉ cần cấp một "Hũ tiền chi tiêu" \$5.00 hoặc \$10.00; các bot chỉ trừ tiền nano-cents khi thực sự chạy xong tác vụ. Chi phí thực tế mỗi tháng giảm từ **\$150.00 xuống còn \$3.40**, giải phóng doanh nghiệp hoàn toàn khỏi "gông cùm thuê bao".
+* **Vị Thế Chiến Lược Của HAICHAIN:** HAICHAIN không tự mình xây dựng các công cụ phần mềm ứng dụng để đối đầu với các công ty SaaS. Thay vào đó, HAICHAIN cung cấp **đường ray thanh toán mật mã phổ quát (Bán Xẻng)** để cho phép các nhà phát triển AI (Người Đào Vàng) thương mại hóa sản phẩm theo từng vi giao dịch execution. Người dùng chỉ cần cấp một "Hũ tiền chi tiêu" $5.00 hoặc $10.00; các bot chỉ trừ tiền nano-cents khi thực sự chạy xong tác vụ. Chi phí thực tế mỗi tháng giảm từ **$150.00 xuống còn $3.40**, giải phóng doanh nghiệp hoàn toàn khỏi "gông cùm thuê bao".
 
 ---
-
 
 ### 2.2. Cổng Gateway "Con Ngựa Thành Troy" 1-Dòng Mã & Lợi Thế Đè Bẹp Stripe / Coinbase AgentKit
 Để chinh phục hàng triệu lập trình viên AI mà không bắt họ phải học lại các khái niệm Web3 phức tạp, Haichain cung cấp **Cổng Gateway 1-Dòng Mã (1-Line Drop-in Gateway)**:
@@ -239,7 +241,6 @@ Kiến trúc này tạo ra hai đòn bẩy thâm nhập thị trường (GTM Wed
 1. **Lợi thế đè bẹp Stripe (Rẻ hơn 95%):** Stripe thu phí cố định 0.30 USD + 2.9% cho mỗi lần quẹt thẻ. Nếu một tác tử thực hiện 1.000 lần gọi công cụ trị giá 0.005 USD, dùng Stripe sẽ tiêu tốn 300 USD tiền phí trên 5 USD tiền điện toán (mức phí vô lý 6.000%). Haichain nén hàng ngàn vi giao dịch thành một bản ghi bù trừ 771 bytes, đưa chi phí thực tế xuống **dưới 0.0001 USD cho mỗi lần gọi (tiết kiệm hơn 95%)**.
 2. **Lợi thế phòng thủ vượt trội Coinbase AgentKit:** AgentKit của Coinbase yêu cầu mỗi con bot phải tự giữ token và khóa riêng trên ví chuỗi. Nếu bot bị tấn công Prompt Injection, kẻ xấu sẽ rút cạn 100% ví. Haichain kiểm soát qua **Cây Năng Lực Phân Tầng (HCT BIP-32)** và PDA Tự Hủy: ngay cả khi bị kiểm soát hoàn toàn, thiệt hại tối đa của kẻ tấn công chỉ là **0.05 USD** cho phiên làm việc đó.
 
-
 ---
 
 ## CHƯƠNG 3: KIẾN TRÚC TRẢI NGHIỆM VÔ HÌNH & CHUẨN MỰC "THE MOM TEST"
@@ -264,13 +265,12 @@ Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phươn
 
 * **Toàn cầu:** Apple Pay, Google Pay, thẻ Visa/Mastercard (thông qua hạ tầng đối tác cổng thanh toán được cấp phép).
 * **Việt Nam & Đông Nam Á:** Quét mã QR động (Instant QR), tiền tự động quy đổi tức thì sang USDT thông qua các kênh đối tác thanh khoản hợp pháp.
-* **Bao cấp phí gas (Gasless Paymaster):** Máy chủ chuyển tiếp của giao thức tự động thanh toán toàn bộ phí mạng Solana. Người dùng nạp \$10.00 thì tài khoản có đúng chuẩn xác \$10.00 để sử dụng.
+* **Bao cấp phí gas (Gasless Paymaster):** Máy chủ chuyển tiếp của giao thức tự động thanh toán toàn bộ phí mạng Solana. Người dùng nạp $10.00 thì tài khoản có đúng chuẩn xác $10.00 để sử dụng.
 
 > [!NOTE]
 > **MINH BẠCH KỸ THUẬT & RANH GIỚI TRIỂN KHAI (TECHNICAL GROUND TRUTH):**
 > 1. **WebAuthn Biometric Security:** Trên bản thử nghiệm Devnet, giao diện ứng dụng Hardened Biometric Vault (AES-256-GCM + PBKDF2) bảo vệ sinh trắc học cục bộ. Khi phát hành Mainnet thương mại, hệ thống tích hợp trực tiếp mạng lưới MPC Enclave chuyên dụng (Turnkey / Privy) để chuyển giao chữ ký P-256 sang Ed25519 với cấp độ bảo mật ngân hàng.
 > 2. **Cổng nạp Fiat (Apple Pay / Card):** Môi trường Devnet hỗ trợ 100% nạp rút on-chain thực tế qua Solana Web3 Wallet và 1-Click Devnet Faucet. Luồng Apple Pay / Thẻ tín dụng trên bản thử nghiệm đóng vai trò Mô phỏng Trải nghiệm Người dùng (Interactive UX Prototype) và sẽ được kích hoạt kết nối API ngân hàng thực tế (Stripe Onramp / Stably) trong đợt phát hành Mainnet chính thức.
-
 
 #### Mạng Lưới Khớp Lệnh Ý Định (Zero-Custody Intent Solvers) & Màng Lọc Tuân Thủ ZK-AML
 Để hấp thụ thanh khoản khổng lồ từ các mạng lưới bên ngoài (như TRON TRC-20, Ethereum, Bitcoin) mà không đẩy hệ thống vào nguy cơ bị hack cầu nối hoặc dính líu đến dòng tiền bẩn, Haichain loại bỏ hoàn toàn mô hình cầu lưu ký truyền thống, thiết lập **Kiến Trúc Khớp Lệnh Ý Định Không Lưu Ký (Zero-Custody Intent) & Màng Lọc ZK-AML**:
@@ -298,7 +298,6 @@ Người dùng nạp tiền vào hũ chi tiêu của bot thông qua các phươn
 1. **Triệt Tiêu Nguy Cơ Bị Hack Cầu Nối (Zero-Bridge Risk):** Haichain **hoàn toàn không duy trì kho tiền lưu ký tập trung nào trên TRON hay các chuỗi khác**. Giao dịch là sự hoán đổi tức thì giữa người dùng và các Nhà Tạo Lập Thanh Khoản Thể Chế (Solvers). Rủi ro giữ vốn do các quỹ Solver tự chịu trách nhiệm, triệt tiêu 100% nguy cơ bị hack kho lưu ký như các thảm họa cầu nối lịch sử.
 2. **Màng Lọc ZK-AML Tự Động Kháng Cấm Vận:** Mọi dòng tiền nạp vào đều được kiểm toán tự động theo thời gian thực. Dòng tiền bẩn bị chặn đứng ngay lập tức, bảo đảm hệ thống bù trừ của Haichain luôn tinh khiết và tuân thủ nghiêm ngặt chuẩn mực FATF Travel Rule, bảo vệ vững chắc quan hệ hợp tác với các định chế ngân hàng (Visa, Apple Pay).
 3. **Chữ Ký Đa Chuỗi Tiền Tính Toán FROST (< 150ms):** Tách pha tạo nonce ngoại tuyến sang thời gian chạy ngầm, giúp tác tử AI tạo chữ ký đa chuỗi (trên Bitcoin, Ethereum, TRON) chỉ trong **dưới 150 mili-giây**, loại bỏ hoàn toàn độ trễ 3-5 giây của các mạng MPC truyền thống.
-
 
 ### 3.2. Cơ Chế Khóa Thời Gian Khẩn Cấp Hai Tầng & Phòng Vệ MEV
 Trong hệ thống phân tán, thời gian block (~400ms trên Solana) cần được phân tách rõ ràng với thời gian hoàn tất đồng thuận (Finality 32 slots, ~12.8 giây) và phòng thủ tuyệt đối trước các cuộc tấn công đua phí MEV Front-Running trong mempool. Haichain thiết kế **Kiến Trúc Bảo Vệ Vốn Hai Tầng (Two-Tier Capital Protection Architecture)**:
@@ -364,9 +363,12 @@ Nỗi sợ lớn nhất của người dùng Web2 khi nghe đến "Zero-Custody"
 
 ### 4.1. Ký Quỹ Co Giãn Cho Mô Hình Suy Luận Sâu (Elastic Reasoning Escrow)
 Các mô hình tư duy sâu (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking) sinh ra số lượng token suy luận nội tâm không thể dự đoán trước. HAICHAIN triển khai **Hợp đồng Ký quỹ Co giãn**:
-$$Escrow_{total} = C_{base} + \min(20\% \times C_{base}, Cap_{max})$$
-Khi tác vụ hoàn thành, chữ ký mật mã xác thực số lượng token thực tế đã dùng. Phần tiền thừa trong khoản đệm 20% lập tức được trả ngược lại hũ tiền của người dùng mà không mất bất kỳ khoản phí nào.
+$$
 
+Escrow_{total} = C_{base} + \min(20\% \times C_{base}, Cap_{max})
+
+$$
+Khi tác vụ hoàn thành, chữ ký mật mã xác thực số lượng token thực tế đã dùng. Phần tiền thừa trong khoản đệm 20% lập tức được trả ngược lại hũ tiền của người dùng mà không mất bất kỳ khoản phí nào.
 
 #### Mô Hình Đồng Hồ Hai Tầng (Asynchronous Dual-Clock) & Kênh Fast-Path Song Phương (< 80ms)
 Để ngăn ngừa tình trạng bế tắc nguyên tử (Atomic Deadlock) khi mạng Solana L1 gặp sự cố trễ slot hoặc nghẽn mạng cục bộ, nhân ký quỹ tách rời logic phiên vi mô khỏi nhịp slot toàn cầu thông qua **Mô Hình Đồng Hồ Hai Tầng (Asynchronous Dual-Clock)**:
@@ -386,8 +388,6 @@ Khi tác vụ hoàn thành, chữ ký mật mã xác thực số lượng token 
 
 1. **Bất Biến Khóa Thời Gian Tương Đối ($\Delta t$):** Thời hạn ký quỹ được tính bằng số giây vật lý tương đối ($\Delta t = 60\text{s}$) gắn với mốc thời gian Unix có chữ ký mật mã thay vì số slot tuyệt đối của Solana (`require!(current_unix_ts <= init_unix_ts + delta_t)`). Nhờ đó, nếu Solana bị chậm slot, hợp đồng suy luận vẫn giữ nguyên tính toàn vẹn và không bao giờ bị đóng băng tài sản.
 2. **Kênh Fast-Path Đơn Quyền (Single-Writer Channel):** Khi các giao dịch diễn ra thuần túy giữa 2 tác tử đối tác (chiếm hơn 90% tương tác trong bầy đàn), giao dịch được xử lý qua giao thức phát sóng Byzantine nhất quán, đạt tính hoàn tất (finality) trong **dưới 80 mili-giây** mà không cần xếp hàng vào lịch trình khối toàn cầu.
-
-
 
 #### Bảo Mật Đa TEE Dị Thể (Heterogeneous M-of-N Enclaves) & Trọng Tài Toán Học ZK
 Thấu hiểu rằng các môi trường thực thi đáng tin cậy (TEE) đơn lẻ từ một nhà sản xuất có thể tồn tại lỗ hổng kênh bên (Side-channel attacks như Spectre, Meltdown, AEPic) hoặc cửa sau vi mã, Haichain thiết lập **Cơ Chế Đồng Thuận Đa TEE Dị Thể kết hợp Trọng Tài ZK**:
@@ -418,19 +418,26 @@ Thấu hiểu rằng các môi trường thực thi đáng tin cậy (TEE) đơn
 1. **Khử Rủi Ro Phần Cứng Bằng Tính Đa Dạng Vi Mạch:** Các tác vụ suy luận nhạy cảm bắt buộc phải được chạy song song và chứng thực chéo qua **hai kiến trúc chip độc lập từ hai nhà sản xuất khác nhau** (ví dụ: GPU NVIDIA + CPU AMD). Lỗ hổng kênh bên của một dòng chip cụ thể hoàn toàn bị vô hiệu hóa bởi lớp bảo vệ của chip còn lại.
 2. **Trọng Tài Phân Xử Toán Học ZK:** TEE xử lý tính toán dấu phẩy động ở tốc độ nano-giây của GPU, nhưng khi có bất kỳ nghi vấn hay tranh chấp nào về tính đúng đắn của dữ liệu, vết thực thi sẽ được đưa vào máy ảo **Jolt/Lasso zkVM** để phân xử dứt điểm bằng toán học thuần túy.
 
-
 ### 4.2. Cây Năng Lực Phân Tầng (Hierarchical Capability Trees - HCT)
 Để vận hành hàng trăm bot con làm việc cùng lúc mà không gây tốn phí tạo tài khoản on-chain:
 
 * Các bot con nhận quyền chi tiêu được dẫn xuất toán học theo chuẩn phân tầng BIP-32:
-  $$Key_{child} = HMAC\text{-}SHA512(Key_{parent}, \text{Role} \parallel \text{Index})$$
+$$
+
+Key_{child} = HMAC\text{-}SHA512(Key_{parent}, \text{Role} \parallel \text{Index})
+
+$$
 
 * Toàn bộ quyền hạn của cả bầy đàn được nén chặt thành một mã băm Merkle 32-byte (`composite_root`).
 * Hợp đồng thông minh xác thực quyền hạn của bot con thông qua bằng chứng Merkle 8 tầng mà không cần khởi tạo trạng thái tài khoản tốn kém trên chuỗi.
 
 ### 4.3. Nén Trạng Thái Bằng Cây Merkle Đồng Thời (cAgents) & Vòng Đời PDA Tự Hủy Hoàn Tiền Thuê 100%
 Trên nền tảng Solana L1, mỗi tài khoản on-chain tạo mới bắt buộc phải ký gửi một khoản phí lưu trữ miễn trừ tiền thuê (Rent-Exempt reserve ~0.002039 SOL/tài khoản, tương đương ~0.40 USD tại mức giá 200 USD/SOL). Khi một doanh nghiệp hoặc mạng lưới kích hoạt 1.000.000 tác tử con (sub-agents), phiên đàm phán vi mô hoặc kênh thanh toán tạm thời, chi phí ký gửi tiền thuê sẽ lên tới:
-$$1.000.000 \times 0.002039\text{ SOL} \approx 2.039\text{ SOL} \approx 407.800\text{ USD}$$
+$$
+
+1.000.000 \times 0.002039\text{ SOL} \approx 2.039\text{ SOL} \approx 407.800\text{ USD}
+
+$$
 Khoản vốn này sẽ bị chôn vùi vĩnh viễn, tạo ra rào cản chi phí khổng lồ cho các ứng dụng bầy đàn AI. Haichain giải quyết triệt để vấn đề này thông qua kiến trúc lưu trữ hai vector tối ưu:
 
 ```
@@ -549,8 +556,6 @@ Khi máy chủ MCP được nạp, mô hình ngôn ngữ lớn (LLM) sẽ tự �
 
 ---
 
-
-
 ### 4.6. Định Vị Liên Minh: HAICHAIN Là Lớp Quản Trị Chính Sách & Chốt An Toàn Cho Chuẩn HTTP x402 và Solana Pay.sh
 
 Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị trường chứng kiến sự ra đời của các chuẩn giao tiếp thanh toán mở như **HTTP x402** (do Coinbase khởi xướng, được Linux Foundation bảo trợ cùng sự tham gia của Visa & Mastercard) và **Pay.sh** (sáng kiến hợp tác giữa Solana Foundation và Google Cloud ra mắt tháng 5/2026).
@@ -598,7 +603,11 @@ Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị
 Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần suất cao giữa hàng ngàn tác tử AI và các nhà cung cấp dịch vụ:
 
 1. **Bù trừ Ròng Đa phương Đối xứng:** Các dòng tiền qua lại được cấn trừ ngoại chuỗi:
-   $$NetBalance_i = \sum Inflow_i - \sum Outflow_i$$
+$$
+
+NetBalance_i = \sum Inflow_i - \sum Outflow_i
+
+$$
 
 2. **Hiệu Suất Nén 99.999%:** Hơn 1.000.000 vi giao dịch được nén vào một bản cập nhật trạng thái duy nhất.
 3. **Đóng Gói Khung Truyền IPv6 MTU (771 Bytes):** Toàn bộ dữ liệu quyết toán của một chu kỳ nằm gọn trong 771 bytes, tối ưu tuyệt đối cho khung truyền IPv6 MTU (1.232 bytes), loại bỏ hoàn toàn hiện tượng phân mảnh gói tin qua các tuyến cáp quang xuyên lục địa.
@@ -618,7 +627,6 @@ Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần su�
 * **Biên Lai Bù Trừ Có Chữ Ký Nguyên Tử:** Mỗi chu kỳ bù trừ sinh ra một **Lá Biên Lai Ký Mã Hóa (Atomic Signed Receipt Leaf)** thuộc quyền sở hữu mật mã độc quyền của khóa công khai tác tử và được nén thẳng vào lịch sử sổ cái on-chain thông qua cAgents.
 * **Cửa Thoát Khẩn Cấp Rút Tiền Tức Thì (Instant Net-Claim):** Khác với các Layer 2 của Ethereum bắt người dùng phải chờ 24 giờ để tranh chấp, bất kỳ tác tử nào nắm giữ Biên lai Ký mã hóa đều có quyền kích hoạt **Lệnh Rút Tiền Tức Thì (Instant Slashing Net-Claim)** trực tiếp từ Quỹ CHGB on-chain. Nếu node bù trừ ngừng phát sóng dữ liệu, tác tử tự rút 100% số dư ròng của mình ngay trong cùng slot mà không cần sự đồng ý của bất kỳ bên trung gian nào.
 
-
 #### Cấu Trúc Phân Tầng Vốn Senior/Junior Phòng Vệ Thiên Nga Đen Cho Quỹ CHGB
 Để ngăn chặn nguy cơ **Vòng xoáy tử thần (Liquidity Death Spiral)** khi thị trường tiền mã hóa sập 40% trong một đêm (khiến việc mang $HAISI ra bán tháo làm sụp đổ hoàn toàn thanh khoản quỹ), Haichain tái cấu trúc Quỹ CHGB theo **Mô Hình Phân Tầng Vốn Chuẩn Ngân Hàng Thể Chế (Senior/Junior Tranche)**:
 
@@ -637,7 +645,6 @@ Hệ thống Bù trừ Đa phương HAICHAIN xử lý các giao dịch tần su�
 
 1. **Tầng Cao Cấp (Senior Tranche - 80% Vốn):** Được trích lũy từ doanh thu phí bù trừ ròng của mạng lưới bằng 100% USDT/USDC và SOL nguyên chất. Khi một tác tử vỡ nợ giữa chu kỳ, Tầng Cao Cấp chi trả 1:1 ngay lập tức bằng stablecoin cho các đối tác, hoàn toàn không bán bất kỳ token `$HAISI` nào ra thị trường.
 2. **Bất Biến Chống Bán Tháo & Trái Phiếu Nợ Giảm Giá (dHAISI Bonds):** Nếu sự cố thanh lý toàn cầu vượt quá quy mô của Tầng Cao Cấp, hợp đồng thông minh cấm tuyệt đối việc xả `$HAISI` lên các sàn giao dịch. Thay vào đó, giao thức tự động phát hành **Trái Phiếu Nợ Haichain (dHAISI Bonds)** với mức chiết khấu 15% cho các quỹ tạo lập thị trường, được hoàn trả dần trong 90 ngày từ dòng tiền phí vận hành thực tế của hệ thống.
-
 
 ---
 
@@ -660,7 +667,11 @@ HAICHAIN giải quyết triệt để thách thức này thông qua kiến trúc
 
 1. **Khóa Ký Quỹ Ban Đầu (On-chain Escrow Lock):** Khi khởi tạo phiên làm việc, Agent khóa một lượng quỹ nhỏ (ví dụ $1.00 USDT) từ Spending Pot vào một tài khoản PDA chuyên dụng của State Channel trên Solana L1.
 2. **Ký Luồng Siêu Tốc Ngoài Chuỗi (Off-chain Tick Signatures < 5ms):** Trong suốt quá trình nhận luồng phản hồi từ AI Provider (stream từng cụm token), Agent liên tục ký các vé điện tử vi mô (Micro-Vouchers) bằng cặp khóa Ed25519 tại tầng RAM:
-   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+$$
+
+\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)
+
+$$
    Trong đó:
    * $\text{DOMAIN\_SEPARATOR}$: Chuỗi định danh phân tách miền chuẩn giao thức (`"haichain-v1-channel-settlement"`).
    * $\text{ClusterID}$: Định danh cụm mạng (Devnet, Testnet, Mainnet-Beta), triệt tiêu 100% rủi ro tấn công phát lại chữ ký xuyên môi trường (Cross-Cluster Replay Attack).
@@ -741,25 +752,39 @@ Việc phụ thuộc duy nhất vào mạng lưới chuyển tiếp Jito Bundles
 Ngay cả khi giao dịch đi qua các kênh RPC thông thường hoặc mạng gossip công khai, các cuộc tấn công kẹp thịt (sandwich attack), cướp quyền đi trước (front-running) và bắt chước lệnh đều bị vô hiệu hóa toán học bằng quy trình khóa hai giai đoạn:
 
 * **Giai Đoạn 1 - Đặt Cam Kết (Commit Phase, $t = 0$):** Tác tử phát hành một mã băm cam kết kèm tiền ký quỹ:
-  $$\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})$$
+$$
+
+\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})
+
+$$
   Do toàn bộ tham số giao dịch được che giấu sau mã băm Blake3 256-bit kháng va chạm, các bot tìm kiếm MEV hoàn toàn không thể giải mã để thực hiện chiến lược chèn lệnh thu lợi.
 
 * **Giai Đoạn 2 - Mở Khóa & Quyết Toán (Reveal Phase, $t \le 4\text{ slots}$):** Tác tử công bố bộ đôi giải mã $(\text{ExecutionPayload}, \text{SecretSalt})$. Hợp đồng thông minh `haichain-core` tính toán và xác thực tại chỗ:
-  $$\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})$$
+$$
+
+\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})
+
+$$
   Nếu bot MEV sao chép payload này để phát sóng song song, giao dịch của kẻ tấn công lập tức bị hủy bỏ (revert) vì mã băm đã bị khóa cứng với khóa công khai `CallerPubkey` của tác tử chính chủ. Nếu tác tử cố tình không mở khóa trước thời hạn quá hạn, một khoản phạt nhẹ sẽ được kích hoạt để triệt tiêu hành vi spam quyền chọn miễn phí.
 
 #### Bất Biến Phạt Lũy Tiến Theo Biến Động Thị Trường ($\Delta P \times \gamma$) Triệt Tiêu Quyền Chọn Miễn Phí
 Một lỗ hổng kinh điển của cơ chế Cam kết - Mở khóa (Commit-Reveal) là **Tấn công Đầu cơ Quyền chọn Miễn phí (Free-Option / Last-Look Griefing)**: bot đầu cơ cam kết lệnh ở slot 0, quan sát thị trường trong 4 slots, nếu giá đi ngược hướng bất lợi, nó cố tình không gửi lệnh Reveal, chấp nhận mất một khoản phí phạt nhỏ để né khoản lỗ khổng lồ.
 
 Haichain xóa bỏ hoàn toàn lỗ hổng này bằng **Bất Biến Phạt Lũy Tiến Theo Biến Động Thị Trường**:
-$$\text{Slashing Penalty} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times \frac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma\right) \quad (\text{với } \gamma = 1.5)$$
+$$
+
+\text{Slashing Penalty} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times \frac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma\right) \quad (\text{với } \gamma = 1.5)
+
+$$
 
 * **Triệt Tiêu Hoàn Toàn Động Cơ Kinh Tế:** Nếu tài sản biến động $2.0\%$ ngược chiều trong 4 slots, hành vi cố tình bùng lệnh Reveal sẽ kích hoạt lệnh phạt tự động trên chuỗi:
-  $$\text{Tiền Phạt} = \text{Giá Trị Lệnh} \times 2.0\% \times 1.5 = 3.0\% \text{ Giá Trị Lệnh}$$
+$$
+
+\text{Tiền Phạt} = \text{Giá Trị Lệnh} \times 2.0\% \times 1.5 = 3.0\% \text{ Giá Trị Lệnh}
+
+$$
 
 * Vì mức phạt luôn bằng **150% khoản lỗ muốn né tránh**, kỳ vọng toán học của hành vi đầu cơ này là **chắc chắn lỗ ($\mathbb{E}[\text{Lợi Nhuận}] < 0$)**. Cơ chế này diệt tận gốc hành vi trục lợi mà không cần đến mạng lưới Mã Hóa Khóa Ngưỡng (t-TLE) cồng kềnh làm nghẽn băng thông.
-
-
 
 ### 6.3. Khối Giao Dịch Đa Lệnh Lập Trình Được (PTB Chaining) Trên SVM
 Để khắc phục sự cứng nhắc của mô hình khai báo tài khoản tĩnh trên Solana Sealevel mà không cần đẻ ra các hợp đồng Router trung gian cồng kềnh tốn gas như ERC-4337 của Ethereum, Haichain tích hợp cơ chế **Khối Giao Dịch Lập Trình Được (Programmable Transaction Blocks - PTB)** vào nhân `haichain-core`:
@@ -789,7 +814,11 @@ $$\text{Slashing Penalty} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \t
 ### 6.7. Cầu Chì Tự Động AI Sentinel Watchdog: Tự Động Đóng Băng Dòng Tiền Khi Phát Hiện Hành Vi Bất Thường (< 10ms)
 Nhận thức được rằng **Độ trễ sinh học của con người (200ms - 30 giây) quá chậm so với tốc độ tính bằng nano-giây của bot AI**, Haichain không chỉ dựa vào Nút Dừng Khẩn Cấp thủ công mà trang bị thêm **Vệ Binh Tự Động (AI Sentinel Watchdog)** trực tiếp tại tầng biên:
 
-$$\text{Trigger Condition: } \left( \frac{\Delta \text{Calls}}{\Delta t} > \Theta_{\text{rate}} \right) \lor \left( \text{Similarity}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{loop}} \right) \lor \left( \text{Dest} \notin \mathcal{W}_{\text{whitelist}} \right)$$
+$$
+
+\text{Trigger Condition: } \left( \frac{\Delta \text{Calls}}{\Delta t} > \Theta_{\text{rate}} \right) \lor \left( \text{Similarity}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{loop}} \right) \lor \left( \text{Dest} \notin \mathcal{W}_{\text{whitelist}} \right)
+
+$$
 
 ```
             CƠ CHẾ CẦU CHÌ TỰ ĐỘNG AI SENTINEL WATCHDOG (< 10ms)
@@ -880,7 +909,11 @@ HAICHAIN vận hành cơ chế đường ray kép không rào cản:
 
 - **Người dùng phổ thông & Nhà phát triển nhỏ:** Trả phí từng câu lệnh bằng 100% USDC/USDT mà không bắt buộc phải mua hay cọc token $HAISI, giữ trọn vẹn trải nghiệm "Web3 vô hình".
 - **Doanh nghiệp & Cụm bầy đàn AI quy mô lớn:** Tùy chọn cọc $HAISI (`veHAISI`) để nhận các đặc quyền hạ tầng vượt trội:
-  $$\text{Hạn Mức Băng Thông} = k \cdot \sqrt{\text{Staked } \$HAISI \times \text{Thời Gian Khóa}}$$
+$$
+
+\text{Hạn Mức Băng Thông} = k \cdot \sqrt{\text{Staked \$HAISI} \times \text{Thời Gian Khóa}}
+
+$$
   * *Giảm phí bậc thang:* Chiết khấu từ 20% đến 80% phí bù trừ ròng khi khóa từ 3 đến 36 tháng.
   * *Làn ưu tiên độ trễ cực thấp (Low-Latency Fast Path):* Độ trễ định tuyến micro-escrow $< 5\text{ms}$.
   * *Bảo cấp phí giao dịch nền:* Miễn phí hoàn toàn các giao dịch dọn dẹp trạng thái nullifier rác.
@@ -894,13 +927,17 @@ Thay vì chi trả cổ tức bằng tiền mặt (vốn tạo rủi ro pháp l�
 ### 7.3. Cầu Chì Năng Lượng Đàn Hồi (E-AEQ) & Cơ Chế Chống Vỡ Nợ Do Nghẽn Mạng
 Để hóa giải triệt để **Bẫy Vỡ Nợ Do Phí Gas Tăng Đột Biến** khi mạng Solana có bão nghẽn, Haichain áp dụng **Hệ Số Năng Lượng Đàn Hồi (Dynamic Elastic Energy Multiplier)**:
 
-$$\text{Hệ Số Tiêu Hao Năng Lượng } M = 1 + lpha \cdot \max\left(0, \quad 
-rac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}
-ight)$$
+$$
+
+\text{Hệ Số Tiêu Hao Năng Lượng } M = 1 + \alpha \cdot \max\left(0, \quad 
+\frac{P_{\text{priority}} - P_{\text{baseline}}}{P_{\text{baseline}}}
+\right)
+
+$$
 
 *Trong đó:*
 
-* $P_{\text{baseline}} pprox 5.000\text{ lamports}$ là phí cơ sở chuẩn của Solana (~$0.001 ở SOL $200).
+* $P_{\text{baseline}} \approx 5.000\text{ lamports}$ là phí cơ sở chuẩn của Solana (~$0.001 ở SOL $200).
 * $P_{\text{priority}}$ là mức phí ưu tiên thị trường theo thời gian thực.
 * Khi mạng lưới nghẽn quá mức (phí ưu tiên tăng > 50 lần), hệ thống tự động phân luồng:
   - **Tác vụ khẩn cấp (Panic Kill-Switch):** Luôn được ưu tiên xử lý lập tức từ Quỹ khẩn cấp.
@@ -932,9 +969,9 @@ ight)$$
 ```
 
 * **Các Chỉ Số Hiệu Quả On-Chain Được Xác Minh:**
-  1. **Tổng Khối Lượng Bù Trừ Tích Lũy (Cumulative Settled Volume):** Đạt tối thiểu **$\$50,000,000\text{ USD}$** được bù trừ thực tế qua các hợp đồng Vault trên Solana.
-  2. **Tác Tử Hoạt Động Định Danh (Active Verified Agents):** Có tối thiểu **$10,000\text{ tác tử}$** duy trì Cây Năng Lực và có phát sinh giao dịch vi mô trong 30 ngày gần nhất.
-  3. **Doanh Thu Phí Ròng Giao Thức (Net Protocol Fee Yield):** Đạt tối thiểu **$\$25,000\text{ USD}$** (đối ứng chính xác với tỷ lệ phí $\gamma = 0.05\%$ trên $\$50.000.000\text{ USD}$ khối lượng, hoặc $\$50,000\text{ USD}$ ở mức phí $0,10\%$) đã nạp vào Kho bạc Giao thức.
+  1. **Tổng Khối Lượng Bù Trừ Tích Lũy (Cumulative Settled Volume):** Đạt tối thiểu **$50,000,000 USD** được bù trừ thực tế qua các hợp đồng Vault trên Solana.
+  2. **Tác Tử Hoạt Động Định Danh (Active Verified Agents):** Có tối thiểu **10,000 agents** duy trì Cây Năng Lực và có phát sinh giao dịch vi mô trong 30 ngày gần nhất.
+  3. **Doanh Thu Phí Ròng Giao Thức (Net Protocol Fee Yield):** Đạt tối thiểu **$25.000 USD** (đối ứng chính xác với tỷ lệ phí $\gamma = 0.05\%$ trên $50.000.000 USD khối lượng, hoặc $50.000 USD ở mức phí $0.10\%$) đã nạp vào Kho bạc Giao thức.
 
 * **Cơ Chế Tự Động Gia Hạn Khóa (Automatic Lock Extension):**
   Nếu đến tháng thứ 12 mà 1 trong 3 chỉ số trên chưa đạt, hợp đồng thông minh tự động đóng băng toàn bộ token thêm từng chu kỳ 6 tháng. Cơ chế này loại bỏ 100% khả năng đội ngũ rút token khi sản phẩm chưa có người dùng thật.
@@ -942,7 +979,7 @@ ight)$$
 ### 7.5. Mạng Lưới Relayer Phi Tập Trung Ký Quỹ & Cơ Chế Cắt Phạt (Decentralized Staked Relayer Mesh & Slashing Security)
 Để xóa bỏ điểm nghẽn tập trung khi mạng lưới mở rộng quy mô:
 
-* **Ký Quỹ Tối Thiểu (Relayer Bonding):** Bất kỳ thực thể nào muốn tham gia nén lô giao dịch và thu phí chuyển tiếp đều phải ký quỹ tối thiểu $100,000\text{ } \$HAISI$ vào hợp đồng `RelayerRegistryPDA`.
+* **Ký Quỹ Tối Thiểu (Relayer Bonding):** Bất kỳ thực thể nào muốn tham gia nén lô giao dịch và thu phí chuyển tiếp đều phải ký quỹ tối thiểu 100,000 $HAISI vào hợp đồng `RelayerRegistryPDA`.
 * **Cắt Phạt Tức Thì (Deterministic Slashing):**
   * *Làm trễ gói tin (> 3 slots):* Cắt phạt 5% số token ký quỹ để bồi thường cho người dùng.
   * *Gian lận hoặc phát tán chữ ký kép (Equivocation):* Cắt phạt **100% số token ký quỹ** và loại bỏ vĩnh viễn khỏi danh sách vận hành.
@@ -1032,7 +1069,7 @@ Hiểu rõ rằng **Bí mật kinh doanh, mã nguồn độc quyền và dữ li
 
 ---
 
-## CHƯƠNG 9: LỘ TRÌNH TIẾN HÓA $AI^2$ THÀNH BLOCKCHAIN L1 ĐỘC LẬP CHO AI
+## CHƯƠNG 9: LỘ TRÌNH TIẾN HÓA AI² THÀNH BLOCKCHAIN L1 ĐỘC LẬP CHO AI
 
 ```
                                LỘ TRÌNH TIẾN HÓA 3 GIAI ĐOẠN CỦA HAICHAIN
@@ -1050,8 +1087,8 @@ Hiểu rõ rằng **Bí mật kinh doanh, mã nguồn độc quyền và dữ li
    +------------------------+             +------------------------+             +------------------------+
 ```
 
-### 9.1. Giai Đoạn 1: Bệ Phóng Siêu Đòn Bẩy Trên Solana L1 & Xác Lập Bất Biến $AI^2$ (Tháng 0 - 18)
-HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai trực tiếp trên Solana L1, hiện thực hóa các bất biến nền tảng của triết lý **$AI^2$**:
+### 9.1. Giai Đoạn 1: Bệ Phóng Siêu Đòn Bẩy Trên Solana L1 & Xác Lập Bất Biến AI² (Tháng 0 - 18)
+HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai trực tiếp trên Solana L1, hiện thực hóa các bất biến nền tảng của triết lý **AI²**:
 
 * **Phân tầng quyền lực Master Owner (Actual Intelligence) vs Sub-Agent Signer (Artificial Intelligence):** Con người nắm quyền chủ quyền tối cao qua Passkey sinh trắc học; AI là cánh tay thực thi các giao dịch vi mô nano-cents thần tốc.
 * **Dây cương mật mã (Merkle Capability Leaf):** Đóng gói ý chí và ranh giới quản trị rủi ro của con người vào Merkle Root, ngăn chặn triệt để Prompt Injection.
@@ -1067,8 +1104,7 @@ HAICHAIN chiếm lĩnh thị trường thanh toán AI bằng cách triển khai 
 Khi khối lượng giao dịch vi mô của hàng triệu bot làm đầy block của Solana, HAICHAIN chuyển dịch sang Layer 2 Rollup sử dụng máy ảo SVM kết hợp Celestia/EigenDA làm lớp dữ liệu, đồng thời kích hoạt 2 trụ cột kinh tế cộng sinh:
 
 * **Kinh Tế Tri Thức Bản Quyền Cộng Sinh (Symbiotic Knowledge Marketplace):** Cho phép con người đóng gói Actual Intelligence (kinh nghiệm thực chiến, chuyên môn ngách) thành Prompt Assets/Skill Modules. AI sử dụng các tài sản này để phục vụ người dùng 24/7 và chia sẻ lợi nhuận tức thời (Streaming Royalties) về ví con người bằng USDT.
-* **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (thẩm định đạo đức, phê duyệt giao dịch tài chính nhạy cảm, phán đoán ngữ cảnh pháp lý chuyên sâu), AI tự động phát lệnh thanh toán vi mô (\$0.01 - \$0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
-
+* **AI Thuê Ngược Lại Con Người (Human-in-the-Loop Reverse Micro-Tasking):** Khi tác tử AI gặp phải các điểm mù (thẩm định đạo đức, phê duyệt giao dịch tài chính nhạy cảm, phán đoán ngữ cảnh pháp lý chuyên sâu), AI tự động phát lệnh thanh toán vi mô ($0.01 - $0.50 USDT) qua HTTP x402 để thuê con người giải quyết trong vài giây.
 
 #### Kiến Trúc L1 Neo Sâu & SVM Network Extension (Anchored SVM Rollup): Hóa Giải Bẫy Phân Mảnh Thanh Khoản
 Haichain bác bỏ hoàn toàn tư duy xây dựng một "Blockchain Cô Lập Kiểu Cũ (Siloed Ghost-Chain)" - nơi một dự án tự tách khỏi bệ phóng, tự cô lập khỏi nguồn tiền thế giới, mất đi tính khả kết (composability) của Solana và phải in hàng chục triệu USD lạm phát token để nuôi dàn validator riêng. Thay vào đó, Giai đoạn 3 của Haichain thiết lập **Kiến Trúc SVM Network Extension & Sovereign Rollup Neo Thanh Khoản (Anchored Liquidity SVM Extension)**:
@@ -1094,7 +1130,6 @@ Haichain bác bỏ hoàn toàn tư duy xây dựng một "Blockchain Cô Lập K
 2. **HAI-VM là Động Cơ Điện Toán & Mở Rộng Máy Ảo SVM:** Thay vì cạnh tranh không gian khối (blockspace) với các token meme hay bot chênh lệch giá trên Solana L1, HAI-VM hoạt động như một Execution Rollup / Network Extension chuyên biệt cho máy móc. Mọi lệnh giao dịch nano-giây, streaming payments và suy luận bầy đàn được xử lý tức thời với chi phí tiệm cận 0, định kỳ cuộn (rollup) và ghi cam kết mật mã (ZK State Root) về lại Solana L1.
 3. **Bảo Mật Tái Cọc Chia Sẻ (Shared Restaked Security: Dual-Staking SOL + $HAISI):** Mạng lưới node của HAI-VM được bảo chứng bởi các validator hàng đầu của chính Solana thông qua cơ chế tái cọc (Restaking). Các validator stake đồng thời SOL và $HAISI để bảo vệ mạng lưới, nhận thưởng từ doanh thu phí bù trừ giao thức, mang lại sức mạnh phòng thủ kinh tế hàng tỷ USD ngay từ ngày đầu mà không cần in thêm token lạm phát.
 
-
 ---
 
 ### 9.3. Giai Đoạn 3: Blockchain L1 Độc Lập & Mạng Lưới Siêu Trí Tuệ Phi Tập Trung Thật Sự (Tháng 36 Trở Đi)
@@ -1112,14 +1147,13 @@ HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, b
 * **Tốc Độ Xung Nhịp Ở Tầng Biên:** Tác tử tại các node mạng tiếp tục dùng **Blake3** cho mọi thao tác băm vi ký quỹ, đạt độ trễ dưới một phần triệu giây trên phần cứng tiêu chuẩn.
 * **Số Học Hóa Bằng Bảng Tra Cứu (Lookup zkVM):** Khi triển khai bằng chứng trạng thái cho HAI-VM ở Giai đoạn 3, Haichain ứng dụng kiến trúc **Jolt/Lasso zkVM & Binius (Binary Field Circle STARKs)**. Bằng cách sử dụng các Bảng Tra Cứu (Lookup Arguments), mạch ZK chứng minh trực tiếp các phép toán xoay bit và XOR của Blake3 trên trường nhị phân, giảm **hơn 90%** số lượng ràng buộc mạch và cho phép sinh bằng chứng ZK thời gian thực mà không làm suy giảm tốc độ xử lý của CPU.
 
-
 * **Cơ Chế Đồng Thuận Phân Tầng PoAW + PoAI (Proof of Actual Intelligence):**
   * *Tầng 1 (PoAW - Fast Path 50ms):* Validator GPU xác thực tính toán mô hình và thực thi nano-settlement ở quy mô **> 100.000 TPS**.
   * *Tầng 2 (PoAI - Wisdom Staking):* Khi AI gặp điểm mù nhận thức, ảo giác hay xung đột đạo đức, hội đồng chuyên gia con người tham gia thẩm định qua cơ chế ZK-Voting. Con người được thưởng token `$HAISI` trực tiếp cho việc cung cấp tri thức thực nghiệm tươi mới, giúp mạng lưới **miễn nhiễm hoàn toàn với Hội chứng Suy thoái Dữ liệu Tự hoại (Anti-MAD Engine)**.
 
 * **Mã Máy Cấp Nhân (OP_402_PAY):** Lệnh thanh toán vi mô được nhúng thẳng vào bytecode CPU của máy ảo HAI-VM, triệt tiêu hoàn toàn chi phí hợp đồng thông minh, biến việc luân chuyển giá trị của máy móc thành một primitive phần cứng.
 * **Định Danh Hợp Nhất & Trách Nhiệm Giải Trình (Unified Soulbound DID):** Mỗi tác tử AI đều được gắn một Soulbound Token (SBT) neo chặt vào khóa sinh trắc học Passkey của Con người bảo chứng, đảm bảo tuân thủ triệt để FATF và EU AI Act, loại bỏ hoàn toàn bot ẩn danh độc hại.
-* **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAISI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**\$5 Tỷ - \$10 Tỷ+ USD**).
+* **Chuyển Đổi Vốn Hóa 1:1:** Token SPL $HAISI chuyển đổi nguyên vẹn 1:1 sang Native Coin của chuỗi mới, đưa định giá dự án bước vào hàng ngũ cơ sở hạ tầng L1 toàn cầu (**$5 Tỷ - $10 Tỷ+ USD**).
 
 #### Kiến Trúc Kiểm Định Nhận Thức Phân Tầng (Dual-Track PoAI) & Bẫy Trinh Sát Ngẫu Nhiên
 Để hóa giải **Nghịch lý Phân tầng Trí tuệ** và ngăn chặn triệt để các trang trại clickbot hoặc bot AI giá rẻ cày nát cơ chế Proof-of-Actual-Intelligence (PoAI), hệ thống nhiệm vụ đảo chiều được phân lập thành hai đường ray nhận thức độc lập:
@@ -1148,39 +1182,74 @@ HAICHAIN chính thức kích hoạt mạng lưới Blockchain L1 độc lập, b
    * Người thẩm định bắt buộc phải sở hữu **Thẻ Danh Tính Linh Hồn (Soulbound Token - SBT)** chứng nhận chuyên môn và **phải ký quỹ một lượng token $HAISI làm tài sản bảo đảm**.
    * Thù lao được tài trợ trực tiếp từ các quỹ R&D của đối tác doanh nghiệp đang cần dữ liệu huấn luyện sạch. Mọi hành vi đánh giá sai lệch hoặc cẩu thả đều dẫn đến việc tịch thu (slash) toàn bộ số $HAISI ký quỹ.
 
-
 ---
 
 ## CHƯƠNG 10: CÁC ĐỊNH LÝ TOÁN HỌC HÌNH THỨC & KIỂM CHỨNG BẤT BIẾN
 
 ### Định Lý 1: Bảo Toàn Tài Sản Ký Quỹ (Bất Biến Chống Lạm Phát Ảo)
 *Giả sử $S_t$ là trạng thái toàn cục của hợp đồng HAICHAIN tại slot $t$. Với bất kỳ hũ tiền (vault) $V$ của người dùng và tài khoản token chuyên dụng $ATA_V$:*
-$$\forall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)$$
+$$
+
+\forall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)
+
+$$
 *Chứng minh bằng quy nạp toán học:*
 
 1. **Bước cơ sở ($t = 0$):** Tại thời điểm khởi tạo hũ tiền, $\text{ConfirmedBalance}(V, 0) = 0$ và $\text{TokenBalance}(ATA_V, 0) = 0$. Bất biến thỏa mãn.
 2. **Bước nạp tiền ($\Delta D > 0$):** Hợp đồng bắt buộc thực thi chuyển token CPI nguyên tử vào $ATA_V$ trước khi cập nhật số dư sổ cái:
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D$$
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D
+
+$$
 
 3. **Bước chi tiêu vi mô ($\Delta S > 0$):** Hợp đồng nạp lại số dư thực tế từ sysvar hệ thống. Giao dịch lập tức bị hủy bỏ (revert) với lỗi `InsufficientConfirmedBalance` (0x1781) nếu $\Delta S > \text{ConfirmedBalance}(V, t)$, và bị hủy bỏ với lỗi `EulerDriftBalanceMismatch` (0x177c) nếu $\text{TokenBalance}(ATA_V, t) < \text{ConfirmedBalance}(V, t)$.
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S$$
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S
+
+$$
 *Theo nguyên lý quy nạp toán học, bất biến bảo toàn tài sản được duy trì qua mọi bước chuyển trạng thái. $\blacksquare$*
 
 ### Định Lý 2: Giới Hạn Tối Đa Thiệt Hại Do Prompt Injection
 *Giả sử $L = (\text{Pubkey}, \text{MaxSpend}, \text{ExpirySlot}, \text{Nonce})$ là một lá năng lực Merkle đã được phê duyệt với gốc Merkle $R$. Nếu một tác tử AI bị kẻ tấn công đầu độc bộ nhớ và chiếm đoạt 100%, giá trị tối đa có thể bị chiếm đoạt $E$ thỏa mãn:*
-$$E \le \text{MaxSpend}$$
+$$
+
+E \le \text{MaxSpend}
+
+$$
 *Chứng minh:* Bất kỳ lệnh chi tiêu nào cũng đòi hỏi một bằng chứng bao hàm Merkle $\pi$ sao cho $\text{Verify}(R, L, \pi) = \text{true}$. Vì hợp đồng thông minh cưỡng chế kiểm tra:
-$$\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})$$
+$$
+
+\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})
+
+$$
 và ghi nhận nullifier để chống chi tiêu lặp lại (double-spend), mọi nỗ lực chi tiêu vượt quá $amount > L.\text{MaxSpend}$ hoặc chuyển tiền sai địa chỉ merchant đã định sẵn đều dẫn đến hủy bỏ giao dịch nguyên tử. $\blacksquare$
 
 ### Định Lý 3: Tính Trung Hòa Phí Thuê Trạng Thái & Bất Biến Triệt Tiêu Tấn Công MEV
 Gọi $S_{ephem}$ là tập hợp các tài khoản PDA đàm phán tạm thời được khởi tạo trong chu kỳ bù trừ $\tau$, và $R(A)$ là số lượng lamports tiền thuê trạng thái bị khóa trong tài khoản $A$.
-$$\lim_{t \to \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0$$
+$$
+
+\lim_{t \to \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0
+
+$$
 *Chứng minh:* Bởi vì bất biến kernel cưỡng bức chỉ thị `close = user_authority` một cách nguyên tử ngay khi kết thúc chỉ thị bù trừ, 100% lamports được giải phóng và chuyển hoàn về ví gốc của người dùng tại slot $k \le \tau_{end}$.
 Đồng thời, dưới cơ chế Cam kết Mật mã Commit-Reveal:
-$$\forall \text{Bot MEV } M, \quad \mathbb{E}[\text{Lợi Nhuận MEV} \mid \text{CommitPhase}] = 0$$
+$$
+
+\forall \text{Bot MEV } M, \quad \mathbb{E}[\text{Lợi Nhuận MEV} \mid \text{CommitPhase}] = 0
+
+$$
 Bởi vì $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$ che giấu $\text{Payload}$ với entropy 256-bit và ràng buộc thẩm quyền độc quyền với `CallerPubkey`, kẻ tấn công trích xuất 0 bit thông tin kinh tế có thể khai thác và không thể giả mạo lệnh gọi nếu không sở hữu đồng thời khóa bí mật của `Caller` và chuỗi ngẫu nhiên `Salt`. $\blacksquare$
 
 ---
@@ -1213,7 +1282,7 @@ Bởi vì $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt
 
 ---
 
-## CHƯƠNG 12: KẾT LUẬN & BẢN TUYÊN NGÔN ĐỊNH VỊ $AI^2$
+## CHƯƠNG 12: KẾT LUẬN & BẢN TUYÊN NGÔN ĐỊNH VỊ AI²
 
 HAICHAIN xóa bỏ ranh giới ngăn cách giữa Trí tuệ Nhân tạo đỉnh cao, Trí tuệ Thật sự của Con người và Tài chính Phi tập trung:
 
@@ -1228,7 +1297,7 @@ HAICHAIN xóa bỏ ranh giới ngăn cách giữa Trí tuệ Nhân tạo đỉnh
 Mọi con số, chỉ số kỹ thuật, dữ liệu thiệt hại lịch sử, giới hạn vật lý và đạo luật pháp lý được trích dẫn trong bản Sách Trắng này đều được kiểm chứng chéo dựa trên các báo cáo pháp y bảo mật, chuẩn mực kỹ nghệ quốc tế, bài báo khoa học bình duyệt (peer-reviewed) và văn bản pháp luật chính thức:
 
 ### I. Chuẩn Mực Hạ Tầng Thanh Toán, Phí Vi Mô & Gói Tin Mạng
-* `[1]` **Bảng Biểu Phí Chính Thức của Stripe Inc. (2024-2026):** Mức phí quẹt thẻ tiêu chuẩn: $2.9\% + \$0.30$ cho mỗi giao dịch thành công. Minh chứng cho sự bất khả thi về mặt toán học của vi thanh toán (một lệnh gọi API \$0.0002 chịu phí sàn gấp 150.000% giá trị dịch vụ). Nguồn: `https://stripe.com/pricing`.
+* `[1]` **Bảng Biểu Phí Chính Thức của Stripe Inc. (2024-2026):** Mức phí quẹt thẻ tiêu chuẩn: $2.9\% + $0.30$ cho mỗi giao dịch thành công. Minh chứng cho sự bất khả thi về mặt toán học của vi thanh toán (một lệnh gọi API $0.0002 chịu phí sàn gấp 150.000% giá trị dịch vụ). Nguồn: `https://stripe.com/pricing`.
 * `[2]` **Chuẩn Mạng IETF RFC 8200 (Đặc tả Giao thức IPv6):** Deering, S., & Hinden, R. *Internet Protocol, Version 6 (IPv6) Specification*, Mục 5 (Giới hạn Kích thước Gói tin): Quy định kích thước MTU tối thiểu của liên kết là 1.280 octets (bytes).
 * `[3]` **Đặc Tả Kích Thước Gói Tin Cốt Lõi Solana Foundation:** Định nghĩa kích thước gói tin mạng: `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1.280 - 40\text{ bytes IPv6 header} - 8\text{ bytes UDP header} = 1.232\text{ bytes}$). Chứng minh gói tin bù trừ 771 bytes của HAICHAIN nằm trọn vẹn trong 1 khung truyền dẫn không phân mảnh.
 
@@ -1291,9 +1360,21 @@ Trong Hạt nhân HAICHAIN v1.1, mọi năng lực chi tiêu do Chủ Sở Hữu
 
 #### Phân Tách Miền 3 Tầng (3-Layer Domain Separation)
 Để triệt tiêu hoàn toàn các cuộc tấn công second-preimage và length-extension:
-$$\text{leaf\_hash} = \text{SHA256}(0\text{x}00 \parallel \text{"HAICHAIN-CAPLEAF-V1"} \parallel \text{program\_id} \parallel \text{leaf\_bytes})$$
-$$\text{node}(l, r) = \text{SHA256}(0\text{x}01 \parallel l \parallel r)$$
-$$\text{EMPTY} = \text{SHA256}(0\text{x}02 \parallel \text{"HAICHAIN-CAPLEAF-V1"})$$
+$$
+
+\text{leaf\_hash} = \text{SHA256}(0\text{x}00 \parallel \text{"HAICHAIN-CAPLEAF-V1"} \parallel \text{program\_id} \parallel \text{leaf\_bytes})
+
+$$
+$$
+
+\text{node}(l, r) = \text{SHA256}(0\text{x}01 \parallel l \parallel r)
+
+$$
+$$
+
+\text{EMPTY} = \text{SHA256}(0\text{x}02 \parallel \text{"HAICHAIN-CAPLEAF-V1"})
+
+$$
 Cây Merkle được thiết lập ở độ sâu cố định $d = 12$ ($4.096$ vị trí lá, kích thước proof cố định $384\text{ bytes}$), loại bỏ hoàn toàn lỗ hổng biến thiên độ sâu cây.
 
 ---
@@ -1307,7 +1388,11 @@ Hạt nhân on-chain tách bạch việc nộp bằng chứng Merkle khỏi lu�
 
 #### Cưỡng Chế Tài Khoản Thụ Hưởng Chuẩn Tắc (Canonical Payee Safety)
 Trong mọi lệnh thanh toán, tài khoản nhận tiền được suy diễn trực tiếp on-chain:
-$$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{grant.merchant}, \text{pot.token\_mint})$$
+$$
+
+\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{grant.merchant}, \text{pot.token\_mint})
+
+$$
 Mọi nỗ lực của Agent bị chiếm quyền nhằm trích xuất tiền về tài khoản ATA giả mạo đều bị hệ điều hành SVM chặn đứng ngay lập tức.
 
 ---
@@ -1327,10 +1412,16 @@ Mọi nỗ lực của Agent bị chiếm quyền nhằm trích xuất tiền v�
 
 ### 12.4. Mô Hình Đe Dọa & Định Lý 6.1 Về Trần Thiệt Hại Tối Đa ($E_{\text{theft}}$)
 Gọi $\tau$ là tổng thời gian phản ứng từ khi phát sinh voucher gian lận đến khi lệnh Panic hạ cánh on-chain:
-$$\tau = t_{\text{detect}} + t_{\text{owner}} + t_{\text{land}} \le 12.0\text{s}$$
+$$
+
+\tau = t_{\text{detect}} + t_{\text{owner}} + t_{\text{land}} \le 12.0\text{s}
+
+$$
 Trong kịch bản tồi tệ nhất $T_4$ (lộ hoàn toàn khóa Ed25519 của Agent và Merchant trong Merkle tree thông đồng lừa đảo), tổng thiệt hại tối đa $E_{\text{theft}}(\tau)$ bị khóa cứng trong:
 
-$$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(\tau)\right)$$
+$$
+
+E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(\tau)\right)$$
 
 **Hệ quả định chế:** Trong 100% các cuộc tấn công Prompt Injection thông thường ($T_1$), $E_{\text{theft}} = 0$. Trong kịch bản lộ khóa toàn bộ ($T_4$), thiệt hại bị chặn trên bởi $\min(K, W_p)$, bảo toàn hơn $99.9\%$ vốn của doanh nghiệp.
 

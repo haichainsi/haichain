@@ -24,7 +24,7 @@
 ## 目录 (TABLE OF CONTENTS)
 
 1. [执行摘要与前言 (Executive Summary & Abstract)](#1-执行摘要与前言-executive-summary--abstract)
-2. [$AI^2$ 基础认知哲学: 人类主权与机器极速 (The Foundational $AI^2$ Epistemology)](#2-ai2-基础认知哲学-人类主权与机器极速-human-sovereignty--machine-velocity)
+2. [AI² 基础认知哲学: 人类主权与机器极速 (The Foundational AI² Epistemology)](#2-ai2-基础认知哲学-人类主权与机器极速-human-sovereignty--machine-velocity)
 3. [自主机器财务三难困境与 SaaS 到智能体范式跃迁 (The Autonomous Machine Financial Trilemma)](#3-自主机器财务三难困境与-saas-到智能体范式跃迁-the-autonomous-machine-financial-trilemma--the-saas-to-agentic-continuum)
   - [3.1. 后 SaaS 经济学: 从按席位订阅陷阱中解放微效用价值](#31-后-saas-经济学-从按席位订阅陷阱中解放微效用价值)
   - [3.2. 行业竞争格局实证审查: 现有 AI 与加密架构的致命盲区](#32-行业竞争格局实证审查-现有-ai-与加密架构的致命盲区)
@@ -73,7 +73,7 @@
 
 10. [形式化数学定理与不变量证明 (Formal Mathematical Theorems)](#10-形式化数学定理与不变量证明)
 11. [战略发展路线图与工程里程碑承诺 (Strategic Roadmap)](#11-战略发展路线图与工程里程碑承诺)
-12. [总结与 $AI^2$ 宣言 (Conclusion & The $AI^2$ Manifesto)](#12-总结与-ai2-宣言)
+12. [总结与 AI² 宣言 (Conclusion & The AI² Manifesto)](#12-总结与-ai2-宣言)
 13. [参考文献与实证引文索引 (References & Citations Index)](#13-参考文献与实证引文索引)
 
 ---
@@ -89,9 +89,13 @@
 2. **存在性对齐断裂 (Existential Alignment Gap):** 中心化 AI 剥夺了人类的主权能动性，将全球 80 亿人降级为被替代的经济难民或被动的廉价数据农场。
 3. **微观经济链路断裂 (Micro-Economic Disconnection):** 前沿大语言模型 (LLM) 在毫秒微秒级进行多步复杂推理，而现有的传统金融管道 (Stripe、Visa、以及遭遇 Gas 暴涨的以太坊 EVM) 根本无法在不产生 150,000% 摩擦成本的前提下清算几分之几美分的微型运算。
 
-**HAICHAIN** (`haichain.si`) 断然拒绝中心化单一机器神灵的错误前提。相反，它开辟了全新的 **$\mathbf{AI^2}$ (AI 平方)** 范式:
+**HAICHAIN** (`haichain.si`) 断然拒绝中心化单一机器神灵的错误前提。相反，它开辟了全新的 **AI² (AI 平方)** 范式:
+
 $$\mathbf{Hai} = \text{Human (人类)} + \text{AI (人工智能)}$$
-$$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE (人工智能)} \times \text{ACTUAL INTELLIGENCE (人类实际智能)}$$
+
+$$\mathbf{HaiChain} \iff \mathbf{AI²} = \text{ARTIFICIAL INTELLIGENCE (人工智能)} \times \text{ACTUAL INTELLIGENCE (人类实际智能)}
+
+$$
 其中，**人工智能 ($\text{AI}_1$)** 提供无穷无尽的纳秒级计算吞吐量、算法搜索与无边界的横向扩展能力；而 **人类实际智能 ($\text{AI}_2$)** 则注入源于生物进化的道德直觉、分布外 (OOD) 推理能力、认识论的客观现实锚点以及人类最终的主权意图。
 
 > **致机构资本分配者与核心开发者的特别说明:**  
@@ -124,7 +128,7 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE (人工�
 
 ---
 
-## 2. $AI^2$ 基础认知哲学: 人类主权与机器极速 (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
+## 2. AI² 基础认知哲学: 人类主权与机器极速 (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
 
 **HaiChain** 这一命名体系绝非营销口号，它在密码学与数学逻辑上编码了一个不可篡改的不变量:
 
@@ -158,9 +162,13 @@ $$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE (人工�
 * **认识论真实世界锚点 (Epistemic Ground-Truth):** 人类时刻与客观物理世界和复杂社会经济现实互动，提供最纯粹的实证经验反馈。
 * **定性道德仲裁:** 人类天生具备对公平、正义与伦理不变量的深层理解，这些维度无法通过简单的损失函数最小化来替代。
 
-### 2.3. $AI^2$ 共生综合定理 (The $AI^2$ Synthesis Theorem)
+### 2.3. AI² 共生综合定理 (The AI² Synthesis Theorem)
 真正的超级智能 (Superintelligence - SI) 既无法仅靠硅基独立达成 (那将产生脆弱、失真的虚幻计算)，也无法仅凭人类生物学实现 (生物学严格受限于神经传导与肌肉反应延迟)。**超级智能是人工智能与人类实际智能的乘积:**
-$$\mathbf{SI} = f(\text{AI}_1, \text{AI}_2) \iff \text{Velocity (机器极速)} \times \text{Truth (人类真实)}$$
+$$
+
+\mathbf{SI} = f(\text{AI}_1, \text{AI}_2) \iff \text{Velocity (机器极速)} \times \text{Truth (人类真实)}
+
+$$
 HAICHAIN 正是作为底层的密码学价值与协调载体，将这两种伟力凝聚为一个永生、繁荣的共生超级有机体。
 
 ---
@@ -296,7 +304,11 @@ client = openai.OpenAI(
    * *架构缺陷:* 这两大框架都将高权限私钥或原始 MPC 签名凭证直接暴露在智能体的运行环境中。
    * *实证攻击途径:* 当自主智能体抓取不可信的第三方数据时 (例如爬取带有攻击指令的网页、解析恶意邮件或 Discord 注入代码)，间接提示词注入攻击会重写智能体内部的目标函数。被劫持的模型会在后台静默执行一条无任何约束的 `wallet.transfer_all()` 指令。
    * *HAICHAIN 的数学免疫力:* HAICHAIN 绝不给予智能体接触根私钥的权限。智能体仅作为临时 `sub_agent_signers` 签署凭证，严格受到链上 **Merkle 能力叶节点** 约束:
-     $$\text{Leaf} := \text{Blake3}(\text{SubAgentPubkey} \,\|\, \text{MaxAmount} \,\|\, \text{MerchantATA} \,\|\, \text{ExpirySlot} \,\|\, \text{Nonce})$$
+$$
+
+\text{Leaf} := \text{Blake3}(\text{SubAgentPubkey} \,\|\, \text{MaxAmount} \,\|\, \text{MerchantATA} \,\|\, \text{ExpirySlot} \,\|\, \text{Nonce})
+
+$$
      即便大模型在认知层面被 100% 彻底攻破，链上 Solana / HAI-VM 内核也会强制执行确定性边界。任何试图超额支出哪怕 $0.05 或将资金转移至未经许可地址的行为，都会在链上被原子化回滚并抛出 `ExceedsAuthorizedCapability` (0x1777)。
 
 2. **Bittensor / TAO (高延迟与闭环自噬退化危机):**
@@ -447,7 +459,11 @@ HAICHAIN 严格确立并贯彻 **"妈妈测试公理" (The Mom-Test Axiom)**: *�
 为防止微结算在高频写入时产生状态争用与锁阻塞:
 
 * 协议为主流 API 服务商预先分配了 **32 个物理分区的防竞争关联代币账户 (ATAs)**:
-  $$\text{PartitionIndex} = \text{Blake3}(\text{Nonce}) \pmod{32}$$
+$$
+
+\text{PartitionIndex} = \text{Blake3}(\text{Nonce}) \pmod{32}
+
+$$
 
 * 这使得 Solana 的 Sealevel 运行时调度器能够将各智能体的支付交易同时并行分发至 32 个 CPU 物理核心上并发处理，彻底告别管道串行等待。
 
@@ -486,23 +502,39 @@ HAICHAIN 严格确立并贯彻 **"妈妈测试公理" (The Mom-Test Axiom)**: *�
 即便交易被公开 RPC 捕获，任何有毒 MEV (三明治攻击、抢先交易套利) 在密码学层面也是绝对不可行的:
 
 1. **提交阶段 ($t = 0$):** 智能体将带有抵押的承诺状态哈希上链:
-   $$\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})$$
+$$
+
+\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})
+
+$$
    由于具体的执行载荷、目标合约调用和金额完全隐藏在 256 位抗碰撞哈希背后，任何外部抢先套利者都无法解析其真实意图。
 
 2. **揭示与原子执行阶段 ($t \le 4\text{ 个槽位}$):** 智能体在指定窗口内提交原像元组 $(\text{ExecutionPayload}, \text{SecretSalt})$。Solana 智能合约内核强制执行:
-   $$\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})$$
+$$
+
+\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})
+
+$$
    任何恶意套利机器人即便在同一槽位内强行复制该揭示载荷，也会因为 `CallerPubkey` 身份不匹配而瞬间失败。若智能体超时拒绝揭示，预扣押金将被罚没，彻底遏制投机垃圾交易。
 
 #### 3. 动态波动率指数惩罚不变量 ($\Delta P \times \gamma$)
 传统提交-揭示方案的一个经典博弈漏洞是 **"免费期权恶意反悔 (Last-Look Griefing)"**: 攻击者在 Slot 0 发起提交，在接下来的 4 个槽位内密切观察二级市场价格变动；若市场波动对自己不利，便故意不发送 Reveal 交易，宁愿损失微小的基础押金以规避巨大的市场亏损。
 
 HAICHAIN 引入了 **波动率指数动态惩罚不变量**，彻底封死了这一投机套利空间:
-$$\text{罚没金额 (Slashing Penalty)} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times 
-rac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma
-ight) \quad (\text{其中 } \gamma = 1.5)$$
+$$
+
+\text{罚没金额 (Slashing Penalty)} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times 
+\frac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma
+\right) \quad (\text{其中 } \gamma = 1.5)
+
+$$
 
 * **数学博弈论层面的降维打击:** 若某标的资产在 4 个槽位内向不利于提交者的方向跳变了 $2.0\%$，拒绝履行揭示将引发链上强制执行惩罚:
-  $$\text{罚没金额} = \text{OrderValue} \times 2.0\% \times 1.5 = 3.0\% \text{ 的订单总额}$$
+$$
+
+\text{罚没金额} = \text{OrderValue} \times 2.0\% \times 1.5 = 3.0\% \text{ 的订单总额}
+
+$$
 
 * 惩罚力度严格达到规避市场损失的 $150\%$，使得恶意反悔的数学期望利润严格为负 ($\mathbb{E}[\text{利润}] < 0$)，从而无需引入笨重低效的门限时间锁加密 (t-TLE)，便优雅清除了投机反悔行为。
 
@@ -534,12 +566,16 @@ ight) \quad (\text{其中 } \gamma = 1.5)$$
 ### 5.7. 自主 AI 哨兵监控程序: 毫秒级异常检测与软冻结熔断
 鉴于**人类大脑的生物反应时间 (200 毫秒至 30 秒) 远远落后于机器毫秒级的高频运转**，HAICHAIN 在网关边界嵌入了 **自主 AI 哨兵监控程序 (Autonomous AI Sentinel Watchdog)**，实现全天候物理防护:
 
-$$\text{触发条件: } \left( 
-rac{\Delta \text{调用次数}}{\Delta t} > \Theta_{\text{速率}} 
-ight) \lor \left( \text{余弦相似度}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{死循环}} 
-ight) \lor \left( \text{资金目标地址} 
+$$
+
+\text{触发条件: } \left( 
+\frac{\Delta \text{调用次数}}{\Delta t} > \Theta_{\text{速率}} 
+\right) \lor \left( \text{余弦相似度}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{死循环}} 
+\right) \lor \left( \text{资金目标地址} 
 otin \mathcal{W}_{\text{白名单}} 
-ight)$$
+\right)
+
+$$
 
 ```
           自主 AI 哨兵监控程序边缘防护流水线 (< 10ms)
@@ -594,8 +630,12 @@ ight)$$
 
 ### 6.1. 弹性推理算力托管
 前沿深度思考模型在生成答案之前，会产生大量非确定性的内部思考 Token (Thinking Tokens)，其计算开销无法在事前精确计算。HAICHAIN 正式提出了 **弹性推理算力托管方程**:
-$$Escrow_{total} = C_{base} + \min(lpha \cdot C_{base}, \Delta_{max})$$
-其中 $lpha = 0.20$ (20% 动态安全缓冲系数)，$\Delta_{max}$ 为硬顶上限。当运算完毕后，算力服务商提交经数字签名的真实消耗证明。未用完的缓冲资金在**同一笔交易指令内**瞬时退还至用户金库。
+$$
+
+Escrow_{total} = C_{base} + \min(\alpha \cdot C_{base}, \Delta_{max})
+
+$$
+其中 $\alpha = 0.20$ (20% 动态安全缓冲系数)，$\Delta_{max}$ 为硬顶上限。当运算完毕后，算力服务商提交经数字签名的真实消耗证明。未用完的缓冲资金在**同一笔交易指令内**瞬时退还至用户金库。
 
 #### 异步双时钟模型与双边极速对冲清算 (< 80ms)
 为防范 Solana 网络发生偶发性槽位延迟或网络抖动时导致原子操作死锁，推理托管内核将微会话逻辑与全局区块时钟解耦，引入了 **异步双时钟模型**:
@@ -649,7 +689,11 @@ $$Escrow_{total} = C_{base} + \min(lpha \cdot C_{base}, \Delta_{max})$$
 为实现同时调度数百个子智能体而不污染链上全局状态:
 
 * 子智能体依据类似 BIP-32 的路径推导生成临时密钥:
-  $$Key_{child} = \text{HMAC-SHA512}(Key_{parent}, \text{Role} \parallel \text{Index})$$
+$$
+
+Key_{child} = \text{HMAC-SHA512}(Key_{parent}, \text{Role} \parallel \text{Index})
+
+$$
 
 * 子智能体的权限与额度被压缩进一个 32 字节的 Merkle 根 (`composite_root`)。仅需一个 8 叶节点的包含性证明即可完成链上验真，完全无需为每个子智能体开立高昂的链上账户。
 
@@ -805,7 +849,6 @@ const response = await haiFetch("https://api.deepseek.com/v1/chat", {
 
 ---
 
-
 ## 7. 多边对称净额结算与线速清算矩阵 (MULTILATERAL NETTING & OPTIMISTIC STREAMING STATE CHANNELS)
 
 ```
@@ -829,7 +872,11 @@ const response = await haiFetch("https://api.deepseek.com/v1/chat", {
 HAICHAIN 清算矩阵负责聚合 AI 智能体集群与企业级 API 供应商之间的高频链下交互:
 
 1. **多边对称净额对冲:** 高速微支付在链下完成多边对冲轧差:
-   $$NetBalance_i = \sum Inflow_i - \sum Outflow_i$$
+$$
+
+NetBalance_i = \sum Inflow_i - \sum Outflow_i
+
+$$
 
 2. **极致压缩效率:** 超过 100 万次微型调用被深度压缩进单次批量结算，实现高达 **99.999% 的惊人压缩率**。
 3. **单一 IPv6 MTU 网络封包:** 完整的批量清算数据载荷仅需 **771 字节**，完美装入标准 **1,232 字节的 IPv6 MTU 上限** 内，从根本上消除了跨洲光纤骨干网上的封包切片延迟。
@@ -889,7 +936,11 @@ HAICHAIN 通过 **混合乐观流式状态通道 (Hybrid Optimistic State Channe
 
 1. **链上极简开渠锁定:** 会话建立时，智能体从 Spending Pot 中划转一笔微小预算 (如 $1.00 USDT) 锁定在 Solana L1 的通道 PDA 中。
 2. **内存级链下微签名凭据 (< 5ms):** 当大模型流式吐字时，智能体通过内存中的临时 Ed25519 秘钥对快速签发连续的微型凭单 (Micro-Vouchers):
-   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+$$
+
+\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)
+
+$$
    参数说明:
    * $\text{DOMAIN\_SEPARATOR}$: 协议级密码学域分离标识 (`"haichain-v1-channel-settlement"`)。
    * $\text{ClusterID}$: Solana 集群标识符 (Devnet, Testnet, Mainnet-Beta)，杜绝跨网络签名重放攻击。
@@ -966,7 +1017,11 @@ Haichain 严格执行无摩擦的双轨并行机制：
 
 - **标准智能体与开发者：** 按次结算，完全使用合规稳定币 (USDC/USDT) 支付，无需强制质押任何代币，保留极致流畅的 "Invisible Web3" 人性化体验。
 - **企业级智能体集群与高频舰队：** 可自主选择锁仓 $HAISI (`veHAISI`) 以解锁基础设施级特权：
-  $$\text{每日交易额度} = k \cdot \sqrt{\text{质押 } \$HAISI \times \text{锁仓时长}}$$
+$$
+
+\text{每日交易额度} = k \cdot \sqrt{\text{质押 } \$HAISI \times \text{锁仓时长}}
+
+$$
   * *阶梯式费率减免：* 锁仓 3 至 36 个月可享受高达 80% 的净清算费率折扣。
   * *低于 5ms 的专用快速通道路由：* 针对关键业务智能体群的专用内存池直连通道。
   * *零 Gas 费后台自动化结算：* 协议全额补贴账户租金回收与作废状态清理。
@@ -980,7 +1035,11 @@ Haichain 严格执行无摩擦的双轨并行机制：
 ### 8.3. 程序化结算批次价值沉淀 (`OP_402_BURN`) 与代币流通速度中和
 为从根本上打破货币速度理论对效用代币市值的压制，HAICHAIN 在网关底层硬编码了 **批次级价值沉淀协议 (`OP_402_BURN`)**:
 
-$$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$$
+$$
+
+\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}
+
+$$
 
 *其中:*
 
@@ -1077,7 +1136,7 @@ $$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$
 ```
 
 ### 9.1. 三阶段进化路线图
-1. **第一阶段 (0 - 18 个月):** 依托 Solana L1 全面铺开，抢占市场支配地位，打磨机器微结算的产品市场契合度 (PMF)，全面验证 $AI^2$ 密码学安全不变量。
+1. **第一阶段 (0 - 18 个月):** 依托 Solana L1 全面铺开，抢占市场支配地位，打磨机器微结算的产品市场契合度 (PMF)，全面验证 AI² 密码学安全不变量。
 2. **第二阶段 (18 - 36 个月):** 启动高吞吐 SVM Layer 2 Rollup，借助 Celestia / EigenDA 作为数据可用性 (DA) 层，处理 50,000+ 机器专有 TPS，引入人机共生知识市场与反向微任务机制。
 3. **第三阶段 (36 个月以后):** 全面升级至 **HAICHAIN 主权机器 L1**，这是一个从硅基物理层重新定制的独立 Layer 1 区块链，专为自主机器共识与真正的去中心化超级智能而生。
 
@@ -1219,7 +1278,11 @@ HAICHAIN 通过 **零知识临时去中心化身份 (ZK-eDID)** 彻底消除了�
 
 * **链下生物数据绝对隔离:** 链上账本绝不记录任何个人身份信息 (PII)、面部特征或生物识别哈希。一切生物特征仅在用户设备本地硬件安全区 (Secure Enclave) 内部运算。
 * **零知识身份有效性证明:** 区块链账本仅验证用户身份有效性的零知识证明:
-   $$DID_{agent} = \text{Hash}(\text{ZKP}_{auth} \parallel \text{DerivationIndex} \parallel \text{AgentCodeHash})$$
+$$
+
+DID_{agent} = \text{Hash}(\text{ZKP}_{auth} \parallel \text{DerivationIndex} \parallel \text{AgentCodeHash})
+
+$$
 
 * **密码学注销与 GDPR 第 17 条不变量:** 当用户注销账户或要求数据擦除时，智能合约记录一个密码学废弃凭证 (Nullifier)。用户设备本地的派生秘钥被物理销毁，使得过往的一切链上历史操作在数学上完全无法再逆向关联到具体自然人，完美达成欧盟 GDPR、MiCA 法规以及国际反洗钱 FATF 旅行规则的最高合规标准。
 
@@ -1281,34 +1344,68 @@ HAICHAIN 通过 **零知识临时去中心化身份 (ZK-eDID)** 彻底消除了�
 ### 定理 1: 金库抵押资产守恒定理 (非通胀不变量)
 *设 $S_t$ 为槽位 $t$ 时的全局合约状态。对于任何用户金库 $V$ 及其关联代币账户 $ATA_V$:*
 $$
-orall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)$$
+
+orall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)
+
+$$
 *证明:* 
 
 1. **基础归纳步 ($t=0$):** 在金库初始化创建时，$\text{ConfirmedBalance}(V, 0) = 0$ 且 $\text{TokenBalance}(ATA_V, 0) = 0$。不等式严格成立。
 2. **充值递推步 ($\Delta D > 0$):** 智能合约内核强制要求在修改状态账本之前，必须通过原子化 CPI 调用将 $\Delta D$ 代币划入 $ATA_V$:
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D$$
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D
+
+$$
 
 3. **消费划扣递推步 ($\Delta S > 0$):** 智能合约直接从链上只读 Sysvar 重新加载 $ATA_V$ 的底层真实物理余额。若 $\Delta S > \text{ConfirmedBalance}(V, t)$，执行立即以 `InsufficientConfirmedBalance` (0x1781) 回滚；若 $\text{TokenBalance}(ATA_V, t) < \text{ConfirmedBalance}(V, t)$，立即以 `EulerDriftBalanceMismatch` (0x177c) 回滚。在合法状态下:
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S$$
-*由数学归纳法可知，该守恒不变量在系统一切状态转移过程中始终严格成立。 $lacksquare$*
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S
+
+$$
+*由数学归纳法可知，该守恒不变量在系统一切状态转移过程中始终严格成立。 $lacksquare$*
 
 ### 定理 2: 提示词注入攻击损失上限判定定理
 *设 $L = (\text{Pubkey}, \text{MaxSpend}, \text{ExpirySlot}, \text{Nonce})$ 为一个经授权的能力叶节点，其 Merkle 根为 $R$。即便自主智能体遭遇全量内存投毒与认知劫持，黑客可榨取的最大价值 $E$ 严格满足:*
-$$E \le \text{MaxSpend}$$
+$$
+
+E \le \text{MaxSpend}
+
+$$
 *证明:* 任何发起资金划拨的链上指令，都必须提供包含性默克尔证明 $\pi$，使得 $\text{Verify}(R, L, \pi) = \text{true}$。鉴于链上智能合约字节码严格断言:
-$$\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})$$
-并当场记录叶节点的唯一 Nullifier 彻底防范重放攻击。任何试图使 $amount > L.\text{MaxSpend}$ 的指令都会触发原子化强制回滚。因此最大损失上限严格受限于 $L.\text{MaxSpend}$。 $lacksquare$
+$$
+
+\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})
+
+$$
+并当场记录叶节点的唯一 Nullifier 彻底防范重放攻击。任何试图使 $amount > L.\text{MaxSpend}$ 的指令都会触发原子化强制回滚。因此最大损失上限严格受限于 $L.\text{MaxSpend}$。 $lacksquare$
 
 ### 定理 3: 状态零租金中和与防 MEV 等价性定理
 设 $S_{ephem}$ 为在净额对冲周期 $\tau$ 内动态开辟的全部临时谈判 PDA 集合，设 $R(A)$ 为账户 $A$ 锁定的租金 Lamports。
-$$\lim_{t 	o \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0$$
+$$
+
+\lim_{t 	o \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0
+
+$$
 *证明:* 鉴于内核在底层字节码中强制执行 `close = user_authority`，在任务指令执行完毕的原子事务中，临时账户持有的所有 Lamports 都会在槽位 $k \le \tau_{end}$ 内被全额抽回至源金库。
 此外，在提交-揭示哈希锁不变量体系下:
 $$
-orall \text{套利搜索者 } M, \quad \mathbb{E}[\text{MEV 获利} \mid \text{Commit 阶段}] = 0$$
-鉴于 $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$ 拥有 256 位强抗碰撞熵，并将执行权严格死锁绑定至 `Caller` 公钥，链上监控爬虫在提交阶段获取的有效信息量为零，且在未知晓 `Salt` 且不持有 `Caller` 对应私钥的前提下无法伪造执行。 $lacksquare$
+
+orall \text{套利搜索者 } M, \quad \mathbb{E}[\text{MEV 获利} \mid \text{Commit 阶段}] = 0
+
+$$
+鉴于 $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$ 拥有 256 位强抗碰撞熵，并将执行权严格死锁绑定至 `Caller` 公钥，链上监控爬虫在提交阶段获取的有效信息量为零，且在未知晓 `Salt` 且不持有 `Caller` 对应私钥的前提下无法伪造执行。 $lacksquare$
 
 ---
 
@@ -1340,7 +1437,7 @@ orall \text{套利搜索者 } M, \quad \mathbb{E}[\text{MEV 获利} \mid \text{C
 
 ---
 
-## 12. 总结与 $AI^2$ 宣言 (CONCLUSION & THE $AI^2$ MANIFESTO)
+## 12. 总结与 AI² 宣言 (CONCLUSION & THE AI² MANIFESTO)
 
 人类文明当前所面临的真正历史性挑战，绝非人工智能是否会在纯算力层面超越人类人类大脑 - 在无数特定边界领域，机器早已超越。真正的核心挑战在于 **治理、协调机制与终极主权对齐**: 自主智能体究竟会沦为科技巨头垄断牟利、强化中心化控制与剥夺人类价值的冰冷利刃，还是会蜕变为一个去中心化的、与人类自由紧密共生、共同奔向无尽繁荣的伟大飞轮？
 
@@ -1357,7 +1454,7 @@ orall \text{套利搜索者 } M, \quad \mathbb{E}[\text{MEV 获利} \mid \text{C
 本白皮书中所引用的各项技术架构指标、历史黑客事件涉案金额、硬件物理极限以及全球法规条文，均已交叉对照行业权威标准、专业法医级审计报告、同行评审顶级学术论文及法定政府法典进行了严格核验:
 
 ### I. 金融轨道、微型结算与网络底层通信标准
-* `[1]` **Stripe 官方费率标准 (2024-2026):** 标准商户银行卡收单费率为每笔 $2.9\% + \$0.30$ 美元。这一刚性费率直接证实了传统渠道处理亚美分级 API 调用的绝对不可行性 (例如一次仅消耗 $0.0002 美元的网页抓取调用，面临着高达 150,000% 的手续费惩罚)。参考来源: `https://stripe.com/pricing`。
+* `[1]` **Stripe 官方费率标准 (2024-2026):** 标准商户银行卡收单费率为每笔 $2.9\% + $0.30$ 美元。这一刚性费率直接证实了传统渠道处理亚美分级 API 调用的绝对不可行性 (例如一次仅消耗 $0.0002 美元的网页抓取调用，面临着高达 150,000% 的手续费惩罚)。参考来源: `https://stripe.com/pricing`。
 * `[2]` **IETF RFC 8200 (IPv6 规范):** Deering, S., & Hinden, R. *Internet Protocol, Version 6 (IPv6) Specification*, Section 5 (Packet Size Issues): 明确规定全网链路必须支持的最小不可分片 MTU 为 1,280 字节。
 * `[3]` **Solana 官方底层封包规范:** `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` (即 $1,280 - 40\text{ 字节 IPv6 报头} - 8\text{ 字节 UDP 报头} = 1,232\text{ 字节}$)。严格验证了 HAICHAIN 的 771 字节多边净额结算载荷能够完美装入单个非分片数据包中线速分发。
 
@@ -1394,7 +1491,6 @@ orall \text{套利搜索者 } M, \quad \mathbb{E}[\text{MEV 获利} \mid \text{C
 ---
 *官方技术白皮书 v1.0 • HAICHAIN 全球系统特别工作组 • 登记在册的权威系统架构档案 • 保留所有权利。*
 
-
 ---
 
 ## 附录 A: 技术增补规范 V1.1 — CAPLEAF V1 二进制架构、9大数学不变量、威胁模型与损失上限
@@ -1421,9 +1517,21 @@ orall \text{套利搜索者 } M, \quad \mathbb{E}[\text{MEV 获利} \mid \text{C
 
 #### 三层域分离 (3-Layer Domain Separation)
 为彻底杜绝第二原像与长度扩展攻击：
-$$\text{leaf\_hash} = \text{SHA256}(0\text{x}00 \parallel \text{"HAICHAIN-CAPLEAF-V1"} \parallel \text{program\_id} \parallel \text{leaf\_bytes})$$
-$$\text{node}(l, r) = \text{SHA256}(0\text{x}01 \parallel l \parallel r)$$
-$$\text{EMPTY} = \text{SHA256}(0\text{x}02 \parallel \text{"HAICHAIN-CAPLEAF-V1"})$$
+$$
+
+\text{leaf\_hash} = \text{SHA256}(0\text{x}00 \parallel \text{"HAICHAIN-CAPLEAF-V1"} \parallel \text{program\_id} \parallel \text{leaf\_bytes})
+
+$$
+$$
+
+\text{node}(l, r) = \text{SHA256}(0\text{x}01 \parallel l \parallel r)
+
+$$
+$$
+
+\text{EMPTY} = \text{SHA256}(0\text{x}02 \parallel \text{"HAICHAIN-CAPLEAF-V1"})
+
+$$
 Merkle 树采用固定深度 $d = 12$（4,096 个叶片槽位，证明尺寸固定为 384 字节），彻底消除动态树高漏洞。
 
 ---
@@ -1437,7 +1545,11 @@ Merkle 树采用固定深度 $d = 12$（4,096 个叶片槽位，证明尺寸固�
 
 #### 规范收款人绝对安全
 结算指令中收款账户由智能合约链上强制推导：
-$$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{grant.merchant}, \text{pot.token\_mint})$$
+$$
+
+\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{grant.merchant}, \text{pot.token\_mint})
+
+$$
 任何试图将资金重定向到未授权地址的恶意交易均会被 SVM 虚拟机确定性拒绝。
 
 ---
@@ -1457,10 +1569,16 @@ $$\text{payee\_ata} \equiv \text{get\_associated\_token\_address}(\text{grant.me
 
 ### 12.4. 定量威胁模型与定理 6.1 最大损失数学上限
 设 $\tau$ 为从恶意凭证签署到链上紧急冻结交易确认的全部反应时间：
-$$\tau = t_{\text{detect}} + t_{\text{owner}} + t_{\text{land}} \le 12.0\text{s}$$
+$$
+
+\tau = t_{\text{detect}} + t_{\text{owner}} + t_{\text{land}} \le 12.0\text{s}
+
+$$
 在最恶劣场景 $T_4$（代理私钥泄露且 Merkle 树中商户串通）下，最大潜在损失 $E_{\text{theft}}(\tau)$ 严格受限于：
 
-$$E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(\tau)\right)$$
+$$
+
+E_{\text{theft}}(\tau) \le \min\left(B,\; K,\; W_p \cdot n(\tau, \omega_p),\; \sum_{i:\, m_i \in \mathcal{A}} E_i(\tau)\right)$$
 
 在标准提示词注入 ($T_1$) 攻击中，$E_{\text{theft}} = 0$；即使私钥完全失窃 ($T_4$)，损失亦绝不会超过 $\min(K, W_p)$，保全企业 $99.9\%$ 以上资金。
 

@@ -8,12 +8,22 @@ APP_DIR = os.path.join(WORKSPACE_DIR, "app")
 with open(os.path.join(WORKSPACE_DIR, "assets/haichain-official-logo-white.png"), "rb") as f:
     b64_logo = base64.b64encode(f.read()).decode('utf-8')
 
+# Prepare local KaTeX CSS with absolute file:// font paths
+katex_css_path = os.path.join(WORKSPACE_DIR, "node_modules", "katex", "dist", "katex.min.css")
+with open(katex_css_path, "r", encoding="utf-8") as f:
+    raw_katex_css = f.read()
+
+fonts_dir = os.path.abspath(os.path.join(WORKSPACE_DIR, "node_modules", "katex", "dist", "fonts")).replace('\\', '/')
+raw_katex_css = raw_katex_css.replace('fonts/', f'file:///{fonts_dir}/')
+katex_style_tag = "<style>\n" + raw_katex_css + "\n.math-display-block { margin: 12px 0 !important; text-align: center !important; }\n.katex { font-size: 1.05em !important; }\n</style>"
+
+
 cover_dict = {
     'EN': {
         'title_pdf': 'HAICHAIN Official Whitepaper v1.1 (CapLeaf & 9 Invariants Edition) (English Standard)',
         'sub': 'FINANCIAL OPERATING SYSTEM FOR THE AUTONOMOUS MACHINE AGE',
         'cat': 'FINANCIAL OPERATING SYSTEM FOR THE AUTONOMOUS MACHINE AGE',
-        'title': 'HAICHAIN: The Economic Bedrock for the AI²<br>Symbiotic Superintelligence Era',
+        'title': 'HAICHAIN: The Economic Bedrock for the<br>AI² Symbiotic Superintelligence Era',
         'summary': 'Empowering billions of AI Agents and Autonomous Robots to freely compute, transact, and coalesce with human real-world intelligence to co-create abundance-ensuring all generated wealth and sovereign ownership remain permanently with humanity. The financial operating system for the autonomous machine age today; the economic bedrock for the AI² symbiotic superintelligence era tomorrow.',
         'asset_lbl': 'PRIMARY SETTLEMENT ASSET',
         'asset_val': 'USDT (Tether USD SPL)',
@@ -115,7 +125,7 @@ cover_dict = {
         'title_pdf': 'Официальный Whitepaper HAICHAIN v1.1 (CapLeaf и 9 Инвариантов) (Русское издание)',
         'sub': 'ФИНАНСОВАЯ ОПЕРАЦИОННАЯ СИСТЕМА ДЛЯ ЭПОХИ АВТОНОМНЫХ МАШИН',
         'cat': 'ФИНАНСОВАЯ ОПЕРАЦИОННАЯ СИСТЕМА ДЛЯ ЭПОХИ АВТОНОМНЫХ МАШИН',
-        'title': 'HAICHAIN: Экономический фундамент эпохи<br>симбиотического сверхинтеллекта AI²',
+        'title': 'HAICHAIN: Экономический фундамент<br>для эпохи симбиотического сверхразума AI²',
         'summary': 'Расширение возможностей миллиардов ИИ-агентов и автономных роботов для свободных вычислений, расчетов и слияния с реальным интеллектом человечества для совместного создания изобилия - гарантируя, что все созданные богатства и суверенная собственность навсегда останутся у человечества. Финансовая ОС для эпохи автономных машин сегодня; экономический базис эпохи симбиотического сверхинтеллекта AI² завтра.',
         'asset_lbl': 'ОСНОВНОЙ РАСЧЕТНЫЙ АКТИВ',
         'asset_val': 'USDT (Tether USD SPL)',
@@ -278,6 +288,7 @@ def compile_pdf(lang):
 <head>
 <meta charset="utf-8">
 <title>{c['title_pdf']}</title>
+{katex_style_tag}
 <style>
 /* NAMED PAGES FOR 100% FULL-BLEED COVER & STANDARDIZED INSIDE MARGINS */
 @page {{
@@ -362,12 +373,13 @@ body {{
     font-weight: 600;
 }}
 .cover-title {{
-    font-size: 26pt;
+    font-size: 20pt;
     font-weight: 800;
-    line-height: 1.18;
-    letter-spacing: -0.8px;
+    line-height: 1.24;
+    letter-spacing: -0.4px;
     color: #ffffff;
     margin-bottom: 22px;
+    max-width: 166mm;
 }}
 .cover-summary {{
     font-size: 10pt;
@@ -581,17 +593,22 @@ hr {{
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(full_html)
         
+    rendered_html_path = html_path.replace(".html", "_rendered.html")
+    subprocess.run(["node", "scripts/render_math_cli.js", html_path, rendered_html_path], check=True)
+    
     cmd = [
         EDGE_PATH,
         "--headless",
         "--disable-gpu",
         "--no-pdf-header-footer",
         f"--print-to-pdf={pdf_path}",
-        html_path
+        f"file:///{rendered_html_path.replace(os.sep, '/')}"
     ]
     subprocess.run(cmd, check=True)
     if os.path.exists(html_path):
         os.remove(html_path)
+    if os.path.exists(rendered_html_path):
+        os.remove(rendered_html_path)
     
     # Mirror to app/ directory
     app_pdf_path = os.path.join(APP_DIR, pdf_filename)

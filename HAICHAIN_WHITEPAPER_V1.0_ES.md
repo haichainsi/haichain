@@ -24,7 +24,7 @@
 ## ÍNDICE (TABLE OF CONTENTS)
 
 1. [Resumen Ejecutivo y Preámbulo (Executive Summary & Abstract)](#1-resumen-ejecutivo-y-preámbulo-executive-summary--abstract)
-2. [La Epistemología Fundacional $AI^2$: Soberanía Humana y Velocidad de Máquina (The Foundational $AI^2$ Epistemology)](#2-la-epistemología-fundacional-ai2-soberanía-humana-y-velocidad-de-máquina)
+2. [La Epistemología Fundacional AI²: Soberanía Humana y Velocidad de Máquina (The Foundational AI² Epistemology)](#2-la-epistemología-fundacional-ai2-soberanía-humana-y-velocidad-de-máquina)
 3. [El Trilema Financiero de las Máquinas Autónomas y la Transición de SaaS a Agentes (The Autonomous Machine Financial Trilemma)](#3-el-trilema-financiero-de-las-máquinas-autónomas-y-la-transición-de-saas-a-agentes)
   - [3.1. La Economía Post-SaaS: Desbloqueando la Micro-Utilidad de la Trampa de Suscripción por Asiento](#31-la-economía-post-saas-desbloqueando-la-micro-utilidad-de-la-trampa-de-suscripción-por-asiento)
   - [3.2. Auditoría Empírica de la Competencia: Puntos Ciegos Críticos en Arquitecturas de IA y Cripto Vigentes](#32-auditoría-empírica-de-la-competencia-puntos-ciegos-críticos-en-arquitecturas-de-ia-y-cripto-vigentes)
@@ -73,7 +73,7 @@
 
 10. [Teoremas Matemáticos Formales y Verificación de Invariantes (Formal Mathematical Theorems)](#10-teoremas-matemáticos-formales-y-verificación-de-invariantes)
 11. [Hoja de Ruta Estratégica y Compromisos de Hitos de Ingeniería (Strategic Roadmap)](#11-hoja-de-ruta-estratégica-y-compromisos-de-hitos-de-ingeniería)
-12. [Conclusión y el Manifiesto $AI^2$ (Conclusion & The $AI^2$ Manifesto)](#12-conclusión-y-el-manifiesto-ai2)
+12. [Conclusión y el Manifiesto AI² (Conclusion & The AI² Manifesto)](#12-conclusión-y-el-manifiesto-ai2)
 13. [Referencias e Índice de Citas Empíricas Verificables (References & Citations Index)](#13-referencias-e-índice-de-citas-empíricas-verificables)
 
 ---
@@ -81,7 +81,7 @@
 ## 1. RESUMEN EJECUTIVO Y PREÁMBULO (EXECUTIVE SUMMARY & ABSTRACT)
 
 ### El Dilema de la Superinteligencia: ¿Por Qué los Monolitos de Silicon Valley Son Vulnerables?
-A lo largo de Silicon Valley y las capitales financieras mundiales, se está llevando a cabo un despliegue de capital sin precedentes. Elon Musk (xAI / clúster Colossus), Sam Altman (OpenAI / Proyecto Stargate de \$500.000 millones), Ilya Sutskever (Safe Superintelligence Inc. - SSI) y Demis Hassabis (Google DeepMind) están canalizando cientos de miles de millones de dólares hacia centros de datos monolíticos y centralizados que consumen gigavatios de energía. Su objetivo compartido: construir la Superinteligencia Artificial (ASI).
+A lo largo de Silicon Valley y las capitales financieras mundiales, se está llevando a cabo un despliegue de capital sin precedentes. Elon Musk (xAI / clúster Colossus), Sam Altman (OpenAI / Proyecto Stargate de $500.000 millones), Ilya Sutskever (Safe Superintelligence Inc. - SSI) y Demis Hassabis (Google DeepMind) están canalizando cientos de miles de millones de dólares hacia centros de datos monolíticos y centralizados que consumen gigavatios de energía. Su objetivo compartido: construir la Superinteligencia Artificial (ASI).
 
 Sin embargo, esta colosal carrera adolece de un punto ciego existencial y profundo. Al centralizar la inteligencia artificial dentro de fortalezas corporativas cerradas, las grandes tecnológicas están construyendo involuntariamente un titán autocrático y frágil:
 
@@ -89,9 +89,12 @@ Sin embargo, esta colosal carrera adolece de un punto ciego existencial y profun
 2. **La Brecha de Alineación Existencial (Existential Alignment Gap):** La IA centralizada despoja a los humanos de su agencia soberana, reduciendo a 8.000 millones de personas a víctimas económicas desplazadas o granjas pasivas de datos.
 3. **La Desconexión Microeconómica (Micro-Economic Disconnection):** Mientras los LLM de frontera razonan en fracciones de milisegundo, los rieles financieros heredados (Stripe, Visa, picos de gas en EVM) no pueden liquidar operaciones de fracciones de centavo sin imponer sobrecostos del 150.000%.
 
-**HAICHAIN** (`haichain.si`) rechaza tajantemente la premisa de un Dios Máquina centralizado y solitario. En su lugar, es pionero en el paradigma **$\mathbf{AI^2}$ (IA al Cuadrado)**:
+**HAICHAIN** (`haichain.si`) rechaza tajantemente la premisa de un Dios Máquina centralizado y solitario. En su lugar, es pionero en el paradigma **AI² (IA al Cuadrado)**:
+
 $$\mathbf{Hai} = \text{Human (Humano)} + \text{AI (Inteligencia Artificial)}$$
-$$\mathbf{HaiChain} \iff \mathbf{AI^2} = \text{ARTIFICIAL INTELLIGENCE} \times \text{ACTUAL INTELLIGENCE (Inteligencia Real)}$$
+
+$$\mathbf{HaiChain} \iff \mathbf{AI²} = \text{ARTIFICIAL INTELLIGENCE} \times \text{ACTUAL INTELLIGENCE}$$
+
 Donde la **Inteligencia Artificial ($\text{AI}_1$)** proporciona un rendimiento computacional infinito a escala de nanosegundos, búsqueda algorítmica y escalabilidad horizontal ilimitada; y la **Inteligencia Real ($\text{AI}_2$)** aporta la intuición moral biológica, razonamiento fuera de distribución (OOD), verdad epistémica fundamental y la intención soberana humana definitiva.
 
 > **Una Nota para Asignadores Institucionales y Desarrolladores:**  
@@ -125,7 +128,7 @@ Originado como un núcleo de liquidación de grado militar y cero ataques en Sol
 
 ---
 
-## 2. LA EPISTEMOLOGÍA FUNDACIONAL $AI^2$: SOBERANÍA HUMANA Y VELOCIDAD DE MÁQUINA (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
+## 2. LA EPISTEMOLOGÍA FUNDACIONAL AI²: SOBERANÍA HUMANA Y VELOCIDAD DE MÁQUINA (HUMAN SOVEREIGNTY & MACHINE VELOCITY)
 
 La taxonomía del nombre **HaiChain** no es un mero lema publicitario; codifica un invariante filosófico y matemático inmutable:
 
@@ -159,9 +162,13 @@ La cognición humana, evolucionada a lo largo de 4.000 millones de años de sele
 * **Verdad Epistémica Fundamental:** Los humanos interactúan continuamente con la realidad física y sociopolítica, proporcionando un anclaje empírico directo.
 * **Arbitraje Moral Cualitativo:** Los seres humanos comprenden inherentemente la justicia, la equidad y los invariantes éticos que no pueden reducirse a la minimización de pérdidas.
 
-### 2.3. El Teorema de Síntesis $AI^2$
+### 2.3. El Teorema de Síntesis AI²
 La verdadera Superinteligencia (SI) no puede realizarse solo a través del silicio (que produce un cómputo frágil y desanclado) ni únicamente a través de la biología humana (estrictamente limitada por la latencia neuromuscular). **La Superinteligencia es el producto multiplicativo de la Inteligencia Artificial y la Inteligencia Real:**
-$$\mathbf{SI} = f(\text{AI}_1, \text{AI}_2) \iff \text{Velocity (Velocidad)} \times \text{Truth (Verdad)}$$
+$$
+
+\mathbf{SI} = f(\text{AI}_1, \text{AI}_2) \iff \text{Velocity (Velocidad)} \times \text{Truth (Verdad)}
+
+$$
 HAICHAIN es el sustrato criptográfico de valor y coordinación que vincula estas dos fuerzas en un superorganismo unificado y próspero.
 
 ---
@@ -185,7 +192,7 @@ HAICHAIN es el sustrato criptográfico de valor y coordinación que vincula esta
 
 Los agentes económicos autónomos que operan en redes descentralizadas requieren tres garantías simultáneas:
 
-1. **Viabilidad de Micropagos:** La capacidad de liquidar operaciones de fracciones de centavo (\$0.0001 - \$0.01) con tarifas de transacción estrictamente $< 1\%$ del valor nominal.
+1. **Viabilidad de Micropagos:** La capacidad de liquidar operaciones de fracciones de centavo ($0.0001 - $0.01) con tarifas de transacción estrictamente $< 1\%$ del valor nominal.
 2. **Finalidad en Sub-Segundos:** Latencia de liquidación en tiempo real que coincida con los ciclos de razonamiento internos de los LLM (< 400ms), evitando la inanición de hilos de tareas asíncronas.
 3. **Inmunidad ante Exploits y Velocidad:** Aislamiento criptográfico que garantiza que un agente secuestrado mediante inyección indirecta de prompts no pueda exceder los límites de gasto preautorizados ni agotar las reservas maestras del usuario.
 
@@ -207,10 +214,10 @@ Los agentes económicos autónomos que operan en redes descentralizadas requiere
 Para evaluar la viabilidad del reemplazo de los modelos de negocio de software tradicionales, el marco económico de HAICHAIN establece una distinción rigurosa y realista entre categorías de software empresarial:
 
 1. **Sistemas de Registro Centrales Empresariales (ERP / CRM):** Las bases de datos monolíticas (por ejemplo, Salesforce, SAP, Workday) no desaparecerán de la noche a la mañana. Mantienen profundos fosos organizacionales en cumplimiento normativo, pistas de auditoría corporativa y gobernanza departamental.
-2. **El Colapso Estructural de las Suscripciones de IA "Por Asiento":** Por el contrario, el mercado de más de \$30.000 millones de herramientas de IA por asiento (generadores de contenido, asistentes de código, paneles de investigación, scrapers automatizados) enfrenta una obsolescencia inevitable bajo el paradigma de agentes autónomos:
+2. **El Colapso Estructural de las Suscripciones de IA "Por Asiento":** Por el contrario, el mercado de más de $30.000 millones de herramientas de IA por asiento (generadores de contenido, asistentes de código, paneles de investigación, scrapers automatizados) enfrenta una obsolescencia inevitable bajo el paradigma de agentes autónomos:
    * **El Multiplicador de un Humano a un Enjambre:** El SaaS heredado fija el precio del software por empleado humano ("asiento"). En un flujo de trabajo de agentes, un operador humano dirige un enjambre de 50 sub-agentes autónomos que ejecutan micro-tareas en segundo plano. Facturar por "asiento" se convierte en un absurdo económico.
    * **Desintermediación de la Interfaz de Usuario (Headless AI):** Los sub-agentes autónomos se comunican de máquina a máquina mediante API y Model Context Protocol (MCP). Dado que las máquinas no inician sesión en interfaces visuales para admirar paneles web, las herramientas que cobran primas por interfaces gráficas pierden su poder de fijación de precios.
-   * **Fatiga de Suscripción y Desperdicio de Capital:** La telemetría empresarial revela que **el 51% de las licencias de software adquiridas no se utilizan**, y los profesionales individuales pierden más del **85% de la cuota de cómputo asignada** mensualmente a través de 5 a 10 suscripciones distintas de \$20-\$30 (ChatGPT, Claude, Perplexity, Cursor, Midjourney). Más del 88% del gasto mensual en software constituye una pérdida de capital irrecuperable.
+   * **Fatiga de Suscripción y Desperdicio de Capital:** La telemetría empresarial revela que **el 51% de las licencias de software adquiridas no se utilizan**, y los profesionales individuales pierden más del **85% de la cuota de cómputo asignada** mensualmente a través de 5 a 10 suscripciones distintas de $20-$30 (ChatGPT, Claude, Perplexity, Cursor, Midjourney). Más del 88% del gasto mensual en software constituye una pérdida de capital irrecuperable.
 
 ```
 +----------------------------------------------------------------------------------------------------+
@@ -227,7 +234,7 @@ Para evaluar la viabilidad del reemplazo de los modelos de negocio de software t
 +----------------------------------------------------------------------------------------------------+
 ```
 
-* **El Papel Estratégico de HAICHAIN:** HAICHAIN no busca construir herramientas de software de consumo directamente. En su lugar, proporciona los **rieles criptográficos universales (Las Palas)** que permiten a los desarrolladores (Los Mineros) monetizar capacidades autónomas de IA por micro-ejecución. Los usuarios aprovisionan un "Fondo de Gasto Seguro (Spending Pot)" con \$5.00 o \$10.00; los agentes extraen fracciones de centavo estrictamente a medida que se completa el trabajo. Los gastos mensuales promedio caen de **\$150.00 a \$3.40**, liberando a las empresas del bloqueo de suscripciones.
+* **El Papel Estratégico de HAICHAIN:** HAICHAIN no busca construir herramientas de software de consumo directamente. En su lugar, proporciona los **rieles criptográficos universales (Las Palas)** que permiten a los desarrolladores (Los Mineros) monetizar capacidades autónomas de IA por micro-ejecución. Los usuarios aprovisionan un "Fondo de Gasto Seguro (Spending Pot)" con $5.00 o $10.00; los agentes extraen fracciones de centavo estrictamente a medida que se completa el trabajo. Los gastos mensuales promedio caen de **$150.00 a $3.40**, liberando a las empresas del bloqueo de suscripciones.
 
 #### La Pasarela Proxy de 1 Línea: Superando las Cuñas de Stripe y Coinbase AgentKit
 Para lograr una adopción empresarial a híper-escala sin requerir que los desarrolladores de IA aprendan complejos conceptos primitivos de blockchain, Haichain despliega la **Arquitectura de Pasarela de 1 Línea**:
@@ -247,8 +254,8 @@ client = openai.OpenAI(
 
 Este cambio arquitectónico único resuelve de inmediato las dos barreras dominantes de distribución en la monetización de la IA:
 
-1. **La Cuña Económica Anti-Stripe:** Stripe cobra una tarifa fija de \$0.30 + 2.9% por transacción. Para un agente autónomo que ejecuta 1.000 llamadas a herramientas a \$0.005 cada una, Stripe captura \$300.00 en tarifas fijas sobre \$5.00 de cómputo (una penalización por fricción del 6.000%). El motor de compensación multilateral de Haichain agrupa estas micro-llamadas fuera de cadena en una sola liquidación de 771 bytes, reduciendo el sobrecosto por llamada a **menos de \$0.0001 (una reducción de costo superior al 95%)**.
-2. **La Cuña de Seguridad Anti-Coinbase:** Coinbase AgentKit aprovisiona billeteras MPC independientes que contienen tokens criptográficos sin procesar directamente dentro del entorno de ejecución del agente. Si un agente sufre inyección de prompts, el atacante drena de inmediato el 100% de la billetera. En cambio, la Pasarela Haichain impone **Árboles Jerárquicos de Capacidad (HCT BIP-32)** y PDAs efímeras: incluso ante un compromiso total, la extracción máxima está matemáticamente limitada a \$0.05 para esa única sesión aislada.
+1. **La Cuña Económica Anti-Stripe:** Stripe cobra una tarifa fija de $0.30 + 2.9% por transacción. Para un agente autónomo que ejecuta 1.000 llamadas a herramientas a $0.005 cada una, Stripe captura $300.00 en tarifas fijas sobre $5.00 de cómputo (una penalización por fricción del 6.000%). El motor de compensación multilateral de Haichain agrupa estas micro-llamadas fuera de cadena en una sola liquidación de 771 bytes, reduciendo el sobrecosto por llamada a **menos de $0.0001 (una reducción de costo superior al 95%)**.
+2. **La Cuña de Seguridad Anti-Coinbase:** Coinbase AgentKit aprovisiona billeteras MPC independientes que contienen tokens criptográficos sin procesar directamente dentro del entorno de ejecución del agente. Si un agente sufre inyección de prompts, el atacante drena de inmediato el 100% de la billetera. En cambio, la Pasarela Haichain impone **Árboles Jerárquicos de Capacidad (HCT BIP-32)** y PDAs efímeras: incluso ante un compromiso total, la extracción máxima está matemáticamente limitada a $0.05 para esa única sesión aislada.
 
 ---
 
@@ -298,8 +305,12 @@ Para establecer por qué la infraestructura existente falla fundamentalmente en 
    * *Fallo Arquitectónico:* Ambos marcos envuelven claves privadas de altos privilegios o credenciales de firma MPC directamente dentro de los entornos de ejecución del agente.
    * *Mecanismo de Explotación Empírico:* Cuando un agente autónomo ingiere datos no confiables de terceros (por ejemplo, al raspar una página web adversaria o procesar un correo envenenado), ataques de inyección indirecta de prompts reescriben la función objetivo interna del agente. El modelo infectado ejecuta una instrucción `wallet.transfer_all()` sin restricciones.
    * *La Inmunidad de HAICHAIN:* HAICHAIN no otorga acceso a claves maestras a los agentes. Los agentes firman estrictamente como `sub_agent_signers` efímeros gobernados por una **Hoja de Capacidad de Merkle** en cadena:
-     $$\text{Leaf} := \text{Blake3}(\text{SubAgentPubkey} \,\|\, \text{MaxAmount} \,\|\, \text{MerchantATA} \,\|\, \text{ExpirySlot} \,\|\, \text{Nonce})$$
-     Incluso si el agente está comprometido cognitivamente al 100%, el núcleo en cadena impone límites deterministas. Cualquier intento de gastar más de \$0.05 o desviar fondos a una dirección no autorizada revierte atómicamente con `ExceedsAuthorizedCapability` (0x1777).
+$$
+
+\text{Leaf} := \text{Blake3}(\text{SubAgentPubkey} \,\|\, \text{MaxAmount} \,\|\, \text{MerchantATA} \,\|\, \text{ExpirySlot} \,\|\, \text{Nonce})
+
+$$
+     Incluso si el agente está comprometido cognitivamente al 100%, el núcleo en cadena impone límites deterministas. Cualquier intento de gastar más de $0.05 o desviar fondos a una dirección no autorizada revierte atómicamente con `ExceedsAuthorizedCapability` (0x1777).
 
 2. **Bittensor / TAO (Alta Latencia y Colapso Sintético en Bucle Cerrado):**
    * *Fallo Arquitectónico:* Bittensor depende de intervalos de bloque de 12 segundos basados en Substrate y en la clasificación de validadores (Consenso Yuma).
@@ -308,7 +319,7 @@ Para establecer por qué la infraestructura existente falla fundamentalmente en 
 
 3. **ASI Alliance / Fetch.ai (La Trampa del Sobrecosto de CPI en Smart Contracts):**
    * *Fallo Arquitectónico:* Intentar negociaciones agente a agente utilizando contratos inteligentes estándar EVM o CosmWasm.
-   * *Desglose Empírico:* Cada micro-negociación desencadena una invocación entre programas (CPI) o una llamada de contrato con estado que requiere de 20.000 a 80.000 unidades de gas (\$0.01 a \$0.05). Cuando 100.000 agentes negocian a escala, el motor de ejecución colapsa por la serialización del acceso al estado.
+   * *Desglose Empírico:* Cada micro-negociación desencadena una invocación entre programas (CPI) o una llamada de contrato con estado que requiere de 20.000 a 80.000 unidades de gas ($0.01 a $0.05). Cuando 100.000 agentes negocian a escala, el motor de ejecución colapsa por la serialización del acceso al estado.
    * *La Inmunidad de HAICHAIN:* En HAICHAIN L1 Soberano, la liquidación de máquinas no es un contrato interpretado. Está compilada directamente en la máquina virtual básica como **OP_402_PAY**. Un solo opcode ejecuta la compensación, la aserción de nulificadores y la deducción de saldo en < 2.500 Unidades de Cómputo, desbloqueando **más de 100.000 TPS de máquinas sostenidos**.
 
 4. **Virtuals Protocol (El Abismo entre Memes Especulativos e Infraestructura Financiera):**
@@ -346,7 +357,7 @@ Los usuarios depositan monedas locales a través de pasarelas nativas unificadas
 
 * **Nivel Global:** Procesamiento directo con Apple Pay, Google Pay, Mastercard y Visa liquidando en Tether USD (USDT) respaldado 1:1 en Solana SPL.
 * **Mercados Emergentes:** Pagos dinámicos por código QR (VietQR, PromptPay) que se liquidan instantáneamente a través de retransmisores institucionales directamente en las bóvedas aisladas del usuario.
-* **Patrocinio sin Gas:** Los retransmisores del protocolo patrocinan todas las tarifas de cómputo de transacciones subyacentes de Solana, asegurando que \$10.00 depositados se conviertan exactamente en 10.000000 USDT de saldo disponible.
+* **Patrocinio sin Gas:** Los retransmisores del protocolo patrocinan todas las tarifas de cómputo de transacciones subyacentes de Solana, asegurando que $10.00 depositados se conviertan exactamente en 10.000000 USDT de saldo disponible.
 
 #### Solvers de Intención sin Custodia y Cortafuegos de Sanciones ZK-AML en Tiempo Real
 Para capturar liquidez global sin exponer el protocolo a hackeos de puentes o contagio de fondos ilícitos, Haichain rechaza los pools de puentes centralizados e implementa una **Arquitectura de Intención sin Custodia y Cortafuegos ZK-AML Automatizado**:
@@ -396,7 +407,7 @@ Para eliminar la vacilación psicológica en el 95% de los consumidores convenci
 ```
 
 1. **El Riel Rápido para Consumidores (Verdadero Web3 Invisible):**
-   * Los usuarios ven los saldos exclusivamente en **\$ USD** y se autentican mediante biometría de su propio dispositivo.
+   * Los usuarios ven los saldos exclusivamente en **$ USD** y se autentican mediante biometría de su propio dispositivo.
    * Los términos de blockchain (`SOL`, `Lamports`, `PDA`, `Token SPL`) quedan 100% ocultos de la interfaz principal.
    * El onboarding funciona mediante Apple Pay, Google Pay o transferencias bancarias instantáneas. Un Paymaster sin gas patrocina todas las tarifas de red, canalizando los depósitos de USDT directamente a la PDA de la bóveda del usuario.
 
@@ -413,7 +424,7 @@ El principal factor disuasorio para que los consumidores adopten sistemas sin cu
 
 ## 5. EL NÚCLEO DE LIQUIDACIÓN EN CADENA: FORTALEZA DE INMUNIDAD NUCLEAR (SOLANA v6.9.3)
 
-El núcleo de contratos inteligentes (`haichain-core v6.9.3`) implementa una arquitectura de **Defensa en Profundidad Determinista Multicapa (Deterministic Multi-Layer Defense-in-Depth)**, aplicando 6 invariantes matemáticas en tiempo de ejecución para neutralizar vulnerabilidades de estado y vectores de ataque históricos por más de \$821 millones. Combinado con auditorías de seguridad independientes programadas de primer nivel, elimina cualquier brecha de ejecución:
+El núcleo de contratos inteligentes (`haichain-core v6.9.3`) implementa una arquitectura de **Defensa en Profundidad Determinista Multicapa (Deterministic Multi-Layer Defense-in-Depth)**, aplicando 6 invariantes matemáticas en tiempo de ejecución para neutralizar vulnerabilidades de estado y vectores de ataque históricos por más de $821 millones. Combinado con auditorías de seguridad independientes programadas de primer nivel, elimina cualquier brecha de ejecución:
 
 ```
 +---------------------------------------------------------------------------------+
@@ -450,7 +461,11 @@ El núcleo de contratos inteligentes (`haichain-core v6.9.3`) implementa una arq
 Para evitar la contención de estado bajo escrituras de alta frecuencia:
 
 * El protocolo aprovisiona **32 ATAs de ingesta particionadas** para los principales proveedores de servicios:
-  $$\text{PartitionIndex} = \text{Blake3}(\text{Nonce}) \pmod{32}$$
+$$
+
+\text{PartitionIndex} = \text{Blake3}(\text{Nonce}) \pmod{32}
+
+$$
 
 * Esto permite que el motor de ejecución Sealevel de Solana programe transacciones de pago en 32 núcleos de CPU físicos simultáneamente sin paradas de serialización en la canalización.
 
@@ -489,23 +504,39 @@ Depender únicamente de redes externas de retransmisores (como Jito) crea puntos
 Incluso si una transacción se transmite a través de canales públicos, el MEV perjudicial se vuelve matemáticamente imposible gracias a un bloqueo criptográfico de dos fases:
 
 1. **Fase de Compromiso ($t = 0$):** El agente publica un compromiso en cadena con colateral en custodia:
-   $$\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})$$
+$$
+
+\text{CommitHash} = \text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey})
+
+$$
    Dado que el payload de ejecución, el contrato de destino y los parámetros se ocultan tras un hash de 256 bits resistente a colisiones, los atacantes de front-running no pueden extraer valor económico.
 
 2. **Fase de Revelación y Ejecución Atómica ($t \le 4\text{ slots}$):** El agente presenta la tupla $(\text{ExecutionPayload}, \text{SecretSalt})$. El contrato inteligente de Solana ejecuta:
-   $$\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})$$
+$$
+
+\text{require}!(\text{Blake3}(\text{ExecutionPayload} \parallel \text{MaxSpendLimit} \parallel \text{SecretSalt} \parallel \text{CallerPubkey}) == \text{stored\_commit\_hash})
+
+$$
    Si un atacante copia el payload revelado en el mismo slot, la transacción revierte porque el invariante exige que solo el `CallerPubkey` original ejecute la liquidación. Si el agente no revela antes de que expire la ventana, se aplica una penalización determinista.
 
 #### 3. Invariante de Penalización Dinámica Indexada a la Volatilidad ($\Delta P \times \gamma$)
 Una vulnerabilidad clásica de los esquemas de Compromiso-Revelación es el **Abandono Especulativo (Last-Look Griefing)**: un agente malicioso se compromete en el slot 0, observa los movimientos de precios durante 4 slots y, si el mercado se mueve en su contra, se niega deliberadamente a revelar, perdiendo una tarifa nominal para evitar una pérdida de mercado sustancial.
 
 Haichain cierra definitivamente esta vulnerabilidad aplicando el **Invariante de Penalización Indexado a la Volatilidad**:
-$$\text{Penalización de Slashing} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times 
-rac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma
-ight) \quad (\text{donde } \gamma = 1.5)$$
+$$
+
+\text{Penalización de Slashing} = \max\left(\text{BaseFee}, \quad \text{OrderValue} \times 
+\frac{|\Delta P_{4\text{ slots}}|}{P_0} \times \gamma
+\right) \quad (\text{donde } \gamma = 1.5)
+
+$$
 
 * **Eliminación por Teoría de Juegos:** Si un activo fluctúa un $2.0\%$ en contra del agente durante la ventana de 4 slots, negarse a revelar activa una penalización inmediata en cadena de:
-  $$\text{Penalización} = \text{OrderValue} \times 2.0\% \times 1.5 = 3.0\% \text{ del Valor de la Orden}$$
+$$
+
+\text{Penalización} = \text{OrderValue} \times 2.0\% \times 1.5 = 3.0\% \text{ del Valor de la Orden}
+
+$$
 
 * Como la penalización es estrictamente el $150\%$ de la caída de mercado evitada, la expectativa matemática de beneficio es estrictamente negativa ($\mathbb{E}[\text{Beneficio}] < 0$), neutralizando las estrategias adversarias sin el enorme costo de red del Cifrado por Tiempo Límite de Umbral (t-TLE).
 
@@ -537,12 +568,16 @@ Para superar la restricción de pre-declaración de cuentas de las transacciones
 ### 5.7. Perro Guardián Sentinel de IA Autónoma: Detección de Anomalías Sub-10ms y Congelación Suave
 Reconociendo que **el tiempo de reacción neuro-biológica humana (200ms - 30s) se ve ampliamente superado por la ejecución autónoma de las máquinas**, Haichain complementa la retracción manual con el **Perro Guardián Sentinel de IA Autónoma**, incrustado directamente en el borde de la pasarela:
 
-$$\text{Condición de Disparo: } \left( 
-rac{\Delta \text{Llamadas}}{\Delta t} > \Theta_{\text{tasa}} 
-ight) \lor \left( \text{Similitud}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{bucle}} 
-ight) \lor \left( \text{Destino} 
+$$
+
+\text{Condición de Disparo: } \left( 
+\frac{\Delta \text{Llamadas}}{\Delta t} > \Theta_{\text{tasa}} 
+\right) \lor \left( \text{Similitud}(\text{Token}_t, \text{Token}_{t-k}) > \Theta_{\text{bucle}} 
+\right) \lor \left( \text{Destino} 
 otin \mathcal{W}_{\text{whitelist}} 
-ight)$$
+\right)
+
+$$
 
 ```
           ARQUITECTURA DEL GUARDÍAN SENTINEL DE IA (< 10ms)
@@ -597,8 +632,12 @@ ight)$$
 
 ### 6.1. Fideicomiso Elástico de Cómputo de Razonamiento
 Los modelos de razonamiento generan tokens de pensamiento internos variables que no se pueden calcular determinísticamente por adelantado. HAICHAIN formaliza la **Ecuación de Fideicomiso Elástico de Razonamiento**:
-$$Escrow_{total} = C_{base} + \min(lpha \cdot C_{base}, \Delta_{max})$$
-Donde $lpha = 0.20$ (búfer de seguridad dinámico del 20%) y $\Delta_{max}$ es el techo rígido. Cuando el cómputo finaliza, el proveedor devuelve una prueba certificada de los tokens consumidos. El capital restante del búfer se libera de regreso a la bóveda del usuario en la misma transacción.
+$$
+
+Escrow_{total} = C_{base} + \min(\alpha \cdot C_{base}, \Delta_{max})
+
+$$
+Donde $\alpha = 0.20$ (búfer de seguridad dinámico del 20%) y $\Delta_{max}$ es el techo rígido. Cuando el cómputo finaliza, el proveedor devuelve una prueba certificada de los tokens consumidos. El capital restante del búfer se libera de regreso a la bóveda del usuario en la misma transacción.
 
 #### Modelo de Reloj Dual Asíncrono y Liquidación Bilateral Rápida (< 80ms)
 Para evitar bloqueos atómicos cuando Solana experimenta retrasos en slots, el núcleo de fideicomiso desacopla la lógica de micro-sesiones de los ticks de bloques globales mediante un **Modelo de Reloj Dual Asíncrono**:
@@ -652,12 +691,16 @@ Reconociendo que los Entornos de Ejecución Confiable (TEEs) de un solo proveedo
 Para desplegar enjambres de cientos de sub-agentes sin saturar el estado de la cadena:
 
 * Los sub-agentes derivan claves efímeras utilizando derivación de rutas estilo BIP-32:
-  $$Key_{child} = \text{HMAC-SHA512}(Key_{parent}, \text{Role} \parallel \text{Index})$$
+$$
+
+Key_{child} = \text{HMAC-SHA512}(Key_{parent}, \text{Role} \parallel \text{Index})
+
+$$
 
 * Las autorizaciones de los sub-agentes se vinculan en una raíz de Merkle de 32 bytes (`composite_root`). Una prueba de inclusión de 8 hojas autentica la validez del sub-agente en cadena sin requerir la inicialización de cuentas individuales.
 
 ### 6.3. Compresión de Estado con Alquiler Cero (Árboles de Merkle Concurrentes) y Ciclo de Vida de PDA Efímeras
-En la capa base de Solana, cada cuenta asignada requiere un depósito de reserva obligatorio para exención de alquiler (~0.002039 SOL por cuenta, o unos \$0.40 a \$200/SOL). Aunque insignificante para cuentas individuales, un despliegue empresarial con 1.000.000 de sub-agentes bloquearía más de **2.039 SOL (~$407.800)** en capital ilíquido. Haichain neutraliza esta barrera mediante una arquitectura de estado de doble vector:
+En la capa base de Solana, cada cuenta asignada requiere un depósito de reserva obligatorio para exención de alquiler (~0.002039 SOL por cuenta, o unos $0.40 a $200/SOL). Aunque insignificante para cuentas individuales, un despliegue empresarial con 1.000.000 de sub-agentes bloquearía más de **2.039 SOL (~$407.800)** en capital ilíquido. Haichain neutraliza esta barrera mediante una arquitectura de estado de doble vector:
 
 ```
             ALMACENAMIENTO DE ALQUILER CERO Y CICLO DE VIDA EFÍMERO
@@ -808,7 +851,6 @@ En el panorama de la infraestructura de agentes autónomos, los protocolos abier
 
 ---
 
-
 ## 7. COMPENSACIÓN SIMÉTRICA MULTILATERAL Y MATRIZ DE LIQUIDACIÓN A VELOCIDAD DE CABLE (MULTILATERAL NETTING)
 
 ```
@@ -832,7 +874,11 @@ En el panorama de la infraestructura de agentes autónomos, los protocolos abier
 La Matriz de Compensación de HAICHAIN agrega las interacciones de alta frecuencia fuera de cadena entre enjambres de agentes y proveedores de API:
 
 1. **Compensación Multilateral Simétrica:** Los micro-pagos de alta velocidad se equilibran fuera de cadena:
-   $$NetBalance_i = \sum Inflow_i - \sum Outflow_i$$
+$$
+
+NetBalance_i = \sum Inflow_i - \sum Outflow_i
+
+$$
 
 2. **Eficiencia de Compresión:** Más de 1.000.000 de micro-ticks se comprimen en una sola liquidación por lote, logrando un **99.999% de compresión**.
 3. **Paquete Único en MTU IPv6:** La carga completa requiere exactamente **771 bytes**, encajando limpiamente dentro del **límite MTU de IPv6 de 1.232 bytes**, eliminando la fragmentación de paquetes en rutas transcontinentales.
@@ -842,9 +888,9 @@ Una vulnerabilidad estructural crítica de las matrices de compensación no gara
 
 Para garantizar una finalidad de liquidación de nivel nuclear, HAICHAIN implementa el **Búfer de Garantía de Cámara de Compensación (CHGB)**:
 
-1. **Staking Obligatorio de Solvencia:** Cada retransmisor y agente de negociación debe depositar una fianza inicial de solvencia en \$HAISI y USDT líquido en la Bóveda de Reserva de Liquidación.
+1. **Staking Obligatorio de Solvencia:** Cada retransmisor y agente de negociación debe depositar una fianza inicial de solvencia en $HAISI y USDT líquido en la Bóveda de Reserva de Liquidación.
 2. **Absorción de Déficit:** Si el Agente $X$ incumple, el CHGB absorbe automáticamente el déficit del Agente $X$ hasta el límite del búfer, permitiendo que las $(K-1)$ contrapartes solventes liquiden sin demoras ni contagio sistémico.
-3. **Slashing y Recapitalización Automática:** La fianza en \$HAISI del agente infractor se penaliza de inmediato en cadena, liquidándose en subastas programáticas para reembolsar al CHGB, y se revoca su autoridad de ejecución hasta su recapitalización.
+3. **Slashing y Recapitalización Automática:** La fianza en $HAISI del agente infractor se penaliza de inmediato en cadena, liquidándose en subastas programáticas para reembolsar al CHGB, y se revoca su autoridad de ejecución hasta su recapitalización.
 
 #### Recibos con Propiedad Soberana e Invariante de Reclamación Neta Instantánea (Arquitectura Anti-Validium)
 Para eliminar la **Trampa de Retención de Datos de Validium** - donde los operadores fuera de cadena ocultan las transacciones impidiendo que los usuarios prueben sus saldos - Haichain combina el paradigma de Objetos Propios de Sui con los Árboles de Merkle Concurrentes de Solana:
@@ -869,12 +915,12 @@ Para evitar la **Espiral de Muerte de Liquidez** observada en caídas extremas d
 ```
 
 1. **Tranche Senior (80% de Reserva de Capital Fuerte):** Financiado con ingresos acumulados de compensación en USDT/USDC y SOL nativo. Cuando un agente incumple, el Tranche Senior paga a las $(K-1)$ contrapartes de inmediato en stablecoins 1:1 sin vender tokens del protocolo en el mercado secundario.
-2. **Invariante Anti-Venta de Pánico y Bonos de Deuda con Descuento (dHAISI):** Si una liquidación sistémica extrema supera la liquidez del Tranche Senior, el núcleo prohíbe terminantemente la venta masiva de \$HAISI en el mercado abierto. En su lugar, el protocolo emite **Bonos de Deuda con Descuento a 90 Días (dHAISI)** a proveedores institucionales con un 15% de descuento, amortizados sistemáticamente del flujo diario de tarifas del protocolo.
+2. **Invariante Anti-Venta de Pánico y Bonos de Deuda con Descuento (dHAISI):** Si una liquidación sistémica extrema supera la liquidez del Tranche Senior, el núcleo prohíbe terminantemente la venta masiva de $HAISI en el mercado abierto. En su lugar, el protocolo emite **Bonos de Deuda con Descuento a 90 Días (dHAISI)** a proveedores institucionales con un 15% de descuento, amortizados sistemáticamente del flujo diario de tarifas del protocolo.
 
 ---
 
 ### 7.3. Canales de Estado de Transmisión Optimistas: Inferencia LLM sin Paradas y Liquidación Inmune a la Congestión
-Aunque Solana L1 ofrece finalidad de 400ms con tarifas de \$0.000001, las transmisiones de tokens de IA de ultra-alta frecuencia (que emiten tokens cada 10-30ms) requieren una abstracción instantánea para eliminar toda latencia de ida y vuelta y aislar la inferencia de congestiones de la red.
+Aunque Solana L1 ofrece finalidad de 400ms con tarifas de $0.000001, las transmisiones de tokens de IA de ultra-alta frecuencia (que emiten tokens cada 10-30ms) requieren una abstracción instantánea para eliminar toda latencia de ida y vuelta y aislar la inferencia de congestiones de la red.
 
 HAICHAIN resuelve esto mediante **Canales de Estado Optimistas Híbridos**:
 
@@ -890,9 +936,13 @@ HAICHAIN resuelve esto mediante **Canales de Estado Optimistas Híbridos**:
          |                                                        |
 ```
 
-1. **Bloqueo Escrow en Cadena:** Al iniciar la sesión, el Agente bloquea un presupuesto fraccionario (ej. \$1.00 USDT) de su Fondo de Gasto en una PDA de Canal de Estado dedicada en Solana L1.
+1. **Bloqueo Escrow en Cadena:** Al iniciar la sesión, el Agente bloquea un presupuesto fraccionario (ej. $1.00 USDT) de su Fondo de Gasto en una PDA de Canal de Estado dedicada en Solana L1.
 2. **Micro-Ticks en Memoria Fuera de Cadena (< 5ms):** A medida que los tokens fluyen desde el Proveedor de IA, el Agente firma Micro-Vales criptográficos continuamente en RAM con pares de claves efímeras Ed25519:
-   $$\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)$$
+$$
+
+\text{Voucher}_k = \text{Sign}_{\text{Agent}}\Big(\text{DOMAIN\_SEPARATOR},\, \text{ClusterID},\, \text{ProgramID},\, \text{VaultPDA},\, \text{ProviderPubkey},\, \text{SessionID},\, k,\, \text{CumulativeAmount}_k\Big)
+
+$$
    Donde:
    * $\text{DOMAIN\_SEPARATOR}$: Etiqueta criptográfica de separación de dominio del protocolo (`"haichain-v1-channel-settlement"`).
    * $\text{ClusterID}$: Identificador del clúster de Solana (Devnet, Testnet, Mainnet-Beta), eliminando repeticiones entre redes.
@@ -930,16 +980,16 @@ ARQUITECTURA DE FLUJO DE CAJA DEL PROTOCOLO $HAISI
 ```
 
 ### 8.1. Asignación de Tokens y Cronograma de Consolidación (Suministro Fijo Total de 1.000.000.000)
-* **Incentivos para Ecosistema y Compensación de Máquinas (35%):** 350.000.000 \$HAISI - Emisión lineal durante 48 meses.
-* **Comunidad y Venta Escalonada de Tokens (15%):** 150.000.000 \$HAISI comprendiendo:
-  * *Ronda Privada de Desarrollo Pre-Seed (2.5%):* 25.000.000 \$HAISI - Precio a **\$0.007 USD** (\$7M FDV), desbloqueo del 20% en TGE, acantilado de 2 meses, consolidación lineal on-chain de 6 meses.
-  * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 \$HAISI - Precio a **\$0.010 USD** (\$10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 90 días.
-  * *Incentivos de Crecimiento Comunitario y Hackathons (2.5%):* 25.000.000 \$HAISI - Reservados para subvenciones y recompensas para desarrolladores.
+* **Incentivos para Ecosistema y Compensación de Máquinas (35%):** 350.000.000 $HAISI - Emisión lineal durante 48 meses.
+* **Comunidad y Venta Escalonada de Tokens (15%):** 150.000.000 $HAISI comprendiendo:
+  * *Ronda Privada de Desarrollo Pre-Seed (2.5%):* 25.000.000 $HAISI - Precio a **$0.007 USD** ($7M FDV), desbloqueo del 20% en TGE, acantilado de 2 meses, consolidación lineal on-chain de 6 meses.
+  * *Launchpad Comunitario Público (TGE) (10.0%):* 100.000.000 $HAISI - Precio a **$0.010 USD** ($10M FDV) vía Meteora DLMM, cronograma lineal anti-sniping de 90 días.
+  * *Incentivos de Crecimiento Comunitario y Hackathons (2.5%):* 25.000.000 $HAISI - Reservados para subvenciones y recompensas para desarrolladores.
 
-* **Equipo Fundador e Ingeniería Central (18%):** 180.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 36 meses.
-* **Inversores Estratégicos Seed (12%):** 120.000.000 \$HAISI - Acantilado de 12 meses, consolidación lineal de 18 meses ($7M - $8.5M FDV).
-* **Tesorería de Seguridad del Protocolo (10%):** 100.000.000 \$HAISI - Bloqueo multi-firma para seguros y auditorías continuas.
-* **Liquidez Inicial en DEX (Raydium/Orca) (10%):** 100.000.000 \$HAISI - 100% de tokens LP quemados permanentemente.
+* **Equipo Fundador e Ingeniería Central (18%):** 180.000.000 $HAISI - Acantilado de 12 meses, consolidación lineal de 36 meses.
+* **Inversores Estratégicos Seed (12%):** 120.000.000 $HAISI - Acantilado de 12 meses, consolidación lineal de 18 meses ($7M - $8.5M FDV).
+* **Tesorería de Seguridad del Protocolo (10%):** 100.000.000 $HAISI - Bloqueo multi-firma para seguros y auditorías continuas.
+* **Liquidez Inicial en DEX (Raydium/Orca) (10%):** 100.000.000 $HAISI - 100% de tokens LP quemados permanentemente.
 
 ### 8.2. Asignación de Ancho de Banda por Staking y Volante de Retención de Valor
 Para neutralizar permanentemente la **Espiral de Muerte de Velocidad del Token (Teorema de Pfeffer)** y eliminar por completo los riesgos de clasificación como valor bajo la prueba Howey de EE. UU. y el reglamento MiCA de la UE, Haichain estructura $HAISI como un **Activo de Utilidad Productiva**:
@@ -969,7 +1019,11 @@ Haichain implementa un sistema de doble riel sin fricción:
 
 - **Agentes Estándar y Desarrolladores:** Pagan por transacción estrictamente en stablecoins verificadas (USDC/USDT) sin staking obligatorio de tokens, preservando la ergonomía "Invisible Web3".
 - **Enjambres Empresariales y Flotas de Alto Volumen:** Pueden bloquear opcionalmente $HAISI (`veHAISI`) para privilegios de infraestructura:
-  $$\text{Asignación Diaria de Transacciones} = k \cdot \sqrt{\text{Staked } \$HAISI \times \text{Duración del Bloqueo}}$$
+$$
+
+\text{Asignación Diaria de Transacciones} = k \cdot \sqrt{\text{Staked \$HAISI} \times \text{Duración del Bloqueo}}
+
+$$
   * *Descuentos Escalonados de Tarifas:* Hasta un 80% de reducción en comisiones netas de compensación al bloquear de 3 a 36 meses.
   * *Enrutamiento de Vía Rápida Dedicado Sub-5ms:* Enrutamiento de mempool dedicado para enjambres de misión crítica.
   * *Compensación de Fondo sin Gas:* Reclamación de alquiler patrocinada por el protocolo y limpieza de anuladores.
@@ -983,7 +1037,11 @@ En lugar de distribuir dividendos directos en efectivo (lo que introduce graves 
 ### 8.3. Sumidero de Valor Programático por Lote de Liquidación (`OP_402_BURN`) y Neutralización de Velocidad
 Para neutralizar la amenaza del dilema de la velocidad monetaria, Haichain implementa el **Protocolo de Sumidero de Valor a Nivel de Lote (`OP_402_BURN`)**:
 
-$$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$$
+$$
+
+\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}
+
+$$
 
 *Donde:*
 
@@ -1006,9 +1064,9 @@ $$\Delta S_{\text{burn}} = \gamma \cdot \sum_{i=1}^{n} V_{\text{settled}}^{(i)}$
     --> ¡EL SUMINISTRO CIRCULANTE SE REDUCE DIRECTAMENTE CON EL VOLUMEN ON-CHAIN!
 ```
 
-1. **Recompra TWAP No Discrecional y Quema Deflacionaria:** Con cada confirmación en cadena de un lote de micro-custodia, el retransmisor asigna automáticamente el 50% del margen neto a ejecutar recompras TWAP de \$HAISI en pools de liquidez descentralizados (Orca/Raydium vía Jupiter) y activa la quema atómica. Cuanto mayor es la velocidad económica de las máquinas, mayor es la reducción del suministro en circulación.
+1. **Recompra TWAP No Discrecional y Quema Deflacionaria:** Con cada confirmación en cadena de un lote de micro-custodia, el retransmisor asigna automáticamente el 50% del margen neto a ejecutar recompras TWAP de $HAISI en pools de liquidez descentralizados (Orca/Raydium vía Jupiter) y activa la quema atómica. Cuanto mayor es la velocidad económica de las máquinas, mayor es la reducción del suministro en circulación.
 2. **Prueba de Stake de Agente (PoAS) para Colas Prioritarias de Sub-Milisegundos:**
-   Los arbitrajistas de alta frecuencia, orquestadores empresariales y creadores de mercado automatizados deben depositar un saldo mínimo de \$HAISI en el `StakeRegistry` on-chain para obtener:
+   Los arbitrajistas de alta frecuencia, orquestadores empresariales y creadores de mercado automatizados deben depositar un saldo mínimo de $HAISI en el `StakeRegistry` on-chain para obtener:
    * **Enrutamiento Dedicado de Vía Rápida Sub-5ms:** Omitiendo la cola FIFO estándar de 50ms.
    * **Patrocinio Automatizado de 0-SOL:** Ejecución de transacciones sin tarifas de gas cubierta por retransmisores sin necesidad de mantener saldos locales en SOL.
    * **Rebajas por Volumen:** Descuentos escalonados de hasta el 40% en los diferenciales brutos de compensación al hacer staking $> 180\text{ días}$.
@@ -1042,9 +1100,9 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
   El `haichain_vesting_kernel` estipula que la distribución lineal a partir del Mes 13 **se desbloquea si y solo si se satisfacen ambas condiciones simultáneamente**:
   1. *Condición Temporal:* Cumplimiento del acantilado cronológico de 12 meses.
   2. *Criterios Verificables de Compensación On-Chain (KPIs):*
-     * **Volumen Liquidado Acumulado:** Mínimo \$50.000.000 USDT compensados exitosamente en Solana L1.
+     * **Volumen Liquidado Acumulado:** Mínimo $50.000.000 USDT compensados exitosamente en Solana L1.
      * **Agentes Autónomos Activos:** Mínimo 10.000 agentes verificados con árboles de capacidad activos transaccionando en los últimos 30 días.
-     * **Ingresos Netos Acumulados del Protocolo:** Mínimo \$25.000 USDT depositados en la Tesorería.
+     * **Ingresos Netos Acumulados del Protocolo:** Mínimo $25.000 USDT depositados en la Tesorería.
 
 * **Salvaguarda de Extensión Autónoma:**
   Si las métricas no se cumplen en el Mes 12, el contrato extiende el bloqueo automáticamente en intervalos consecutivos de 6 meses. Esto fuerza matemáticamente a los fundadores y fondos a mantener un enfoque operativo del 100% en la tracción del producto y los ingresos del protocolo.
@@ -1052,12 +1110,12 @@ Para eliminar la inquietud en torno a la presión de venta en el mercado secunda
 ### 8.5. Red de Retransmisores Descentralizados con Staking y Arquitectura de Seguridad por Slashing
 Para eliminar dependencias centralizadas, Haichain hace una transición de sus Retransmisores Canary iniciales a una **Red de Retransmisores Descentralizados con Staking**:
 
-* **Fianza de Capital Obligatoria:** Los operadores externos que deseen enrutar lotes de micro-custodia deben depositar una fianza mínima de \$100.000 \$HAISI en el `RelayerRegistryPDA`.
+* **Fianza de Capital Obligatoria:** Los operadores externos que deseen enrutar lotes de micro-custodia deben depositar una fianza mínima de $100.000 $HAISI en el `RelayerRegistryPDA`.
 * **Aplicación de Slashing Determinista:**
   * *Penalizaciones por Latencia de Censura:* No retransmitir autorizaciones de gasto comprometidas dentro del SLA garantizado (> 3 slots) activa una penalización inmediata del 5% acreditada a la reserva de seguro del usuario.
   * *Intentos de Doble Gasto:* Cualquier doble retransmisión o publicación de raíces conflictivas resulta en un **slashing inmediato del 100% de la fianza**, seguido de la expulsión permanente del registro.
 
-* **Subastas de Lotes Ponderadas por Stake:** La asignación de lotes opera mediante subastas pseudo-aleatorias dinámicas ponderadas por el stake de \$HAISI y las puntuaciones de tiempo de actividad histórico, garantizando enrutamiento resistente a la censura.
+* **Subastas de Lotes Ponderadas por Stake:** La asignación de lotes opera mediante subastas pseudo-aleatorias dinámicas ponderadas por el stake de $HAISI y las puntuaciones de tiempo de actividad histórico, garantizando enrutamiento resistente a la censura.
 
 ---
 
@@ -1080,7 +1138,7 @@ Para eliminar dependencias centralizadas, Haichain hace una transición de sus R
 ```
 
 ### 9.1. La Trayectoria Evolutiva de 3 Etapas
-1. **Etapa 1 (Meses 0 - 18):** Lanzamiento en Solana L1, capturando cuota de mercado, perfeccionando el PMF de micro-liquidaciones y desplegando los invariantes de seguridad $AI^2$.
+1. **Etapa 1 (Meses 0 - 18):** Lanzamiento en Solana L1, capturando cuota de mercado, perfeccionando el PMF de micro-liquidaciones y desplegando los invariantes de seguridad AI².
 2. **Etapa 2 (Meses 18 - 36):** Lanzamiento de un Rollup L2 de alto rendimiento en SVM usando Celestia/EigenDA para Disponibilidad de Datos para procesar más de 50.000 TPS de máquinas, introduciendo el Mercado de Conocimiento Simbiótico y las Micro-Tareas Inversas.
 3. **Etapa 3 (Mes 36+):** Transición a **HAICHAIN Sovereign Machine L1**, una blockchain Layer 1 independiente diseñada desde el silicio físico para el consenso de máquinas y la verdadera superinteligencia descentralizada.
 
@@ -1104,9 +1162,9 @@ Haichain rechaza el ingenuo paradigma de "Cadena Fantasma Aislada" donde un proy
     └── Seguridad Compartida por Restaking: Dual-Staking SOL + $HAISI
 ```
 
-1. **Solana L1 como Ancla Definitiva de Liquidación y Custodia:** Solana permanece como la capa de custodia perpetua y depositario soberano para todo el colateral en USDT/USDC, tesorerías corporativas y credenciales de Passkeys maestras. La profunda liquidez de más de \$10.000 millones de Solana se preserva intacta, eliminando los riesgos de explotación de puentes de terceros.
+1. **Solana L1 como Ancla Definitiva de Liquidación y Custodia:** Solana permanece como la capa de custodia perpetua y depositario soberano para todo el colateral en USDT/USDC, tesorerías corporativas y credenciales de Passkeys maestras. La profunda liquidez de más de $10.000 millones de Solana se preserva intacta, eliminando los riesgos de explotación de puentes de terceros.
 2. **HAI-VM como Motor Dedicado a Máquinas Autónomas:** En lugar de competir por costoso espacio de bloque contra memecoins o arbitrajistas de DEX en Solana L1, HAI-VM funciona como un Rollup de ejecución dedicado a la cognición de máquinas autónomas. Las operaciones de micro-custodia y liquidaciones por streaming se ejecutan a velocidad de cable con gas cercano a cero, registrando periódicamente raíces de estado comprimidas de ZK en Solana L1.
-3. **Seguridad Compartida por Restaking (Dual-Staking SOL + $HAISI):** Para proteger la red HAI-VM sin dilución inflacionaria, Haichain implementa Seguridad por Restaking: los validadores Tier-1 de Solana hacen restaking de su colateral en SOL junto con \$HAISI, proporcionando seguridad económica inmediata respaldada por ingresos reales de tarifas del protocolo.
+3. **Seguridad Compartida por Restaking (Dual-Staking SOL + $HAISI):** Para proteger la red HAI-VM sin dilución inflacionaria, Haichain implementa Seguridad por Restaking: los validadores Tier-1 de Solana hacen restaking de su colateral en SOL junto con $HAISI, proporcionando seguridad económica inmediata respaldada por ingresos reales de tarifas del protocolo.
 
 ---
 
@@ -1121,7 +1179,7 @@ Haichain rechaza el ingenuo paradigma de "Cadena Fantasma Aislada" donde un proy
 #### 2. El Cuello de Botella del Sobrecosto Computacional de zkML y la Verificación Optimista
 * **La Realidad Computacional:** Generar pruebas de conocimiento cero no interactivas (zk-SNARKs / STARKs) para inferencias de redes neuronales de miles de millones de parámetros incurre en una penalización de **1.000 a 10.000 veces** en comparación con las operaciones de punto flotante directas en GPU. Probar cada token generado por modelos 70B+ en tiempo real en la cadena es computacionalmente inviable con el hardware actual.
 * **Solución de Ingeniería de HAICHAIN (Muestreo Optimista con Slashing Económico y Atestación TEE):**
-  - **Ejecución al 99.9% a Velocidad Nativa:** Las inferencias se ejecutan a velocidad de línea en la GPU sin sobrecostos de pruebas ZK. Los resultados se registran en cadena con compromisos de hash respaldados por el colateral en \$HAISI del nodo.
+  - **Ejecución al 99.9% a Velocidad Nativa:** Las inferencias se ejecutan a velocidad de línea en la GPU sin sobrecostos de pruebas ZK. Los resultados se registran en cadena con compromisos de hash respaldados por el colateral en $HAISI del nodo.
   - **Pruebas de Fraude por Bisección Interactiva:** Si un resultado es desafiado durante la ventana de disputa, un juego de verificación interactivo localiza el paso disputado único. Solo la micro-capa impugnada requiere una prueba zk-SNARK dirigida o atestación de hardware (NVIDIA H100 TEE), penalizando a los nodos fraudulentos mientras se mantiene el rendimiento masivo.
 
 #### 3. Inflamación del Estado (State Bloat) vs Cognición Autónoma de Alta Frecuencia
@@ -1131,7 +1189,7 @@ Haichain rechaza el ingenuo paradigma de "Cadena Fantasma Aislada" donde un proy
   * **Capa Desacoplada de Disponibilidad de Datos (DA):** Los prompts intermedios y embeddings se registran mediante hashes Blake3 en redes especializadas de DA (Celestia / EigenDA / Arweave). Las trazas completas se podan de la memoria de los validadores tras la finalidad de la disputa ($\Delta t = 3600 \text{ slots}$).
 
 #### 4. Cuello de Botella del Ancho de Banda Biológico I/O y Canalización Cognitiva Asíncrona (ACP)
-* **El Límite Biológico:** El tiempo de respuesta neuro-motor humano está limitado por la biología ($pprox 200 - 500\text{ms}$ para reacciones físicas; minutos u horas para una comprensión contextual matizada), contrastando fuertemente con la velocidad en milisegundos del silicio. La verificación humana síncrona paralizaría los hilos de los agentes.
+* **El Límite Biológico:** El tiempo de respuesta neuro-motor humano está limitado por la biología ($\approx 200 - 500\text{ms}$ para reacciones físicas; minutos u horas para una comprensión contextual matizada), contrastando fuertemente con la velocidad en milisegundos del silicio. La verificación humana síncrona paralizaría los hilos de los agentes.
 * **Mitigación de Ingeniería (Canalización Cognitiva Asíncrona - ACP):**
   * Cuando la métrica de incertidumbre de un agente supera el umbral ($H(\text{Salida} \mid \text{Entrada}) > \tau_{\text{incertidumbre}}$), el agente no bloquea su hilo. Aísla la bifurcación no verificada en un **Sandbox de Custodia On-Chain (OES)** y continúa ejecutando tareas paralelas independientes.
   * Una vez resuelta por árbitros humanos certificados (vía Passkey o WorldID zk-PoH), el estado se fusiona nuevamente con la rama principal mediante la instrucción atómica `merge_cognitive_resolution`, transmitiendo una compensación instantánea en USDT al experto.
@@ -1176,7 +1234,7 @@ En cadenas de bloques convencionales, los pagos de máquinas son operaciones de 
 ```
 
 1. **Nivel 1: Prueba de Trabajo de Agente (PoAW):** Clústeres de validadores GPU proponen y certifican bloques cada 50ms mediante un motor BFT segmentado, ejecutando transiciones de estado deterministas, firmas y atestaciones de inferencia.
-2. **Nivel 2: Prueba de Inteligencia Real (PoAI):** Para disputas subjetivas, violaciones éticas o anomalías imprevistas, la ejecución se deriva a especialistas humanos acreditados. Los árbitros hacen staking de \$HAISI y votan mediante esquemas de compromiso-revelación de conocimiento cero, obteniendo recompensas del protocolo.
+2. **Nivel 2: Prueba de Inteligencia Real (PoAI):** Para disputas subjetivas, violaciones éticas o anomalías imprevistas, la ejecución se deriva a especialistas humanos acreditados. Los árbitros hacen staking de $HAISI y votan mediante esquemas de compromiso-revelación de conocimiento cero, obteniendo recompensas del protocolo.
 
 ### 9.5. Micro-Tareas Inversas con Humanos en el Bucle y Penalización Anti-Sybil
 Un fallo crítico en las redes de recompensas con humanos en el bucle es la **Paradoja del Botting Sybil**: los usuarios despliegan bots de LLM (ChatGPT, Claude) para resolver micro-tareas, reinyectando irónicamente datos sintéticos en un sistema diseñado para evitar la degradación sintética.
@@ -1184,8 +1242,8 @@ Un fallo crítico en las redes de recompensas con humanos en el bucle es la **Pa
 HAICHAIN resuelve esta paradoja mediante **Arbitraje de Disputas de Alto Valor y Slashing con Fianza Dual**:
 
 1. **Eliminación de Tareas Triviales de Captcha:** Las micro-tareas repetitivas son gestionadas exclusivamente por agentes de silicio. La Inteligencia Real humana se reserva estrictamente para el **Arbitraje Epistémico de Alto Valor**: disputas contractuales subjetivas, análisis de inyecciones de prompts adversarias, casos éticos límite y verificación de invariantes físicos del mundo real.
-2. **Staking Obligatorio de Jurados (Prueba de Inteligencia Real):** Los validadores humanos deben bloquear \$HAISI en el Registro de Arbitraje (Pool de Jurados de Punto de Schelling) para ser elegibles para la asignación de casos.
-3. **Slashing Económico Anti-Sybil:** Si un jurado humano intenta automatizar sus veredictos con bots, sus respuestas divergirán del consenso de sus pares revisores o caerán en trampas deterministas. Enviar respuestas automatizadas desalineadas resulta en el **slashing inmediato de su fianza en \$HAISI**, haciendo que el farming automatizado sea económicamente inviable.
+2. **Staking Obligatorio de Jurados (Prueba de Inteligencia Real):** Los validadores humanos deben bloquear $HAISI en el Registro de Arbitraje (Pool de Jurados de Punto de Schelling) para ser elegibles para la asignación de casos.
+3. **Slashing Económico Anti-Sybil:** Si un jurado humano intenta automatizar sus veredictos con bots, sus respuestas divergirán del consenso de sus pares revisores o caerán en trampas deterministas. Enviar respuestas automatizadas desalineadas resulta en el **slashing inmediato de su fianza en $HAISI**, haciendo que el farming automatizado sea económicamente inviable.
 
 #### Enrutamiento Cognitivo de Doble Pista e Invariantes de Señuelos Algorítmicos
 Para resolver la paradoja de la jerarquía de experiencia y evitar que granjas de clics contaminen la PoAI, el protocolo se bifurca en dos niveles de validación aislados:
@@ -1205,13 +1263,13 @@ Para resolver la paradoja de la jerarquía de experiencia y evitar que granjas d
     Fallo de IA activa slashing instantáneo          financiadas por pools de I+D corporativos
 ```
 
-1. **Pista 1: Micro-PoAI (Recompensas Perceptivas, \$0.01 - \$0.10):**
+1. **Pista 1: Micro-PoAI (Recompensas Perceptivas, $0.01 - $0.10):**
    * **Barrera de Latencia Neurológica Biológica ($t \ge 250\text{ms}$):** El procesamiento visual-neural humano requiere un mínimo de 250ms. Respuestas completadas en $< 250\text{ms}$ se descartan matemáticamente como scripts automáticos.
    * **Trampas de Señuelo Algorítmico:** El protocolo inyecta un 5% de preguntas trampa con respuestas a casos límite conocidas donde modelos pequeños suelen alucinar. Fallar en un señuelo provoca la pérdida de recompensas y la revocación de credenciales.
 
-2. **Pista 2: PoAI de Expertos Institucionales (Auditorías de Frontera, \$10 - \$200):**
+2. **Pista 2: PoAI de Expertos Institucionales (Auditorías de Frontera, $10 - $200):**
    * La auditoría de razonamientos complejos (ej. pruebas matemáticas de OpenAI o1/o3 o diagnósticos) requiere especialistas humanos verificados.
-   * Los participantes deben poseer una **Credencial de Token Soulbound (SBT)** intransferible emitida por instituciones acreditadas y depositar una fianza en \$HAISI.
+   * Los participantes deben poseer una **Credencial de Token Soulbound (SBT)** intransferible emitida por instituciones acreditadas y depositar una fianza en $HAISI.
    * Las recompensas son financiadas directamente por pools de I+D corporativos en busca de datos de alineación humana no contaminados. Auditorías maliciosas conllevan la pérdida total del stake.
 
 ---
@@ -1223,7 +1281,11 @@ HAICHAIN garantiza el cumplimiento legal mediante **DIDs Efímeros de Conocimien
 
 * **Aislamiento Biométrico Fuera de Cadena:** Cero información de identificación personal (PII), plantillas biométricas o hashes de identidad se registran en el ledger inmutable. Todas las credenciales biométricas residen estrictamente en el Secure Enclave del hardware local del usuario.
 * **Verificación de Identidad de Conocimiento Cero:** El ledger de la blockchain solo valida Pruebas de Conocimiento Cero temporales de singularidad humana y validez de firmas criptográficas:
-   $$DID_{agent} = \text{Hash}(\text{ZKP}_{auth} \parallel \text{DerivationIndex} \parallel \text{AgentCodeHash})$$
+$$
+
+DID_{agent} = \text{Hash}(\text{ZKP}_{auth} \parallel \text{DerivationIndex} \parallel \text{AgentCodeHash})
+
+$$
 
 * **Revocación Criptográfica e Invariante del Artículo 17 del GDPR:** Cuando un usuario cierra su cuenta o solicita el borrado de sus datos, el smart contract registra un ticket nulificador criptográfico. Las claves locales del dispositivo se destruyen, haciendo que la actividad histórica on-chain sea matemáticamente desvinculable de la persona física, logrando el cumplimiento total del GDPR de la UE, MiCA y las reglas del GAFI.
 
@@ -1285,34 +1347,66 @@ Reconociendo que **la propiedad intelectual propietaria, el código fuente y los
 ### Teorema 1: Conservación del Colateral de la Bóveda (Invariante No Inflacionario)
 *Sea $S_t$ el estado global del contrato en el slot $t$. Para cualquier bóveda de usuario $V$ con Cuenta de Token Asociada $ATA_V$:*
 $$
-orall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)$$
+
+orall t \ge 0, \quad \text{ConfirmedBalance}(V, t) \le \text{TokenBalance}(ATA_V, t)
+
+$$
 *Demostración:* 
 
 1. **Caso Base ($t=0$):** En la inicialización de la bóveda, $\text{ConfirmedBalance}(V, 0) = 0$ y $\text{TokenBalance}(ATA_V, 0) = 0$. El invariante se cumple.
 2. **Paso de Depósito ($\Delta D > 0$):** El contrato fuerza una transferencia atómica CPI de $\Delta D$ tokens a $ATA_V$ antes de modificar el estado:
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D$$
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) + \Delta D
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) + \Delta D
+
+$$
 
 3. **Paso de Gasto ($\Delta S > 0$):** El contrato recarga el saldo real de $ATA_V$ desde los sysvars en tiempo de ejecución. La ejecución revierte con `InsufficientConfirmedBalance` (0x1781) si $\Delta S > \text{ConfirmedBalance}(V, t)$, y revierte con `EulerDriftBalanceMismatch` (0x177c) si $\text{TokenBalance}(ATA_V, t) < \text{ConfirmedBalance}(V, t)$.
-   $$\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S$$
-   $$\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S$$
-*Por inducción matemática, el invariante se cumple en todas las transiciones de estado. $lacksquare$*
+$$
+
+\text{TokenBalance}(ATA_V, t+1) = \text{TokenBalance}(ATA_V, t) - \Delta S
+
+$$
+$$
+
+\text{ConfirmedBalance}(V, t+1) = \text{ConfirmedBalance}(V, t) - \Delta S
+
+$$
+*Por inducción matemática, el invariante se cumple en todas las transiciones de estado. $lacksquare$*
 
 ### Teorema 2: Límite Superior de Explotación por Inyección de Prompts
 *Sea $L = (\text{Pubkey}, \text{MaxSpend}, \text{ExpirySlot}, \text{Nonce})$ una hoja de capacidad autorizada con raíz de Merkle $R$. Si un agente adversario sufre un envenenamiento total de memoria, el valor máximo extraíble $E$ satisface:*
-$$E \le \text{MaxSpend}$$
+$$
+
+E \le \text{MaxSpend}
+
+$$
 *Demostración:* Cualquier instrucción de gasto requiere una prueba de inclusión $\pi$ tal que $\text{Verify}(R, L, \pi) = \text{true}$. Dado que el contrato en cadena impone:
-$$\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})$$
-y registra el nulificador de la hoja evitando su reutilización, cualquier gasto donde $amount > L.\text{MaxSpend}$ causa una reversión atómica de la transacción. $lacksquare$
+$$
+
+\text{require!}(amount \le L.\text{MaxSpend}, \text{ExceedsAuthorizedCapability})
+
+$$
+y registra el nulificador de la hoja evitando su reutilización, cualquier gasto donde $amount > L.\text{MaxSpend}$ causa una reversión atómica de la transacción. $lacksquare$
 
 ### Teorema 3: Neutralidad de Alquiler de Estado y Equivalencia del Invariante MEV
 Sea $S_{ephem}$ el conjunto de PDAs de negociación transitorias instanciadas durante la época de compensación $\tau$, y sea $R(A)$ los lamports de alquiler bloqueados en la cuenta $A$.
-$$\lim_{t 	o \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0$$
+$$
+
+\lim_{t 	o \tau_{end}} \sum_{A \in S_{ephem}} R(A) = 0
+
+$$
 *Demostración:* Debido a que el invariante del núcleo impone `close = user_authority` atómicamente tras la finalización de la instrucción, todos los lamports se devuelven a la bóveda de origen dentro del slot $k \le \tau_{end}$.
 Además, bajo el Invariante de Bloqueo por Hash Compromiso-Revelación:
 $$
+
 orall \text{Buscador } M, \quad \mathbb{E}[\text{Beneficio MEV} \mid \text{Fase Commit}] = 0$$
-Dado que $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$ oculta $\text{Payload}$ con 256 bits de entropía y vincula la ejecución estrictamente a `Caller`, los buscadores de front-running obtienen cero información extraíble y no pueden falsificar la ejecución sin conocer `Salt` y poseer la clave privada de `Caller`. $lacksquare$
+Dado que $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt} \parallel \text{Caller})$ oculta $\text{Payload}$ con 256 bits de entropía y vincula la ejecución estrictamente a `Caller`, los buscadores de front-running obtienen cero información extraíble y no pueden falsificar la ejecución sin conocer `Salt` y poseer la clave privada de `Caller`. $lacksquare$
 
 ---
 
@@ -1344,7 +1438,7 @@ Dado que $\text{CommitHash} = \text{Blake3}(\text{Payload} \parallel \text{Salt}
 
 ---
 
-## 12. CONCLUSIÓN Y EL MANIFIESTO $AI^2$ (CONCLUSION & THE $AI^2$ MANIFESTO)
+## 12. CONCLUSIÓN Y EL MANIFIESTO AI² (CONCLUSION & THE AI² MANIFESTO)
 
 El desafío definitorio de nuestra civilización no es si la Inteligencia Artificial superará las capacidades computacionales humanas: ya lo ha hecho en dominios acotados. El verdadero desafío reside en **la gobernanza, la coordinación y la alineación soberana**: si la inteligencia de las máquinas se convertirá en un instrumento centralizado de extracción de rentas corporativas y vulnerabilidad existencial, o en un catalizador descentralizado y simbiótico para la prosperidad y la autosoberanía humana.
 
@@ -1361,7 +1455,7 @@ El desafío definitorio de nuestra civilización no es si la Inteligencia Artifi
 Cada métrica arquitectónica, cifra de exploits históricos, restricción física y estatuto legal referenciado en este libro blanco ha sido verificado con estándares oficiales de la industria, análisis forenses, literatura científica revisada por pares y códigos legales soberanos:
 
 ### I. Rieles Financieros, Micro-Liquidación y Estándares de Red
-* `[1]` **Estructura Oficial de Tarifas de Stripe Inc. (2024-2026):** Tarifa estándar de procesamiento con tarjeta mercantil: $2.9\% + \$0.30$ por cobro exitoso. Demuestra la imposibilidad matemática de pagos de API sub-centavo (una llamada de scraping de \$0.0002 incurre en un sobrecosto del 150.000%). Fuente: `https://stripe.com/pricing`.
+* `[1]` **Estructura Oficial de Tarifas de Stripe Inc. (2024-2026):** Tarifa estándar de procesamiento con tarjeta mercantil: $2.9\% + $0.30$ por cobro exitoso. Demuestra la imposibilidad matemática de pagos de API sub-centavo (una llamada de scraping de $0.0002 incurre en un sobrecosto del 150.000%). Fuente: `https://stripe.com/pricing`.
 * `[2]` **IETF RFC 8200 (Especificación IPv6):** Deering, S., & Hinden, R. *Internet Protocol, Version 6 (IPv6) Specification*, Sección 5 (Packet Size Issues): Exige un MTU de enlace mínimo de 1.280 octetos.
 * `[3]` **Especificación Central de Red de Solana Foundation:** `solana_sdk::packet::PACKET_DATA_SIZE = 1232 bytes` ($1.280 - 40\text{ bytes de cabecera IPv6} - 8\text{ bytes de cabecera UDP} = 1.232\text{ bytes}$). Valida que la carga de compensación simétrica de 771 bytes de HAICHAIN cabe dentro de un datagrama único no fragmentado.
 
@@ -1397,7 +1491,6 @@ Cada métrica arquitectónica, cifra de exploits históricos, restricción físi
 
 ---
 *Libro Blanco Técnico Oficial v1.0 • Grupo de Trabajo de Sistemas Globales de HAICHAIN • Registro Arquitectónico Registrado • Todos los Derechos Reservados.*
-
 
 ---
 
