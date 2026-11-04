@@ -202,27 +202,53 @@ async function handleSaftSubmit(request, env) {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const cleanPath = url.pathname.replace(/\/+$/, '') || '/';
 
-    if (url.pathname === '/api/saft/submit') {
+    if (cleanPath === '/api/saft/submit') {
       if (request.method === 'OPTIONS') {
         return new Response(null, { status: 204, headers: corsHeaders });
       }
       if (request.method === 'POST') {
         return await handleSaftSubmit(request, env);
       }
+      if (request.method === 'GET') {
+        return new Response(JSON.stringify({
+          status: 'online',
+          service: 'HAICHAIN SAFT Dual Email & Telegram Dispatcher',
+          methods: ['POST', 'OPTIONS'],
+          resendDomain: 'mail.haichain.si',
+          adminTarget: 'haichain.si@gmail.com'
+        }), {
+          status: 200,
+          headers: corsHeaders
+        });
+      }
       return new Response('Method Not Allowed', { status: 405, headers: corsHeaders });
     }
 
-    if (url.pathname === '/api/health') {
-      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway' }), {
+    if (cleanPath === '/api/health') {
+      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', timestamp: new Date().toISOString() }), {
         status: 200,
         headers: corsHeaders
       });
     }
 
-    // Serve all static assets directly through Cloudflare Edge
+    // Serve static assets directly through Cloudflare Edge Assets
     if (env && env.ASSETS) {
-      return await env.ASSETS.fetch(request);
+      let res = await env.ASSETS.fetch(request);
+      if (res.status === 404 && url.pathname.startsWith('/app/')) {
+        const strippedPath = url.pathname.replace(/^\/app/, '') || '/';
+        const strippedUrl = new URL(strippedPath + url.search, url.origin);
+        const strippedRes = await env.ASSETS.fetch(new Request(strippedUrl, request));
+        if (strippedRes.status < 400) return strippedRes;
+      }
+      if (res.status === 404 && !url.pathname.includes('.')) {
+        // Fallback for clean URLs (e.g. /dashboard -> /dashboard.html)
+        const htmlFallbackUrl = new URL(url.pathname + '.html' + url.search, url.origin);
+        const htmlRes = await env.ASSETS.fetch(new Request(htmlFallbackUrl, request));
+        if (htmlRes.status < 400) return htmlRes;
+      }
+      return res;
     }
 
     return new Response('Not Found', { status: 404 });
