@@ -24,9 +24,8 @@ function buildHaichainSaftEmailHtml(opt) {
     ? "A new Pre-Seed Strategic Round Simple Agreement for Future Tokens (SAFT) has been digitally executed and cryptographically sealed pursuant to the <strong>US ESIGN Act (15 U.S.C. § 7001) &amp; UETA standards</strong>."
     : `Dear <strong>${name}</strong>,<br><br>Your Simple Agreement for Future Tokens (SAFT) for the <strong>HAICHAIN Pre-Seed Strategic Round</strong> has been cryptographically signed and officially recorded pursuant to the <strong>US Electronic Signatures in Global and National Commerce Act (ESIGN Act, 15 U.S.C. § 7001) &amp; UETA standards</strong>.`;
 
-  const btnPdfText = "📄 View Official SAFT Agreement (PDF)";
   const btnDashText = "Access HAICHAIN Dashboard";
-  const actionLead = "Your official SAFT Agreement copy has been cryptographically sealed. You can view or download the complete contract document below:";
+  const actionLead = "Your official SAFT Agreement has been cryptographically sealed and recorded on-chain. You can access your investor dashboard to monitor your token allocation and vesting schedule:";
   const treasuryNote = "Investment funds are secured in the Squads Multi-Sig Treasury on Solana Mainnet. Your $HAISI tokens will be minted and transferred directly to your beneficiary wallet upon the Token Generation Event (TGE).";
 
   return `<!DOCTYPE html>
@@ -120,10 +119,7 @@ function buildHaichainSaftEmailHtml(opt) {
           ${actionLead}
         </p>
         <div style="text-align: center;">
-          <a href="${contractPdfUrl}" target="_blank" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: 700; font-size: 13px; padding: 13px 32px; border-radius: 9999px; text-decoration: none; margin: 6px; box-shadow: 0 4px 14px rgba(255,255,255,0.15);">
-            ${btnPdfText}
-          </a>
-          <a href="https://haichain.si/dashboard" target="_blank" style="display: inline-block; background-color: #18181b; color: #ffffff; font-weight: 600; font-size: 13px; padding: 13px 26px; border-radius: 9999px; text-decoration: none; border: 1px solid #3f3f46; margin: 6px;">
+          <a href="https://haichain.si/dashboard" target="_blank" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: 700; font-size: 13px; padding: 13px 32px; border-radius: 9999px; text-decoration: none; margin: 6px; box-shadow: 0 4px 14px rgba(255,255,255,0.15);">
             ${btnDashText}
           </a>
         </div>
