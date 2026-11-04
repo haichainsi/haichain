@@ -2607,7 +2607,7 @@ function buildHaichainSaftEmailHtml(opt) {
   // 1. Capture-phase Global Listener: Catches ANY click on any whitepaper link immediately
   document.addEventListener('click', (e) => {
     const trigger = e.target.closest(
-      '#nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]'
+      '#nav-whitepaper-link, #hero-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]'
     );
     if (trigger) {
       handleWhitepaperClick(e, trigger);
@@ -2616,7 +2616,7 @@ function buildHaichainSaftEmailHtml(opt) {
 
   // 2. Direct Element Binding & Prewarming
   function initPdfTriggers() {
-    const whitepaperSelector = '#nav-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]';
+    const whitepaperSelector = '#nav-whitepaper-link, #hero-whitepaper-link, #mobile-nav-whitepaper-link, #footer-whitepaper-link, [data-open-whitepaper], [data-pdf-whitepaper], a[href*="whitepaper"], a[href*="WHITEPAPER"]';
     document.querySelectorAll(whitepaperSelector).forEach((btn) => {
       if (btn.dataset.pdfBound === 'true') return;
       btn.dataset.pdfBound = 'true';

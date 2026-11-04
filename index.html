@@ -774,7 +774,7 @@
 
 
 
-  <script src="/app/i18n.js?v=v67_guaranteed_scroll_to_top_20261104"></script>
+  <script src="/app/i18n.js?v=v68_hero_whitepaper_modal_20261104"></script>
 
 
 
@@ -786,7 +786,7 @@
 
 
 
-  <script src="/app/pdf-modal.js?v=v67_guaranteed_scroll_to_top_20261104"></script>
+  <script src="/app/pdf-modal.js?v=v68_hero_whitepaper_modal_20261104"></script>
 
 
 
@@ -3530,30 +3530,9 @@
 
 
 
-        <a href="#spending-pot" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-neutral-300/90 dark:border-neutral-700 bg-white/90 dark:bg-neutral-900/80 backdrop-blur-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-950 dark:text-neutral-100 font-semibold text-sm transition-all flex items-center justify-center space-x-2 shadow-sm active:scale-95">
-
-
-
-
-
-
-
-          <span data-i18n="hero.exploreArch">Explore Architecture</span>
-
-
-
-
-
-
-
-          <i data-lucide="arrow-down" class="w-4 h-4"></i>
-
-
-
-
-
-
-
+        <a href="/HAICHAIN_WHITEPAPER_V1.0_EN.pdf" target="_blank" onclick="if (window.openPdfViewerModal) { event.preventDefault(); const lang = (window.haichainI18n && window.haichainI18n.getLanguage ? window.haichainI18n.getLanguage() : localStorage.getItem('haichain_lang') || 'en').toUpperCase(); window.openPdfViewerModal('/HAICHAIN_WHITEPAPER_V1.0_' + lang + '.pdf'); }" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-neutral-300/90 dark:border-neutral-700 bg-white/90 dark:bg-neutral-900/80 backdrop-blur-md hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-950 dark:text-neutral-100 font-semibold text-sm transition-all flex items-center justify-center space-x-2 shadow-sm active:scale-95 cursor-pointer" id="hero-whitepaper-link" data-open-whitepaper="true" data-pdf-whitepaper="true">
+          <span data-i18n="hero.whitepaper">Whitepaper</span>
+          <i data-lucide="file-text" class="w-4 h-4"></i>
         </a>
 
 
