@@ -2263,6 +2263,11 @@ function buildHaichainSaftEmailHtml(opt) {
 
         formView.classList.add('hidden');
         successView.classList.remove('hidden');
+        try {
+          if (typeof window.renderVestingVaultPage === 'function') {
+            window.renderVestingVaultPage();
+          }
+        } catch (_) {}
       });
     }
 
