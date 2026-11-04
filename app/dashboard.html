@@ -722,11 +722,11 @@
 
 
 
-  <script src="/app/dialog.js?v=v67_guaranteed_scroll_to_top_20261104"></script>
+  <script src="/dialog.js?v=v67_guaranteed_scroll_to_top_20261104"></script>
 
 
 
-  <script src="/app/i18n.js?v=v67_guaranteed_scroll_to_top_20261104"></script>
+  <script src="/i18n.js?v=v67_guaranteed_scroll_to_top_20261104"></script>
 
 
 
@@ -746,7 +746,7 @@
 
 
 
-  <script src="/app/sale-controller.js?v=v52_mobile_clean_and_cors_1793696394"></script>
+  <script src="/sale-controller.js?v=v52_mobile_clean_and_cors_1793696394"></script>
 
 
 
@@ -2246,7 +2246,7 @@
 
 
 
-        <img src="/assets/haichain-official-logo.png?v=v15_clean_icons" alt="HAICHAIN" class="logo-light w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo.png?v=v15_clean_icons';}">
+        <img src="/assets/haichain-official-logo.png?v=v15_clean_icons" alt="HAICHAIN" class="logo-light w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haichain-official-logo.png?v=v15_clean_icons';}">
 
 
 
@@ -2254,7 +2254,7 @@
 
 
 
-        <img src="/assets/haichain-official-logo-white.png?v=v15_clean_icons" alt="HAICHAIN" class="logo-dark w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-official-logo-white.png?v=v15_clean_icons';}">
+        <img src="/assets/haichain-official-logo-white.png?v=v15_clean_icons" alt="HAICHAIN" class="logo-dark w-auto object-contain transition-transform group-hover:scale-[1.02]" style="height: 25px; width: auto; max-height: 27px; max-width: 170px;" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haichain-official-logo-white.png?v=v15_clean_icons';}">
 
 
 
@@ -2546,7 +2546,7 @@
 
 
 
-            <img src="/assets/haichain-dashboard-mobile-logo.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-light haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo.png?v=v23_permanent_fix';}">
+            <img src="/assets/haichain-dashboard-mobile-logo.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-light haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haichain-dashboard-mobile-logo.png?v=v23_permanent_fix';}">
 
 
 
@@ -2554,7 +2554,7 @@
 
 
 
-            <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-dark haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix';}">
+            <img src="/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix" alt="HAICHAIN" class="logo-dark haichain-brand-logo-img dashboard-mobile-logo" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haichain-dashboard-mobile-logo-white.png?v=v23_permanent_fix';}">
 
 
 
@@ -20378,7 +20378,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-      const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
+      const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
 
 
 
@@ -26878,7 +26878,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-      const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
+      const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
 
 
 
@@ -26946,7 +26946,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-      const lang = window.haichainI18n ? window.haichainI18n.current() : 'en';
+      const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
 
 
 
@@ -27206,7 +27206,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden shadow-sm mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden shadow-sm mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}">
 
 
 
@@ -27436,7 +27436,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden shadow-sm mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                  <div class="w-10 h-10 rounded-xl bg-black border border-neutral-800 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden shadow-sm mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}">
 
 
 
@@ -27694,7 +27694,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-              <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-black border border-neutral-800 dark:border-white/10 flex items-center justify-center shadow-sm shrink-0 overflow-hidden mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+              <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-black border border-neutral-800 dark:border-white/10 flex items-center justify-center shadow-sm shrink-0 overflow-hidden mt-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-cover" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}">
 
 
 
@@ -27794,7 +27794,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-                <div class="w-5 h-5 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden p-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                <div class="w-5 h-5 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden p-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}">
 
 
 
@@ -28140,7 +28140,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-                <div class="w-7 h-7 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-xs p-1"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/app/assets/haisi-icon.png';}">
+                <div class="w-7 h-7 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-xs p-1"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}">
 
 
 
@@ -29112,7 +29112,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         return;
       }
 
-      const lang = window.haichainI18n ? window.haichainI18n.current() : 'vi';
+      const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
       const isVi = (lang === 'vi');
       const formattedAmount = Number(record.amount || 1000).toLocaleString('en-US');
       const formattedTokens = Number(record.tokens || Math.round(Number(record.amount || 1000) / 0.007)).toLocaleString('en-US');
@@ -29232,7 +29232,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         } catch (_) {}
       }
       if (!record) return;
-      const lang = window.haichainI18n ? window.haichainI18n.current() : 'vi';
+      const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
       const isVi = (lang === 'vi');
       const docTitle = isVi ? ('CHỨNG NHẬN KÝ HỢP ĐỒNG SAFT - ' + record.contractId) : ('SAFT AGREEMENT SIGNING CERTIFICATE - ' + record.contractId);
       const certHtml = `<!DOCTYPE html>
