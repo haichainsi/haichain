@@ -2190,7 +2190,10 @@ function buildHaichainSaftEmailHtml(opt) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(submissionPayload)
-          }).then(r => r.json()).then(res => {
+          }).then(async r => {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return await r.json();
+          }).then(res => {
             console.log('[SAFT Dual Email Dispatched & Confirmed]:', res);
           }).catch(err => {
             console.warn('[SAFT Local Gateway Warning]:', err);
@@ -2199,7 +2202,25 @@ function buildHaichainSaftEmailHtml(opt) {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(submissionPayload)
-            }).catch(e => console.warn('[SAFT Live Fallback Error]:', e));
+            }).then(async r => {
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              return await r.json();
+            }).then(res => {
+              console.log('[SAFT Live Fallback Confirmed]:', res);
+            }).catch(e => {
+              console.warn('[SAFT Live Fallback Error]:', e);
+              // Tertiary fallback to MCP Cloud Worker
+              fetch('https://mcp.haichain.si/api/saft/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(submissionPayload)
+              }).then(async r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return await r.json();
+              }).then(res => {
+                console.log('[SAFT Cloud Worker Fallback Confirmed]:', res);
+              }).catch(e2 => console.warn('[SAFT Cloud Worker Fallback Error]:', e2));
+            });
           });
         } catch (e) {
           console.warn('[SAFT Email Builder Warning]:', e);
