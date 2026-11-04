@@ -235,13 +235,12 @@ export default {
 
     // Serve static assets directly through Cloudflare Edge Assets
     if (env && env.ASSETS) {
-      let res = await env.ASSETS.fetch(request);
-      if (res.status === 404 && url.pathname.startsWith('/app/')) {
-        const strippedPath = url.pathname.replace(/^\/app/, '') || '/';
-        const strippedUrl = new URL(strippedPath + url.search, url.origin);
-        const strippedRes = await env.ASSETS.fetch(new Request(strippedUrl, request));
-        if (strippedRes.status < 400) return strippedRes;
+      let assetRequest = request;
+      if (url.pathname.startsWith('/app/')) {
+        const cleanAssetPath = url.pathname.replace(/^\/app/, '') || '/';
+        assetRequest = new Request(new URL(cleanAssetPath + url.search, url.origin), request);
       }
+      let res = await env.ASSETS.fetch(assetRequest);
       if (res.status === 404 && !url.pathname.includes('.')) {
         // Fallback for clean URLs (e.g. /dashboard -> /dashboard.html)
         const htmlFallbackUrl = new URL(url.pathname + '.html' + url.search, url.origin);
