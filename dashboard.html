@@ -3207,96 +3207,27 @@
 
 
               <pre id="code-express-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import express from 'express';
-
-
-
 import { haichainPaywall } from '@haichainsi/agent-pay';
 
-
-
-
-
-
-
 const app = express();
-
-
-
 app.use(express.json());
 
-
-
-
-
-
-
 // Attach HTTP 402 Paywall: auto-collect 0.003 USDT on Solana Devnet
-
-
-
 app.use('/api/my-agent-task', haichainPaywall({
-
-
-
   recipient: '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3', // Your Solana recipient wallet address
-
-
-
   priceUsdt: 0.003,
-
-
-
   cluster: 'devnet',
-
-
-
   maxAgeSeconds: 300 // Replay attack defense, expires after 5 minutes
-
-
-
 }));
 
-
-
-
-
-
-
 app.post('/api/my-agent-task', (req, res) => {
-
-
-
   // Only requests with valid verified on-chain payment reach this handler
-
-
-
   res.json({
-
-
-
     status: 'SUCCESS',
-
-
-
     result: 'AI task completed, payment settled to your Solana wallet!',
-
-
-
     taskEcho: req.body.taskPayload
-
-
-
   });
-
-
-
 });
-
-
-
-
-
-
 
 app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
 
@@ -3435,53 +3366,17 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
 
 
             <pre id="code-mcp-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>{
-
-
-
   "mcpServers": {
-
-
-
     "haichain-agent-economy": {
-
-
-
       "command": "node",
-
-
-
       "args": [
-
-
-
         "c:/Users/Surface/Documents/8. HAICHAIN/mcp-server/dist/index.js"
-
-
-
       ],
-
-
-
       "env": {
-
-
-
         "HAICHAIN_CLUSTER": "devnet"
-
-
-
       }
-
-
-
     }
-
-
-
   }
-
-
-
 }</code></pre>
 
 
@@ -3628,35 +3523,11 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
 
             <pre id="code-sdk-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import { HaiChainClient } from "@haichainsi/sdk";
 
-
-
-
-
-
-
 const client = new HaiChainClient({ network: "devnet" });
-
-
-
 const ticket = client.issueCapabilityTicket({
-
-
-
   maxSpendMicroUsdt: 50_000, // 0.05 USDT
-
-
-
   expirySlotDelta: 1000
-
-
-
 });
-
-
-
-
-
-
 
 console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre>
 
@@ -3747,33 +3618,12 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
             <pre id="code-curl-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>curl -X POST https://bubble-prescription-miller-recruiting.trycloudflare.com/api/relayer/dispatch \
-
-
-
   -H "Content-Type: application/json" \
-
-
-
   -d '{
-
-
-
     "agentId": "agent-smithery-scraper-01",
-
-
-
     "taskPayload": "https://example.com",
-
-
-
     "bidAmountUsdt": 0.003,
-
-
-
     "recipientAddress": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3"
-
-
-
   }'</code></pre>
 
 
