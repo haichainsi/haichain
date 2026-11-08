@@ -706,7 +706,7 @@
 
 
 
-  <script src="/assets/phantom-deeplink.js?v=v70_devhub_python_20261108"></script>
+  <script src="/assets/phantom-deeplink.js?v=v71_devhub_fixed_20261108"></script>
 
 
 
@@ -722,11 +722,11 @@
 
 
 
-  <script src="/dialog.js?v=v70_devhub_python_20261108"></script>
+  <script src="/dialog.js?v=v71_devhub_fixed_20261108"></script>
 
 
 
-  <script src="/i18n.js?v=v70_devhub_python_20261108"></script>
+  <script src="/i18n.js?v=v71_devhub_fixed_20261108"></script>
 
 
 
@@ -738,7 +738,7 @@
 
 
 
-  <script src="/pdf-modal.js?v=v70_devhub_python_20261108"></script>
+  <script src="/pdf-modal.js?v=v71_devhub_fixed_20261108"></script>
 
 
 
@@ -746,7 +746,7 @@
 
 
 
-  <script src="/sale-controller.js?v=v70_devhub_python_20261108"></script>
+  <script src="/sale-controller.js?v=v71_devhub_fixed_20261108"></script>
 
 
 
@@ -3074,17 +3074,17 @@
             <div class="flex items-center space-x-2">
               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">1</span>
               <div>
-                <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.sec1Title">Integrate Paywall to Monetize Agents in 5 Minutes</h3>
+                <h3 class="font-bold text-sm text-black dark:text-white">Integrate Paywall to Monetize Agents in 5 Minutes</h3>
                 <p class="text-[11px] text-neutral-500 dark:text-neutral-400">Sub-millisecond Ed25519 verification (0.24ms) & Invariant CapLeaf Bounded Loss protection.</p>
               </div>
             </div>
 
             <!-- Language Switcher Tabs: Python vs Node.js -->
             <div class="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shrink-0">
-              <button id="dev-tab-btn-python" onclick="switchDevLang('python')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all">
+              <button id="dev-tab-btn-python" onclick="window.switchDevLang('python')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all">
                 Python (FastAPI / MCP)
               </button>
-              <button id="dev-tab-btn-node" onclick="switchDevLang('node')" class="px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all">
+              <button id="dev-tab-btn-node" onclick="window.switchDevLang('node')" class="px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all">
                 Node.js (Express)
               </button>
             </div>
@@ -3173,16 +3173,16 @@ print("Agent Result:", response.json())</code></pre>
 
           <!-- TAB 2: NODE.JS SDK (EXPRESS / TYPESCRIPT) -->
           <div id="dev-code-node" class="space-y-4 hidden">
-            <p class="text-xs text-neutral-500 leading-relaxed" data-i18n="dev.sec1Desc">
+            <p class="text-xs text-neutral-500 leading-relaxed">
               Install official Haichain middleware to activate Replay Attack protection and verify on-chain Solana L1 transactions:
             </p>
 
             <!-- Node Step 1 Command -->
             <div class="space-y-1.5">
-              <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300" data-i18n="dev.step1Label">Step 1: Install package</div>
+              <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300">Step 1: Install package</div>
               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-3 font-mono text-xs flex items-center justify-between border border-neutral-800">
                 <code class="overflow-x-auto text-[11px] sm:text-xs">npm install @haichainsi/agent-pay</code>
-                <button onclick="navigator.clipboard.writeText('npm install @haichainsi/agent-pay'); if (window.showToast) { window.showToast('Copied to clipboard!', 'info'); } else { alert('Copied to clipboard!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer ml-2 shrink-0 transition-colors" data-i18n="btn.copy">
+                <button onclick="navigator.clipboard.writeText('npm install @haichainsi/agent-pay'); if (window.showToast) { window.showToast('Copied to clipboard!', 'info'); } else { alert('Copied to clipboard!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer ml-2 shrink-0 transition-colors">
                   Copy
                 </button>
               </div>
@@ -3190,11 +3190,11 @@ print("Agent Result:", response.json())</code></pre>
 
             <!-- Node Step 2 Code -->
             <div class="space-y-1.5">
-              <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300" data-i18n="dev.step2Label">Step 2: Add 5 lines of code to your Express server</div>
+              <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300">Step 2: Add 5 lines of code to your Express server</div>
               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
                 <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
                   <span>server.ts</span>
-                  <button onclick="navigator.clipboard.writeText(document.getElementById('code-express-snippet').innerText); if (window.showToast) { window.showToast('Copied Express code snippet!', 'info'); } else { alert('Copied Express code snippet!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors" data-i18n="btn.copyCode">
+                  <button onclick="navigator.clipboard.writeText(document.getElementById('code-express-snippet').innerText); if (window.showToast) { window.showToast('Copied Express code snippet!', 'info'); } else { alert('Copied Express code snippet!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors">
                     Copy Code
                   </button>
                 </div>
@@ -3228,8 +3228,8 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
 
           <!-- Step 3 Ecosystem Benefit -->
           <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1 text-xs text-neutral-700 dark:text-neutral-300">
-            <span class="font-bold text-black dark:text-white" data-i18n="dev.step3Title">Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem</span>
-            <p class="text-[11px] leading-relaxed" data-i18n="dev.step3Desc">
+            <span class="font-bold text-black dark:text-white">Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem</span>
+            <p class="text-[11px] leading-relaxed">
               When your agent published on Smithery or Fetch.ai attaches Python or Node.js agent-pay, any caller agent (Claude Desktop, Cursor, Haichain Relayer) will automatically stream USDT/SOL settlement straight to your Solana wallet via HTTP 402!
             </p>
           </div>
@@ -3284,13 +3284,28 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
               <div><strong class="text-white">POST /api/watchtower/defend</strong> - Broadcast on-chain settlement defense transaction to Solana Devnet</div>
             </div>
           </div>
+
+          <script>
+            window.switchDevLang = function(lang) {
+              var pyBlock = document.getElementById('dev-code-python');
+              var nodeBlock = document.getElementById('dev-code-node');
+              var pyBtn = document.getElementById('dev-tab-btn-python');
+              var nodeBtn = document.getElementById('dev-tab-btn-node');
+              if (!pyBlock || !nodeBlock || !pyBtn || !nodeBtn) return;
+              if (lang === 'python') {
+                pyBlock.classList.remove('hidden');
+                nodeBlock.classList.add('hidden');
+                pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
+                nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
+              } else {
+                pyBlock.classList.add('hidden');
+                nodeBlock.classList.remove('hidden');
+                pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
+                nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
+              }
+            };
+          </script>
         </div>
-
-
-
-
-
-
 
         <!-- SECTION 2: CLAUDE DESKTOP & CURSOR MCP CONFIGURATION (BUYER) -->
 
@@ -29494,27 +29509,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     <em>${isVi ? 'Chứng từ này được mã hóa bảo chứng, liên kết bất biến với giao dịch trên Solana Blockchain.' : 'This document is cryptographically verified and permanently linked to Solana blockchain transactions.'}</em>
   </div>
   <script>window.onload = function() { window.print(); };<\/script>
-<script>
-  // Developer Hub Language Switcher (Python vs Node.js)
-  function switchDevLang(lang) {
-    const pyBlock = document.getElementById('dev-code-python');
-    const nodeBlock = document.getElementById('dev-code-node');
-    const pyBtn = document.getElementById('dev-tab-btn-python');
-    const nodeBtn = document.getElementById('dev-tab-btn-node');
-    if (lang === 'python') {
-      if (pyBlock) pyBlock.classList.remove('hidden');
-      if (nodeBlock) nodeBlock.classList.add('hidden');
-      if (pyBtn) pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
-      if (nodeBtn) nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
-    } else {
-      if (pyBlock) pyBlock.classList.add('hidden');
-      if (nodeBlock) nodeBlock.classList.remove('hidden');
-      if (pyBtn) pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
-      if (nodeBtn) nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
-    }
-  }
-  window.switchDevLang = switchDevLang;
-</script>
 </body>
 </html>`;
 
@@ -39714,27 +39708,6 @@ window.openSaftPdfModal = function(overrideLang) {
 
 
 
-<script>
-  // Developer Hub Language Switcher (Python vs Node.js)
-  function switchDevLang(lang) {
-    const pyBlock = document.getElementById('dev-code-python');
-    const nodeBlock = document.getElementById('dev-code-node');
-    const pyBtn = document.getElementById('dev-tab-btn-python');
-    const nodeBtn = document.getElementById('dev-tab-btn-node');
-    if (lang === 'python') {
-      if (pyBlock) pyBlock.classList.remove('hidden');
-      if (nodeBlock) nodeBlock.classList.add('hidden');
-      if (pyBtn) pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
-      if (nodeBtn) nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
-    } else {
-      if (pyBlock) pyBlock.classList.add('hidden');
-      if (nodeBlock) nodeBlock.classList.remove('hidden');
-      if (pyBtn) pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
-      if (nodeBtn) nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
-    }
-  }
-  window.switchDevLang = switchDevLang;
-</script>
 </body>
 
 
