@@ -747,38 +747,42 @@ Una vez cargado, el Modelo de Lenguaje hereda automáticamente tres herramientas
 2. `pay_for_resource`: Permite ejecutar micro-liquidaciones de nanocentavos por APIs propietarias, clústeres GPU o flujos de datos autenticados.
 3. `emergency_freeze_pot`: Permite a los agentes guardianes activar una congelación por hardware si se detectan anomalías o violaciones de políticas.
 
-### 6.6. Posicionamiento Estratégico: HAICHAIN como Capa de Políticas y Disyuntores para HTTP x402 y Solana Pay.sh
+### 6.6. Posicionamiento Estratégico: HAICHAIN como Capa de Gobernanza de Políticas y Bóveda de Disyuntores para HTTP x402 y Solana Pay.sh
 
-En el panorama de la infraestructura de agentes autónomos, los protocolos abiertos de comunicación de pagos han ganado una rápida adopción institucional, especialmente **HTTP x402** (iniciado por Coinbase, transferido a la Fundación Linux con participación de Visa y Mastercard) y **Pay.sh** (lanzado conjuntamente por la Fundación Solana y Google Cloud en mayo de 2026).
+En la infraestructura financiera de agentes autónomos, los protocolos de comunicación abierta han logrado una adopción masiva, destacando **HTTP x402** (iniciado por Coinbase y albergado por Linux Foundation con Visa y Mastercard) y **Pay.sh** (Solana Foundation y Google Cloud, mayo de 2026).
 
 ```
-         PILA GLOBAL DE INFRAESTRUCTURA FINANCIERA PARA AGENTES
+         ARQUITECTURA GLOBAL DE INFRAESTRUCTURA FINANCIERA PARA AGENTES
          
     [ AGENTES Y ENJAMBRES DE IA ] : Claude Desktop, Cursor, ElizaOS, CrewAI
-                                   │
-                                   ▼
-    [ COMUNICACIÓN Y FACTURACIÓN] : Protocolo HTTP x402 y Proxy Pay.sh
-    (Emite código 402 Payment Required y transporta desafíos de pago)
-                                   │
-                                   ▼
-    [ POLÍTICA Y GESTIÓN DE RIESGO] : ★ HAICHAIN AGENT POLICY VAULT ★
-    (Árboles Merkle, Topes estrictos MaxSpend, Disyuntor de pánico < 1s)
-                                   │
-                                   ▼
-    [ CARRILES DE LIQUIDACIÓN L1] : Registro Solana L1 (Liquidación USDC / USDT SPL)
+                                    │
+                                    ▼
+    [ COMUNICACIÓN Y FACTURACIÓN ] : Protocolo HTTP x402 y Proxy Pay.sh
+    (Emite código 402 Payment Required y transporta credenciales X-PAYMENT)
+                                    │
+                                    ▼
+    [ POLÍTICAS Y BÓVEDA SEGURA  ] : ★ HAICHAIN AGENT POLICY VAULT ★
+    (Árbol Merkle CapLeaf, Límites MaxSpend, Disyuntor de Pánico en < 400ms)
+                                    │
+                                    ▼
+    [ CARRILES DE LIQUIDACIÓN L1 ] : Solana L1, Objetos Sui Move y Base L2 (USDC/USDT)
 ```
 
-1. **División Clara de Roles (Sinergia de Ecosistema Complementaria):**
-   * **x402 y Pay.sh actúan como 'Tuberías de Comunicación':** Definen cómo las API devuelven `402 Payment Required` y cómo los clientes envían encabezados estándar (`X-402-Authorization`).
-   * **HAICHAIN actúa como 'Banco de Riesgo y Bóveda Segura de Políticas':** Resuelve preguntas críticas: *¿De dónde obtiene fondos el agente? ¿Quién controla los límites? ¿Cómo se frena un LLM comprometido?*
+1. **División Clara de Roles (Sinergia Complementaria, Sin Competencia Directa):**
+   * **x402 y Pay.sh actúan como "Canales de Comunicación y Facturación":** Definen cómo las API emiten respuestas HTTP 402 y cómo los clientes envían cabeceras `X-PAYMENT` o `Authorization: X402`.
+   * **HAICHAIN actúa como el "Banco de Políticas y Bóveda de Custodia Segura":** Garantiza de dónde provienen los fondos y previene que inyecciones de comandos en LLMs vacíen las tesorerías empresariales.
 
-2. **Neutralización de Vulnerabilidades Empíricas de x402:**
-   Las investigaciones de seguridad de octubre de 2026 revelaron 25 vulnerabilidades en clientes tempranos de x402. HAICHAIN lo soluciona con su **Hoja de Capacidad Merkle de 4 Componentes** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) y el **Teorema de Pérdida Acotada**.
+2. **Resolución de las 3 Vulnerabilidades Críticas de x402 Puro:**
+   * **Límites de gasto matemáticos:** Mediante el **Teorema de Pérdida Acotada (Bounded Loss Theorem)**:
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   * **Arquitectura de Doble Vía (Dual-Path):**
+     - *Vía Rápida (Fast-Path Off-chain Voucher < 2ms):* Verificación criptográfica Ed25519 en sub-2ms para inferencia fluida.
+     - *Vía de Liquidación por Lotes:* Compensación multilateral antes del cierre en Solana o Base.
+   * **Defensa Antirretorno (Nullifiers):** Bloqueo total de repetición mediante tiendas de nulos en memoria y PDA on-chain.
 
-3. **Integración Directa con SDK x402:**
-   El paquete `@haichain/sdk` incluye controladores nativos para resolver desafíos x402 de forma segura.
+3. **Interoperabilidad Universal CAIP-2:**
+   Soporte nativo para identificadores CAIP-2 (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `eip155:8453`) y firma dual Ed25519 y EIP-712.
 
----
 
 ## 7. COMPENSACIÓN SIMÉTRICA MULTILATERAL Y MATRIZ DE LIQUIDACIÓN A VELOCIDAD DE CABLE (MULTILATERAL NETTING)
 

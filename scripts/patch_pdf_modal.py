@@ -292,7 +292,7 @@ def patch_pdf_modal(file_path):
     )
     resend_replacement = '''// 0. Dual Instant Email Notifications via Resend (Admin + Investor)
         try {
-          const resendKey = 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
+          const resendKey = 'os.environ.get('RESEND_API_KEY', '')';
           const senderFrom = 'Haichain <no-reply@mail.haichain.si>';
 
           // (A) Send to Admin (haichain.si@gmail.com)

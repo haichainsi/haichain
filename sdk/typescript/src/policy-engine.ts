@@ -64,7 +64,13 @@ export class PolicyEngine {
     leafHashHex: string,
     channelId: bigint,
     now: number = Math.floor(Date.now() / 1000)
-  ): { authorizedAmount: bigint; cumulativeVoucherAmount: bigint; signature: Uint8Array } {
+  ): {
+    authorizedAmount: bigint;
+    cumulativeVoucherAmount: bigint;
+    signature: Uint8Array;
+    potPubkey: PublicKey;
+    grantNonce: bigint;
+  } {
     const grant = this.activeGrants.get(leafHashHex);
     if (!grant) {
       throw new Error("SECURITY FAULT: No active grant found matching requested leaf hash");
@@ -112,7 +118,7 @@ export class PolicyEngine {
     }
 
     // Sign micro-voucher with isolated agent private key (LLM never sees this key!)
-    const voucherPayload = this.buildVoucherPayload(grant.pot, grant.merchant, channelId, newCumulative, grant.nonce);
+    const voucherPayload = PolicyEngine.buildVoucherPayload(grant.pot, grant.merchant, channelId, newCumulative, grant.nonce);
     const signature = nacl.sign.detached(voucherPayload, this.agentKeypair.secretKey);
 
     // Update internal accounting
@@ -122,6 +128,8 @@ export class PolicyEngine {
       authorizedAmount: requestedSpend,
       cumulativeVoucherAmount: newCumulative,
       signature,
+      potPubkey: grant.pot,
+      grantNonce: grant.nonce,
     };
   }
 
@@ -175,7 +183,7 @@ export class PolicyEngine {
     }
   }
 
-  private buildVoucherPayload(
+  public static buildVoucherPayload(
     pot: PublicKey,
     merchant: PublicKey,
     channelId: bigint,
@@ -197,5 +205,18 @@ export class PolicyEngine {
       .update(amountBuf)
       .update(nonceBuf)
       .digest();
+  }
+
+  public static verifyVoucherSignature(
+    agentPubkey: PublicKey,
+    pot: PublicKey,
+    merchant: PublicKey,
+    channelId: bigint,
+    cumulativeAmount: bigint,
+    nonce: bigint,
+    signature: Uint8Array
+  ): boolean {
+    const payload = PolicyEngine.buildVoucherPayload(pot, merchant, channelId, cumulativeAmount, nonce);
+    return nacl.sign.detached.verify(payload, signature, agentPubkey.toBytes());
   }
 }

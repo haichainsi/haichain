@@ -826,27 +826,56 @@ const response = await haiFetch("https://api.deepseek.com/v1/chat", {
                                    │
                                    ▼
     [ 通信协议与费用交互 ]       : HTTP x402 标准与 Pay.sh 代理
-    (触发 402 Payment Required 响应并传输加密支付凭据)
+    (触发 402 Payment Required 响应并传输 X-PAYMENT 加密凭证)
                                    │
                                    ▼
-    [ 策略治理与风险风控 ]       : ★ HAICHAIN AGENT POLICY VAULT ★
-    (Merkle 能力树、硬顶 MaxSpend 约束、< 400ms 硬件级紧急熔断)
+    [ 策略治理与安全金库 ]       : ★ HAICHAIN AGENT POLICY VAULT ★
+    (CapLeaf Merkle 能力树、硬顶 MaxSpend 约束、< 400ms 硬件级紧急熔断)
                                    │
                                    ▼
-    [ 链上最终结算底层 ]         : Solana L1 账本 (USDC / USDT SPL 原生结算)
+    [ 链上最终结算底层 ]         : Solana L1 账本、Sui Move 对象与 Base L2 (USDC/USDT 原生结算)
 ```
 
-1. **角色分工明确 (互补共赢生态架构):**
-   * **x402 与 Pay.sh 充当'通信管道':** 规范 API 返回 `402 Payment Required` 及客户端附加授权头 (`X-402-Authorization`) 的交互标准。
-   * **HAICHAIN 充当'企业风险银行与安全金库':** 解决最底层的安全命脉：*智能体资金从何而来？谁来授权限额？如何防范大模型越狱掏空企业钱包？*
+1. **角色分工明确 (互补共赢生态架构，绝非同维竞争):**
+   * **x402 与 Pay.sh 充当'通信管道 (Communication & Invoicing Protocol)':** 规范 API 返回 HTTP `402 Payment Required` 与结构化账单参数 (`maxAmountRequired`, `resource`, `payTo`, `asset`, `network`, `nonce`)，以及客户端返回 `X-PAYMENT` 或 `Authorization: X402` 授权头部的通信交互标准。
+   * **HAICHAIN 充当'企业风险银行与策略安全金库 (Cryptographic Policy & Safe Custody Vault)':** 彻底解决底层命脉难题：*智能体资金从何而来？谁来授权限额？如何防范大模型越狱掏空企业钱包？* 正如 POS 刷卡机不能替代发卡行的风控系统，x402 协议越普及，企业对 HAICHAIN 策略金库的需求越迫切。
 
-2. **根除 x402 早期版本已知安全隐患:**
-   针对 2026 年 10 月安全审计披露的早期 x402 客户端缺少默认限额问题，HAICHAIN 以 4 元组 Merkle 能力叶片与有界损失定理形成牢固防御。
+2. **根除原生 x402 规范的三大结构性脆弱点:**
+   * **隐患 1: 缺少原生硬预算上限 (No Native Budget Caps):** 原生 x402 允许恶意 API 漫天要价。HAICHAIN 引入**有界损失定理 (Bounded Loss Theorem)** 从数学上彻底免疫越狱攻击：
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   任何越界的请求均在客户端被 `PolicyEngine` 拒绝签发凭据。
+   * **隐患 2: 单次调用 L1 链上确认延迟与网络拥堵:** 强制每次 API 调用等待 L1 确认会导致 LLM 流式推理严重卡顿。HAICHAIN 确立**双轨架构 (Dual-Path Architecture)**：
+     - *极速快轨 (Fast-Path Off-chain Voucher < 2ms):* 智能体签发链下单调递增凭据，服务端在 2ms 内完成 Ed25519 验证并即刻流式返回数据。
+     - *批量清算轨 (Direct L1 / Batch Settlement):* 凭据经由多边净额结算引擎汇总后，批量落账于 Solana L1 或 Base L2。
+   * **隐患 3: 重放攻击风险:** HAICHAIN Paywall 与底层智能合约部署内存 Nullifier 缓存与链上 PDA 空位双重屏障，100% 杜绝凭证二次盗用。
 
-3. **即插即用 SDK 适配器:**
-   `@haichain/sdk` 预置原生 `handleX402Challenge` 适配函数，实现无缝安全集成。
+3. **双栈信封规范与 CAIP-2 全球跨链标识符互操作性:**
+   `@haichainsi/agent-pay` 与 `@haichainsi/sdk` 原生支持全球 **CAIP-2** 链标识体系与双签名信封：
+   * **CAIP-2 链标识符:**
+     - Solana Mainnet: `solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`
+     - Solana Devnet: `solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1`
+     - Base Mainnet (Coinbase L2): `eip155:8453`
+   * **双签名信封支持:** 原生支持 Solana/Sui 的 **Ed25519 Detached Signature** 与 Base/EVM 的 **EIP-712 Typed Data**，将 223 字节的 CapLeaf 哈希紧密绑定于标准 x402 授权信封中：
+   ```typescript
+   // 智能体通过 HAICHAIN 策略金库安全解析并签署标准 x402 挑战
+   const challenge = X402Client.parseChallenge(rawHttp402Response);
+   const payment = x402Client.generatePaymentResponse(
+     challenge,
+     leafHashHex,
+     channelId,
+     CapScopeClass.DATA_API | CapScopeClass.LLM_INFERENCE
+   );
 
----
+   // 携带标准全球 x402 Header (X-PAYMENT Base64) 并在 HAICHAIN 护栏下完成调用
+   fetch(challenge.resource, {
+     headers: {
+       "X-PAYMENT": payment.headers["X-PAYMENT"],
+       "Authorization": payment.headers["Authorization"]
+     }
+   });
+   ```
+   HAICHAIN 绝非替代 x402，而是为其提供在企业级生产环境中规模化部署所必需的密码学安全护栏。
+
 
 ## 7. 多边对称净额结算与线速清算矩阵 (MULTILATERAL NETTING & OPTIMISTIC STREAMING STATE CHANNELS)
 

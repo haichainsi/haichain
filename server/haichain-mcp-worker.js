@@ -1,10 +1,8 @@
 // Cloudflare Pages Function: /api/saft/submit
 // Executes dual instant email notifications (Admin + Investor) via Resend API and Telegram backup
 
-const RESEND_API_KEY = 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
 const RESEND_SENDER = 'Haichain <no-reply@mail.haichain.si>';
 const ADMIN_EMAIL = 'haichain.si@gmail.com';
-const TELEGRAM_BOT_TOKEN = '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';
 const TELEGRAM_CHAT_ID = '-5426770743';
 
 const corsHeaders = {
@@ -59,39 +57,35 @@ async function handleSaftSubmit(context) {
   </div>
 </div>`;
 
-    // 2. Build Investor HTML Email
+    // 2. Build Investor HTML Email (100% English for all recipients)
     const investorHtml = data.investorHtml || `
 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; padding: 32px 24px; background-color: #0c0c0e; color: #ffffff; border-radius: 16px; border: 1px solid #27272a;">
   <div style="border-bottom: 1px solid #27272a; padding-bottom: 20px; margin-bottom: 24px;">
-    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff;">${isVi ? 'XÁC NHẬN KÝ KẾT HỢP ĐỒNG SAFT THÀNH CÔNG' : 'SAFT AGREEMENT EXECUTION CONFIRMATION'}</h2>
+    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff;">SAFT AGREEMENT EXECUTION CONFIRMATION</h2>
     <p style="margin: 6px 0 0 0; font-size: 13px; color: #a1a1aa;">HAICHAIN Autonomous Machine Financial Protocol</p>
   </div>
   <p style="font-size: 14px; line-height: 1.6; color: #d4d4d8;">
-    ${isVi 
-      ? `Kính gửi <strong>${name}</strong>,<br><br>Hợp đồng SAFT (Simple Agreement for Future Tokens) Pre-Seed của bạn đã được ký kết và ghi nhận thành công vào sổ cái mật mã của HAICHAIN.`
-      : `Dear <strong>${name}</strong>,<br><br>Your Pre-Seed SAFT Agreement has been legally executed and recorded on the HAICHAIN cryptographic ledger.`}
+    Dear <strong>${name}</strong>,<br><br>Your Pre-Seed SAFT Agreement has been legally executed and recorded on the HAICHAIN cryptographic ledger.
   </p>
   <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6; margin: 20px 0;">
-    <tr><td style="padding: 10px 0; color: #a1a1aa; width: 40%;">${isVi ? 'Mã Hợp Đồng:' : 'Contract ID:'}</td><td style="padding: 10px 0; font-weight: bold; font-family: monospace; color: #ffffff;">${contractId}</td></tr>
-    <tr><td style="padding: 10px 0; color: #a1a1aa;">${isVi ? 'Số Tiền Đầu Tư:' : 'Investment Amount:'}</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff; font-size: 15px;">$${amount.toLocaleString('en-US')} USD (USDT)</td></tr>
-    <tr><td style="padding: 10px 0; color: #a1a1aa;">${isVi ? 'Số Lượng Token Phân Bổ:' : 'Token Allocation:'}</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff;">${tokens.toLocaleString('en-US')} $HAISI (@ $0.007)</td></tr>
-    <tr><td style="padding: 10px 0; color: #a1a1aa;">${isVi ? 'Ví Nhận Token (Solana):' : 'Beneficiary Wallet:'}</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #ffffff; word-break: break-all;">${wallet}</td></tr>
-    <tr><td style="padding: 10px 0; color: #a1a1aa;">${isVi ? 'Ví Đa Ký Quỹ Haichain:' : 'Haichain Treasury Vault:'}</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #a1a1aa; word-break: break-all;">${treasury}</td></tr>
-    <tr><td style="padding: 10px 0; color: #a1a1aa;">${isVi ? 'Mã Băm Kiểm Toán SHA-256:' : 'Audit Hash SHA-256:'}</td><td style="padding: 10px 0; font-family: monospace; font-size: 10px; color: #71717a; word-break: break-all;">${hashHex}</td></tr>
-    <tr><td style="padding: 10px 0; color: #a1a1aa;">${isVi ? 'Thời Gian Ký (UTC):' : 'Execution Time (UTC):'}</td><td style="padding: 10px 0; color: #ffffff;">${timestamp}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa; width: 40%;">Contract ID:</td><td style="padding: 10px 0; font-weight: bold; font-family: monospace; color: #ffffff;">${contractId}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Investment Amount:</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff; font-size: 15px;">$${amount.toLocaleString('en-US')} USD (USDT)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Token Allocation:</td><td style="padding: 10px 0; font-weight: bold; color: #ffffff;">${tokens.toLocaleString('en-US')} $HAISI (@ $0.007)</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Beneficiary Wallet:</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #ffffff; word-break: break-all;">${wallet}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Haichain Treasury Vault:</td><td style="padding: 10px 0; font-family: monospace; font-size: 11px; color: #a1a1aa; word-break: break-all;">${treasury}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Audit Hash SHA-256:</td><td style="padding: 10px 0; font-family: monospace; font-size: 10px; color: #71717a; word-break: break-all;">${hashHex}</td></tr>
+    <tr><td style="padding: 10px 0; color: #a1a1aa;">Execution Time (UTC):</td><td style="padding: 10px 0; color: #ffffff;">${timestamp}</td></tr>
   </table>
   <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid #27272a; text-align: center;">
     <a href="https://haichain.si/dashboard" style="display: inline-block; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 13px; padding: 10px 24px; border-radius: 9999px; text-decoration: none;">
-      ${isVi ? 'Kiểm Tra Kho Vesting Của Bạn' : 'Check Your Vesting Vault'}
+      Check Your Vesting Vault
     </a>
   </div>
 </div>`;
 
-    const resendKey = (env && env.RESEND_API_KEY) || RESEND_API_KEY;
+    const resendKey = (env && env.RESEND_API_KEY) || (typeof process !== 'undefined' && process.env && process.env.RESEND_API_KEY) || '';
     const adminSubject = `🔔 [SAFT Signed] $${amount.toLocaleString('en-US')} USD - ${name} (${contractId})`;
-    const investorSubject = isVi 
-      ? `Xác Nhận Ký Hợp Đồng SAFT Pre-Seed - Haichain Protocol (${contractId})`
-      : `Haichain Official SAFT Agreement - Signed Confirmation (${contractId})`;
+    const investorSubject = `HAICHAIN Official SAFT Agreement - Signed Confirmation (${contractId})`;
 
     let adminEmailResult = null;
     let investorEmailResult = null;
@@ -169,7 +163,9 @@ async function handleSaftSubmit(context) {
 ━━━━━━━━━━━━━━━━━━━━
 ✅ *Legally Executed under US ESIGN Act & UETA*`;
 
-      const tgRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      const tgToken = (env && env.TELEGRAM_BOT_TOKEN) || (typeof process !== 'undefined' && process.env && process.env.TELEGRAM_BOT_TOKEN) || '';
+      if (!tgToken) { console.log('[Telegram Bot]: TELEGRAM_BOT_TOKEN not configured in env, skipping.'); return; }
+      const tgRes = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -1,6 +1,6 @@
 import urllib.request, json
 
-key = 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN'
+key = 'os.environ.get('RESEND_API_KEY', '')'
 url = 'https://api.resend.com/emails'
 
 contract_id = "SAFT-HAI-2026-X9K2L"

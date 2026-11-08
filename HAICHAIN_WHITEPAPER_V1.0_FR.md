@@ -747,38 +747,42 @@ Dès le chargement, le Grand Modèle de Langage hérite automatiquement de trois
 2. `pay_for_resource`: Autorise l'agent à effectuer des micro-règlements en nanocentimes pour des APIs spécialisées, des instances GPU ou des flux de données réservés.
 3. `emergency_freeze_pot`: Permet aux agents de surveillance de déclencher un gel matériel de sauvegarde en cas de comportement anormal d'un fournisseur ou de rupture de conformité.
 
-### 6.6. Positionnement Stratégique: HAICHAIN comme Couche de Politiques et Coupe-Circuit pour HTTP x402 et Solana Pay.sh
+### 6.6. Positionnement Stratégique : HAICHAIN comme Couche de Gouvernance et Coffre-Fort de Sécurité pour HTTP x402 et Solana Pay.sh
 
-Dans le paysage global des agents autonomes, les protocoles de paiement machine ouverts connaissent une adoption institutionnelle rapide, notamment **HTTP x402** (initié par Coinbase, transféré à la Fondation Linux avec Visa et Mastercard) et **Pay.sh** (lancé conjointement par la Fondation Solana et Google Cloud en mai 2026).
+Dans l'écosystème financier des agents autonomes, les protocoles de communication de paiement ouverts connaissent une adoption institutionnelle majeure, notamment **HTTP x402** (initié par Coinbase, sous l'égide de la Linux Foundation avec Visa et Mastercard) et **Pay.sh** (Fondation Solana et Google Cloud, mai 2026).
 
 ```
-       STACK MONDIALE D'INFRASTRUCTURE FINANCIÈRE POUR AGENTS IA
-       
-    [ AGENTS & ESSAIMS D'IA ]     : Claude Desktop, Cursor, ElizaOS, CrewAI
-                                   │
-                                   ▼
-    [ COMMUNICATION & FACTURATION]: Spécification HTTP x402 & Proxy Pay.sh
-    (Émet le statut 402 Payment Required et transporte les défis de paiement)
-                                   │
-                                   ▼
-    [ POLITIQUE & GESTION RISQUE ]: ★ HAICHAIN AGENT POLICY VAULT ★
-    (Arbres Merkle, Plafonds MaxSpend stricts, Coupe-circuit d'urgence < 1s)
-                                   │
-                                   ▼
-    [ RAILS DE RÈGLEMENT ON-CHAIN]: Registre Solana L1 (Règlement USDC / USDT SPL)
+         ARCHITECTURE DE L'INFRASTRUCTURE FINANCIÈRE DES AGENTS AUTONOMES
+         
+    [ AGENTS ET ESSAIMS D'IA   ] : Claude Desktop, Cursor, ElizaOS, CrewAI
+                                    │
+                                    ▼
+    [ COMMUNICATION & FACTURATION] : Spécification HTTP x402 et Proxy Pay.sh
+    (Émission du statut 402 Payment Required et transport d'en-tête X-PAYMENT)
+                                    │
+                                    ▼
+    [ GOUVERNANCE ET PROTECTION ] : ★ HAICHAIN AGENT POLICY VAULT ★
+    (Arbre Merkle CapLeaf, Plafonds stricts MaxSpend, Coupe-circuit < 400ms)
+                                    │
+                                    ▼
+    [ RAILS DE RÈGLEMENT L1     ] : Registre Solana L1, Objets Sui Move & Base L2
 ```
 
-1. **Répartition Claire des Rôles (Synergie d'Écosystème):**
-   * **x402 et Pay.sh agissent comme 'Canaux de Transmission':** Ils normalisent l'émission du statut `402 Payment Required` et l'en-tête client (`X-402-Authorization`).
-   * **HAICHAIN agit comme 'Banque de Risque et Coffre-Fort de Politiques':** Il résout les failles critiques: *D'où provient le capital de l'agent? Qui contrôle les plafonds? Comment stopper un modèle compromis?*
+1. **Division Claire des Rôles (Synergie Écosystémique Complémentaire) :**
+   * **x402 et Pay.sh agissent comme « Conduits de Communication » :** Définition de l'émission HTTP 402 et du transport d'autorisation `X-PAYMENT`.
+   * **HAICHAIN agit comme « Banque de Politiques et Coffre-Fort Sécurisé » :** Contrôle des plafonds de dépenses et protection absolue contre le détournement de fonds par injection de prompts.
 
-2. **Neutralisation des Failles Empiriques d'x402:**
-   Les audits d'octobre 2026 ont relevé 25 failles sur les premiers clients x402. HAICHAIN y remédie grâce à son **Arbre de Capacités Merkle à 4 Composants** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) et au **Théorème de Perte Bornée**.
+2. **Neutralisation des Vulnérabilités de x402 :**
+   * **Plafond Mathématique (Bounded Loss Theorem) :**
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   * **Architecture à Double Voie (Dual-Path) :**
+     - *Voie Rapide (Fast-Path Off-chain < 2ms) :* Validation cryptographique immédiate en moins de 2ms.
+     - *Voie de Règlement par Lots :* Compensation multilatérale optimisée.
+   * **Immunité Anti-Rejeu :** Gestion stricte par Nullifiers en mémoire et PDA sur chaîne.
 
-3. **Compatibilité Immédiate avec l'Écosystème:**
-   Le kit `@haichain/sdk` fournit un gestionnaire natif pour résoudre en toute sécurité les défis x402.
+3. **Interopérabilité CAIP-2 et Enveloppe Hybride :**
+   Prise en charge intégrale des identifiants de réseau CAIP-2 (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `eip155:8453`) et des signatures Ed25519 et EIP-712.
 
----
 
 ## 7. COMPENSATION SYMÉTRIQUE MULTILATÉRALE ET MATRICE DE RÈGLEMENT À VITESSE FILAIRE (MULTILATERAL NETTING)
 

@@ -2844,8 +2844,10 @@ Please fund your wallet with SOL to continue.`);
             token2022Mint: "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu",
             purchasedAt: new Date().toISOString(),
             txSignature: txSig,
-            paymentMethod: isEVM ? 'MetaMask Web3 Pay' : `${savedWallet.provider || 'Solana'} Web3 Pay`,
-            mainnetGuarantee: true
+            paymentMethod: isEVM ? 'MetaMask Devnet Test' : `${savedWallet.provider || 'Solana'} Devnet Test`,
+            mainnetGuarantee: false,
+            isDevnetPrototype: true,
+            status: 'devnet_test_deposit'
           };
           localStorage.setItem('haichain_early_allocations', JSON.stringify(allocs));
 
@@ -2952,9 +2954,11 @@ Please fund your wallet with SOL to continue.`);
             tgePrice: 0.010,
             token2022Mint: "3fkCXyEAxwodEksGcgGcMFTKCpGYzzWTUyQocF2qJkWu",
             purchasedAt: new Date().toISOString(),
-            txSignature: "4MqTEpY6WCBE71PZ4jmH4dZWZQ5dmvQtK7i1A7ma3hMJknrkD6w297g8bTV6KKGRERmAwyrpQkh14eHMjHHWB2oU",
-            paymentMethod: isEvmAddr ? 'MetaMask Web3 SAFT' : 'Solana Web3 SAFT',
-            mainnetGuarantee: true
+            txSignature: null,
+            paymentMethod: isEvmAddr ? 'MetaMask Devnet Interest' : 'Solana Devnet Interest',
+            mainnetGuarantee: false,
+            isDevnetPrototype: true,
+            status: 'devnet_waitlist_pending_legal_audit'
           };
           localStorage.setItem('haichain_early_allocations', JSON.stringify(allocs));
 
@@ -2968,7 +2972,7 @@ Please fund your wallet with SOL to continue.`);
                 amountUsdt: amount,
                 commissionHai: commHaiNum,
                 bonusHai: bonusHaiNum,
-                txSignature: "4MqTEpY6WCBE71PZ4jmH4dZWZQ5dmvQtK7i1A7ma3hMJknrkD6w297g8bTV6KKGRERmAwyrpQkh14eHMjHHWB2oU",
+                txSignature: null,
                 timestamp: new Date().toISOString()
               });
               localStorage.setItem('haichain_referral_ledger', JSON.stringify(ledger));
@@ -2985,7 +2989,32 @@ Please fund your wallet with SOL to continue.`);
           console.warn('Could not persist allocation:', e);
         }
 
-        const msg = `${getI18nText('saftAlertTitle')}\n\n${getI18nText('saftAlertInvestor')}: ${name}\n${getI18nText('saftAlertAlloc')}: ${totalHai} \$HAISI\n${getI18nText('saftAlertAmount')}: \${amount} USDT\n${getI18nText('saftAlertWallet')}: ${wallet}\n\n${getI18nText('saftAlertHookActive')}\n${getI18nText('saftAlertSchedule')}\n\n${getI18nText('saftAlertTransferPrompt')}\n${window.HAICHAIN_SALE_CONFIG.TREASURY_ADDRESS}\n\n${getI18nText('saftAlertRedirect')}`;
+        const isVi = (typeof getActiveLang === 'function' ? getActiveLang() : 'vi') === 'vi';
+        const msg = isVi
+          ? `⚠️ ĐĂNG KÝ NGUYỆN VỌNG DEVNET (NON-BINDING WAITLIST)
+
+Nhà đầu tư: ${name}
+Lượng token dự kiến: ${totalHai} $HAISI (@ $0.007)
+Ngân sách quan tâm: $${amount} USDT
+Địa chỉ ví: ${wallet}
+
+THÔNG BÁO MINH BẠCH & PHÁP LÝ:
+- Haichain hiện đang là phiên bản thử nghiệm công nghệ (Devnet Prototype v0.1.0) và đang hoàn thiện kiểm toán bảo mật độc lập.
+- KHÔNG CÓ BẤT KỲ GIAO DỊCH BÁN TOKEN HOẶC THU TIỀN THẬT NÀO ĐƯỢC XỬ LÝ TRÊN MAINNET.
+- Tuyệt đối KHÔNG gửi tiền thật vào bất kỳ địa chỉ ví nào.
+- Mọi thông tin phân bổ chỉ có tính chất danh sách chờ kỹ thuật (non-binding waitlist) cho đến khi dự án hoàn tất thủ tục pháp lý và kiểm toán độc lập.`
+          : `⚠️ DEVNET STRATEGIC INTEREST WAITLIST REGISTERED
+
+Signatory: ${name}
+Proposed Allocation: ${totalHai} $HAISI (@ $0.007)
+Target Budget: $${amount} USDT
+Wallet Address: ${wallet}
+
+LEGAL & SECURITY DISCLOSURE:
+- Haichain is currently in Devnet Prototype (v0.1.0) phase undergoing technical hardening and independent audit preparation.
+- NO REAL TOKEN SALE OR FUNDRAISING TRANSACTION HAS OCCURRED ON MAINNET.
+- Do NOT send real funds to any cryptocurrency address.
+- All submitted expressions of interest are strictly non-binding technical reservations until formal legal structure and independent audit completion.`;
         alert(msg);
 
         // Auto-switch to dedicated Vesting Vault tab

@@ -512,7 +512,7 @@ Khi máy chủ MCP được nạp, mô hình ngôn ngữ lớn (LLM) sẽ tự �
 
 ### 4.6. Định Vị Liên Minh: HAICHAIN Là Lớp Quản Trị Chính Sách & Chốt An Toàn Cho Chuẩn HTTP x402 và Solana Pay.sh
 
-Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị trường chứng kiến sự ra đời của các chuẩn giao tiếp thanh toán mở như **HTTP x402** (do Coinbase khởi xướng, được Linux Foundation bảo trợ cùng sự tham gia của Visa & Mastercard) và **Pay.sh** (sáng kiến hợp tác giữa Solana Foundation và Google Cloud ra mắt tháng 5/2026).
+Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị trường chứng kiến sự bùng nổ của các chuẩn giao tiếp thanh toán mở như **HTTP x402** (do Coinbase khởi xướng, được Linux Foundation bảo trợ cùng sự tham gia của Visa & Mastercard) và **Pay.sh** (sáng kiến hợp tác giữa Solana Foundation và Google Cloud ra mắt tháng 5/2026).
 
 ```
          PHÂN TẦNG HẠ TẦNG THANH TOÁN TÁC TỬ TỰ HÀNH TOÀN CẦU
@@ -521,36 +521,55 @@ Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị
                                 │
                                 ▼
    [ GIAO TIẾP & BÁO PHÍ ] : Chuẩn HTTP x402 & Solana Pay.sh Middleware
-   (Báo mã 402 Payment Required & Yêu cầu thanh toán theo lượt gọi)
+   (Báo mã 402 Payment Required & Vận chuyển Header thanh toán X-PAYMENT)
                                 │
                                 ▼
    [ CHÍNH SÁCH & BẢO VỆ ] : ★ HAICHAIN AGENT POLICY VAULT ★
-   (Cây năng lực Merkle, Hạn mức cứng MaxSpend, Chốt ngắt Panic <1s)
+   (Cây năng lực Merkle CapLeaf, Hạn mức cứng MaxSpend, Chốt ngắt Panic < 400ms)
                                 │
                                 ▼
-   [ ĐƯỜNG RAY CHỐT SỔ L1 ] : Solana L1 Ledger (USDC / USDT SPL Settlement)
+   [ ĐƯỜNG RAY CHỐT SỔ L1 ] : Solana L1 Ledger, Sui Move Objects & Base L2 (USDC/USDT)
 ```
 
-1. **Phân Định Vai Trò Rõ Ràng (Bổ trợ thay vì đối đầu):**
-   * **x402 và Pay.sh đóng vai trò là "Đường Ống Giao Tiếp" (Communication & Invoicing Protocol):** Định nghĩa cách một máy chủ API trả về mã `402 Payment Required` và cách Client đính kèm Header ủy quyền thanh toán (`X-402-Authorization`).
-   * **HAICHAIN đóng vai trò là "Ngân Hàng Chính Sách & Chốt An Toàn" (Smart Policy & Safe Custody Vault):** Giải quyết câu hỏi sinh tử mà x402 và Pay.sh chưa thể tự giải quyết: *Tác tử lấy tiền từ đâu? Ai cấp quyền? Làm sao ngăn chặn một LLM bị Jailbreak rút cạn ví doanh nghiệp?*
+1. **Phân Định Vai Trò Rõ Ràng (Bổ trợ Chiến lược Thay vì Đối đầu):**
+   * **x402 và Pay.sh đóng vai trò là "Đường Ống Giao Tiếp" (Communication & Invoicing Protocol):** Định nghĩa chuẩn giao thức cấp ứng dụng: máy chủ API phát hiện thiếu thanh toán sẽ trả về mã trạng thái HTTP 402 cùng cấu trúc dữ liệu yêu cầu chi trả (`maxAmountRequired`, `resource`, `payTo`, `asset`, `network`, `nonce`), và phía Client gửi lại thông điệp ủy quyền thanh toán qua Header `X-PAYMENT` hoặc `Authorization: X402`.
+   * **HAICHAIN đóng vai trò là "Ngân Hàng Quản Trị Chính Sách & Kho Quỹ An Toàn" (Cryptographic Smart Policy & Safe Custody Vault):** Trả lời những câu hỏi sinh tử mà x402 và Pay.sh theo đuổi tính trung lập nên cố tình để ngỏ: *Tác tử lấy tiền từ đâu? Ai cấp quyền ủy thác? Làm sao ngăn chặn một tác tử LLM bị Jailbreak hoặc Prompt Injection rút cạn sạch ngân quỹ của công ty?* Giống như giao thức quét mã QR hay máy POS thanh toán không thể thay thế được hệ thống quản trị hạn mức của ngân hàng phát hành thẻ, x402 càng phổ biến bao nhiêu thì nhu cầu sử dụng HAICHAIN để bảo vệ tài sản doanh nghiệp càng trở nên cấp bách bấy nhiêu.
 
-2. **Khắc Phục Các Lỗ Hổng Thực Tế Của x402:**
-   Báo cáo an ninh tháng 10/2026 từ các chuyên gia kiểm toán chỉ ra nhiều lỗ hổng trong các SDK x402 sơ khai, đặc biệt là việc thiếu trần chi tiêu mặc định và nguy cơ facilitator chấp nhận lệnh approve rỗng. HAICHAIN lấp đầy khoảng trống này bằng **Cây Năng Lực Merkle 4 Thành Phần** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) và **Định Lý Giới Hạn Thiệt Hại (Bounded Loss Theorem)**: Cho dù tác tử AI bị nhiễm độc bộ nhớ (Prompt Injection), thiệt hại tối đa tuyệt đối không bao giờ vượt quá hạn mức cứng đã được khóa mã hóa trong lá Merkle.
+2. **Khắc Phục Toàn Diện 3 Lỗ Hổng Thực Tế Của Chuẩn x402 Thuần Túy:**
+   * **Lỗ hổng 1: Thiếu trần chi tiêu nội tại (No Native Budget Caps):** Trong chuẩn x402 thuần, máy chủ yêu cầu bao nhiêu thì tác tử (nếu có quyền ký) sẽ ký bấy nhiêu. Nếu gặp máy chủ ma đưa giá $100 thay vì $0.001, ví tác tử sẽ bị bòn rút ngay tức khắc. HAICHAIN giải quyết bằng **Định Lý Giới Hạn Thiệt Hại (Bounded Loss Theorem)**:
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   Mọi yêu cầu vượt quá `max_spend` hoặc `window_cap` đều bị máy ảo chính sách `PolicyEngine` từ chối ký ngay tại nguồn, tuyệt đối không xuất xưởng chữ ký hợp lệ.
+   * **Lỗ hổng 2: Độ trễ giao dịch đơn lẻ và tắc nghẽn L1:** Việc bắt từng lượt gọi API phải đợi xác nhận giao dịch trên sổ cái blockchain L1 làm chậm chu kỳ suy luận của mô hình AI (mất từ 400ms đến 2.000ms). HAICHAIN thiết lập **Kiến Trúc Hai Nhịp (Dual-Path Architecture)**:
+     - *Nhịp nhanh (Fast-Path Off-chain Voucher < 2ms):* Tác tử ký voucher vi thanh toán ngoại chuỗi đơn điệu tăng dần. Máy chủ xác thực chữ ký Ed25519 trong chưa đầy 2ms và trả dữ liệu streaming ngay lập tức.
+     - *Nhịp thanh quyết toán (Direct L1 / Batch Settlement):* Các vi voucher được gom lô và cấn trừ qua Cỗ máy Bù trừ Đa phương HAICHAIN trước khi đóng sổ trên Solana L1 hoặc Base L2.
+   * **Lỗ hổng 3: Tấn công phát lại (Replay Attacks):** HAICHAIN Paywall và Core Contract triển khai bộ đệm vô hiệu hóa kép: **Nullifier In-Memory Cache** trên middleware và **Ephemeral Nullifier PDA** trên chuỗi, chặn đứng 100% việc tái sử dụng cùng một chữ ký hoặc nonce thanh toán.
 
-3. **Bộ Chuyển Đổi Tương Thích Hoàn Hảo (Drop-in x402 Adapter):**
-   Gói `@haichain/sdk` cung cấp sẵn hàm `handleX402Challenge`:
+3. **Đặc Tả Kỹ Thuật Tương Thích Chuẩn Hóa Hai Chiều (Dual-Stack Envelope):**
+   Gói `@haichainsi/agent-pay` và `@haichainsi/sdk` hỗ trợ đầy đủ chuẩn nhận dạng mạng **CAIP-2** và chuẩn phong bì dữ liệu:
+   * **Bảng Định Danh Chuỗi (CAIP-2 Identifiers):**
+     - Solana Mainnet: `solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`
+     - Solana Devnet: `solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1`
+     - Base Mainnet (Coinbase L2): `eip155:8453`
+   * **Phong Bì Chữ Ký Kép (Dual Signature Envelope):** Hỗ trợ chữ ký **Ed25519 Detached Signature** cho hệ sinh thái Solana/Sui và **EIP-712 Typed Data** cho hệ sinh thái Base/EVM, đồng thời nhúng chặt khóa băm gốc Merkle `leafHashHex` (223 bytes) vào siêu dữ liệu:
    ```typescript
-   // Tác tử AI xử lý thử thách thanh toán x402 một cách an toàn thông qua HAICHAIN Vault
-   const authHeaders = await haichainClient.handleX402Challenge(
-     x402Headers,
-     agentKeypair.secretKey,
-     whitelistedProviders // Chỉ thanh toán cho nhà cung cấp trong danh sách trắng
+   // Tác tử AI xử lý thử thách thanh toán x402 chuẩn hóa một cách an toàn qua HAICHAIN PolicyEngine
+   const challenge = X402Client.parseChallenge(rawHttp402Response);
+   const payment = x402Client.generatePaymentResponse(
+     challenge,
+     leafHashHex,
+     channelId,
+     CapScopeClass.DATA_API | CapScopeClass.LLM_INFERENCE
    );
-   ```
-   Nhờ đó, HAICHAIN trở thành chiếc ví quản trị rủi ro tối ưu nhất cho mọi tác tử hoạt động trên mạng lưới x402 và Pay.sh.
 
----
+   // Gửi lại Header chuẩn x402 toàn cầu (X-PAYMENT Base64) bảo chứng bởi HAICHAIN Guardrail
+   fetch(challenge.resource, {
+     headers: {
+       "X-PAYMENT": payment.headers["X-PAYMENT"],
+       "Authorization": payment.headers["Authorization"]
+     }
+   });
+   ```
+   Nhờ kiến trúc tương thích hoàn hảo này, HAICHAIN không thay thế hay loại trừ x402, mà trở thành **hạ tầng bảo vệ và quản trị rủi ro tối thượng** cho mọi tác tử hoạt động trên nền kinh tế Internet mở.
 
 ## CHƯƠNG 5: CỖ MÁY BÙ TRỪ & NÉN DỮ LIỆU ĐA PHƯƠNG
 

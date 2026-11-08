@@ -754,36 +754,55 @@ Across the broader landscape of autonomous agent infrastructure, open machine-pa
                                   │
                                   ▼
    [ COMMUNICATION & INVOICING ] : HTTP x402 Specification & Pay.sh Proxy
-   (Emits 402 Payment Required & transports cryptographic payment challenges)
+   (Emits 402 Payment Required & transports X-PAYMENT cryptographic payloads)
                                   │
                                   ▼
    [ POLICY & RISK GOVERNANCE  ] : ★ HAICHAIN AGENT POLICY VAULT ★
-   (Merkle Capability Trees, Hard MaxSpend Caps, Sub-second Panic Kill-Switch)
+   (Merkle Capability Trees, Hard MaxSpend Caps, Sub-400ms Panic Kill-Switch)
                                   │
                                   ▼
-   [ ON-CHAIN SETTLEMENT RAILS ] : Solana L1 Ledger (USDC / USDT SPL Settlement)
+   [ ON-CHAIN SETTLEMENT RAILS ] : Solana L1 Ledger, Sui Move Objects & Base L2 (USDC/USDT)
 ```
 
-1. **Clear Division of Roles (Complementary Ecosystem Synergy):**
-   * **x402 and Pay.sh serve as the "Communication & Messaging Pipes":** Defining how APIs return `402 Payment Required` and how clients supply standard authorization headers (`X-402-Authorization`).
-   * **HAICHAIN serves as the "Enterprise Risk Bank & Safe Policy Vault":** Solving the mission-critical vulnerabilities that x402 and Pay.sh intentionally leave open: *Where does the agent store capital? Who enforces spending limits? How is a prompt-injected LLM stopped from emptying corporate treasury accounts?*
+1. **Clear Division of Roles (Complementary Ecosystem Synergy, Never Direct Competition):**
+   * **x402 and Pay.sh serve as the "Communication & Messaging Pipes":** Defining how APIs return HTTP `402 Payment Required` with structured challenge bodies (`maxAmountRequired`, `resource`, `payTo`, `asset`, `network`, `nonce`) and how clients return payment authorizations via the `X-PAYMENT` or `Authorization: X402` header.
+   * **HAICHAIN serves as the "Enterprise Risk Bank & Safe Policy Vault":** Solving the mission-critical vulnerabilities that x402 and Pay.sh intentionally leave open: *Where does the agent store capital? Who enforces spending limits? How is a prompt-injected LLM stopped from emptying corporate treasury accounts?* Just as a POS card terminal does not replace a bank's corporate risk-underwriting infrastructure, the widespread expansion of x402 accelerates enterprise demand for HAICHAIN policy vaults.
 
-2. **Neutralizing Empirical x402 Vulnerabilities:**
-   Security research published in October 2026 revealed 25 vulnerabilities across first-generation x402 client implementations, primarily revolving around the absence of default spending ceilings and facilitators accepting zero-transfer token approvals. HAICHAIN decisively solves this with its **4-Tuple Cryptographic Capability Leaf** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) and the **Bounded Loss Theorem**: Even under adversarial memory poisoning or jailbreaks, total potential loss is mathematically bounded to the unspent allowance of the active capability leaf.
+2. **Decisively Neutralizing 3 Critical Vulnerabilities of Pure x402:**
+   * **Vulnerability 1: Absence of Inherent Spending Ceilings:** Pure x402 allows any malicious endpoint to invoice an unconstrained amount. HAICHAIN neutralizes this via the **Bounded Loss Theorem**:
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   Any request violating `max_spend` or `window_cap` is rejected client-side by `PolicyEngine` before any signature can be minted.
+   * **Vulnerability 2: Latency Penalties and L1 Congestion:** Forcing every single micro-call to wait for L1 block finality degrades LLM streaming performance. HAICHAIN introduces a **Dual-Path Architecture**:
+     - *Fast-Path Off-chain Voucher (< 2ms):* Detached Ed25519 micro-vouchers are verified off-chain by server middleware in sub-2ms, delivering immediate wire-speed data streaming.
+     - *Batch Settlement Path:* Vouchers are aggregated and cleared via the HAICHAIN Multilateral Netting Engine prior to on-chain settlement on Solana L1 or Base L2.
+   * **Vulnerability 3: Replay Attacks:** HAICHAIN Paywall and Core Programs deploy dual nullifier barriers: **In-Memory Nullifier Caches** on middleware and **Ephemeral Nullifier PDAs** on-chain, rendering replay attacks mathematically impossible.
 
-3. **Drop-in x402 SDK Integration:**
-   The `@haichain/sdk` provides native x402 challenge handlers:
+3. **Standardized Dual-Stack Envelope & CAIP-2 Interoperability:**
+   The `@haichainsi/agent-pay` and `@haichainsi/sdk` packages provide turnkey support for standard **CAIP-2 Chain Identifiers** and dual signature formats:
+   * **CAIP-2 Identifiers:**
+     - Solana Mainnet: `solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`
+     - Solana Devnet: `solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1`
+     - Base Mainnet (Coinbase L2): `eip155:8453`
+   * **Dual Signature Envelope:** Supports **Ed25519 Detached Signatures** for Solana/Sui alongside **EIP-712 Typed Data** for Base/EVM, cryptographically binding the 223-byte CapLeaf Merkle hash into standard x402 authorization headers:
    ```typescript
    // Autonomous agent resolves standard HTTP x402 payment challenge via safe HAICHAIN Vault
-   const authHeaders = await haichainClient.handleX402Challenge(
-     x402Headers,
-     agentKeypair.secretKey,
-     whitelistedProviders // Strict destination gating against memory poisoning attacks
+   const challenge = X402Client.parseChallenge(rawHttp402Response);
+   const payment = x402Client.generatePaymentResponse(
+     challenge,
+     leafHashHex,
+     channelId,
+     CapScopeClass.DATA_API | CapScopeClass.LLM_INFERENCE
    );
+
+   // Retries with standard global x402 Header (X-PAYMENT Base64) protected by HAICHAIN Guardrail
+   fetch(challenge.resource, {
+     headers: {
+       "X-PAYMENT": payment.headers["X-PAYMENT"],
+       "Authorization": payment.headers["Authorization"]
+     }
+   });
    ```
    HAICHAIN does not seek to replace x402 or Pay.sh; it serves as the essential cryptographic safety seatbelt that allows enterprises to confidently deploy high-velocity autonomous agents onto these public payment rails.
-
----
 
 ## 7. MULTILATERAL SYMMETRIC NETTING & WIRE-SPEED CLEARING MATRIX
 

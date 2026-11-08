@@ -21,7 +21,8 @@
   "author": "HAICHAIN Foundation",
   "license": "MIT",
   "dependencies": {
-    "@solana/web3.js": "^1.95.8"
+    "@solana/web3.js": "^1.95.8",
+    "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "typescript": "^5.3.3"

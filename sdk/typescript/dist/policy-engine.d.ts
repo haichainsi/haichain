@@ -38,6 +38,8 @@ export declare class PolicyEngine {
         authorizedAmount: bigint;
         cumulativeVoucherAmount: bigint;
         signature: Uint8Array;
+        potPubkey: PublicKey;
+        grantNonce: bigint;
     };
     /**
      * Validates server response payload to detect empty data traps or infinite replay loops.
@@ -45,5 +47,6 @@ export declare class PolicyEngine {
     verifyServicePayload(payload: Buffer | string): boolean;
     private enforceDomainRateLimit;
     private extractDomainFromResource;
-    private buildVoucherPayload;
+    static buildVoucherPayload(pot: PublicKey, merchant: PublicKey, channelId: bigint, cumulativeAmount: bigint, nonce: bigint): Buffer;
+    static verifyVoucherSignature(agentPubkey: PublicKey, pot: PublicKey, merchant: PublicKey, channelId: bigint, cumulativeAmount: bigint, nonce: bigint, signature: Uint8Array): boolean;
 }

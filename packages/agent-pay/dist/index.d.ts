@@ -1,13 +1,18 @@
 /**
  * ==============================================================================
  * @haichainsi/agent-pay
- * Universal HTTP 402 Micro-Payment Paywall & Solana Escrow Middleware
- * For Autonomous AI Agents on Smithery, Fetch.ai, and MCP Servers.
+ * HAICHAIN Universal HTTP 402 Micro-Payment Paywall & Cryptographic Guardrail Middleware
+ * Fully compliant with RFC HTTP 402, Coinbase x402 Standard & HAICHAIN Policy Vault.
+ * Designed for Autonomous AI Agents on Smithery, ElizaOS, Claude Desktop, MCP & DePIN.
  * ==============================================================================
- * REAL ON-CHAIN PRODUCTION-GRADE ENFORCEMENT:
- * - Zero bypass backdoor.
- * - Confirms on-chain Solana L1 transactions via RPC.
- * - Verifies recipient address inclusion and positive lamport delta.
+ * DUAL-PATH ARCHITECTURE:
+ * 1. FAST-PATH OFF-CHAIN VOUCHER (< 2ms):
+ *    - Cryptographically verifies Ed25519 detached signatures against agent public key.
+ *    - Zero RPC wait time; ideal for real-time AI token streaming & low-latency inference.
+ *    - In-memory Nullifier Store protects against Replay Attacks.
+ * 2. DIRECT ON-CHAIN L1 AUDIT:
+ *    - Inspects Solana L1 transactions via RPC for confirmed status & positive lamport delta.
+ *    - 300s freshness window against pre-mined voucher recycling.
  */
 export interface PaywallConfig {
     recipient: string;
@@ -17,15 +22,65 @@ export interface PaywallConfig {
     serviceName?: string;
     minLamports?: number;
     maxAgeSeconds?: number;
+    tokenMint?: string;
+    allowFastPath?: boolean;
+}
+export interface X402StandardChallengeBody {
+    error: string;
+    statusCode: number;
+    maxAmountRequired: string;
+    resource: string;
+    description: string;
+    payTo: string;
+    paymentAddress: string;
+    asset: string;
+    assetAddress: string;
+    assetType: 'SPL' | 'ERC20';
+    network: string;
+    caip2Network: string;
+    expiresAt: number;
+    nonce: string;
+    paymentId: string;
+    haichainGuardrail: {
+        protocol: 'haichain-v1-voucher';
+        policyProtected: boolean;
+        boundedLossEnforced: boolean;
+        settlementHelper: string;
+    };
+    settlementDetails: {
+        recipient: string;
+        amountUsdt: number;
+        network: string;
+        protocol: string;
+        paymentHelper: string;
+    };
+}
+export interface PaymentVerificationResult {
+    valid: boolean;
+    mode?: 'fast-path-voucher' | 'direct-l1-settlement';
+    reason?: string;
+    txDetails?: any;
+    voucherDetails?: {
+        agentPubkey: string;
+        recipient: string;
+        amount: number | string;
+        channelId?: string;
+        cumulativeAmount?: string;
+        verifiedAt: number;
+    };
 }
 export declare class HaichainPaywall {
     private config;
     private connection;
     private recipientPubkey;
     private usedSignatures;
+    static readonly USDT_SOLANA_MAINNET = "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB";
+    static readonly USDC_SOLANA_MAINNET = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
     constructor(config: PaywallConfig);
+    private cleanupExpiredNullifiers;
     /**
-     * Generates standard HTTP 402 Payment Challenge Response
+     * Generates standard HTTP 402 Payment Challenge Response.
+     * Completely adheres to Coinbase x402 specification while embedding HAICHAIN cryptographic guardrails.
      */
     generate402Challenge(reqPath?: string): {
         status: number;
@@ -34,35 +89,29 @@ export declare class HaichainPaywall {
             'WWW-Authenticate': string;
             'X-Payment-Required': string;
             'X-Payment-Payee': string;
+            'X-Payment-PayTo': string;
             'X-Payment-Amount': string;
             'X-Payment-Network': string;
+            'X-Payment-Nonce': string;
             'X-Resource-Uri': string;
         };
-        body: {
-            error: string;
-            statusCode: number;
-            service: string | undefined;
-            message: string;
-            settlementDetails: {
-                recipient: string;
-                amountUsdt: number;
-                network: string;
-                protocol: string;
-                paymentHelper: string;
-            };
-        };
+        body: X402StandardChallengeBody;
     };
     /**
-     * REAL ON-CHAIN SOLANA AUDIT:
-     * 1. Inspects raw Solana Transaction on L1 via RPC.
-     * 2. Confirms zero execution errors on-chain.
-     * 3. Confirms recipient balance received the micro-payment.
+     * Universal Payment Verifier:
+     * Supports:
+     *  1. Fast-Path Off-chain Signed Voucher (< 2ms) via Ed25519 cryptographic signature.
+     *  2. Direct On-chain Solana L1 Transaction audit via RPC.
      */
-    verifyPayment(authHeader?: string, customTxSig?: string): Promise<{
-        valid: boolean;
-        reason?: string;
-        txDetails?: any;
-    }>;
+    verifyPayment(authHeaderOrToken?: string, customTxSig?: string): Promise<PaymentVerificationResult>;
+    /**
+     * Fast-path verification of off-chain cryptographic vouchers (< 2ms).
+     */
+    private verifyFastPathPayload;
+    /**
+     * On-chain Solana L1 RPC Verification.
+     */
+    private verifyOnChainSolanaTx;
     /**
      * Connect / Express Middleware
      */

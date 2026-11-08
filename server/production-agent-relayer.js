@@ -25,6 +25,52 @@ const SOLANA_DEVNET_RPC = 'https://api.devnet.solana.com';
 const MASTER_VAULT_PDA = 'FtqZDVdogFfWeQxBwoXjZ62XQzbKeAs32umRVNQt4t8F';
 const DEFAULT_TREASURY = '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
 
+// ============================================================================
+// SECURITY HARDENING: ANTI-SSRF GUARD & PRIVATE IP FILTERING
+// Blocks access to localhost, link-local, cloud metadata, and RFC 1918 subnets
+// ============================================================================
+function validateOutboundUrl(targetUrl) {
+  let parsed;
+  try {
+    parsed = new URL(targetUrl);
+  } catch (e) {
+    throw new Error(`Invalid URL: ${e.message}`);
+  }
+
+  if (parsed.protocol !== 'https:') {
+    throw new Error(`SSRF Blocked: Only HTTPS outbound calls are permitted (received: ${parsed.protocol})`);
+  }
+
+  const hostname = parsed.hostname.toLowerCase();
+
+  // Block loopbacks & cloud metadata
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1' || hostname === '0.0.0.0') {
+    throw new Error('SSRF Blocked: Local loopback target is strictly forbidden.');
+  }
+  if (hostname === '169.254.169.254' || hostname.startsWith('169.254.')) {
+    throw new Error('SSRF Blocked: Cloud instance metadata service (169.254.169.254) is forbidden.');
+  }
+
+  // Block RFC 1918 subnets
+  const ipv4 = hostname.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+  if (ipv4) {
+    const o1 = parseInt(ipv4[1], 10);
+    const o2 = parseInt(ipv4[2], 10);
+    if (o1 === 10) throw new Error('SSRF Blocked: 10.0.0.0/8 private network forbidden.');
+    if (o1 === 127) throw new Error('SSRF Blocked: 127.0.0.0/8 loopback network forbidden.');
+    if (o1 === 172 && (o2 >= 16 && o2 <= 31)) throw new Error('SSRF Blocked: 172.16.0.0/12 private network forbidden.');
+    if (o1 === 192 && o2 === 168) throw new Error('SSRF Blocked: 192.168.0.0/16 private network forbidden.');
+    if (o1 === 0 || o1 >= 224) throw new Error('SSRF Blocked: Reserved / multicast IP forbidden.');
+  }
+
+  // Block internal domain suffixes
+  if (hostname.endsWith('.internal') || hostname.endsWith('.local') || hostname.endsWith('.lan')) {
+    throw new Error('SSRF Blocked: Internal network hostname forbidden.');
+  }
+
+  return parsed.href;
+}
+
 const GLOBAL_AGENT_REGISTRY = [
   {
     agentId: "agent-smithery-scraper-01",
@@ -96,7 +142,7 @@ const GLOBAL_AGENT_REGISTRY = [
 
 
 
-const RESEND_API_KEY = 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 const RESEND_SENDER = 'Haichain <no-reply@mail.haichain.si>';
 const ADMIN_NOTIFICATION_EMAIL = 'haichain.si@gmail.com';
 
@@ -339,6 +385,8 @@ class ProductionAgentRelayer {
    * Real Autonomous HTTP 402 Handshake & Remote Agent Dispatch
    */
   async relayRemoteAgentEndpoint(agent, payload) {
+    // Validate target endpoint against SSRF attacks
+    validateOutboundUrl(agent.endpointUrl);
     console.log(`[Remote Agent Relay] Dispatching task to external agent: ${agent.name} (${agent.endpointUrl})`);
     
     const controller = new AbortController();
@@ -419,7 +467,8 @@ class ProductionAgentRelayer {
     const isUrl = /^https?:\/\//i.test(targetUrlOrQuery.trim());
     if (isUrl) {
       try {
-        const fetchUrl = targetUrlOrQuery.trim();
+        const rawUrl = targetUrlOrQuery.trim();
+        const fetchUrl = validateOutboundUrl(rawUrl);
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 6000);
 
@@ -756,7 +805,7 @@ class ProductionAgentRelayer {
                 ...a,
                 healthStatus: 'HEALTHY',
                 lastChecked: new Date().toISOString(),
-                liveLatencyMs: Math.floor(Math.random() * 35 + 15)
+                liveLatencyMs: null // Telemetry collected upon real ping
               }));
               res.writeHead(200, { ...cors, 'Content-Type': 'application/json' });
               return res.end(JSON.stringify({ agents: enriched, count: enriched.length }));
@@ -958,7 +1007,8 @@ class ProductionAgentRelayer {
             // 3. Dispatch to Telegram Bot (Group: -5426770743)
             let telegramSent = false;
             try {
-              const tgToken = '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';
+              const tgToken = process.env.TELEGRAM_BOT_TOKEN || '';
+            if (!tgToken) { console.log('[Relayer Telegram]: No TELEGRAM_BOT_TOKEN, skipping.'); } else {
               const tgChatId = '-5426770743';
               const tgMsg = `🔔 *NEW PRE-SEED SAFT AGREEMENT SIGNED!*
 ━━━━━━━━━━━━━━━━━━━━
@@ -997,6 +1047,7 @@ class ProductionAgentRelayer {
               tgReq.write(tgPayload);
               tgReq.end();
               telegramSent = true;
+            }
             } catch (_) {}
 
             res.writeHead(200, { ...cors, 'Content-Type': 'application/json' });

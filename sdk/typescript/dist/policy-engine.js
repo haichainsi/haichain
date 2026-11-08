@@ -107,7 +107,7 @@ class PolicyEngine {
             throw new Error(`SECURITY ALERT: Cumulative spend ${newCumulative} exceeds lifetime maxSpend ${grant.maxSpend}`);
         }
         // Sign micro-voucher with isolated agent private key (LLM never sees this key!)
-        const voucherPayload = this.buildVoucherPayload(grant.pot, grant.merchant, channelId, newCumulative, grant.nonce);
+        const voucherPayload = PolicyEngine.buildVoucherPayload(grant.pot, grant.merchant, channelId, newCumulative, grant.nonce);
         const signature = tweetnacl_1.default.sign.detached(voucherPayload, this.agentKeypair.secretKey);
         // Update internal accounting
         this.cumulativeSpendPerChannel.set(channelId.toString(), newCumulative);
@@ -115,6 +115,8 @@ class PolicyEngine {
             authorizedAmount: requestedSpend,
             cumulativeVoucherAmount: newCumulative,
             signature,
+            potPubkey: grant.pot,
+            grantNonce: grant.nonce,
         };
     }
     /**
@@ -160,7 +162,7 @@ class PolicyEngine {
             return resource.split("/")[0] || "unknown";
         }
     }
-    buildVoucherPayload(pot, merchant, channelId, cumulativeAmount, nonce) {
+    static buildVoucherPayload(pot, merchant, channelId, cumulativeAmount, nonce) {
         const channelBuf = Buffer.alloc(8);
         const amountBuf = Buffer.alloc(8);
         const nonceBuf = Buffer.alloc(8);
@@ -175,6 +177,10 @@ class PolicyEngine {
             .update(amountBuf)
             .update(nonceBuf)
             .digest();
+    }
+    static verifyVoucherSignature(agentPubkey, pot, merchant, channelId, cumulativeAmount, nonce, signature) {
+        const payload = PolicyEngine.buildVoucherPayload(pot, merchant, channelId, cumulativeAmount, nonce);
+        return tweetnacl_1.default.sign.detached.verify(payload, signature, agentPubkey.toBytes());
     }
 }
 exports.PolicyEngine = PolicyEngine;

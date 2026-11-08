@@ -62,6 +62,16 @@ pub fn compute_empty_leaf() -> [u8; 32] {
     ]).to_bytes()
 }
 
+/// INVARIANT: WORMHOLE INSTRUCTIONS SYSVAR VERIFICATION ($320M EXPLOIT DEFENSE)
+/// Ensures instructions sysvar matches the canonical Solana Sysvar Instructions address.
+pub fn verify_instructions_sysvar_account(instructions_sysvar: &AccountInfo) -> Result<()> {
+    require!(
+        instructions_sysvar.key == &solana_program::sysvar::instructions::ID,
+        HaiChainMasterError::InvalidSysvarAddress
+    );
+    Ok(())
+}
+
 #[derive(Clone, Debug)]
 pub struct CapLeafV1Data {
     pub version: u8,
@@ -671,6 +681,7 @@ pub mod haichain_core {
         require!(!pot.frozen, HaiChainMasterError::PotFrozen);
         require!(!grant.revoked, HaiChainMasterError::CapLeafExpired);
         require!(grant.epoch == pot.panic_epoch, HaiChainMasterError::EpochMismatch);
+        require!(ctx.accounts.agent.key() == grant.agent, HaiChainMasterError::Unauthorized);
 
         let now = Clock::get()?.unix_timestamp;
         require!(now < grant.expiry, HaiChainMasterError::CapLeafExpired);
@@ -725,16 +736,19 @@ pub mod haichain_core {
         Ok(())
     }
 
-    /// 15. SETTLE VOUCHER (SETTLEMENT WITH ANTI-JITO-PANIC MEV IMMUNITY)
+    /// 15. SETTLE VOUCHER (SETTLEMENT WITH ANTI-JITO-PANIC MEV IMMUNITY & EXPLICIT REVOCATION CHECK)
     pub fn settle_voucher(
         ctx: Context<SettleVoucherContext>,
         cumulative_amount: u64,
     ) -> Result<()> {
         let pot = &ctx.accounts.pot;
+        let grant = &ctx.accounts.active_grant;
         let channel = &mut ctx.accounts.channel;
 
-        // RED-TEAM PATCH 1: Reject settlement if pot was panicked!
-        require!(pot.panic_epoch == channel.created_at_epoch && !pot.frozen, HaiChainMasterError::PotPanickedFundsFrozen);
+        // CLAUDE AUDIT HARDENING: Check frozen pot, revoked grant, and panic epoch mismatch
+        require!(!pot.frozen, HaiChainMasterError::PotPanickedFundsFrozen);
+        require!(!grant.revoked, HaiChainMasterError::CapLeafExpired);
+        require!(pot.panic_epoch == channel.created_at_epoch, HaiChainMasterError::EpochMismatch);
 
         require!(cumulative_amount > channel.paid, HaiChainMasterError::InvalidSettleAmount);
         let effective_amount = std::cmp::min(cumulative_amount, channel.reserved);
@@ -808,16 +822,32 @@ pub mod haichain_core {
         Ok(())
     }
 
-    /// 17. CLOSE CHANNEL (REFUNDS RESIDUAL RESERVED & RED-TEAM PATCH 4 RENT PRESERVATION)
+    /// 17. CLOSE CHANNEL (REFUNDS RESIDUAL RESERVED, DISPUTE WINDOW & SIGNER ENFORCED)
     pub fn close_channel(
         ctx: Context<CloseChannelContext>,
     ) -> Result<()> {
         let channel = &ctx.accounts.channel;
         let grant = &mut ctx.accounts.active_grant;
+        let pot = &ctx.accounts.pot;
+        let authority = &ctx.accounts.authority;
+
+        // CLAUDE AUDIT HARDENING: Enforce authorized signer (agent or pot owner)
+        require!(
+            authority.key() == channel.agent_key || authority.key() == pot.owner_auth,
+            HaiChainMasterError::Unauthorized
+        );
 
         // Refund any residual reserved funds
         let unspent = channel.reserved.saturating_sub(channel.paid);
         if unspent > 0 {
+            let now = Clock::get()?.unix_timestamp;
+            // Enforce dispute window for unspent funds if close was requested
+            if channel.close_requested_at > 0 {
+                require!(
+                    now >= channel.close_requested_at + channel.dispute_secs as i64,
+                    HaiChainMasterError::DisputeWindowActive
+                );
+            }
             grant.consumed = grant.consumed.saturating_sub(unspent);
 
             let grant_key = channel.grant;
@@ -856,6 +886,7 @@ pub mod haichain_core {
 
         require!(!pot.frozen, HaiChainMasterError::PotFrozen);
         require!(!template_grant.revoked, HaiChainMasterError::CapLeafExpired);
+        require!(ctx.accounts.agent.key() == template_grant.agent, HaiChainMasterError::Unauthorized);
         require!((template_grant.flags & (1 << 1)) != 0, HaiChainMasterError::InvalidCapLeafVersion); // PROBATION flag
         require!((template_grant.flags & (1 << 0)) != 0, HaiChainMasterError::InvalidCapLeafVersion); // REQUIRE_COSIGN flag
 
@@ -900,6 +931,66 @@ pub mod haichain_core {
         Ok(())
     }
 
+    /// 19. PANIC POT (EMERGENCY FREEZE & INITIATE NEW PANIC EPOCH)
+    pub fn panic_pot(ctx: Context<PanicPotContext>) -> Result<()> {
+        let pot = &mut ctx.accounts.pot;
+        pot.frozen = true;
+        pot.panic_epoch = pot.panic_epoch.checked_add(1).ok_or(HaiChainMasterError::MathOverflow)?;
+        msg!("HAICHAIN: Pot panicked! Frozen = true, new panic_epoch = {}", pot.panic_epoch);
+        Ok(())
+    }
+
+    /// 20. REVOKE GRANT (MASTER OWNER REVOKES CAPABILITY GRANT)
+    pub fn revoke_grant(ctx: Context<RevokeGrantContext>) -> Result<()> {
+        let grant = &mut ctx.accounts.active_grant;
+        grant.revoked = true;
+        msg!("HAICHAIN: Capability grant {:?} explicitly revoked by master owner.", grant.key());
+        Ok(())
+    }
+
+    /// 21. WITHDRAW POT (MASTER OWNER WITHDRAWS FUNDS FROM VAULT ATA)
+    pub fn withdraw_pot(ctx: Context<WithdrawPotContext>, amount: u64) -> Result<()> {
+        let pot = &ctx.accounts.pot;
+        require!(amount > 0, HaiChainMasterError::InvalidSpendAmount);
+
+        let owner_auth_key = pot.owner_auth;
+        let pot_bump = pot.bump;
+        let seeds: &[&[&[u8]]] = &[&[
+            b"pot",
+            owner_auth_key.as_ref(),
+            &[pot_bump],
+        ]];
+
+        let cpi_accounts = Transfer {
+            from: ctx.accounts.vault_ata.to_account_info(),
+            to: ctx.accounts.recipient_ata.to_account_info(),
+            authority: pot.to_account_info(),
+        };
+        token::transfer(
+            CpiContext::new_with_signer(ctx.accounts.token_program.to_account_info(), cpi_accounts, seeds),
+            amount,
+        )?;
+
+        msg!("HAICHAIN: Master owner withdrew {} tokens from pot.", amount);
+        Ok(())
+    }
+
+    /// 22. REQUEST CLOSE CHANNEL (INITIATES DISPUTE WINDOW COUNTDOWN)
+    pub fn request_close_channel(ctx: Context<RequestCloseChannelContext>) -> Result<()> {
+        let channel = &mut ctx.accounts.channel;
+        let pot = &ctx.accounts.pot;
+        let authority = &ctx.accounts.authority;
+
+        require!(
+            authority.key() == channel.agent_key || authority.key() == pot.owner_auth,
+            HaiChainMasterError::Unauthorized
+        );
+        require!(channel.close_requested_at == 0, HaiChainMasterError::CloseAlreadyRequested);
+
+        channel.close_requested_at = Clock::get()?.unix_timestamp;
+        msg!("HAICHAIN: Close requested for channel {}. Dispute timer active ({}s).", channel.channel_id, channel.dispute_secs);
+        Ok(())
+    }
 
 }
 
@@ -1250,6 +1341,9 @@ pub struct ReserveChannelContext<'info> {
     )]
     pub payee_ata: Account<'info, TokenAccount>,
 
+    #[account(
+        constraint = agent.key() == active_grant.agent @ HaiChainMasterError::Unauthorized
+    )]
     pub agent: Signer<'info>,
 
     #[account(mut)]
@@ -1268,8 +1362,16 @@ pub struct SettleVoucherContext<'info> {
     pub pot: Account<'info, PotAccount>,
 
     #[account(
+        has_one = pot @ HaiChainMasterError::PotMismatch,
+        seeds = [b"grant", pot.key().as_ref(), active_grant.leaf_hash.as_ref()],
+        bump = active_grant.bump
+    )]
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    #[account(
         mut,
-        seeds = [b"chan", channel.grant.as_ref(), &channel.channel_id.to_le_bytes()],
+        constraint = channel.grant == active_grant.key() @ HaiChainMasterError::PotMismatch,
+        seeds = [b"chan", active_grant.key().as_ref(), &channel.channel_id.to_le_bytes()],
         bump = channel.bump
     )]
     pub channel: Account<'info, ChannelAccount>,
@@ -1283,9 +1385,12 @@ pub struct SettleVoucherContext<'info> {
 
     #[account(
         mut,
-        constraint = payee_ata.key() == channel.payee_ata @ HaiChainMasterError::InvalidPayeeAta
+        constraint = payee_ata.key() == channel.payee_ata @ HaiChainMasterError::InvalidPayeeAta,
+        constraint = payee_ata.owner == payee.key() @ HaiChainMasterError::Unauthorized
     )]
     pub payee_ata: Account<'info, TokenAccount>,
+
+    pub payee: Signer<'info>,
 
     pub token_program: Program<'info, Token>,
 }
@@ -1382,6 +1487,9 @@ pub struct CloseChannelContext<'info> {
     )]
     pub rent_recipient: AccountInfo<'info>,
 
+    /// Authorized closer: agent or pot master owner
+    pub authority: Signer<'info>,
+
     pub token_program: Program<'info, Token>,
 }
 
@@ -1417,12 +1525,96 @@ pub struct ActivateChildContext<'info> {
     )]
     pub cosigner: Signer<'info>,
 
+    #[account(
+        constraint = agent.key() == template_grant.agent @ HaiChainMasterError::Unauthorized
+    )]
     pub agent: Signer<'info>,
 
     #[account(mut)]
     pub payer: Signer<'info>,
 
     pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct PanicPotContext<'info> {
+    #[account(
+        mut,
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump,
+        constraint = signer.key() == pot.owner_auth || signer.key() == pot.cosigner @ HaiChainMasterError::Unauthorized
+    )]
+    pub pot: Account<'info, PotAccount>,
+    pub signer: Signer<'info>,
+}
+
+#[derive(Accounts)]
+pub struct RevokeGrantContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump,
+        has_one = owner_auth @ HaiChainMasterError::UnauthorizedOwner
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        has_one = pot @ HaiChainMasterError::PotMismatch,
+        seeds = [b"grant", pot.key().as_ref(), active_grant.leaf_hash.as_ref()],
+        bump = active_grant.bump
+    )]
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    pub owner_auth: Signer<'info>,
+}
+
+#[derive(Accounts)]
+pub struct WithdrawPotContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump,
+        has_one = owner_auth @ HaiChainMasterError::UnauthorizedOwner
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    pub owner_auth: Signer<'info>,
+
+    #[account(
+        mut,
+        constraint = vault_ata.owner == pot.key() @ HaiChainMasterError::InvalidDedicatedAtaOwner,
+        constraint = vault_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub vault_ata: Account<'info, TokenAccount>,
+
+    #[account(
+        mut,
+        constraint = recipient_ata.owner == pot.owner_auth @ HaiChainMasterError::UnauthorizedOwner,
+        constraint = recipient_ata.mint == pot.token_mint @ HaiChainMasterError::InvalidTokenMint
+    )]
+    pub recipient_ata: Account<'info, TokenAccount>,
+
+    pub token_program: Program<'info, Token>,
+}
+
+#[derive(Accounts)]
+pub struct RequestCloseChannelContext<'info> {
+    #[account(
+        seeds = [b"pot", pot.owner_auth.as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+
+    #[account(
+        mut,
+        constraint = channel.grant == active_grant.key() @ HaiChainMasterError::PotMismatch,
+        seeds = [b"chan", active_grant.key().as_ref(), &channel.channel_id.to_le_bytes()],
+        bump = channel.bump
+    )]
+    pub channel: Account<'info, ChannelAccount>,
+
+    pub active_grant: Account<'info, ActiveGrantAccount>,
+
+    pub authority: Signer<'info>,
 }
 
 
@@ -1531,6 +1723,10 @@ pub struct ChannelAccount {
 
 #[error_code]
 pub enum HaiChainMasterError {
+    #[msg("Authorization: Signer is not authorized for this operation.")]
+    Unauthorized,
+    #[msg("Channel: Close already requested. Dispute window is currently running.")]
+    CloseAlreadyRequested,
     #[msg("Wormhole Exploit Defense: Invalid sysvar::instructions ID.")]
     InvalidSysvarAddress,
     #[msg("Nomad Exploit Defense: Empty Merkle root 0x0 is strictly forbidden.")]

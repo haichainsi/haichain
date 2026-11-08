@@ -185,7 +185,7 @@ def patch_worker(file_path):
         re.DOTALL
     )
 
-    replacement = r'''const resendKey = (env && env.RESEND_API_KEY) || 're_Hqp1tNKV_6w8Ur4v3B91Jv6yusD4CK5pN';
+    replacement = r'''const resendKey = (env && env.RESEND_API_KEY) || 'os.environ.get('RESEND_API_KEY', '')';
     const senderFrom = 'Haichain <no-reply@mail.haichain.si>';
     let resendAdminSuccess = false;
     let resendInvestorSuccess = false;

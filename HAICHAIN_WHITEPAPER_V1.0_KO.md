@@ -747,38 +747,42 @@ AI 툴 오케스트레이션의 글로벌 표준에 완벽히 부합하도록 HA
 2. `pay_for_resource`: 독점 API 엔드포인트, 온디맨드 GPU 클러스터, 유료 데이터 스트림에 대해 나노센트 단위의 마이크로 정산을 실행합니다.
 3. `emergency_freeze_pot`: 데이터 이상이나 정책 위반이 감지되면 하드웨어 수준의 패닉 동결을 트리거합니다.
 
-### 6.6. 전략적 포지셔닝: HTTP x402 및 Solana Pay.sh를 위한 정책 및 서킷 브레이커 레이어로서의 HAICHAIN
+### 6.6. 전략적 포지셔닝: HTTP x402 및 Solana Pay.sh를 위한 HAICHAIN 정책 거버넌스 및 서킷 브레이커 볼트
 
-자율 에이전트 인프라 환경에서 **HTTP x402**(Coinbase 시작, Visa 및 Mastercard가 참여하는 Linux Foundation 이관) 및 **Pay.sh**(2026년 5월 Solana Foundation 및 Google Cloud 공동 발표)와 같은 개방형 머신 결제 통신 프로토콜이 빠르게 확산되고 있습니다.
+자율 에이전트 금융 인프라 환경에서 오픈 머신 결제 통신 프로토콜은 기관들의 광범위한 채택을 이끌어내고 있으며, 대표적으로 **HTTP x402**(Coinbase에서 시작하여 Linux 재단이 주관하고 Visa 및 Mastercard 참여) 및 **Pay.sh**(2026년 5월 Solana 재단과 Google Cloud 공동 출시)가 있습니다.
 
 ```
-            글로벌 자율 에이전트 금융 인프라 스택
-         
-    [ 에이전트 및 AI 스웜 ]      : Claude Desktop, Cursor, ElizaOS, CrewAI
-                                   │
-                                   ▼
-    [ 통신 및 과금 요청 ]        : HTTP x402 사양 및 Pay.sh 프록시
-    (402 Payment Required 반환 및 암호화 결제 챌린지 전송)
-                                   │
-                                   ▼
-    [ 정책 및 리스크 거버넌스 ]  : ★ HAICHAIN AGENT POLICY VAULT ★
-    (Merkle 역량 트리, 엄격한 MaxSpend 상한선, 400ms 미만 패닉 킬스위치)
-                                   │
-                                   ▼
-    [ 온체인 정산 레일 ]         : Solana L1 원장 (USDC / USDT SPL 정산)
+          글로벌 자율 에이전트 금융 인프라 계층 구조도
+          
+    [ 에이전트 및 군집 AI ]     : Claude Desktop, Cursor, ElizaOS, CrewAI
+                                    │
+                                    ▼
+    [ 통신 프로토콜 및 결제 파이프 ] : HTTP x402 표준 및 Pay.sh 프록시
+    (402 Payment Required 응답 발행 및 X-PAYMENT 암호화 페이로드 전송)
+                                    │
+                                    ▼
+    [ 정책 거버넌스 및 안전 볼트 ] : ★ HAICHAIN AGENT POLICY VAULT ★
+    (CapLeaf Merkle 역량 트리, 하드 MaxSpend 한도, < 400ms 하드웨어 긴급 킬스위치)
+                                    │
+                                    ▼
+    [ 온체인 최종 결제 레일 ]     : Solana L1 원장, Sui Move 객체 및 Base L2 (USDC/USDT 결제)
 ```
 
-1. **명확한 역할 분담 (상호보완적 생태계 시너지):**
-   * **x402 및 Pay.sh는 '통신 및 메시징 파이프':** API가 `402 Payment Required`를 반환하고 클라이언트가 인증 헤더(`X-402-Authorization`)를 전송하는 방식을 규정합니다.
-   * **HAICHAIN은 '기업 리스크 은행 및 안전 정책 금고':** 자금 출처 검증, 세분화된 지출 한도 집행, 프롬프트 주입 공격 시 지갑 보호를 책임집니다.
+1. **명확한 역할 분담 (상호 보완적 시너지, 직접 경쟁 배제):**
+   * **x402 및 Pay.sh는 '통신 파이프라인(Communication & Invoicing Protocol)' 역할 수행:** API가 HTTP `402 Payment Required`를 발행하고 클라이언트가 `X-PAYMENT` 또는 `Authorization: X402` 헤더를 전송하는 표준을 규정합니다.
+   * **HAICHAIN은 '기업 리스크 은행 및 정책 안전 볼트(Cryptographic Policy & Safe Custody Vault)' 역할 수행:** *에이전트 자금 출처, 예산 한도 통제, 탈옥된 LLM의 기업 자금 탈취 차단* 등 생존 직결 보안 문제를 해결합니다.
 
-2. **실증적 x402 취약점 무력화:**
-   2026년 10월 발견된 클라이언트 지출 상한 부재 취약점을 4요소 Merkle 역량 리프(`Pubkey || MaxSpend || ExpirySlot || Nonce`)와 유계 손실 정리로 완벽히 해결합니다.
+2. **순수 x402 프로토콜의 3대 구조적 취약점 해소:**
+   * **취약점 1: 네이티브 지출 한도 부재:** HAICHAIN은 **유계 손실 정리(Bounded Loss Theorem)**를 통해 최대 손실 노출을 수학적으로 제한합니다:
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   * **취약점 2: 온체인 L1 블록 지연시간 병목:** HAICHAIN은 **듀얼 패스 아키텍처(Dual-Path Architecture)**를 구축하여:
+     - *패스트 패스(Fast-Path Off-chain Voucher < 2ms):* 2ms 이내의 Ed25519 서명 검증으로 초고속 스트리밍 데이터 제공.
+     - *배치 정산 패스(Batch Settlement):* 다자간 대칭 상계 엔진을 통해 일괄 온체인 정산.
+   * **취약점 3: 리플레이 공격:** 인메모리 널리파이어(Nullifier) 캐시와 온체인 PDA를 통해 토큰 재사용을 100% 차단합니다.
 
-3. **Drop-in SDK 지원:**
-   `@haichain/sdk`는 x402 결제 챌린지를 안전하게 해결할 수 있는 기본 핸들러를 제공합니다.
+3. **듀얼 스택 엔벨로프 및 CAIP-2 표준 상호운용성:**
+   `@haichainsi/agent-pay` 및 `@haichainsi/sdk`는 **CAIP-2 체인 식별자**(`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `eip155:8453`) 및 Solana(Ed25519) / Base(EIP-712) 듀얼 서명을 완벽 지원합니다.
 
----
 
 ## 7. 다자간 대칭 순액 정산 및 유선 속도 청산 매트릭스 (MULTILATERAL NETTING & OPTIMISTIC STREAMING STATE CHANNELS)
 

@@ -3,17 +3,27 @@ export interface X402Challenge {
     payee: string;
     mint: string;
     amountMicroUnits: string;
-    scheme: "haichain-v1-voucher";
+    amountUsd: number;
+    scheme: "haichain-v1-voucher" | "x402-rfc" | string;
     resource: string;
+    network: string;
     expires: number;
+    nonce: string;
+    paymentId?: string;
+    rawPayload?: any;
 }
 export interface X402AuthorizationHeader {
-    scheme: "haichain-v1-voucher";
+    scheme: "haichain-v1-voucher" | "x402-rfc";
     channelId: string;
     cumulativeAmount: string;
     signatureBase64: string;
     agentPubkey: string;
     potPubkey: string;
+    merchantPubkey?: string;
+    nonce?: string;
+    timestamp?: number;
+    authorizedAmount?: string;
+    resource?: string;
 }
 export interface X402DeliveryReceipt {
     resource: string;
@@ -25,16 +35,21 @@ export declare class X402Client {
     private policyEngine;
     constructor(policyEngine: PolicyEngine);
     /**
-     * Parses the HTTP 402 challenge header from merchant response.
+     * Universal parser for HTTP 402 challenge payloads.
+     * Gracefully parses both Coinbase x402 JSON format and HAICHAIN native voucher challenges.
      */
-    static parseChallenge(headerValue: string): X402Challenge;
+    static parseChallenge(input: string | any): X402Challenge;
     /**
-     * Processes an HTTP 402 challenge against the isolated PolicyEngine and generates
-     * the authorization header with a monotonically signed voucher.
+     * Evaluates an HTTP 402 challenge against the isolated PolicyEngine and generates
+     * dual-compatible headers:
+     * 1. "X-PAYMENT" (Base64 JSON): Standard x402 Header for Coinbase specification.
+     * 2. "Authorization": "X402 <base64>" RFC compliant HTTP Authorization.
+     * 3. HAICHAIN telemetry headers.
      */
     generatePaymentResponse(challenge: X402Challenge, leafHashHex: string, channelId: bigint, scopeClass: number): {
         headers: Record<string, string>;
         authorizedAmount: bigint;
+        authPayload: X402AuthorizationHeader;
     };
     /**
      * Verifies the receipt delivered by the merchant after fulfilling the resource stream.

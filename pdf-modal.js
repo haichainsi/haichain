@@ -213,7 +213,7 @@ function buildHaichainSaftEmailHtml(opt) {
   window.getCurrentLang = window.getHaichainLang = getCurrentLang;
 
   function getWhitepaperUrlForLang(lang) {
-    const versionParam = '?v=v65_institutional_tables_math_fixed_20261103';
+    const versionParam = '?v=v67_x402_dualpath_guardrail_20261108';
     switch (lang) {
       case 'vi': return '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf' + versionParam;
       case 'zh': return '/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf' + versionParam;
@@ -2155,7 +2155,7 @@ function buildHaichainSaftEmailHtml(opt) {
             hashHex,
             timestamp,
             isAdmin: true,
-            lang: lang || 'vi'
+            lang: 'en'
           });
 
           if (email && email.includes('@')) {
@@ -2178,7 +2178,7 @@ function buildHaichainSaftEmailHtml(opt) {
             ...signedRecord,
             adminHtml,
             investorHtml,
-            lang: lang || 'vi'
+            lang: 'en'
           };
 
           // Primary dispatch to robust backend email relayer (/api/saft/submit)
@@ -2222,35 +2222,7 @@ function buildHaichainSaftEmailHtml(opt) {
           console.warn('[SAFT Email Builder Warning]:', e);
         }
 
-        // 1. Instant Real-Time Telegram Bot Notification (Group: -5426770743)
-        try {
-          const tgToken = '9066296959:AAE716Gw5KOh1jiUuurbdO_g5n7gIXblcqk';
-          const tgChatId = '-5426770743';
-          const tgMsg = '🔔 *NEW PRE-SEED SAFT AGREEMENT SIGNED!*\n' +
-            '━━━━━━━━━━━━━━━━━━━━\n' +
-            '📋 *Contract ID:* `' + contractId + '`\n' +
-            '👤 *Investor:* *' + name + '*\n' +
-            '📧 *Email:* `' + email + '`\n' +
-            '💰 *Investment:* *$' + amount.toLocaleString('en-US') + ' USD (USDT)*\n' +
-            '🪙 *Allocation:* *' + tokens.toLocaleString('en-US') + ' $HAISI* (@ $0.007)\n' +
-            '📈 *TGE Upside:* *$' + Math.round(tokens * 0.01).toLocaleString('en-US') + ' USD (+42.8%)*\n' +
-            '💼 *Beneficiary Solana Wallet:*\n`' + wallet + '`\n' +
-            '🏛️ *Multi-Sig Treasury Vault:*\n`' + treasury + '`\n' +
-            '🔐 *SHA-256 Audit Proof:*\n`' + hashHex + '`\n' +
-            '⏰ *Signed Time (UTC):* `' + timestamp + '`\n' +
-            '━━━━━━━━━━━━━━━━━━━━\n' +
-            '✅ *Legally Executed under US ESIGN Act & UETA*';
-
-          fetch('https://api.telegram.org/bot' + tgToken + '/sendMessage', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: tgChatId,
-              text: tgMsg,
-              parse_mode: 'Markdown'
-            })
-          }).catch(err => console.warn('Telegram direct ping non-blocking:', err));
-        } catch (_) {}
+        // 1. Telegram notification dispatched securely via backend worker /api/saft/submit (no client-side tokens)
 
         // 2. Synchronized Edge State Record Logging
         try {

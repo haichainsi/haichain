@@ -57,20 +57,20 @@ function doPost(e) {
     
     // 2. Gửi Email Thông Báo Cho Admin (haichain.si@gmail.com)
     var adminEmail = "haichain.si@gmail.com";
-    var adminSubject = "🔔 [HAICHAIN SAFT] Nhà đầu tư mới ký hợp đồng: $" + amount.toLocaleString() + " - " + name;
+    var adminSubject = "🔔 [SAFT Signed] $" + amount.toLocaleString("en-US") + " USD - " + name + " (" + contractId + ")";
     var adminHtml = 
       "<div style='font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; max-width:600px; margin:0 auto; padding:24px; background:#0c0c0e; color:#ffffff; border-radius:16px;'>" +
-        "<h2 style='color:#ffffff; margin-top:0; border-bottom:1px solid #27272a; padding-bottom:12px;'>🔔 HỢP ĐỒNG SAFT PRE-SEED VỪA ĐƯỢC KÝ KẾT</h2>" +
+        "<h2 style='color:#ffffff; margin-top:0; border-bottom:1px solid #27272a; padding-bottom:12px;'>🔔 NEW PRE-SEED SAFT AGREEMENT SIGNED</h2>" +
         "<table style='width:100%; border-collapse:collapse; color:#d4d4d8; font-size:14px; margin:20px 0;'>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Mã Hợp Đồng:</td><td style='font-weight:bold; color:#ffffff; font-family:monospace;'>" + contractId + "</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Nhà Đầu Tư:</td><td style='font-weight:bold; color:#ffffff;'>" + name + "</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Email Liên Hệ:</td><td>" + email + "</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Số Tiền Đầu Tư:</td><td style='color:#4ade80; font-weight:bold;'>$" + amount.toLocaleString() + " USD (USDT)</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Quyền Phân Bổ:</td><td style='font-weight:bold; color:#ffffff;'>" + tokens.toLocaleString() + " $HAISI (@ $0.007)</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Ví Solana Nhận:</td><td style='font-family:monospace; font-size:12px; color:#ffffff;'>" + wallet + "</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Kho Bạc Nhận:</td><td style='font-family:monospace; font-size:12px; color:#ffffff;'>" + treasury + "</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Mã SHA-256:</td><td style='font-family:monospace; font-size:11px; color:#a1a1aa; word-break:break-all;'>" + hashHex + "</td></tr>" +
-          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Thời Gian (UTC):</td><td>" + timestamp + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Contract ID:</td><td style='font-weight:bold; color:#ffffff; font-family:monospace;'>" + contractId + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Signatory:</td><td style='font-weight:bold; color:#ffffff;'>" + name + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Email:</td><td>" + email + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Investment Amount:</td><td style='color:#4ade80; font-weight:bold;'>$" + amount.toLocaleString('en-US') + " USD (USDT)</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Token Allocation:</td><td style='font-weight:bold; color:#ffffff;'>" + tokens.toLocaleString('en-US') + " $HAISI (@ $0.007)</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Beneficiary Wallet:</td><td style='font-family:monospace; font-size:12px; color:#ffffff;'>" + wallet + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Haichain Treasury Vault:</td><td style='font-family:monospace; font-size:12px; color:#ffffff;'>" + treasury + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>SHA-256 Audit Hash:</td><td style='font-family:monospace; font-size:11px; color:#a1a1aa; word-break:break-all;'>" + hashHex + "</td></tr>" +
+          "<tr><td style='padding:8px 0; color:#a1a1aa;'>Timestamp (UTC):</td><td>" + timestamp + "</td></tr>" +
         "</table>" +
         "<p style='font-size:12px; color:#71717a; border-top:1px solid #27272a; padding-top:12px; margin-bottom:0;'>HAICHAIN Autonomous Machine Financial Protocol • Universal SAFT Engine</p>" +
       "</div>";
@@ -83,21 +83,21 @@ function doPost(e) {
     
     // 3. Gửi Email Xác Nhận Chính Thức Cho Nhà Đầu Tư
     if (email && email.indexOf("@") > -1) {
-      var investorSubject = "Xác nhận ký kết Hợp đồng SAFT HAICHAIN (" + contractId + ") - Proof of Execution";
+      var investorSubject = "HAICHAIN Official SAFT Agreement - Signed Confirmation (" + contractId + ")";
       var investorHtml = 
         "<div style='font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; max-width:600px; margin:0 auto; padding:24px; background:#0c0c0e; color:#ffffff; border-radius:16px;'>" +
-          "<h2 style='color:#ffffff; margin-top:0; border-bottom:1px solid #27272a; padding-bottom:12px;'>XÁC NHẬN KÝ KẾT HỢP ĐỒNG SAFT</h2>" +
-          "<p style='color:#e4e4e7; line-height:1.6;'>Kính gửi <strong>" + name + "</strong>,</p>" +
-          "<p style='color:#d4d4d8; line-height:1.6;'>Cảm ơn bạn đã tham gia Vòng Chiến Lược Pre-Seed của <strong>HAICHAIN</strong> (Universal Autonomous Machine Financial &amp; Cognitive Operating System). Hợp đồng SAFT trực tuyến của bạn đã được thực thi và chứng thực mật mã học thành công theo chuẩn US ESIGN Act &amp; Luật GDĐT.</p>" +
+          "<h2 style='color:#ffffff; margin-top:0; border-bottom:1px solid #27272a; padding-bottom:12px;'>SAFT AGREEMENT EXECUTION CONFIRMATION</h2>" +
+          "<p style='color:#e4e4e7; line-height:1.6;'>Dear <strong>" + name + "</strong>,</p>" +
+          "<p style='color:#d4d4d8; line-height:1.6;'>Thank you for participating in the Pre-Seed Strategic Round of <strong>HAICHAIN</strong> (The Financial Operating System for The Autonomous Machine Era). Your Simple Agreement for Future Tokens (SAFT) has been legally executed and recorded on the HAICHAIN cryptographic ledger pursuant to the US ESIGN Act (15 U.S.C. § 7001) &amp; UETA standards.</p>" +
           "<div style='background:#18181b; border:1px solid #27272a; border-radius:12px; padding:16px; margin:20px 0;'>" +
-            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>MÃ HỢP ĐỒNG: <span style='color:#ffffff; font-family:monospace; font-weight:bold;'>" + contractId + "</span></div>" +
-            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>SỐ TIỀN ĐẦU TƯ: <span style='color:#4ade80; font-weight:bold;'>$" + amount.toLocaleString() + " USD (USDT)</span></div>" +
-            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>PHÂN BỔ TOKEN: <span style='color:#ffffff; font-weight:bold;'>" + tokens.toLocaleString() + " $HAISI (@ $0.007)</span></div>" +
-            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>VÍ NHẬN TOKEN TẠI TGE: <br><span style='color:#ffffff; font-family:monospace; font-size:11px;'>" + wallet + "</span></div>" +
-            "<div style='font-size:13px; color:#a1a1aa;'>MÃ BĂM BẢO CHỨNG (SHA-256): <br><span style='color:#71717a; font-family:monospace; font-size:10px; word-break:break-all;'>" + hashHex + "</span></div>" +
+            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>CONTRACT ID: <span style='color:#ffffff; font-family:monospace; font-weight:bold;'>" + contractId + "</span></div>" +
+            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>INVESTMENT AMOUNT: <span style='color:#4ade80; font-weight:bold;'>$" + amount.toLocaleString('en-US') + " USD (USDT)</span></div>" +
+            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>TOKEN ALLOCATION: <span style='color:#ffffff; font-weight:bold;'>" + tokens.toLocaleString('en-US') + " $HAISI (@ $0.007)</span></div>" +
+            "<div style='margin-bottom:8px; font-size:13px; color:#a1a1aa;'>BENEFICIARY WALLET: <br><span style='color:#ffffff; font-family:monospace; font-size:11px;'>" + wallet + "</span></div>" +
+            "<div style='font-size:13px; color:#a1a1aa;'>SHA-256 AUDIT HASH: <br><span style='color:#71717a; font-family:monospace; font-size:10px; word-break:break-all;'>" + hashHex + "</span></div>" +
           "</div>" +
-          "<p style='color:#a1a1aa; font-size:13px; line-height:1.6;'>Toàn bộ nguồn vốn được bảo vệ tại Kho Bạc Squads Multi-Sig Mainnet: <code>" + treasury + "</code> và token sẽ được phân phối tự động tới ví Solana của bạn tại thời điểm TGE.</p>" +
-          "<p style='margin-top:24px; color:#ffffff; font-size:13px;'>Trân trọng,<br><strong>HAICHAIN Autonomous Protocol Foundation</strong><br><a href='https://haichain.si' style='color:#38bdf8; text-decoration:none;'>https://haichain.si</a></p>" +
+          "<p style='color:#a1a1aa; font-size:13px; line-height:1.6;'>All investment funds are secured in the Squads Multi-Sig Treasury on Solana Mainnet: <code>" + treasury + "</code> and your $HAISI tokens will be minted and transferred directly to your beneficiary wallet upon the Token Generation Event (TGE).</p>" +
+          "<p style='margin-top:24px; color:#ffffff; font-size:13px;'>Sincerely,<br><strong>HAICHAIN Autonomous Protocol Foundation</strong><br><a href='https://haichain.si' style='color:#38bdf8; text-decoration:none;'>https://haichain.si</a></p>" +
         "</div>";
         
       MailApp.sendEmail({
