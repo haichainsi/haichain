@@ -28,6 +28,7 @@ export interface PaywallConfig {
   minLamports?: number;               // Minimum lamports required for on-chain direct tx (defaults to 10,000)
   maxAgeSeconds?: number;             // Maximum allowed transaction/voucher age in seconds (defaults to 300s = 5m)
   tokenMint?: string;                 // SPL token mint address (defaults to USDT SPL)
+  watchtowerUrl?: string;             // Optional Watchtower Sentinel URL for automated on-chain dispute defense
   allowFastPath?: boolean;            // Enable sub-2ms off-chain voucher verification (default: true)
 }
 
@@ -104,7 +105,7 @@ export class HaichainPaywall {
     );
   }
 
-  private config: Required<Omit<PaywallConfig, 'rpcUrl'>> & { rpcUrl?: string };
+  private config: Required<Omit<PaywallConfig, 'rpcUrl' | 'watchtowerUrl'>> & { rpcUrl?: string; watchtowerUrl?: string };
   private connection: Connection;
   private recipientPubkey: PublicKey;
   // Nullifier store: tracks consumed signatures/nonces to prevent Replay Attacks
@@ -206,7 +207,11 @@ export class HaichainPaywall {
         'X-Payment-Amount': this.config.priceUsdt.toString(),
         'X-Payment-Network': `solana-${this.config.cluster}`,
         'X-Payment-Nonce': nonce,
-        'X-Resource-Uri': reqPath
+        'X-Resource-Uri': reqPath,
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Payment, X-Payment-Signature, X-402-Authorization',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Expose-Headers': 'WWW-Authenticate, X-Payment-Required, X-Payment-Payee, X-Payment-Amount, X-Payment-Nonce'
       },
       body
     };
@@ -357,6 +362,8 @@ export class HaichainPaywall {
         mode: 'fast-path-voucher'
       });
 
+      this.forwardVoucherToWatchtower(payload);
+
       return {
         valid: true,
         mode: 'fast-path-voucher',
@@ -467,6 +474,15 @@ export class HaichainPaywall {
    */
   public middleware() {
     return async (req: any, res: any, next: any) => {
+      if (req.method === 'OPTIONS') {
+        res.writeHead(204, {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Payment, X-Payment-Signature, X-402-Authorization',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Access-Control-Expose-Headers': 'WWW-Authenticate, X-Payment-Required, X-Payment-Payee, X-Payment-Amount, X-Payment-Nonce'
+        });
+        return res.end();
+      }
       const auth = req.headers['x-payment'] ||
                    req.headers['authorization'] ||
                    req.headers['x-payment-signature'] ||
@@ -489,6 +505,20 @@ export class HaichainPaywall {
       };
       next();
     };
+  }
+
+  /**
+   * Asynchronously registers state channel vouchers with the Watchtower Sentinel
+   */
+  public forwardVoucherToWatchtower(payload: any): void {
+    const wtUrl = this.config.watchtowerUrl || (typeof process !== 'undefined' ? process.env?.HAICHAIN_WATCHTOWER_URL : undefined);
+    if (!wtUrl) return;
+    const target = `${wtUrl.replace(/\/+$/, '')}/api/watchtower/register`;
+    fetch(target, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
   }
 
   /**

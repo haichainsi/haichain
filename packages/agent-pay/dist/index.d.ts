@@ -24,6 +24,7 @@ export interface PaywallConfig {
     minLamports?: number;
     maxAgeSeconds?: number;
     tokenMint?: string;
+    watchtowerUrl?: string;
     allowFastPath?: boolean;
 }
 export interface X402StandardChallengeBody {
@@ -100,6 +101,10 @@ export declare class HaichainPaywall {
             'X-Payment-Network': string;
             'X-Payment-Nonce': string;
             'X-Resource-Uri': string;
+            'Access-Control-Allow-Origin': string;
+            'Access-Control-Allow-Headers': string;
+            'Access-Control-Allow-Methods': string;
+            'Access-Control-Expose-Headers': string;
         };
         body: X402StandardChallengeBody;
     };
@@ -122,6 +127,10 @@ export declare class HaichainPaywall {
      * Connect / Express Middleware
      */
     middleware(): (req: any, res: any, next: any) => Promise<any>;
+    /**
+     * Asynchronously registers state channel vouchers with the Watchtower Sentinel
+     */
+    forwardVoucherToWatchtower(payload: any): void;
     /**
      * Cloudflare Worker / Fetch Handler Middleware
      */

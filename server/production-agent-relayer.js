@@ -795,8 +795,15 @@ class ProductionAgentRelayer {
    * Register a signed voucher with Watchtower Daemon to protect merchant from offline disputes
    */
   registerWatchtowerVoucher(voucherData) {
-    const { channelId, potPubkey, merchantPubkey, agentPubkey, cumulativeAmount, nonce, signatureBase64 } = voucherData;
-    if (!channelId || !merchantPubkey || !agentPubkey || !cumulativeAmount || !signatureBase64) {
+    const channelId = voucherData.channelId;
+    const potPubkey = voucherData.potPubkey;
+    const merchantPubkey = voucherData.merchantPubkey;
+    const agentPubkey = voucherData.agentPubkey || voucherData.signer;
+    const cumulativeAmount = voucherData.cumulativeAmount;
+    const nonce = voucherData.nonce || 0;
+    const signatureRaw = voucherData.signatureBase64 || voucherData.signature;
+
+    if (!channelId || !merchantPubkey || !agentPubkey || !cumulativeAmount || !signatureRaw) {
       throw new Error('Missing required voucher fields: channelId, merchantPubkey, agentPubkey, cumulativeAmount, signatureBase64');
     }
 
@@ -815,7 +822,22 @@ class ProductionAgentRelayer {
 
     const pot = potPubkey || merchantPubkey;
     const vHash = this.computeVoucherHash(pot, merchantPubkey, channelId, cumulativeAmount, nonce || 0);
-    const sigBytes = Buffer.from(signatureBase64, 'base64');
+
+    let sigBytes = null;
+    try {
+      const b64 = Buffer.from(signatureRaw, 'base64');
+      if (b64.length === 64) sigBytes = b64;
+    } catch (_) {}
+    if (!sigBytes) {
+      try {
+        const b58 = bs58.decode(signatureRaw);
+        if (b58.length === 64) sigBytes = Buffer.from(b58);
+      } catch (_) {}
+    }
+    if (!sigBytes || sigBytes.length !== 64) {
+      throw new Error('Watchtower Cryptographic Rejection: Invalid signature encoding');
+    }
+
     const agentPk = new PublicKey(agentPubkey);
 
     const verified = nacl.sign.detached.verify(vHash, sigBytes, agentPk.toBytes());
@@ -830,7 +852,7 @@ class ProductionAgentRelayer {
       agentPubkey,
       cumulativeAmount: newAmount.toString(),
       nonce: (nonce || 0).toString(),
-      signatureBase64,
+      signatureBase64: sigBytes.toString('base64'),
       registeredAt: Date.now(),
       disputeStatus: 'MONITORING_ACTIVE'
     };

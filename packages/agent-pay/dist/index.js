@@ -173,7 +173,11 @@ class HaichainPaywall {
                 'X-Payment-Amount': this.config.priceUsdt.toString(),
                 'X-Payment-Network': `solana-${this.config.cluster}`,
                 'X-Payment-Nonce': nonce,
-                'X-Resource-Uri': reqPath
+                'X-Resource-Uri': reqPath,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Payment, X-Payment-Signature, X-402-Authorization',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Expose-Headers': 'WWW-Authenticate, X-Payment-Required, X-Payment-Payee, X-Payment-Amount, X-Payment-Nonce'
             },
             body
         };
@@ -306,6 +310,7 @@ class HaichainPaywall {
                 usedAt: Date.now(),
                 mode: 'fast-path-voucher'
             });
+            this.forwardVoucherToWatchtower(payload);
             return {
                 valid: true,
                 mode: 'fast-path-voucher',
@@ -405,6 +410,15 @@ class HaichainPaywall {
      */
     middleware() {
         return async (req, res, next) => {
+            if (req.method === 'OPTIONS') {
+                res.writeHead(204, {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Payment, X-Payment-Signature, X-402-Authorization',
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                    'Access-Control-Expose-Headers': 'WWW-Authenticate, X-Payment-Required, X-Payment-Payee, X-Payment-Amount, X-Payment-Nonce'
+                });
+                return res.end();
+            }
             const auth = req.headers['x-payment'] ||
                 req.headers['authorization'] ||
                 req.headers['x-payment-signature'] ||
@@ -424,6 +438,20 @@ class HaichainPaywall {
             };
             next();
         };
+    }
+    /**
+     * Asynchronously registers state channel vouchers with the Watchtower Sentinel
+     */
+    forwardVoucherToWatchtower(payload) {
+        const wtUrl = this.config.watchtowerUrl || (typeof process !== 'undefined' ? process.env?.HAICHAIN_WATCHTOWER_URL : undefined);
+        if (!wtUrl)
+            return;
+        const target = `${wtUrl.replace(/\/+$/, '')}/api/watchtower/register`;
+        fetch(target, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(() => { });
     }
     /**
      * Cloudflare Worker / Fetch Handler Middleware

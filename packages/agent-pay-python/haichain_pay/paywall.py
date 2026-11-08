@@ -8,6 +8,8 @@ import base64
 import functools
 import inspect
 import json
+import os
+import threading
 import secrets
 import time
 from typing import Dict, Any, Optional, Callable, List, Union
@@ -38,6 +40,7 @@ class HaichainPaywall:
         max_age_seconds: int = 300,
         token_mint: Optional[str] = None,
         allow_fast_path: bool = True,
+        watchtower_url: Optional[str] = None,
     ):
         if not recipient:
             raise ValueError("[HaichainPaywall] recipient Solana address is required")
@@ -50,6 +53,7 @@ class HaichainPaywall:
         self.max_age_seconds = int(max_age_seconds)
         self.token_mint = token_mint or self.USDT_SOLANA_MAINNET
         self.allow_fast_path = allow_fast_path
+        self.watchtower_url = watchtower_url or os.environ.get("HAICHAIN_WATCHTOWER_URL")
 
         # Nullifier store: map of sig_key -> timestamp
         self._used_signatures: Dict[str, float] = {}
@@ -116,6 +120,10 @@ class HaichainPaywall:
             "X-Payment-Network": f"solana-{self.cluster}",
             "X-Payment-Nonce": nonce,
             "X-Resource-Uri": resource,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Payment, X-Payment-Signature, X-402-Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Expose-Headers": "WWW-Authenticate, X-Payment-Required, X-Payment-Payee, X-Payment-Amount, X-Payment-Nonce",
         }
 
         return {"status": 402, "headers": headers, "body": body}
@@ -247,12 +255,35 @@ class HaichainPaywall:
             return {"valid": False, "reason": f"Fast-Path Verification Error: {str(err)}"}
 
 
+
+    def _forward_to_watchtower(self, payload: Dict[str, Any]):
+        if not self.watchtower_url:
+            return
+        def _post():
+            try:
+                import urllib.request
+                url = f"{self.watchtower_url.rstrip('/')}/api/watchtower/register"
+                req_data = json.dumps(payload).encode("utf-8")
+                req = urllib.request.Request(
+                    url,
+                    data=req_data,
+                    headers={"Content-Type": "application/json"},
+                    method="POST"
+                )
+                with urllib.request.urlopen(req, timeout=5.0) as _:
+                    pass
+            except Exception:
+                pass
+        t = threading.Thread(target=_post, daemon=True)
+        t.start()
+
 def haichain_paywall(
     recipient: str,
     price_usdt: float = 0.001,
     cluster: str = "devnet",
     service_name: str = "HAICHAIN Monetized Agent Service",
     max_age_seconds: int = 300,
+    watchtower_url: Optional[str] = None,
 ):
     """
     FastAPI / Starlette route decorator for HTTP 402 micro-payments.
@@ -263,6 +294,7 @@ def haichain_paywall(
         cluster=cluster,
         service_name=service_name,
         max_age_seconds=max_age_seconds,
+        watchtower_url=watchtower_url,
     )
 
     def decorator(func: Callable):
@@ -296,6 +328,21 @@ def haichain_paywall(
             if request is None:
                 # Direct invocation without Request object; pass through
                 return await func(*args, **kwargs)
+
+            if getattr(request, "method", "") == "OPTIONS":
+                try:
+                    from fastapi.responses import Response
+                    return Response(
+                        status_code=204,
+                        headers={
+                            "Access-Control-Allow-Origin": "*",
+                            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Payment, X-Payment-Signature, X-402-Authorization",
+                            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                            "Access-Control-Expose-Headers": "WWW-Authenticate, X-Payment-Required, X-Payment-Payee, X-Payment-Amount, X-Payment-Nonce",
+                        }
+                    )
+                except Exception:
+                    pass
 
             auth_token = (
                 request.headers.get("x-payment")
