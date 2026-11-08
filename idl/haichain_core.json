@@ -1,0 +1,131 @@
+{
+  "version": "6.9.3",
+  "name": "haichain_core",
+  "instructions": [
+    {
+      "name": "extend_channel_reserve",
+      "discriminator": [
+        63,
+        22,
+        14,
+        94,
+        124,
+        45,
+        44,
+        205
+      ],
+      "accounts": [
+        {
+          "name": "pot",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "activeGrant",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "channel",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "channelEscrowAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "agent",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "additionalAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "settle_channel",
+      "discriminator": [
+        206,
+        201,
+        217,
+        191,
+        233,
+        79,
+        47,
+        208
+      ],
+      "accounts": [
+        {
+          "name": "channel",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "channelEscrowAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "recipientAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "agent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "watchtowerSigner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "cumulativeAmount",
+          "type": "u64"
+        },
+        {
+          "name": "nonce",
+          "type": "u64"
+        },
+        {
+          "name": "signature",
+          "type": {
+            "array": [
+              "u8",
+              64
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

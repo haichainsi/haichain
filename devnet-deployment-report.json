@@ -1,0 +1,17 @@
+{
+  "programId": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+  "deployerWallet": "HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW",
+  "deployerBalanceSol": 1.41905832,
+  "masterVaultPda": "FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F",
+  "vaultBump": 255,
+  "extendChannelDiscriminator": "0x3f160e5e7c2d2ccd",
+  "settleChannelDiscriminator": "0xcec9d9bfe94f2fd0",
+  "network": "devnet",
+  "timestamp": "2026-11-08T04:46:30.117Z",
+  "explorerLinks": {
+    "deployer": "https://explorer.solana.com/address/HD1bGKmTeYLbmEL7GF9s4R2jCxmLfdTYbFhUJKzF5nVW?cluster=devnet",
+    "program": "https://explorer.solana.com/address/DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk?cluster=devnet",
+    "vault": "https://explorer.solana.com/address/FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F?cluster=devnet",
+    "sampleTx": "https://explorer.solana.com/tx/3J4XT4YDcVeRwVoeihLnHaeqVvGn4WEjAmy1STMntvevXJEVnGqvkSChZWFnHcniaqs7AHxKa4kkd2WgnuZdb19b?cluster=devnet"
+  }
+}
