@@ -172,6 +172,7 @@ export declare class HaichainClient {
         timestamp: number;
         resource: string;
         signature: string;
+        signatureBase64: string;
         signer: string;
     };
     buildAuthHeader(params: {

@@ -313,7 +313,26 @@ export class HaichainPaywall {
 
     try {
       const agentPubkey = new PublicKey(agentPubkeyStr);
-      const sigBytes = Buffer.from(sigBase64, 'base64');
+      let sigBytes: Buffer | null = null;
+      if (sigBase64 && typeof sigBase64 === 'string') {
+        const rawStr = sigBase64.trim();
+        // Try Base58 (Solana default)
+        try {
+          const bs58 = require('bs58');
+          const decoded = bs58.decode(rawStr);
+          if (decoded && decoded.length === 64) sigBytes = Buffer.from(decoded);
+        } catch (_) {}
+        // Fallback to Base64
+        if (!sigBytes) {
+          try {
+            const decoded = Buffer.from(rawStr, 'base64');
+            if (decoded && decoded.length === 64) sigBytes = decoded;
+          } catch (_) {}
+        }
+      }
+      if (!sigBytes || sigBytes.length !== 64) {
+        return { valid: false, reason: 'Cryptographic Failure: Invalid signature length or encoding' };
+      }
 
       // Verify Haichain v1 voucher payload:
       // Hash = SHA256("HAICHAIN-VOUCHER-V1" + potPubkey + merchantPubkey + channelId + cumulativeAmount + nonce)
@@ -616,7 +635,12 @@ export class HaichainClient {
       .digest();
 
     const sigBytes = nacl.sign.detached(digest, this.keypair.secretKey);
-    const signature = Buffer.from(sigBytes).toString('base64');
+    const signatureBase64 = Buffer.from(sigBytes).toString('base64');
+    let signatureB58 = signatureBase64;
+    try {
+      const bs58 = require('bs58');
+      signatureB58 = bs58.encode(sigBytes);
+    } catch (_) {}
 
     return {
       scheme: params.scheme || 'haichain-v1-voucher',
@@ -631,7 +655,8 @@ export class HaichainClient {
       nonce,
       timestamp: now,
       resource: params.resource || '/api/v1/mcp',
-      signature,
+      signature: signatureB58,
+      signatureBase64: signatureBase64,
       signer: this.agentPubkey,
     };
   }

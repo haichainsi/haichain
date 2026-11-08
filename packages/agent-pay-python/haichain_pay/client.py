@@ -120,7 +120,9 @@ class HaichainClient:
         )
 
         signed_payload = self.signing_key.sign(voucher_digest)
-        signature = b58encode(signed_payload.signature)
+        sig_raw = signed_payload.signature
+        sig_b58 = b58encode(sig_raw)
+        sig_b64 = base64.b64encode(sig_raw).decode("ascii")
 
         return {
             "scheme": scheme,
@@ -135,7 +137,8 @@ class HaichainClient:
             "nonce": nonce,
             "timestamp": now,
             "resource": resource,
-            "signature": signature,
+            "signature": sig_b58,
+            "signatureBase64": sig_b64,
             "signer": self.agent_pubkey,
         }
 
