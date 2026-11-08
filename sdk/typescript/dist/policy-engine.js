@@ -93,6 +93,17 @@ class PolicyEngine {
         // 4. Red-Team Vector 5: Domain Frequency Throttling against Indirect Prompt Injection Micro-Loop
         const domain = this.extractDomainFromResource(intent.resource);
         this.enforceDomainRateLimit(domain, (grant.flags & capleaf_1.CapLeafFlags.PROBATION) !== 0, now);
+        // 4b. TEE Co-Signer Invariant Enforcement (bit REQUIRE_COSIGN)
+        if ((grant.flags & capleaf_1.CapLeafFlags.REQUIRE_COSIGN) !== 0) {
+            if (!intent.cosignerSignature || !intent.cosignerPublicKey) {
+                throw new Error("SECURITY ALERT: CapLeaf requires TEE Co-Signer attestation, but no co-signature was provided");
+            }
+            const cosignPayload = PolicyEngine.buildCosignPayload(grant.pot, grant.merchant, channelId, intent.maxAmount, grant.nonce);
+            const isCosignValid = tweetnacl_1.default.sign.detached.verify(cosignPayload, intent.cosignerSignature, intent.cosignerPublicKey.toBytes());
+            if (!isCosignValid) {
+                throw new Error("SECURITY ALERT: TEE Co-Signer cryptographic verification failed");
+            }
+        }
         // 5. Amount check
         const currentCumulative = this.cumulativeSpendPerChannel.get(channelId.toString()) || 0n;
         const requestedSpend = intent.maxAmount;
@@ -161,6 +172,22 @@ class PolicyEngine {
         catch {
             return resource.split("/")[0] || "unknown";
         }
+    }
+    static buildCosignPayload(potPubkey, merchantPubkey, channelId, amount, nonce) {
+        const channelBuf = Buffer.alloc(8);
+        const amountBuf = Buffer.alloc(8);
+        const nonceBuf = Buffer.alloc(8);
+        channelBuf.writeBigUInt64LE(channelId);
+        amountBuf.writeBigUInt64LE(amount);
+        nonceBuf.writeBigUInt64LE(nonce);
+        return crypto.createHash("sha256")
+            .update(Buffer.from("HAICHAIN-TEE-COSIGN-V1"))
+            .update(potPubkey.toBuffer())
+            .update(merchantPubkey.toBuffer())
+            .update(channelBuf)
+            .update(amountBuf)
+            .update(nonceBuf)
+            .digest();
     }
     static buildVoucherPayload(pot, merchant, channelId, cumulativeAmount, nonce) {
         const channelBuf = Buffer.alloc(8);

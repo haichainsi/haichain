@@ -70,6 +70,11 @@ export interface PaymentVerificationResult {
     };
 }
 export declare class HaichainPaywall {
+    /**
+     * High-Performance OpenSSL Ed25519 Detached Verification (< 0.2ms)
+     * Uses native C++ OpenSSL engine when available in Node.js runtime, with TweetNaCl fallback.
+     */
+    static verifyEd25519Detached(msg: Buffer | Uint8Array, sig: Buffer | Uint8Array, pubkey: Buffer | Uint8Array): boolean;
     private config;
     private connection;
     private recipientPubkey;

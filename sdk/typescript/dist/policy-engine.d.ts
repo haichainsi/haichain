@@ -6,6 +6,8 @@ export interface PaymentIntent {
     merchant: PublicKey;
     mint: PublicKey;
     scopeClass: number;
+    cosignerSignature?: Uint8Array;
+    cosignerPublicKey?: PublicKey;
 }
 export interface ScopePolicy {
     origin: string;
@@ -47,6 +49,7 @@ export declare class PolicyEngine {
     verifyServicePayload(payload: Buffer | string): boolean;
     private enforceDomainRateLimit;
     private extractDomainFromResource;
+    static buildCosignPayload(potPubkey: PublicKey, merchantPubkey: PublicKey, channelId: bigint, amount: bigint, nonce: bigint): Buffer;
     static buildVoucherPayload(pot: PublicKey, merchant: PublicKey, channelId: bigint, cumulativeAmount: bigint, nonce: bigint): Buffer;
     static verifyVoucherSignature(agentPubkey: PublicKey, pot: PublicKey, merchant: PublicKey, channelId: bigint, cumulativeAmount: bigint, nonce: bigint, signature: Uint8Array): boolean;
 }
