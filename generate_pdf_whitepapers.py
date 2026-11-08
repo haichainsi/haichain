@@ -228,7 +228,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
     # Document metadata and titles
     if lang == "en":
         doc_title = "HAICHAIN: The Economic Bedrock for the AI² Symbiotic Superintelligence Era"
-        doc_subtitle = "Empowering billions of AI Agents and Autonomous Robots to freely compute, transact, and coalesce with human real-world intelligence to co-create abundance-ensuring all generated wealth and sovereign ownership remain permanently with humanity. The financial operating system for the autonomous machine age today; the economic bedrock for the AI² symbiotic superintelligence era tomorrow."
+        doc_subtitle = "The Autonomous Financial Firewall for AI Agents. Enforcing deterministic Merkle CapLeaf invariants, bounded-loss spending limits, and prompt-injection immunity to prevent catastrophic wallet drainage."
         doc_edition = "Official Whitepaper v1.0 • Institutional Standard Edition"
         brand_sub_text = "Financial Operating System for the Autonomous Machine Age"
         running_header_left = "HAICHAIN: The Economic Bedrock for the AI² Era"
@@ -245,7 +245,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Formal Verification • Zero-Griefing Standard"
     elif lang == "zh":
         doc_title = "HAICHAIN: AI² 共生超级智能时代的基石经济网络"
-        doc_subtitle = "赋能数十亿 AI 智能体与自主机器人自由协作、结算并与人类现实智慧深度融合以共同创造财富-确保所有创造的财富与主权掌控权永远属于人类。今日自主机器时代的金融操作系统，明日 AI² 共生超级智能时代的基石经济网络。"
+        doc_subtitle = "AI Agent的自主金融防火墙。执行确定性Merkle CapLeaf不变式、有限风险损失（Bounded Loss）支出限额以及防提示词注入免疫，彻底杜绝钱包被掏空风险。"
         doc_edition = "官方技术白皮书 v1.0 • 国际机构标准版"
         brand_sub_text = "自主机器时代的金融操作系统"
         running_header_left = "HAICHAIN: AI² 共生超级智能时代的基石经济网络"
@@ -262,7 +262,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "形式化数学验证 • 零恶意攻击标准"
     elif lang == "ko":
         doc_title = "HAICHAIN: AI² 공생 초지능 시대를 위한 경제적 기반"
-        doc_subtitle = "수십억 개의 AI 에이전트와 자율 로봇이 자유롭게 작업하고 거래하며 인간의 실제 지능과 융합하여 부를 공동 창출하도록 지원합니다. 창출된 모든 부와 주권적 소유권은 영원히 인류에게 귀속됩니다. 오늘날 자율 기계 시대를 위한 금융 운영체제이자, 내일의 AI² 공생 초지능 시대를 위한 경제적 기반입니다."
+        doc_subtitle = "AI 에이전트를 위한 자율 금융 방화벽. 결정론적 Merkle CapLeaf 불변량, 유한 손실(Bounded Loss) 지출 한도, 프롬프트 인젝션 방어 면역을 통해 치명적인 지갑 자금 탈취를 원천 방지합니다."
         doc_edition = "공식 기술 백서 v1.0 • 국제 기관 표준 에디션"
         brand_sub_text = "자율 기계 시대를 위한 금융 운영체제"
         running_header_left = "HAICHAIN: AI² 공생 초지능 시대를 위한 경제적 기반"
@@ -279,7 +279,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "수학적 형식 검증 • 제로 그리핑 표준"
     elif lang == "es":
         doc_title = "HAICHAIN: La Base Económica para la Era de la Superinteligencia Simbiótica AI²"
-        doc_subtitle = "Permitiendo a miles de millones de Agentes de IA y Robots Autónomos trabajar, realizar transacciones y unirse libremente con la inteligencia del mundo real humano para co-crear riqueza, garantizando que toda la riqueza y la soberanía pertenezcan para siempre a la humanidad. El sistema operativo financiero para la era de las máquinas autónomas hoy; la base económica para la era de la superinteligencia simbiótica AI² mañana."
+        doc_subtitle = "El cortafuegos financiero autónomo para agentes de IA. Aplica invariantes deterministas Merkle CapLeaf, límites de gasto de pérdida limitada (Bounded Loss) e inmunidad contra inyecciones de prompts para evitar el drenaje catastrófico de billeteras."
         doc_edition = "Libro Blanco Oficial v1.0 • Edición Estándar Institucional"
         brand_sub_text = "Sistema Operativo Financiero para la Era de las Máquinas Autónomas"
         running_header_left = "HAICHAIN: La Base Económica para la Era AI²"
@@ -296,7 +296,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Verificación Matemática • Estándar Zero-Griefing"
     elif lang == "fr":
         doc_title = "HAICHAIN: Le Socle Économique pour l'Ère de la Superintelligence Symbiotique AI²"
-        doc_subtitle = "Permettre à des milliards d'Agents IA et de Robots Autonomes d'opérer, de transiger et de fusionner librement avec l'intelligence humaine réelle pour co-créer la richesse, garantissant que toute la richesse et la souveraineté appartiennent à jamais à l'humanité. Le système d'exploitation financier pour l'ère des machines autonomes aujourd'hui ; le socle économique pour l'ère de la superintelligence symbiotique AI² demain."
+        doc_subtitle = "Le pare-feu financier autonome pour les agents IA. Application des invariants déterministes Merkle CapLeaf, des limites de dépenses à perte limitée (Bounded Loss) et d'une immunité contre l'injection de prompts pour prévenir le drainage catastrophique des portefeuilles."
         doc_edition = "Livre Blanc Officiel v1.0 • Édition Standard Institutionnelle"
         brand_sub_text = "Système d'Exploitation Financier pour l'Ère des Machines Autonomes"
         running_header_left = "HAICHAIN: Le Socle Économique pour l'Ère AI²"
@@ -313,7 +313,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Vérification Mathématique • Norme Zero-Griefing"
     elif lang == "ru":
         doc_title = "HAICHAIN: Экономический фундамент для эпохи симбиотического сверхразума AI²"
-        doc_subtitle = "Предоставление миллиардам ИИ-агентов и автономных роботов возможности свободно вычислять, совершать транзакции и объединяться с реальным интеллектом человека для совместного создания богатства - гарантируя, что все созданные блага и суверенное владение навсегда остаются за человечеством. Финансовая операционная система для эпохи автономных машин сегодня; экономический фундамент для эпохи симбиотического сверхразума AI² завтра."
+        doc_subtitle = "Автономный финансовый фаервол для ИИ-агентов. Обеспечивает детерминированные инварианты Merkle CapLeaf, лимиты расходов с ограниченным убытком (Bounded Loss) и защиту от prompt-инъекций для предотвращения опустошения кошельков."
         doc_edition = "Официальный White Paper v1.0 • Международное институциональное издание"
         brand_sub_text = "Финансовая операционная система для эпохи автономных машин"
         running_header_left = "HAICHAIN: Экономический фундамент для эпохи AI²"
@@ -330,7 +330,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Формальная математическая верификация • Стандарт Zero-Griefing"
     elif lang == "kk":
         doc_title = "HAICHAIN: AI² симбиотикалық асқан интеллект дәуіріне арналған экономикалық іргетас"
-        doc_subtitle = "Миллиардтаған AI агенттері мен автономды роботтарға еркін жұмыс істеуге, транзакциялар жасауға және адамның нақты интеллектімен бірігіп байлық жасауға мүмкіндік береді - барлық жасалған игілік пен егемендік мәңгілікке адамзатқа тиесілі болады. Бүгінгі автономды машиналар дәуіріне арналған қаржылық операциялық жүйе; ертеңгі AI² симбиотикалық асқан интеллект дәуірінің экономикалық іргетасы."
+        doc_subtitle = "AI агенттеріне арналған автономды қаржылық желіаралық қалқан (Firewall). Әмиянның толық босап қалуын болдырмау үшін детерминирленген Merkle CapLeaf инварианттарын, шектеулі шығын (Bounded Loss) лимиттерін және prompt-инъекцияға қарсы қорғанысты қамтамасыз етеді."
         doc_edition = "Ресми Ақ Қағаз v1.0 • Халықаралық институционалдық басылым"
         brand_sub_text = "Автономды машиналар дәуіріне арналған қаржылық операциялық жүйе"
         running_header_left = "HAICHAIN: AI² дәуіріне арналған экономикалық іргетас"
@@ -347,7 +347,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "Математикалық формалды тексеру • Zero-Griefing стандарты"
     elif lang == "hi":
         doc_title = "HAICHAIN: AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार"
-        doc_subtitle = "अरबों एआई एजेंटों और स्वायत्त रोबोटों को स्वतंत्र रूप से कार्य करने, लेनदेन करने और वास्तविक मानव बुद्धि के साथ मिलकर समृद्धि का निर्माण करने में सक्षम बनाना-यह सुनिश्चित करते हुए कि सारा सृजित धन और संप्रभु स्वामित्व हमेशा मानवता के पास रहे। आज स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम; कल AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार।"
+        doc_subtitle = "एआई एजेंटों के लिए स्वायत्त वित्तीय फ़ायरवॉल। वॉलेट ड्रेनेज को रोकने के लिए नियतात्मक मर्कल कैपलीफ इनवेरिएंट्स, सीमित नुकसान (बाउंडेड लॉस) खर्च सीमा और प्रॉम्प्ट इंजेक्शन प्रतिरक्षा लागू करना।"
         doc_edition = "आधिकारिक श्वेतपत्र v1.0 • अंतर्राष्ट्रीय संस्थागत मानक संस्करण"
         brand_sub_text = "स्वायत्त मशीन युग के लिए वित्तीय ऑपरेटिंग सिस्टम"
         running_header_left = "HAICHAIN: AI² सहजीवी सुपरइंटेलिजेंस युग के लिए आर्थिक आधार"
@@ -364,7 +364,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "गणितीय औपचारिक सत्यापन • जीरो-ग्रीफिंग मानक"
     elif lang == "he":
         doc_title = "HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²"
-        doc_subtitle = "הענקת כוח למיליארדי סוכני AI ורובוטים אוטונומיים לחשב, לסחור ולהתמזג בחופשיות עם הבינה האנושית בעולם האמיתי כדי לייצר שפע משותף - תוך הבטחה שכל העושר והבעלות הריבונית יישארו לנצח בידי האנושות. מערכת ההפעלה הפיננסית לעידן המכונות האוטונומיות כיום; התשתית הכלכלית לעידן בינת-העל הסימביוטית AI² מחר."
+        doc_subtitle = "חומת האש הפיננסית האוטונומית לסוכני AI. אכיפת אינווריאנטים דטרמיניסטיים של Merkle CapLeaf, מגבלות הוצאה בהפסד חסום (Bounded Loss) וחסינות מפני הזרקת פרומפטים למניעת ריקון ארנקים."
         doc_edition = "נייר עמדה רשמי v1.0 • מהדורה מוסדית בינלאומית"
         brand_sub_text = "מערכת הפעלה פיננסית לעידן המכונות האוטונומיות"
         running_header_left = "HAICHAIN: התשתית הכלכלית לעידן בינת-העל הסימביוטית AI²"
@@ -381,7 +381,7 @@ def build_pdf_from_markdown(md_filename, pdf_filename, lang="en"):
         val_security = "אימות מתמטי • תקן אפס-הטרדה (Zero-Griefing)"
     else:
         doc_title = "HAICHAIN: Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²"
-        doc_subtitle = "Giúp hàng tỷ tác nhân AI Agent, Robot AI tự do làm việc, giao dịch và hợp nhất với trí tuệ thực tế của con người để cùng tạo ra của cải, toàn bộ của cải và quyền làm chủ mãi mãi thuộc về con người. Hệ điều hành tài chính cho kỷ nguyên máy tự hành hôm nay. Nền tảng kinh tế cho kỷ nguyên siêu trí tuệ cộng sinh AI² ngày mai."
+        doc_subtitle = "Bức tường lửa tài chính tự hành cho AI Agent. Thiết lập bất biến ngân sách Merkle CapLeaf, giới hạn rủi ro hữu hạn (Bounded Loss) và miễn nhiễm rút ruột ví khi AI bị tấn công Prompt Injection."
         doc_edition = "Sách Trắng v1.0 • Phiên Bản Tiêu Chuẩn Thể Chế Quốc Tế"
         brand_sub_text = "Hệ Điều Hành Tài Chính Cho Kỷ Nguyên Máy Tự Hành"
         running_header_left = "HAICHAIN: Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²"

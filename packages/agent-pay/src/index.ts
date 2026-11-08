@@ -744,3 +744,5 @@ export class HaichainClient {
     });
   }
 }
+
+export * from './firewall';

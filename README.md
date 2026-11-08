@@ -1,104 +1,136 @@
-# HAICHAIN (v0.1.0-prototype)
-### High-Velocity Autonomous Machine Financial Operating System (Solana Devnet Prototype)
+# HAICHAIN
+> **THE FINANCIAL OPERATING SYSTEM FOR THE AUTONOMOUS MACHINE ERA**  
+> **HỆ ĐIỀU HÀNH TÀI CHÍNH CHO KỶ NGUYÊN MÁY TỰ HÀNH**
+
+## The Economic Bedrock for the Symbiotic Superintelligence Era AI²
+### Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²
+
+**The Autonomous Financial Firewall for AI Agents. Enforcing deterministic Merkle CapLeaf invariants, bounded-loss spending limits, and prompt-injection immunity to prevent catastrophic wallet drainage.**
+
+*Bức tường lửa tài chính tự hành cho AI Agent. Thiết lập bất biến ngân sách Merkle CapLeaf, giới hạn rủi ro hữu hạn (Bounded Loss) và miễn nhiễm rút ruột ví khi AI bị tấn công Prompt Injection.*
+
+```
+[ 🛡️ Zero-Drain Budget Firewall ]   [ ⚡ Sub-Second Panic Kill-Switch ]   [ 🔌 Universal x402 & MCP Adapter ]
+[ 🛡️ Chống Rút Ruột Ví ]            [ ⚡ Cầu Chì Khẩn Cấp < 1 Giây ]       [ 🔌 Tương Thích Chuẩn x402 & MCP ]
+```
+
+---
 
 > [!WARNING]
-> **⚠️ DEVNET PROTOTYPE — UN-AUDITED — DO NOT DEPOSIT REAL FUNDS**
-> This repository contains experimental software under active security research, protocol hardening, and developer preview. It has **NOT** completed an independent third-party audit. Do **NOT** deposit real funds on Solana mainnet. All token allocations, smart contracts, and settlement flows currently operate in test mode on **Solana Devnet**.
-
-HAICHAIN is an open protocol providing fine-grained cryptographic spending firewalls and micro-payment state channels for Autonomous AI Agents and Model Context Protocol (MCP) servers built on **Solana L1**.
+> **⚠️ DEVNET TESTING PROTOTYPE (`v0.1.0-prototype`) — UN-AUDITED — DO NOT DEPOSIT REAL FUNDS**
+> This repository contains open-source software under active security research, protocol hardening, and developer preview. It has **NOT** completed an independent third-party audit. Do **NOT** deposit real funds on Solana mainnet. All token allocations, smart contracts, and settlement flows currently operate in test mode on **Solana Devnet**.
 
 ---
 
-## 1. Core Capabilities & Architecture
+## 1. Tử Huyệt Thị Trường & Lý Do Doanh Nghiệp Cần HAICHAIN
 
-1. **HTTP x402 Native Protocol Support:** Dual-path interoperability supporting standard Coinbase x402 JSON challenge/response alongside sub-2ms fast-path off-chain state channel vouchers with cryptographic ed25519 signatures.
-2. **Deterministic Capability Tickets (CapLeaf v1):** 223-byte compact binary tickets enforcing strict per-merchant allowlists, per-transaction spend limits, sliding-window velocity caps, and scope restrictions to prevent prompt-injection drainage.
-3. **Emergency Panic Kill-Switch & Epoch Invalidation:** Pot freeze mechanisms increment panic epoch on-chain, rendering all pre-panic off-chain vouchers immediately invalid against MEV searchers or rogue agents.
-4. **Dispute Window & Nonce Replay Defense:** Unilateral channel close requires dispute window countdown, while deterministic PDA nullifiers prevent double-spend replay attacks.
-5. **Zero-Commingling Dedicated ATAs:** Insulates against token-level blacklist freeze contagion by maintaining segregated token accounts per vault/channel.
+> 🚨 **VẤN ĐỀ SINH TỬ:** *Nếu bạn cấp quyền cho AI Agent tự do tiêu tiền từ ví Coinbase AgentKit hoặc Stripe, làm sao bạn đảm bảo một câu Prompt Injection ác ý ẩn trong dữ liệu web không rút sạch toàn bộ quỹ doanh nghiệp chỉ trong 2 giây?*
 
----
-
-## 2. Official Devnet Token Standard
-
-* **Primary Settlement Asset:** **USDT (Tether SPL Token on Solana)**
-* **Official Solana USDT Mint (Mainnet Reference):** `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`
-* **Precision:** 6 Decimals (`1 USDT = 1,000,000 micro-units`)
-* **Devnet Testing Program ID:** `DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk`
+* **Stripe & Coinbase AgentKit:** Cung cấp đường ray thanh toán và cổng chuyển tiền, nhưng **hoàn toàn bỏ ngỏ tầng phòng vệ ngân sách**. Khi bot bị chiếm quyền qua prompt, kẻ tấn công có thể ra lệnh rút sạch ví.
+* **HAICHAIN:** Đóng vai trò là **Lớp Bảo vệ & Điều phối Đa năng (Security & Governance Adapter)** bọc ngoài các chuẩn đó:
+  1. **Khống chế trần rủi ro hữu hạn (Bounded Loss):** Khóa cứng trần chi tiêu tối đa mỗi lượt gọi ($0.001 - $1.00) và trần tốc độ chi tiêu theo cửa sổ trượt (Sliding Velocity) bằng toán học Merkle CapLeaf.
+  2. **Miễn nhiễm Prompt Injection:** Kể cả khi AI bị đầu độc bộ nhớ, các bất biến toán học $I_1 - I_9$ trên Solana L1 lập tức từ chối mọi lệnh rút quá hạn mức.
+  3. **Cầu chì khẩn cấp dưới 1 giây (< 400ms):** Tự động vô hiệu hóa toàn bộ voucher ngoại chuỗi khi phát hiện vòng lặp bất thường.
+  4. **Adapter đa năng:** Cắm trực tiếp vào **Coinbase x402**, **Anthropic MCP (Claude / Cursor)**, **ElizaOS (ai16z)**, **Stripe MPP**, **Solana L1** và **EVM**.
 
 ---
 
-## 3. Repository Architecture
+## 2. 1-Click Quickstart: Bọc Bức Tường Lửa Cho Agent Trong 30 Giây
+
+### Python (`haichain-agent-pay`):
+```python
+from haichain_pay import firewall
+
+# Doanh nghiệp chỉ cần gắn 1 dòng decorator để bảo vệ Agent
+@firewall.protect(daily_cap=50.0, per_call_cap=1.0)
+async def run_enterprise_agent(prompt: str):
+    # Tích hợp trực tiếp với Coinbase AgentKit, LangChain, Claude, ElizaOS
+    # Tự động ngắt khi phát hiện Prompt Injection hoặc vượt trần ngân sách
+    return await my_agent.execute(prompt)
+```
+
+### Node.js / TypeScript (`@haichainsi/agent-pay`):
+```typescript
+import { firewall } from "@haichainsi/agent-pay";
+
+// Bọc bất kỳ hàm gọi Agent nào với hạn mức ngân sách cứng
+const safeAgentTask = firewall.protect(
+  { maxDailyBudget: 50.0, maxPerCall: 1.0, anomalyKill: true },
+  async (prompt: string) => {
+    return await agent.run(prompt);
+  }
+);
+```
+
+---
+
+## 3. Lộ Trình Triển Khai Chiến Lược (2 Giai Đoạn)
+
+* **Giai đoạn 1 (Wedge hiện tại): Phủ sóng SDK Tường lửa (Agent Financial Firewall) cho 1,000+ AI Agent.**
+  * Triển khai Financial Firewall & Micro-Escrows chạy thực chiến trên Solana L1 (tận dụng tốc độ 400ms và chi phí nano-cent cực rẻ để phục vụ thị trường ngay lập tức).
+* **Giai đoạn 2 (Endgame dài hạn): Tự động kích hoạt Kênh trạng thái vi mô và hoàn thiện Hệ điều hành tài chính.**
+  * Khi quy mô giao dịch agentic vượt ngưỡng hàng tỷ lệnh/ngày, mở rộng thành Sovereign App-chain / L1 độc lập với cơ chế đồng thuận Proof of Actual Intelligence (PoAI).
+
+---
+
+## 4. Chuẩn Token Devnet & Hợp Đồng Thông Minh
+
+* **Tài sản thanh toán:** **USDT (Tether SPL Token trên Solana)**
+* **Solana USDT Mint (Tham chiếu Mainnet):** `Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB`
+* **Độ chính xác:** 6 Decimals (`1 USDT = 1,000,000 micro-units`)
+* **Chương trình Solana Devnet ID:** `DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk`
+
+---
+
+## 5. Kiến Trúc Kho Lưu Trữ
 
 ```
 c:\Users\Surface\Documents\8. HAICHAIN\
 ├── app/
-│   ├── index.html                  # Landing Page (Devnet Prototype)
+│   ├── index.html                  # Landing Page (Định vị Bức tường lửa & Hệ điều hành)
 │   └── dashboard.html              # Web3 Agent & Channel Dashboard
 ├── programs/
 │   └── haichain-core/              # Solana Anchor Smart Contract (Rust)
 │       ├── Cargo.toml
 │       └── src/lib.rs              # Pot, CapLeaf, Channel Escrow, Panic & Dispute Invariants
 ├── packages/
-│   └── agent-pay/                  # Dual-Path x402 Payment Interop Package
-│       ├── src/index.ts
-│       └── package.json
+│   ├── agent-pay/                  # Node.js x402 Paywall & 1-Click Firewall Middleware
+│   │   ├── src/firewall.ts
+│   │   └── src/index.ts
+│   └── agent-pay-python/           # Python SDK (FastAPI, ASGI & @firewall.protect decorator)
+│       ├── haichain_pay/firewall.py
+│       └── haichain_pay/paywall.py
 ├── sdk/
 │   ├── typescript/                 # Global Client SDK (x402 Protocol, PolicyEngine, CapLeaf)
-│   │   ├── src/index.ts
-│   │   └── package.json
-│   └── c-edge/                     # Bare-Metal C-SDK (< 200KB RAM) for Robotics & IoT
-│       ├── haichain_flash.h
-│       └── haichain_flash.c
+│   └── c-edge/                     # Bare-Metal C-SDK (< 200KB RAM) cho Robotics & IoT
 ├── mcp-server/                     # Model Context Protocol Server (Claude & Cursor)
-│   ├── src/index.ts
-│   └── package.json
 ├── server/
-│   └── production-agent-relayer.js # Relayer with Anti-SSRF Guard & Rate Limiting
-├── tests/
-│   ├── haichain-negative-invariants.test.ts # Negative Test Suite (Test Âm)
-│   ├── haichain-x402-interoperability.test.ts # RFC-compliant x402 interop suite
-│   ├── haichain-capleaf-v1-verification.test.ts # CapLeaf v1 wire verification
-│   └── haichain-phase2-ai-gateway.test.ts     # AI Gateway & Policy Engine tests
-├── Anchor.toml                     # Anchor Deployment Configuration
-└── Cargo.toml                      # Workspace Cargo Configuration
+│   └── production-agent-relayer.js # Relayer với Anti-SSRF Guard & Rate Limiting
+└── tests/
+    ├── haichain-negative-invariants.test.ts # Negative Test Suite (Test Âm)
+    └── haichain-x402-interoperability.test.ts # RFC-compliant x402 interop suite
 ```
 
 ---
 
-## 4. Key Security Invariants
+## 6. Hướng Dẫn Kiểm Thử & Xác Minh (Test Verification)
 
-1. **Agent Authorization Invariant:** Channel reservations and child probation grant activations strictly require `agent == grant.agent`.
-2. **Revocation & Panic Invariant:** Revoked grants or panicked pots (`frozen == true`, epoch mismatch) immediately invalidate pending vouchers.
-3. **Dispute Window Invariant:** Unilateral channel close requires a 24-hour dispute countdown window (`dispute_secs`) before unspent funds can be reclaimed.
-4. **Wormhole Sysvar Check Defense:** Canonical `sysvar::instructions` ID verification prevents instruction sysvar forgery.
-5. **Anti-SSRF Guard:** Relayer strictly enforces HTTPS and blocks loopback (`127.0.0.1`, `localhost`), link-local, cloud metadata (`169.254.169.254`), and private RFC 1918 subnets (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`).
-6. **Double-Spend Replay Defense:** Deterministic Nullifier PDAs ensure no nonce can ever be spent twice.
-
----
-
-## 5. Verification & Test Execution
-
-### Build Solana Anchor Smart Contract:
+### Kiểm tra Hợp đồng Thông minh Solana Anchor:
 ```bash
 cd programs/haichain-core
 cargo check
 cargo test
 ```
 
-### Run Full Test Suite (Unit, Interoperability, Negative Tests):
+### Chạy Toàn Bộ Test Suite TypeScript & i18n (92 Tests):
 ```bash
 npm test
-# Or run individual test suites:
-npx ts-mocha tests/haichain-negative-invariants.test.ts
-npx ts-mocha tests/haichain-x402-interoperability.test.ts
 ```
 
-### Build Client SDKs:
+### Chạy Bộ Test Python (12 Tests bao gồm 1-Click Firewall):
 ```bash
-cd sdk/typescript && npm run build
-cd packages/agent-pay && npm run build
+python -m unittest discover -s packages/agent-pay-python/tests
 ```
 
 ---
-*Status: Devnet Testing Prototype (`v0.1.0-prototype`). Audit pending.*
+*Giấy phép: MIT License (`LICENSE`). Bản quyền thuộc về Dự án HAICHAIN.*

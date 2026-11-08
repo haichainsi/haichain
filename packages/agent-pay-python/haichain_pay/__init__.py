@@ -1,6 +1,6 @@
 """
 HAICHAIN Agent Pay Python SDK
-Universal HTTP 402 Fast-Path Paywall & CapLeaf State Channel SDK for AI Agents and MCP Servers.
+Universal HTTP 402 Fast-Path Paywall, CapLeaf State Channels & 1-Click Financial Firewall for AI Agents.
 """
 
 from .crypto import (
@@ -12,9 +12,21 @@ from .crypto import (
 )
 from .client import HaichainClient, AgentResponse
 from .paywall import HaichainPaywall, haichain_paywall, HaichainASGIMiddleware
+from .firewall import (
+    HaiChainFirewall,
+    firewall,
+    haichain_firewall,
+    BudgetExceededException,
+    PromptInjectionAnomalyException,
+)
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = [
+    "HaiChainFirewall",
+    "firewall",
+    "haichain_firewall",
+    "BudgetExceededException",
+    "PromptInjectionAnomalyException",
     "HaichainPaywall",
     "haichain_paywall",
     "HaichainASGIMiddleware",
