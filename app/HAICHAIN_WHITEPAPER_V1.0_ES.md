@@ -747,38 +747,77 @@ Una vez cargado, el Modelo de Lenguaje hereda automáticamente tres herramientas
 2. `pay_for_resource`: Permite ejecutar micro-liquidaciones de nanocentavos por APIs propietarias, clústeres GPU o flujos de datos autenticados.
 3. `emergency_freeze_pot`: Permite a los agentes guardianes activar una congelación por hardware si se detectan anomalías o violaciones de políticas.
 
-### 6.6. Posicionamiento Estratégico: HAICHAIN como Capa de Políticas y Disyuntores para HTTP x402 y Solana Pay.sh
+### 6.6. Posicionamiento Estratégico: HAICHAIN como Capa de Gobernanza de Políticas y Bóveda de Disyuntores para HTTP x402 y Solana Pay.sh
 
-En el panorama de la infraestructura de agentes autónomos, los protocolos abiertos de comunicación de pagos han ganado una rápida adopción institucional, especialmente **HTTP x402** (iniciado por Coinbase, transferido a la Fundación Linux con participación de Visa y Mastercard) y **Pay.sh** (lanzado conjuntamente por la Fundación Solana y Google Cloud en mayo de 2026).
+En la infraestructura financiera de agentes autónomos, los protocolos de comunicación abierta han logrado una adopción masiva, destacando **HTTP x402** (iniciado por Coinbase y albergado por Linux Foundation con Visa y Mastercard) y **Pay.sh** (Solana Foundation y Google Cloud, mayo de 2026).
 
 ```
-         PILA GLOBAL DE INFRAESTRUCTURA FINANCIERA PARA AGENTES
+         ARQUITECTURA GLOBAL DE INFRAESTRUCTURA FINANCIERA PARA AGENTES
          
     [ AGENTES Y ENJAMBRES DE IA ] : Claude Desktop, Cursor, ElizaOS, CrewAI
-                                   │
-                                   ▼
-    [ COMUNICACIÓN Y FACTURACIÓN] : Protocolo HTTP x402 y Proxy Pay.sh
-    (Emite código 402 Payment Required y transporta desafíos de pago)
-                                   │
-                                   ▼
-    [ POLÍTICA Y GESTIÓN DE RIESGO] : ★ HAICHAIN AGENT POLICY VAULT ★
-    (Árboles Merkle, Topes estrictos MaxSpend, Disyuntor de pánico < 1s)
-                                   │
-                                   ▼
-    [ CARRILES DE LIQUIDACIÓN L1] : Registro Solana L1 (Liquidación USDC / USDT SPL)
+                                    │
+                                    ▼
+    [ COMUNICACIÓN Y FACTURACIÓN ] : Protocolo HTTP x402 y Proxy Pay.sh
+    (Emite código 402 Payment Required y transporta credenciales X-PAYMENT)
+                                    │
+                                    ▼
+    [ POLÍTICAS Y BÓVEDA SEGURA  ] : ★ HAICHAIN AGENT POLICY VAULT ★
+    (Árbol Merkle CapLeaf, Límites MaxSpend, Disyuntor de Pánico en < 400ms)
+                                    │
+                                    ▼
+    [ CARRILES DE LIQUIDACIÓN L1 ] : Solana L1, Objetos Sui Move y Base L2 (USDC/USDT)
 ```
 
-1. **División Clara de Roles (Sinergia de Ecosistema Complementaria):**
-   * **x402 y Pay.sh actúan como 'Tuberías de Comunicación':** Definen cómo las API devuelven `402 Payment Required` y cómo los clientes envían encabezados estándar (`X-402-Authorization`).
-   * **HAICHAIN actúa como 'Banco de Riesgo y Bóveda Segura de Políticas':** Resuelve preguntas críticas: *¿De dónde obtiene fondos el agente? ¿Quién controla los límites? ¿Cómo se frena un LLM comprometido?*
+1. **División Clara de Roles (Sinergia Complementaria, Sin Competencia Directa):**
+   * **x402 y Pay.sh actúan como "Canales de Comunicación y Facturación":** Definen cómo las API emiten respuestas HTTP 402 y cómo los clientes envían cabeceras `X-PAYMENT` o `Authorization: X402`.
+   * **HAICHAIN actúa como el "Banco de Políticas y Bóveda de Custodia Segura":** Garantiza de dónde provienen los fondos y previene que inyecciones de comandos en LLMs vacíen las tesorerías empresariales.
 
-2. **Neutralización de Vulnerabilidades Empíricas de x402:**
-   Las investigaciones de seguridad de octubre de 2026 revelaron 25 vulnerabilidades en clientes tempranos de x402. HAICHAIN lo soluciona con su **Hoja de Capacidad Merkle de 4 Componentes** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) y el **Teorema de Pérdida Acotada**.
+2. **Resolución de las 3 Vulnerabilidades Críticas de x402 Puro:**
+   * **Límites de gasto matemáticos:** Mediante el **Teorema de Pérdida Acotada (Bounded Loss Theorem)**:
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   * **Arquitectura de Doble Vía (Dual-Path):**
+     - *Vía Rápida (Fast-Path Off-chain Voucher < 2ms):* Verificación criptográfica Ed25519 en sub-2ms para inferencia fluida.
+     - *Vía de Liquidación por Lotes:* Compensación multilateral antes del cierre en Solana o Base.
+   * **Defensa Antirretorno (Nullifiers):** Bloqueo total de repetición mediante tiendas de nulos en memoria y PDA on-chain.
 
-3. **Integración Directa con SDK x402:**
-   El paquete `@haichain/sdk` incluye controladores nativos para resolver desafíos x402 de forma segura.
+3. **Interoperabilidad Universal CAIP-2:**
+   Soporte nativo para identificadores CAIP-2 (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `eip155:8453`) y firma dual Ed25519 y EIP-712.
+### 6.5. Matriz de Comparativa Arquitectónica: Modelos de Liquidación para Agentes de IA
 
----
+Para certificar la superioridad técnica del Canal de Estado Dual de HAICHAIN, la siguiente matriz compara cuantitativamente los tres paradigmas principales de micropagos para IA:
+
+| Métrica Crítica de Rendimiento | x402 Nativo en Cadena (Coinbase Standard) | Rollups Layer-2 de Uso General (Base / Arbitrum) | Canal de Estado Dual HAICHAIN (v1.1) | Ganador y Fundamento Técnico |
+| :--- | :--- | :--- | :--- | :--- |
+| **Latencia por Invocación** | **1,500ms – 2,500ms** (Espera de confirmación de bloque L1) | **200ms – 600ms** (Retraso de secuenciador por lotes) | **< 0.3ms** (Verificación en memoria de firma Ed25519) | **HAICHAIN**: La latencia submilimétrica es obligatoria para la transmisión fluida de tokens LLM. |
+| **Tarifa de Gas por Micropago** | **$0.002 – $0.050** / tx (Tarifa superior al valor de la llamada API) | **$0.0005 – $0.003** / call (Gas L2 + Calldata en L1) | **$0.0000** (0€ gas en cupones off-chain, liquidación final única) | **HAICHAIN**: Costo marginal cero elimina toda fricción económica en micropagos. |
+| **Contención de Bloqueo (Write-Lock)** | **Falla Crítica**: Cuentas saturadas colapsan bajo concurrencia masiva | **Cuello de Botella**: Secuenciador EVM monohilo | **Cero Contención**: Canales de sesión PDA independientes (`[b"chan", grant, id]`) | **HAICHAIN**: El motor Sealevel de Solana programa PDAs en 32+ núcleos físicos en paralelo. |
+| **Riesgo de Inyección de Prompt** | **Pérdida Total**: El agente posee clave privada completa o aprobación infinita | **Pérdida Completa**: Ejecución maliciosa de `transferAll()` | **Pérdida Acotada**: $\Delta \text{Loss} \le \min(\text{max\_spend}, \text{window\_cap})$; Destinatario fijo por árbol Merkle | **HAICHAIN**: Las restricciones criptográficas prevalecen sobre las alucinaciones cognitivas del modelo. |
+| **Seguridad de Capa Base L1** | Consenso directo L1 | Retraso de 7 días (Optimistic) o costo de prueba ZK | Liquidación Anchor directa en Solana L1 con ventana de disputa de 24h | **HAICHAIN**: Máxima seguridad L1 sin riesgos de puente cruzado. |
+| **Protección de Proveedor Fuera de Línea** | No aplica | No aplica | **Daemon Torre de Vigilancia (Watchtower)**: Monitoreo y defensa activa 24/7 | **HAICHAIN**: El centinela liquida automáticamente el cupón de mayor valor ante intentos de cierre desactualizados. |
+
+### 6.6. El Paradigma de Barandillas de Anthropic: Invariantes Criptográficos contra Inyecciones de Prompt
+
+1. **Vulnerabilidad Cognitiva de los Agentes:** Los agentes autónomos procesan datos externos no confiables. Mediante inyecciones indirectas de prompt, un atacante puede alterar los objetivos del modelo para desviar fondos. En billeteras convencionales, esto causa insolvencia instantánea.
+2. **Invariante CapLeaf de Pérdida Acotada:**
+   $$\Delta \text{Loss}_{\text{adversarial}} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   El agente solo posee una subclave efímera restringida por la hoja Merkle CapLeaf v1. La dirección de destino está sellada criptográficamente al `merchant_ata` y el ritmo de gasto está limitado por `window_cap`.
+3. **SDK Universal de Python (`haichain-agent-pay`):**
+   ```python
+   from fastapi import FastAPI, Request
+   from haichain_pay import haichain_paywall
+
+   app = FastAPI()
+
+   @app.post("/tools/deep_research")
+   @haichain_paywall(recipient="FiArjiLPRvU5wMEXeGwKTQfVSQiSTcxhmQwsEe2SzFRR", price_usdt=0.005)
+   async def deep_research_mcp(request: Request):
+       return {"result": "Reporte de inteligencia generado..."}
+   ```
+
+### 6.7. Arquitectura Solana Core y Sui: Economía de Alquiler y Protocolo Watchtower
+
+1. **Reciclaje de Canales (`extend_channel_reserve`):** Permite recargar el saldo del canal existente in situ sin destruirlo ni pagar nueva tarifa de alquiler PDA en SOL, logrando un costo neto de **0.000000 SOL**.
+2. **Protocolo Centinela Watchtower:** Con una ventana de disputa de 24 horas (`Clock::now() >= close_requested_at + dispute_secs`), si una contraparte intenta cerrar con saldo obsoleto, la Torre de Vigilancia emite automáticamente `settle_voucher` con el importe más alto firmado.
 
 ## 7. COMPENSACIÓN SIMÉTRICA MULTILATERAL Y MATRIZ DE LIQUIDACIÓN A VELOCIDAD DE CABLE (MULTILATERAL NETTING)
 

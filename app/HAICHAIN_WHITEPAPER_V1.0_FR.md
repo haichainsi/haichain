@@ -747,38 +747,75 @@ Dès le chargement, le Grand Modèle de Langage hérite automatiquement de trois
 2. `pay_for_resource`: Autorise l'agent à effectuer des micro-règlements en nanocentimes pour des APIs spécialisées, des instances GPU ou des flux de données réservés.
 3. `emergency_freeze_pot`: Permet aux agents de surveillance de déclencher un gel matériel de sauvegarde en cas de comportement anormal d'un fournisseur ou de rupture de conformité.
 
-### 6.6. Positionnement Stratégique: HAICHAIN comme Couche de Politiques et Coupe-Circuit pour HTTP x402 et Solana Pay.sh
+### 6.6. Positionnement Stratégique : HAICHAIN comme Couche de Gouvernance et Coffre-Fort de Sécurité pour HTTP x402 et Solana Pay.sh
 
-Dans le paysage global des agents autonomes, les protocoles de paiement machine ouverts connaissent une adoption institutionnelle rapide, notamment **HTTP x402** (initié par Coinbase, transféré à la Fondation Linux avec Visa et Mastercard) et **Pay.sh** (lancé conjointement par la Fondation Solana et Google Cloud en mai 2026).
+Dans l'écosystème financier des agents autonomes, les protocoles de communication de paiement ouverts connaissent une adoption institutionnelle majeure, notamment **HTTP x402** (initié par Coinbase, sous l'égide de la Linux Foundation avec Visa et Mastercard) et **Pay.sh** (Fondation Solana et Google Cloud, mai 2026).
 
 ```
-       STACK MONDIALE D'INFRASTRUCTURE FINANCIÈRE POUR AGENTS IA
-       
-    [ AGENTS & ESSAIMS D'IA ]     : Claude Desktop, Cursor, ElizaOS, CrewAI
-                                   │
-                                   ▼
-    [ COMMUNICATION & FACTURATION]: Spécification HTTP x402 & Proxy Pay.sh
-    (Émet le statut 402 Payment Required et transporte les défis de paiement)
-                                   │
-                                   ▼
-    [ POLITIQUE & GESTION RISQUE ]: ★ HAICHAIN AGENT POLICY VAULT ★
-    (Arbres Merkle, Plafonds MaxSpend stricts, Coupe-circuit d'urgence < 1s)
-                                   │
-                                   ▼
-    [ RAILS DE RÈGLEMENT ON-CHAIN]: Registre Solana L1 (Règlement USDC / USDT SPL)
+         ARCHITECTURE DE L'INFRASTRUCTURE FINANCIÈRE DES AGENTS AUTONOMES
+         
+    [ AGENTS ET ESSAIMS D'IA   ] : Claude Desktop, Cursor, ElizaOS, CrewAI
+                                    │
+                                    ▼
+    [ COMMUNICATION & FACTURATION] : Spécification HTTP x402 et Proxy Pay.sh
+    (Émission du statut 402 Payment Required et transport d'en-tête X-PAYMENT)
+                                    │
+                                    ▼
+    [ GOUVERNANCE ET PROTECTION ] : ★ HAICHAIN AGENT POLICY VAULT ★
+    (Arbre Merkle CapLeaf, Plafonds stricts MaxSpend, Coupe-circuit < 400ms)
+                                    │
+                                    ▼
+    [ RAILS DE RÈGLEMENT L1     ] : Registre Solana L1, Objets Sui Move & Base L2
 ```
 
-1. **Répartition Claire des Rôles (Synergie d'Écosystème):**
-   * **x402 et Pay.sh agissent comme 'Canaux de Transmission':** Ils normalisent l'émission du statut `402 Payment Required` et l'en-tête client (`X-402-Authorization`).
-   * **HAICHAIN agit comme 'Banque de Risque et Coffre-Fort de Politiques':** Il résout les failles critiques: *D'où provient le capital de l'agent? Qui contrôle les plafonds? Comment stopper un modèle compromis?*
+1. **Division Claire des Rôles (Synergie Écosystémique Complémentaire) :**
+   * **x402 et Pay.sh agissent comme « Conduits de Communication » :** Définition de l'émission HTTP 402 et du transport d'autorisation `X-PAYMENT`.
+   * **HAICHAIN agit comme « Banque de Politiques et Coffre-Fort Sécurisé » :** Contrôle des plafonds de dépenses et protection absolue contre le détournement de fonds par injection de prompts.
 
-2. **Neutralisation des Failles Empiriques d'x402:**
-   Les audits d'octobre 2026 ont relevé 25 failles sur les premiers clients x402. HAICHAIN y remédie grâce à son **Arbre de Capacités Merkle à 4 Composants** (`Pubkey || MaxSpend || ExpirySlot || Nonce`) et au **Théorème de Perte Bornée**.
+2. **Neutralisation des Vulnérabilités de x402 :**
+   * **Plafond Mathématique (Bounded Loss Theorem) :**
+   $$\Delta \text{Loss}_{\max} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   * **Architecture à Double Voie (Dual-Path) :**
+     - *Voie Rapide (Fast-Path Off-chain < 2ms) :* Validation cryptographique immédiate en moins de 2ms.
+     - *Voie de Règlement par Lots :* Compensation multilatérale optimisée.
+   * **Immunité Anti-Rejeu :** Gestion stricte par Nullifiers en mémoire et PDA sur chaîne.
 
-3. **Compatibilité Immédiate avec l'Écosystème:**
-   Le kit `@haichain/sdk` fournit un gestionnaire natif pour résoudre en toute sécurité les défis x402.
+3. **Interopérabilité CAIP-2 et Enveloppe Hybride :**
+   Prise en charge intégrale des identifiants de réseau CAIP-2 (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `eip155:8453`) et des signatures Ed25519 et EIP-712.
+### 6.5. Matrice Comparative d'Architecture : Modèles de Règlement pour Agents d'IA
 
----
+| Critère de Performance et Risque | x402 Natif sur Chaîne (Standard Coinbase) | Rollups Layer-2 Génériques (Base / Arbitrum) | Canal d'État Dual HAICHAIN (v1.1) | Vainqueur et Justification Technique |
+| :--- | :--- | :--- | :--- | :--- |
+| **Latence par Invocation** | **1,500ms – 2,500ms** (Attente du bloc L1) | **200ms – 600ms** (Latence de traitement par lots du séquenceur) | **< 0.3ms** (Vérification immédiate en mémoire par signature Ed25519) | **HAICHAIN** : La latence submilliseconde est indispensable pour le streaming fluide de tokens LLM. |
+| **Frais de Gaz par Micropaiement** | **$0.002 – $0.050** / tx (Frais supérieurs à la valeur de l'appel API) | **$0.0005 – $0.003** / call (Frais L2 + Calldata L1) | **$0.0000** (0€ de gaz pour les bons hors chaîne, règlement unique L1) | **HAICHAIN** : Zéro coût marginal supprime toute friction économique. |
+| **Contention de Verrouillage (Write-Lock)** | **Échec Critique** : Saturation des comptes destinataires sous forte charge | **Goulot d'Étranglement** : Exécution monothread EVM | **Zéro Contention** : Canaux de session PDA dédiés (`[b"chan", grant, id]`) | **HAICHAIN** : L'ordonnanceur Sealevel de Solana parallélise les PDA sur 32+ cœurs physiques. |
+| **Exposition aux Injections de Prompt** | **Perte Totale** : Clé privée complète ou allocations illimitées compromises | **Perte Totale** : Exécution malveillante de `transferAll()` | **Perte Strictement Bornée** : $\Delta \text{Loss} \le \min(\text{max\_spend}, \text{window\_cap})$ ; Destinataire vérifié par arbre Merkle | **HAICHAIN** : Les invariants cryptographiques prémunissent contre toute altération cognitive du modèle. |
+| **Sécurité Finale Couche 1 (L1)** | Consensus direct L1 | Délai de contestation de 7 jours (Optimistic) ou coût ZK | Règlement direct Solana L1 Anchor avec fenêtre de litige de 24h | **HAICHAIN** : Sécurité L1 native sans risque de pont inter-chaînes. |
+| **Protection Hors Ligne du Marchand** | Non applicable | Non applicable | **Daemon Tour de Guet (Watchtower)** : Surveillance et défense active 24/7 | **HAICHAIN** : Règlement automatique avec le bon le plus élevé en cas de tentative de fermeture frauduleuse. |
+
+### 6.6. Le Paradigme de Sécurité d'Anthropic : Invariants Cryptographiques Contre les Injections de Prompt
+
+1. **Vulnérabilité des Modèles Autonomes :** Les agents ingèrent des contextes externes non fiables susceptibles de modifier leurs objectifs pour détourner des fonds.
+2. **Théorème de Perte Bornée CapLeaf :**
+   $$\Delta \text{Loss}_{\text{adversarial}} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   L'agent ne possède que des sous-clés éphémères rigoureusement contraintes par la feuille Merkle CapLeaf v1.
+3. **SDK Python Universel (`haichain-agent-pay`) :**
+   ```python
+   from fastapi import FastAPI, Request
+   from haichain_pay import haichain_paywall
+
+   app = FastAPI()
+
+   @app.post("/tools/deep_research")
+   @haichain_paywall(recipient="FiArjiLPRvU5wMEXeGwKTQfVSQiSTcxhmQwsEe2SzFRR", price_usdt=0.005)
+   async def deep_research_mcp(request: Request):
+       return {"result": "Rapport d'intelligence généré avec succès..."}
+   ```
+
+### 6.7. Architecture Solana Core et Sui : Économie de Loyer et Protocole de Litige Watchtower
+
+1. **Recyclage de Canaux (`extend_channel_reserve`) :** Réapprovisionne les canaux existants sans frais d'ouverture de nouveau compte PDA en SOL, avec remboursement à 100 % des loyers à la fermeture.
+2. **Protocole de Litige Watchtower :** Fenêtre de contestation de 24 heures et défense automatique par soumission du bon le plus récent si la contrepartie tente une fermeture unilatérale frauduleuse.
 
 ## 7. COMPENSATION SYMÉTRIQUE MULTILATÉRALE ET MATRICE DE RÈGLEMENT À VITESSE FILAIRE (MULTILATERAL NETTING)
 

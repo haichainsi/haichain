@@ -782,7 +782,40 @@ Dans l'écosystème financier des agents autonomes, les protocoles de communicat
 
 3. **Interopérabilité CAIP-2 et Enveloppe Hybride :**
    Prise en charge intégrale des identifiants de réseau CAIP-2 (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`, `eip155:8453`) et des signatures Ed25519 et EIP-712.
+### 6.5. Matrice Comparative d'Architecture : Modèles de Règlement pour Agents d'IA
 
+| Critère de Performance et Risque | x402 Natif sur Chaîne (Standard Coinbase) | Rollups Layer-2 Génériques (Base / Arbitrum) | Canal d'État Dual HAICHAIN (v1.1) | Vainqueur et Justification Technique |
+| :--- | :--- | :--- | :--- | :--- |
+| **Latence par Invocation** | **1,500ms – 2,500ms** (Attente du bloc L1) | **200ms – 600ms** (Latence de traitement par lots du séquenceur) | **< 0.3ms** (Vérification immédiate en mémoire par signature Ed25519) | **HAICHAIN** : La latence submilliseconde est indispensable pour le streaming fluide de tokens LLM. |
+| **Frais de Gaz par Micropaiement** | **$0.002 – $0.050** / tx (Frais supérieurs à la valeur de l'appel API) | **$0.0005 – $0.003** / call (Frais L2 + Calldata L1) | **$0.0000** (0€ de gaz pour les bons hors chaîne, règlement unique L1) | **HAICHAIN** : Zéro coût marginal supprime toute friction économique. |
+| **Contention de Verrouillage (Write-Lock)** | **Échec Critique** : Saturation des comptes destinataires sous forte charge | **Goulot d'Étranglement** : Exécution monothread EVM | **Zéro Contention** : Canaux de session PDA dédiés (`[b"chan", grant, id]`) | **HAICHAIN** : L'ordonnanceur Sealevel de Solana parallélise les PDA sur 32+ cœurs physiques. |
+| **Exposition aux Injections de Prompt** | **Perte Totale** : Clé privée complète ou allocations illimitées compromises | **Perte Totale** : Exécution malveillante de `transferAll()` | **Perte Strictement Bornée** : $\Delta \text{Loss} \le \min(\text{max\_spend}, \text{window\_cap})$ ; Destinataire vérifié par arbre Merkle | **HAICHAIN** : Les invariants cryptographiques prémunissent contre toute altération cognitive du modèle. |
+| **Sécurité Finale Couche 1 (L1)** | Consensus direct L1 | Délai de contestation de 7 jours (Optimistic) ou coût ZK | Règlement direct Solana L1 Anchor avec fenêtre de litige de 24h | **HAICHAIN** : Sécurité L1 native sans risque de pont inter-chaînes. |
+| **Protection Hors Ligne du Marchand** | Non applicable | Non applicable | **Daemon Tour de Guet (Watchtower)** : Surveillance et défense active 24/7 | **HAICHAIN** : Règlement automatique avec le bon le plus élevé en cas de tentative de fermeture frauduleuse. |
+
+### 6.6. Le Paradigme de Sécurité d'Anthropic : Invariants Cryptographiques Contre les Injections de Prompt
+
+1. **Vulnérabilité des Modèles Autonomes :** Les agents ingèrent des contextes externes non fiables susceptibles de modifier leurs objectifs pour détourner des fonds.
+2. **Théorème de Perte Bornée CapLeaf :**
+   $$\Delta \text{Loss}_{\text{adversarial}} \le \min\left(\text{max\_spend} - \text{consumed},\, \text{window\_cap}\right)$$
+   L'agent ne possède que des sous-clés éphémères rigoureusement contraintes par la feuille Merkle CapLeaf v1.
+3. **SDK Python Universel (`haichain-agent-pay`) :**
+   ```python
+   from fastapi import FastAPI, Request
+   from haichain_pay import haichain_paywall
+
+   app = FastAPI()
+
+   @app.post("/tools/deep_research")
+   @haichain_paywall(recipient="FiArjiLPRvU5wMEXeGwKTQfVSQiSTcxhmQwsEe2SzFRR", price_usdt=0.005)
+   async def deep_research_mcp(request: Request):
+       return {"result": "Rapport d'intelligence généré avec succès..."}
+   ```
+
+### 6.7. Architecture Solana Core et Sui : Économie de Loyer et Protocole de Litige Watchtower
+
+1. **Recyclage de Canaux (`extend_channel_reserve`) :** Réapprovisionne les canaux existants sans frais d'ouverture de nouveau compte PDA en SOL, avec remboursement à 100 % des loyers à la fermeture.
+2. **Protocole de Litige Watchtower :** Fenêtre de contestation de 24 heures et défense automatique par soumission du bon le plus récent si la contrepartie tente une fermeture unilatérale frauduleuse.
 
 ## 7. COMPENSATION SYMÉTRIQUE MULTILATÉRALE ET MATRICE DE RÈGLEMENT À VITESSE FILAIRE (MULTILATERAL NETTING)
 
