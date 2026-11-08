@@ -10,7 +10,7 @@ from .crypto import (
     compute_x402_canonical_hash,
     verify_ed25519_signature,
 )
-from .client import HaichainClient
+from .client import HaichainClient, AgentResponse
 from .paywall import HaichainPaywall, haichain_paywall, HaichainASGIMiddleware
 
 __version__ = "0.1.0"
@@ -19,6 +19,7 @@ __all__ = [
     "haichain_paywall",
     "HaichainASGIMiddleware",
     "HaichainClient",
+    "AgentResponse",
     "compute_voucher_hash",
     "compute_x402_canonical_hash",
     "verify_ed25519_signature",

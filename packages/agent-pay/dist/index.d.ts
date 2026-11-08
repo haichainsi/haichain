@@ -14,6 +14,7 @@
  *    - Inspects Solana L1 transactions via RPC for confirmed status & positive lamport delta.
  *    - 300s freshness window against pre-mined voucher recycling.
  */
+import { Keypair } from '@solana/web3.js';
 export interface PaywallConfig {
     recipient: string;
     priceUsdt: number;
@@ -128,3 +129,53 @@ export declare class HaichainPaywall {
 }
 export declare function haichainPaywall(config: PaywallConfig): (req: any, res: any, next: any) => Promise<any>;
 export default HaichainPaywall;
+export interface ClientConfig {
+    keypair?: Keypair;
+    potPubkey?: string;
+    cluster?: 'devnet' | 'mainnet-beta';
+}
+export declare class HaichainClient {
+    keypair: Keypair;
+    agentPubkey: string;
+    potPubkey: string;
+    cluster: 'devnet' | 'mainnet-beta';
+    private nonces;
+    private cumulativeBalances;
+    constructor(config?: ClientConfig);
+    getNextNonce(merchantPubkey: string): number;
+    createVoucher(params: {
+        merchantPubkey: string;
+        amountMicrounit: number;
+        channelId?: number;
+        scheme?: string;
+        resource?: string;
+    }): {
+        scheme: string;
+        version: string;
+        cluster: "devnet" | "mainnet-beta";
+        potPubkey: string;
+        merchantPubkey: string;
+        agentPubkey: string;
+        channelId: number;
+        cumulativeAmount: string;
+        amountMicrounit: number;
+        nonce: number;
+        timestamp: number;
+        resource: string;
+        signature: string;
+        signer: string;
+    };
+    buildAuthHeader(params: {
+        merchantPubkey: string;
+        amountMicrounit: number;
+        channelId?: number;
+        scheme?: string;
+        resource?: string;
+    }): string;
+    callPaidAgent(url: string, options?: {
+        method?: string;
+        body?: any;
+        headers?: Record<string, string>;
+        timeoutMs?: number;
+    }): Promise<Response>;
+}

@@ -99,7 +99,22 @@ def verify_ed25519_signature(
     try:
         pk_bytes = to_32_bytes(public_key)
         if isinstance(signature, str):
-            sig_bytes = base64.b64decode(signature)
+            sig_bytes = None
+            try:
+                decoded_b58 = b58decode(signature)
+                if len(decoded_b58) == 64:
+                    sig_bytes = decoded_b58
+            except Exception:
+                pass
+            if sig_bytes is None:
+                try:
+                    decoded_b64 = base64.b64decode(signature)
+                    if len(decoded_b64) == 64:
+                        sig_bytes = decoded_b64
+                except Exception:
+                    pass
+            if sig_bytes is None:
+                return False
         else:
             sig_bytes = bytes(signature)
 

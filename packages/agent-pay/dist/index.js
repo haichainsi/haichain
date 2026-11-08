@@ -52,7 +52,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HaichainPaywall = void 0;
+exports.HaichainClient = exports.HaichainPaywall = void 0;
 exports.haichainPaywall = haichainPaywall;
 const web3_js_1 = require("@solana/web3.js");
 const crypto = __importStar(require("crypto"));
@@ -451,3 +451,129 @@ function haichainPaywall(config) {
     return paywall.middleware();
 }
 exports.default = HaichainPaywall;
+class HaichainClient {
+    keypair;
+    agentPubkey;
+    potPubkey;
+    cluster;
+    nonces = new Map();
+    cumulativeBalances = new Map();
+    constructor(config = {}) {
+        this.keypair = config.keypair || web3_js_1.Keypair.generate();
+        this.agentPubkey = this.keypair.publicKey.toBase58();
+        this.potPubkey = config.potPubkey || this.agentPubkey;
+        this.cluster = config.cluster || 'devnet';
+    }
+    getNextNonce(merchantPubkey) {
+        const cur = this.nonces.get(merchantPubkey) || 0;
+        const next = cur + 1;
+        this.nonces.set(merchantPubkey, next);
+        return next;
+    }
+    createVoucher(params) {
+        const channelId = params.channelId || 1;
+        const prev = this.cumulativeBalances.get(params.merchantPubkey) || 0;
+        const cumulative = prev + params.amountMicrounit;
+        this.cumulativeBalances.set(params.merchantPubkey, cumulative);
+        const nonce = this.getNextNonce(params.merchantPubkey);
+        const now = Math.floor(Date.now() / 1000);
+        const potBytes = new web3_js_1.PublicKey(this.potPubkey).toBuffer();
+        const merchantBytes = new web3_js_1.PublicKey(params.merchantPubkey).toBuffer();
+        const channelBuf = Buffer.alloc(8);
+        const amountBuf = Buffer.alloc(8);
+        const nonceBuf = Buffer.alloc(8);
+        channelBuf.writeBigUInt64LE(BigInt(channelId));
+        amountBuf.writeBigUInt64LE(BigInt(cumulative));
+        nonceBuf.writeBigUInt64LE(BigInt(nonce));
+        const digest = crypto.createHash('sha256')
+            .update(Buffer.from('HAICHAIN-VOUCHER-V1'))
+            .update(potBytes)
+            .update(merchantBytes)
+            .update(channelBuf)
+            .update(amountBuf)
+            .update(nonceBuf)
+            .digest();
+        const sigBytes = tweetnacl_1.default.sign.detached(digest, this.keypair.secretKey);
+        const signature = Buffer.from(sigBytes).toString('base64');
+        return {
+            scheme: params.scheme || 'haichain-v1-voucher',
+            version: '1.0',
+            cluster: this.cluster,
+            potPubkey: this.potPubkey,
+            merchantPubkey: params.merchantPubkey,
+            agentPubkey: this.agentPubkey,
+            channelId,
+            cumulativeAmount: String(cumulative),
+            amountMicrounit: params.amountMicrounit,
+            nonce,
+            timestamp: now,
+            resource: params.resource || '/api/v1/mcp',
+            signature,
+            signer: this.agentPubkey,
+        };
+    }
+    buildAuthHeader(params) {
+        const voucher = this.createVoucher(params);
+        const encoded = Buffer.from(JSON.stringify(voucher)).toString('base64');
+        return `X402 ${encoded}`;
+    }
+    async callPaidAgent(url, options = {}) {
+        const method = options.method || 'POST';
+        const reqHeaders = {
+            'User-Agent': 'HAICHAIN-Agent-NodeClient/1.0',
+            'Accept': 'application/json',
+            ...(options.headers || {}),
+        };
+        let body = options.body;
+        if (body && typeof body === 'object' && !(body instanceof Uint8Array)) {
+            body = JSON.stringify(body);
+            if (!reqHeaders['Content-Type']) {
+                reqHeaders['Content-Type'] = 'application/json';
+            }
+        }
+        const firstResp = await fetch(url, {
+            method,
+            headers: reqHeaders,
+            body,
+            signal: AbortSignal.timeout(options.timeoutMs || 30000),
+        });
+        if (firstResp.status !== 402) {
+            return firstResp;
+        }
+        // 402 Challenge auto-resolution
+        let challengeData = {};
+        try {
+            challengeData = await firstResp.json();
+        }
+        catch (_) { }
+        const recipient = challengeData.payTo ||
+            challengeData.paymentAddress ||
+            challengeData.recipient ||
+            challengeData.settlementDetails?.recipient ||
+            firstResp.headers.get('x-payment-payee') ||
+            firstResp.headers.get('x-payment-payto');
+        if (!recipient) {
+            throw new Error(`HTTP 402 received but unable to parse recipient address: ${JSON.stringify(challengeData)}`);
+        }
+        const priceRaw = challengeData.maxAmountRequired ||
+            challengeData.amountUsdt ||
+            challengeData.priceUsdt ||
+            challengeData.settlementDetails?.amountUsdt ||
+            firstResp.headers.get('x-payment-amount') ||
+            0.003;
+        const amountMicrounit = Math.round(parseFloat(priceRaw) * 1_000_000);
+        const authHeader = this.buildAuthHeader({
+            merchantPubkey: recipient,
+            amountMicrounit,
+            resource: url,
+        });
+        reqHeaders['Authorization'] = authHeader;
+        return await fetch(url, {
+            method,
+            headers: reqHeaders,
+            body,
+            signal: AbortSignal.timeout(options.timeoutMs || 30000),
+        });
+    }
+}
+exports.HaichainClient = HaichainClient;

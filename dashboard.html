@@ -29476,7 +29476,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
   .proof { margin-top: 24px; padding: 12px; background: #f9f9f9; border-radius: 8px; font-family: monospace; font-size: 10px; word-break: break-all; color: #666; }
 </style>
 </head>
-<body>
+<body onload="window.print()">
   <div class="header">
     <div>
       <h1 style="margin:0; font-size: 20px;">${docTitle}</h1>
@@ -29506,7 +29506,6 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     ${record.hashHex || 'N/A'}<br>
     <em>${isVi ? 'Chứng từ này được mã hóa bảo chứng, liên kết bất biến với giao dịch trên Solana Blockchain.' : 'This document is cryptographically verified and permanently linked to Solana blockchain transactions.'}</em>
   </div>
-  <script>window.onload = function() { window.print(); };<\/script>
 </body>
 </html>`;
 

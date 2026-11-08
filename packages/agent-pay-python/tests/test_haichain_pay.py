@@ -142,6 +142,56 @@ class TestHaichainPay(unittest.TestCase):
         self.assertEqual(resp_replay.status_code, 402)
         self.assertIn("Replay Attack Rejected", resp_replay.json().get("verificationError", ""))
 
+    def test_alias_package_haichain_agent_pay(self):
+        import haichain_agent_pay
+        self.assertTrue(hasattr(haichain_agent_pay, "haichain_paywall"))
+        self.assertTrue(hasattr(haichain_agent_pay, "HaichainClient"))
+        self.assertTrue(hasattr(haichain_agent_pay, "AgentResponse"))
+
+    def test_call_paid_agent_flow(self):
+        # Test auto-negotiation with unittest.mock
+        from unittest.mock import patch, MagicMock
+        import urllib.error
+        import io
+
+        calls = []
+
+        def mock_urlopen(req, timeout=30.0):
+            calls.append(req)
+            auth = req.headers.get("Authorization") or req.headers.get("authorization")
+            if not auth:
+                # First call: return 402 challenge
+                challenge_data = json.dumps({
+                    "error": "Payment Required",
+                    "recipient": MERCHANT_PUBKEY,
+                    "price": 0.005,
+                    "amount": 5000,
+                    "service": "Test Agent API"
+                }).encode("utf-8")
+                headers = {
+                    "Content-Type": "application/json",
+                    "X-Payment-Required": "true",
+                    "WWW-Authenticate": f'X402 recipient="{MERCHANT_PUBKEY}", amount="5000"'
+                }
+                fp = io.BytesIO(challenge_data)
+                raise urllib.error.HTTPError(req.full_url, 402, "Payment Required", headers, fp)
+            else:
+                # Second call: voucher provided -> return 200 OK
+                resp_mock = MagicMock()
+                resp_mock.status = 200
+                resp_mock.read.return_value = json.dumps({"result": "inference complete", "agent": "paid-agent"}).encode("utf-8")
+                resp_mock.headers = {"Content-Type": "application/json"}
+                resp_mock.__enter__.return_value = resp_mock
+                return resp_mock
+
+        with patch("urllib.request.urlopen", side_effect=mock_urlopen):
+            client = HaichainClient(pot_pubkey=POT_PUBKEY, cluster="devnet")
+            resp = client.call_paid_agent("http://127.0.0.1:8000/api/v1/inference", json={"prompt": "hello agent"})
+            self.assertEqual(resp.status_code, 200)
+            self.assertEqual(resp.json()["result"], "inference complete")
+            self.assertEqual(len(calls), 2)
+            self.assertIn("X402", calls[1].headers.get("Authorization", ""))
+
 
 if __name__ == "__main__":
     unittest.main()
