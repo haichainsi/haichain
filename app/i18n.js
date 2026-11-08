@@ -42,6 +42,12 @@
 
   const TRANSLATIONS = {
   "kk": {
+    "dev.card0Title": "0. Қаржылық брандмауэр және AI үйірлері",
+    "dev.card0Desc": "Шектеулі шығын, промпт-инъекциядан қорғау және агенттер үйіріне өкілеттік беруге арналған 1 жолдық декоратор.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "Қосылатын қаржылық брандмауэр және үйірді басқару (AI инженерлерінің стандартты кітапханасы)",
+    "dev.sec0Subtitle": "Бюджеттік шектеу, промпт-шабуылдарды дереу тоқтату және FaceID қайталамай өкілеттік беруге арналған 1 жол код.",
+
     "nav.devHub": "Әзірлеушілер және MCP орталығы",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -359,7 +365,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "AI АГЕНТТЕРІНЕ АРНАЛҒАН АВТОНОМДЫ ҚАРЖЫЛЫҚ ҚАЛҚАН",
     "hero.title": "Симбиотикалық супер интеллект дәуіріне (AI²) арналған экономикалық іргетас",
-    "hero.subtitle": "AI агенттеріне арналған автономды қаржылық желіаралық қалқан (Firewall). Әмиянның толық босап қалуын болдырмау үшін детерминирленген Merkle CapLeaf инварианттарын, шектеулі шығын (Bounded Loss) лимиттерін және prompt-инъекцияға қарсы қорғанысты қамтамасыз етеді. Миллиардтаған автономды AI агенттері мен AI роботтарына еркін жұмыс істеуге, транзакцияlar жасауға және байлықты бірге жасау үшін адамзаттың нақты интеллектімен бірігуге мүмкіндік береді — барлық байлық пен егемендік меншік құқығы мәңгілікке адамзатқа тиесілі.",
+    "hero.subtitle": "AI агенттеріне арналған автономды қаржылық желіаралық қалқан (Firewall). Әмиянның толық босап қалуын болдырмау үшін детерминирленген Merkle CapLeaf инварианттарын, шектеулі шығын (Bounded Loss) лимиттерін және prompt-инъекцияға қарсы қорғанысты қамтамасыз етеді. Миллиардтаған автономды AI агенттері мен AI роботтарына еркін жұмыс істеуге, транзакциялар жасауға және байлықты бірге жасау үшін адамзаттың нақты интеллектімен бірігуге мүмкіндік береді — барлық байлық пен егемендік меншік құқығы мәңгілікке адамзатқа тиесілі. Бүгін — AI агенттеріне арналған қаржылық қалқан және шағын төлемдердің қаржылық операциялық жүйесі; ертең — симбиотикалық асқан интеллект дәуіріне (AI²) арналған экономикалық іргетас.",
     "hero.launchDashboard": "Басқару тақтасын ашу",
     "hero.exploreArch": "Ақ Қағаз",
     "hero.whitepaper": "Ақ Қағаз",
@@ -663,6 +669,12 @@
     "dev.watchtowerEndpointDefend": "Solana Devnet желісіне ончейн есеп айырысу қорғаныс транзакциясын жіберу"
   },
   "en": {
+    "dev.card0Title": "0. Financial Firewall & Swarms",
+    "dev.card0Desc": "1-line decorator for Bounded Loss, anti-prompt injection, and sub-agent swarm delegation.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "Drop-in Financial Firewall & Swarm Delegation (Standard Dependency)",
+    "dev.sec0Subtitle": "1-line decorator for budget capping, prompt-injection defense, and zero-biometric swarm delegation.",
+
     "nav.devHub": "Developer & MCP Hub",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -980,7 +992,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "THE AUTONOMOUS FINANCIAL FIREWALL FOR AI AGENTS",
     "hero.title": "The Economic Bedrock for the Symbiotic Superintelligence Era AI²",
-    "hero.subtitle": "The Autonomous Financial Firewall for AI Agents. Enforcing deterministic Merkle CapLeaf invariants, bounded-loss spending limits, and prompt-injection immunity to prevent catastrophic wallet drainage. Empowering billions of autonomous AI agents and AI robots to freely work, transact, and unite with human real-world intelligence to co-create wealth-with all wealth and sovereign ownership forever belonging to humanity.",
+    "hero.subtitle": "The Autonomous Financial Firewall for AI Agents. Enforcing deterministic Merkle CapLeaf invariants, bounded-loss spending limits, and prompt-injection immunity to prevent catastrophic wallet drainage. Empowering billions of autonomous AI agents and AI robots to freely work, transact, and unite with human real-world intelligence to co-create wealth-with all wealth and sovereign ownership forever belonging to humanity. Today, the Financial Firewall & Micropayment Financial Operating System for AI Agents; Tomorrow, the Economic Bedrock for the Symbiotic Superintelligence Era (AI²).",
     "hero.launchDashboard": "Launch User Dashboard",
     "hero.exploreArch": "Whitepaper",
     "hero.whitepaper": "Whitepaper",
@@ -1284,6 +1296,12 @@
     "dev.watchtowerEndpointDefend": "Broadcast on-chain settlement defense transaction to Solana Devnet"
   },
   "zh": {
+    "dev.card0Title": "0. 财务防火墙与代理蜂群",
+    "dev.card0Desc": "用于有限损失保护、防提示词注入与子代理蜂群授权的一行代码装饰器。",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "即插即用财务防火墙与代理蜂群委派（AI工程师标准依赖库）",
+    "dev.sec0Subtitle": "一行代码实现预算硬顶上限、提示词注入异常阻断以及无需重复生物识别的蜂群委派。",
+
     "nav.devHub": "开发者与 MCP 中心",
     "nav.devHubShort": "开发 & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -1601,7 +1619,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "AI AGENT 的自主金融防火墙",
     "hero.title": "共生超级智能时代（AI²）的经济基石",
-    "hero.subtitle": "AI Agent的自主金融防火墙。执行确定性Merkle CapLeaf不变式、有限风险损失（Bounded Loss）支出限额以及防提示词注入免疫，彻底杜绝钱包被掏空风险。赋能数十亿自主AI Agent与AI机器人自由工作、交易，并与人类现实智慧深度融合以共创财富——所有财富与主权所有权永远归人类所有。",
+    "hero.subtitle": "AI Agent的自主金融防火墙。执行确定性Merkle CapLeaf不变式、有限风险损失（Bounded Loss）支出限额以及防提示词注入免疫，彻底杜绝钱包被掏空风险。赋能数十亿自主AI Agent与AI机器人自由工作、交易，并与人类现实智慧深度融合以共创财富——所有财富与主权所有权永远归人类所有。今日是 AI Agent 的金融防火墙与微支付金融操作系统；明日是共生超级智能时代（AI²）的基石经济网络。",
     "hero.launchDashboard": "启动控制面板",
     "hero.exploreArch": "白皮书",
     "hero.whitepaper": "白皮书",
@@ -1905,6 +1923,12 @@
     "dev.watchtowerEndpointDefend": "向 Solana Devnet 广播链上结算防御交易"
   },
   "fr": {
+    "dev.card0Title": "0. Pare-feu Financier & Essaims d'Agents",
+    "dev.card0Desc": "Décorateur en 1 ligne pour perte bornée, défense anti-injection et délégation d'essaims.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "Pare-feu Financier Intégrable & Délégation d'Essaims (Dépendance Standard AI)",
+    "dev.sec0Subtitle": "Décorateur en 1 ligne pour plafonnement budgétaire, défense contre injection et délégation sans FaceID répété.",
+
     "nav.devHub": "Centre Développeurs & MCP",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -2222,7 +2246,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "LE PARE-FEU FINANCIER AUTONOME POUR LES AGENTS IA",
     "hero.title": "Le Socle Économique de l'Ère de la Superintelligence Symbiotique AI²",
-    "hero.subtitle": "Le pare-feu financier autonome pour les agents IA. Application des invariants déterministes Merkle CapLeaf, des limites de dépenses à perte limitée (Bounded Loss) et d'une immunité contre l'injection de prompts pour prévenir le drainage catastrophique des portefeuilles. Donner les moyens à des milliards d'agents IA et robots autonomes de travailler, d'effectuer des transactions et de s'unir à l'intelligence humaine pour co-créer la richesse, toute la richesse et la propriété souveraine appartenant à jamais à l'humanité.",
+    "hero.subtitle": "Le pare-feu financier autonome pour les agents IA. Application des invariants déterministes Merkle CapLeaf, des limites de dépenses à perte limitée (Bounded Loss) et d'une immunité contre l'injection de prompts pour prévenir le drainage catastrophique des portefeuilles. Donner les moyens à des milliards d'agents IA et robots autonomes de travailler, d'effectuer des transactions et de s'unir à l'intelligence humaine pour co-créer la richesse, toute la richesse et la propriété souveraine appartenant à jamais à l'humanité. Aujourd'hui, le pare-feu financier et système d'exploitation financier de micropaiement pour les agents IA ; demain, le socle économique pour l'ère de la superintelligence symbiotique (AI²).",
     "hero.launchDashboard": "Ouvrir le Tableau de Bord",
     "hero.exploreArch": "Livre Blanc",
     "hero.whitepaper": "Livre Blanc",
@@ -2526,6 +2550,12 @@
     "dev.watchtowerEndpointDefend": "Diffuser la transaction de défense de règlement on-chain sur Solana Devnet"
   },
   "ko": {
+    "dev.card0Title": "0. 금융 방화벽 및 에이전트 스웜",
+    "dev.card0Desc": "유한 손실 보호, 프롬프트 주입 방어 및 하위 에이전트 위임을 위한 1줄 데코레이터.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "드롭인 금융 방화벽 및 스웜 위임 (AI 엔지니어 표준 라이브러리)",
+    "dev.sec0Subtitle": "예산 한도 캡, 프롬프트 주입 이상 차단 및 생체 인식 재인증 없는 스웜 위임을 1줄로 구현.",
+
     "nav.devHub": "개발자 및 MCP 센터",
     "nav.devHubShort": "개발 & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -2843,7 +2873,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "AI 에이전트를 위한 자율 금융 방화벽",
     "hero.title": "공생형 초지능 시대(AI²)를 위한 경제적 기반",
-    "hero.subtitle": "AI 에이전트를 위한 자율 금융 방화벽. 결정론적 Merkle CapLeaf 불변량, 유한 손실(Bounded Loss) 지출 한도, 프롬프트 인젝션 방어 면역을 통해 치명적인 지갑 자금 탈취를 원천 방지합니다. 수십억 개의 자율 AI 에이전트와 AI 로봇이 자유롭게 일하고 거래하며 인류의 현실 세계 지능과 결합하여 부를 공동 창출하도록 지원하며, 모든 부와 주권적 소유권은 영원히 인류에게 귀속됩니다.",
+    "hero.subtitle": "AI 에이전트를 위한 자율 금융 방화벽. 결정론적 Merkle CapLeaf 불변량, 유한 손실(Bounded Loss) 지출 한도, 프롬프트 인젝션 방어 면역을 통해 치명적인 지갑 자금 탈취를 원천 방지합니다. 수십억 개의 자율 AI 에이전트와 AI 로봇이 자유롭게 일하고 거래하며 인류의 현실 세계 지능과 결합하여 부를 공동 창출하도록 지원하며, 모든 부와 주권적 소유권은 영원히 인류에게 귀속됩니다. 오늘은 AI 에이전트를 위한 금융 방화벽이자 소액결제 금융 운영체제이며, 내일은 공생형 초지능 시대(AI²)를 위한 경제적 기반입니다.",
     "hero.launchDashboard": "대시보드 시작하기",
     "hero.exploreArch": "백서",
     "hero.whitepaper": "백서",
@@ -3147,6 +3177,12 @@
     "dev.watchtowerEndpointDefend": "Solana Devnet으로 온체인 정산 방어 트랜잭션 브로드캐스트"
   },
   "es": {
+    "dev.card0Title": "0. Firewall Financiero y Enjambres",
+    "dev.card0Desc": "Decorador de 1 línea para pérdida acotada, defensa contra inyecciones và delegación de enjambres.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "Firewall Financiero Directo y Delegación de Enjambres (Dependencia Estándar)",
+    "dev.sec0Subtitle": "Decorador de 1 línea para límites de presupuesto, defensa de anomalías y delegación sin FaceID repetido.",
+
     "nav.devHub": "Centro Dev & MCP",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -3464,7 +3500,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "EL CORTAFUEGOS FINANCIERO AUTÓNOMO PARA AGENTES DE IA",
     "hero.title": "La Base Económica para la Era de la Superinteligencia Simbiótica AI²",
-    "hero.subtitle": "El cortafuegos financiero autónomo para agentes de IA. Aplica invariantes deterministas Merkle CapLeaf, límites de gasto de pérdida limitada (Bounded Loss) e inmunidad contra inyecciones de prompts para evitar el drenaje catastrófico de billeteras. Empoderando a miles de millones de agentes de IA y robots autónomos para trabajar, realizar transacciones y unirse con la inteligencia humana para co-crear riqueza, con toda la riqueza y la propiedad soberana perteneciendo para siempre a la humanidad.",
+    "hero.subtitle": "El cortafuegos financiero autónomo para agentes de IA. Aplica invariantes deterministas Merkle CapLeaf, límites de gasto de pérdida limitada (Bounded Loss) e inmunidad contra inyecciones de prompts para evitar el drenaje catastrófico de billeteras. Empoderando a miles de millones de agentes de IA y robots autónomos para trabajar, realizar transacciones y unirse con la inteligencia humana para co-crear riqueza, con toda la riqueza y la propiedad soberana perteneciendo para siempre a la humanidad. Hoy, el cortafuegos financiero y sistema operativo financiero de micropagos para agentes de IA; mañana, la base económica para la era de la superinteligencia simbiótica (AI²).",
     "hero.launchDashboard": "Lanzar Panel de Control",
     "hero.exploreArch": "Libro Blanco",
     "hero.whitepaper": "Libro Blanco",
@@ -3768,6 +3804,12 @@
     "dev.watchtowerEndpointDefend": "Transmitir transacción de defensa de liquidación en cadena a Solana Devnet"
   },
   "ru": {
+    "dev.card0Title": "0. Финансовый фаервол и рои агентов",
+    "dev.card0Desc": "Декоратор в 1 строку для ограничения убытков, защиты от prompt-инъекций и делегирования роям.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "Встраиваемый финансовый фаервол и делегирование роям (Стандартная библиотека для AI)",
+    "dev.sec0Subtitle": "Декоратор в 1 строку для жесткого лимита бюджета, блокировки аномалий и делегирования без повторного FaceID.",
+
     "nav.devHub": "Центр разработки и MCP",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -4085,7 +4127,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "АВТОНОМНЫЙ ФИНАНСОВЫЙ ФАЕРВОЛ ДЛЯ ИИ-АГЕНТОВ",
     "hero.title": "Экономический фундамент эпохи симбиотического сверхразума AI²",
-    "hero.subtitle": "Автономный финансовый фаервол для ИИ-агентов. Обеспечивает детерминированные инварианты Merkle CapLeaf, лимиты расходов с ограниченным убытком (Bounded Loss) и защиту от prompt-инъекций для предотвращения опустошения кошельков. Расширяет возможности миллиардов автономных ИИ-агентов и роботов для свободной работы, транзакций и объединения с человеческим интеллектом для совместного создания богатства, при этом все богатство и суверенная собственность навсегда остаются за человечеством.",
+    "hero.subtitle": "Автономный финансовый фаервол для ИИ-агентов. Обеспечивает детерминированные инварианты Merkle CapLeaf, лимиты расходов с ограниченным убытком (Bounded Loss) и защиту от prompt-инъекций для предотвращения опустошения кошельков. Расширяет возможности миллиардов автономных ИИ-агентов и роботов для свободной работы, транзакций и объединения с человеческим интеллектом для совместного создания богатства, при этом все богатство и суверенная собственность навсегда остаются за человечеством. Сегодня — финансовый фаервол и финансовая операционная система микроплатежей для ИИ-агентов; завтра — экономический фундамент для эпохи симбиотического сверхразума (AI²).",
     "hero.launchDashboard": "Открыть Панель Управления",
     "hero.exploreArch": "Whitepaper",
     "hero.whitepaper": "Whitepaper",
@@ -4389,6 +4431,12 @@
     "dev.watchtowerEndpointDefend": "Трансляция транзакции защиты ончейн-расчетов в сеть Solana Devnet"
   },
   "vi": {
+    "dev.card0Title": "0. Bức tường lửa & Bầy đàn AI",
+    "dev.card0Desc": "1 dòng decorator chặn rút ruột ví, trần chi tiêu Bounded Loss và phân quyền bầy đàn.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "Bức Tường Lửa Tài Chính 1-Chạm & Phân Quyền Bầy Đàn (Thư Viện Chuẩn Cho Kỹ Sư AI)",
+    "dev.sec0Subtitle": "1 dòng decorator khóa cứng ngân sách, triệt tiêu Prompt Injection và phân quyền Sub-Agent không cần FaceID.",
+
     "nav.devHub": "Lập Trình & MCP",
     "nav.devHubShort": "Dev & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -4706,7 +4754,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "BỨC TƯỜNG LỬA TÀI CHÍNH TỰ HÀNH CHO AI AGENT",
     "hero.title": "Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²",
-    "hero.subtitle": "Bức tường lửa tài chính tự hành cho AI Agent. Thiết lập bất biến ngân sách Merkle CapLeaf, giới hạn rủi ro hữu hạn (Bounded Loss) và miễn nhiễm rút ruột ví khi AI bị tấn công Prompt Injection. Giúp hàng tỷ tác nhân AI Agent, Robot AI tự do làm việc, giao dịch và hợp nhất với trí tuệ thực tế của con người để cùng tạo ra của cải, toàn bộ của cải và quyền làm chủ mãi mãi thuộc về con người.",
+    "hero.subtitle": "Bức tường lửa tài chính tự hành cho AI Agent. Thiết lập bất biến ngân sách Merkle CapLeaf, giới hạn rủi ro hữu hạn (Bounded Loss) và miễn nhiễm rút ruột ví khi AI bị tấn công Prompt Injection. Giúp hàng tỷ tác nhân AI Agent, Robot AI tự do làm việc, giao dịch và hợp nhất với trí tuệ thực tế của con người để cùng tạo ra của cải, toàn bộ của cải và quyền làm chủ mãi mãi thuộc về con người. Hôm nay là Bức tường lửa tài chính & Hệ điều hành tài chính vi thanh toán cho AI Agent; Ngày mai là Nền tảng kinh tế cho Kỷ nguyên Siêu Trí Tuệ Cộng Sinh (AI²).",
     "hero.launchDashboard": "Mở Dashboard Điều Khiển",
     "hero.exploreArch": "Whitepaper",
     "hero.whitepaper": "Whitepaper",
@@ -5010,6 +5058,12 @@
     "dev.watchtowerEndpointDefend": "Phát sóng giao dịch phòng thủ quyết toán on-chain lên Solana Devnet"
   },
   "hi": {
+    "dev.card0Title": "0. वित्तीय फ़ायरवॉल और एजेंट स्वार्म",
+    "dev.card0Desc": "बाउंडेड लॉस, प्रॉम्प्ट इंजेक्शन रक्षा और सब-एजेंट स्वार्म डेलिगेशन के लिए 1-लाइन डेकोरेटर।",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "ड्रॉप-इन वित्तीय फ़ायरवॉल और स्वार्म डेलिगेशन (AI इंजीनियरों के लिए मानक लाइब्रेरी)",
+    "dev.sec0Subtitle": "बजट कैपिंग, प्रॉम्प्ट-इंजेक्शन सुरक्षा और बिना बार-बार बायोमेट्रिक्स के स्वार्म डेलिगेशन हेतु 1-लाइन डेकोरेटर।",
+
     "nav.devHub": "डेवलपर और MCP हब",
     "nav.devHubShort": "डेव & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -5327,7 +5381,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "एआई एजेंटों के लिए स्वायत्त वित्तीय फ़ायरवॉल",
     "hero.title": "सहजीवी सुपरइंटेलिजेंस युग (AI²) के लिए आर्थिक आधारशिला",
-    "hero.subtitle": "एआई एजेंटों के लिए स्वायत्त वित्तीय फ़ायरवॉल। वॉलेट ड्रेनेज को रोकने के लिए नियतात्मक मर्कल कैपलीफ इनवेरिएंट्स, सीमित नुकसान (बाउंडेड लॉस) खर्च सीमा और प्रॉम्प्ट इंजेक्शन प्रतिरक्षा लागू करना। अरबों स्वायत्त एआई एजेंटों और एआई रोबोटों को स्वतंत्र रूप से काम करने, लेनदेन करने और समृद्धि सह-निर्मित करने के लिए मानव वास्तविक-दुनिया की बुद्धिमत्ता के साथ एकजुट होने में सक्षम बनाना - जिसमें सारा धन और संप्रभु स्वामित्व हमेशा के लिए मानवता का है।",
+    "hero.subtitle": "एआई एजेंटों के लिए स्वायत्त वित्तीय फ़ायरवॉल। वॉलेट ड्रेनेज को रोकने के लिए नियतात्मक मर्कल कैपलीफ इनवेरिएंट्स, सीमित नुकसान (बाउंडेड लॉस) खर्च सीमा और प्रॉम्प्ट इंजेक्शन प्रतिरक्षा लागू करना। अरबों स्वायत्त एआई एजेंटों और एआई रोबोटों को स्वतंत्र रूप से काम करने, लेनदेन करने और समृद्धि सह-निर्मित करने के लिए मानव वास्तविक-दुनिया की बुद्धिमत्ता के साथ एकजुट होने में सक्षम बनाना - जिसमें सारा धन और संप्रभु स्वामित्व हमेशा के लिए मानवता का है। आज, एआई एजेंटों के लिए वित्तीय फ़ायरवॉल और सूक्ष्म-भुगतान वित्तीय ऑपरेटिंग सिस्टम; कल, सहजीवी सुपरइंटेलिजेंस युग (AI²) के लिए आर्थिक आधारशिला।",
     "hero.launchDashboard": "यूजर डैशबोर्ड खोलें",
     "hero.exploreArch": "श्वेतपत्र",
     "hero.whitepaper": "श्वेतपत्र",
@@ -5631,6 +5685,12 @@
     "dev.watchtowerEndpointDefend": "Solana Devnet पर ऑन-चेन निपटान रक्षा लेनदेन प्रसारित करें"
   },
   "he": {
+    "dev.card0Title": "0. חומת אש פיננסית ונחילי סוכנים",
+    "dev.card0Desc": "דקורטור בשורה אחת להגבלת הפסדים מוגדרת, הגנה מהזרקת פרומפטים והאצלת סמכויות לנחילי סוכנים.",
+    "dev.card0Badge": "@firewall.protect",
+    "dev.sec0Title": "חומת אש פיננסית מיידית והאצלת סמכויות נחיל (תלות סטנדרטית למהנדסי AI)",
+    "dev.sec0Subtitle": "דקורטור שורה אחת להגבלת תקציב, הגנת חריגות והאצלת סוכנים ללא אימות ביומטרי חוזר.",
+
     "nav.devHub": "מרכז פיתוח ו-MCP",
     "nav.devHubShort": "פיתוח & MCP",
     "mcp.sdkTitle": "TypeScript SDK Integration",
@@ -5947,7 +6007,7 @@
     "nav.mobile.mcp": "MCP",
     "hero.badge": "חומת האש הפיננסית האוטונומית לסוכני AI",
     "hero.title": "התשתית הכלכלית לעידן סופר-אינטליגנציה סימביוטית AI²",
-    "hero.subtitle": "חומת האש הפיננסית האוטונומית לסוכני AI. אכיפת אינווריאנטים דטרמיניסטיים של Merkle CapLeaf, מגבלות הוצאה בהפסד חסום (Bounded Loss) וחסינות מפני הזרקת פרומפטים למניעת ריקון ארנקים. העצמת מיליארדי סוכני AI ורובוטים אוטונומיים לעבוד, לבצע עסקאות ולהתאחד עם האינטליגנציה האנושית ליצירת שגשוג משותף - כאשר כל העושר והבעלות הריבונית שייכים לעד לאנושות.",
+    "hero.subtitle": "חומת האש הפיננסית האוטונומית לסוכני AI. אכיפת אינווריאנטים דטרמיניסטיים של Merkle CapLeaf, מגבלות הוצאה בהפסד חסום (Bounded Loss) וחסינות מפני הזרקת פרומפטים למניעת ריקון ארנקים. העצמת מיליארדי סוכני AI ורובוטים אוטונומיים לעבוד, לבצע עסקאות ולהתאחד עם האינטליגנציה האנושית ליצירת שגשוג משותף - כאשר כל העושר והבעלות הריבונית שייכים לעד לאנושות. היום, חומת אש פיננסית ומערכת הפעלה פיננסית למיקרו-תשלומים עבור סוכני AI; מחר, התשתית הכלכלית לעידן בינת-העל הסימביוטית (AI²).",
     "hero.launchDashboard": "פתח לוח בקרה",
     "hero.exploreArch": "ספר לבן",
     "hero.whitepaper": "ספר לבן",

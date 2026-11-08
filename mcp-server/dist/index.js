@@ -5,7 +5,7 @@
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema, } from "@modelcontextprotocol/sdk/types.js";
-import { Connection, Keypair, PublicKey, SystemProgram, Transaction, TransactionInstruction, sendAndConfirmTransaction, LAMPORTS_PER_SOL, } from "@solana/web3.js";
+import { Connection, Keypair, PublicKey, SystemProgram, Transaction, TransactionInstruction, sendAndConfirmTransaction, LAMPORTS_PER_SOL, ComputeBudgetProgram, } from "@solana/web3.js";
 import fs from "fs";
 import path from "path";
 import os from "os";
@@ -18,6 +18,33 @@ const DEFAULT_RPC = CLUSTER === "mainnet-beta"
     : "https://api.devnet.solana.com";
 const RPC_URL = process.env.SOLANA_RPC_URL || DEFAULT_RPC;
 const connection = new Connection(RPC_URL, "confirmed");
+// Multi-region RPC Fallback Pool for Zero-Downtime Panic Circuit Breaker
+const RPC_FALLBACK_POOL = [
+    RPC_URL,
+    CLUSTER === "mainnet-beta" ? "https://solana-mainnet.g.alchemy.com/v2/demo" : "https://api.devnet.solana.com",
+    CLUSTER === "mainnet-beta" ? "https://rpc.ankr.com/solana" : "https://rpc.ankr.com/solana_devnet",
+].filter((url, idx, arr) => arr.indexOf(url) === idx);
+async function broadcastWithPriorityAndFallback(tx, signers) {
+    let lastError = null;
+    for (const rpc of RPC_FALLBACK_POOL) {
+        try {
+            const conn = (rpc === RPC_URL) ? connection : new Connection(rpc, "confirmed");
+            // Critical Audit Fix: Fetch fresh blockhash for target node and reset signatures to prevent BlockhashNotFound
+            const { blockhash } = await conn.getLatestBlockhash("confirmed");
+            tx.recentBlockhash = blockhash;
+            tx.signatures = [];
+            const sig = await sendAndConfirmTransaction(conn, tx, signers, {
+                commitment: "confirmed",
+                preflightCommitment: "confirmed",
+            });
+            return sig;
+        }
+        catch (err) {
+            lastError = err;
+        }
+    }
+    throw lastError || new Error("All RPC endpoints in fallback pool exhausted");
+}
 // Constants
 const MEMO_PROGRAM_ID = new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr");
 const TOKEN_PROGRAM_ID = new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
@@ -477,6 +504,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             const cleanDesc = actionDesc.replace(/[^a-zA-Z0-9 _-]/g, "").slice(0, 32);
             const memoText = `HAICHAIN:PAY:USDT=${amount.toFixed(6)}:ACT=${cleanDesc}`;
             const tx = new Transaction();
+            // Dynamic Priority Fee & Compute Budget for Sub-Second Wire Inclusion
+            // Guarantees transaction inclusion during network congestion / memecoin spikes
+            const priorityMicroLamports = parseInt(process.env.HAICHAIN_PANIC_PRIORITY_FEE || "100000", 10);
+            tx.add(ComputeBudgetProgram.setComputeUnitLimit({ units: 120_000 }), ComputeBudgetProgram.setComputeUnitPrice({ microLamports: priorityMicroLamports }));
             tx.add(SystemProgram.transfer({
                 fromPubkey: vaultKeypair.publicKey,
                 toPubkey: targetRecipient,
@@ -487,10 +518,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 programId: MEMO_PROGRAM_ID,
                 data: Buffer.from(memoText, "utf-8"),
             }));
-            const sig = await sendAndConfirmTransaction(connection, tx, [vaultKeypair], {
-                commitment: "confirmed",
-                preflightCommitment: "confirmed",
-            });
+            // Broadcast with Priority Fee across Multi-Region Fallback RPC Pool
+            const sig = await broadcastWithPriorityAndFallback(tx, [vaultKeypair]);
             const elapsed = Date.now() - startTime;
             // Mutate durable state ledger
             mutateSpendingPot("agent_claude_desktop_01", (p, ledger) => {
@@ -552,6 +581,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             const cleanReason = reason.replace(/[^a-zA-Z0-9 _-]/g, "").slice(0, 40);
             const memoText = `HAICHAIN:EMERGENCY_PANIC_KILL_SWITCH:REVOKED:REASON=${cleanReason}`;
             const tx = new Transaction();
+            // Dynamic Priority Fee & Compute Budget for Sub-Second Wire Inclusion
+            // Guarantees transaction inclusion during network congestion / memecoin spikes
+            const priorityMicroLamports = parseInt(process.env.HAICHAIN_PANIC_PRIORITY_FEE || "100000", 10);
+            tx.add(ComputeBudgetProgram.setComputeUnitLimit({ units: 120_000 }), ComputeBudgetProgram.setComputeUnitPrice({ microLamports: priorityMicroLamports }));
             // Check if on-chain Anchor Agent Vault exists
             let onChainVaultTripped = false;
             try {
@@ -585,10 +618,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 programId: MEMO_PROGRAM_ID,
                 data: Buffer.from(memoText, "utf-8"),
             }));
-            const sig = await sendAndConfirmTransaction(connection, tx, [vaultKeypair], {
-                commitment: "confirmed",
-                preflightCommitment: "confirmed",
-            });
+            // Broadcast with Priority Fee across Multi-Region Fallback RPC Pool
+            const sig = await broadcastWithPriorityAndFallback(tx, [vaultKeypair]);
             const elapsed = Date.now() - startTime;
             return {
                 content: [

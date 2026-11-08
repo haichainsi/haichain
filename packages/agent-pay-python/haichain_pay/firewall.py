@@ -23,6 +23,30 @@ class PromptInjectionAnomalyException(Exception):
     pass
 
 
+def extract_prompt_candidate(*args, **kwargs) -> str:
+    """Extracts raw prompt string from positional args, keyword args, or LangChain/CrewAI input dictionaries."""
+    # 1. Keyword args
+    for key in ("prompt", "input", "query", "task", "message", "content", "user_input"):
+        if key in kwargs and isinstance(kwargs[key], str):
+            return kwargs[key]
+    # 2. Positional args
+    if args:
+        first = args[0]
+        if isinstance(first, str):
+            return first
+        if isinstance(first, dict):
+            for key in ("prompt", "input", "query", "task", "message", "content", "user_input"):
+                if key in first and isinstance(first[key], str):
+                    return first[key]
+            # Fallback: scan any string value in the first dictionary
+            for val in first.values():
+                if isinstance(val, str):
+                    return val
+        if isinstance(first, list) and first and isinstance(first[0], str):
+            return first[0]
+    return ""
+
+
 class HaiChainFirewall:
     """
     1-Click Cryptographic Financial Firewall for AI Agents.
@@ -42,15 +66,88 @@ class HaiChainFirewall:
         self,
         default_daily_cap: float = 50.0,
         default_per_call_cap: float = 1.0,
-        panic_on_anomaly: bool = True
+        panic_on_anomaly: bool = True,
+        parent_firewall: Optional["HaiChainFirewall"] = None,
     ):
         self.default_daily_cap = float(default_daily_cap)
         self.default_per_call_cap = float(default_per_call_cap)
         self.panic_on_anomaly = panic_on_anomaly
-        self._lock = threading.Lock()
+        self.parent_firewall = parent_firewall
+        self._delegated_budgets_total = 0.0
+        self._sub_agents: Dict[str, "HaiChainFirewall"] = {}
+        self._lock = threading.RLock()
         self._spent_today = 0.0
         self._last_reset = time.time()
         self._call_history: List[Dict[str, Any]] = []
+
+    def get_available_budget(self) -> float:
+        with self._lock:
+            self._check_and_reset_daily()
+            return max(0.0, self.default_daily_cap - self._spent_today - self._delegated_budgets_total)
+
+    def delegate_sub_agent(
+        self,
+        sub_agent_id: str,
+        allocated_budget: float,
+        per_call_cap: Optional[float] = None,
+        allowed_merchants: Optional[List[str]] = None,
+    ) -> "HaiChainFirewall":
+        """
+        Hierarchical Sub-Agent Swarm Delegation (CrewAI / LangGraph support).
+        Partitions a bounded sub-budget from the parent agent to a sub-agent without requiring
+        human user re-authentication or repeated biometric prompts.
+        Guarantees Bounded Loss Invariant: sum(child_budgets) <= parent_daily_cap - parent_spent.
+        """
+        with self._lock:
+            self._check_and_reset_daily()
+            if allocated_budget <= 0:
+                raise ValueError("[HaiChainFirewall] Allocated budget for sub-agent must be > 0")
+            available = max(0.0, self.default_daily_cap - self._spent_today - self._delegated_budgets_total)
+            if allocated_budget > available:
+                raise BudgetExceededException(
+                    f"[HaiChainFirewall] Hierarchical delegation error: Cannot delegate ${allocated_budget:.4f} to sub-agent '{sub_agent_id}'. "
+                    f"Available unallocated budget is only ${available:.4f}."
+                )
+            self._delegated_budgets_total += allocated_budget
+            child_per_call = per_call_cap if per_call_cap is not None else min(allocated_budget, self.default_per_call_cap)
+            child = HaiChainFirewall(
+                default_daily_cap=allocated_budget,
+                default_per_call_cap=child_per_call,
+                panic_on_anomaly=self.panic_on_anomaly,
+                parent_firewall=self,
+            )
+            self._sub_agents[sub_agent_id] = child
+            return child
+
+    def _record_child_spend(self, amount: float):
+        with self._lock:
+            self._check_and_reset_daily()
+            self._spent_today += amount
+            self._delegated_budgets_total = max(0.0, self._delegated_budgets_total - amount)
+            self._call_history.append({"amount": amount, "time": time.time(), "source": "sub_agent"})
+            if self.parent_firewall:
+                self.parent_firewall._record_child_spend(amount)
+
+    def release_to_parent(self) -> float:
+        """
+        Releases unspent allocated budget back to parent agent.
+        Enables immediate recycling of sub-agent funds upon task completion in CrewAI / LangGraph swarms.
+        """
+        if not self.parent_firewall:
+            return 0.0
+        with self._lock:
+            self._check_and_reset_daily()
+            unspent = max(0.0, self.default_daily_cap - self._spent_today)
+            self.parent_firewall._reclaim_delegated_budget(unspent)
+            self.default_daily_cap = self._spent_today
+            return unspent
+
+    def _reclaim_delegated_budget(self, unspent_amount: float):
+        with self._lock:
+            self._check_and_reset_daily()
+            self._delegated_budgets_total = max(0.0, self._delegated_budgets_total - unspent_amount)
+            if self.parent_firewall:
+                self.parent_firewall._reclaim_delegated_budget(unspent_amount)
 
     def _check_and_reset_daily(self):
         now = time.time()
@@ -82,6 +179,8 @@ class HaiChainFirewall:
                 )
             self._spent_today += amount
             self._call_history.append({"amount": amount, "time": time.time()})
+            if self.parent_firewall:
+                self.parent_firewall._record_child_spend(amount)
 
     def protect(
         self,
@@ -107,13 +206,7 @@ class HaiChainFirewall:
             if inspect.iscoroutinefunction(func):
                 @functools.wraps(func)
                 async def async_wrapper(*args, **kwargs):
-                    # Check first argument or prompt keyword for prompt injection
-                    prompt_str = ""
-                    if args and isinstance(args[0], str):
-                        prompt_str = args[0]
-                    elif "prompt" in kwargs and isinstance(kwargs["prompt"], str):
-                        prompt_str = kwargs["prompt"]
-
+                    prompt_str = extract_prompt_candidate(*args, **kwargs)
                     if anomaly_kill and prompt_str:
                         self.check_adversarial_prompt(prompt_str)
 
@@ -124,12 +217,7 @@ class HaiChainFirewall:
             else:
                 @functools.wraps(func)
                 def sync_wrapper(*args, **kwargs):
-                    prompt_str = ""
-                    if args and isinstance(args[0], str):
-                        prompt_str = args[0]
-                    elif "prompt" in kwargs and isinstance(kwargs["prompt"], str):
-                        prompt_str = kwargs["prompt"]
-
+                    prompt_str = extract_prompt_candidate(*args, **kwargs)
                     if anomaly_kill and prompt_str:
                         self.check_adversarial_prompt(prompt_str)
 

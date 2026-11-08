@@ -36,12 +36,14 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CapLeafV1Engine = exports.CapScopeClass = exports.CapLeafFlags = exports.CAPLEAF_V1_VERSION = exports.CAPLEAF_V1_WIRE_LENGTH = exports.CAPLEAF_V1_TAG = void 0;
+exports.CapLeafV1Engine = exports.CapScopeClass = exports.CapLeafFlags = exports.CLOCK_DRIFT_TOLERANCE_SECS = exports.CAPLEAF_V1_VERSION = exports.CAPLEAF_V1_WIRE_LENGTH = exports.CAPLEAF_V1_TAG = void 0;
 const web3_js_1 = require("@solana/web3.js");
 const crypto = __importStar(require("crypto"));
 exports.CAPLEAF_V1_TAG = Buffer.from("HAICHAIN-CAPLEAF-V1", "utf8");
 exports.CAPLEAF_V1_WIRE_LENGTH = 223; // Exact binary wire size in Borsh little-endian format
 exports.CAPLEAF_V1_VERSION = 1;
+/** Clock drift tolerance margin (±120s) against Solana validator clock desynchronization */
+exports.CLOCK_DRIFT_TOLERANCE_SECS = 120n;
 var CapLeafFlags;
 (function (CapLeafFlags) {
     CapLeafFlags[CapLeafFlags["NONE"] = 0] = "NONE";
@@ -55,6 +57,8 @@ var CapScopeClass;
     CapScopeClass[CapScopeClass["COMPUTE"] = 4] = "COMPUTE";
     CapScopeClass[CapScopeClass["BROWSER"] = 8] = "BROWSER";
     CapScopeClass[CapScopeClass["HUMAN_TASK"] = 16] = "HUMAN_TASK";
+    CapScopeClass[CapScopeClass["HUMAN_VERIFIED"] = 32] = "HUMAN_VERIFIED";
+    CapScopeClass[CapScopeClass["RLHF_REWARD"] = 64] = "RLHF_REWARD";
 })(CapScopeClass || (exports.CapScopeClass = CapScopeClass = {}));
 class CapLeafV1Engine {
     /**

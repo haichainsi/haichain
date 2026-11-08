@@ -2,6 +2,8 @@ import { PublicKey } from "@solana/web3.js";
 export declare const CAPLEAF_V1_TAG: Buffer<ArrayBuffer>;
 export declare const CAPLEAF_V1_WIRE_LENGTH = 223;
 export declare const CAPLEAF_V1_VERSION = 1;
+/** Clock drift tolerance margin (±120s) against Solana validator clock desynchronization */
+export declare const CLOCK_DRIFT_TOLERANCE_SECS = 120n;
 export declare enum CapLeafFlags {
     NONE = 0,
     REQUIRE_COSIGN = 1,// bit0: Requires TEE Cosigner co-signature for Reserve
@@ -12,7 +14,9 @@ export declare enum CapScopeClass {
     LLM_INFERENCE = 2,// bit1: LLM token generation / inference
     COMPUTE = 4,// bit2: Heavy cloud compute / GPU hours
     BROWSER = 8,// bit3: Headless browser automation
-    HUMAN_TASK = 16
+    HUMAN_TASK = 16,// bit4: Human-in-the-loop task completion
+    HUMAN_VERIFIED = 32,// bit5: WebAuthn/Passkey cryptographic biometric verification
+    RLHF_REWARD = 64
 }
 export interface CapLeafV1 {
     version: number;

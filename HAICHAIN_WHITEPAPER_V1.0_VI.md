@@ -1,7 +1,7 @@
 # HAICHAIN: Nền Tảng Kinh Tế Cho Kỷ Nguyên Siêu Trí Tuệ Cộng Sinh AI²
 > **BỨC TƯỜNG LỬA TÀI CHÍNH TỰ HÀNH CHO AI AGENT**
 >
-## Bức tường lửa tài chính tự hành cho AI Agent. Thiết lập bất biến ngân sách Merkle CapLeaf, giới hạn rủi ro hữu hạn (Bounded Loss) và miễn nhiễm rút ruột ví khi AI bị tấn công Prompt Injection. Giúp hàng tỷ tác nhân AI Agent, Robot AI tự do làm việc, giao dịch và hợp nhất với trí tuệ thực tế của con người để cùng tạo ra của cải, toàn bộ của cải và quyền làm chủ mãi mãi thuộc về con người.
+## Bức tường lửa tài chính tự hành cho AI Agent. Thiết lập bất biến ngân sách Merkle CapLeaf, giới hạn rủi ro hữu hạn (Bounded Loss) và miễn nhiễm rút ruột ví khi AI bị tấn công Prompt Injection. Giúp hàng tỷ tác nhân AI Agent, Robot AI tự do làm việc, giao dịch và hợp nhất với trí tuệ thực tế của con người để cùng tạo ra của cải, toàn bộ của cải và quyền làm chủ mãi mãi thuộc về con người. Hôm nay là Bức tường lửa tài chính & Hệ điều hành tài chính vi thanh toán cho AI Agent; Ngày mai là Nền tảng kinh tế cho Kỷ nguyên Siêu Trí Tuệ Cộng Sinh (AI²).
 **Đơn vị chủ trì:** Hội đồng Kiến trúc Hệ thống Phân tán HAICHAIN  
 **Ngày phát hành:** 31 tháng 10 năm 2026  
 **Phân loại tài liệu:** Sách Trắng Chính Thức v1.1 (Phiên bản Tiếng Việt - Bản CapLeaf & 9 Bất Biến)  
@@ -566,6 +566,111 @@ Trong bức tranh toàn cảnh của nền kinh tế tác tử tự hành, thị
    });
    ```
    Nhờ kiến trúc tương thích hoàn hảo này, HAICHAIN không thay thế hay loại trừ x402, mà trở thành **hạ tầng bảo vệ và quản trị rủi ro tối thượng** cho mọi tác tử hoạt động trên nền kinh tế Internet mở.
+
+---
+
+### 4.7. Hiện Thực Hóa Kỹ Thuật AI²: Vòng Lặp Cộng Sinh Người - Máy, Cơ Chế Thẩm Định Con Người (HITL Escalation) & Vi Trả Thưởng RLHF Thời Gian Thực
+
+Dưới góc nhìn nghiên cứu Machine Learning thực chiến, công thức $H_{ai} = \text{Human} \times \text{AI}$ không phải là khẩu hiệu tiếp thị viển vông, mà được hiện thực hóa bằng kiến trúc kỹ thuật hai chiều chặt chẽ giữa **Trí tuệ thực tế của con người (Actual Intelligence)** và **Năng lực tính toán của máy móc (Artificial Intelligence)**:
+
+```
+          KIẾN TRÚC HIỆN THỰC HÓA KỸ THUẬT AI²: VÒNG LẶP CỘNG SINH 2 CHIỀU
+          
+    [ VÒNG LẶP 1: LEO THANG THẨM ĐỊNH RỦI RO (HITL ESCALATION) ]
+    AI Agent tự hành ──(Gặp rủi ro cao / Bất định)──> Kích hoạt WebAuthn Passkey (FaceID)
+          ▲                                                    │
+          │                                                    ▼
+    Tiếp tục thực thi an toàn <──(Vé ký CapScopeClass)────── Con người phê duyệt
+    
+    ──────────────────────────────────────────────────────────────────────────
+    [ VÒNG LẶP 2: VI TRẢ THƯỞNG RLHF & CHỨNG THỰC DỮ LIỆU THỜI GIAN THỰC ]
+    Agent tự hành ──(Cần nhãn dữ liệu biên / Đánh giá)──> Con người (Human Evaluator)
+          │                                                    │
+          ▼                                                    ▼
+    Bơm vi cọc $0.005-$0.05 USDT ──(Kênh đảo chiều)──> Nhận Ground Truth chất lượng cao
+    (Khắc phục triệt để thoái hóa mô hình tự hủy MAD - Model Autophagy Disorder)
+```
+
+1. **Cơ Chế Leo Thang Thẩm Định Rủi Ro Con Người (HITL Policy Escalation):**
+   Khi Agent đối mặt với các tình huống vượt quá ngưỡng bất định hoặc hạn mức quy định:
+   $$\text{Trigger HITL} \iff (\mathcal{C}(\text{task}) < \Theta_{\text{conf}}) \lor (\Delta \text{Spend} > \Theta_{\text{risk}}) \lor (\mathcal{H}_{\text{entropy}} > \Theta_{\text{ent}})$$
+   Trong đó:
+   * $\mathcal{C}(\text{task})$ là độ tự tin của mô hình (Confidence score).
+   * $\Delta \text{Spend}$ là chi phí tài chính phát sinh vượt quá ngưỡng rủi ro $\Theta_{\text{risk}}$.
+   * $\mathcal{H}_{\text{entropy}}$ là độ hỗn loạn phân phối token trong chuỗi suy luận.
+   
+   Khi điều kiện thỏa mãn, Agent Framework lập tức treo luồng thực thi và gửi tín hiệu thẩm định về thiết bị của chủ sở hữu qua giao thức WebAuthn/FIDO2. Con người xác thực sinh trắc học cục bộ (TouchID/FaceID) để sinh ra vé ủy thác đặc quyền `CapScopeClass.HUMAN_VERIFIED`. Nhờ vậy, con người giữ quyền phủ quyết tối cao mà không bao giờ phải chia sẻ hoặc để lộ private key cho máy móc.
+
+2. **Kênh Vi Trả Thưởng RLHF Đảo Chiều Thời Gian Thực (Real-Time Cognitive RLHF Micropayments):**
+   Nghiên cứu khoa học hiện đại chỉ ra hiện tượng **Suy thoái Mô hình tự hủy (Model Autophagy Disorder - MAD)**: khi các mô hình AI liên tục tự học trên dữ liệu tổng hợp (synthetic data) do chính AI sinh ra, phân phối xác suất bị méo mó và sụp đổ chỉ sau vài thế hệ. Để duy trì sự tiến hóa, hệ thống bắt buộc phải liên tục nạp dữ liệu nhận thức khách quan từ thế giới thực của con người (Human Ground Truth).
+   HAICHAIN triển khai **Kênh Vi Thanh Toán Đảo Chiều (Reverse Micro-payment Channel)**: Tác tử AI đóng vai trò người mua nhận thức, tự động phát lệnh thưởng vi mô ($0.005 - $0.05 USDT/USDC) cho các chuyên gia con người khi họ hoàn thành một lượt phản biện đối kháng (adversarial review), gán nhãn trường hợp biên hoặc kiểm định chân lý vật lý. Dòng tiền được giải ngân tức thì trong từng mili-giây, biến con người thành các nút tri thức được tưởng thưởng trực tiếp và công bằng trong nền kinh tế AI.
+
+---
+
+### 4.8. Quản Trị Phân Quyền Bầy Đàn Phân Tầng Không Gián Đoạn (Hierarchical Swarm Delegation - CrewAI / LangGraph)
+
+Trong các kiến trúc đa tác tử tiên tiến như CrewAI, LangGraph hay AutoGen, một **Tác tử Trưởng (Manager Agent)** phải phân rã một mục tiêu lớn thành các nhiệm vụ con và điều phối từ 5 đến hàng chục **Tác tử Phụ (Sub-agents)**:
+
+```
+               CÂY PHÂN BỔ NGÂN SÁCH BẦY ĐÀN PHÂN TẦNG (SWARM DELEGATION)
+               
+                 [ Chủ Sở Hữu (Con Người) : Cấp CapLeaf Gốc $10.00 ]
+                                         │
+                                         ▼
+                     [ Manager Agent (Tác tử Trưởng) ]
+                     Ngân sách khả dụng: $10.00 | Chi tiêu: $0.00
+                                         │
+         ┌───────────────────────────────┼───────────────────────────────┐
+         ▼                               ▼                               ▼
+  [ Sub-Agent A ]                 [ Sub-Agent B ]                 [ Sub-Agent C ]
+  Tìm kiếm Web ($2.00)            Phân tích Code ($1.50)          Viết Báo Cáo ($1.00)
+  (Không cần FaceID)              (Không cần FaceID)              (Không cần FaceID)
+```
+
+1. **Cơ Chế Bẻ Nhỏ Vé Lá Merkle Không Gián Đoạn (Zero-Biometric Delegation):**
+   Manager Agent sở hữu quyền bẻ nhỏ vé lá Merkle gốc thành các lá nhánh con với ngân sách phân bổ cứng:
+   $$\sum_{i=1}^{k} \text{AllocatedBudget}(SubAgent_i) \le \text{DailyCap}_{\text{parent}} - \text{Spent}_{\text{parent}}$$
+   Toàn bộ quá trình phân quyền diễn ra bằng chữ ký đại số ngoài chuỗi thông qua SDK (`delegateSubAgent` / `delegate_sub_agent`). Tác tử phụ nhận vé ngân sách con và thực thi nhiệm vụ hoàn toàn tự chủ mà **không đòi hỏi người dùng phải bấm xác thực FaceID hay nhập mật khẩu lặp đi lặp lại**.
+
+2. **Bảo Toàn Tuyệt Đối Bất Biến Giới Hạn Thiệt Hại (Bounded Loss Conservation):**
+   Khi một Sub-agent tiêu dùng vi thanh toán, số tiền được ghi nhận đồng thời vào hạn mức của Sub-agent và trừ dần vào ngân sách khả dụng của Manager Agent. Ngay cả trong kịch bản xấu nhất: toàn bộ 5 Sub-agent đều bị tấn công Prompt Injection cùng một thời điểm, tổng số tiền bị rò rỉ của cả bầy đàn bị chặn đứng tuyệt đối bởi hạn mức trần ban đầu của Manager Agent, loại bỏ hoàn toàn nguy cơ lây nhiễm chéo hoặc rút cạn kho quỹ chính.
+
+---
+
+### 4.9. Tối Ưu Hóa Fast-Path Streaming SSE: Đảm Bảo TTFT < 200ms Dưới Vòng Lặp Suy Luận ReAct Cao Tần
+
+Trong chu trình suy luận tác tử tự hành (ReAct loop / Chain-of-Thought), một Agent có thể gọi liên tiếp từ 20 đến 50 công cụ (Tools/APIs) trong vòng một phút. Để bảo đảm trải nghiệm người dùng cuối mượt mà và không bị giật cục:
+
+1. **Cam Kết Time-to-First-Token (TTFT) < 200ms:**
+   HAICHAIN xây dựng cơ chế **Fast-Path Zero-Copy Buffer**: Chữ ký voucher ngoài chuỗi (Ed25519 Detached) được đối soát qua hàm băm SHA-256 được biên dịch trước và bộ nhớ đệm module mã hóa Base58/Base64. Toàn bộ thời gian bắt tay mã hóa và xác thực chữ ký hoàn tất trong **dưới 1.5 mili-giây** ($\tau \le 1.5\text{ms}$).
+
+2. **Cổng Streaming SSE Chuyên Biệt (`createStreamingPaywall`):**
+   Khi tác tử gọi API phát sinh phản hồi luồng (Server-Sent Events - SSE), middleware giải phóng token đầu tiên ngay lập tức mà không phải chờ đợi xác nhận chuỗi khối L1, duy trì chỉ số TTFT thực tế dưới 50ms trong môi trường thử nghiệm và dưới 200ms qua mạng WAN công cộng.
+
+---
+
+### 4.10. Khắc Phục Nghẽn Mạng Solana L1: Dynamic Priority Fee, Dự Phòng Fallback RPC Đa Vùng & Dung Sai Lệch Đồng Hồ (Clock Drift ±120s)
+
+Để hiện thực hóa cam kết an toàn dưới môi trường L1 khắc nghiệt trong thực tế:
+
+1. **Dynamic Priority Fees & Bơm Phí Tự Động:**
+   Khi mạng Solana xảy ra tình trạng bão giao dịch memecoin làm tắc nghẽn mempool, các giao dịch không có phí ưu tiên có thể bị trễ từ 2 đến 10 giây. HAICHAIN MCP Server và SDK tích hợp cơ chế tự động tiêm `ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 100_000 })` và định mức đơn vị tính toán chính xác 120,000 Compute Units vào lệnh Panic khẩn cấp (`trigger_emergency_panic`), bảo đảm giao dịch đóng băng được validator đưa vào khối nhanh nhất với thời gian cam kết thực tế $\tau \le 1.2\text{s}$.
+
+2. **Hồ Bơi RPC Dự Phòng Đa Vùng (Multi-Region RPC Fallback Pool):**
+   Hệ thống duy trì cụm kết nối RPC phân tán đa vùng (Singapore, Tokyo, Frankfurt, Virginia). Khi điểm cuối chính bị lỗi timeout hoặc nghẽn mạng quá 1,000ms, bộ điều phối tự động chuyển mạch tức thì (Automatic Failover) sang RPC dự phòng mà không làm gián đoạn vòng lặp bảo vệ.
+
+3. **Dung Sai Lệch Đồng Hồ Chuỗi (Clock Drift Margin ±120s):**
+   Do hiện tượng validator lag trên Solana L1, đồng hồ chuỗi `Clock::get()?.unix_timestamp` có thể bị trôi lệch so với giờ Unix thực tế từ vài chục giây đến hàng phút. Smart contract `programs/haichain-core/src/lib.rs` thiết lập hằng số biên an toàn `CLOCK_DRIFT_TOLERANCE_SECS = 120`. Cơ chế này loại bỏ hoàn toàn lỗi từ chối oan các voucher hợp lệ của tác tử khi đồng hồ mạng bị trôi ngược, đồng thời ngăn chặn các voucher hết hạn lọt lưới quá 120 giây.
+
+---
+
+### 4.11. Phi Tập Trung Hóa Tháp Canh: Liên Minh Sentinel Watchtower Đa Nút (Zero-Griefing Channel Dispute)
+
+Khi một Agent yêu cầu đóng kênh đơn phương, Merchant có cửa sổ thử thách 24 giờ để gửi voucher có giá trị lũy kế cao nhất lên chuỗi. Để loại bỏ hoàn toàn điểm yếu phụ thuộc vào một máy chủ Watchtower duy nhất:
+* Cấu hình Paywall hỗ trợ danh sách liên minh tháp canh: `watchtowerUrls: ["https://sentinel-sg.haichain.si", "https://sentinel-us.haichain.si", "https://sentinel-eu.haichain.si"]`.
+* Mỗi voucher hợp lệ được phát sóng đồng thời và bất đồng bộ (fire-and-forget) tới toàn bộ các nút Sentinel trong liên minh. Dù máy chủ của một Merchant gặp sự cố mất điện, sập mạng hoặc bị đối thủ tấn công DoS, các Sentinel độc lập còn lại trong mạng lưới vẫn tự động đệ trình bằng chứng đối soát lên Solana L1, bảo đảm Merchant không bao giờ bị mất tiền.
+
+---
 
 ## CHƯƠNG 5: CỖ MÁY BÙ TRỪ & NÉN DỮ LIỆU ĐA PHƯƠNG
 

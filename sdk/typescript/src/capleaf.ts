@@ -9,6 +9,9 @@ export const CAPLEAF_V1_TAG = Buffer.from("HAICHAIN-CAPLEAF-V1", "utf8");
 export const CAPLEAF_V1_WIRE_LENGTH = 223; // Exact binary wire size in Borsh little-endian format
 export const CAPLEAF_V1_VERSION = 1;
 
+/** Clock drift tolerance margin (±120s) against Solana validator clock desynchronization */
+export const CLOCK_DRIFT_TOLERANCE_SECS = 120n;
+
 export enum CapLeafFlags {
   NONE = 0,
   REQUIRE_COSIGN = 1 << 0, // bit0: Requires TEE Cosigner co-signature for Reserve
@@ -21,6 +24,8 @@ export enum CapScopeClass {
   COMPUTE = 1 << 2,        // bit2: Heavy cloud compute / GPU hours
   BROWSER = 1 << 3,        // bit3: Headless browser automation
   HUMAN_TASK = 1 << 4,     // bit4: Human-in-the-loop task completion
+  HUMAN_VERIFIED = 1 << 5, // bit5: WebAuthn/Passkey cryptographic biometric verification
+  RLHF_REWARD = 1 << 6,    // bit6: Real-time RLHF / human ground-truth cognitive bounty
 }
 
 export interface CapLeafV1 {

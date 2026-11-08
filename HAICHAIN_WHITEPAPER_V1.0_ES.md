@@ -1,5 +1,7 @@
 # HAICHAIN: La Base Económica para la Era de la Superinteligencia Simbiótica AI²
-## Libro Blanco Técnico Oficial v1.0 - Arquitectura, Invariantes Criptográficos y el Fin de Juego de la Superinteligencia AI L1 Soberana
+> **EL CORTAFUEGOS FINANCIERO AUTÓNOMO PARA AGENTES DE IA**
+>
+## El cortafuegos financiero autónomo para agentes de IA. Aplica invariantes deterministas Merkle CapLeaf, límites de gasto de pérdida limitada (Bounded Loss) e inmunidad contra inyecciones de prompts para evitar el drenaje catastrófico de billeteras. Empoderando a miles de millones de agentes de IA y robots autónomos para trabajar, realizar transacciones y unirse con la inteligencia humana para co-crear riqueza, con toda la riqueza y la propiedad soberana perteneciendo para siempre a la humanidad. Hoy, el cortafuegos financiero y sistema operativo financiero de micropagos para agentes de IA; mañana, la base económica para la era de la superinteligencia simbiótica (AI²).
 **Diseñado por:** El Grupo de Trabajo de Sistemas Globales de HAICHAIN & Comité de Arquitectura del Núcleo Criptográfico  
 **Fecha de Publicación:** 31 de octubre de 2026 (Edición Estándar Institucional)  
 **Clasificación del Documento:** Libro Blanco Técnico v1.1 (Edición en Español CapLeaf y 9 Invariantes)  

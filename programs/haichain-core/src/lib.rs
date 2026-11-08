@@ -38,6 +38,18 @@ pub const CAPLEAF_V1_TAG: &[u8] = b"HAICHAIN-CAPLEAF-V1";
 pub const CAPLEAF_V1_WIRE_LENGTH: usize = 223;
 pub const CAPLEAF_V1_VERSION: u8 = 1;
 
+/// Clock drift tolerance margin (±120s) against Solana validator clock desynchronization
+pub const CLOCK_DRIFT_TOLERANCE_SECS: i64 = 120;
+
+/// Scope Class Bitmask Constants (Formal alignment with AI² Symbiotic Architecture)
+pub const SCOPE_DATA_API: u32 = 1 << 0;
+pub const SCOPE_LLM_INFERENCE: u32 = 1 << 1;
+pub const SCOPE_COMPUTE: u32 = 1 << 2;
+pub const SCOPE_BROWSER: u32 = 1 << 3;
+pub const SCOPE_HUMAN_TASK: u32 = 1 << 4;
+pub const SCOPE_HUMAN_VERIFIED: u32 = 1 << 5;
+pub const SCOPE_RLHF_REWARD: u32 = 1 << 6;
+
 pub fn compute_leaf_hash(program_id: &Pubkey, leaf_bytes: &[u8; 223]) -> [u8; 32] {
     anchor_lang::solana_program::hash::hashv(&[
         &[0x00],
@@ -625,9 +637,9 @@ pub mod haichain_core {
         require!((leaf.flags & 0xFFFC) == 0, HaiChainMasterError::ReservedFlagsNonZero);
 
         let now = Clock::get()?.unix_timestamp;
-        require!(leaf.not_before <= now, HaiChainMasterError::CapLeafNotYetActive);
-        require!(now < leaf.expiry, HaiChainMasterError::CapLeafExpired);
-        require!(leaf.expiry <= now + pot.max_ttl as i64, HaiChainMasterError::ExpiryExceedsMaxTtl);
+        require!(leaf.not_before <= now + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapLeafNotYetActive);
+        require!(now <= leaf.expiry + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapLeafExpired);
+        require!(leaf.expiry <= now + pot.max_ttl as i64 + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::ExpiryExceedsMaxTtl);
 
         // Verify Merkle Proof (Domain Separated)
         let leaf_hash = compute_leaf_hash(&crate::id(), &leaf_bytes);
@@ -684,8 +696,8 @@ pub mod haichain_core {
         require!(ctx.accounts.agent.key() == grant.agent, HaiChainMasterError::Unauthorized);
 
         let now = Clock::get()?.unix_timestamp;
-        require!(now < grant.expiry, HaiChainMasterError::CapLeafExpired);
-        require!(now <= pot.valid_until, HaiChainMasterError::CapabilityExpired);
+        require!(now <= grant.expiry + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapLeafExpired);
+        require!(now <= pot.valid_until + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapabilityExpired);
 
         require!(amount > 0 && amount <= grant.max_reserve, HaiChainMasterError::ExceedsMaxReserve);
         require!(grant.consumed.checked_add(amount).ok_or(HaiChainMasterError::MathOverflow)? <= grant.max_spend, HaiChainMasterError::ExceedsMaxSpend);
@@ -752,8 +764,8 @@ pub mod haichain_core {
         require!(ctx.accounts.agent.key() == grant.agent, HaiChainMasterError::Unauthorized);
 
         let now = Clock::get()?.unix_timestamp;
-        require!(now < grant.expiry, HaiChainMasterError::CapLeafExpired);
-        require!(now <= pot.valid_until, HaiChainMasterError::CapabilityExpired);
+        require!(now <= grant.expiry + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapLeafExpired);
+        require!(now <= pot.valid_until + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapabilityExpired);
 
         require!(additional_amount > 0, HaiChainMasterError::InvalidSpendAmount);
         let new_reserved = channel.reserved.checked_add(additional_amount).ok_or(HaiChainMasterError::MathOverflow)?;
@@ -907,7 +919,7 @@ pub mod haichain_core {
                 HaiChainMasterError::CloseNotRequested
             );
             require!(
-                now >= channel.close_requested_at + channel.dispute_secs as i64,
+                now >= channel.close_requested_at + channel.dispute_secs as i64 + CLOCK_DRIFT_TOLERANCE_SECS,
                 HaiChainMasterError::DisputeWindowActive
             );
             grant.consumed = grant.consumed.saturating_sub(unspent);
@@ -953,7 +965,7 @@ pub mod haichain_core {
         require!((template_grant.flags & (1 << 0)) != 0, HaiChainMasterError::InvalidCapLeafVersion); // REQUIRE_COSIGN flag
 
         let now = Clock::get()?.unix_timestamp;
-        require!(now < template_grant.expiry, HaiChainMasterError::CapLeafExpired);
+        require!(now <= template_grant.expiry + CLOCK_DRIFT_TOLERANCE_SECS, HaiChainMasterError::CapLeafExpired);
 
         // Deduct max_reserve from template grant permanently
         let reserve_size = template_grant.max_reserve;

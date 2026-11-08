@@ -200,8 +200,8 @@ describe("HAICHAIN v1.1 - Phase 1: CapLeaf v1 (223 Bytes), 9 Invariants (I1-I9) 
 
   it("8. [INVARIANT I6 - PANIC EPOCH & FREEZE]: Operations fail when frozen or epoch desynchronized", () => {
     const potFrozen = true;
-    const potEpoch = 1;
-    const leafEpoch = 0;
+    const potEpoch: number = 1;
+    const leafEpoch: number = 0;
 
     // Invariant I6: require!(!pot.frozen && leaf.epoch == pot.panic_epoch)
     const canReserve = (!potFrozen && leafEpoch === potEpoch);
