@@ -805,7 +805,7 @@ pub mod haichain_core {
         let grant = &ctx.accounts.active_grant;
         let channel = &mut ctx.accounts.channel;
 
-        // CLAUDE AUDIT HARDENING: Check frozen pot, revoked grant, and panic epoch mismatch
+        // FORMAL INVARIANT HARDENING: Check frozen pot, revoked grant, and panic epoch mismatch
         require!(!pot.frozen, HaiChainMasterError::PotPanickedFundsFrozen);
         require!(!grant.revoked, HaiChainMasterError::CapLeafExpired);
         require!(pot.panic_epoch == channel.created_at_epoch, HaiChainMasterError::EpochMismatch);
@@ -891,7 +891,7 @@ pub mod haichain_core {
         let pot = &ctx.accounts.pot;
         let authority = &ctx.accounts.authority;
 
-        // CLAUDE AUDIT HARDENING: Enforce authorized signer (agent or pot owner)
+        // FORMAL INVARIANT HARDENING: Enforce authorized signer (agent or pot owner)
         require!(
             authority.key() == channel.agent_key || authority.key() == pot.owner_auth,
             HaiChainMasterError::Unauthorized
@@ -901,13 +901,15 @@ pub mod haichain_core {
         let unspent = channel.reserved.saturating_sub(channel.paid);
         if unspent > 0 {
             let now = Clock::get()?.unix_timestamp;
-            // Enforce dispute window for unspent funds if close was requested
-            if channel.close_requested_at > 0 {
-                require!(
-                    now >= channel.close_requested_at + channel.dispute_secs as i64,
-                    HaiChainMasterError::DisputeWindowActive
-                );
-            }
+            // Formal dispute window invariant: close MUST have been requested and window elapsed
+            require!(
+                channel.close_requested_at > 0,
+                HaiChainMasterError::CloseNotRequested
+            );
+            require!(
+                now >= channel.close_requested_at + channel.dispute_secs as i64,
+                HaiChainMasterError::DisputeWindowActive
+            );
             grant.consumed = grant.consumed.saturating_sub(unspent);
 
             let grant_key = channel.grant;
@@ -1032,6 +1034,15 @@ pub mod haichain_core {
         )?;
 
         msg!("HAICHAIN: Master owner withdrew {} tokens from pot.", amount);
+        Ok(())
+    }
+
+    /// 23. UNFREEZE POT (MASTER OWNER RESTORES POT AFTER EMERGENCY INVESTIGATION)
+    pub fn unfreeze_pot(ctx: Context<UnfreezePotContext>) -> Result<()> {
+        let pot = &mut ctx.accounts.pot;
+        require!(pot.frozen, HaiChainMasterError::InvalidSpendAmount);
+        pot.frozen = false;
+        msg!("HAICHAIN: Pot unfrozen by master owner. Normal state channel operations resumed.");
         Ok(())
     }
 
@@ -1644,6 +1655,18 @@ pub struct ActivateChildContext<'info> {
 }
 
 #[derive(Accounts)]
+pub struct UnfreezePotContext<'info> {
+    #[account(
+        mut,
+        has_one = owner_auth @ HaiChainMasterError::Unauthorized,
+        seeds = [b"pot", owner_auth.key().as_ref()],
+        bump = pot.bump
+    )]
+    pub pot: Account<'info, PotAccount>,
+    pub owner_auth: Signer<'info>,
+}
+
+#[derive(Accounts)]
 pub struct PanicPotContext<'info> {
     #[account(
         mut,
@@ -1719,6 +1742,9 @@ pub struct RequestCloseChannelContext<'info> {
     )]
     pub channel: Account<'info, ChannelAccount>,
 
+    #[account(
+        constraint = active_grant.pot == pot.key() @ HaiChainMasterError::PotMismatch
+    )]
     pub active_grant: Account<'info, ActiveGrantAccount>,
 
     pub authority: Signer<'info>,
@@ -1832,6 +1858,8 @@ pub struct ChannelAccount {
 pub enum HaiChainMasterError {
     #[msg("Authorization: Signer is not authorized for this operation.")]
     Unauthorized,
+    #[msg("Channel: Close has not been requested yet. Must call request_close_channel and wait for dispute window.")]
+    CloseNotRequested,
     #[msg("Channel: Close already requested. Dispute window is currently running.")]
     CloseAlreadyRequested,
     #[msg("Wormhole Exploit Defense: Invalid sysvar::instructions ID.")]

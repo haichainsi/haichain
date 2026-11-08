@@ -1,0 +1,45 @@
+Total untranslated text nodes in tab-docs: 44
+[h3]: Integrate Paywall to Monetize Agents in 5 Minutes
+[p]: Sub-millisecond Ed25519 verification (0.24ms) & Invariant CapLeaf Bounded Loss protection.
+[button]: Python (FastAPI / MCP)
+[button]: Node.js (Express)
+[p]: Official Python SDK for AI Engineers, Anthropic Claude MCP servers, and FastAPI services:
+[span]: ⚡ 0.24ms Latency • CapLeaf Invariant
+[div]: Step 1: Install official Python SDK
+[button]: Copy
+[div]: Step 2: Add @haichain_paywall decorator to your FastAPI / MCP Agent
+[span]: agent_server.py (FastAPI / Anthropic MCP)
+[button]: Copy Code
+[div]: Step 3: Call paid AI agents with Python HaichainClient
+[span]: agent_client.py
+[button]: Copy Code
+[p]: Install official Haichain middleware to activate Replay Attack protection and verify on-chain Solana L1 transactions:
+[div]: Step 1: Install package
+[button]: Copy
+[div]: Step 2: Add 5 lines of code to your Express server
+[span]: server.ts
+[button]: Copy Code
+[span]: Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem
+[p]: When your agent published on Smithery or Fetch.ai attaches Python or Node.js agent-pay, any caller agent (Claude Desktop, Cursor, Haichain Relayer) will automatically stream USDT/SOL settlement straight to your Solana wallet via HTTP 402!
+[h3]: Watchtower Dispute Sentinel & On-Chain State Channels
+[p]: 24h L1 Dispute Window auto-defense protecting offline sellers against stale channel balance fraud.
+[span]: ● Watchtower Daemon Active (Devnet)
+[div]: Program ID (Anchor)
+[div]: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk
+[a]: View on Solana Explorer ↗
+[div]: Master Vault PDA
+[div]: FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F
+[a]: View Vault PDA ↗
+[div]: Channel Recycling Instruction
+[div]: extend_channel_reserve (0x3f160e5e7c2d2ccd)
+[div]: 0 SOL Rent Churn • Phantom / Solflare Ready
+[span]: Watchtower Daemon Sentinel Endpoints
+[span]: Port 8080 / Express Relayer
+[strong]: GET /api/watchtower/status
+[strong]: POST /api/watchtower/register
+[strong]: POST /api/watchtower/defend
+[span]: Claude Desktop / Cursor IDE / Windsurf
+[span]: claude_desktop_config.json
+[span]: @haichainsi/sdk
+[span]: client.ts
+[span]: POST /api/relayer/dispatch

@@ -1,0 +1,46 @@
+-->
+      <section id="tab-mcp" class="tab-content hidden space-y-6">
+        <div class="p-6 sm:p-8 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-6">
+          <div>
+            <h2 class="font-bold text-base text-black dark:text-white" data-i18n="mcp.title">Model Context Protocol (MCP) Integration</h2>
+            <p class="text-xs text-neutral-500 mt-1" data-i18n="mcp.subtitle">Connect Anthropic Claude Desktop or Cursor IDE to HAICHAIN in 60 seconds.</p>
+          </div>
+
+          <!-- Claude Desktop Config Box -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-mono">
+              <span class="font-semibold text-black dark:text-white" data-i18n="mcp.claudeConfig">claude_desktop_config.json:</span>
+              <button id="copy-mcp-code-btn" class="px-3 py-1 rounded-lg bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-[10px] font-bold" data-i18n="mcp.copyJson">Copy JSON</button>
+            </div>
+            <pre class="p-4 rounded-2xl bg-neutral-950 text-neutral-300 font-mono text-xs overflow-x-auto border border-neutral-800"><code>{
+  "mcpServers": {
+    "haichain": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@haichainsi/mcp-server"
+      ],
+      "env": {
+        "SOLANA_RPC_URL": "https://api.devnet.solana.com",
+        "HAICHAIN_PROGRAM_ID": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk"
+      }
+    }
+  }
+}</code></pre>
+          </div>
+
+          <!-- TypeScript SDK Snippet -->
+          <div class="space-y-2 pt-4 border-t border-neutral-100 dark:border-neutral-900">
+            <span class="font-semibold text-xs font-mono text-black dark:text-white" data-i18n="mcp.sdkTitle">Execute Micro-Escrow via TypeScript SDK:</span>
+            <pre class="p-4 rounded-2xl bg-neutral-950 text-neutral-300 font-mono text-xs overflow-x-auto border border-neutral-800"><code>import { HaiChainClient } from "@haichainsi/sdk";
+
+const client = new HaiChainClient({ network: "devnet" });
+const ticket = client.issueCapabilityTicket({
+  maxSpendMicroUsdt: 50_000, // 0.05 USDT
+  expirySlotDelta: 1000
+});
+
+console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre>
+          </div>
+        </div>
+      </section>

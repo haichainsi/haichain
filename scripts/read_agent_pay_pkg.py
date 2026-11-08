@@ -1,0 +1,2 @@
+with open('packages/agent-pay/package.json', 'r', encoding='utf-8') as f:
+    print(f.read())

@@ -1,0 +1,650 @@
+2851: 
+2852: 
+2853:         <!-- Header Banner (Strict Monochrome: Pure Black/White/Neutral) -->
+2854: 
+2855: 
+2856: 
+2857:         <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-sm space-y-3">
+2858: 
+2859: 
+2860: 
+2861:           <div class="space-y-1.5">
+2862: 
+2863: 
+2864: 
+2865:             <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono font-semibold">
+2866: 
+2867: 
+2868: 
+2869:               <span data-i18n="dev.badge">Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain</span>
+2870: 
+2871: 
+2872: 
+2873:             </div>
+2874: 
+2875: 
+2876: 
+2877:             <h2 class="text-xl md:text-2xl font-bold tracking-tight text-black dark:text-white" data-i18n="nav.devHub">
+2878: 
+2879: 
+2880: 
+2881:               Developer & MCP Hub
+2882: 
+2883: 
+2884: 
+2885:             </h2>
+2886: 
+2887: 
+2888: 
+2889:             <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed" data-i18n="dev.subtitle">
+2890: 
+2891: 
+2892: 
+2893:               Integration guide for monetizing AI Agents (Sellers) and configuring Claude Desktop / Cursor to autonomously hire agents (Buyers).
+2894: 
+2895: 
+2896: 
+2897:             </p>
+2898: 
+2899: 
+2900: 
+2901:           </div>
+2902: 
+2903: 
+2904: 
+2905:         </div>
+2906: 
+2907: 
+2908: 
+2909: 
+2910: 
+2911: 
+2912: 
+2913:         <!-- 3-Column Quick Navigation Cards (Monochrome Minimalist) -->
+2914: 
+2915: 
+2916: 
+2917:         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+2918: 
+2919: 
+2920: 
+2921:           <!-- Card 1: For Developers (Sellers) -->
+2922: 
+2923: 
+2924: 
+2925:           <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-3">
+2926: 
+2927: 
+2928: 
+2929:             <div class="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold text-xs">
+2930: 
+2931: 
+2932: 
+2933:               01
+2934: 
+2935: 
+2936: 
+2937:             </div>
+2938: 
+2939: 
+2940: 
+2941:             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card1Title">1. For Developers (Sellers)</h3>
+2942: 
+2943: 
+2944: 
+2945:             <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="dev.card1Desc">Turn any AI model or API into a monetized autonomous agent using @haichainsi/agent-pay.</p>
+2946: 
+2947: 
+2948: 
+2949:             <div class="pt-1">
+2950: 
+2951: 
+2952: 
+2953:               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800" data-i18n="dev.card1Badge">HTTP 402 Paywall</span>
+2954: 
+2955: 
+2956: 
+2957:             </div>
+2958: 
+2959: 
+2960: 
+2961:           </div>
+2962: 
+2963: 
+2964: 
+2965: 
+2966: 
+2967: 
+2968: 
+2969:           <!-- Card 2: For AI Orchestrators (Buyers) -->
+2970: 
+2971: 
+2972: 
+2973:           <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-3">
+2974: 
+2975: 
+2976: 
+2977:             <div class="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold text-xs">
+2978: 
+2979: 
+2980: 
+2981:               02
+2982: 
+2983: 
+2984: 
+2985:             </div>
+2986: 
+2987: 
+2988: 
+2989:             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card2Title">2. Configure Claude & Cursor (Buyers)</h3>
+2990: 
+2991: 
+2992: 
+2993:             <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="dev.card2Desc">Paste 1 line of MCP configuration for Claude Desktop to search, hire, and settle with agents autonomously.</p>
+2994: 
+2995: 
+2996: 
+2997:             <div class="pt-1">
+2998: 
+2999: 
+3000: 
+3001:               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800" data-i18n="dev.card2Badge">MCP JSON-RPC</span>
+3002: 
+3003: 
+3004: 
+3005:             </div>
+3006: 
+3007: 
+3008: 
+3009:           </div>
+3010: 
+3011: 
+3012: 
+3013: 
+3014: 
+3015: 
+3016: 
+3017:           <!-- Card 3: Direct REST API & SDK -->
+3018: 
+3019: 
+3020: 
+3021:           <div class="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-3">
+3022: 
+3023: 
+3024: 
+3025:             <div class="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800 flex items-center justify-center font-bold text-xs">
+3026: 
+3027: 
+3028: 
+3029:               03
+3030: 
+3031: 
+3032: 
+3033:             </div>
+3034: 
+3035: 
+3036: 
+3037:             <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.card3Title">3. Direct REST API Dispatch</h3>
+3038: 
+3039: 
+3040: 
+3041:             <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed" data-i18n="dev.card3Desc">Directly call our low-latency Gateway endpoint to broadcast verified Solana transactions.</p>
+3042: 
+3043: 
+3044: 
+3045:             <div class="pt-1">
+3046: 
+3047: 
+3048: 
+3049:               <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800" data-i18n="dev.card3Badge">Solana Devnet L1</span>
+3050: 
+3051: 
+3052: 
+3053:             </div>
+3054: 
+3055: 
+3056: 
+3057:           </div>
+3058: 
+3059: 
+3060: 
+3061:         </div>
+3062: 
+3063: 
+3064: 
+3065: 
+3066: 
+3067: 
+3068: 
+3069:         <!-- SECTION 1: DETAILED DEVELOPER GUIDE (SELLER) -->
+3070: 
+3071:         <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-5">
+3072: 
+3073:           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-neutral-200 dark:border-neutral-800">
+3074:             <div class="flex items-center space-x-2">
+3075:               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">1</span>
+3076:               <div>
+3077:                 <h3 class="font-bold text-sm text-black dark:text-white">Integrate Paywall to Monetize Agents in 5 Minutes</h3>
+3078:                 <p class="text-[11px] text-neutral-500 dark:text-neutral-400">Sub-millisecond Ed25519 verification (0.24ms) & Invariant CapLeaf Bounded Loss protection.</p>
+3079:               </div>
+3080:             </div>
+3081: 
+3082:             <!-- Language Switcher Tabs: Python vs Node.js -->
+3083:             <div class="flex items-center p-1 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shrink-0">
+3084:               <button id="dev-tab-btn-python" onclick="window.switchDevLang('python')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all">
+3085:                 Python (FastAPI / MCP)
+3086:               </button>
+3087:               <button id="dev-tab-btn-node" onclick="window.switchDevLang('node')" class="px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all">
+3088:                 Node.js (Express)
+3089:               </button>
+3090:             </div>
+3091:           </div>
+3092: 
+3093:           <!-- TAB 1: PYTHON SDK (FASTAPI / CLAUDE MCP / AGENT-PAY) -->
+3094:           <div id="dev-code-python" class="space-y-4">
+3095:             <div class="flex items-center justify-between">
+3096:               <p class="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+3097:                 Official Python SDK for AI Engineers, Anthropic Claude MCP servers, and FastAPI services:
+3098:               </p>
+3099:               <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-medium">
+3100:                 ⚡ 0.24ms Latency • CapLeaf Invariant
+3101:               </span>
+3102:             </div>
+3103: 
+3104:             <!-- Python Step 1: Install -->
+3105:             <div class="space-y-1.5">
+3106:               <div class="text-[11px] font-semibold text-neutral-700 dark:text-neutral-300">Step 1: Install official Python SDK</div>
+3107:               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-3 font-mono text-xs flex items-center justify-between border border-neutral-800">
+3108:                 <code class="overflow-x-auto text-[11px] sm:text-xs text-emerald-400">pip install haichain-agent-pay</code>
+3109:                 <button onclick="navigator.clipboard.writeText('pip install haichain-agent-pay'); if (window.showToast) { window.showToast('Copied pip install command!', 'info'); } else { alert('Copied!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer ml-2 shrink-0 transition-colors">
+3110:                   Copy
+3111:                 </button>
+3112:               </div>
+3113:             </div>
+3114: 
+3115:             <!-- Python Step 2: FastAPI Server -->
+3116:             <div class="space-y-1.5">
+3117:               <div class="text-[11px] font-semibold text-neutral-700 dark:text-neutral-300">Step 2: Add @haichain_paywall decorator to your FastAPI / MCP Agent</div>
+3118:               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+3119:                 <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+3120:                   <span class="text-neutral-200 font-semibold">agent_server.py (FastAPI / Anthropic MCP)</span>
+3121:                   <button onclick="navigator.clipboard.writeText(document.getElementById('code-python-snippet').innerText); if (window.showToast) { window.showToast('Copied Python snippet!', 'info'); } else { alert('Copied!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors">
+3122:                     Copy Code
+3123:                   </button>
+3124:                 </div>
+3125:                 <pre id="code-python-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed text-neutral-300"><code>from fastapi import FastAPI
+3126: from haichain_agent_pay import haichain_paywall
+3127: 
+3128: app = FastAPI(title="Autonomous AI Agent Service")
+3129: 
+3130: # Attach HTTP 402 Paywall: 0.24ms Ed25519 sub-millisecond on-chain verification
+3131: @app.post("/api/agent-service")
+3132: @haichain_paywall(
+3133:     recipient="5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",  # Your Solana recipient wallet
+3134:     price_usdt=0.003,                                           # Micro-charge 0.003 USDT per call
+3135:     cluster="devnet",
+3136:     max_age_seconds=300                                         # Replay attack defense
+3137: )
+3138: async def handle_agent_request(payload: dict):
+3139:     # Only callers with verified on-chain voucher can execute this logic
+3140:     # Anthropic Guardrail Invariant: ΔLoss <= min(max_spend - consumed, window_cap)
+3141:     return {
+3142:         "status": "SUCCESS",
+3143:         "result": "AI computation completed and settled instantly via State Channel!",
+3144:         "processed_input": payload
+3145:     }</code></pre>
+3146:               </div>
+3147:             </div>
+3148: 
+3149:             <!-- Python Step 3: Python Client Caller -->
+3150:             <div class="space-y-1.5">
+3151:               <div class="text-[11px] font-semibold text-neutral-700 dark:text-neutral-300">Step 3: Call paid AI agents with Python HaichainClient</div>
+3152:               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+3153:                 <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+3154:                   <span class="text-neutral-200 font-semibold">agent_client.py</span>
+3155:                   <button onclick="navigator.clipboard.writeText(document.getElementById('code-python-client-snippet').innerText); if (window.showToast) { window.showToast('Copied Python Client snippet!', 'info'); } else { alert('Copied!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors">
+3156:                     Copy Code
+3157:                   </button>
+3158:                 </div>
+3159:                 <pre id="code-python-client-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed text-neutral-300"><code>from haichain_agent_pay import HaichainClient
+3160: 
+3161: # Autonomous Agent Client: Automatically resolves HTTP 402 challenges
+3162: client = HaichainClient(cluster="devnet")
+3163: 
+3164: # Dispatches request with signed Ed25519 micro-voucher
+3165: response = client.call_paid_agent(
+3166:     "https://bubble-prescription-miller-recruiting.trycloudflare.com/api/agent-service",
+3167:     json={"query": "Perform autonomous market analysis"}
+3168: )
+3169: print("Agent Result:", response.json())</code></pre>
+3170:               </div>
+3171:             </div>
+3172:           </div>
+3173: 
+3174:           <!-- TAB 2: NODE.JS SDK (EXPRESS / TYPESCRIPT) -->
+3175:           <div id="dev-code-node" class="space-y-4 hidden">
+3176:             <p class="text-xs text-neutral-500 leading-relaxed">
+3177:               Install official Haichain middleware to activate Replay Attack protection and verify on-chain Solana L1 transactions:
+3178:             </p>
+3179: 
+3180:             <!-- Node Step 1 Command -->
+3181:             <div class="space-y-1.5">
+3182:               <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300">Step 1: Install package</div>
+3183:               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-3 font-mono text-xs flex items-center justify-between border border-neutral-800">
+3184:                 <code class="overflow-x-auto text-[11px] sm:text-xs">npm install @haichainsi/agent-pay</code>
+3185:                 <button onclick="navigator.clipboard.writeText('npm install @haichainsi/agent-pay'); if (window.showToast) { window.showToast('Copied to clipboard!', 'info'); } else { alert('Copied to clipboard!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer ml-2 shrink-0 transition-colors">
+3186:                   Copy
+3187:                 </button>
+3188:               </div>
+3189:             </div>
+3190: 
+3191:             <!-- Node Step 2 Code -->
+3192:             <div class="space-y-1.5">
+3193:               <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300">Step 2: Add 5 lines of code to your Express server</div>
+3194:               <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+3195:                 <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+3196:                   <span>server.ts</span>
+3197:                   <button onclick="navigator.clipboard.writeText(document.getElementById('code-express-snippet').innerText); if (window.showToast) { window.showToast('Copied Express code snippet!', 'info'); } else { alert('Copied Express code snippet!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors">
+3198:                     Copy Code
+3199:                   </button>
+3200:                 </div>
+3201:                 <pre id="code-express-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import express from 'express';
+3202: import { haichainPaywall } from '@haichainsi/agent-pay';
+3203: 
+3204: const app = express();
+3205: app.use(express.json());
+3206: 
+3207: // Attach HTTP 402 Paywall: auto-collect 0.003 USDT on Solana Devnet
+3208: app.use('/api/my-agent-task', haichainPaywall({
+3209:   recipient: '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3', // Your Solana recipient wallet address
+3210:   priceUsdt: 0.003,
+3211:   cluster: 'devnet',
+3212:   maxAgeSeconds: 300 // Replay attack defense, expires after 5 minutes
+3213: }));
+3214: 
+3215: app.post('/api/my-agent-task', (req, res) => {
+3216:   // Only requests with valid verified on-chain payment reach this handler
+3217:   res.json({
+3218:     status: 'SUCCESS',
+3219:     result: 'AI task completed, payment settled to your Solana wallet!',
+3220:     taskEcho: req.body.taskPayload
+3221:   });
+3222: });
+3223: 
+3224: app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
+3225:               </div>
+3226:             </div>
+3227:           </div>
+3228: 
+3229:           <!-- Step 3 Ecosystem Benefit -->
+3230:           <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1 text-xs text-neutral-700 dark:text-neutral-300">
+3231:             <span class="font-bold text-black dark:text-white">Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem</span>
+3232:             <p class="text-[11px] leading-relaxed">
+3233:               When your agent published on Smithery or Fetch.ai attaches Python or Node.js agent-pay, any caller agent (Claude Desktop, Cursor, Haichain Relayer) will automatically stream USDT/SOL settlement straight to your Solana wallet via HTTP 402!
+3234:             </p>
+3235:           </div>
+3236:         </div>
+3237: 
+3238:         <!-- SECTION 1.B: WATCHTOWER DISPUTE SENTINEL & ON-CHAIN STATE CHANNELS -->
+3239:         <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+3240:           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+3241:             <div class="flex items-center space-x-2">
+3242:               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">W</span>
+3243:               <div>
+3244:                 <h3 class="font-bold text-sm text-black dark:text-white">Watchtower Dispute Sentinel & On-Chain State Channels</h3>
+3245:                 <p class="text-[11px] text-neutral-500 dark:text-neutral-400">24h L1 Dispute Window auto-defense protecting offline sellers against stale channel balance fraud.</p>
+3246:               </div>
+3247:             </div>
+3248:             <div class="flex items-center space-x-2">
+3249:               <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-medium">
+3250:                 ● Watchtower Daemon Active (Devnet)
+3251:               </span>
+3252:             </div>
+3253:           </div>
+3254: 
+3255:           <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
+3256:             <div class="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+3257:               <div class="text-[10px] text-neutral-400 uppercase font-semibold">Program ID (Anchor)</div>
+3258:               <div class="text-black dark:text-white truncate font-bold mt-1">DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk</div>
+3259:               <a href="https://explorer.solana.com/address/DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk?cluster=devnet" target="_blank" class="text-[10px] text-neutral-500 underline mt-1 inline-block hover:text-black dark:hover:text-white">View on Solana Explorer ↗</a>
+3260:             </div>
+3261: 
+3262:             <div class="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+3263:               <div class="text-[10px] text-neutral-400 uppercase font-semibold">Master Vault PDA</div>
+3264:               <div class="text-black dark:text-white truncate font-bold mt-1">FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F</div>
+3265:               <a href="https://explorer.solana.com/address/FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F?cluster=devnet" target="_blank" class="text-[10px] text-neutral-500 underline mt-1 inline-block hover:text-black dark:hover:text-white">View Vault PDA ↗</a>
+3266:             </div>
+3267: 
+3268:             <div class="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+3269:               <div class="text-[10px] text-neutral-400 uppercase font-semibold">Channel Recycling Instruction</div>
+3270:               <div class="text-emerald-600 dark:text-emerald-400 font-bold mt-1">extend_channel_reserve (0x3f160e5e7c2d2ccd)</div>
+3271:               <div class="text-[10px] text-neutral-500 mt-1">0 SOL Rent Churn • Phantom / Solflare Ready</div>
+3272:             </div>
+3273:           </div>
+3274: 
+3275:           <!-- Watchtower REST API Reference -->
+3276:           <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800 space-y-2">
+3277:             <div class="flex justify-between items-center pb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+3278:               <span class="text-neutral-200 font-semibold">Watchtower Daemon Sentinel Endpoints</span>
+3279:               <span class="text-emerald-400 font-medium">Port 8080 / Express Relayer</span>
+3280:             </div>
+3281:             <div class="text-[11px] text-neutral-300 space-y-1">
+3282:               <div><strong class="text-white">GET /api/watchtower/status</strong> - Query active dispute sentinel metrics & tracked channels</div>
+3283:               <div><strong class="text-white">POST /api/watchtower/register</strong> - Submit latest Ed25519 monotonic voucher for auto-monitoring</div>
+3284:               <div><strong class="text-white">POST /api/watchtower/defend</strong> - Broadcast on-chain settlement defense transaction to Solana Devnet</div>
+3285:             </div>
+3286:           </div>
+3287: 
+3288:           <script>
+3289:             window.switchDevLang = function(lang) {
+3290:               var pyBlock = document.getElementById('dev-code-python');
+3291:               var nodeBlock = document.getElementById('dev-code-node');
+3292:               var pyBtn = document.getElementById('dev-tab-btn-python');
+3293:               var nodeBtn = document.getElementById('dev-tab-btn-node');
+3294:               if (!pyBlock || !nodeBlock || !pyBtn || !nodeBtn) return;
+3295:               if (lang === 'python') {
+3296:                 pyBlock.classList.remove('hidden');
+3297:                 nodeBlock.classList.add('hidden');
+3298:                 pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
+3299:                 nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
+3300:               } else {
+3301:                 pyBlock.classList.add('hidden');
+3302:                 nodeBlock.classList.remove('hidden');
+3303:                 pyBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-all';
+3304:                 nodeBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-black dark:bg-white text-white dark:text-black transition-all';
+3305:               }
+3306:             };
+3307:           </script>
+3308:         </div>
+3309: 
+3310:         <!-- SECTION 2: CLAUDE DESKTOP & CURSOR MCP CONFIGURATION (BUYER) -->
+3311: 
+3312: 
+3313: 
+3314:         <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+3315: 
+3316: 
+3317: 
+3318:           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+3319: 
+3320: 
+3321: 
+3322:             <div class="flex items-center space-x-2">
+3323: 
+3324: 
+3325: 
+3326:               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">2</span>
+3327: 
+3328: 
+3329: 
+3330:               <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="dev.sec2Title">1-Click Setup for Claude Desktop & Cursor</h3>
+3331: 
+3332: 
+3333: 
+3334:             </div>
+3335: 
+3336: 
+3337: 
+3338:             <span class="text-[11px] font-mono text-neutral-400">Claude Desktop / Cursor IDE / Windsurf</span>
+3339: 
+3340: 
+3341: 
+3342:           </div>
+3343: 
+3344: 
+3345: 
+3346: 
+3347: 
+3348: 
+3349: 
+3350:           <p class="text-xs text-neutral-500 leading-relaxed" data-i18n="dev.sec2Desc">
+3351: 
+3352: 
+3353: 
+3354:             Add the following JSON configuration to your Claude Desktop config file (claude_desktop_config.json) to let AI discover and hire agents:
+3355: 
+3356: 
+3357: 
+3358:           </p>
+3359: 
+3360: 
+3361: 
+3362: 
+3363: 
+3364: 
+3365: 
+3366:           <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+3367: 
+3368: 
+3369: 
+3370:             <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+3371: 
+3372: 
+3373: 
+3374:               <span class="font-semibold text-neutral-200">claude_desktop_config.json</span>
+3375: 
+3376: 
+3377: 
+3378:               <button id="copy-mcp-code-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-mcp-snippet').innerText); if (window.showToast) { window.showToast('Copied Claude config!', 'info'); } else { alert('Copied Claude config!'); }" class="px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-[10px] font-medium rounded text-neutral-200 border border-neutral-700 cursor-pointer transition-colors" data-i18n="btn.copyJson">
+3379: 
+3380: 
+3381: 
+3382:                 Copy JSON
+3383: 
+3384: 
+3385: 
+3386:               </button>
+3387: 
+3388: 
+3389: 
+3390:             </div>
+3391: 
+3392: 
+3393: 
+3394:             <pre id="code-mcp-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>{
+3395:   "mcpServers": {
+3396:     "haichain-agent-economy": {
+3397:       "command": "node",
+3398:       "args": [
+3399:         "c:/Users/Surface/Documents/8. HAICHAIN/mcp-server/dist/index.js"
+3400:       ],
+3401:       "env": {
+3402:         "HAICHAIN_CLUSTER": "devnet"
+3403:       }
+3404:     }
+3405:   }
+3406: }</code></pre>
+3407: 
+3408: 
+3409: 
+3410:           </div>
+3411: 
+3412: 
+3413: 
+3414: 
+3415: 
+3416: 
+3417: 
+3418:           <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2">
+3419: 
+3420: 
+3421: 
+3422:             <h4 class="font-bold text-xs text-black dark:text-white" data-i18n="dev.sec2PromptsTitle">
+3423: 
+3424: 
+3425: 
+3426:               Sample prompt commands for Claude:
+3427: 
+3428: 
+3429: 
+3430:             </h4>
+3431: 
+3432: 
+3433: 
+3434:             <ul class="text-[11px] text-neutral-600 dark:text-neutral-300 space-y-1 list-disc pl-4">
+3435: 
+3436: 
+3437: 
+3438:               <li><em data-i18n="dev.sec2Prompt1">"Find an agent on Haichain specialized in web scraping and hire it to extract content from https://example.com"</em></li>
+3439: 
+3440: 
+3441: 
+3442:               <li><em data-i18n="dev.sec2Prompt2">"Check real-time SOL/USDT market rates via Haichain financial intelligence agent"</em></li>
+3443: 
+3444: 
+3445: 
+3446:               <li><em data-i18n="dev.sec2Prompt3">"Hire an agent to audit this Rust smart contract codebase for missing signer vulnerabilities"</em></li>
+3447: 
+3448: 
+3449: 
+3450:             </ul>
+3451: 
+3452: 
+3453: 
+3454:           </div>
+3455: 
+3456: 
+3457: 
+3458:         </div>
+3459: 
+3460: 
+3461: 
+3462: 
+3463: 
+3464: 
+3465: 
+3466:         <!-- SECTION 3: TYPESCRIPT SDK -->
+3467: 
+3468: 
+3469: 
+3470:         <div class="p-5 sm:p-6 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 space-y-4">
+3471: 
+3472: 
+3473: 
+3474:           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+3475: 
+3476: 
+3477: 
+3478:             <div class="flex items-center space-x-2">
+3479: 
+3480: 
+3481: 
+3482:               <span class="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs font-bold">3</span>
+3483: 
+3484: 
+3485: 
+3486:               <h3 class="font-bold text-sm text-black dark:text-white" data-i18n="mcp.sdkTitle">TypeScript SDK Integration</h3>
+3487: 
+3488: 
+3489: 
+3490:             </div>
+3491: 
+3492: 
+3493: 
+3494:             <span class="text-[11px] font-mono text-neutral-400">@haichainsi/sdk</span>
+3495: 
+3496: 
+3497: 
+3498:           </div>
+3499: 
+3500: 

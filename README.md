@@ -56,7 +56,7 @@ c:\Users\Surface\Documents\8. HAICHAIN\
 ├── server/
 │   └── production-agent-relayer.js # Relayer with Anti-SSRF Guard & Rate Limiting
 ├── tests/
-│   ├── haichain-claude-audit-negative.test.ts # Negative Test Suite (Test Âm)
+│   ├── haichain-negative-invariants.test.ts # Negative Test Suite (Test Âm)
 │   ├── haichain-x402-interoperability.test.ts # RFC-compliant x402 interop suite
 │   ├── haichain-capleaf-v1-verification.test.ts # CapLeaf v1 wire verification
 │   └── haichain-phase2-ai-gateway.test.ts     # AI Gateway & Policy Engine tests
@@ -90,7 +90,7 @@ cargo test
 ```bash
 npm test
 # Or run individual test suites:
-npx ts-mocha tests/haichain-claude-audit-negative.test.ts
+npx ts-mocha tests/haichain-negative-invariants.test.ts
 npx ts-mocha tests/haichain-x402-interoperability.test.ts
 ```
 

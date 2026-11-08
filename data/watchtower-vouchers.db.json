@@ -1,0 +1,37 @@
+{
+  "1": {
+    "channelId": "1",
+    "potPubkey": "7RzGgPkEdqGq2G8X65jUepb2xenWz4nnUYM9mwmbVCKD",
+    "merchantPubkey": "5EjdrEUcQnLfvZKpZW7XCCWViy7QpLTri9TygVKsS8pV",
+    "agentPubkey": "7RzGgPkEdqGq2G8X65jUepb2xenWz4nnUYM9mwmbVCKD",
+    "cumulativeAmount": "10000",
+    "nonce": "2",
+    "signatureBase64": "Cmc+YAKCPu5nwXPANt/EG/ZUueaUBeB2Md2EoFUIQF6tU1Y0xJTS+7oWXBcB9buiy6glMKWzYC13Obyo0cpiDQ==",
+    "registeredAt": 1794145038489,
+    "disputeStatus": "DEFENDED_ONCHAIN",
+    "defenseTxHash": "4QwBc2Y979CsXGEitRPFYhMYUFBjqzrMQvKf3isimTf3FcFSN4cNHR3kj945G4suiAfiBB2Wb6mDBAmzEL7sWzQb",
+    "defendedAt": "2026-11-08T13:37:19.493Z"
+  },
+  "101": {
+    "channelId": "101",
+    "potPubkey": "DdznrzAMyaRZnzB5aUVLcXbWLqXGfqg97LacMnCWWRc5",
+    "merchantPubkey": "3iSPyUKAU6FRnZ8B9WVd9xTsKHgAfite4zxfit1H5EYc",
+    "agentPubkey": "G5T3aw32z5bMppwaKZJzJqpM6Mktmg3VwM288UHMKdiz",
+    "cumulativeAmount": "35000",
+    "nonce": "1",
+    "signatureBase64": "drVgqgA6GgJaWrE1M1mwcixJtC2ngHoqybclYkZjKXznu+E245SZbsAEDMbuBgvMf3eJGJgWB02batxpY/q2Cw==",
+    "registeredAt": 1794145036041,
+    "disputeStatus": "MONITORING_ACTIVE"
+  },
+  "202": {
+    "channelId": "202",
+    "potPubkey": "DdznrzAMyaRZnzB5aUVLcXbWLqXGfqg97LacMnCWWRc5",
+    "merchantPubkey": "3iSPyUKAU6FRnZ8B9WVd9xTsKHgAfite4zxfit1H5EYc",
+    "agentPubkey": "G5T3aw32z5bMppwaKZJzJqpM6Mktmg3VwM288UHMKdiz",
+    "cumulativeAmount": "95000",
+    "nonce": "2",
+    "signatureBase64": "FTgXh5twxMcCxFNacXd9aERVGo9FaWABnqbgbj82ZId5G9DkMYfZhLTdJ2J6YvRNbu0pdTn45g29NXYnvX/ZBg==",
+    "registeredAt": 1794145036078,
+    "disputeStatus": "MONITORING_ACTIVE"
+  }
+}

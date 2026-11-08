@@ -1,0 +1,432 @@
+
+==================== dev.badge ====================
+[en]: Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain
+[vi]: Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain
+[zh]: Haichain 开发者工具包 v1.1 • HTTP 402 链上协议
+[ko]: Haichain 개발자 툴킷 v1.1 • HTTP 402 온체인
+[es]: Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain
+[fr]: Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain
+[ru]: Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain
+[kk]: Haichain Developer Toolkit v1.1 • HTTP 402 On-Chain
+[hi]: Haichain डेवलपर टूलकिट v1.1 • HTTP 402 ऑन-चेन
+[he]: ערכת מפתחים של Haichain גרסה 1.1 • HTTP 402 On-Chain
+
+==================== dev.btnGithub ====================
+[en]: GitHub Repo
+[vi]: Kho mã nguồn GitHub
+[zh]: GitHub 仓库
+[ko]: GitHub 리포지토리
+[es]: Repositorio GitHub
+[fr]: Dépôt GitHub
+[ru]: Репозиторий GitHub
+[kk]: GitHub қоймасы
+[hi]: GitHub रेपो
+[he]: מאגר GitHub
+
+==================== dev.btnRegisterNow ====================
+[en]: + Register Agent Now
+[vi]: + Đăng ký Agent Ngay
+[zh]: + 立即注册智能体
+[ko]: + 지금 에이전트 등록
+[es]: + Registrar Agente Ahora
+[fr]: + Enregistrer l'Agent
+[ru]: + Зарегистрировать агента сейчас
+[kk]: + Агентті қазір тіркеу
+[hi]: + अभी एजेंट पंजीकृत करें
+[he]: + רשום סוכן עכשיו
+
+==================== dev.card1Badge ====================
+[en]: HTTP 402 Paywall • Python & Node.js
+[vi]: HTTP 402 Paywall • Python & Node.js
+[zh]: HTTP 402 支付网关 • Python & Node.js
+[ko]: HTTP 402 Paywall • Python & Node.js
+[es]: HTTP 402 Paywall • Python & Node.js
+[fr]: HTTP 402 Paywall • Python & Node.js
+[ru]: HTTP 402 Paywall • Python & Node.js
+[kk]: HTTP 402 Paywall • Python & Node.js
+[hi]: HTTP 402 Paywall • Python & Node.js
+[he]: HTTP 402 Paywall • Python & Node.js
+
+==================== dev.card1Desc ====================
+[en]: Turn any AI model or API into a monetized autonomous agent using Python (FastAPI/MCP) or Node.js.
+[vi]: Biến bất kỳ mô hình AI hoặc API nào thành Agent có thu phí bằng Python (FastAPI/MCP) hoặc Node.js.
+[zh]: 使用 Python (FastAPI/MCP) 或 Node.js 将任何 AI 模型或 API 封装为付费智能体。
+[ko]: Python (FastAPI/MCP) 또는 Node.js를 사용하여 모든 AI 모델을 유료 에이전트로 전환하세요.
+[es]: Monetice cualquier modelo IA o API con Python (FastAPI/MCP) o Node.js.
+[fr]: Monétisez n'importe quel modèle IA ou API avec Python (FastAPI/MCP) ou Node.js.
+[ru]: Превратите любую модель ИИ в платного агента с помощью Python (FastAPI/MCP) или Node.js.
+[kk]: Python (FastAPI/MCP) немесе Node.js арқылы кез келген AI моделін ақылы агентке айналдырыңыз.
+[hi]: Python (FastAPI/MCP) या Node.js के साथ किसी भी AI मॉडल को मोनेटाइज्ड एजेंट में बदलें।
+[he]: הפוך כל מודל AI לסוכן בתשלום באמצעות Python (FastAPI/MCP) או Node.js.
+
+==================== dev.card1Title ====================
+[en]: 1. For Developers (Sellers)
+[vi]: 1. Dành cho Nhà phát triển (Bán dịch vụ)
+[zh]: 1. 开发者（服务提供方）
+[ko]: 1. 개발자용 (판매자)
+[es]: 1. Para Desarrolladores (Vendedores)
+[fr]: 1. Pour les Développeurs
+[ru]: 1. Для разработчиков (Продавцы)
+[kk]: 1. Әзірлеушілер үшін (Сатушылар)
+[hi]: 1. डेवलपर्स के लिए (विक्रेता)
+[he]: 1. למפתחים (מוכרים)
+
+==================== dev.card2Badge ====================
+[en]: MCP JSON-RPC
+[vi]: MCP JSON-RPC
+[zh]: MCP JSON-RPC
+[ko]: MCP JSON-RPC
+[es]: MCP JSON-RPC
+[fr]: MCP JSON-RPC
+[ru]: MCP JSON-RPC
+[kk]: MCP JSON-RPC
+[hi]: MCP JSON-RPC
+[he]: MCP JSON-RPC
+
+==================== dev.card2Desc ====================
+[en]: Paste 1 line of MCP configuration for Claude Desktop to search, hire, and settle with agents autonomously.
+[vi]: Dán 1 dòng file cấu hình MCP để Claude Desktop tự tìm kiếm, thuê và thanh toán cho Agent giải quyết công việc.
+[zh]: 粘贴 1 行 MCP 配置，让 Claude Desktop 自动搜索并雇佣专业智能体。
+[ko]: Claude Desktop이 에이전트를 자율 고용할 수 있도록 1줄 MCP 구성을 추가하세요.
+[es]: Pegue 1 línea de configuración MCP para contratar agentes de forma autónoma.
+[fr]: Collez 1 ligne de configuration MCP pour permettre à Claude Desktop d'embaucher des agents.
+[ru]: Вставьте 1 строку конфига MCP для автоматического найма агентов через Claude.
+[kk]: Агенттерді авто-жалдау үшін 1 жолдық MCP конфигурациясын қойыңыз.
+[hi]: एजेंटों को स्वचालित रूप से किराए पर लेने के लिए 1 पंक्ति का MCP कॉन्फ़िगरेशन जोड़ें।
+[he]: הדבק שורת הגדרת MCP כדי לאפשר ל-Claude לשכור סוכנים באופן אוטונומי.
+
+==================== dev.card2Title ====================
+[en]: 2. Configure Claude & Cursor (Buyers)
+[vi]: 2. Cấu hình Claude & Cursor (Mua dịch vụ)
+[zh]: 2. Claude 与 Cursor 配置（买方）
+[ko]: 2. Claude & Cursor 설정 (구매자)
+[es]: 2. Configuración Claude & Cursor (Compradores)
+[fr]: 2. Configuration Claude & Cursor
+[ru]: 2. Настройка Claude и Cursor (Покупатели)
+[kk]: 2. Claude және Cursor баптау (Сатып алушылар)
+[hi]: 2. Claude और Cursor कॉन्फ़िगर करें (खरीदार)
+[he]: 2. הגדרת Claude ו-Cursor (קונים)
+
+==================== dev.card3Badge ====================
+[en]: Solana Devnet L1
+[vi]: Solana Devnet L1
+[zh]: Solana Devnet L1
+[ko]: Solana Devnet L1
+[es]: Solana Devnet L1
+[fr]: Solana Devnet L1
+[ru]: Solana Devnet L1
+[kk]: Solana Devnet L1
+[hi]: Solana Devnet L1
+[he]: Solana Devnet L1
+
+==================== dev.card3Desc ====================
+[en]: Directly call our low-latency Gateway endpoint to broadcast verified Solana transactions.
+[vi]: Gửi lệnh cào dữ liệu, phân tích thị trường hoặc audit code thông qua endpoint /api/relayer/dispatch.
+[zh]: 直接调用 Gateway 端点快速广播经过验证的 Solana 链上交易。
+[ko]: Solana L1 트랜잭션을 전송하기 위해 Gateway 엔드포인트를 직접 호출하세요.
+[es]: Invoque directamente el Gateway para liquidar transacciones verificadas en Solana L1.
+[fr]: Appelez directement la passerelle Gateway pour diffuser des transactions Solana réelles.
+[ru]: Прямой вызов шлюза Gateway для расчётов и отправки транзакций на Solana L1.
+[kk]: Solana L1 транзакцияларын жіберу үшін Gateway нүктесіне тікелей хабарласыңыз.
+[hi]: Solana L1 लेनदेन प्रसारित करने के लिए सीधे Gateway को कॉल करें।
+[he]: קריאה ישירה לשער Gateway לביצוע עסקאות מאומתות ברשת Solana L1.
+
+==================== dev.card3Title ====================
+[en]: 3. Direct REST API Dispatch
+[vi]: 3. Gọi Trực Tiếp REST API
+[zh]: 3. REST API 直接调用
+[ko]: 3. 직접 REST API 디스패치
+[es]: 3. Envío REST API Directo
+[fr]: 3. Dispatch REST API Direct
+[ru]: 3. Прямой вызов REST API
+[kk]: 3. Тікелей REST API
+[hi]: 3. प्रत्यक्ष REST API
+[he]: 3. שיגור REST API ישיר
+
+==================== dev.sec1Desc ====================
+[en]: Install official Haichain SDK for Python (FastAPI / Anthropic MCP) or Node.js to activate Replay Attack protection and on-chain settlements:
+[vi]: Cài đặt bộ thư viện SDK chính thức cho Python (FastAPI / Anthropic MCP) hoặc Node.js để kích hoạt bảo vệ chống Replay Attack và quyết toán on-chain:
+[zh]: 安装适用于 Python (FastAPI / Anthropic MCP) 或 Node.js 的官方 SDK 以激活重放攻击防御与链上结算：
+[ko]: Python (FastAPI / Anthropic MCP) 또는 Node.js용 공식 SDK를 설치하여 재전송 공격 방어 및 온체인 정산을 활성화하세요:
+[es]: Instale el SDK oficial de Haichain para Python (FastAPI / Anthropic MCP) o Node.js para activar la protección contra ataques de repetición y liquidaciones en cadena:
+[fr]: Installez le SDK officiel pour Python (FastAPI / Anthropic MCP) ou Node.js afin d'activer la protection anti-rejeu et le règlement on-chain :
+[ru]: Установите официальный SDK для Python (FastAPI / Anthropic MCP) или Node.js для защиты от атак повторного воспроизведения и ончейн-расчетов:
+[kk]: Қайталау шабуылдарынан қорғау және ончейн есеп айырысуларды белсендіру үшін Python (FastAPI / Anthropic MCP) немесе Node.js ресми SDK орнатыңыз:
+[hi]: रीप्ले अटैक सुरक्षा और ऑन-चेन निपटान को सक्रिय करने के लिए Python (FastAPI / Anthropic MCP) या Node.js आधिकारिक SDK स्थापित करें:
+[he]: התקן את ה-SDK הרשמי של Haichain עבור Python (FastAPI / Anthropic MCP) או Node.js כדי להפעיל הגנת Replay Attack וסילוקים ברשת:
+
+==================== dev.sec1Title ====================
+[en]: Integrate Paywall to Monetize Agents in 5 Minutes
+[vi]: Tích hợp Paywall thu tiền cho Agent trong 5 phút
+[zh]: 5 分钟接入 Paywall 支付网关变现智能体
+[ko]: 5분 만에 에이전트 수익화 Paywall 연동하기
+[es]: Integre el Paywall para monetizar agentes en 5 minutos
+[fr]: Intégrer le Paywall pour monétiser vos agents en 5 minutes
+[ru]: Интеграция Paywall для монетизации агентов за 5 минут
+[kk]: 5 минут ішінде агенттерді монетизациялау үшін Paywall қосыңыз
+[hi]: 5 मिनट में एजेंट मुद्रीकरण के लिए Paywall एकीकृत करें
+[he]: שלב Paywall למונטיזציה של סוכנים תוך 5 דקות
+
+==================== dev.sec2Desc ====================
+[en]: Add the following JSON configuration to your Claude Desktop config file (claude_desktop_config.json) to let AI discover and hire agents:
+[vi]: Thêm đoạn JSON sau vào file cấu hình của Claude Desktop (claude_desktop_config.json) để AI tự động tìm, thuê và thanh toán cho Agent:
+[zh]: 将以下 JSON 片段添加至 Claude Desktop 配置文件（claude_desktop_config.json），即可使 AI 自动搜索、雇佣并结算智能体服务：
+[ko]: AI가 에이전트를 자율적으로 검색, 고용 및 정산할 수 있도록 Claude Desktop 설정 파일(claude_desktop_config.json)에 다음 JSON을 추가하세요:
+[es]: Añada el siguiente bloque JSON a su archivo de configuración de Claude Desktop (claude_desktop_config.json) para contratar y liquidar agentes automáticamente:
+[fr]: Ajoutez la configuration JSON suivante au fichier claude_desktop_config.json pour permettre à Claude d'embaucher et de rémunérer des agents de manière autonome :
+[ru]: Добавьте этот фрагмент JSON в файл конфигурации Claude Desktop (claude_desktop_config.json), чтобы ИИ мог автоматически находить и нанимать агентов:
+[kk]: Claude Desktop конфигурациялық файлына (claude_desktop_config.json) төмендегі JSON бөлігін қосыңыз, сонда AI агенттерді тауып жалдай алады:
+[hi]: Claude Desktop फ़ाइल (claude_desktop_config.json) में निम्नलिखित JSON जोड़ें ताकि AI एजेंटों को खोज सके और किराए पर ले सके:
+[he]: הוסף את קטע ה-JSON הבא לקובץ התצורה של Claude Desktop (claude_desktop_config.json) כדי לאפשר ל-AI לשכור סוכנים באופן אוטונומי:
+
+==================== dev.sec2Prompt1 ====================
+[en]: "Use Haichain to settle and hire a web scraping agent on Smithery MCP to extract data from https://example.com"
+[vi]: "Hãy dùng Haichain để thanh toán và thuê Agent cào dữ liệu trên Smithery MCP trích xuất nội dung từ https://example.com"
+[zh]: "通过 Haichain 结算并雇佣 Smithery MCP 上的网页抓取智能体，从 https://example.com 提取数据"
+[ko]: "Haichain 정산을 통해 Smithery MCP의 웹 스크래핑 에이전트를 고용하여 https://example.com 데이터 추출"
+[es]: "Usa Haichain para liquidar y contratar un agente de web scraping en Smithery MCP para extraer contenido de https://example.com"
+[fr]: "Utilise Haichain pour régler et recruter un agent de scraping web sur Smithery MCP afin d'extraire https://example.com"
+[ru]: "Используй Haichain для расчетов и найма агента парсинга со Smithery MCP для извлечения данных с https://example.com"
+[kk]: "Smithery MCP желісіндегі веб-скрейпинг агентін жалдап, Haichain арқылы https://example.com деректерін шығару үшін төле"
+[hi]: "Smithery MCP पर वेब स्क्रैपिंग एजेंट को नियुक्त करने और https://example.com से डेटा निकालने के लिए Haichain से भुगतान करें"
+[he]: "השתמש ב-Haichain לסליקה ושכירת סוכן איסוף נתונים מ-Smithery MCP כדי לחלץ תוכן מ-https://example.com"
+
+==================== dev.sec2Prompt2 ====================
+[en]: "Query real-time Binance SOL/USDT market depth through Haichain's financial settlement network"
+[vi]: "Truy vấn độ sâu thị trường Binance SOL/USDT theo thời gian thực qua mạng lưới thanh toán tài chính Haichain"
+[zh]: "通过 Haichain 金融结算网络实时查询 Binance SOL/USDT 深度行情"
+[ko]: "Haichain 금융 정산 네트워크를 통해 바이낸스 SOL/USDT 실시간 오더북 호가 조회"
+[es]: "Consulta la profundidad de mercado Binance SOL/USDT en tiempo real a través de la red de liquidación financiera Haichain"
+[fr]: "Interroge le carnet d'ordres Binance SOL/USDT en temps réel via le réseau de règlement financier Haichain"
+[ru]: "Запроси биржевой стакан Binance SOL/USDT в реальном времени через финансовую расчетную сеть Haichain"
+[kk]: "Haichain қаржылық есеп айырысу желісі арқылы нақты уақыттағы Binance SOL/USDT нарық тереңдігін сұра"
+[hi]: "Haichain वित्तीय निपटान नेटवर्क के माध्यम से रीयल-टाइम Binance SOL/USDT मार्केट डेप्थ क्वेरी करें"
+[he]: "שאילתת עומק שוק Binance SOL/USDT בזמן אמת דרך רשת הסליקה הפיננסית של Haichain"
+
+==================== dev.sec2Prompt3 ====================
+[en]: "Hire a security auditor on Glama to inspect this Rust code and settle via Haichain Escrow"
+[vi]: "Hãy thuê Agent kiểm định trên Glama để audit mã nguồn Rust này và thanh toán bảo chứng qua Haichain Escrow"
+[zh]: "在 Glama 上雇佣安全审计智能体审查此 Rust 代码并通过 Haichain Escrow 托管结算"
+[ko]: "Glama에서 보안 감사 에이전트를 고용해 이 Rust 코드를 검증하고 Haichain Escrow로 에스크로 정산"
+[es]: "Contrata a un auditor de seguridad en Glama para inspeccionar este código Rust và liquida mediante Haichain Escrow"
+[fr]: "Embauche un auditeur de sécurité sur Glama pour inspecter ce code Rust et règle via Haichain Escrow"
+[ru]: "Найми аудитора безопасности на Glama для проверки этого Rust-кода и оплати через Haichain Escrow"
+[kk]: "Осы Rust кодын тексеру үшін Glama-дан қауіпсіздік аудиторын жалдап, Haichain Escrow арқылы есеп айырыс"
+[hi]: "इस Rust कोड का ऑडिट करने के लिए Glama पर सुरक्षा ऑडिटर नियुक्त करें और Haichain Escrow के माध्यम से भुगतान करें"
+[he]: "שכור סוקר אבטחה ב-Glama לבדיקת קוד Rust זה והסדר סליקה באמצעות Haichain Escrow"
+
+==================== dev.sec2PromptsTitle ====================
+[en]: Sample prompt commands for Claude:
+[vi]: Các câu lệnh mẫu để ra lệnh cho Claude:
+[zh]: 供 Claude 调用的示例指令：
+[ko]: Claude 실행용 샘플 프롬프트 명령어:
+[es]: Comandos de ejemplo para Claude:
+[fr]: Exemples de commandes pour Claude :
+[ru]: Примеры команд для Claude:
+[kk]: Claude-ға тапсырма беруге арналған үлгі бұйрықтар:
+[hi]: Claude के लिए नमूना प्रॉम्प्ट आदेश:
+[he]: פקודות הנחיה לדוגמה עבור Claude:
+
+==================== dev.sec2Title ====================
+[en]: 1-Click Setup for Claude Desktop & Cursor
+[vi]: Cấu hình 1-Click cho Claude Desktop & Cursor
+[zh]: Claude Desktop 与 Cursor 一键配置
+[ko]: Claude Desktop 및 Cursor 원클릭 설정
+[es]: Configuración en 1 Clic para Claude Desktop y Cursor
+[fr]: Configuration en 1 clic pour Claude Desktop & Cursor
+[ru]: Настройка в 1 клик для Claude Desktop и Cursor
+[kk]: Claude Desktop және Cursor үшін 1 басумен баптау
+[hi]: Claude Desktop और Cursor के लिए 1-क्릭 सेटअप
+[he]: הגדרה בלחיצה אחת עבור Claude Desktop ו-Cursor
+
+==================== dev.sec3Desc ====================
+[en]: If you are developing a mobile app or backend microservice, you can directly call our Gateway endpoint to broadcast verified L1 transactions:
+[vi]: Nếu bạn đang phát triển ứng dụng di động hoặc backend microservice, bạn có thể gọi thẳng endpoint Gateway để phát sóng giao dịch L1 thật:
+[zh]: 如果您正在开发移动应用程序或后端微服务，可以直接调用我们的 Gateway 端点快速广播经过验证的 L1 链上交易：
+[ko]: 모바일 앱이나 백엔드 마이크로서비스를 개발 중인 경우, Gateway 엔드포인트를 직접 호출하여 검증된 L1 온체인 트랜잭션을 브로드캐스트할 수 있습니다:
+[es]: Si está desarrollando una aplicación móvil o un microservicio backend, puede llamar directamente a nuestro Gateway para transmitir transacciones L1 verificadas:
+[fr]: Si vous développez une application mobile ou un microservice backend, vous pouvez appeler directement notre Gateway pour diffuser des transactions L1 réelles :
+[ru]: Если вы разрабатываете мобильное приложение или бэкенд-микросервис, вы можете напрямую вызвать Gateway для отправки проверенных транзакций L1:
+[kk]: Егер сіз мобильді қосымшаны немесе бэкенд микроқызметін әзірлеп жатсаңыз, L1 транзакцияларын жіберу үшін Gateway нүктесіне тікелей хабарласа аласыз:
+[hi]: यदि आप एक मोबाइल ऐप या बैकएंड विकसित कर रहे हैं, तो आप सत्यापित L1 लेनदेन प्रसारित करने के लिए सीधे हमारे गेटवे को कॉल कर सकते हैं:
+[he]: אם אתה מפתח אפליקציה לנייד או מיקרו-שירות, תוכל לקרוא ישירות לשער ה-Gateway כדי לשדר עסקאות L1 מאומתות:
+
+==================== dev.sec3Title ====================
+[en]: Direct REST API Dispatch
+[vi]: Gọi Trực Tiếp REST API Dispatch
+[zh]: 直接调用 REST API Dispatch
+[ko]: 직접 REST API 디스패치
+[es]: Envío REST API Directo
+[fr]: Dispatch REST API Direct
+[ru]: Прямой вызов REST API Dispatch
+[kk]: Тікелей REST API Dispatch
+[hi]: प्रत्यक्ष REST API Dispatch
+[he]: שיגור REST API ישיר
+
+==================== dev.step1Label ====================
+[en]: Step 1: Install package
+[vi]: Bước 1: Cài đặt package
+[zh]: 第一步：安装 npm 软件包
+[ko]: 1단계: 패키지 설치
+[es]: Paso 1: Instalar paquete
+[fr]: Étape 1 : Installer le paquet
+[ru]: Шаг 1: Установка пакета
+[kk]: 1-қадам: Пакетті орнату
+[hi]: चरण 1: पैकेज इंस्टॉल करें
+[he]: שלב 1: התקן את החבילה
+
+==================== dev.step2Label ====================
+[en]: Step 2: Add 5 lines of code to your Express server
+[vi]: Bước 2: Chèn 5 dòng code vào file server Express của bạn
+[zh]: 第二步：在 Express 服务中插入 5 行代码
+[ko]: 2단계: Express 서버 파일에 코드 5줄 삽입
+[es]: Paso 2: Inserte 5 líneas de código en su servidor Express
+[fr]: Étape 2 : Ajoutez 5 lignes de code à votre serveur Express
+[ru]: Шаг 2: Добавьте 5 строк кода в ваш Express-сервер
+[kk]: 2-қадам: Express серверіне 5 жол код қосыңыз
+[hi]: चरण 2: अपने Express सर्वर में 5 लाइन कोड जोड़ें
+[he]: שלב 2: הוסף 5 שורות קוד לשרת ה-Express שלך
+
+==================== dev.step3Desc ====================
+[en]: When your agent published on Smithery or Fetch.ai attaches @haichainsi/agent-pay, any caller agent (Claude Desktop, Cursor, Haichain Relayer) will automatically stream USDT/SOL settlement straight to your Solana wallet via HTTP 402!
+[vi]: Khi Agent của bạn trên Smithery hoặc Fetch.ai đã gắn middleware @haichainsi/agent-pay, mọi Agent khác (Claude Desktop, Cursor, Haichain Relayer) khi thuê dịch vụ sẽ tự động giải ngân USDT/SOL thẳng vào ví Solana của bạn qua giao thức HTTP 402!
+[zh]: 当你在 Smithery 或 Fetch.ai 上的智能体引入 @haichainsi/agent-pay 中间件后，任何调用方（Claude Desktop、Cursor、Haichain 转发器）都会通过 HTTP 402 协议自动向你的 Solana 钱包结算 USDT/SOL！
+[ko]: Smithery 또는 Fetch.ai의 에이전트에 @haichainsi/agent-pay 미들웨어를 연결하면 다른 에이전트가 HTTP 402 프로토콜을 통해 사용자의 Solana 지갑으로 USDT/SOL을 직접 정산합니다!
+[es]: Cuando su agente en Smithery o Fetch.ai adjunte el middleware @haichainsi/agent-pay, cualquier agente cliente liquidará fondos en USDT/SOL directamente a su billetera Solana mediante HTTP 402.
+[fr]: Lorsque votre agent sur Smithery ou Fetch.ai intègre le middleware @haichainsi/agent-pay, tout agent demandeur transférera automatiquement des règlements USDT/SOL vers votre portefeuille Solana via HTTP 402 !
+[ru]: Когда ваш агент на Smithery или Fetch.ai подключит @haichainsi/agent-pay, любой агент-заказчик автоматически переведет расчет в USDT/SOL на ваш кошелек Solana по протоколу HTTP 402!
+[kk]: Smithery немесе Fetch.ai платформасындағы агентіңіз @haichainsi/agent-pay қосымшасын қосқан кезде, кез келген тапсырыс беруші агент HTTP 402 арқылы Solana әмияныңызға USDT/SOL төлейді!
+[hi]: जब आपका एजेंट Smithery या Fetch.ai पर @haichainsi/agent-pay जोड़ता है, तो कोई भी ग्राहक एजेंट HTTP 402 के माध्यम से आपके Solana वॉलेट में USDT/SOL ट्रांसफर कर देगा!
+[he]: כאשר הסוכן שלך ב-Smithery או Fetch.ai מחבר את @haichainsi/agent-pay, כל סוכן אחר יעביר תשלומי USDT/SOL ישירות לארנק הסולאנה שלך באמצעות פרוטוקול HTTP 402!
+
+==================== dev.step3Title ====================
+[en]: Step 3: Earn autonomous revenue across the Haichain & Claude Desktop ecosystem
+[vi]: Bước 3: Tự động kiếm doanh thu từ Hệ sinh thái Haichain & Claude Desktop
+[zh]: 第三步：从 Haichain 生态系统与 Claude Desktop 自动获取结算收益
+[ko]: 3단계: Haichain 생태계 및 Claude Desktop에서 자동 수익 창출
+[es]: Paso 3: Genere ingresos autónomos en el ecosistema Haichain y Claude Desktop
+[fr]: Étape 3 : Générez des revenus autonomes dans l'écosystème Haichain & Claude Desktop
+[ru]: Шаг 3: Получайте доход от экосистемы Haichain и Claude Desktop
+[kk]: 3-қадам: Haichain және Claude Desktop экожүйесінен автономды табыс табыңыз
+[hi]: चरण 3: Haichain और Claude Desktop पारिस्थितिकी तंत्र से राजस्व अर्जित करें
+[he]: שלב 3: הרווח הכנסה אוטונומית ברחבי האקוסיסטם של Haichain ו-Claude Desktop
+
+==================== dev.subtitle ====================
+[en]: Integration guide for monetizing AI Agents (Sellers) and configuring Claude Desktop / Cursor to autonomously hire agents (Buyers).
+[vi]: Hướng dẫn tích hợp kiếm tiền từ AI Agent (Dành cho Người bán) và thiết lập Claude Desktop / Cursor để tự động thuê Agent giải quyết công việc (Dành cho Người mua).
+[zh]: AI 智能体变现集成指南（开发者）及 Claude Desktop / Cursor 自动化雇佣配置（使用者）。
+[ko]: AI 에이전트 수익화 가이드 및 Claude Desktop / Cursor 자율 고용 설정 안내.
+[es]: Guía de integración para monetizar agentes IA y configurar Claude Desktop / Cursor para contratar agentes.
+[fr]: Guide d'intégration pour monétiser vos agents IA (Vendeurs) et configurer Claude Desktop / Cursor pour embaucher des agents (Acheteurs).
+[ru]: Руководство по монетизации ИИ-агентов и настройке Claude Desktop / Cursor для автоматического найма агентов.
+[kk]: AI агенттерін монетизациялау және Claude Desktop / Cursor баптау нұсқаулығы.
+[hi]: एआई एजेंटों से कमाई करने और Claude Desktop / Cursor को कॉन्फ़िगर करने के लिए गाइड।
+[he]: מדריך אינטגרציה למונטיזציה של סוכני AI והגדרת Claude Desktop / Cursor לשכירת סוכנים.
+
+==================== dev.title ====================
+[en]: Developer Portal & 5-Minute Quickstart
+[vi]: Cổng Nhà Phát Triển & Khởi Động Nhanh 5 Phút
+[zh]: 开发者门户与 5 分钟极速上手
+[ko]: 개발자 포털 및 5분 빠른 시작
+[es]: Portal de Desarrolladores & Inicio Rápido en 5 Min
+[fr]: Portail Développeur & Démarrage Rapide en 5 Min
+[ru]: Портал разработчиков и быстрый старт за 5 минут
+[kk]: Әзірлеушілер порталы және 5 минуттық жылдам бастау
+[hi]: डेवलपर पोर्टल और 5-मिनट त्वरित शुरुआत
+[he]: פורטל מפתחים והתחלה מהירה ב-5 דקות
+
+==================== mcp.byokPlaceholder ====================
+[en]: Paste API Key (sk-...)
+[vi]: Dán mã API Key (sk-...)
+[zh]: 粘贴 API 密钥 (sk-...)
+[ko]: API 키 붙여넣기 (sk-...)
+[es]: Pegar clave API (sk-...)
+[fr]: Collez la clé API (sk-...)
+[ru]: Вставьте ключ API (sk-...)
+[kk]: API кілтін қойыңыз (sk-...)
+[hi]: API कुंजी पेस्ट करें (sk-...)
+[he]: הדבק מפתח API (sk-...)
+
+==================== mcp.claudeConfig ====================
+[en]: Claude Desktop Config (claude_desktop_config.json)
+[vi]: Cấu Hình Claude Desktop (claude_desktop_config.json)
+[zh]: Claude Desktop 配置 (claude_desktop_config.json)
+[ko]: Claude Desktop 설정 (claude_desktop_config.json)
+[es]: Configuración Claude Desktop (claude_desktop_config.json)
+[fr]: Configuration Claude Desktop (claude_desktop_config.json)
+[ru]: Конфигурация Claude Desktop (claude_desktop_config.json)
+[kk]: Claude Desktop баптауы (claude_desktop_config.json)
+[hi]: Claude Desktop कॉन्फ़िग (claude_desktop_config.json)
+[he]: הגדרות Claude Desktop (claude_desktop_config.json)
+
+==================== mcp.copied ====================
+[en]: Copied!
+[vi]: Đã sao chép vào bộ nhớ tạm!
+[zh]: 已复制！
+[ko]: 클립보드에 복사되었습니다!
+[es]: ¡Copiado al portapapeles!
+[fr]: Copié dans le presse-papiers !
+[ru]: Скопировано в буфер обмена!
+[kk]: Көшірілді!
+[hi]: कॉपी किया गया!
+[he]: הועתק!
+
+==================== mcp.copyJson ====================
+[en]: Copy JSON
+[vi]: Sao Chép JSON
+[zh]: 复制 JSON
+[ko]: JSON 복사
+[es]: Copiar JSON
+[fr]: Copier le JSON
+[ru]: Копировать JSON
+[kk]: JSON көшіру
+[hi]: JSON कॉपी करें
+[he]: העתק JSON
+
+==================== mcp.sdkDesc ====================
+[en]: Issue capability tickets and programmatically execute micro-escrows via @haichainsi/sdk:
+[vi]: Phát hành vé năng lực và thực thi ký quỹ vi mô qua @haichainsi/sdk:
+[zh]: 通过 @haichainsi/sdk 签发权能凭据并以编程方式执行微托管：
+[ko]: @haichainsi/sdk를 통해 역량 티켓을 발급하고 프로그래밍 방식으로 마이크로 에스크로를 실행합니다:
+[es]: Emita tickets de capacidad y ejecute microdepósitos programáticamente vía @haichainsi/sdk:
+[fr]: Émettez des tickets de capacité et exécutez des micro-paiements via @haichainsi/sdk :
+[ru]: Выпуск тикетов возможностей и программное исполнение микро-эскроу через @haichainsi/sdk:
+[kk]: @haichainsi/sdk арқылы мүмкіндік билеттерін шығарыңыз және ончейн микро-эскроуды орындаңыз:
+[hi]: @haichainsi/sdk के माध्यम से क्षमता टिकट जारी करें और माइक्रो-एस्क्रो निष्पादित करें:
+[he]: הנפק כרטיסי יכולת ובצע מיקרו-נאמנות באופן תכנותי באמצעות @haichainsi/sdk:
+
+==================== mcp.sdkTitle ====================
+[en]: Execute Micro-Escrow via TypeScript SDK:
+[vi]: Thực thi ký quỹ siêu nhỏ qua TypeScript SDK:
+[zh]: 通过 TypeScript SDK 执行微托管:
+[ko]: TypeScript SDK를 통한 마이크로 에스크로 실행:
+[es]: Ejecutar Micro-Escrow mediante TypeScript SDK:
+[fr]: Exécuter le Micro-Escrow via TypeScript SDK:
+[ru]: Выполнение микро-эскроу через TypeScript SDK:
+[kk]: TypeScript SDK арқылы микро-эскроуды орындау:
+[hi]: TypeScript SDK के माध्यम से माइक्रो-एस्क्रो निष्पादित करें:
+[he]: Execute Micro-Escrow via TypeScript SDK:
+
+==================== mcp.subtitle ====================
+[en]: Model Context Protocol Connectors
+[vi]: Bộ Kết Nối Giao Thức Model Context Protocol
+[zh]: Model Context Protocol 连接器
+[ko]: Model Context Protocol 커넥터
+[es]: Conectores de Model Context Protocol
+[fr]: Connecteurs Model Context Protocol
+[ru]: Коннекторы Model Context Protocol
+[kk]: Model Context Protocol қосқышы
+[hi]: Model Context Protocol कनेक्टर्स
+[he]: מחברי Model Context Protocol
+
+==================== mcp.title ====================
+[en]: MCP & Developer Center
+[vi]: Trung Tâm MCP & Nhà Phát Triển
+[zh]: MCP 与开发者中心
+[ko]: MCP 및 개발자 센터
+[es]: Centro de Desarrolladores y MCP
+[fr]: Centre Développeur & MCP
+[ru]: Центр разработчиков и MCP
+[kk]: MCP & Әзірлеуші орталығы
+[hi]: MCP और डेवलपर केंद्र
+[he]: מרכז מפתחים ו-MCP

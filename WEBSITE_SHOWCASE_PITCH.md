@@ -322,7 +322,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 |   THỰC TẾ ĐƯỢC CHỨNG MINH:                                                      |
 |   - Chuẩn Anthropic MCP Native: Cắm trực tiếp vào Claude Desktop & Cursor.      |
 |   - Thanh khoản USDT toàn cầu: Miễn nhiễm 100% rủi ro phong tỏa tài khoản.      |
-|   - An ninh Mật mã học Quân sự: Đã được kiểm toán bởi OtterSec & Neodyme.       |
+|   - Kiến trúc Bất biến Toán học: Thiết kế theo chuẩn an ninh Solana, sẵn sàng kiểm toán độc lập.       |
 +---------------------------------------------------------------------------------+
 |                                CALL TO ACTION                                   |
 |                                                                                 |
@@ -484,7 +484,7 @@ Bạn có thể dùng cấu trúc sau để thiết kế trang web giới thiệ
 * **Kịch Bản Bùng Nổ (Bull Case):** 2.5M bot & robotics, khối lượng bù trừ $12.5 Tỷ, Protocol Take-Rate $0.7M - $1.4M -> Định giá $1.2 Tỷ FDV -> **80.0x Lợi nhuận (IRR 336.8%/năm)**.
 
 ### 3. Lộ Trình 90 Ngày Triển Khai Mainnet (90-Day Execution Roadmap)
-* **Tháng 1 (Ngày 1 - 30):** Đóng băng mã nguồn v6.9.3, bàn giao cho OtterSec & Neodyme kiểm toán độc lập, chạy stress-test 1,000,000 micro-ticks trên Solana Devnet, hoàn tất pháp nhân Swiss Foundation & Cayman.
+* **Tháng 1 (Ngày 1 - 30):** Đóng băng mã nguồn v6.9.3, bàn giao cho đơn vị kiểm toán bảo mật Tier-1 độc lập, chạy stress-test 1,000,000 micro-ticks trên Solana Devnet, hoàn tất pháp nhân Swiss Foundation & Cayman.
 * **Tháng 2 (Ngày 31 - 60):** Mở Private Testnet cho 50 đối tác B2B, ký hợp đồng Market Maker với Wintermute/Keyrock (Pure Retainer, cấm Call Option), phát hành SDK và server MCP lên npm registry.
 * **Tháng 3 (Ngày 61 - 90):** Triển khai Solana Mainnet-Beta, mở bán Public Sale LBP 4% ($2.4M), cấp thanh khoản ban đầu và ĐỐT KHÓA 100% TOKEN LP trên Raydium/Orca, mở cổng Day-1 Reverse Proxy với 15 API Web2 hàng đầu.
 

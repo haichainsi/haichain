@@ -1,0 +1,252 @@
+<aside id='' class='w-64 border-r border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-brand-titanium/90 backdrop-blur-xl flex flex-col justify-between shrink-0 h-screen z-30 hidden md:flex'>: Top Section: Brand & Navigation
+<aside id='' class='w-64 border-r border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-brand-titanium/90 backdrop-blur-xl flex flex-col justify-between shrink-0 h-screen z-30 hidden md:flex'>: Bottom Section: Cluster Info & Back to Home
+<div id='' class='p-6'>: Logo
+<div id='' class='p-6'>: Navigation Menu
+<a id='' class='flex items-center pb-6 border-b border-brand-lightBorder dark:border-brand-border group'>: Light Mode: Dark Logo
+<a id='' class='flex items-center pb-6 border-b border-brand-lightBorder dark:border-brand-border group'>: Dark Mode: Pure White Logo
+<span id='nav-sale-title' class='font-medium text-xs whitespace-nowrap truncate text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white'>: Private Round
+<span id='nav-sale-badge' class='ml-2 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider bg-neutral-200/90 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700/80 shrink-0 whitespace-nowrap leading-none'>: VIP
+<div id='' class='p-6 border-t border-brand-lightBorder dark:border-brand-border space-y-3 text-xs'>: Live Devnet Badge
+<div id='' class='p-6 border-t border-brand-lightBorder dark:border-brand-border space-y-3 text-xs'>: Back to Home
+<div id='sidebar-program-id' class='text-[10px] text-neutral-500 truncate'>: DK4Q...w4xk
+<div id='' class='flex-1 flex flex-col h-screen overflow-hidden'>: TOP HEADER BAR (OPTIMIZED FOR MOBILE & DESKTOP - IMMUTABLE COMPONENT ARCHITECTURE)
+<div id='' class='flex-1 flex flex-col h-screen overflow-hidden'>: Immediate Synchronous i18n Hydration (Zero-Delay Paint Alignment)
+<div id='' class='flex-1 flex flex-col h-screen overflow-hidden'>: MAIN SCROLLABLE CONTENT CANVAS (RESPONSIVE PADDING FOR MOBILE & DESKTOP)
+<div id='' class='flex-1 flex flex-col h-screen overflow-hidden'>: MOBILE BOTTOM NAVIGATION (NATIVE APP FEEL, ZERO OVERFLOW, APPLE-TIER DOCK)
+<header id='' class='haichain-top-header border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl'>: Left: Brand Logo on Mobile & Desktop Breadcrumb
+<header id='' class='haichain-top-header border-b border-brand-lightBorder dark:border-brand-border bg-white/80 dark:bg-black/80 backdrop-blur-xl'>: Right Header Controls (Locked Immutable Action Suite)
+<div id='' class='flex items-center shrink-0 min-w-0 pr-1 sm:pr-3'>: Mobile Official Brand Logo & Language Switcher (Locked Immutable Cluster)
+<div id='' class='flex items-center shrink-0 min-w-0 pr-1 sm:pr-3'>: Desktop Breadcrumb Tab Title
+<div id='' class='md:hidden haichain-brand-cluster'>: Mobile Language Switcher Mount (Locked Optical Alignment)
+<a id='' class='haichain-brand-logo-link'>: Light Mode: Dark Logo
+<a id='' class='haichain-brand-logo-link'>: Dark Mode: Pure White Logo
+<div id='' class='haichain-actions-cluster'>: Live Cluster Pill (Visible on LG+)
+<div id='' class='haichain-actions-cluster'>: Consolidated Unified AI Integration Hub Trigger (High-Visibility AI Connect Pill)
+<div id='' class='haichain-actions-cluster'>: Consolidated Unified AI Integration Hub Trigger
+<div id='' class='haichain-actions-cluster'>: Hidden Aliases for script backward compatibility
+<div id='' class='haichain-actions-cluster'>: Emergency Panic Button
+<div id='' class='haichain-actions-cluster'>: Desktop Multi-Language Switcher Dropdown Mount
+<div id='' class='haichain-actions-cluster'>: Theme Toggle
+<div id='' class='haichain-actions-cluster'>: Connect Phantom / Wallet Button (Locked Immutable Sizing, Never Truncates)
+<strong id='live-slot-counter' class='font-bold'>: ...
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 1: OVERVIEW & MASTER VAULT =================
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 2: AI AGENT SWARM =================
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 3: AI PLAYGROUND =================
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 4: AUDIT LEDGER =================
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 5: MCP & DEV CENTER =================
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 6: ON-CHAIN VESTING VAULT & ALLOCATIONS =================
+<main id='' class='flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 pb-28 md:pb-8 no-scrollbar bg-neutral-100/50 dark:bg-black/50'>: ================= TAB 7: PRIVATE ROUND / SAFT ALLOCATION =================
+<section id='tab-overview' class='tab-content space-y-6'>: Top Metrics Grid
+<section id='tab-overview' class='tab-content space-y-6'>: Velocity Gauge & Active Invariant Monitor
+<section id='tab-overview' class='tab-content space-y-6'>: ================= EARLY BACKER ALLOCATIONS & VESTING (TOKEN-2022 TRANSFER-HOOK) =================
+<div id='' class='grid grid-cols-1 md:grid-cols-4 gap-4'>: Main Balance Card (Spans 2 Cols - Mobile Optimized)
+<div id='' class='grid grid-cols-1 md:grid-cols-4 gap-4'>: Stat Card 2: Recyclable Rent Sol
+<div id='' class='grid grid-cols-1 md:grid-cols-4 gap-4'>: Stat Card 3: Security Status
+<span id='overview-balance' class=''>: 0.0000
+<span id='' class='text-xs font-mono text-neutral-500 ml-1.5 sm:ml-2'>: USDT
+<div id='' class='text-2xl font-bold font-mono text-black dark:text-white tabular-nums mt-2'>: 100%
+<p id='' class='text-xs text-black dark:text-white font-mono font-semibold mt-1'>: +0.0089 SOL Refunded
+<div id='' class='text-2xl font-bold font-mono text-black dark:text-white tabular-nums mt-2'>: 15 / 15 Passed
+<div id='' class='grid grid-cols-1 lg:grid-cols-12 gap-6'>: Left: Spending Velocity
+<div id='' class='grid grid-cols-1 lg:grid-cols-12 gap-6'>: Right: Protocol PDA Addresses
+<span id='' class='font-bold text-black dark:text-white'>: 0.18ms
+<span id='' class='font-bold text-black dark:text-white'>: 771 Bytes (< 1,232 MTU)
+<a id='' class='underline hover:text-black dark:hover:text-white'>: FtqZ...4t8F
+<a id='' class='underline hover:text-black dark:hover:text-white'>: HD1b...5nVW (2.5 SOL)
+<span id='' class='text-neutral-700 dark:text-neutral-300'>: Es9v...wNYB (SPL)
+<div id='overview-early-allocations-container' class='space-y-4'>: Dynamically populated by updateEarlyAllocationsUI()
+<section id='tab-agents' class='tab-content hidden space-y-6'>: 1-CLICK AI PLATFORMS INTEGRATION HUB
+<div id='' class='p-6 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-4'>: Platform Grid
+<div id='' class='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-1'>: 1. OpenAI
+<div id='' class='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-1'>: 2. Claude
+<div id='' class='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-1'>: 3. Google Gemini
+<div id='' class='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-1'>: 4. DeepSeek
+<div id='' class='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-1'>: 5. Perplexity
+<div id='' class='font-semibold text-xs text-black dark:text-white'>: OpenAI
+<div id='' class='text-[10px] text-neutral-400'>: GPT-4o, o3-mini
+<div id='' class='font-semibold text-xs text-black dark:text-white'>: Claude
+<span id='' class='text-[9px] font-mono px-1 py-0.2 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'>: MCP
+<div id='' class='text-[10px] text-neutral-400'>: 3.5 Sonnet, 3.7
+<div id='' class='font-semibold text-xs text-black dark:text-white'>: Gemini
+<div id='' class='text-[10px] text-neutral-400'>: 2.5 Flash, Pro
+<div id='' class='font-semibold text-xs text-black dark:text-white'>: DeepSeek
+<div id='' class='text-[10px] text-neutral-400'>: R1 Reasoning, V3
+<div id='' class='font-semibold text-xs text-black dark:text-white'>: Perplexity
+<div id='' class='text-[10px] text-neutral-400'>: Sonar Search API
+<div id='agent-cards-container' class='grid grid-cols-1 md:grid-cols-2 gap-4'>: Agent 1
+<div id='agent-cards-container' class='grid grid-cols-1 md:grid-cols-2 gap-4'>: Agent 2
+<div id='agent-cards-container' class='grid grid-cols-1 md:grid-cols-2 gap-4'>: Agent 3
+<div id='agent-cards-container' class='grid grid-cols-1 md:grid-cols-2 gap-4'>: Agent 4
+<h4 id='' class='font-semibold text-sm text-black dark:text-white'>: Claude Desktop (MCP Worker)
+<span id='' class='text-[11px] text-neutral-500 font-mono'>: ID: agent_claude_desktop_01
+<div id='' class=''>: Slot +1000
+<h4 id='' class='font-semibold text-sm text-black dark:text-white'>: Cursor Composer Agent
+<span id='' class='text-[11px] text-neutral-500 font-mono'>: ID: agent_cursor_ide_02
+<div id='' class=''>: Slot +500
+<h4 id='' class='font-semibold text-sm text-black dark:text-white'>: Web SERP Scraper Swarm
+<span id='' class='text-[11px] text-neutral-500 font-mono'>: ID: agent_serp_crawler_03
+<div id='' class=''>: Slot +200
+<h4 id='' class='font-semibold text-sm text-black dark:text-white'>: Tesla Optimus #12 Kinematics
+<span id='' class='text-[11px] text-neutral-500 font-mono'>: ID: edge_robot_sensor_04
+<div id='' class=''>: Continuous
+<div id='' class='p-5 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm'>: Terminal Header
+<div id='' class='p-5 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm'>: Model Selector
+<div id='' class='p-5 sm:p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm'>: Prompt Box & Execute Button
+<span id='' class='shrink-0 whitespace-nowrap px-2 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-mono font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 mt-0.5'>: v6.9.3 L1 Core
+<span id='' class=''>: Program: DK4Q...w4xk
+<span id='' class='text-[11px] text-neutral-500 font-mono'>: Dynamic Escrow Netting
+<span id='' class='text-xs font-bold'>: Claude 3.5 Sonnet
+<div id='' class='text-[9px] text-neutral-400 font-mono'>: Anthropic Reasoning
+<div id='' class='text-xs font-bold'>: DeepSeek R1
+<div id='' class='text-[9px] text-neutral-400 font-mono'>: Ultra-Low Micro-Tick
+<div id='' class='text-xs font-bold'>: Perplexity Search
+<div id='' class='text-[9px] text-neutral-400 font-mono'>: Real-Time Web Scrape
+<div id='' class='text-xs font-bold'>: Optimus Robot
+<div id='' class='text-[9px] text-neutral-400 font-mono'>: Actuator Trajectory
+<div id='' class='space-y-3'>: Production Task Templates (Optimized 2-Col Grid on Mobile, Flex on Desktop)
+<div id='' class='space-y-3'>: Terminal Output Window
+<span id='' class='text-[9px] text-neutral-500 font-mono'>: 1-Tap Prompt
+<span id='' class='ml-2 text-neutral-300'>: haichain-escrow-session: devnet
+<span id='' class=''>: Cluster:
+<strong id='' class='text-white'>: Solana Devnet
+<span id='' class=''>: Rent:
+<strong id='' class='text-white font-mono'>: Recyclable
+<div id='' class='text-neutral-500'>: [System] HAICHAIN Kernel v6.9.3 Connected to Devnet Program: DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk
+<div id='' class='text-neutral-400'>: [Master Vault PDA] FtqZDVdogfFweQxBwoXjZ62XQzbKeAs32umRVNQt4t8F (Authority: HD1b...5nVW)
+<section id='tab-ledger' class='tab-content hidden space-y-6'>: Ledger Table
+<td id='' class='py-3 px-4 text-neutral-500'>: #91826
+<td id='' class='py-3 px-4 font-semibold text-black dark:text-white'>: Genesis Escrow Simulation
+<td id='' class='py-3 px-4 text-neutral-400'>: 4-Tuple Leaf
+<td id='' class='py-3 px-4 text-black dark:text-white font-bold'>: -$0.0020 USDT
+<td id='' class='py-3 px-4 text-neutral-400'>: 1275ms
+<a id='' class='underline hover:text-black dark:hover:text-white text-black dark:text-white font-bold'>: Confirmed →
+<td id='' class='py-3 px-4 text-neutral-500'>: #91825
+<td id='' class='py-3 px-4 font-semibold text-black dark:text-white'>: Claude 3.5 Sonnet
+<td id='' class='py-3 px-4 text-neutral-400'>: 771-Byte MTU
+<td id='' class='py-3 px-4 text-black dark:text-white font-bold'>: -$0.0042 USDT
+<td id='' class='py-3 px-4 text-neutral-400'>: 0.18ms
+<span id='' class='text-neutral-400'>: Internal Netting
+<td id='' class='py-3 px-4 text-neutral-500'>: #91824
+<td id='' class='py-3 px-4 font-semibold text-black dark:text-white'>: Brave SERP Scraper
+<td id='' class='py-3 px-4 text-neutral-400'>: 8-Leaf Root
+<td id='' class='py-3 px-4 text-black dark:text-white font-bold'>: -$0.0024 USDT
+<td id='' class='py-3 px-4 text-neutral-400'>: 0.14ms
+<span id='' class='text-neutral-400'>: Internal Netting
+<div id='' class='p-6 sm:p-8 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-6'>: Claude Desktop Config Box
+<div id='' class='p-6 sm:p-8 rounded-3xl border border-brand-lightBorder dark:border-brand-border bg-white dark:bg-brand-card shadow-sm space-y-6'>: TypeScript SDK Snippet
+<div id='vesting-vault-page-container' class=''>: Dynamically populated by renderVestingVaultPage()
+<section id='tab-preseed' class='tab-content hidden space-y-6'>: Dynamically populated by renderPreseedSalePage()
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 1: Vault
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 2: Agents
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 3: Playground
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 4: Vesting Vault
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 5: Ledger
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 6: MCP
+<nav id='' class='md:hidden fixed bottom-0 left-0 right-0 h-[66px] border-t border-neutral-200/90 dark:border-neutral-800/90 bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-2xl flex items-center justify-around z-40 px-1 shadow-[0_-4px_25px_rgba(0,0,0,0.04)] dark:shadow-[0_-4px_25px_rgba(0,0,0,0.4)]'>: Tab 7: Private (Mobile)
+<span id='mobile-sale-title' class='mobile-tab-label mt-0.5 text-[10px] font-sans font-medium tracking-tight text-neutral-400 dark:text-neutral-500 whitespace-nowrap truncate max-w-[68px]'>: Private
+<div id='' class='my-4 space-y-3 font-mono text-xs'>: Payment Method Tabs: Faucet | Apple Pay | Card | Web3 Wallet
+<div id='' class='my-4 space-y-3 font-mono text-xs'>: 0. Devnet Faucet Banner
+<div id='' class='my-4 space-y-3 font-mono text-xs'>: 1. Fiat Relayer Notice (for Apple Pay & Card)
+<div id='' class='my-4 space-y-3 font-mono text-xs'>: 2. Payer Wallet Status Card (for Web3 Wallet tab)
+<span id='' class=''>: Faucet (+$10)
+<span id='' class=''>: Apple Pay
+<span id='' class=''>: Card
+<span id='' class=''>: Web3
+<span id='' class='text-[10px] text-neutral-500 dark:text-neutral-400 block uppercase font-mono font-bold'>: 1-Click Free Devnet Airdrop
+<span id='' class='font-mono text-xs text-black dark:text-white font-bold truncate'>: Instant +$10.00 USDT & SOL
+<span id='' class='text-[10px] font-mono px-2 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-bold uppercase'>: Free Testnet
+<span id='' class='text-[10px] text-neutral-400 block uppercase font-mono'>: 0% Gas Fiat Relayer
+<span id='deposit-fiat-method-name' class='font-mono text-xs text-black dark:text-white font-bold truncate'>: Apple Pay On-Ramp Active
+<span id='' class='text-[10px] font-mono text-neutral-500 font-bold uppercase'>: Instant
+<span id='deposit-wallet-address' class='font-mono text-xs text-neutral-600 dark:text-neutral-400 font-bold truncate'>: Wallet Disconnected
+<button id='' class='dash-preset-btn py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 font-semibold hover:border-black dark:hover:border-white'>: +$5.00
+<button id='' class='dash-preset-btn py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 font-semibold hover:border-black dark:hover:border-white'>: +$10.00
+<button id='' class='dash-preset-btn py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 font-semibold hover:border-black dark:hover:border-white'>: +$25.00
+<div id='' class='w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#080808] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col'>: Mobile Pull Bar Indicator
+<div id='' class='w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#080808] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col'>: Modal Header
+<div id='' class='w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#080808] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col'>: 3 Main Segment Tabs (Monochrome Minimalist)
+<div id='' class='w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#080808] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col'>: ================= TAB 1: CLAUDE DESKTOP & CURSOR (1-CLICK INSTALL) =================
+<div id='' class='w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#080808] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col'>: ================= TAB 2: CLAUDE.AI ONLINE (WEB / CLOUD CONNECTOR) =================
+<div id='' class='w-full sm:max-w-xl rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#080808] p-4 sm:p-6 shadow-2xl relative max-h-[88vh] sm:max-h-[92vh] overflow-y-auto no-scrollbar animate-fadeIn flex flex-col'>: ================= TAB 3: WEB DASHBOARD DIRECT (INSTANT PLAYGROUND) =================
+<div id='hub-section-desktop' class='space-y-3 font-mono text-xs'>: Terminal Command Box
+<div id='hub-section-desktop' class='space-y-3 font-mono text-xs'>: 3 Step Walkthrough
+<div id='hub-section-desktop' class='space-y-3 font-mono text-xs'>: Optional Manual JSON Download
+<p id='' class='text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed'>: Dành cho máy tính đã cài
+<p id='' class='text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed'>: hoặc
+<p id='' class='text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed'>: . Tự động cấu hình MCP server và kết nối két chi tiêu on-chain.
+<strong id='' class=''>: Claude Desktop
+<strong id='' class=''>: Cursor IDE
+<span id='' class=''>: Mở Terminal / PowerShell và chạy:
+<span id='' class='text-[10px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-400 font-mono'>: v6.2.1
+<div id='hub-section-online' class='hidden space-y-3 font-mono text-xs'>: Remote MCP URL Box
+<div id='hub-section-online' class='hidden space-y-3 font-mono text-xs'>: 3 Step Guide for claude.ai online
+<p id='' class='text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed'>: Dành cho người dùng chat trên web
+<p id='' class='text-[11px] text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed'>: trên trình duyệt (Chrome, Safari, Brave, Edge). Kết nối trực tiếp qua giao thức đám mây.
+<strong id='' class=''>: claude.ai
+<span id='' class='truncate'>: Remote MCP Connector URL:
+<span id='' class='text-[9.5px] bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-full text-neutral-300 font-mono shrink-0 whitespace-nowrap'>: SSE / HTTPS
+<div id='hub-section-web' class='hidden space-y-3 font-mono text-xs'>: 3 Feature Badges (Monochrome Luxury)
+<div id='hub-section-web' class='hidden space-y-3 font-mono text-xs'>: Big Launch CTA Button (Solid Monochrome)
+<span id='' class='text-[9.5px] px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white font-mono uppercase tracking-wider font-semibold'>: Web3 Direct
+<span id='' class='text-[10px] text-neutral-500'>: Gemini, GPT-4o, Claude 3.5, DeepSeek
+<option id='' class=''>: Claude 3.5 Sonnet ($0.0020/call)
+<option id='' class=''>: DeepSeek R1 ($0.0008/call)
+<option id='' class=''>: Perplexity Pro ($0.0015/call)
+<option id='' class=''>: Optimus Kinematics ($0.0035/tick)
+<div id='' class='w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative'>: Modal Header
+<div id='' class='w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative'>: Current Connection Status Banner
+<div id='' class='w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative'>: Connection Method Tabs
+<div id='' class='w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative'>: Content Panel 1: BYOK (Bring Your Own Key)
+<div id='' class='w-full max-w-lg rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-brand-card p-6 shadow-2xl relative'>: Content Panel 2: Web3 Universal Gateway
+<span id='modal-provider-badge' class='px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300'>: Supported
+<span id='modal-provider-name' class=''>: OpenAI
+<span id='modal-provider-models' class='text-xs text-neutral-400 font-normal'>: (GPT-4o, o3-mini)
+<div id='' class='p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-3'>: Error Alert Banner
+<div id='byok-key-hint' class='text-[10px] text-neutral-400 font-mono'>: Format: Must start with sk- or sk-proj- (min 20 characters)
+<div id='' class='p-4 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-3'>: Prerequisites Checklist
+<div id='' class='p-4 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-3'>: Gateway Action Button
+<div id='' class='space-y-2 p-3 rounded-xl bg-white/80 dark:bg-black/60 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono'>: Req 1: Wallet
+<div id='' class='space-y-2 p-3 rounded-xl bg-white/80 dark:bg-black/60 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono'>: Req 2: Vault Balance
+<div id='' class='space-y-2 p-3 rounded-xl bg-white/80 dark:bg-black/60 border border-neutral-200 dark:border-neutral-800 text-[11px] font-mono'>: Req 3: Max Cap
+<div id='' class='w-full sm:max-w-md rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-5 shadow-2xl relative max-h-[88vh] overflow-y-auto no-scrollbar transform transition-transform duration-300 animate-fadeIn'>: Mobile Drag Handle Bar
+<div id='' class='w-full sm:max-w-md rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-5 shadow-2xl relative max-h-[88vh] overflow-y-auto no-scrollbar transform transition-transform duration-300 animate-fadeIn'>: Modal Header
+<div id='' class='w-full sm:max-w-md rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-5 shadow-2xl relative max-h-[88vh] overflow-y-auto no-scrollbar transform transition-transform duration-300 animate-fadeIn'>: Compact Provider Selection List
+<div id='' class='w-full sm:max-w-md rounded-t-[28px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-4 sm:p-5 shadow-2xl relative max-h-[88vh] overflow-y-auto no-scrollbar transform transition-transform duration-300 animate-fadeIn'>: Compact Notice Box (For desktop missing extension prompt or errors)
+<div id='' class='my-2.5 sm:my-3 space-y-2'>: 0. BIOMETRIC PASSKEY (FaceID / TouchID / Windows Hello) - 1-TAP INVISIBLE WEB3
+<div id='' class='my-2.5 sm:my-3 space-y-2'>: Minimalist Divider
+<div id='' class='my-2.5 sm:my-3 space-y-2'>: 1. Phantom Card with Nested Mobile Action Tray
+<div id='' class='my-2.5 sm:my-3 space-y-2'>: 2. Solflare Card with Nested Mobile Action Tray
+<div id='' class='my-2.5 sm:my-3 space-y-2'>: 3. MetaMask Card with Nested Mobile Action Tray
+<div id='' class='my-2.5 sm:my-3 space-y-2'>: 4. Custom Solana Address with Inline Input Panel
+<span id='' class='text-[9px] font-mono uppercase px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold shrink-0'>: 1-Tap • FIDO2
+<div id='' class='rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden'>: Inline Phantom Mobile Action Tray
+<span id='' class=''>: Open in Phantom App (Recommended)
+<span id='' class=''>: 2-Way Chrome
+<span id='' class=''>: Paste Address
+<div id='' class='rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden'>: Inline Solflare Mobile Action Tray
+<span id='' class=''>: Open in Solflare App
+<span id='' class=''>: 2-Way Connect to Chrome
+<div id='' class='rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden'>: Inline MetaMask Mobile Action Tray
+<span id='' class=''>: Open in MetaMask App (Mobile Browser)
+<span id='' class=''>: Connect Browser
+<span id='' class=''>: Get MetaMask
+<div id='' class='rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/50 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all overflow-hidden'>: Inline Manual Address Panel
+<span id='' class=''>: Paste
+<div id='' class='w-full sm:max-w-md rounded-t-[32px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto transform transition-transform duration-300 animate-fadeIn'>: Mobile Drag Handle Bar
+<div id='' class='w-full sm:max-w-md rounded-t-[32px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto transform transition-transform duration-300 animate-fadeIn'>: Modal / Drawer Header
+<div id='' class='w-full sm:max-w-md rounded-t-[32px] sm:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] p-5 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto transform transition-transform duration-300 animate-fadeIn'>: Public Key Address Card
+<h3 id='account-modal-title' class='font-bold text-sm sm:text-base text-black dark:text-white truncate'>: Passkey Biometric Wallet
+<span id='account-modal-tag' class='text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 shrink-0'>: FIDO2 Active
+<p id='account-modal-subtitle' class='text-[11px] text-neutral-500 font-mono truncate'>: Hardware-Bound WebAuthn • Zero Key Risk
+<div id='' class='py-3.5 space-y-3 font-mono text-xs'>: 2-Column Specs Grid
+<div id='' class='py-3.5 space-y-3 font-mono text-xs'>: Primary Action: Direct Add Funds
+<div id='' class='py-3.5 space-y-3 font-mono text-xs'>: Mobile Cross-Browser Sync Button (Visible on Mobile / In-App Browsers)
+<div id='' class='py-3.5 space-y-3 font-mono text-xs'>: Secondary Actions Row
+<span id='account-copy-feedback' class='text-emerald-500 font-semibold hidden animate-fadeIn'>: Copied!
+<span id='account-full-address' class='text-[11px] sm:text-xs font-mono truncate mr-2 text-black dark:text-white select-all'>: ...
+<span id='account-provider-name' class='text-xs sm:text-sm text-black dark:text-white font-bold truncate block mt-0.5'>: FaceID / Passkey
+<span id='' class='text-[9px] text-emerald-600 dark:text-emerald-400 font-mono mt-0.5 block'>: ● Secure Element (L3)
+<span id='account-sol-balance' class='text-xs sm:text-sm text-black dark:text-white font-bold truncate block mt-0.5'>: ... SOL
+<span id='' class='text-[9px] text-neutral-500 font-mono mt-0.5 block'>: Devnet Cluster
+<span id='account-sync-browser-text' class=''>: Đồng bộ sang trình duyệt Chrome
+<span id='' class=''>: Explorer

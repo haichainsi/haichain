@@ -1,0 +1,145 @@
+2201: const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
+2202: currentTabTitle.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+2401: const isVi = window.haichainI18n.getLanguage() === 'vi';
+2402: titleEl.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+2531: const isVi = window.haichainI18n ? window.haichainI18n.getLanguage() === 'vi' : false;
+2532: currentTabTitle.textContent = isVi ? 'Phân Bổ Chiến Lược VIP' : 'Private Strategic Allocation';
+2844: const isVi = window.haichainI18n?.currentLang === 'vi';
+2861: if (titleEl) titleEl.textContent = isVi ? 'Ví Sinh Trắc Học Passkey' : 'Passkey Biometric Wallet';
+2866: if (subtitleEl) subtitleEl.textContent = isVi ? 'Xác thực phần cứng WebAuthn • An toàn tuyệt đối' : 'Hardware-Bound WebAuthn • Zero Key Risk';
+2914: syncText.textContent = isVi ? 'Đồng bộ sang trình duyệt Chrome' : 'Sync Wallet to Chrome Browser';
+3047: const isVi = window.haichainI18n?.currentLang === 'vi';
+3049: walletBtnText.textContent = isVi ? "Đang mở Phantom..." : "Opening Phantom...";
+3052: title: isVi ? 'Đang mở Phantom...' : 'Opening Phantom App...',
+3053: message: isVi ? 'Cấp quyền trong Phantom để quay lại Chrome' : 'Approve in Phantom to return to Chrome',
+3099: const isVi = window.haichainI18n?.currentLang === 'vi';
+3101: walletBtnText.textContent = isVi ? "Đang mở Solflare..." : "Opening Solflare...";
+3104: title: isVi ? 'Đang mở Solflare...' : 'Opening Solflare App...',
+3105: message: isVi ? 'Cấp quyền trong Solflare để quay lại Chrome' : 'Approve in Solflare to return to Chrome',
+3621: const isVi = window.haichainI18n?.currentLang === 'vi';
+3627: walletBtnText.textContent = isVi ? "Quét sinh trắc học..." : "Scanning Biometric...";
+3633: title: isVi ? 'Xác Thực Passkey Thành Công' : 'Passkey Connected Successfully',
+3641: walletNoticeText.innerHTML = '<strong>' + (isVi ? 'Lỗi xác thực sinh trắc học' : 'Biometric Error') + ':</strong> ' + (bioErr.message || bioErr);
+3654: walletBtnText.textContent = isVi ? "Đang kết nối Phantom..." : "Connecting Phantom...";
+3670: message: isVi ? 'Người dùng đã hủy kết nối' : 'Connection rejected',
+3700: walletNoticeText.innerHTML = isVi
+3716: walletBtnText.textContent = isVi ? "Đang kết nối MetaMask..." : "Connecting MetaMask...";
+3760: message: isVi ? 'Người dùng đã hủy kết nối' : 'Connection rejected',
+3799: walletNoticeText.innerHTML = isVi
+3815: walletBtnText.textContent = isVi ? "Đang kết nối Solflare..." : "Connecting Solflare...";
+3831: message: isVi ? 'Người dùng đã hủy kết nối' : 'Connection rejected',
+3861: walletNoticeText.innerHTML = isVi
+3958: const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
+3959: if (confirm(isVi ? 'Bạn có muốn đặt lại dữ liệu phân bổ mẫu cho ví này?' : 'Reset simulation allocation for this wallet?')) {
+3970: const isVi = window.haichainI18n ? window.haichainI18n.current() === 'vi' : false;
+3973: alert(isVi
+3987: const isVi = lang === 'vi';
+4019: ${isVi ? 'Két Vesting Token-2022 Đang Hoạt Động' : 'Active Token-2022 Vesting Vault'}
+4022: ${isVi ? 'Khối Thiên Thần' : 'Angel Tranche'}
+4026: ${isVi
+4034: <span>${isVi ? 'Truy Cập Két Vesting Của Tôi →' : 'Open My Vesting Vault →'}</span>
+4048: const isVi = lang === 'vi';
+4081: ${isVi ? 'Két Vesting Token-2022 & Danh Mục Phân Bổ' : 'Token-2022 Vesting Vault & Allocations'}
+4090: ${isVi
+4107: ${isVi ? 'Yêu Cầu Kết Nối Ví Solana' : 'Solana Wallet Authentication Required'}
+4110: ${isVi
+4117: ${isVi ? 'Kết Nối Ví Phantom / Solana' : 'Connect Phantom / Solana Wallet'}
+4120: ${isVi ? 'Đăng Ký Vòng Private SAFT' : 'Subscribe to Private SAFT'}
+4143: ${isVi ? 'Két Vesting Token-2022 & Danh Mục Phân Bổ' : 'Token-2022 Vesting Vault & Allocations'}
+4152: ${isVi
+4168: ${isVi ? 'Chưa Ghi Nhận Phân Bổ Nào Cho Địa Chỉ Ví Này' : 'No Allocation Found for this Address'}
+4171: ${isVi
+4178: ${isVi ? 'Đăng Ký Vòng Private SAFT (Chiết Khấu 30%)' : 'Subscribe to Private SAFT (30% Discount)'}
+4181: ${isVi ? 'Đổi Địa Chỉ Ví Khác' : 'Switch Wallet'}
+4212: ${isVi ? 'Két Vesting & Danh Mục Đầu Tư' : 'Investor Portfolio & Vesting Vault'}
+4215: ${isVi ? 'Khối Đầu Tư Thiên Thần Bảo Mật' : 'Confidential Strategic Tranche'}
+4223: ${isVi ? `Ví Thụ Hưởng Được Ủy Quyền: <strong class="text-neutral-800 dark:text-neutral-200 font-bold">${currentAddress}</strong>` : `Authorized Beneficiary Wallet: <strong class="text-neutral-800 dark:text-neutral-200 font-bold">${currentAddress}</strong>`}
+4231: <span>${isVi ? 'Thêm $HAISI vào Phantom' : 'Add $HAISI to Phantom'}</span>
+4233: <button onclick="window.clearUserAllocation()" class="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-black dark:hover:text-white transition-colors" title="${isVi ? 'Đặt lại dữ liệu mẫu' : 'Reset simulation'}">
+4242: <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Tổng $HAISI Đã Phân Bổ' : 'Total $HAISI Balance'}</span>
+4248: <span class="text-[10px] text-neutral-500 font-sans block">${isVi ? 'Chuẩn Solana Token-2022' : 'Solana Token-2022 Extension'}</span>
+4252: <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Vốn Đầu Tư Cam Kết' : 'Committed Capital'}</span>
+4254: <span class="text-[10px] text-neutral-500 font-sans block">${isVi ? 'Kho Bạc Multi-Sig L1' : 'Multi-Sig Treasury Vault'}</span>
+4258: <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Mốc Niêm Yết Tham Chiếu' : 'Public TGE Benchmark'}</span>
+4260: <span class="text-[10px] text-neutral-500 font-sans block">${isVi ? 'Định Giá Khởi Điểm $10M' : 'Floor Launchpad Benchmark'}</span>
+4264: <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${isVi ? 'Giá Trị Dự Kiến Tại TGE' : 'TGE Notional Valuation'}</span>
+4266: <span class="text-[10px] text-neutral-600 dark:text-neutral-400 font-bold block">+${unvestedYield}% ${isVi ? 'Tỷ Suất Danh Nghĩa' : 'Notional Surplus'}</span>
+4284: ${isVi
+4307: ${isVi ? 'Lịch Trình Mở Khóa Vesting Mật Mã (Vesting Schedule)' : 'Cryptographic Vesting Streaming Schedule'}
+4327: <span>${isVi ? '1. Mở Khóa TGE' : '1. TGE Unlock'}</span>
+4336: ${isVi ? 'Khả dụng ngay ngày đầu niêm yết TGE' : 'Immediately claimable on Day 1 of listing'}
+4346: <span>${isVi ? '2. Giai Đoạn Cliff' : '2. Cliff Period'}</span>
+4348: <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold">${isVi ? 'Tháng 1 & 2' : 'Mo 1 & 2'}</span>
+4355: ${isVi ? 'Đóng băng 100% bảo vệ giá sàn chống xả' : '100% frozen to protect floor price'}
+4365: <span>${isVi ? '3. Mở Khóa Tuyến Tính' : '3. Linear Stream'}</span>
+4374: ~${monthlyStream.toLocaleString()} HAISI / ${isVi ? 'tháng (mở từng giây)' : 'mo (per-second stream)'}
+4385: <span>${isVi ? 'Hợp Đồng SAFT Tiếng Anh (.PDF)' : 'Official SAFT Agreement'}</span>
+4389: <span>${isVi ? 'Kho Bạc Multi-Sig' : 'Multi-Sig Treasury'}</span>
+4477: const isVi = window.haichainI18n?.currentLang === 'vi';
+4498: btn.textContent = isVi ? "Đã Kết Nối ✓" : "Connected ✓";
+4502: dashConfirmDepositBtn.textContent = isVi
+4512: ? (isVi ? "Passkey Đang Bật • Kết Nối Phantom để Nạp On-Chain" : "Passkey Active • Connect Phantom/Solflare to Deposit")
+4517: btn.textContent = isVi ? "Kết Nối Phantom" : "Connect Phantom";
+4521: dashConfirmDepositBtn.textContent = isVi
+4531: const isVi = window.haichainI18n?.currentLang === 'vi';
+4536: depositConnectBtn.textContent = isVi ? "Đang kết nối..." : "Connecting...";
+4546: depositConnectBtn.textContent = isVi ? "Đang kết nối..." : "Connecting...";
+4570: const isVi = window.haichainI18n?.currentLang === 'vi';
+4575: title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
+4576: message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.' : 'Please connect a Passkey or Solana wallet before depositing.',
+4580: alert(isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.' : 'Please connect a wallet before depositing.');
+4645: const isVi = window.haichainI18n?.currentLang === 'vi';
+4651: title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
+4652: message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom trước khi nạp tiền.' : 'Please connect a wallet before depositing.',
+4661: alert(isVi ? "Vui lòng nhập số tiền nạp hợp lệ (> 0)." : "Please enter a valid deposit amount.");
+4669: dashConfirmDepositBtn.textContent = isVi ? "Đang gửi giao dịch Solana Devnet Faucet..." : "Broadcasting Solana Devnet Faucet Tx...";
+4712: title: isVi ? 'Nhận Testnet Faucet Thành Công' : 'Testnet Faucet Claimed',
+4713: message: isVi
+4720: alert(isVi
+4728: alert(isVi ? `Đã nạp +${added.toFixed(2)} USDT Devnet vào Master Vault!` : `Faucet Credited +${added.toFixed(2)} USDT to Master Vault!`);
+4747: dashConfirmDepositBtn.textContent = isVi ? "Đang kết nối ví Phantom..." : "Connecting Phantom Wallet...";
+4751: alert(isVi
+4757: alert(isVi ? "Bạn đã từ chối kết nối ví Web3." : "Web3 wallet connection was canceled or rejected.");
+4770: alert(isVi
+4794: alert(isVi ? "Ví Web3 bị ngắt kết nối. Vui lòng kết nối lại ví Phantom." : "Web3 wallet disconnected. Please reconnect Phantom.");
+4801: dashConfirmDepositBtn.textContent = isVi ? "Vui lòng duyệt giao dịch trên ví..." : "Awaiting signature in wallet...";
+4819: dashConfirmDepositBtn.textContent = isVi
+4857: title: isVi ? 'Nạp Tiền Thành Công (0% Gas)' : 'Gasless Deposit Confirmed',
+4858: message: isVi
+4865: alert(isVi
+4875: alert(isVi ? `Đã nạp +$${added.toFixed(2)} USDT vào Master Vault!` : `Credited +$${added.toFixed(2)} USDT to Master Vault!`);
+4898: dashConfirmDepositBtn.textContent = isVi ? "Chờ bạn bấm Duyệt trên Phantom..." : "Approve in Phantom extension...";
+4901: dashConfirmDepositBtn.textContent = isVi ? "Đang xác thực trên Solana Devnet..." : "Confirming on Solana Devnet...";
+4927: title: isVi ? 'Nạp Web3 Thành Công' : 'Web3 Deposit Confirmed',
+4933: alert(isVi
+4940: alert(isVi ? "Giao dịch đã hủy: Bạn đã từ chối duyệt giao dịch trên ví." : "Deposit Canceled: You rejected the transaction in your wallet.");
+4942: alert(isVi ? `Giao dịch thất bại trên Solana Devnet: ${errMsg}` : `Solana Devnet transaction failed: ${errMsg}`);
+4953: alert(isVi
+4967: const isVi = window.haichainI18n?.currentLang === 'vi';
+4969: alert(isVi ? "Không thể rút tiền khi Vault đang ở trạng thái Khẩn cấp (Emergency Stop)." : "Cannot withdraw while Vault is in Emergency Stop state.");
+4976: title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
+4977: message: isVi ? 'Vui lòng kết nối ví trước khi thực hiện rút tiền.' : 'Please connect a wallet before withdrawing funds.',
+4981: alert(isVi ? 'Vui lòng kết nối ví trước khi rút tiền.' : 'Please connect your wallet first.');
+4988: title: isVi ? 'Số dư bằng 0' : 'Zero Balance',
+4989: message: isVi ? 'Số dư Master Vault của bạn là $0.0000 USDT. Không có khoản tiền nào để rút.' : 'Your Master Vault balance is $0.0000 USDT. No funds available to withdraw.',
+4993: alert(isVi
+5008: const isVi = window.haichainI18n?.currentLang === 'vi';
+5014: title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
+5015: message: isVi ? 'Vui lòng kết nối ví trước khi thực hiện rút tiền.' : 'Please connect your verified wallet before withdrawing.',
+5024: alert(isVi ? "Vui lòng nhập số tiền rút hợp lệ (> 0)." : "Please enter a valid withdrawal amount.");
+5029: alert(isVi
+5039: alert(isVi
+5057: alert(isVi ? "Rút tiền đã hủy: Bạn đã từ chối ký xác thực giao dịch trên ví MetaMask." : "Withdrawal Canceled: You rejected the MetaMask authorization signature.");
+5070: alert(isVi ? "Rút tiền đã hủy: Bạn đã từ chối ký xác thực giao dịch trên ví." : "Withdrawal Canceled: You rejected the cryptographic authorization signature.");
+5091: title: isVi ? 'Rút Tiền Thành Công' : 'Withdrawal Executed',
+5097: alert(isVi
+5815: const isVi = window.haichainI18n?.currentLang === 'vi';
+5822: title: isVi ? 'Yêu cầu kết nối ví' : 'Wallet Required',
+5823: message: isVi ? 'Vui lòng kết nối ví Passkey hoặc Phantom để cấp quyền thực thi AI.' : 'Connect your sovereign wallet to authorize AI execution.',
+5835: title: isVi ? 'Số dư không đủ' : 'Insufficient Vault Balance',
+5836: message: isVi
+5842: alert(isVi
+5907: const isVi = window.haichainI18n?.currentLang === 'vi';
+5912: generatedResponse = isVi
+5924: generatedResponse = isVi
+5949: generatedResponse = isVi

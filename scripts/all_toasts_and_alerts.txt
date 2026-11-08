@@ -1,0 +1,76 @@
+L2652: const confirmed = await window.haichainDialog.confirm("EMERGENCY KILL-SWITCH\n\nFreeze all connected agents and retract remaining funds in < 400ms?\nProceed?", { title: "Emergency Kill-Switch", danger: true, confirmText: "Trip Emergency Stop", cancelText: "Cancel" });
+L2670: function showToast({ title, message, icon = 'check-circle' }) {
+L2972: showToast({
+L3036: showToast({
+L3088: showToast({
+L3118: alert("Invalid Solana address. Please verify base58 format (32-44 characters).");
+L3124: showToast({
+L3404: showToast({
+L3416: showToast({
+L3442: showToast({
+L3484: showToast({
+L3634: showToast({
+L3661: showToast({
+L3670: showToast({
+L3720: showToast({
+L3748: showToast({
+L3794: showToast({
+L3803: showToast({
+L3912: if (confirm(getDashNotice('resetSimulationConfirm'))) {
+L3926: alert(getVestingText('copiedToken2022Alert') + '\n\n' + TOKEN_2022_MINT);
+L3928: alert(`Token-2022 Mint ($HAISI):\n${TOKEN_2022_MINT}`);
+L5597: showToast({
+L5603: alert(getDashNotice('connectWalletBeforeDeposit'));
+L5673: showToast({
+L5684: alert(getDashNotice('enterValidDeposit'));
+L5734: showToast({
+L5741: alert(getDashNotice('faucetClaimed') + '\n\n+' + added.toFixed(2) + ' USDT (Solana Devnet)');
+L5747: alert(getDashNotice('faucetCredited'));
+L5763: alert(getDashNotice('metaMaskNotDetected'));
+L5785: alert(getDashNotice('metaMaskInsufficientEth'));
+L5814: showToast({
+L5821: alert(getDashNotice('metaMaskDepositSuccess'));
+L5825: alert(getDashNotice('depositCanceledMetaMask'));
+L5827: alert(getDashNotice('metaMaskError') + ' ' + (mmErr.message || mmErr));
+L5849: alert(getDashNotice('web3ConnectedConfirmPrompt'));
+L5853: alert(getDashNotice('web3Rejected'));
+L5866: alert(getDashNotice('noWeb3DetectedFaucetGuide'));
+L5888: alert(getDashNotice('web3Disconnected'));
+L5913: alert(getDashNotice('insufficientSolGaslessGuide'));
+L5963: showToast({
+L5970: alert(getDashNotice('web3DepositConfirmedDevnet'));
+L5975: alert(getDashNotice('depositCanceledUser'));
+L5977: alert(getDashNotice('solanaTxFailed') + ' ' + errMsg);
+L5988: alert(getDashNotice('fiatSandboxNotice'));
+L6002: alert(getDashNotice('cannotWithdrawEmergency'));
+L6008: showToast({
+L6014: alert(getDashNotice('connectWalletBeforeWithdraw'));
+L6020: showToast({
+L6026: alert(getDashNotice('zeroBalanceCannotWithdraw'));
+L6044: showToast({
+L6055: alert(getDashNotice('enterValidWithdraw'));
+L6060: alert(getDashNotice('insufficientWithdrawBalance'));
+L6068: alert(getDashNotice('invalidSolanaAddress'));
+L6084: alert(getDashNotice('withdrawCanceledMetaMask'));
+L6097: alert(getDashNotice('withdrawCanceled'));
+L6117: showToast({
+L6124: alert(getDashNotice('withdrawSuccessNotice'));
+L6206: showToast({ title: "Đã sao chép!", message: "Dán vào Terminal/PowerShell để cài đặt tự động", icon: "check" });
+L6211: showToast({ title: "Lệnh cài đặt:", message: cmd, icon: "terminal" });
+L6223: showToast({ title: "Đã sao chép!", message: "Dán vào Settings -> Connectors trên claude.ai", icon: "check" });
+L6228: showToast({ title: "Remote MCP URL:", message: url, icon: "link" });
+L6254: showToast({ title: "AI Playground", message: "Trải nghiệm suy luận AI trực tiếp qua Web3", icon: "zap" });
+L6332: alert(`Merkle capability ticket issued for Agent "${agentName}"!\n\nMax Spend Limit: $${maxLimit} USDT\nExpiry: +${expiryDelta} slots\nEngine: ${modelEngine}`);
+L6357: const confirmed = await window.haichainDialog.confirm("Revoke this Agent's capability spending ticket immediately?\n\nThe agent's cryptographic nullifier will be permanently invalidated on Solana Devnet.", { title: "Revoke Agent Ticket", danger: true, confirmText: "Revoke Immediately", cancelText: "Keep Active" });
+L6574: alert(`Disconnected ${currentConnectingProvider}. Key and delegation ticket revoked.`);
+L6667: alert(`API Key successfully validated & bound for ${currentConnectingProvider}!\n\nMasked Key: ${data.maskedKey}\nSafety Bounds: Emergency stop circuit breaker active.\n\nYou can now execute live queries in the AI Playground.`);
+L6684: alert("Solana Wallet Required:\n\nA connected Solana wallet (Phantom, Solflare, or Custom Address) is required to sign the spending delegation permit.\n\nOpening wallet connection modal...");
+L6692: alert(`Insufficient Vault Balance:\n\nYour Master Vault balance is $${balance.toFixed(4)} USDT.\nA minimum deposit of $0.0500 USDT is required to back the autonomous micro-escrow delegation.\n\nOpening deposit modal...`);
+L6711: alert("Delegation Signature Rejected:\n\nYou canceled or rejected the signature in your wallet. The Gateway was not connected.");
+L6741: alert(`1-Click Web3 Gateway Activated for ${currentConnectingProvider}!\n\nSigner: ${userWallet.address}\nVault Backed: $${balance.toFixed(4)} USDT\nSpending Limit: $0.0500 USDT\n\nAgent is now authorized to execute micro-settlement queries on Solana Devnet.`);
+L6841: alert("Cannot execute while Vault is in Emergency Stop state.");
+L6851: showToast({
+L6864: showToast({
+L6870: alert(getDashNotice('vaultBalanceInsufficientForTask'));
+L6892: alert("Please enter an inference query or autonomous task.");
+L7058: <button type="button" onclick="navigator.clipboard.writeText('${txSignature}'); alert('Copied transaction signature to clipboard!');" class="hover:text-white text-neutral-500 transition-colors p-1" title="Copy Signature">

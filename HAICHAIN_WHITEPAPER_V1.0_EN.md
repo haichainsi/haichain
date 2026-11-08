@@ -36,7 +36,7 @@
   - [4.4. Dual-Rail Architecture: Consumer Fast-Rail vs Web3 Power-User Rail](#44-dual-rail-architecture-consumer-fast-rail-vs-web3-power-user-rail)
   - [4.5. Biometric Multi-Device Recovery & Elimination of Key-Loss Anxiety](#45-biometric-multi-device-recovery--elimination-of-key-loss-anxiety)
 
-5. [The On-Chain Settlement Kernel: Nuclear Immunity Fortress (Solana v6.9.3)](#5-the-on-chain-settlement-kernel-nuclear-immunity-fortress-solana-v693)
+5. [The On-Chain Settlement Kernel: Multi-Tier Bounded Loss Architecture (Solana v6.9.3)](#5-the-on-chain-settlement-kernel-nuclear-immunity-fortress-solana-v693)
   - [5.1 - 5.6. Six Nuclear Security Invariants](#5-the-on-chain-settlement-kernel-nuclear-immunity-fortress-solana-v693)
   - [5.7. Autonomous AI Sentinel Watchdog (< 10ms Circuit Breaker)](#57-autonomous-ai-sentinel-watchdog-sub-10ms-anomaly-detection--soft-freeze-circuit-breaker)
 
@@ -107,7 +107,7 @@ Where **Artificial Intelligence ($\text{AI}_1$)** provides infinite nano-second 
              & Alignment Disaster                    & True Superintelligence
 ```
 
-Originating as a military-hardened, zero-griefing settlement kernel on Solana L1 (v6.9.3) before evolving into a dedicated SVM Layer 2 rollup and culminating in an independent, sovereign machine-consensus blockchain (HAICHAIN Sovereign L1), the protocol delivers five foundational breakthroughs:
+Originating as a production-hardened, zero-griefing settlement kernel on Solana L1 (v6.9.3) before evolving into a dedicated SVM Layer 2 rollup and culminating in an independent, sovereign machine-consensus blockchain (HAICHAIN Sovereign L1), the protocol delivers five foundational breakthroughs:
 
 1. **Invisible Web3 Mass-Consumer UX:** Biometric WebAuthn Passkeys (Apple FaceID / TouchID) combined with 1-click fiat on-ramps (Apple Pay, Google Pay, Global Card On-Ramp) completely abstracts 100% of blockchain terminology for mainstream users.
 2. **Elastic Reasoning Compute Escrow:** Cryptographic commitment mechanisms resolving non-deterministic token consumption for frontier reasoning models (OpenAI o1/o3, Claude 3.5 Sonnet Extended Thinking).

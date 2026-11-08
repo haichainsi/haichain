@@ -1,0 +1,4 @@
+88: vestingStep2: '2. Khóa Cliff (Tháng 1 & 2):',
+90: vestingStep3: '3. Mở khóa tuyến tính (Tháng 3 đến 8):',
+807: <span class="text-neutral-400 text-[10px] block">2. Cliff (2 Tháng)</span>
+811: <span class="text-neutral-400 text-[10px] block">3. Linear (6 Tháng)</span>

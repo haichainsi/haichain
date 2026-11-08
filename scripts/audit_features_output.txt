@@ -1,0 +1,248 @@
+
+==================== dash-confirm-deposit-btn ====================
+dash-confirm-deposit-btn');
+                    if (typeof selectDepositTab === 'function') selectDepositTab('web3');
+                    if (dAmount && depositAmountParam) {
+                      dAmount.value = depositAmountParam;
+                    }
+                    if (dModal) dModal.classList.remove('hidden');
+                    if (typeof updateDepositWalletBanner === 'function') updateDepositWalletBanner();
+
+                    setTimeout(() => {
+                      if (cBtn && !cBtn.disabled) {
+                        cBtn.click();
+                      }
+                    }, 400);
+                  }, 350);
+                }
+              } catch (connectErr) {
+                console.warn('Mobile auto-connect dismissed:', connectErr);
+                if (typeof updateWalletBtnUI === 'function') updateWalletBtnUI();
+              }
+            } else if (attempts >= 30) {
+              clearInterval(pollInterval);
+            }
+          }, 150);
+        }
+      } catch (e) {
+        console.warn('initMobileAutoConnect error:', e);
+      }
+    })();
+
+    // Bulletproof Wakeup & Auto-Revert Safeguard for Mobile Wallets
+    let walletConnectRevertTimer = null;
+    
+
+==================== dash-confirm-withdraw-btn ====================
+dash-confirm-withdraw-btn');
+    const dashWithdrawAmount = document.getElementById('dash-withdraw-amount');
+    const dashWithdrawDest = document.getElementById('dash-withdraw-dest');
+
+    withdrawBtn.addEventListener('click', () => {
+      const isVi = window.haichainI18n?.currentLang === 'vi';
+      if (isPanic) {
+        alert(isVi ? "Không thể rút tiền khi Vault đang ở trạng thái Khẩn cấp (Emergency Stop)." : "Cannot withdraw while Vault is in Emergency Stop state.");
+        return;
+      }
+      if (!userWallet) {
+        walletConnectModal.classList.remove('hidden');
+        if (typeof showToast === 'function') {
+          showToast({
+            title: isVi ? 'Chưa kết nối ví' : 'Wallet Not Connected',
+            message: isVi ? 'Vui lòng kết nối ví trước khi thực hiện rút tiền.' : 'Please connect a wallet before withdrawing funds.',
+            icon: 'alert-circle'
+          });
+        } else {
+          alert(isVi ? 'Vui lòng kết nối ví trước khi rút tiền.' : 'Please connect your wallet first.');
+        }
+        return;
+      }
+      if (balance <= 0) {
+        if (typeof showToast === 'function') {
+          showToast({
+            title: isVi ? 'Số dư bằng 0' : 'Ze
+
+==================== confirm-issue-ticket-btn ====================
+NOT FOUND
+
+==================== playground-execute-btn ====================
+playground-execute-btn');
+    const playgroundTerminal = document.getElementById('playground-terminal');
+    const ledgerTableBody = document.getElementById('ledger-table-body');
+
+    // Preset prompt chips handler
+    document.querySelectorAll('.preset-prompt-btn').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const promptText = chip.getAttribute('data-prompt');
+        const targetModel = chip.getAttribute('data-model');
+        if (promptText && playgroundPrompt) {
+          playgroundPrompt.value = promptText;
+          playgroundPrompt.focus();
+        }
+        if (targetModel) {
+          document.querySelectorAll('.playground-model-btn').forEach(btn => {
+            if (btn.getAttribute('data-model') === targetModel) {
+              btn.click();
+            }
+          });
+        }
+      });
+    });
+
+    playgroundExecuteBtn.addEventListener('click', async () => {
+      if (isPanic) {
+        alert("Cannot execute while Vault is in Emergency Stop state.");
+        return;
+      }
+
+      const isVi = window.haichainI18n?.currentLang === 'vi';
+
+      // 1. Strict Wallet Authentication Guard
+      if (!userWallet || !userWallet.address) {
+        wall
+
+==================== header-panic-btn ====================
+header-panic-btn');
+      const vaultStatusBadge = document.getElementById('vault-status-badge');
+      if (typeof isPanic !== 'undefined' && isPanic) {
+        isPanic = false;
+        const backupBal = localStorage.getItem('haichain-vault-balance-backup');
+        if (typeof balance !== 'undefined') {
+          balance = backupBal ? parseFloat(backupBal) : 0.0000;
+        }
+        if (typeof saveBalance === 'function') saveBalance();
+        if (typeof updateVaultUI === 'function') updateVaultUI();
+        if (vaultStatusBadge) {
+          vaultStatusBadge.className = "px-2.5 py-1 rounded-full text-[11px] font-medium bg-black text-white dark:bg-white dark:text-black flex items-center space-x-1.5 font-mono shadow-xs";
+          vaultStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white dark:bg-black animate-ping"></span><span data-i18n="vault.status.active">${window.haichainI18n ? window.haichainI18n.t('vault.status.active') : 'Active'}</span>`;
+        }
+        if (headerPanicBtn) {
+          headerPanicBtn.innerHTML = `<i data-lucide="alert-octagon" class="w-3.5 h-3.5"></i><span class="hidden sm:inline" data-i18n="btn.panicStop">${window.haichainI18n ? window
+
+==================== export-ledger-btn ====================
+export-ledger-btn');
+    if (exportLedgerBtn) {
+      exportLedgerBtn.addEventListener('click', () => {
+        const rows = ledgerTableBody.querySelectorAll('tr');
+        let csvContent = "data:text/csv;charset=utf-8,Nonce,Service,Proof,Disbursement,Latency,Status\n";
+        rows.forEach(r => {
+          const cols = r.querySelectorAll('td');
+          if (cols.length >= 6) {
+            const rowData = [
+              cols[0].textContent.trim().replace('#', ''),
+              `"${cols[1].textContent.trim()}"`,
+              `"${cols[2].textContent.trim()}"`,
+              `"${cols[3].textContent.trim()}"`,
+              `"${cols[4].textContent.trim()}"`,
+              `"${cols[5].textContent.trim().replace('→', '').trim()}"`
+            ];
+            csvContent += rowData.join(',') + "\n";
+          }
+        });
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `haichain-audit-ledger-${Date.now()}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    }
+
+    // 11. Copy MCP 
+
+==================== activate-gateway-btn ====================
+activate-gateway-btn');
+    const gatewayWalletVal = document.getElementById('gateway-wallet-val');
+    const gatewayWalletIcon = document.getElementById('gateway-wallet-icon');
+    const gatewayBalanceVal = document.getElementById('gateway-balance-val');
+    const gatewayBalanceIcon = document.getElementById('gateway-balance-icon');
+
+    // Tab Switching
+    tabMethodByok.addEventListener('click', () => {
+      tabMethodByok.className = "flex-1 py-2 rounded-xl bg-white dark:bg-brand-card text-black dark:text-white shadow-xs font-semibold transition-all";
+      tabMethodGateway.className = "flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white transition-all";
+      panelMethodByok.classList.remove('hidden');
+      panelMethodGateway.classList.add('hidden');
+    });
+
+    tabMethodGateway.addEventListener('click', () => {
+      tabMethodGateway.className = "flex-1 py-2 rounded-xl bg-white dark:bg-brand-card text-black dark:text-white shadow-xs font-semibold transition-all";
+      tabMethodByok.className = "flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white transition-all";
+      panelMethodGateway.classList.remove('hidden');
+     
+
+==================== save-byok-btn ====================
+save-byok-btn');
+    const toggleByokVisibility = document.getElementById('toggle-byok-visibility');
+
+    const activateGatewayBtn = document.getElementById('activate-gateway-btn');
+    const gatewayWalletVal = document.getElementById('gateway-wallet-val');
+    const gatewayWalletIcon = document.getElementById('gateway-wallet-icon');
+    const gatewayBalanceVal = document.getElementById('gateway-balance-val');
+    const gatewayBalanceIcon = document.getElementById('gateway-balance-icon');
+
+    // Tab Switching
+    tabMethodByok.addEventListener('click', () => {
+      tabMethodByok.className = "flex-1 py-2 rounded-xl bg-white dark:bg-brand-card text-black dark:text-white shadow-xs font-semibold transition-all";
+      tabMethodGateway.className = "flex-1 py-2 rounded-xl text-neutral-500 hover:text-black dark:hover:text-white transition-all";
+      panelMethodByok.classList.remove('hidden');
+      panelMethodGateway.classList.add('hidden');
+    });
+
+    tabMethodGateway.addEventListener('click', () => {
+      tabMethodGateway.className = "flex-1 py-2 rounded-xl bg-white dark:bg-brand-card text-black dark:text-white shadow-xs font-semibold transition-all";
+      tabMethodByok.className
+
+==================== wallet-provider-btn ====================
+wallet-provider-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const provider = btn.getAttribute('data-provider');
+        walletNoticeBox.classList.add('hidden');
+        const isVi = window.haichainI18n?.currentLang === 'vi';
+
+        // 1. BIOMETRIC PASSKEY (FaceID / TouchID / Windows Hello)
+        if (provider === 'biometric') {
+          try {
+            walletNoticeBox.classList.add('hidden');
+            walletBtnText.textContent = isVi ? "Quét sinh trắc học..." : "Scanning Biometric...";
+            const result = await authenticateWithBiometricPasskey();
+            await setConnectedWallet(result.derivedAddress, 'FaceID / Windows Hello Passkey');
+            walletConnectModal.classList.add('hidden');
+            const shortAddr = result.derivedAddress.slice(0, 4) + '...' + result.derivedAddress.slice(-4);
+            showToast({
+              title: isVi ? 'Xác Thực Passkey Thành Công' : 'Passkey Connected Successfully',
+              message: shortAddr + ' • FIDO2 Hardware Active',
+              icon: 'fingerprint'
+            });
+            openAccountModal();
+          } catch (bioErr) {
+            console.error("Biometric passkey
+
+==================== deposit-connect-btn ====================
+deposit-connect-btn');
+      const isVi = window.haichainI18n?.currentLang === 'vi';
+
+      const activeWeb3 = getActiveWeb3Wallet();
+
+      if (activeWeb3) {
+        if (!userWallet || !userWallet.address) {
+          setConnectedWallet(activeWeb3.address, activeWeb3.provider);
+        }
+
+        const displayProvider = activeWeb3.provider || 'Phantom';
+        const displayAddr = activeWeb3.address;
+        const shortAddr = `${displayAddr.slice(0, 4)}...${displayAddr.slice(-4)}`;
+        const solBal = userWallet?.solBalance || '0.00';
+
+        if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)] shrink-0";
+        if (addr) {
+          addr.className = "font-mono text-xs text-black dark:text-white font-bold truncate";
+          addr.textContent = `${displayProvider}: ${shortAddr} (${solBal} SOL)`;
+        }
+        if (btn) {
+          btn.className = "px-2.5 py-1 rounded-md text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 shrink-0 font-bold";
+          btn.textContent = isVi ? "Đã Kết Nối ✓" : "Connected ✓";
+          btn.disabled = true;
+        }
+        if (dashConf

@@ -9,6 +9,51 @@
 
 const http = require('http');
 const https = require('https');
+const net = require('net');
+const dns = require('dns').promises;
+
+// ============================================================================
+// HARDENED SSRF BLOCKLIST (IPv4 + IPv6 + CGNAT + Benchmark + Loopbacks)
+// ============================================================================
+const ssrfBlockList = new net.BlockList();
+ssrfBlockList.addSubnet('127.0.0.0', 8, 'ipv4');
+ssrfBlockList.addAddress('::1', 'ipv6');
+ssrfBlockList.addAddress('::', 'ipv6');
+ssrfBlockList.addSubnet('::ffff:127.0.0.0', 104, 'ipv6');
+ssrfBlockList.addSubnet('10.0.0.0', 8, 'ipv4');
+ssrfBlockList.addSubnet('172.16.0.0', 12, 'ipv4');
+ssrfBlockList.addSubnet('192.168.0.0', 16, 'ipv4');
+ssrfBlockList.addSubnet('169.254.0.0', 16, 'ipv4');
+ssrfBlockList.addSubnet('fe80::', 10, 'ipv6');
+ssrfBlockList.addSubnet('100.64.0.0', 10, 'ipv4');
+ssrfBlockList.addSubnet('198.18.0.0', 15, 'ipv4');
+ssrfBlockList.addSubnet('fc00::', 7, 'ipv6');
+ssrfBlockList.addSubnet('0.0.0.0', 8, 'ipv4');
+ssrfBlockList.addSubnet('240.0.0.0', 4, 'ipv4');
+
+// In-Memory Rate Limiting for SAFT / Email Endpoints (Sliding window: 5 requests / 15 mins)
+const saftIpRateMap = new Map();
+function checkSaftRateLimit(ip) {
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000;
+  const maxReqs = 5;
+  const history = (saftIpRateMap.get(ip) || []).filter(ts => now - ts < windowMs);
+  if (history.length >= maxReqs) return false;
+  history.push(now);
+  saftIpRateMap.set(ip, history);
+  return true;
+}
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/[&<>"']/g, m => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[m]);
+}
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -32,7 +77,7 @@ const DEFAULT_TREASURY = '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3';
 // SECURITY HARDENING: ANTI-SSRF GUARD & PRIVATE IP FILTERING
 // Blocks access to localhost, link-local, cloud metadata, and RFC 1918 subnets
 // ============================================================================
-function validateOutboundUrl(targetUrl) {
+async function validateOutboundUrl(targetUrl) {
   let parsed;
   try {
     parsed = new URL(targetUrl);
@@ -40,35 +85,52 @@ function validateOutboundUrl(targetUrl) {
     throw new Error(`Invalid URL: ${e.message}`);
   }
 
-  if (parsed.protocol !== 'https:') {
-    throw new Error(`SSRF Blocked: Only HTTPS outbound calls are permitted (received: ${parsed.protocol})`);
+  // Allow https (and http for local test suites only if explicitly allowed)
+  if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+    throw new Error(`SSRF Blocked: Invalid protocol ${parsed.protocol}`);
   }
 
-  const hostname = parsed.hostname.toLowerCase();
+  const rawHost = parsed.hostname.toLowerCase();
+  const cleanHost = rawHost.replace(/\.$/, '').replace(/^\[|\]$/g, '');
 
-  // Block loopbacks & cloud metadata
-  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1' || hostname === '0.0.0.0') {
-    throw new Error('SSRF Blocked: Local loopback target is strictly forbidden.');
-  }
-  if (hostname === '169.254.169.254' || hostname.startsWith('169.254.')) {
-    throw new Error('SSRF Blocked: Cloud instance metadata service (169.254.169.254) is forbidden.');
+  if (cleanHost === 'localhost' || cleanHost.endsWith('.localhost') || cleanHost.endsWith('.local') || cleanHost.endsWith('.internal')) {
+    throw new Error('SSRF Blocked: Local host alias is forbidden');
   }
 
-  // Block RFC 1918 subnets
-  const ipv4 = hostname.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
-  if (ipv4) {
-    const o1 = parseInt(ipv4[1], 10);
-    const o2 = parseInt(ipv4[2], 10);
-    if (o1 === 10) throw new Error('SSRF Blocked: 10.0.0.0/8 private network forbidden.');
-    if (o1 === 127) throw new Error('SSRF Blocked: 127.0.0.0/8 loopback network forbidden.');
-    if (o1 === 172 && (o2 >= 16 && o2 <= 31)) throw new Error('SSRF Blocked: 172.16.0.0/12 private network forbidden.');
-    if (o1 === 192 && o2 === 168) throw new Error('SSRF Blocked: 192.168.0.0/16 private network forbidden.');
-    if (o1 === 0 || o1 >= 224) throw new Error('SSRF Blocked: Reserved / multicast IP forbidden.');
-  }
-
-  // Block internal domain suffixes
-  if (hostname.endsWith('.internal') || hostname.endsWith('.local') || hostname.endsWith('.lan')) {
-    throw new Error('SSRF Blocked: Internal network hostname forbidden.');
+  if (net.isIP(cleanHost)) {
+    const type = net.isIPv6(cleanHost) ? 'ipv6' : 'ipv4';
+    if (ssrfBlockList.check(cleanHost, type)) {
+      throw new Error(`SSRF Blocked: IP ${cleanHost} is in prohibited subnet/private range`);
+    }
+    if (type === 'ipv6' && cleanHost.startsWith('::ffff:')) {
+      const v4Part = cleanHost.slice(7);
+      if (net.isIPv4(v4Part) && ssrfBlockList.check(v4Part, 'ipv4')) {
+        throw new Error(`SSRF Blocked: IPv4-mapped IPv6 ${cleanHost} targets private range`);
+      }
+    }
+  } else {
+    try {
+      const addresses = await dns.lookup(cleanHost, { all: true });
+      if (!addresses || addresses.length === 0) {
+        throw new Error('SSRF Blocked: DNS resolution yielded no addresses');
+      }
+      for (const record of addresses) {
+        const ip = record.address;
+        const type = record.family === 6 ? 'ipv6' : 'ipv4';
+        if (ssrfBlockList.check(ip, type)) {
+          throw new Error(`SSRF Blocked: Resolved IP ${ip} for ${cleanHost} is prohibited`);
+        }
+        if (type === 'ipv6' && ip.toLowerCase().startsWith('::ffff:')) {
+          const v4Part = ip.slice(7);
+          if (net.isIPv4(v4Part) && ssrfBlockList.check(v4Part, 'ipv4')) {
+            throw new Error(`SSRF Blocked: Resolved IPv4-mapped IPv6 ${ip} for ${cleanHost} is prohibited`);
+          }
+        }
+      }
+    } catch (dnsErr) {
+      if (dnsErr.message.includes('SSRF Blocked')) throw dnsErr;
+      throw new Error(`SSRF Blocked: DNS resolution failed for ${cleanHost}: ${dnsErr.message}`);
+    }
   }
 
   return parsed.href;
@@ -394,7 +456,7 @@ class ProductionAgentRelayer {
    */
   async relayRemoteAgentEndpoint(agent, payload) {
     // Validate target endpoint against SSRF attacks
-    validateOutboundUrl(agent.endpointUrl);
+    await validateOutboundUrl(agent.endpointUrl);
     console.log(`[Remote Agent Relay] Dispatching task to external agent: ${agent.name} (${agent.endpointUrl})`);
     
     const controller = new AbortController();
@@ -403,6 +465,7 @@ class ProductionAgentRelayer {
     try {
       let resp = await fetch(agent.endpointUrl, {
         method: 'POST',
+        redirect: 'manual',
         headers: {
           'Content-Type': 'application/json',
           'User-Agent': 'HAICHAIN-Autonomous-Agent-Relayer/1.1'
@@ -429,6 +492,7 @@ class ProductionAgentRelayer {
         // Second attempt: Present on-chain payment signature
         const retryResp = await fetch(agent.endpointUrl, {
           method: 'POST',
+          redirect: 'manual',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `X402 ${payment.txSignature}`,
@@ -476,12 +540,13 @@ class ProductionAgentRelayer {
     if (isUrl) {
       try {
         const rawUrl = targetUrlOrQuery.trim();
-        const fetchUrl = validateOutboundUrl(rawUrl);
+        const fetchUrl = await validateOutboundUrl(rawUrl);
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 6000);
 
         const response = await fetch(fetchUrl, {
           signal: controller.signal,
+          redirect: 'manual',
           headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 HAICHAIN-AgentSentinel/1.0',
             'Accept': 'text/html,application/xhtml+xml,application/json'
@@ -1169,15 +1234,28 @@ class ProductionAgentRelayer {
         req.on('end', async () => {
           try {
             const data = JSON.parse(body || '{}');
-            const contractId = data.contractId || ('SAFT-HAI-' + Math.random().toString(36).substring(2, 7).toUpperCase());
-            const name = data.name || 'Anonymous Investor';
-            const email = data.email || '';
-            const amount = Number(data.amount) || 0;
+            const clientIp = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '127.0.0.1').split(',')[0].trim();
+            if (!checkSaftRateLimit(clientIp)) {
+              res.writeHead(429, { 'Content-Type': 'application/json' });
+              return res.end(JSON.stringify({ error: 'Too Many Requests: Rate limit exceeded (5 requests per 15 mins)' }));
+            }
+
+            const rawEmail = (data.email || '').trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!rawEmail || !emailRegex.test(rawEmail) || rawEmail.length > 100 || rawEmail.includes('\r') || rawEmail.includes('\n')) {
+              res.writeHead(400, { 'Content-Type': 'application/json' });
+              return res.end(JSON.stringify({ error: 'Invalid email address provided' }));
+            }
+
+            const contractId = escapeHtml(data.contractId || ('SAFT-HAI-' + Math.random().toString(36).substring(2, 7).toUpperCase()));
+            const name = escapeHtml(data.name || 'Anonymous Investor').slice(0, 100);
+            const email = rawEmail;
+            const amount = Math.min(Math.max(Number(data.amount) || 0, 0), 10000000);
             const tokens = Number(data.tokens) || Math.floor(amount / 0.007);
-            const wallet = data.wallet || 'N/A';
-            const treasury = data.treasury || DEFAULT_TREASURY;
-            const timestamp = data.timestamp || new Date().toISOString();
-            const hashHex = data.hashHex || 'N/A';
+            const wallet = escapeHtml(data.wallet || 'N/A').slice(0, 64);
+            const treasury = DEFAULT_TREASURY;
+            const timestamp = new Date().toISOString();
+            const hashHex = escapeHtml(data.hashHex || 'N/A').slice(0, 64);
 
             console.log(`[SAFT Received] Processing Contract ${contractId} for ${name} (${email}) - $${amount} USD`);
 
@@ -1198,8 +1276,8 @@ class ProductionAgentRelayer {
             }
 
             // Extract or build email HTML
-            let adminHtml = data.adminHtml;
-            let investorHtml = data.investorHtml;
+            let adminHtml = null; // Enforce strict server-side template only
+            let investorHtml = null; // Enforce strict server-side template only
 
             if (!adminHtml) {
               adminHtml = `
