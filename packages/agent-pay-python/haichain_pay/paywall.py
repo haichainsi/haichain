@@ -6,6 +6,7 @@ Supports FastAPI, Starlette, and ASGI frameworks.
 
 import base64
 import functools
+import inspect
 import json
 import secrets
 import time
@@ -265,10 +266,27 @@ def haichain_paywall(
     )
 
     def decorator(func: Callable):
+        sig = inspect.signature(func)
+        params = list(sig.parameters.values())
+        has_req = any(p.name == "request" for p in params)
+        if not has_req:
+            try:
+                from starlette.requests import Request as StarletteRequest
+                req_param = inspect.Parameter("request", inspect.Parameter.KEYWORD_ONLY, annotation=StarletteRequest)
+                new_sig = sig.replace(parameters=params + [req_param])
+            except ImportError:
+                new_sig = sig
+        else:
+            new_sig = sig
+
         @functools.wraps(func)
         async def wrapper(*args, **kwargs):
-            # Attempt to locate request in kwargs or args
-            request = kwargs.get("request")
+            # Locate injected or explicit request object
+            if not has_req:
+                request = kwargs.pop("request", None)
+            else:
+                request = kwargs.get("request")
+
             if request is None:
                 for arg in args:
                     if hasattr(arg, "headers") and hasattr(arg, "url"):
@@ -309,6 +327,7 @@ def haichain_paywall(
 
             return await func(*args, **kwargs)
 
+        wrapper.__signature__ = new_sig
         return wrapper
 
     return decorator

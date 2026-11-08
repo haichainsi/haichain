@@ -3161,7 +3161,7 @@ client = HaichainClient(cluster="devnet")
 
 # Dispatches request with signed Ed25519 micro-voucher
 response = client.call_paid_agent(
-    "https://bubble-prescription-miller-recruiting.trycloudflare.com/api/agent-service",
+    "http://localhost:8000/api/agent-service",
     json={"query": "Perform autonomous market analysis"}
 )
 print("Agent Result:", response.json())</code></pre>
@@ -3220,6 +3220,29 @@ app.post('/api/my-agent-task', (req, res) => {
 });
 
 app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
+              </div>
+            </div>
+
+            <!-- Node Step 3: Client Caller -->
+            <div class="space-y-1.5">
+              <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300">Step 3: Call paid agent with HaichainClient</div>
+              <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
+                <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
+                  <span class="text-neutral-200 font-semibold">client.ts</span>
+                  <button onclick="navigator.clipboard.writeText(document.getElementById('code-node-client-snippet').innerText); if (window.showToast) window.showToast('Copied Node Client Code!');" class="hover:text-white transition-colors">
+                    Copy Code
+                  </button>
+                </div>
+                <pre id="code-node-client-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import { HaichainClient } from '@haichainsi/agent-pay';
+
+const client = new HaichainClient({ cluster: 'devnet' });
+
+// Autonomous AI agent client automatically resolves HTTP 402 challenge with 0.15ms Ed25519 micro-voucher
+const response = await client.callPaidAgent('http://localhost:4020/api/my-agent-task', {
+  body: { taskPayload: 'Perform autonomous market analysis' }
+});
+
+console.log('Agent Result:', await response.json());</code></pre>
               </div>
             </div>
           </div>
@@ -3392,9 +3415,10 @@ app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
             <pre id="code-mcp-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>{
   "mcpServers": {
     "haichain-agent-economy": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "c:/Users/Surface/Documents/8. HAICHAIN/mcp-server/dist/index.js"
+        "-y",
+        "@haichainsi/mcp-server"
       ],
       "env": {
         "HAICHAIN_CLUSTER": "devnet"

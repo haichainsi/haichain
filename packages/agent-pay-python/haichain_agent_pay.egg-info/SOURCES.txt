@@ -1,5 +1,6 @@
 README.md
 pyproject.toml
+haichain_agent_pay/__init__.py
 haichain_agent_pay.egg-info/PKG-INFO
 haichain_agent_pay.egg-info/SOURCES.txt
 haichain_agent_pay.egg-info/dependency_links.txt
