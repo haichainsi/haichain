@@ -1,5 +1,7 @@
 # HAICHAIN: Le Socle Économique pour l'Ère de la Superintelligence Symbiotique AI²
-## Livre Blanc Technique Officiel v1.0 - Architecture, Invariants Cryptographiques et l'Endgame de la Superintelligence AI L1 Souveraine
+> **LE PARE-FEU FINANCIER AUTONOME POUR LES AGENTS IA**
+>
+## Le pare-feu financier autonome pour les agents IA. Application des invariants déterministes Merkle CapLeaf, des limites de dépenses à perte limitée (Bounded Loss) et d'une immunité contre l'injection de prompts pour prévenir le drainage catastrophique des portefeuilles. Donner les moyens à des milliards d'agents IA et robots autonomes de travailler, d'effectuer des transactions và s'unir à l'intelligence humaine pour co-créer la richesse, toute la richesse và la propriété souveraine appartenant à jamais à l'humanité. Aujourd'hui, le pare-feu financier et système d'exploitation financier de micropaiement pour les agents IA ; demain, le socle économique pour l'ère de la superintelligence symbiotique (AI²).
 **Conçu par:** Le Groupe de Travail sur les Systèmes Globaux de HAICHAIN & le Comité d'Architecture du Cœur Cryptographique  
 **Date de Publication:** 31 octobre 2026 (Édition Standard Institutionnelle)  
 **Classification du Document:** Livre Blanc Technique v1.1 (Édition Française CapLeaf & 9 Invariants)  
