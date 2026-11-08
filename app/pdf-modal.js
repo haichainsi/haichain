@@ -45,7 +45,7 @@ function buildHaichainSaftEmailHtml(opt) {
           <img src="https://haichain.si/assets/haichain-official-logo-white.png" alt="Haichain" height="32" style="height: 32px; width: auto; display: block; border: 0;" />
         </div>
         <div style="font-size: 13px; font-weight: 600; color: #ffffff; letter-spacing: -0.2px; line-height: 1.5;">
-          Haichain - The Financial Operating System for The Autonomous Machine Era
+          HAICHAIN - The Autonomous Financial Firewall for AI Agents
         </div>
         <div style="font-size: 12px; color: #a1a1aa; margin-top: 4px; line-height: 1.5;">
           The Economic Bedrock for the Symbiotic Superintelligence Era AI²
@@ -133,7 +133,7 @@ function buildHaichainSaftEmailHtml(opt) {
       <div style="border-top: 1px solid #27272a; padding-top: 24px; font-size: 11px; line-height: 1.7; color: #71717a;">
         <div style="margin-bottom: 12px;">
           <strong style="color: #ffffff; font-size: 12px;">Haichain Foundation</strong><br />
-          <span style="color: #a1a1aa; font-size: 11px;">Haichain - The Financial Operating System for The Autonomous Machine Era - The Economic Bedrock for the Symbiotic Superintelligence Era AI²</span>
+          <span style="color: #a1a1aa; font-size: 11px;">HAICHAIN - The Autonomous Financial Firewall for AI Agents - The Economic Bedrock for the Symbiotic Superintelligence Era AI²</span>
         </div>
         <div style="margin-bottom: 12px; color: #a1a1aa;">
           Official Website: <a href="https://haichain.si" target="_blank" style="color: #38bdf8; text-decoration: none;">https://haichain.si</a> &nbsp;•&nbsp; 
@@ -213,7 +213,7 @@ function buildHaichainSaftEmailHtml(opt) {
   window.getCurrentLang = window.getHaichainLang = getCurrentLang;
 
   function getWhitepaperUrlForLang(lang) {
-    const versionParam = '?v=v68_step3_10langs_live_20261108';
+    const versionParam = '?v=v75_firewall_reposition_20261109';
     switch (lang) {
       case 'vi': return '/HAICHAIN_WHITEPAPER_V1.0_VI.pdf' + versionParam;
       case 'zh': return '/HAICHAIN_WHITEPAPER_V1.0_ZH.pdf' + versionParam;
@@ -426,7 +426,7 @@ function buildHaichainSaftEmailHtml(opt) {
                 <h3 id="pdf-modal-title" class="font-bold text-xs sm:text-sm text-black dark:text-white truncate">HAICHAIN Document</h3>
                 <span id="pdf-modal-badge" class="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-mono bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 shrink-0"></span>
               </div>
-              <p class="text-[10px] text-neutral-400 font-mono hidden sm:block truncate">Universal Autonomous Machine Financial &amp; Cognitive Operating System</p>
+              <p class="text-[10px] text-neutral-400 font-mono hidden sm:block truncate">The Autonomous Financial Firewall for AI Agents</p>
             </div>
           </div>
 
