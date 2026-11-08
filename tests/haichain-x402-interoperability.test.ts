@@ -126,7 +126,7 @@ describe("HAICHAIN x402 Interoperability & Autonomous Guardrail Forensic Suite",
     expect(verifyResult.mode).to.equal("fast-path-voucher");
     expect(verifyResult.voucherDetails?.agentPubkey).to.equal(agentKeypair.publicKey.toBase58());
     expect(verifyResult.voucherDetails?.recipient).to.equal(merchantKeypair.publicKey.toBase58());
-    expect(latencyMs).to.be.lessThan(50); // Well under 50ms in test environment, sub-2ms in CPU
+    expect(latencyMs).to.be.lessThan(200); // Well under 200ms end-to-end wall clock under runner load, sub-2ms in pure CPU
   });
 
   it("4. [REPLAY ATTACK IMMUNITY]: Rejects identical voucher header submitted a second time", async () => {

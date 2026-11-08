@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "haichain-agent-pay"
+version = "0.1.0"
+description = "High-Velocity HTTP x402 Fast-Path Payment & CapLeaf State Channel SDK for AI Agents and MCP Servers"
+readme = "README.md"
+authors = [{ name = "HAICHAIN Architecture Taskforce", email = "haichain.si@gmail.com" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "pynacl>=1.5.0",
+    "cryptography>=41.0.0"
+]
+
+[project.optional-dependencies]
+fastapi = ["fastapi>=0.100.0", "starlette>=0.27.0"]
+dev = ["pytest>=7.0.0", "httpx>=0.24.0"]
