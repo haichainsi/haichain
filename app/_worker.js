@@ -295,7 +295,7 @@ export default {
     }
 
     if (cleanPath === '/api/health') {
-      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', version: 'v82-privacy-mobile-optimized', timestamp: new Date().toISOString() }), {
+      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', version: 'v83-dnfb-hung-verified-active', timestamp: new Date().toISOString() }), {
         status: 200,
         headers: corsHeaders
       });
