@@ -1,0 +1,35 @@
+[
+  {
+    "contractId": "SAFT-HAI-2026-LMYCV",
+    "name": "Nguyen Thanh Hung",
+    "email": "hungtiger1375@gmail.com",
+    "amount": 20000,
+    "tokens": 2857142,
+    "wallet": "i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-07T01:00:00.000Z",
+    "hashHex": "5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131"
+  },
+  {
+    "contractId": "SAFT-HAI-VERIFIED",
+    "name": "HaiChain Foundation",
+    "email": "haichain.si@gmail.com",
+    "amount": 2500,
+    "tokens": 357142,
+    "wallet": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-03T16:28:00.000Z",
+    "hashHex": "bf9c72e2930262e3d3609825b8109bf588dff621e285a2ab346911c47ea416d8"
+  },
+  {
+    "contractId": "SAFT-HAI-TEST-2026",
+    "name": "HaiChain Test Signatory",
+    "email": "haichain.si@gmail.com",
+    "amount": 5000,
+    "tokens": 714285,
+    "wallet": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-03T16:25:00.000Z",
+    "hashHex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
