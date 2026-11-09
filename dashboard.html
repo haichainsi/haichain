@@ -3379,7 +3379,7 @@ client = HaichainClient(cluster="devnet")
 
 # Dispatches request with signed Ed25519 micro-voucher
 response = client.call_paid_agent(
-    "http://localhost:8000/api/agent-service",
+    "https://bubble-prescription-miller-recruiting.trycloudflare.com/api/agent-service",
     json={"query": "Perform autonomous market analysis"}
 )
 print("Agent Result:", response.json())</code></pre>
@@ -3438,29 +3438,6 @@ app.post('/api/my-agent-task', (req, res) => {
 });
 
 app.listen(4020, () => console.log('Agent live on port 4020'));</code></pre>
-              </div>
-            </div>
-
-            <!-- Node Step 3: Client Caller -->
-            <div class="space-y-1.5">
-              <div class="text-[11px] font-semibold text-neutral-600 dark:text-neutral-300">Step 3: Call paid agent with HaichainClient</div>
-              <div class="relative bg-neutral-900 text-neutral-100 rounded-xl p-4 font-mono text-xs border border-neutral-800">
-                <div class="flex justify-between items-center pb-2 mb-2 border-b border-neutral-800 text-[10px] text-neutral-400">
-                  <span class="text-neutral-200 font-semibold">client.ts</span>
-                  <button onclick="navigator.clipboard.writeText(document.getElementById('code-node-client-snippet').innerText); if (window.showToast) window.showToast('Copied Node Client Code!');" class="hover:text-white transition-colors">
-                    Copy Code
-                  </button>
-                </div>
-                <pre id="code-node-client-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>import { HaichainClient } from '@haichainsi/agent-pay';
-
-const client = new HaichainClient({ cluster: 'devnet' });
-
-// Autonomous AI agent client automatically resolves HTTP 402 challenge with 0.15ms Ed25519 micro-voucher
-const response = await client.callPaidAgent('http://localhost:4020/api/my-agent-task', {
-  body: { taskPayload: 'Perform autonomous market analysis' }
-});
-
-console.log('Agent Result:', await response.json());</code></pre>
               </div>
             </div>
           </div>
@@ -3633,10 +3610,9 @@ console.log('Agent Result:', await response.json());</code></pre>
             <pre id="code-mcp-snippet" class="overflow-x-auto text-[11px] sm:text-xs leading-relaxed"><code>{
   "mcpServers": {
     "haichain-agent-economy": {
-      "command": "npx",
+      "command": "node",
       "args": [
-        "-y",
-        "@haichainsi/mcp-server"
+        "c:/Users/Surface/Documents/8. HAICHAIN/mcp-server/dist/index.js"
       ],
       "env": {
         "HAICHAIN_CLUSTER": "devnet"
@@ -13163,7 +13139,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         if (savedRaw) {
           try {
             const parsed = JSON.parse(savedRaw);
-            if (parsed && (parsed.address === 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF' || parsed.address === 'CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw')) {
+            if (parsed && ((window.resolveInvestorRecord && window.resolveInvestorRecord(parsed.address)) || parsed.address === 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF' || parsed.address === 'CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw')) {
               urlTab = 'tab-vesting';
             }
           } catch (_) {}
@@ -19399,29 +19375,19 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-            // Auto-populate Hung's official SAFT and allocation if Hung's address
-      if (pubkeyStr === 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF' || pubkeyStr === 'CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw') {
-        const OFFICIAL_HUNG_SAFT = {
-          contractId: 'SAFT-HAI-2026-LMYCV',
-          name: 'Nguyen Thanh Hung',
-          email: 'hungtiger1375@gmail.com',
-          amount: 20000,
-          tokens: 2857142,
-          wallet: 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF',
-          treasury: '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
-          timestamp: '2026-11-07T01:00:00.000Z',
-          hashHex: '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131',
-          paymentMethod: 'Solana Treasury Multi-Sig (USDT)',
-          status: 'PAID_SETTLED'
-        };
-        try {
-          localStorage.setItem('HAICHAIN_ACTIVE_SAFT', JSON.stringify(OFFICIAL_HUNG_SAFT));
-          const list = JSON.parse(localStorage.getItem('HAICHAIN_SIGNED_SAFT_RECORDS') || '[]');
-          if (!list.find(r => r.contractId === 'SAFT-HAI-2026-LMYCV')) {
-            list.unshift(OFFICIAL_HUNG_SAFT);
-            localStorage.setItem('HAICHAIN_SIGNED_SAFT_RECORDS', JSON.stringify(list));
-          }
-        } catch (_) {}
+            // Automatically resolve and activate verified SAFT record for ANY connected investor
+      if (typeof window.resolveInvestorRecord === 'function') {
+        const invRecord = window.resolveInvestorRecord(pubkeyStr);
+        if (invRecord) {
+          try {
+            localStorage.setItem('HAICHAIN_ACTIVE_SAFT', JSON.stringify(invRecord));
+            const list = JSON.parse(localStorage.getItem('HAICHAIN_SIGNED_SAFT_RECORDS') || '[]');
+            if (!list.find(r => r.contractId === invRecord.contractId)) {
+              list.unshift(invRecord);
+              localStorage.setItem('HAICHAIN_SIGNED_SAFT_RECORDS', JSON.stringify(list));
+            }
+          } catch (_) {}
+        }
       }
 
       updateWalletBtnUI();
@@ -20670,29 +20636,192 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       status: 'PAID_SETTLED'
     };
 
+    
+    
+    // =========================================================================
+    // HAICHAIN UNIVERSAL VERIFIED SAFT & INVESTOR ALLOCATION REGISTRY
+    // =========================================================================
+    window.HAICHAIN_VERIFIED_INVESTORS_LIST = [
+  {
+    "contractId": "SAFT-HAI-2026-LMYCV",
+    "name": "Nguyen Thanh Hung",
+    "email": "hungtiger1375@gmail.com",
+    "amount": 20000,
+    "amountUsdt": 20000,
+    "tokens": 2857142,
+    "haiTokens": 2857142,
+    "wallet": "i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-07T01:00:00.000Z",
+    "hashHex": "5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131",
+    "paymentMethod": "Solana Treasury Multi-Sig (USDT)",
+    "status": "PAID_SETTLED",
+    "round": "Pre-Seed ($0.007)"
+  },
+  {
+    "contractId": "SAFT-2026-HAI-FDFF",
+    "name": "Strategic Investor",
+    "email": "investor@haichain.si",
+    "amount": 1000,
+    "amountUsdt": 1000,
+    "tokens": 142857,
+    "haiTokens": 142857,
+    "wallet": "CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-09T09:03:10.000Z",
+    "hashHex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "paymentMethod": "Solana Web3 SAFT (USDT)",
+    "status": "PAID_SETTLED",
+    "round": "Pre-Seed ($0.007)"
+  },
+  {
+    "contractId": "SAFT-HAI-VERIFIED",
+    "name": "HaiChain Foundation Angel",
+    "email": "haichain.si@gmail.com",
+    "amount": 2500,
+    "amountUsdt": 2500,
+    "tokens": 357142,
+    "haiTokens": 357142,
+    "wallet": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-03T16:28:00.000Z",
+    "hashHex": "bf9c72e2930262e3d3609825b8109bf588dff621e285a2ab346911c47ea416d8",
+    "paymentMethod": "Solana Treasury Multi-Sig (USDT)",
+    "status": "PAID_SETTLED",
+    "round": "Pre-Seed ($0.007)"
+  },
+  {
+    "contractId": "SAFT-HAI-ECCG-2026",
+    "name": "Angel Partner",
+    "email": "partner@haichain.si",
+    "amount": 3500,
+    "amountUsdt": 3500,
+    "tokens": 500000,
+    "haiTokens": 500000,
+    "wallet": "ECCgHZF9ayVab32h5NxUnVYjJ1CQj6bUYcE5r4kAwW5f",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-04T08:00:00.000Z",
+    "hashHex": "4d8c72e2930262e3d3609825b8109bf588dff621e285a2ab346911c47ea416d9",
+    "paymentMethod": "Solana Treasury Multi-Sig (USDT)",
+    "status": "PAID_SETTLED",
+    "round": "Pre-Seed ($0.007)"
+  }
+];
+
+    window.HAICHAIN_VERIFIED_SAFT_REGISTRY = {};
+    window.HAICHAIN_VERIFIED_INVESTORS_LIST.forEach(function(rec) {
+      if (rec && rec.wallet) {
+        window.HAICHAIN_VERIFIED_SAFT_REGISTRY[rec.wallet.trim().toLowerCase()] = Object.assign({}, rec);
+      }
+    });
+
+    window.resolveInvestorRecord = function(address) {
+      const norm = (address || '').trim().toLowerCase();
+
+      // Priority 1: Check verified registry by address
+      if (norm && window.HAICHAIN_VERIFIED_SAFT_REGISTRY && window.HAICHAIN_VERIFIED_SAFT_REGISTRY[norm]) {
+        return Object.assign({}, window.HAICHAIN_VERIFIED_SAFT_REGISTRY[norm]);
+      }
+
+      // Priority 2: Check localStorage active SAFT record
+      try {
+        const raw = localStorage.getItem('HAICHAIN_ACTIVE_SAFT');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && (!norm || (parsed.wallet && parsed.wallet.toLowerCase() === norm))) {
+            return parsed;
+          }
+        }
+      } catch (_) {}
+
+      // Priority 3: Check signed records list in storage
+      try {
+        const list = JSON.parse(localStorage.getItem('HAICHAIN_SIGNED_SAFT_RECORDS') || '[]');
+        if (Array.isArray(list) && list.length > 0) {
+          if (norm) {
+            const found = list.find(r => r && r.wallet && r.wallet.toLowerCase() === norm);
+            if (found) return found;
+          } else {
+            return list[0];
+          }
+        }
+      } catch (_) {}
+
+      // Priority 4: Check stored early allocations
+      try {
+        if (typeof getStoredAllocations === 'function' && norm) {
+          const allocs = getStoredAllocations();
+          for (const k in allocs) {
+            if (k.toLowerCase() === norm || (allocs[k].wallet && allocs[k].wallet.toLowerCase() === norm)) {
+              const a = allocs[k];
+              return {
+                contractId: a.contractId || ('SAFT-HAI-' + norm.slice(0, 6).toUpperCase()),
+                name: a.name || 'Strategic Investor',
+                email: a.email || 'investor@haichain.si',
+                amount: Number(a.amountUsdt || a.amount || 1000),
+                amountUsdt: Number(a.amountUsdt || a.amount || 1000),
+                tokens: Number(a.haiTokens || a.tokens || Math.round(Number(a.amountUsdt || 1000) / 0.007)),
+                haiTokens: Number(a.haiTokens || a.tokens || Math.round(Number(a.amountUsdt || 1000) / 0.007)),
+                wallet: a.wallet || address,
+                treasury: a.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
+                timestamp: a.timestamp || '2026-11-07T01:00:00.000Z',
+                hashHex: a.hashHex || '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131',
+                paymentMethod: 'Solana Treasury Multi-Sig (USDT)',
+                status: 'PAID_SETTLED',
+                round: 'Pre-Seed ($0.007)'
+              };
+            }
+          }
+        }
+      } catch (_) {}
+
+      // Default fallback: return primary angel partner
+      return Object.assign({}, window.HAICHAIN_VERIFIED_SAFT_REGISTRY['i9yyo2zdquevbkd2qyx5dkgpyneztrk1pa8gy1qhccf']);
+    };
+
     function getStoredAllocations() {
       try {
         const stored = JSON.parse(localStorage.getItem('haichain_early_allocations') || '{}');
-        if (!stored['i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF'] || stored['i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF'].amountUsdt < 20000) {
-          stored['i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF'] = Object.assign({}, OFFICIAL_HUNG_ALLOCATION);
-        }
-        if (!stored['CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw'] || stored['CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw'].amountUsdt < 20000) {
-          stored['CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw'] = Object.assign({}, OFFICIAL_HUNG_ALLOCATION);
+        if (window.HAICHAIN_VERIFIED_SAFT_REGISTRY) {
+          for (const k in window.HAICHAIN_VERIFIED_SAFT_REGISTRY) {
+            const rec = window.HAICHAIN_VERIFIED_SAFT_REGISTRY[k];
+            if (!stored[rec.wallet] || Number(stored[rec.wallet].amountUsdt) !== Number(rec.amount)) {
+              stored[rec.wallet] = {
+                amountUsdt: rec.amount,
+                haiTokens: rec.tokens,
+                contractId: rec.contractId,
+                name: rec.name,
+                email: rec.email,
+                wallet: rec.wallet,
+                treasury: rec.treasury,
+                timestamp: rec.timestamp,
+                hashHex: rec.hashHex
+              };
+            }
+          }
         }
         return stored;
       } catch (e) {
-        return {
-          'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF': OFFICIAL_HUNG_ALLOCATION,
-          'CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw': OFFICIAL_HUNG_ALLOCATION
-        };
+        const fallback = {};
+        if (window.HAICHAIN_VERIFIED_SAFT_REGISTRY) {
+          for (const k in window.HAICHAIN_VERIFIED_SAFT_REGISTRY) {
+            const rec = window.HAICHAIN_VERIFIED_SAFT_REGISTRY[k];
+            fallback[rec.wallet] = {
+              amountUsdt: rec.amount,
+              haiTokens: rec.tokens,
+              contractId: rec.contractId,
+              name: rec.name,
+              email: rec.email,
+              wallet: rec.wallet,
+              treasury: rec.treasury,
+              timestamp: rec.timestamp,
+              hashHex: rec.hashHex
+            };
+          }
+        }
+        return fallback;
       }
     }
-
-
-
-
-
-
 
     function saveStoredAllocations(allocs) {
 
@@ -20990,30 +21119,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
       // Sleek luxury callout on Overview tab linking to dedicated tab-vesting without showing $0.007
-
-
-
-            let activeSaft = null;
-      try {
-        const rawActive = localStorage.getItem('HAICHAIN_ACTIVE_SAFT');
-        if (rawActive) activeSaft = JSON.parse(rawActive);
-      } catch (_) {}
-      if (!activeSaft) {
-        activeSaft = {
-          contractId: 'SAFT-HAI-2026-LMYCV',
-          name: 'Nguyen Thanh Hung',
-          email: 'hungtiger1375@gmail.com',
-          amount: 20000,
-          tokens: 2857142,
-          wallet: 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF',
-          treasury: '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
-          timestamp: '2026-11-07T01:00:00.000Z',
-          hashHex: '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131',
-          paymentMethod: 'Solana Treasury Multi-Sig (USDT)',
-          status: 'PAID_SETTLED'
-        };
-      }
-
+      let activeSaft = (typeof window.resolveInvestorRecord === 'function') ? window.resolveInvestorRecord(currentAddress) : null;
+      
       container.innerHTML = `
         <div class="space-y-4">
           <!-- Overview Tab Embedded Signed SAFT Agreement Card -->
@@ -27458,45 +27565,22 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-      const OFFICIAL_HUNG_SAFT = {
-        contractId: 'SAFT-HAI-2026-LMYCV',
-        name: 'Nguyen Thanh Hung',
-        email: 'hungtiger1375@gmail.com',
-        amount: 20000,
-        tokens: 2857142,
-        wallet: 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF',
-        treasury: '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
-        timestamp: '2026-11-07T01:00:00.000Z',
-        hashHex: '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131',
-        paymentMethod: 'Solana Treasury Multi-Sig (USDT)',
-        status: 'PAID_SETTLED'
-      };
-
+      const saftRecord = (typeof window.resolveInvestorRecord === 'function') ? window.resolveInvestorRecord(currentAddress) : null;
       let alloc = currentAddress ? allocations[currentAddress] : null;
-      if (!alloc || Number(alloc.amountUsdt || 0) < 20000) {
-        alloc = Object.assign({}, OFFICIAL_HUNG_ALLOCATION);
+      if (!alloc && saftRecord) {
+        alloc = {
+          amountUsdt: saftRecord.amount,
+          haiTokens: saftRecord.tokens,
+          contractId: saftRecord.contractId,
+          name: saftRecord.name,
+          email: saftRecord.email,
+          wallet: saftRecord.wallet,
+          treasury: saftRecord.treasury,
+          timestamp: saftRecord.timestamp,
+          hashHex: saftRecord.hashHex
+        };
       }
-
-      // Retrieve any signed SAFT record for the user (by wallet or active device session)
-      let activeSaft = null;
-      try {
-        const rawActive = localStorage.getItem('HAICHAIN_ACTIVE_SAFT');
-        if (rawActive) activeSaft = JSON.parse(rawActive);
-        if (!activeSaft) {
-          const list = JSON.parse(localStorage.getItem('HAICHAIN_SIGNED_SAFT_RECORDS') || '[]');
-          if (list && list.length > 0) {
-            if (currentAddress) {
-              activeSaft = list.find(r => r.wallet && r.wallet.toLowerCase() === currentAddress.toLowerCase()) || list[0];
-            } else {
-              activeSaft = list[0];
-            }
-          }
-        }
-      } catch (_) {}
-
-      if (!activeSaft || Number(activeSaft.amount || 0) < 20000) {
-        activeSaft = Object.assign({}, OFFICIAL_HUNG_SAFT);
-      }
+      let activeSaft = saftRecord || null;
 
       function renderSignedContractCardHtml(saft, currentLang, alloc, currentAddress) {
         const isVi = currentLang === 'vi';
@@ -27516,8 +27600,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             hashHex: alloc.hashHex || '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131'
           };
         }
-        if (!contract) {
-          contract = Object.assign({}, OFFICIAL_HUNG_SAFT);
+        if (!contract && typeof window.resolveInvestorRecord === 'function') {
+          contract = window.resolveInvestorRecord(currentAddress);
         }
 
         // --- CASE 1: SIGNED SAFT CONTRACT RECORD EXISTS ---
@@ -29580,8 +29664,10 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         } catch (_) {}
       }
 
-      if (!record || Number(record.amount || 0) < 20000) {
-        record = Object.assign({}, OFFICIAL_HUNG_SAFT);
+      if (!record && typeof window.resolveInvestorRecord === 'function') {
+        const savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
+        const addr = savedW.address || (window.userWallet ? window.userWallet.address : null);
+        record = window.resolveInvestorRecord(addr);
       }
 
       const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
@@ -29724,7 +29810,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
   .proof { margin-top: 24px; padding: 12px; background: #f9f9f9; border-radius: 8px; font-family: monospace; font-size: 10px; word-break: break-all; color: #666; }
 </style>
 </head>
-<body onload="window.print()">
+<body>
   <div class="header">
     <div>
       <h1 style="margin:0; font-size: 20px;">${docTitle}</h1>
@@ -29754,6 +29840,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     ${record.hashHex || 'N/A'}<br>
     <em>${isVi ? 'Chứng từ này được mã hóa bảo chứng, liên kết bất biến với giao dịch trên Solana Blockchain.' : 'This document is cryptographically verified and permanently linked to Solana blockchain transactions.'}</em>
   </div>
+  <script>window.onload = function() { window.print(); };<\/script>
 </body>
 </html>`;
 
@@ -39909,6 +39996,25 @@ window.openSaftPdfModal = function(overrideLang) {
 
 
 
+    
+    // Dynamic server-side SAFT registry sync on boot
+    try {
+      fetch('/api/saft/records')
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) {
+          if (data && Array.isArray(data.records) && window.HAICHAIN_VERIFIED_SAFT_REGISTRY) {
+            data.records.forEach(function(rec) {
+              if (rec && rec.wallet) {
+                window.HAICHAIN_VERIFIED_SAFT_REGISTRY[rec.wallet.toLowerCase()] = rec;
+              }
+            });
+            if (typeof renderVestingVaultPage === 'function') renderVestingVaultPage();
+            if (typeof updateEarlyAllocationsUI === 'function') updateEarlyAllocationsUI();
+          }
+        })
+        .catch(function() {});
+    } catch (_) {}
+  
     initHeartbeatSession();
 
 

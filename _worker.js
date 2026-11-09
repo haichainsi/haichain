@@ -222,8 +222,80 @@ export default {
       return new Response('Method Not Allowed', { status: 405, headers: corsHeaders });
     }
 
+    if (cleanPath === '/api/saft/records') {
+      const records = [
+  {
+    "contractId": "SAFT-HAI-2026-LMYCV",
+    "name": "Nguyen Thanh Hung",
+    "email": "hungtiger1375@gmail.com",
+    "amount": 20000,
+    "tokens": 2857142,
+    "wallet": "i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-07T01:00:00.000Z",
+    "hashHex": "5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131",
+    "status": "PAID_SETTLED"
+  },
+  {
+    "contractId": "SAFT-2026-HAI-FDFF",
+    "name": "Strategic Investor",
+    "email": "investor@haichain.si",
+    "amount": 1000,
+    "tokens": 142857,
+    "wallet": "CsFDFFED6nwNotjLEt4V52yZQqd2dFEKj4hedAtdDQEw",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-09T09:03:10.000Z",
+    "hashHex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "PAID_SETTLED"
+  },
+  {
+    "contractId": "SAFT-HAI-VERIFIED",
+    "name": "HaiChain Foundation",
+    "email": "haichain.si@gmail.com",
+    "amount": 2500,
+    "tokens": 357142,
+    "wallet": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-03T16:28:00.000Z",
+    "hashHex": "bf9c72e2930262e3d3609825b8109bf588dff621e285a2ab346911c47ea416d8",
+    "status": "PAID_SETTLED"
+  },
+  {
+    "contractId": "SAFT-HAI-TEST-2026",
+    "name": "HaiChain Test Signatory",
+    "email": "haichain.si@gmail.com",
+    "amount": 5000,
+    "tokens": 714285,
+    "wallet": "DK4QA3WK49SWR86GsqDRQSVNhoVRe1MMQGYZ7hKJw4xk",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-03T16:25:00.000Z",
+    "hashHex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "PAID_SETTLED"
+  },
+  {
+    "contractId": "SAFT-HAI-ECCG-2026",
+    "name": "Angel Partner",
+    "email": "partner@haichain.si",
+    "amount": 3500,
+    "tokens": 500000,
+    "wallet": "ECCgHZF9ayVab32h5NxUnVYjJ1CQj6bUYcE5r4kAwW5f",
+    "treasury": "5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3",
+    "timestamp": "2026-11-04T08:00:00.000Z",
+    "hashHex": "4d8c72e2930262e3d3609825b8109bf588dff621e285a2ab346911c47ea416d9",
+    "status": "PAID_SETTLED"
+  }
+];
+      return new Response(JSON.stringify({ status: 'OK', total: records.length, records: records }), {
+        status: 200,
+        headers: {
+          ...corsHeaders,
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
+        }
+      });
+    }
+
     if (cleanPath === '/api/health') {
-      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', version: 'v80-hung-saft-active', timestamp: new Date().toISOString() }), {
+      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', version: 'v81-multi-investor-active', timestamp: new Date().toISOString() }), {
         status: 200,
         headers: corsHeaders
       });
@@ -248,6 +320,13 @@ export default {
           h.set('Expires', '0');
           return new Response(htmlRes.body, { status: htmlRes.status, statusText: htmlRes.statusText, headers: h });
         }
+      }
+      if (res.status < 400 && (url.pathname.endsWith('.html') || url.pathname === '/')) {
+        const h = new Headers(res.headers);
+        h.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+        h.set('Pragma', 'no-cache');
+        h.set('Expires', '0');
+        return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
       }
       return res;
     }
