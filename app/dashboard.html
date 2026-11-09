@@ -19387,6 +19387,11 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
               localStorage.setItem('HAICHAIN_SIGNED_SAFT_RECORDS', JSON.stringify(list));
             }
           } catch (_) {}
+        } else {
+          // Connected wallet is NOT registered/signed: CLEAR active SAFT to prevent any data leak
+          try {
+            localStorage.removeItem('HAICHAIN_ACTIVE_SAFT');
+          } catch (_) {}
         }
       }
 
@@ -19402,8 +19407,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         window.dispatchEvent(new CustomEvent('haichain_wallet_connected', { detail: { publicKey: pubkeyStr, address: pubkeyStr, provider: providerName } }));
       } catch (_) {}
 
-      // Automatically navigate Angel Investor directly to Investor Portfolio & Vesting Vault tab
-      if (pubkeyStr === 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF' || (typeof getStoredAllocations === 'function' && getStoredAllocations()[pubkeyStr])) {
+      // Automatically navigate Angel Investor directly to Investor Portfolio & Vesting Vault tab ONLY if verified allocation exists
+      if (typeof window.resolveInvestorRecord === 'function' && window.resolveInvestorRecord(pubkeyStr)) {
         if (typeof window.switchTab === 'function') {
           setTimeout(() => {
             window.switchTab('tab-vesting');
@@ -20717,42 +20722,39 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
     window.resolveInvestorRecord = function(address) {
       const norm = (address || '').trim().toLowerCase();
+      if (!norm) return null; // Never return fallback if no address provided
 
       // Priority 1: Check verified registry by address
-      if (norm && window.HAICHAIN_VERIFIED_SAFT_REGISTRY && window.HAICHAIN_VERIFIED_SAFT_REGISTRY[norm]) {
+      if (window.HAICHAIN_VERIFIED_SAFT_REGISTRY && window.HAICHAIN_VERIFIED_SAFT_REGISTRY[norm]) {
         return Object.assign({}, window.HAICHAIN_VERIFIED_SAFT_REGISTRY[norm]);
       }
 
-      // Priority 2: Check localStorage active SAFT record
+      // Priority 2: Check localStorage active SAFT record ONLY if matching this specific wallet
       try {
         const raw = localStorage.getItem('HAICHAIN_ACTIVE_SAFT');
         if (raw) {
           const parsed = JSON.parse(raw);
-          if (parsed && (!norm || (parsed.wallet && parsed.wallet.toLowerCase() === norm))) {
+          if (parsed && parsed.wallet && parsed.wallet.trim().toLowerCase() === norm) {
             return parsed;
           }
         }
       } catch (_) {}
 
-      // Priority 3: Check signed records list in storage
+      // Priority 3: Check signed records list in storage ONLY matching this address
       try {
         const list = JSON.parse(localStorage.getItem('HAICHAIN_SIGNED_SAFT_RECORDS') || '[]');
         if (Array.isArray(list) && list.length > 0) {
-          if (norm) {
-            const found = list.find(r => r && r.wallet && r.wallet.toLowerCase() === norm);
-            if (found) return found;
-          } else {
-            return list[0];
-          }
+          const found = list.find(r => r && r.wallet && r.wallet.trim().toLowerCase() === norm);
+          if (found) return found;
         }
       } catch (_) {}
 
-      // Priority 4: Check stored early allocations
+      // Priority 4: Check stored early allocations matching this address
       try {
-        if (typeof getStoredAllocations === 'function' && norm) {
+        if (typeof getStoredAllocations === 'function') {
           const allocs = getStoredAllocations();
           for (const k in allocs) {
-            if (k.toLowerCase() === norm || (allocs[k].wallet && allocs[k].wallet.toLowerCase() === norm)) {
+            if (k.trim().toLowerCase() === norm || (allocs[k].wallet && allocs[k].wallet.trim().toLowerCase() === norm)) {
               const a = allocs[k];
               return {
                 contractId: a.contractId || ('SAFT-HAI-' + norm.slice(0, 6).toUpperCase()),
@@ -20764,9 +20766,9 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
                 haiTokens: Number(a.haiTokens || a.tokens || Math.round(Number(a.amountUsdt || 1000) / 0.007)),
                 wallet: a.wallet || address,
                 treasury: a.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
-                timestamp: a.timestamp || '2026-11-07T01:00:00.000Z',
-                hashHex: a.hashHex || '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131',
-                paymentMethod: 'Solana Treasury Multi-Sig (USDT)',
+                timestamp: a.timestamp || new Date().toISOString(),
+                hashHex: a.hashHex || '',
+                paymentMethod: 'Solana Web3 SAFT',
                 status: 'PAID_SETTLED',
                 round: 'Pre-Seed ($0.007)'
               };
@@ -20775,8 +20777,8 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         }
       } catch (_) {}
 
-      // Default fallback: return primary angel partner
-      return Object.assign({}, window.HAICHAIN_VERIFIED_SAFT_REGISTRY['i9yyo2zdquevbkd2qyx5dkgpyneztrk1pa8gy1qhccf']);
+      // CRITICAL: Unrecognized address returns null (never leak someone else's data)
+      return null;
     };
 
     function getStoredAllocations() {
@@ -21107,7 +21109,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-      const boundAddress = (alloc && alloc.wallet) ? alloc.wallet : 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF';
+      const boundAddress = (alloc && alloc.wallet) ? alloc.wallet : (currentAddress || '');
       const haiTotal = alloc.haiTokens || Math.round((alloc.amountUsdt || 20000) / 0.007);
       const paidUsdt = alloc.amountUsdt || 20000;
       const shortAddr = `${boundAddress.slice(0, 4)}...${boundAddress.slice(-4)}`;
@@ -27565,8 +27567,16 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
 
-      const saftRecord = (typeof window.resolveInvestorRecord === 'function') ? window.resolveInvestorRecord(currentAddress) : null;
-      let alloc = currentAddress ? allocations[currentAddress] : null;
+      const saftRecord = (typeof window.resolveInvestorRecord === 'function' && currentAddress) ? window.resolveInvestorRecord(currentAddress) : null;
+      let alloc = null;
+      if (currentAddress && allocations) {
+        for (const k in allocations) {
+          if (k.toLowerCase() === currentAddress.toLowerCase() || (allocations[k].wallet && allocations[k].wallet.toLowerCase() === currentAddress.toLowerCase())) {
+            alloc = allocations[k];
+            break;
+          }
+        }
+      }
       if (!alloc && saftRecord) {
         alloc = {
           amountUsdt: saftRecord.amount,
@@ -27589,18 +27599,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
         let contract = saft;
         if (!contract && alloc) {
           contract = {
-            contractId: alloc.contractId || 'SAFT-HAI-2026-LMYCV',
-            name: alloc.name || 'Nguyen Thanh Hung',
-            email: alloc.email || 'hungtiger1375@gmail.com',
-            amount: alloc.amountUsdt || 20000,
-            tokens: alloc.haiTokens || 2857142,
-            wallet: alloc.wallet || 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF',
+            contractId: alloc.contractId || ('SAFT-HAI-' + (currentAddress ? currentAddress.slice(0, 6).toUpperCase() : 'VERIFIED')),
+            name: alloc.name || 'Strategic Investor',
+            email: alloc.email || 'investor@haichain.si',
+            amount: alloc.amountUsdt || 1000,
+            tokens: alloc.haiTokens || 142857,
+            wallet: alloc.wallet || currentAddress || '',
             treasury: alloc.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
-            timestamp: alloc.timestamp || '2026-11-07T01:00:00.000Z',
-            hashHex: alloc.hashHex || '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131'
+            timestamp: alloc.timestamp || new Date().toISOString(),
+            hashHex: alloc.hashHex || ''
           };
         }
-        if (!contract && typeof window.resolveInvestorRecord === 'function') {
+        if (!contract && currentAddress && typeof window.resolveInvestorRecord === 'function') {
           contract = window.resolveInvestorRecord(currentAddress);
         }
 
@@ -27609,7 +27619,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
           const formattedAmount = Number(contract.amount || 20000).toLocaleString('en-US');
           const formattedTokens = Number(contract.tokens || 2857142).toLocaleString('en-US');
           const dateStr = (contract.timestamp || '2026-11-07T01:00:00.000Z').replace('T', ' ').substring(0, 19);
-          const boundW = contract.wallet || (alloc && alloc.wallet) || 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF';
+          const boundW = contract.wallet || (alloc && alloc.wallet) || currentAddress || '';
           const shortW = boundW.length > 12 ? `${boundW.slice(0, 6)}...${boundW.slice(-6)}` : boundW;
           const titleText = isVi ? 'Hợp đồng SAFT đã ký' : 'Signed SAFT Agreement';
           const statusBadge = isVi ? 'Đã ký kết • US ESIGN Act' : 'Executed • US ESIGN Act';
@@ -28219,7 +28229,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
       const monthlyStream = Math.round(linearHai / 6);
 
-      const boundAddress = (alloc && alloc.wallet) ? alloc.wallet : (activeSaft && activeSaft.wallet ? activeSaft.wallet : 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF');
+      const boundAddress = (alloc && alloc.wallet) ? alloc.wallet : (activeSaft && activeSaft.wallet ? activeSaft.wallet : (currentAddress || ''));
 
       const shortAddr = `${boundAddress.slice(0, 4)}...${boundAddress.slice(-4)}`;
 
@@ -28680,152 +28690,61 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
           <!-- 4 Executive KPI Cards -->
-
-
-
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono">
-
-
-
-            <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-2">
-
-
-
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiTotalBalance', lang)}</span>
-
-
-
-              <div class="flex items-center space-x-2.5">
-
-
-
-                <div class="w-7 h-7 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden shadow-xs p-1"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}">
-
-
-
-                </div>
-
-
-
-                <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${haiTotal.toLocaleString()} <span class="text-xs font-bold text-neutral-400">HAISI</span></div>
-
-
-
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 font-mono">
+            <!-- KPI 1: TOTAL $HAISI BALANCE -->
+            <div class="p-3.5 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1.5 sm:space-y-2 flex flex-col justify-between">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-[9.5px] sm:text-[10px] uppercase text-neutral-400 font-sans font-semibold block truncate">${getVestingText('kpiTotalBalance', lang)}</span>
+                <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-black border border-neutral-800 flex items-center justify-center shrink-0 overflow-hidden p-0.5"><img src="/assets/haisi-icon.png?v=haisi_full_black_2026" alt="HAISI" class="w-full h-full object-contain" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='/assets/haisi-icon.png';}"></div>
               </div>
-
-
-
-              ${(alloc.referralBonusTokens && alloc.referralBonusTokens > 0) ? `
-
-
-
-              <span class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-md text-[9.5px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
-
-
-
-                <span>🎁 +${alloc.referralBonusTokens.toLocaleString()} Bonus Ref (+5%)</span>
-
-
-
-              </span>
-
-
-
-              ` : `
-
-
-
-              <span class="text-[10px] text-neutral-500 font-sans block">${getVestingText('kpiTokenStandard', lang)}</span>
-
-
-
-              `}
-
-
-
+              <div>
+                <div class="flex items-baseline flex-wrap gap-x-1.5 gap-y-0.5">
+                  <span class="text-base sm:text-xl lg:text-2xl font-black text-black dark:text-white tabular-nums tracking-tight">${haiTotal.toLocaleString()}</span>
+                  <span class="text-[10px] sm:text-xs font-bold text-neutral-400">HAISI</span>
+                </div>
+                ${(alloc.referralBonusTokens && alloc.referralBonusTokens > 0) ? `
+                <span class="inline-flex items-center space-x-1 px-1.5 py-0.5 rounded-md text-[9px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20 mt-1">
+                  <span>🎁 +${alloc.referralBonusTokens.toLocaleString()} Bonus</span>
+                </span>
+                ` : `
+                <span class="text-[9.5px] sm:text-[10px] text-neutral-500 font-sans block truncate mt-0.5">${getVestingText('kpiTokenStandard', lang)}</span>
+                `}
+              </div>
             </div>
 
-
-
-
-
-
-
-            <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1">
-
-
-
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiCommittedCapital', lang)}</span>
-
-
-
-              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${paidUsdt.toLocaleString()}</div>
-
-
-
-              <span class="text-[10px] text-neutral-500 font-sans block">${getVestingText('kpiTreasuryVault', lang)}</span>
-
-
-
+            <!-- KPI 2: COMMITTED CAPITAL -->
+            <div class="p-3.5 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1.5 sm:space-y-2 flex flex-col justify-between">
+              <span class="text-[9.5px] sm:text-[10px] uppercase text-neutral-400 font-sans font-semibold block truncate">${getVestingText('kpiCommittedCapital', lang)}</span>
+              <div>
+                <div class="flex items-baseline flex-wrap gap-x-1.5 gap-y-0.5">
+                  <span class="text-base sm:text-xl lg:text-2xl font-black text-black dark:text-white tabular-nums tracking-tight">$${paidUsdt.toLocaleString()}</span>
+                  <span class="text-[10px] sm:text-xs font-bold text-neutral-400">USDT</span>
+                </div>
+                <span class="text-[9.5px] sm:text-[10px] text-neutral-500 font-sans block truncate mt-0.5">${getVestingText('kpiTreasuryVault', lang)}</span>
+              </div>
             </div>
 
-
-
-
-
-
-
-            <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1">
-
-
-
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiTgeBenchmark', lang)}</span>
-
-
-
-              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">$0.010</div>
-
-
-
-              <span class="text-[10px] text-neutral-500 font-sans block">${getVestingText('kpiBenchmarkSubtitle', lang)}</span>
-
-
-
+            <!-- KPI 3: PUBLIC TGE BENCHMARK -->
+            <div class="p-3.5 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1.5 sm:space-y-2 flex flex-col justify-between">
+              <span class="text-[9.5px] sm:text-[10px] uppercase text-neutral-400 font-sans font-semibold block truncate">${getVestingText('kpiTgeBenchmark', lang)}</span>
+              <div>
+                <div class="text-base sm:text-xl lg:text-2xl font-black text-black dark:text-white tabular-nums tracking-tight">$0.010</div>
+                <span class="text-[9.5px] sm:text-[10px] text-neutral-500 font-sans block truncate mt-0.5">${getVestingText('kpiBenchmarkSubtitle', lang)}</span>
+              </div>
             </div>
 
-
-
-
-
-
-
-            <div class="p-4 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1">
-
-
-
-              <span class="text-[10px] uppercase text-neutral-400 font-sans font-semibold block">${getVestingText('kpiTgeValuation', lang)}</span>
-
-
-
-              <div class="text-xl sm:text-2xl font-black text-black dark:text-white tabular-nums">${tgeVal.toLocaleString()}</div>
-
-
-
-              <span class="text-[10px] text-neutral-600 dark:text-neutral-400 font-bold block">+${unvestedYield}% ${getVestingText('kpiNotionalSurplus', lang)}</span>
-
-
-
+            <!-- KPI 4: TGE NOTIONAL VALUATION -->
+            <div class="p-3.5 sm:p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-1.5 sm:space-y-2 flex flex-col justify-between">
+              <span class="text-[9.5px] sm:text-[10px] uppercase text-neutral-400 font-sans font-semibold block truncate">${getVestingText('kpiTgeValuation', lang)}</span>
+              <div>
+                <div class="flex items-baseline flex-wrap gap-x-1.5 gap-y-0.5">
+                  <span class="text-base sm:text-xl lg:text-2xl font-black text-black dark:text-white tabular-nums tracking-tight">$${tgeVal.toLocaleString()}</span>
+                  <span class="text-[10px] sm:text-xs font-bold text-neutral-400">USD</span>
+                </div>
+                <span class="text-[9.5px] sm:text-[10px] text-emerald-600 dark:text-emerald-400 font-sans font-semibold block truncate mt-0.5">+${unvestedYield}% ${getVestingText('kpiNotionalSurplus', lang)}</span>
+              </div>
             </div>
-
-
-
           </div>
-
-
-
-
-
-
 
           <!-- Deep Architecture Token&#8209;2022 Transfer-Hook Explainer -->
 
@@ -29020,57 +28939,20 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
 
 
           <!-- Genesis Referral & Affiliate Commission Stream -->
-
-
-
-          <div class="p-5 sm:p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-4">
-
-
-
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800 gap-2">
-
-
-
-              <div class="flex items-center space-x-2 text-black dark:text-white font-bold">
-
-
-
-                <i data-lucide="users" class="w-4 h-4 text-emerald-500"></i>
-
-
-
-                <span class="uppercase tracking-wider text-xs">${lang === 'vi' ? 'Quỹ Thưởng & Hoa Hồng Giới Thiệu Genesis' : 'Genesis Referral & Affiliate Portfolio'}</span>
-
-
-
-                <span class="px-2 py-0.5 rounded-full text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-300 dark:border-emerald-800">
-
-
-
+          <div class="p-4 sm:p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 font-mono text-xs space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800 gap-2.5">
+              <div class="flex flex-wrap items-center gap-2">
+                <div class="flex items-center space-x-2 text-black dark:text-white font-bold">
+                  <i data-lucide="users" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                  <span class="uppercase tracking-wider text-xs">${lang === 'vi' ? 'Quỹ Thưởng & Hoa Hồng Giới Thiệu Genesis' : 'Genesis Referral & Affiliate Portfolio'}</span>
+                </div>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-300 dark:border-emerald-800 whitespace-nowrap">
                   6% $HAISI • SAFT Vesting
-
-
-
                 </span>
-
-
-
               </div>
-
-
-
-              <button onclick="window.switchTab('tab-preseed')" class="text-[11px] text-neutral-500 hover:text-black dark:hover:text-white underline font-sans cursor-pointer self-start sm:self-auto">
-
-
-
+              <button onclick="window.switchTab('tab-preseed')" class="text-[11px] text-neutral-500 hover:text-black dark:hover:text-white underline font-sans cursor-pointer self-start sm:self-auto transition-colors">
                 ${lang === 'vi' ? 'Mở Cổng Giới Thiệu →' : 'Open Referral Portal →'}
-
-
-
               </button>
-
-
-
             </div>
 
 
@@ -29645,19 +29527,22 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
             const addr = savedW.address || (window.userWallet ? window.userWallet.address : null);
             if (addr && typeof window.getStoredAllocations === 'function') {
               const allocs = window.getStoredAllocations();
-              const a = allocs[addr];
-              if (a) {
-                record = {
-                  contractId: a.contractId || 'SAFT-HAI-2026-LMYCV',
-                  name: a.name || 'Nguyen Thanh Hung',
-                  email: a.email || 'hungtiger1375@gmail.com',
-                  amount: a.amountUsdt || 20000,
-                  tokens: a.haiTokens || 2857142,
-                  wallet: a.wallet || addr || 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF',
-                  treasury: a.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
-                  timestamp: a.timestamp || '2026-11-07T01:00:00.000Z',
-                  hashHex: a.hashHex || '5c870670a82ced9f0a9d44e5afcf11d54764a9c039b9b785323a1ba76f9d7131'
-                };
+              for (const k in allocs) {
+                if (k.toLowerCase() === addr.toLowerCase() || (allocs[k].wallet && allocs[k].wallet.toLowerCase() === addr.toLowerCase())) {
+                  const a = allocs[k];
+                  record = {
+                    contractId: a.contractId || ('SAFT-HAI-' + addr.slice(0, 6).toUpperCase()),
+                    name: a.name || 'Strategic Investor',
+                    email: a.email || 'investor@haichain.si',
+                    amount: a.amountUsdt || 1000,
+                    tokens: a.haiTokens || 142857,
+                    wallet: a.wallet || addr,
+                    treasury: a.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3',
+                    timestamp: a.timestamp || new Date().toISOString(),
+                    hashHex: a.hashHex || ''
+                  };
+                  break;
+                }
               }
             }
           }
@@ -29667,7 +29552,18 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
       if (!record && typeof window.resolveInvestorRecord === 'function') {
         const savedW = JSON.parse(localStorage.getItem('haichain-connected-wallet') || '{}');
         const addr = savedW.address || (window.userWallet ? window.userWallet.address : null);
-        record = window.resolveInvestorRecord(addr);
+        if (addr) {
+          record = window.resolveInvestorRecord(addr);
+        }
+      }
+
+      if (!record) {
+        if (typeof window.openSaftPdfModal === 'function') {
+          window.openSaftPdfModal();
+        } else if (typeof window.switchTab === 'function') {
+          window.switchTab('tab-preseed');
+        }
+        return;
       }
 
       const lang = (window.haichainI18n && typeof window.haichainI18n.current === 'function') ? window.haichainI18n.current() : (localStorage.getItem('haichain-lang') || 'vi');
@@ -29824,7 +29720,7 @@ console.log("Ticket ready for autonomous execution:", ticket.nonce);</code></pre
     <div class="field"><div class="label">${isVi ? 'Email Xác Nhận:' : 'Email Address:'}</div><div class="value">${record.email || 'hungtiger1375@gmail.com'}</div></div>
     <div class="field"><div class="label">${isVi ? 'Số Tiền Đầu Tư:' : 'Investment Amount:'}</div><div class="value">$${Number(record.amount || 20000).toLocaleString('en-US')} USD</div></div>
     <div class="field"><div class="label">${isVi ? 'Phân Bổ Token:' : 'Token Allocation:'}</div><div class="value">${Number(record.tokens || 2857142).toLocaleString('en-US')} $HAISI (@ $0.007)</div></div>
-    <div class="field" style="grid-column: span 2;"><div class="label">${isVi ? 'Địa Chỉ Ví Nhận Token:' : 'Beneficiary Receiving Address:'}</div><div class="value">${record.wallet || 'i9yYo2zDquEvbkD2QyX5DkGPyNEZTRK1PA8Gy1QHccF'}</div></div>
+    <div class="field" style="grid-column: span 2;"><div class="label">${isVi ? 'Địa Chỉ Ví Nhận Token:' : 'Beneficiary Receiving Address:'}</div><div class="value">${record.wallet || 'N/A'}</div></div>
     <div class="field" style="grid-column: span 2;"><div class="label">${isVi ? 'Kho Bạc Multi-Sig Nhận Vốn:' : 'Multi-Sig Treasury Vault:'}</div><div class="value">${record.treasury || '5fCqijGpy7GefDM4kJr13cUv3vNdnvmKjNEpVw4iQiE3'}</div></div>
     <div class="field" style="grid-column: span 2;"><div class="label">${isVi ? 'Thời Điểm Ký (UTC):' : 'Signing Timestamp (UTC):'}</div><div class="value">${record.timestamp || '2026-11-07T01:00:00.000Z'}</div></div>
   </div>
