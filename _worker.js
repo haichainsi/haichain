@@ -223,7 +223,7 @@ export default {
     }
 
     if (cleanPath === '/api/health') {
-      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', timestamp: new Date().toISOString() }), {
+      return new Response(JSON.stringify({ status: 'OK', service: 'HAICHAIN Edge Gateway', version: 'v80-hung-saft-active', timestamp: new Date().toISOString() }), {
         status: 200,
         headers: corsHeaders
       });
@@ -241,7 +241,13 @@ export default {
         // Fallback for clean URLs (e.g. /dashboard -> /dashboard.html)
         const htmlFallbackUrl = new URL(url.pathname + '.html' + url.search, url.origin);
         const htmlRes = await env.ASSETS.fetch(new Request(htmlFallbackUrl, request));
-        if (htmlRes.status < 400) return htmlRes;
+        if (htmlRes.status < 400) {
+          const h = new Headers(htmlRes.headers);
+          h.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+          h.set('Pragma', 'no-cache');
+          h.set('Expires', '0');
+          return new Response(htmlRes.body, { status: htmlRes.status, statusText: htmlRes.statusText, headers: h });
+        }
       }
       return res;
     }
